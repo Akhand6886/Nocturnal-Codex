@@ -1,0 +1,36 @@
+import { MOCK_BLOG_POSTS } from "@/lib/data";
+import { BlogPostCard } from "@/components/content/blog-post-card";
+import { FileText } from "lucide-react";
+
+export default function BlogPage() {
+  const sortedPosts = MOCK_BLOG_POSTS.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  return (
+    <div className="space-y-10">
+      <header className="pb-6 border-b border-border">
+        <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
+          <FileText className="mr-4 h-10 w-10 text-primary" />
+          Blog
+        </h1>
+        <p className="mt-3 text-lg text-muted-foreground">
+          Insights, articles, and musings from the custodians of the Nocturnal Codex. All content here is admin-only.
+        </p>
+      </header>
+      
+      {sortedPosts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedPosts.map((post) => (
+            <BlogPostCard key={post.id} post={post} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-muted-foreground text-center py-10">No blog posts yet. Check back soon!</p>
+      )}
+    </div>
+  );
+}
+
+export const metadata = {
+  title: "Blog | Nocturnal Codex",
+  description: "Read the latest articles and insights from Nocturnal Codex.",
+};
