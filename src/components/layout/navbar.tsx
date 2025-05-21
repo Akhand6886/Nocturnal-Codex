@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -13,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data"; // Assuming MOCK_TOPICS is for dropdown
+import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data"; 
 import { useState, useEffect } from "react";
 
 export interface NavItem {
@@ -28,7 +29,6 @@ export function Navbar() {
   const [dynamicNavItems, setDynamicNavItems] = useState<NavItem[]>(NAV_ITEMS);
 
   useEffect(() => {
-    // Simulating dynamic topic loading for dropdown
     const topicsNavItems = MOCK_TOPICS.map(topic => ({ label: topic.name, href: `/topics/${topic.slug}` }));
     const updatedNavItems = NAV_ITEMS.map(item => 
       item.label === "Topics" ? { ...item, children: topicsNavItems } : item
@@ -49,21 +49,25 @@ export function Navbar() {
               className={cn(
                 "text-sm font-medium transition-colors hover:text-primary",
                 isActive ? "text-primary" : "text-foreground/80",
-                isMobile ? "w-full justify-start px-4 py-2" : "px-3 py-2"
+                isMobile ? "w-full justify-start px-4 py-2 text-base" : "px-3 py-2" // Increased text size for mobile clarity
               )}
             >
               {item.label}
               <ChevronDown className="ml-1 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align={isMobile ? "start" : "center"} className="bg-background border-border shadow-lg">
+          <DropdownMenuContent 
+            align={isMobile ? "start" : "center"} 
+            className="bg-popover border-border shadow-lg w-56 md:w-auto" // Ensure popover styles for mobile
+            sideOffset={isMobile ? 10 : 5}
+          >
             {item.children.map((child) => (
               <DropdownMenuItem key={child.label} asChild>
                 <Link
                   href={child.href}
                   className={cn(
                     "block px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground",
-                     pathname === child.href ? "bg-accent text-accent-foreground" : "text-foreground/90"
+                     pathname === child.href ? "bg-accent text-accent-foreground" : "text-popover-foreground"
                   )}
                   onClick={() => isMobile && setIsSheetOpen(false)}
                 >
@@ -83,7 +87,7 @@ export function Navbar() {
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary",
           isActive ? "text-primary" : "text-foreground/80",
-          isMobile ? "block px-4 py-2" : "px-3 py-2"
+          isMobile ? "block px-4 py-2 text-base" : "px-3 py-2" // Increased text size for mobile
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -95,38 +99,50 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
+        {/* Logo and Site Name */}
+        <Link href="/" className="mr-4 flex items-center space-x-2">
           <Aperture className="h-6 w-6 text-primary" />
-          <span className="font-bold sm:inline-block text-foreground">
+          <span className="font-bold text-foreground">
             Nocturnal Codex
           </span>
         </Link>
         
-        <nav className="hidden md:flex flex-1 items-center space-x-2">
+        {/* Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center space-x-1 ml-6">
           {dynamicNavItems.map((item) => renderNavItem(item))}
         </nav>
 
-        <div className="flex flex-1 items-center justify-end space-x-2 md:flex-none">
+        {/* Spacer to push controls to the right on desktop */}
+        <div className="hidden md:block flex-1"></div>
+
+        {/* Right side controls (Theme Toggle and Mobile Menu) */}
+        <div className="flex items-center space-x-2">
           <ThemeToggle />
-          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[280px] bg-background p-0">
-              <div className="flex flex-col p-6">
-                <Link href="/" className="mb-6 flex items-center space-x-2" onClick={() => setIsSheetOpen(false)}>
+          
+          {/* Mobile Menu Trigger */}
+          <div className="md:hidden">
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Toggle Menu">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[280px] bg-background p-0 pt-6">
+                <Link 
+                  href="/" 
+                  className="mb-6 flex items-center space-x-2 px-6" 
+                  onClick={() => setIsSheetOpen(false)}
+                >
                   <Aperture className="h-6 w-6 text-primary" />
-                  <span className="font-bold">Nocturnal Codex</span>
+                  <span className="font-bold text-foreground">Nocturnal Codex</span>
                 </Link>
-                <nav className="flex flex-col space-y-1">
+                <nav className="flex flex-col space-y-1 px-2">
                   {dynamicNavItems.map((item) => renderNavItem(item, true))}
                 </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
