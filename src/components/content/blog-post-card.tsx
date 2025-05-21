@@ -1,3 +1,4 @@
+
 import type { BlogPost } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,20 +14,21 @@ interface BlogPostCardProps {
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
   return (
-    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-primary/20 transition-shadow duration-300 bg-card">
+    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-accent/25 border border-transparent hover:border-accent/50 transition-all duration-300 ease-in-out bg-card group">
       {post.imageUrl && (
-        <div className="relative h-48 w-full">
+        <div className="relative h-48 w-full overflow-hidden">
           <Image
             src={post.imageUrl}
             alt={post.title}
             layout="fill"
             objectFit="cover"
+            className="group-hover:scale-105 transition-transform duration-300 ease-in-out"
             data-ai-hint={post.dataAiHint || "blog image"}
           />
         </div>
       )}
       <CardHeader>
-        <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+        <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors duration-200 ease-in-out">
           <CardTitle className="text-xl font-semibold leading-tight">{post.title}</CardTitle>
         </Link>
         <div className="text-xs text-muted-foreground flex items-center space-x-4 mt-2">
@@ -51,7 +53,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         )}
       </CardContent>
       <CardFooter>
-        <Button asChild variant="link" className="text-primary p-0 h-auto">
+        <Button asChild variant="link" className="text-primary p-0 h-auto group-hover:text-accent transition-colors duration-200 ease-in-out">
           <Link href={`/blog/${post.slug}`}>
             Read More <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
