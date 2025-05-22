@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +17,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
+import { db } from "@/lib/firebase"; // Import Firestore instance
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters.").max(50, "Name must be at most 50 characters."),
@@ -39,14 +42,30 @@ export function ContactForm() {
   });
 
   async function onSubmit(data: ContactFormValues) {
-    // In a real app, you'd send this data to a backend API
-    console.log("Contact form submitted:", data);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. We'll be in touch if a response is needed.",
-      variant: "default", 
-    });
-    form.reset();
+    form.control.disabled = true;
+    try {
+      // Add a new document with a generated id to the "contactSubmissions" collection
+      await addDoc(collection(db, "contactSubmissions"), {
+        ...data,
+        submittedAt: serverTimestamp(), // Add a server-side timestamp
+      });
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. We'll review it shortly.",
+        variant: "default",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        title: "Error Sending Message",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+       form.control.disabled = false;
+    }
   }
 
   return (
@@ -60,7 +79,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ada Lovelace" {...field} />
+                  <Input placeholder="Ada Lovelace" {...field} disabled={form.formState.isSubmitting} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -73,7 +92,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="ada@example.com" {...field} />
+                  <Input type="email" placeholder="ada@example.com" {...field} disabled={form.formState.isSubmitting} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -87,7 +106,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Subject</FormLabel>
               <FormControl>
-                <Input placeholder="Inquiry about..." {...field} />
+                <Input placeholder="Inquiry about..." {...field} disabled={form.formState.isSubmitting} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -104,6 +123,7 @@ export function ContactForm() {
                   placeholder="Your detailed message..."
                   className="min-h-[120px]"
                   {...field}
+                  disabled={form.formState.isSubmitting}
                 />
               </FormControl>
               <FormMessage />
