@@ -5,51 +5,51 @@
 
 @layer base {
   :root {
-    /* Light Mode - Teal Dominant (based on previous accent) */
-    --background: 160 40% 55%; /* Soft Teal/Jade - #5CC2A4 */
-    --foreground: 220 20% 15%; /* Very Dark Desaturated Blue/Grey for contrast */
+    /* Little Cream - Light Mode */
+    --background: 40 50% 97%; /* Very light cream - #FDFBF5 */
+    --foreground: 40 10% 25%; /* Dark brownish-grey for text - #4D453E */
 
-    --card: 160 40% 55%; /* Soft Teal/Jade - Same as background */
-    --card-foreground: 220 20% 15%; /* Very Dark Desaturated Blue/Grey */
+    --card: 40 40% 95%; /* Slightly off-white cream for cards - #F7F4EF */
+    --card-foreground: 40 10% 25%; /* Dark brownish-grey */
 
-    --popover: 160 40% 50%; /* Slightly darker Teal for popovers */
-    --popover-foreground: 220 20% 15%; /* Very Dark Desaturated Blue/Grey */
+    --popover: 40 30% 93%; /* Slightly darker cream for popovers - #F2EDE7 */
+    --popover-foreground: 40 10% 25%; /* Dark brownish-grey */
 
-    --primary: 200 50% 75%; /* Light Desaturated Blue */
-    --primary-foreground: 220 20% 15%; /* Very Dark Desaturated Blue/Grey */
+    --primary: 35 80% 60%; /* Warm Ochre/Light Orange - #EFAA73 */
+    --primary-foreground: 40 10% 15%; /* Very Dark Brown for contrast - #332F2A */
 
-    --secondary: 160 40% 65%; /* Lighter Teal */
-    --secondary-foreground: 220 20% 15%; /* Very Dark Desaturated Blue/Grey */
+    --secondary: 160 40% 55%; /* Soft Teal/Jade accent - #5CC2A4 */
+    --secondary-foreground: 0 0% 100%; /* White */
 
-    --muted: 160 40% 50%; /* Slightly Darker Teal */
-    --muted-foreground: 160 30% 85%; /* Lighter Teal/Grey for contrast on muted */
+    --muted: 40 20% 88%; /* Softer, desaturated cream - #E6E1DA */
+    --muted-foreground: 40 10% 45%; /* Medium brownish-grey - #807871 */
 
-    --accent: 320 70% 60%; /* Vibrant Pink/Magenta */
-    --accent-foreground: 0 0% 100%; /* White for pink accent */
+    --accent: 190 60% 50%; /* Muted Cyan/Blue - #4DA6BE */
+    --accent-foreground: 0 0% 100%; /* White */
 
-    --destructive: 0 60% 60%; /* Soft Red */
+    --destructive: 0 60% 60%; /* Soft Red - #E57373 */
     --destructive-foreground: 0 0% 100%; /* White */
 
-    --border: 160 30% 45%; /* Darker Teal for borders */
-    --input: 160 40% 60%; /* Lighter Teal for input background */
-    --ring: 200 50% 75%; /* Light Desaturated Blue (new primary) for ring */
+    --border: 40 20% 80%; /* Light cream-grey border - #DCD5CC */
+    --input: 40 30% 90%; /* Lighter cream for input background - #EDEAE4 */
+    --ring: 35 80% 60%; /* Warm Ochre (primary) for ring */
 
     --radius: 0.65rem;
 
-    --chart-1: 200 50% 75%;   /* New Primary */
-    --chart-2: 320 70% 60%;   /* New Accent */
-    --chart-3: 30 80% 60%;    /* Orange */
-    --chart-4: 260 60% 70%;   /* Purple */
-    --chart-5: 70 60% 60%;    /* Yellow/Lime */
+    --chart-1: 35 80% 60%;   /* Ochre */
+    --chart-2: 160 40% 55%;  /* Teal */
+    --chart-3: 190 60% 50%;  /* Cyan/Blue */
+    --chart-4: 25 70% 65%;   /* Soft Coral */
+    --chart-5: 90 30% 60%;   /* Desaturated Olive */
 
-    --sidebar-background: 160 30% 65%; /* Desaturated Lighter Teal */
-    --sidebar-foreground: 220 20% 15%;
-    --sidebar-primary: 200 50% 75%;
-    --sidebar-primary-foreground: 220 20% 15%;
-    --sidebar-accent: 320 70% 70%; /* Lighter Pink */
-    --sidebar-accent-foreground: 220 20% 15%;
-    --sidebar-border: 160 30% 55%;
-    --sidebar-ring: 200 50% 75%;
+    --sidebar-background: 40 40% 93%; /* Slightly off-white cream for sidebar */
+    --sidebar-foreground: 40 10% 25%;
+    --sidebar-primary: 35 80% 55%; /* Slightly darker Ochre */
+    --sidebar-primary-foreground: 40 10% 15%;
+    --sidebar-accent: 160 40% 60%; /* Lighter Teal */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 40 20% 85%;
+    --sidebar-ring: 35 80% 55%;
   }
 
   .dark {
@@ -141,3 +141,4 @@
 html {
   scroll-behavior: smooth;
 }
+
