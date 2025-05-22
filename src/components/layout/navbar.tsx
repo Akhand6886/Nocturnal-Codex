@@ -47,27 +47,27 @@ export function Navbar() {
             <Button
               variant="ghost"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                isActive ? "text-primary" : "text-foreground/80",
-                isMobile ? "w-full justify-start px-4 py-2 text-base" : "px-3 py-2" // Increased text size for mobile clarity
+                "text-sm font-medium transition-colors hover:text-primary focus:text-primary",
+                isActive ? "text-primary font-semibold" : "text-foreground/80",
+                isMobile ? "w-full justify-start px-4 py-2.5 text-base" : "px-3 py-2" 
               )}
             >
               {item.label}
-              <ChevronDown className="ml-1 h-4 w-4" />
+              <ChevronDown className={cn("ml-1.5 h-4 w-4 transition-transform duration-200", {"rotate-180": isActive /* conceptual for open state */})} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent 
             align={isMobile ? "start" : "center"} 
-            className="bg-popover border-border shadow-lg w-56 md:w-auto" // Ensure popover styles for mobile
-            sideOffset={isMobile ? 10 : 5}
+            className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg" // Softer shadow, rounded
+            sideOffset={isMobile ? 10 : 8} // Slightly more offset
           >
             {item.children.map((child) => (
-              <DropdownMenuItem key={child.label} asChild>
+              <DropdownMenuItem key={child.label} asChild className="py-2 px-3 rounded-md">
                 <Link
                   href={child.href}
                   className={cn(
-                    "block px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground",
-                     pathname === child.href ? "bg-accent text-accent-foreground" : "text-popover-foreground"
+                    "block text-sm hover:bg-accent/80 hover:text-accent-foreground",
+                     pathname === child.href ? "bg-accent text-accent-foreground font-medium" : "text-popover-foreground"
                   )}
                   onClick={() => isMobile && setIsSheetOpen(false)}
                 >
@@ -85,9 +85,9 @@ export function Navbar() {
         key={item.label}
         href={item.href}
         className={cn(
-          "text-sm font-medium transition-colors hover:text-primary",
-          isActive ? "text-primary" : "text-foreground/80",
-          isMobile ? "block px-4 py-2 text-base" : "px-3 py-2" // Increased text size for mobile
+          "text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Added focus ring
+          isActive ? "text-primary font-semibold" : "text-foreground/80",
+          isMobile ? "block px-4 py-2.5 text-base" : "px-3 py-2"
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -97,18 +97,18 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-lg supports-[backdrop-filter]:bg-background/75">
+      <div className="container flex h-16 max-w-screen-2xl items-center">
         {/* Logo and Site Name */}
-        <Link href="/" className="mr-4 flex items-center space-x-2">
-          <Aperture className="h-6 w-6 text-primary" />
-          <span className="font-bold text-foreground">
+        <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
+          <Aperture className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
+          <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
             Nocturnal Codex
           </span>
         </Link>
         
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-1 ml-6">
+        <nav className="hidden md:flex items-center space-x-1.5 ml-auto md:ml-6">
           {dynamicNavItems.map((item) => renderNavItem(item))}
         </nav>
 
@@ -116,28 +116,28 @@ export function Navbar() {
         <div className="hidden md:block flex-1"></div>
 
         {/* Right side controls (Theme Toggle and Mobile Menu) */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 ml-auto md:ml-0">
           <ThemeToggle />
           
           {/* Mobile Menu Trigger */}
           <div className="md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Toggle Menu">
+                <Button variant="ghost" size="icon" aria-label="Toggle Menu" className="hover:bg-accent/20">
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[280px] bg-background p-0 pt-6">
+              <SheetContent side="left" className="w-[300px] bg-background p-0 pt-8 shadow-2xl border-r-border/70">
                 <Link 
                   href="/" 
-                  className="mb-6 flex items-center space-x-2 px-6" 
+                  className="mb-8 flex items-center space-x-2.5 px-6 group" 
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <Aperture className="h-6 w-6 text-primary" />
-                  <span className="font-bold text-foreground">Nocturnal Codex</span>
+                  <Aperture className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
+                  <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
-                <nav className="flex flex-col space-y-1 px-2">
+                <nav className="flex flex-col space-y-1.5 px-4">
                   {dynamicNavItems.map((item) => renderNavItem(item, true))}
                 </nav>
               </SheetContent>

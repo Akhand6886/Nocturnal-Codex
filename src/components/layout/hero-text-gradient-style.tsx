@@ -11,21 +11,21 @@ export function HeroTextGradientStyle() {
           background-position: 0% 50%;
         }
         25% {
-          background-position: 50% 100%;
+          background-position: 75% 100%; /* Adjusted for smoother flow */
         }
         50% {
           background-position: 100% 50%;
         }
         75% {
-            background-position: 50% 0%;
+            background-position: 25% 0%; /* Adjusted for smoother flow */
         }
         100% {
           background-position: 0% 50%;
         }
       }
       .animate-text-gradient-flow-alt {
-        background-size: 300% 300%; /* Increased size for smoother, slower flow with more color visibility */
-        animation: text-gradient-flow-alt 8s ease infinite; /* Slower animation */
+        background-size: 250% 250%; /* Slightly reduced size for sharper gradient edges */
+        animation: text-gradient-flow-alt 10s ease infinite; /* Slower, smoother animation */
       }
     `}</style>
   );

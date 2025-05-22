@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -9,6 +10,10 @@ export default {
   ],
   theme: {
   	extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)'], // Changed from --font-geist-sans
+        mono: ['var(--font-roboto-mono)'], // Changed from --font-geist-mono
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -62,9 +67,9 @@ export default {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: 'var(--radius)', // Default is 0.65rem
+  			md: 'calc(var(--radius) - 0.15rem)', // Adjusted for new lg
+  			sm: 'calc(var(--radius) - 0.3rem)'  // Adjusted for new lg
   		},
   		keyframes: {
   			'accordion-down': {
@@ -82,11 +87,17 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+        'spin-slow': { // Added for navbar logo
+          to: {
+            transform: 'rotate(360deg)',
+          },
+        },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+        'spin-slow': 'spin-slow 3s linear infinite', // Added for navbar logo
   		}
   	}
   },
