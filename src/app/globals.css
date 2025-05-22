@@ -5,138 +5,137 @@
 
 @layer base {
   :root {
-    /* Digital Dusk - Light Mode (Conceptual - primary focus is dark mode refinement) */
-    --background: 220 20% 98%; /* Lighter Cool Grey */
-    --foreground: 225 30% 20%; /* Darker Indigo Text */
+    /* Little Cream - Light Mode */
+    --background: 40 75% 97%; /* Very light creamy - #fefaf0 */
+    --foreground: 35 30% 25%; /* Dark warm brown/grey - #594E42 */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 225 30% 20%;
+    --card-foreground: 35 30% 25%; /* Dark warm brown/grey */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 225 30% 20%;
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 35 30% 25%; /* Dark warm brown/grey */
 
-    --primary: 200 70% 50%; /* Vibrant Cerulean */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 25 60% 55%; /* Warm Terracotta/Clay - #D48752 */
+    --primary-foreground: 40 75% 98%; /* Very light cream, almost white */
 
-    --secondary: 220 30% 94%; /* Light Grey Blue */
-    --secondary-foreground: 225 25% 30%;
+    --secondary: 35 25% 88%; /* Light warm grey/beige - #EBE6E0 */
+    --secondary-foreground: 35 30% 35%; /* Darker warm grey */
 
-    --muted: 220 30% 90%; /* Lighter Muted Grey Blue */
-    --muted-foreground: 225 20% 55%;
+    --muted: 40 50% 93%; /* Slightly darker cream - #F7F2E8 */
+    --muted-foreground: 35 20% 55%; /* Medium warm grey - #A19A91 */
 
-    --accent: 270 60% 60%; /* Rich Amethyst */
+    --accent: 160 40% 55%; /* Soft Teal/Jade - #5CC2A4 */
     --accent-foreground: 0 0% 100%; /* White */
 
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 60% 60%; /* Soft Red - #e67373 */
+    --destructive-foreground: 0 0% 100%; /* White */
 
-    --border: 220 20% 88%;
-    --input: 220 20% 92%;
-    --ring: 200 70% 50%; /* Matches primary */
+    --border: 35 20% 85%; /* Very light warm grey border - #E0DCD7 */
+    --input: 35 30% 90%; /* Slightly off-white input bg - #EDEAE6 */
+    --ring: 25 60% 55%; /* Primary color for ring */
 
-    --radius: 0.65rem; /* Slightly increased for a softer feel */
+    --radius: 0.65rem;
 
-    --chart-1: 200 65% 55%;
-    --chart-2: 270 55% 65%;
-    --chart-3: 230 45% 65%;
-    --chart-4: 30 75% 60%;
-    --chart-5: 160 55% 50%;
+    --chart-1: 25 60% 60%; /* Primary variant */
+    --chart-2: 160 40% 60%; /* Accent variant */
+    --chart-3: 35 40% 65%; /* Warm brown variant */
+    --chart-4: 200 50% 70%; /* Soft Blue */
+    --chart-5: 0 40% 70%; /* Soft Rose */
 
-    --sidebar-background: 220 20% 97%;
-    --sidebar-foreground: 225 30% 25%;
-    --sidebar-primary: 200 70% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 30% 90%;
-    --sidebar-accent-foreground: 225 30% 20%;
-    --sidebar-border: 220 20% 85%;
-    --sidebar-ring: 200 70% 50%;
+    --sidebar-background: 40 60% 95%;
+    --sidebar-foreground: 35 30% 30%;
+    --sidebar-primary: 25 55% 50%;
+    --sidebar-primary-foreground: 40 75% 98%;
+    --sidebar-accent: 40 40% 90%;
+    --sidebar-accent-foreground: 35 30% 25%;
+    --sidebar-border: 35 20% 82%;
+    --sidebar-ring: 25 60% 55%;
   }
 
   .dark {
-    /* Digital Dusk - Dark Mode */
-    --background: 230 25% 8%; /* Very Dark Desaturated Blue */
-    --foreground: 210 30% 92%; /* Light Greyish Cyan/Blue */
+    /* Night Owl - Dark Mode */
+    --background: 222 47% 11%; /* Very dark desaturated blue/purple - #011627 */
+    --foreground: 210 16% 85%; /* Light, slightly off-white - #d6deeb */
 
-    --card: 230 20% 12%; /* Slightly Lighter Dark Blue */
-    --card-foreground: 210 30% 90%;
+    --card: 222 45% 14%; /* Slightly lighter than bg - #0a1f33 */
+    --card-foreground: 210 16% 85%;
 
-    --popover: 230 20% 10%; /* Darker Popover */
-    --popover-foreground: 210 30% 90%;
+    --popover: 222 45% 12%; /* Similar to card, slightly darker for depth */
+    --popover-foreground: 210 16% 85%;
 
-    --primary: 195 75% 55%; /* Deep Teal/Sapphire */
-    --primary-foreground: 230 10% 95%; /* Very light, almost white for contrast */
+    --primary: 175 70% 45%; /* Vibrant Cyan/Teal - #23D1C0 */
+    --primary-foreground: 222 47% 11%; /* Dark, for contrast on vibrant primary */
 
-    --secondary: 230 15% 22%; /* Darker, muted blue */
-    --secondary-foreground: 210 25% 80%;
+    --secondary: 260 50% 55%; /* Muted Purple - #7358D4 */
+    --secondary-foreground: 210 16% 90%; /* Lighter */
 
-    --muted: 230 15% 28%; /* Muted Indigo/Blue */
-    --muted-foreground: 210 20% 70%;
+    --muted: 222 30% 25%; /* Darker muted blue - #2C3A58 */
+    --muted-foreground: 220 15% 65%; /* Greyish - #989fB0 */
 
-    --accent: 275 60% 65%; /* Deep Amethyst/Magenta */
-    --accent-foreground: 0 0% 98%; /* White, for text on accent */
+    --accent: 320 80% 65%; /* Bright Pink/Magenta - #F76AD1 */
+    --accent-foreground: 222 47% 11%; /* Dark for contrast */
 
-    --destructive: 0 65% 60%; /* Slightly softer Red */
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 70% 55%; /* Clear Red - #D94444 */
+    --destructive-foreground: 0 0% 100%; /* White */
 
-    --border: 230 15% 25%; /* Subtle Border, darker */
-    --input: 230 15% 20%; /* Input Background, darker */
-    --ring: 195 75% 55%; /* Matches primary */
+    --border: 222 40% 20%; /* Subtle border - #1F2D4D */
+    --input: 222 40% 18%; /* Slightly darker input bg - #1A2742 */
+    --ring: 175 70% 45%; /* Primary color for ring */
     
-    --chart-1: 195 70% 60%; 
-    --chart-2: 275 55% 70%; 
-    --chart-3: 220 50% 75%; 
-    --chart-4: 35 75% 70%;  
-    --chart-5: 155 60% 60%; 
+    --chart-1: 175 70% 50%; 
+    --chart-2: 320 70% 60%; 
+    --chart-3: 260 60% 65%; 
+    --chart-4: 45 80% 60%; /* Yellow/Orange */
+    --chart-5: 200 70% 60%; /* Another Blue/Cyan */
 
-    --sidebar-background: 230 22% 10%; /* Darker than card */
-    --sidebar-foreground: 210 28% 88%;
-    --sidebar-primary: 195 70% 50%;
-    --sidebar-primary-foreground: 230 10% 90%;
-    --sidebar-accent: 230 15% 20%;
-    --sidebar-accent-foreground: 210 30% 92%;
-    --sidebar-border: 230 15% 26%;
-    --sidebar-ring: 195 75% 55%;
+    --sidebar-background: 222 47% 9%;
+    --sidebar-foreground: 210 16% 80%;
+    --sidebar-primary: 175 70% 50%;
+    --sidebar-primary-foreground: 222 47% 10%;
+    --sidebar-accent: 222 40% 18%;
+    --sidebar-accent-foreground: 210 16% 85%;
+    --sidebar-border: 222 40% 15%;
+    --sidebar-ring: 175 70% 50%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border transition-colors duration-200 ease-in-out; /* Slightly faster, smoother transition */
+    @apply border-border transition-colors duration-200 ease-in-out; 
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter), sans-serif; /* Changed from --font-geist-sans */
+    font-family: var(--font-inter), sans-serif; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Refined markdown styling for a softer look */
   .markdown-content h1,
   .markdown-content h2,
   .markdown-content h3,
   .markdown-content h4,
   .markdown-content h5,
   .markdown-content h6 {
-    @apply font-semibold mt-8 mb-4 text-foreground; /* Increased top margin */
+    @apply font-semibold mt-8 mb-4 text-foreground; 
   }
-  .markdown-content h1 { @apply text-3xl tracking-tight; } /* Tighter tracking */
+  .markdown-content h1 { @apply text-3xl tracking-tight; } 
   .markdown-content h2 { @apply text-2xl tracking-tight; }
   .markdown-content h3 { @apply text-xl tracking-tight; }
-  .markdown-content p { @apply mb-5 leading-relaxed text-foreground/90; } /* Slightly increased bottom margin */
+  .markdown-content p { @apply mb-5 leading-relaxed text-foreground/90; } 
   .markdown-content ul,
-  .markdown-content ol { @apply mb-5 ml-5; } /* Adjusted margin */
+  .markdown-content ol { @apply mb-5 ml-5; } 
   .markdown-content ul { @apply list-disc; }
   .markdown-content ol { @apply list-decimal; }
   .markdown-content li { @apply mb-1.5; }
-  .markdown-content blockquote { @apply p-4 my-5 border-l-4 border-primary bg-muted/30 text-muted-foreground italic rounded-r-md shadow-sm; } /* Softer bg, shadow */
-  .markdown-content code { @apply px-1.5 py-1 bg-muted/50 text-accent rounded-md font-mono text-[0.9em]; } /* Slightly larger, rounded-md */
-  .markdown-content pre { @apply p-4 my-5 bg-muted/20 rounded-lg overflow-x-auto shadow-md; } /* Softer bg, rounded-lg */
-  .markdown-content pre code { @apply bg-transparent p-0 text-sm leading-relaxed font-mono; } /* Ensure pre code uses mono */
+  .markdown-content blockquote { @apply p-4 my-5 border-l-4 border-primary bg-muted/30 text-muted-foreground italic rounded-r-md shadow-sm; } 
+  .markdown-content code { @apply px-1.5 py-1 bg-muted/50 text-accent rounded-md font-mono text-[0.9em]; } 
+  .markdown-content pre { @apply p-4 my-5 bg-muted/20 rounded-lg overflow-x-auto shadow-md; } 
+  .markdown-content pre code { @apply bg-transparent p-0 text-sm leading-relaxed font-mono; } 
   .markdown-content a { @apply text-primary hover:text-primary/80 hover:underline underline-offset-2 transition-colors duration-150; }
-  .markdown-content table { @apply w-full my-5 border-collapse border border-border/70 shadow-sm rounded-md overflow-hidden; } /* Softer border, shadow, rounded */
+  .markdown-content table { @apply w-full my-5 border-collapse border border-border/70 shadow-sm rounded-md overflow-hidden; } 
   .markdown-content th, .markdown-content td { @apply border border-border/60 px-4 py-2.5 text-left; }
-  .markdown-content th { @apply bg-muted/40 font-medium; } /* Softer bg */
-  .markdown-content img { @apply max-w-full h-auto rounded-lg my-5 shadow-lg; } /* Larger radius, softer shadow */
+  .markdown-content th { @apply bg-muted/40 font-medium; } 
+  .markdown-content img { @apply max-w-full h-auto rounded-lg my-5 shadow-lg; } 
 }
 
 html {
