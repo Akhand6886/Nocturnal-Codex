@@ -17,8 +17,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
-import { db } from "@/lib/firebase"; // Import Firestore instance
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+// Firebase imports removed: import { db } from "@/lib/firebase";
+// Firebase imports removed: import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters.").max(50, "Name must be at most 50 characters."),
@@ -43,24 +43,22 @@ export function ContactForm() {
 
   async function onSubmit(data: ContactFormValues) {
     form.control.disabled = true;
+    console.log("Form submitted (demonstration only):", data);
     try {
-      // Add a new document with a generated id to the "contactSubmissions" collection
-      await addDoc(collection(db, "contactSubmissions"), {
-        ...data,
-        submittedAt: serverTimestamp(), // Add a server-side timestamp
-      });
+      // Simulate a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. We'll review it shortly.",
+        title: "Form Submitted (Demonstration)",
+        description: "Thank you! This form is for demonstration purposes only. Your message has not been sent or saved.",
         variant: "default",
       });
       form.reset();
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error in form submission simulation: ", error);
       toast({
-        title: "Error Sending Message",
-        description: "Something went wrong. Please try again later.",
+        title: "Error",
+        description: "Something went wrong during the form submission simulation.",
         variant: "destructive",
       });
     } finally {
@@ -131,7 +129,7 @@ export function ContactForm() {
           )}
         />
         <Button type="submit" className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground" disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+          {form.formState.isSubmitting ? "Submitting..." : "Send Message (Demo)"}
           {!form.formState.isSubmitting && <Send className="ml-2 h-4 w-4" />}
         </Button>
       </form>
