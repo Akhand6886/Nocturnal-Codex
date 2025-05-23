@@ -17,8 +17,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
-// Firebase imports removed: import { db } from "@/lib/firebase";
-// Firebase imports removed: import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters.").max(50, "Name must be at most 50 characters."),
