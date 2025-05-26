@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Eye, ChevronDown, Menu } from "lucide-react"; // Changed Aperture to Eye
+import { ChevronDown, Menu } from "lucide-react"; // Removed Eye
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +22,29 @@ export interface NavItem {
   href: string;
   children?: NavItem[];
 }
+
+const OwlIcon = ({className}: {className?: string}) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    {/* Head with ear tufts */}
+    <path d="M20.34 7.16C19.59 4.71 17.15 3 14.51 3h-5.02C6.85 3 4.41 4.71 3.66 7.16" />
+    {/* Body */}
+    <path d="M3.66 7.16C2.63 9.81 3.53 13 5.44 15.25C7.53 17.75 10.37 21 12 21s4.47-3.25 6.56-5.75C20.47 13 21.37 9.81 20.34 7.16z" />
+    {/* Eyes (will be filled by currentColor) */}
+    <circle cx="8.5" cy="11" r="2.5" fill="currentColor" />
+    <circle cx="15.5" cy="11" r="2.5" fill="currentColor" />
+    {/* Beak (will be filled by currentColor) */}
+    <path d="M12 14.5l-1 1.5h2l-1-1.5z" fill="currentColor" />
+  </svg>
+);
+
 
 export function Navbar() {
   const pathname = usePathname();
@@ -101,7 +124,7 @@ export function Navbar() {
       <div className="container flex h-16 max-w-screen-2xl items-center">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
+          <OwlIcon className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
           <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
             Nocturnal Codex
           </span>
@@ -134,7 +157,7 @@ export function Navbar() {
                   className="mb-8 flex items-center space-x-2.5 px-6 group" 
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
+                  <OwlIcon className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
                   <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
                 <nav className="flex flex-col space-y-1.5 px-4">
