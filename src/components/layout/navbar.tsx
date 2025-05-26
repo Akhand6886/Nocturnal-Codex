@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Aperture, ChevronDown, Menu } from "lucide-react";
+import { Eye, ChevronDown, Menu } from "lucide-react"; // Changed Aperture to Eye
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -101,7 +101,7 @@ export function Navbar() {
       <div className="container flex h-16 max-w-screen-2xl items-center">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <Aperture className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
+          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
           <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
             Nocturnal Codex
           </span>
@@ -134,7 +134,7 @@ export function Navbar() {
                   className="mb-8 flex items-center space-x-2.5 px-6 group" 
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <Aperture className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
+                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
                   <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
                 <nav className="flex flex-col space-y-1.5 px-4">
