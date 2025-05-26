@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu } from "lucide-react"; // Removed Eye
+import { ChevronDown, Eye, Menu } from "lucide-react"; // Changed Aperture to Eye
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,29 +22,6 @@ export interface NavItem {
   href: string;
   children?: NavItem[];
 }
-
-const OwlIcon = ({className}: {className?: string}) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    {/* Head with ear tufts */}
-    <path d="M20.34 7.16C19.59 4.71 17.15 3 14.51 3h-5.02C6.85 3 4.41 4.71 3.66 7.16" />
-    {/* Body */}
-    <path d="M3.66 7.16C2.63 9.81 3.53 13 5.44 15.25C7.53 17.75 10.37 21 12 21s4.47-3.25 6.56-5.75C20.47 13 21.37 9.81 20.34 7.16z" />
-    {/* Eyes (will be filled by currentColor) */}
-    <circle cx="8.5" cy="11" r="2.5" fill="currentColor" />
-    <circle cx="15.5" cy="11" r="2.5" fill="currentColor" />
-    {/* Beak (will be filled by currentColor) */}
-    <path d="M12 14.5l-1 1.5h2l-1-1.5z" fill="currentColor" />
-  </svg>
-);
-
 
 export function Navbar() {
   const pathname = usePathname();
@@ -81,8 +58,8 @@ export function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent 
             align={isMobile ? "start" : "center"} 
-            className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg" // Softer shadow, rounded
-            sideOffset={isMobile ? 10 : 8} // Slightly more offset
+            className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg"
+            sideOffset={isMobile ? 10 : 8} 
           >
             {item.children.map((child) => (
               <DropdownMenuItem key={child.label} asChild className="py-2 px-3 rounded-md">
@@ -108,7 +85,7 @@ export function Navbar() {
         key={item.label}
         href={item.href}
         className={cn(
-          "text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Added focus ring
+          "text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md",
           isActive ? "text-primary font-semibold" : "text-foreground/80",
           isMobile ? "block px-4 py-2.5 text-base" : "px-3 py-2"
         )}
@@ -124,7 +101,7 @@ export function Navbar() {
       <div className="container flex h-16 max-w-screen-2xl items-center">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <OwlIcon className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
+          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" /> {/* Reverted to Eye */}
           <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
             Nocturnal Codex
           </span>
@@ -157,7 +134,7 @@ export function Navbar() {
                   className="mb-8 flex items-center space-x-2.5 px-6 group" 
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <OwlIcon className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
+                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" /> {/* Reverted to Eye */}
                   <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
                 <nav className="flex flex-col space-y-1.5 px-4">
