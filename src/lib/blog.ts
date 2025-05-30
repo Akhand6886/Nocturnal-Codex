@@ -2,29 +2,22 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { BlogPost } from './data';
+import type { BlogPost } from './data'; // Ensure BlogPost type is imported
 import { remark } from 'remark';
 import html from 'remark-html';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
 export function getSortedPostsData(): BlogPost[] {
-  // Get file names under /content/blog
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.md')) // Filter out non-markdown files
+    .filter((fileName) => fileName.endsWith('.md'))
     .map((fileName) => {
-      // Remove ".md" from file name to get id (slug)
       const id = fileName.replace(/\.md$/, '');
-
-      // Read markdown file as string
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-      // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents);
 
-      // Combine the data with the id
       return {
         id,
         slug: id,
@@ -33,7 +26,7 @@ export function getSortedPostsData(): BlogPost[] {
         author: matterResult.data.author || 'Anonymous',
         tags: matterResult.data.tags || [],
         excerpt: matterResult.data.excerpt || '',
-        content: matterResult.content, // Raw markdown content for list, full page will process to HTML
+        content: matterResult.content, // Raw markdown content
         imageUrl: matterResult.data.imageUrl,
         dataAiHint: matterResult.data.dataAiHint, // Added this field
         seriesId: matterResult.data.seriesId,
@@ -41,7 +34,6 @@ export function getSortedPostsData(): BlogPost[] {
       } as BlogPost;
     });
 
-  // Sort posts by date
   return allPostsData.sort((a, b) => {
     if (new Date(a.date) < new Date(b.date)) {
       return 1;
@@ -66,17 +58,12 @@ export async function getPostData(slug: string): Promise<BlogPost | null> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   try {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
-
-    // Use remark to convert markdown into HTML string
     const processedContent = await remark()
       .use(html)
       .process(matterResult.content);
     const contentHtml = processedContent.toString();
 
-    // Combine the data with the slug and contentHtml
     return {
       id: slug,
       slug,
@@ -93,6 +80,6 @@ export async function getPostData(slug: string): Promise<BlogPost | null> {
     } as BlogPost;
   } catch (err) {
     console.error(`Error reading blog post ${slug}:`, err);
-    return null; // Or handle as a 404 more explicitly if preferred
+    return null;
   }
 }

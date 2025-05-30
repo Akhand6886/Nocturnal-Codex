@@ -8,7 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
-import { Separator } from "@/components/ui/separator";
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateStaticParams() {
   return MOCK_WIKI_ARTICLES.map((article) => ({
@@ -51,10 +52,9 @@ export default async function WikiArticlePage({ params }: WikiArticlePageProps) 
       title: otherArticle.title,
       slug: otherArticle.slug,
       type: 'wiki',
-      // For wiki, excerpt might be the first few lines of content if available, or undefined
       excerpt: otherArticle.content.substring(0, 100).split('\n')[0] + "..." 
     }))
-    .slice(0, 4); // Limit to 4 related articles
+    .slice(0, 4); 
 
   return (
     <div className="max-w-3xl mx-auto py-8">

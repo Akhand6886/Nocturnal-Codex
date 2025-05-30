@@ -3,7 +3,7 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: 'export', // Enables static HTML export
+  // output: 'export', // Removed for ISR
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    unoptimized: true, // Required for static export with next/image, or configure a custom loader
+    // unoptimized: true, // Removed to allow Next.js default image optimization with a server
   },
 };
 

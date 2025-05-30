@@ -1,6 +1,9 @@
+
 import { ContactForm } from "@/components/forms/contact-form";
 import { User, Target, Mail, Terminal } from "lucide-react";
 import Image from "next/image";
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default function AboutPage() {
   return (

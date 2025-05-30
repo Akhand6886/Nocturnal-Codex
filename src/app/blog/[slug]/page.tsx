@@ -1,8 +1,7 @@
 
 import type { BlogPost, BlogSeries } from "@/lib/data";
-import { MOCK_BLOG_SERIES, MOCK_THINK_TANK_ARTICLES, MOCK_BLOG_POSTS as MOCK_FALLBACK_BLOG_POSTS } from "@/lib/data"; // Keep MOCK_BLOG_POSTS for series linking if needed
+import { MOCK_BLOG_SERIES, MOCK_THINK_TANK_ARTICLES } from "@/lib/data"; 
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
-import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import Image from "next/image";
 import { CalendarDays, UserCircle, Tag, Link as LinkIcon, ListOrdered, CheckCircle2, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +9,9 @@ import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllPostSlugs, getPostData, getSortedPostsData } from '@/lib/blog'; // Added getSortedPostsData
+import { getAllPostSlugs, getPostData, getSortedPostsData } from '@/lib/blog';
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
@@ -44,7 +45,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     { label: post.title },
   ];
 
-  const allBlogPosts = getSortedPostsData(); // Get all posts for series and related articles
+  const allBlogPosts = getSortedPostsData(); 
 
   const relatedArticles: RelatedArticle[] = [];
   if (post.tags && post.tags.length > 0) {
@@ -55,7 +56,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         }
       }
     });
-    // You can keep or modify the Think Tank related logic as needed
     MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
        if (otherArticle.tags && otherArticle.tags.some(tag => post.tags.includes(tag))) {
         if (relatedArticles.length < 5 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
@@ -116,7 +116,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         )}
 
-        {/* Content is now HTML, directly rendered */}
         <div 
             className="prose dark:prose-invert max-w-none markdown-content" 
             dangerouslySetInnerHTML={{ __html: post.content }} 

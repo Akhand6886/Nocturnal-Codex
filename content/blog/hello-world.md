@@ -5,6 +5,7 @@ author: "The Nocturnist"
 tags: ["Welcome", "CMS"]
 excerpt: "This is the very first blog post managed by Decap CMS!"
 imageUrl: "/images/blog/placeholder-banner.png"
+dataAiHint: "technology abstract"
 seriesId: ""
 seriesOrder: 
 ---

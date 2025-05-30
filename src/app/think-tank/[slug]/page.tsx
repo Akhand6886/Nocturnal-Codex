@@ -1,17 +1,17 @@
 
 import { MOCK_THINK_TANK_ARTICLES, MOCK_BLOG_POSTS } from "@/lib/data";
-import type { ThinkTankArticle, BlogPost } from "@/lib/data";
+import type { ThinkTankArticle } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import Image from "next/image";
 import { Users, CalendarDays, Tag, FileText, Sigma, Link as LinkIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
-import { Separator } from "@/components/ui/separator";
 
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateStaticParams() {
   return MOCK_THINK_TANK_ARTICLES.map((article) => ({
@@ -46,7 +46,6 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
 
   const relatedArticles: RelatedArticle[] = [];
   if (article.tags && article.tags.length > 0) {
-    // Find related think tank articles
     MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
       if (otherArticle.id !== article.id && otherArticle.tags && otherArticle.tags.some(tag => article.tags.includes(tag))) {
         if (relatedArticles.length < 3 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
@@ -54,7 +53,6 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
         }
       }
     });
-    // Find related blog posts
     MOCK_BLOG_POSTS.forEach(otherPost => {
       if (otherPost.tags.some(tag => article.tags.includes(tag))) {
         if (relatedArticles.length < 5 && !relatedArticles.find(ra => ra.slug === otherPost.slug && ra.type === 'blog')) {
