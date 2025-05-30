@@ -47,18 +47,18 @@ export interface BlogSeries {
 }
 
 export interface BlogPost {
-  id: string;
+  id: string; // slug from filename
   title: string;
   slug: string;
-  date: string;
+  date: string; // ISO string
   author: string;
   tags: string[];
   excerpt: string;
-  content: string;
-  imageUrl?: string;
-  dataAiHint?: string;
-  seriesId?: string; // ID of the series this post belongs to
-  seriesOrder?: number; // Order of this post within the series
+  content: string; // This will be HTML string after processing markdown
+  imageUrl?: string; // Optional
+  dataAiHint?: string; // Optional, might not come from frontmatter
+  seriesId?: string; // Optional ID of the series this post belongs to
+  seriesOrder?: number; // Optional order of this post within the series
 }
 
 export interface WikiArticleStub {
@@ -93,6 +93,12 @@ export const MOCK_BLOG_SERIES: BlogSeries[] = [
     slug: "introduction-to-quantum-concepts",
     title: "Introduction to Quantum Concepts",
     description: "A beginner-friendly series exploring the fundamental ideas of quantum mechanics and computing."
+  },
+  {
+    id: "getting-started",
+    slug: "getting-started-series",
+    title: "Getting Started Series",
+    description: "General posts to help you get started."
   }
 ];
 
@@ -168,56 +174,58 @@ export const MOCK_TOPICS: Topic[] = [
   },
 ];
 
+// MOCK_BLOG_POSTS is kept for fallback or if other parts of the site still reference it.
+// The main blog pages (/blog, /blog/[slug]) will now source from Markdown files.
 export const MOCK_BLOG_POSTS: BlogPost[] = [
   {
-    id: "1",
+    id: "deep-dive-into-quantum-entanglement", // slug used as id
     slug: "deep-dive-into-quantum-entanglement",
     title: "A Deep Dive into Quantum Entanglement (Part 1)",
     date: "2024-07-15T10:00:00Z",
     author: "The Nocturnist",
     tags: ["Quantum Physics", "Theory"],
     excerpt: "Exploring the spooky action at a distance and its implications for computing...",
-    content: "# A Deep Dive into Quantum Entanglement\n\n## Introduction\nQuantum entanglement is a phenomenon ...\n\n## Implications\nThis has profound implications for...\n\n```python\n# Example of a Bell state\ndef create_bell_state():\n  # Theoretical representation\n  return \"|Φ+⟩ = 1/√2 (|00⟩ + |11⟩)\"\n```\n\nFurther reading is recommended. This is part 1 of our series on Quantum Concepts.",
+    content: "This content would come from Markdown if this post was also a file.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "quantum physics",
     seriesId: "quantum-intro",
     seriesOrder: 1,
   },
   {
-    id: "2",
+    id: "the-elegance-of-lambda-calculus",
     slug: "the-elegance-of-lambda-calculus",
     title: "The Elegance of Lambda Calculus",
     date: "2024-06-28T14:30:00Z",
     author: "Lex Scripter",
     tags: ["Functional Programming", "Theory", "Mathematics"],
     excerpt: "Understanding the foundational principles of functional programming through Lambda Calculus.",
-    content: "# The Elegance of Lambda Calculus\n\nLambda Calculus, developed by Alonzo Church, is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution.\n\nIt's a minimalist, yet powerful, model of computation. Many functional programming languages are based on its principles.\n\n**Key Concepts:**\n- Abstraction: `λx.M` (a function with argument `x` and body `M`)\n- Application: `M N` (applying function `M` to argument `N`)\n\nThis framework allows for encoding numbers, booleans, and data structures purely with functions.",
+    content: "This content would come from Markdown if this post was also a file.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "mathematical symbols"
   },
   {
-    id: "3",
+    id: "quantum-superposition-explained",
     slug: "quantum-superposition-explained",
     title: "Quantum Superposition Explained (Part 2)",
     date: "2024-07-22T10:00:00Z",
     author: "The Nocturnist",
     tags: ["Quantum Physics", "Theory"],
     excerpt: "Unpacking the concept of superposition where particles exist in multiple states at once.",
-    content: "# Quantum Superposition Explained\n\nSuperposition is another cornerstone of quantum mechanics... \n\nThis is part 2 of our series on Quantum Concepts.",
+    content: "This content would come from Markdown if this post was also a file.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "wave particle",
     seriesId: "quantum-intro",
     seriesOrder: 2,
   },
    {
-    id: "4",
+    id: "basics-of-qubits",
     slug: "basics-of-qubits",
     title: "The Basics of Qubits (Part 3)",
     date: "2024-07-29T10:00:00Z",
     author: "The Nocturnist",
     tags: ["Quantum Computing", "Theory"],
     excerpt: "Introducing the quantum bit, or qubit, the fundamental unit of quantum information.",
-    content: "# The Basics of Qubits\n\nUnlike classical bits, qubits can represent a 0, a 1, or a quantum superposition of both... \n\nThis is part 3 of our series on Quantum Concepts.",
+    content: "This content would come from Markdown if this post was also a file.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "quantum circuit",
     seriesId: "quantum-intro",
@@ -283,5 +291,3 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
-
-    

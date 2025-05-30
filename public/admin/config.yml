@@ -1,0 +1,36 @@
+backend:
+  name: github # Options: github, gitlab, git-gateway, etc.
+  repo: your-username/your-repo-name # REQUIRED: Path to your GitHub repository
+  branch: main # Branch to update (optional; defaults to master)
+  # For local development with GitHub backend, and to avoid needing a backend for auth
+  # you can use the following if you are running a local git proxy:
+  # name: git-gateway
+  # For Netlify Git Gateway (recommended for Netlify deployments)
+  # name: git-gateway
+
+# This line should *not* be indented
+publish_mode: editorial_workflow # Enable drafts, review, and publishing steps
+
+# Optional: Local backend for development
+# local_backend: true
+
+media_folder: "public/images/blog" # Location where uploaded files will be stored
+public_folder: "/images/blog" # The src attribute for uploaded files
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "content/blog" # The path to the folder where blog posts are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "The Nocturnist"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["Tech"]}
+      - {label: "Excerpt", name: "excerpt", widget: "string", required: false}
+      - {label: "Featured Image", name: "imageUrl", widget: "image", required: false}
+      - {label: "Series ID (slug)", name: "seriesId", widget: "string", required: false, hint: "Slug of the series this post belongs to (from data.ts MOCK_BLOG_SERIES). E.g., 'quantum-intro'"}
+      - {label: "Order in Series", name: "seriesOrder", widget: "number", value_type: "int", required: false, min: 1}
+      - {label: "Body", name: "body", widget: "markdown"}

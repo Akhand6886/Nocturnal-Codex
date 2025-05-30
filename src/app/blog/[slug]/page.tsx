@@ -1,20 +1,21 @@
 
-import { MOCK_BLOG_POSTS, MOCK_THINK_TANK_ARTICLES, MOCK_BLOG_SERIES } from "@/lib/data";
-import type { BlogPost, ThinkTankArticle, BlogSeries } from "@/lib/data";
+import type { BlogPost, BlogSeries } from "@/lib/data";
+import { MOCK_BLOG_SERIES, MOCK_THINK_TANK_ARTICLES, MOCK_BLOG_POSTS as MOCK_FALLBACK_BLOG_POSTS } from "@/lib/data"; // Keep MOCK_BLOG_POSTS for series linking if needed
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import Image from "next/image";
-import { CalendarDays, UserCircle, Tag, Link as LinkIcon, ListOrdered, CheckCircle2 } from "lucide-react";
+import { CalendarDays, UserCircle, Tag, Link as LinkIcon, ListOrdered, CheckCircle2, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
-import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getAllPostSlugs, getPostData } from '@/lib/blog';
 
 export async function generateStaticParams() {
-  return MOCK_BLOG_POSTS.map((post) => ({
-    slug: post.slug,
+  const slugs = getAllPostSlugs();
+  return slugs.map((item) => ({
+    slug: item.slug,
   }));
 }
 
@@ -23,7 +24,7 @@ interface BlogPostPageProps {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = MOCK_BLOG_POSTS.find((p) => p.slug === params.slug);
+  const post = await getPostData(params.slug);
 
   if (!post) {
     return (
@@ -43,9 +44,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     { label: post.title },
   ];
 
+  // Related articles logic can be refined later to use file-based data source for everything
   const relatedArticles: RelatedArticle[] = [];
   if (post.tags && post.tags.length > 0) {
-    MOCK_BLOG_POSTS.forEach(otherPost => {
+    MOCK_FALLBACK_BLOG_POSTS.forEach(otherPost => { // Using mock for now
       if (otherPost.id !== post.id && otherPost.tags.some(tag => post.tags.includes(tag))) {
         if (relatedArticles.length < 3 && !relatedArticles.find(ra => ra.slug === otherPost.slug && ra.type === 'blog')) {
           relatedArticles.push({ title: otherPost.title, slug: otherPost.slug, type: 'blog', excerpt: otherPost.excerpt });
@@ -60,13 +62,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       }
     });
   }
-
+  
   let seriesPosts: BlogPost[] = [];
   let currentSeries: BlogSeries | undefined;
   if (post.seriesId) {
     currentSeries = MOCK_BLOG_SERIES.find(s => s.id === post.seriesId);
     if (currentSeries) {
-      seriesPosts = MOCK_BLOG_POSTS
+      // For now, series posts are still from MOCK_FALLBACK_BLOG_POSTS. This can be updated.
+      seriesPosts = MOCK_FALLBACK_BLOG_POSTS 
         .filter(p => p.seriesId === post.seriesId)
         .sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
     }
@@ -170,7 +173,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = MOCK_BLOG_POSTS.find((p) => p.slug === params.slug);
+  const post = await getPostData(params.slug);
   if (!post) {
     return { title: "Post Not Found | Nocturnal Codex" };
   }
@@ -179,5 +182,3 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     description: post.excerpt,
   };
 }
-
-    

@@ -1,9 +1,10 @@
-import { MOCK_BLOG_POSTS } from "@/lib/data";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { FileText } from "lucide-react";
+import { getSortedPostsData } from '@/lib/blog';
+import type { BlogPost } from '@/lib/data';
 
-export default function BlogPage() {
-  const sortedPosts = MOCK_BLOG_POSTS.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export default async function BlogPage() {
+  const sortedPosts: BlogPost[] = getSortedPostsData();
 
   return (
     <div className="space-y-10">
@@ -13,7 +14,7 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="mt-3 text-lg text-muted-foreground">
-          Insights, articles, and musings from the custodians of the Nocturnal Codex. All content here is admin-only.
+          Insights, articles, and musings from the custodians of the Nocturnal Codex.
         </p>
       </header>
       
