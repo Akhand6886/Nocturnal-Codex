@@ -10,7 +10,7 @@ import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllPostSlugs, getPostData } from '@/lib/blog';
+import { getAllPostSlugs, getPostData, getSortedPostsData } from '@/lib/blog'; // Added getSortedPostsData
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
@@ -44,16 +44,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     { label: post.title },
   ];
 
-  // Related articles logic can be refined later to use file-based data source for everything
+  const allBlogPosts = getSortedPostsData(); // Get all posts for series and related articles
+
   const relatedArticles: RelatedArticle[] = [];
   if (post.tags && post.tags.length > 0) {
-    MOCK_FALLBACK_BLOG_POSTS.forEach(otherPost => { // Using mock for now
+    allBlogPosts.forEach(otherPost => { 
       if (otherPost.id !== post.id && otherPost.tags.some(tag => post.tags.includes(tag))) {
         if (relatedArticles.length < 3 && !relatedArticles.find(ra => ra.slug === otherPost.slug && ra.type === 'blog')) {
           relatedArticles.push({ title: otherPost.title, slug: otherPost.slug, type: 'blog', excerpt: otherPost.excerpt });
         }
       }
     });
+    // You can keep or modify the Think Tank related logic as needed
     MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
        if (otherArticle.tags && otherArticle.tags.some(tag => post.tags.includes(tag))) {
         if (relatedArticles.length < 5 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
@@ -68,8 +70,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (post.seriesId) {
     currentSeries = MOCK_BLOG_SERIES.find(s => s.id === post.seriesId);
     if (currentSeries) {
-      // For now, series posts are still from MOCK_FALLBACK_BLOG_POSTS. This can be updated.
-      seriesPosts = MOCK_FALLBACK_BLOG_POSTS 
+      seriesPosts = allBlogPosts
         .filter(p => p.seriesId === post.seriesId)
         .sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
     }
@@ -115,9 +116,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         )}
 
-        <div className="prose dark:prose-invert max-w-none">
-           <MarkdownRenderer content={post.content} />
-        </div>
+        {/* Content is now HTML, directly rendered */}
+        <div 
+            className="prose dark:prose-invert max-w-none markdown-content" 
+            dangerouslySetInnerHTML={{ __html: post.content }} 
+        />
       </article>
 
       {currentSeries && seriesPosts.length > 0 && (

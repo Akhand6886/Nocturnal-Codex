@@ -33,8 +33,9 @@ export function getSortedPostsData(): BlogPost[] {
         author: matterResult.data.author || 'Anonymous',
         tags: matterResult.data.tags || [],
         excerpt: matterResult.data.excerpt || '',
-        content: matterResult.content, // Raw markdown content
+        content: matterResult.content, // Raw markdown content for list, full page will process to HTML
         imageUrl: matterResult.data.imageUrl,
+        dataAiHint: matterResult.data.dataAiHint, // Added this field
         seriesId: matterResult.data.seriesId,
         seriesOrder: matterResult.data.seriesOrder,
       } as BlogPost;
@@ -86,6 +87,7 @@ export async function getPostData(slug: string): Promise<BlogPost | null> {
       excerpt: matterResult.data.excerpt || '',
       content: contentHtml, // HTML content
       imageUrl: matterResult.data.imageUrl,
+      dataAiHint: matterResult.data.dataAiHint, // Added this field
       seriesId: matterResult.data.seriesId,
       seriesOrder: matterResult.data.seriesOrder,
     } as BlogPost;

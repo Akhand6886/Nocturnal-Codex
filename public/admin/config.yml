@@ -1,36 +1,32 @@
 backend:
-  name: github # Options: github, gitlab, git-gateway, etc.
-  repo: your-username/your-repo-name # REQUIRED: Path to your GitHub repository
+  name: github # Refer to https://decapcms.org/docs/backends-overview/
+  repo: your-username/your-repo-name # e.g. NocturnalCodex/nocturnal-codex-app
   branch: main # Branch to update (optional; defaults to master)
-  # For local development with GitHub backend, and to avoid needing a backend for auth
-  # you can use the following if you are running a local git proxy:
-  # name: git-gateway
-  # For Netlify Git Gateway (recommended for Netlify deployments)
-  # name: git-gateway
+  # For local development with GitHub OAuth, you might not need client_id if using implicit grant
+  # For production, especially with Netlify Git Gateway, this might change or use Netlify Identity
+  # client_id: YOUR_GITHUB_OAUTH_CLIENT_ID # Optional, for GitHub API rate limiting
+  # base_url: https://your-site.com # Optional, for OAuth redirects and media URLs
+  # auth_endpoint: auth # Optional, for custom OAuth handling
 
-# This line should *not* be indented
-publish_mode: editorial_workflow # Enable drafts, review, and publishing steps
+media_folder: "public/images/blog" # Location where files will be stored in the repo
+public_folder: "/images/blog" # The src attribute for uploaded media
 
-# Optional: Local backend for development
-# local_backend: true
-
-media_folder: "public/images/blog" # Location where uploaded files will be stored
-public_folder: "/images/blog" # The src attribute for uploaded files
+publish_mode: editorial_workflow # Optional: Enables a custom workflow for drafting, reviewing, and publishing.
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
+    label: "Blog" # Used in the Decap CMS UI
     folder: "content/blog" # The path to the folder where blog posts are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    fields: # The fields for each document, usually in frontmatter
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Author", name: "author", widget: "string", default: "The Nocturnist"}
-      - {label: "Tags", name: "tags", widget: "list", default: ["Tech"]}
-      - {label: "Excerpt", name: "excerpt", widget: "string", required: false}
-      - {label: "Featured Image", name: "imageUrl", widget: "image", required: false}
-      - {label: "Series ID (slug)", name: "seriesId", widget: "string", required: false, hint: "Slug of the series this post belongs to (from data.ts MOCK_BLOG_SERIES). E.g., 'quantum-intro'"}
-      - {label: "Order in Series", name: "seriesOrder", widget: "number", value_type: "int", required: false, min: 1}
+      - {label: "Tags", name: "tags", widget: "list", default: ["New Post"]}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Image URL", name: "imageUrl", widget: "string", required: false}
+      - {label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "Optional: ID of the series this post belongs to (e.g., 'quantum-intro')"}
+      - {label: "Series Order", name: "seriesOrder", widget: "number", value_type: "int", required: false, hint: "Optional: Order of this post within the series (e.g., 1, 2, 3)"}
       - {label: "Body", name: "body", widget: "markdown"}

@@ -54,9 +54,9 @@ export interface BlogPost {
   author: string;
   tags: string[];
   excerpt: string;
-  content: string; // This will be HTML string after processing markdown
+  content: string; // This will be HTML string after processing markdown by lib/blog.ts for [slug] page, or raw markdown for list page
   imageUrl?: string; // Optional
-  dataAiHint?: string; // Optional, might not come from frontmatter
+  dataAiHint?: string; // Optional, for images
   seriesId?: string; // Optional ID of the series this post belongs to
   seriesOrder?: number; // Optional order of this post within the series
 }
@@ -68,7 +68,7 @@ export interface WikiArticleStub {
 }
 export interface WikiArticle extends WikiArticleStub {
   category?: string;
-  content: string;
+  content: string; // Markdown content
   lastUpdated: string;
 }
 
@@ -81,7 +81,7 @@ export interface ThinkTankArticle extends ThinkTankArticleStub {
   date: string;
   authors: string[];
   abstract: string;
-  content: string;
+  content: string; // Markdown content
   tags?: string[];
   imageUrl?: string;
   dataAiHint?: string;
@@ -174,8 +174,7 @@ export const MOCK_TOPICS: Topic[] = [
   },
 ];
 
-// MOCK_BLOG_POSTS is kept for fallback or if other parts of the site still reference it.
-// The main blog pages (/blog, /blog/[slug]) will now source from Markdown files.
+// MOCK_BLOG_POSTS is now mainly for series data if not fully managed by frontmatter in real files
 export const MOCK_BLOG_POSTS: BlogPost[] = [
   {
     id: "deep-dive-into-quantum-entanglement", // slug used as id
@@ -185,7 +184,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     author: "The Nocturnist",
     tags: ["Quantum Physics", "Theory"],
     excerpt: "Exploring the spooky action at a distance and its implications for computing...",
-    content: "This content would come from Markdown if this post was also a file.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "quantum physics",
     seriesId: "quantum-intro",
@@ -199,7 +198,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     author: "Lex Scripter",
     tags: ["Functional Programming", "Theory", "Mathematics"],
     excerpt: "Understanding the foundational principles of functional programming through Lambda Calculus.",
-    content: "This content would come from Markdown if this post was also a file.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "mathematical symbols"
   },
@@ -211,7 +210,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     author: "The Nocturnist",
     tags: ["Quantum Physics", "Theory"],
     excerpt: "Unpacking the concept of superposition where particles exist in multiple states at once.",
-    content: "This content would come from Markdown if this post was also a file.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "wave particle",
     seriesId: "quantum-intro",
@@ -225,7 +224,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     author: "The Nocturnist",
     tags: ["Quantum Computing", "Theory"],
     excerpt: "Introducing the quantum bit, or qubit, the fundamental unit of quantum information.",
-    content: "This content would come from Markdown if this post was also a file.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "quantum circuit",
     seriesId: "quantum-intro",
