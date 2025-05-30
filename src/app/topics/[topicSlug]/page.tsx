@@ -1,12 +1,15 @@
-import { MOCK_TOPICS, Topic as TopicType, SubTopic, Tutorial, WikiArticleStub, ThinkTankArticleStub, CodeSnippetItem } from "@/lib/data";
+
+import { MOCK_TOPICS, type SubTopic, type Tutorial, type WikiArticleStub, type ThinkTankArticleStub, type CodeSnippetItem } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, LinkIcon } from "lucide-react";
+import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, LinkIcon, Brain } from "lucide-react"; // Added Brain
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Image from "next/image";
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateStaticParams() {
   return MOCK_TOPICS.map((topic) => ({
@@ -192,8 +195,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
             </Alert>
           </TabsContent>
         )}
-
-
       </Tabs>
     </div>
   );

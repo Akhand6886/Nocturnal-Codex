@@ -1,6 +1,9 @@
+
 import { MOCK_TOPICS } from "@/lib/data";
 import { TopicTile } from "@/components/content/topic-tile";
 import { BookOpenText } from "lucide-react";
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default function TopicsExplorerPage() {
   return (

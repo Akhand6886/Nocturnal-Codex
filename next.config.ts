@@ -1,7 +1,9 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // output: 'export', // Removed for ISR
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -17,6 +19,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    // unoptimized: true, // Removed to allow Next.js default image optimization with a server
   },
 };
 

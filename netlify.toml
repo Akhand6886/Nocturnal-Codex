@@ -1,0 +1,21 @@
+
+# Netlify configuration file
+
+[build]
+  command = "npm run build" # Command to build your Next.js site
+  publish = ".next"         # Directory that contains the built assets for Next.js (includes static and serverless functions)
+
+# Optional: Next.js runtime configuration.
+# Netlify automatically handles most Next.js features, but you can customize.
+# For ISR and other dynamic features, Netlify uses Netlify Functions.
+# Ensure your Next.js version is compatible with Netlify's runtime.
+# [[plugins]]
+#   package = "@netlify/plugin-nextjs"
+# If you don't specify the plugin, Netlify's build system will usually auto-detect and use it.
+
+[dev]
+  command = "npm run dev" # Command to run your site locally
+  port = 9002 # Port for local development server
+  publish = ".next" # Should match your build.publish if you want `netlify dev` to mimic production closely
+  # framework = "#static" # Uncomment if you were doing a pure static export to `out`
+  # targetPort = 3000 # If your dev server runs on a different port internally

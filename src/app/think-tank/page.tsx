@@ -1,6 +1,9 @@
+
 import { MOCK_THINK_TANK_ARTICLES } from "@/lib/data";
 import { ThinkTankArticleCard } from "@/components/content/think-tank-article-card";
 import { BrainCircuit } from "lucide-react";
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default function ThinkTankPage() {
   const sortedArticles = MOCK_THINK_TANK_ARTICLES.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

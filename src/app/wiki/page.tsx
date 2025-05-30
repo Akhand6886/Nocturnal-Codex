@@ -1,12 +1,14 @@
+
 import { MOCK_WIKI_ARTICLES } from "@/lib/data";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { BookMarked } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default function WikiPage() {
   const sortedArticles = [...MOCK_WIKI_ARTICLES].sort((a, b) => a.title.localeCompare(b.title));
 
-  // Group articles by category or first letter if no category
   const groupedArticles: Record<string, typeof sortedArticles> = {};
   sortedArticles.forEach(article => {
     const key = article.category || article.title.charAt(0).toUpperCase();

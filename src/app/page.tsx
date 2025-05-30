@@ -1,17 +1,21 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, FileText, Brain } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_BLOG_POSTS, MOCK_WIKI_ARTICLES } from "@/lib/data";
+import { MOCK_BLOG_POSTS, MOCK_WIKI_ARTICLES } from "@/lib/data"; // MOCK_BLOG_POSTS will be replaced by getSortedPostsData
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
+import { getSortedPostsData } from "@/lib/blog"; // Import function to get actual blog posts
 
-export default function HomePage() {
-  const recentBlogPosts = MOCK_BLOG_POSTS.slice(0, 2);
-  const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
+export const revalidate = 60; // Revalidate every 60 seconds
+
+export default async function HomePage() {
+  const allBlogPosts = getSortedPostsData(); // Fetch blog posts from Markdown files
+  const recentBlogPosts = allBlogPosts.slice(0, 2);
+  const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3); // Still using mock data for wiki on homepage
 
   return (
     <div className="space-y-16">
@@ -50,7 +54,7 @@ export default function HomePage() {
             {recentBlogPosts.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
-            {MOCK_BLOG_POSTS.length > 2 && (
+            {allBlogPosts.length > 2 && (
                <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
                 <Link href="/blog">View All Blog Posts <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>

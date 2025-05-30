@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Aperture, ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Eye, Menu } from "lucide-react"; // Changed Aperture to Eye
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,8 +58,8 @@ export function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent 
             align={isMobile ? "start" : "center"} 
-            className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg" // Softer shadow, rounded
-            sideOffset={isMobile ? 10 : 8} // Slightly more offset
+            className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg"
+            sideOffset={isMobile ? 10 : 8} 
           >
             {item.children.map((child) => (
               <DropdownMenuItem key={child.label} asChild className="py-2 px-3 rounded-md">
@@ -85,7 +85,7 @@ export function Navbar() {
         key={item.label}
         href={item.href}
         className={cn(
-          "text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Added focus ring
+          "text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md",
           isActive ? "text-primary font-semibold" : "text-foreground/80",
           isMobile ? "block px-4 py-2.5 text-base" : "px-3 py-2"
         )}
@@ -101,7 +101,7 @@ export function Navbar() {
       <div className="container flex h-16 max-w-screen-2xl items-center">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <Aperture className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
+          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" /> {/* Reverted to Eye */}
           <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
             Nocturnal Codex
           </span>
@@ -134,7 +134,7 @@ export function Navbar() {
                   className="mb-8 flex items-center space-x-2.5 px-6 group" 
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <Aperture className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
+                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" /> {/* Reverted to Eye */}
                   <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
                 <nav className="flex flex-col space-y-1.5 px-4">

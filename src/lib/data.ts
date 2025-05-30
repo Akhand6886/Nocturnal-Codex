@@ -1,4 +1,5 @@
-import type { NavItem as NavItemType } from '@/components/layout/navbar'; // Adjusted import path
+
+import type { NavItem as NavItemType } from '@/components/layout/navbar';
 import type { CodeLanguage } from '@/components/content/code-snippet';
 
 export interface Topic {
@@ -26,7 +27,7 @@ export interface SubTopic {
 export interface Tutorial {
   id: string;
   title: string;
-  url: string; 
+  url: string;
   sourceName: string;
 }
 
@@ -38,17 +39,26 @@ export interface CodeSnippetItem {
   description?: string;
 }
 
-export interface BlogPost {
+export interface BlogSeries {
   id: string;
+  slug: string;
+  title: string;
+  description?: string;
+}
+
+export interface BlogPost {
+  id: string; // slug from filename
   title: string;
   slug: string;
-  date: string; 
+  date: string; // ISO string
   author: string;
   tags: string[];
   excerpt: string;
-  content: string; 
-  imageUrl?: string;
-  dataAiHint?: string;
+  content: string; // This will be HTML string after processing markdown by lib/blog.ts for [slug] page, or raw markdown for list page
+  imageUrl?: string; // Optional
+  dataAiHint?: string; // Optional, for images
+  seriesId?: string; // Optional ID of the series this post belongs to
+  seriesOrder?: number; // Optional order of this post within the series
 }
 
 export interface WikiArticleStub {
@@ -58,8 +68,8 @@ export interface WikiArticleStub {
 }
 export interface WikiArticle extends WikiArticleStub {
   category?: string;
-  content: string; 
-  lastUpdated: string; 
+  content: string; // Markdown content
+  lastUpdated: string;
 }
 
 export interface ThinkTankArticleStub {
@@ -68,23 +78,38 @@ export interface ThinkTankArticleStub {
   slug: string;
 }
 export interface ThinkTankArticle extends ThinkTankArticleStub {
-  date: string; 
-  authors: string[]; 
+  date: string;
+  authors: string[];
   abstract: string;
-  content: string; 
+  content: string; // Markdown content
   tags?: string[];
   imageUrl?: string;
   dataAiHint?: string;
 }
 
+export const MOCK_BLOG_SERIES: BlogSeries[] = [
+  {
+    id: "quantum-intro",
+    slug: "introduction-to-quantum-concepts",
+    title: "Introduction to Quantum Concepts",
+    description: "A beginner-friendly series exploring the fundamental ideas of quantum mechanics and computing."
+  },
+  {
+    id: "getting-started",
+    slug: "getting-started-series",
+    title: "Getting Started Series",
+    description: "General posts to help you get started."
+  }
+];
+
 export const MOCK_TOPICS: Topic[] = [
-  { 
-    id: "algorithms", 
+  {
+    id: "algorithms",
     slug: "algorithms",
-    name: "Algorithms", 
-    description: "Core concepts of computation and problem-solving strategies.", 
+    name: "Algorithms",
+    description: "Core concepts of computation and problem-solving strategies.",
     longDescription: "Delve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.",
-    imageUrl: "https://placehold.co/400x300.png", 
+    imageUrl: "https://placehold.co/400x300.png",
     dataAiHint: "abstract algorithm",
     subtopics: [
       {id: "sorting", slug: "sorting", name: "Sorting Algorithms", description: "Techniques for arranging data in a specific order."},
@@ -102,78 +127,109 @@ export const MOCK_TOPICS: Topic[] = [
       {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        # ... (merge logic)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n", description: "A classic divide-and-conquer sorting algorithm."},
     ]
   },
-  { 
-    id: "os", 
+  {
+    id: "os",
     slug: "operating-systems",
-    name: "Operating Systems", 
-    description: "Software managing computer hardware and resources.", 
+    name: "Operating Systems",
+    description: "Software managing computer hardware and resources.",
     longDescription: "Explore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "computer hardware" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "computer hardware"
   },
-  { 
-    id: "ml", 
+  {
+    id: "ml",
     slug: "machine-learning",
-    name: "Machine Learning", 
-    description: "Algorithms that learn from and make decisions based on data.", 
+    name: "Machine Learning",
+    description: "Algorithms that learn from and make decisions based on data.",
     longDescription: "Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "artificial intelligence" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "artificial intelligence"
   },
-  { 
-    id: "cybersecurity", 
+  {
+    id: "cybersecurity",
     slug: "cybersecurity",
-    name: "Cybersecurity", 
-    description: "Protecting systems from threats.", 
+    name: "Cybersecurity",
+    description: "Protecting systems from threats.",
     longDescription: "Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "hacker code" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "hacker code"
   },
-  { 
-    id: "compiler-theory", 
+  {
+    id: "compiler-theory",
     slug: "compiler-theory",
-    name: "Compiler Theory", 
-    description: "The art of translating high-level code to machine instructions.", 
+    name: "Compiler Theory",
+    description: "The art of translating high-level code to machine instructions.",
     longDescription: "Uncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "code compilation" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "code compilation"
   },
-  { 
-    id: "language-theory", 
+  {
+    id: "language-theory",
     slug: "language-theory",
-    name: "Language Theory", 
-    description: "Formal languages, automata, and computability.", 
+    name: "Language Theory",
+    description: "Formal languages, automata, and computability.",
     longDescription: "Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "abstract symbols" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "abstract symbols"
   },
 ];
 
+// MOCK_BLOG_POSTS is now mainly for series data if not fully managed by frontmatter in real files
 export const MOCK_BLOG_POSTS: BlogPost[] = [
   {
-    id: "1",
+    id: "deep-dive-into-quantum-entanglement", // slug used as id
     slug: "deep-dive-into-quantum-entanglement",
-    title: "A Deep Dive into Quantum Entanglement",
+    title: "A Deep Dive into Quantum Entanglement (Part 1)",
     date: "2024-07-15T10:00:00Z",
     author: "The Nocturnist",
     tags: ["Quantum Physics", "Theory"],
     excerpt: "Exploring the spooky action at a distance and its implications for computing...",
-    content: "# A Deep Dive into Quantum Entanglement\n\n## Introduction\nQuantum entanglement is a phenomenon ...\n\n## Implications\nThis has profound implications for...\n\n```python\n# Example of a Bell state\ndef create_bell_state():\n  # Theoretical representation\n  return \"|Φ+⟩ = 1/√2 (|00⟩ + |11⟩)\"\n```\n\nFurther reading is recommended.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
     imageUrl: "https://placehold.co/800x400.png",
-    dataAiHint: "quantum physics"
+    dataAiHint: "quantum physics",
+    seriesId: "quantum-intro",
+    seriesOrder: 1,
   },
   {
-    id: "2",
+    id: "the-elegance-of-lambda-calculus",
     slug: "the-elegance-of-lambda-calculus",
     title: "The Elegance of Lambda Calculus",
     date: "2024-06-28T14:30:00Z",
     author: "Lex Scripter",
     tags: ["Functional Programming", "Theory", "Mathematics"],
     excerpt: "Understanding the foundational principles of functional programming through Lambda Calculus.",
-    content: "# The Elegance of Lambda Calculus\n\nLambda Calculus, developed by Alonzo Church, is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution.\n\nIt's a minimalist, yet powerful, model of computation. Many functional programming languages are based on its principles.\n\n**Key Concepts:**\n- Abstraction: `λx.M` (a function with argument `x` and body `M`)\n- Application: `M N` (applying function `M` to argument `N`)\n\nThis framework allows for encoding numbers, booleans, and data structures purely with functions.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "mathematical symbols"
   },
+  {
+    id: "quantum-superposition-explained",
+    slug: "quantum-superposition-explained",
+    title: "Quantum Superposition Explained (Part 2)",
+    date: "2024-07-22T10:00:00Z",
+    author: "The Nocturnist",
+    tags: ["Quantum Physics", "Theory"],
+    excerpt: "Unpacking the concept of superposition where particles exist in multiple states at once.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
+    imageUrl: "https://placehold.co/800x400.png",
+    dataAiHint: "wave particle",
+    seriesId: "quantum-intro",
+    seriesOrder: 2,
+  },
+   {
+    id: "basics-of-qubits",
+    slug: "basics-of-qubits",
+    title: "The Basics of Qubits (Part 3)",
+    date: "2024-07-29T10:00:00Z",
+    author: "The Nocturnist",
+    tags: ["Quantum Computing", "Theory"],
+    excerpt: "Introducing the quantum bit, or qubit, the fundamental unit of quantum information.",
+    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
+    imageUrl: "https://placehold.co/800x400.png",
+    dataAiHint: "quantum circuit",
+    seriesId: "quantum-intro",
+    seriesOrder: 3,
+  }
 ];
 
 export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
