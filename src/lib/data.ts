@@ -1,4 +1,5 @@
-import type { NavItem as NavItemType } from '@/components/layout/navbar'; // Adjusted import path
+
+import type { NavItem as NavItemType } from '@/components/layout/navbar';
 import type { CodeLanguage } from '@/components/content/code-snippet';
 
 export interface Topic {
@@ -26,7 +27,7 @@ export interface SubTopic {
 export interface Tutorial {
   id: string;
   title: string;
-  url: string; 
+  url: string;
   sourceName: string;
 }
 
@@ -38,17 +39,26 @@ export interface CodeSnippetItem {
   description?: string;
 }
 
+export interface BlogSeries {
+  id: string;
+  slug: string;
+  title: string;
+  description?: string;
+}
+
 export interface BlogPost {
   id: string;
   title: string;
   slug: string;
-  date: string; 
+  date: string;
   author: string;
   tags: string[];
   excerpt: string;
-  content: string; 
+  content: string;
   imageUrl?: string;
   dataAiHint?: string;
+  seriesId?: string; // ID of the series this post belongs to
+  seriesOrder?: number; // Order of this post within the series
 }
 
 export interface WikiArticleStub {
@@ -58,8 +68,8 @@ export interface WikiArticleStub {
 }
 export interface WikiArticle extends WikiArticleStub {
   category?: string;
-  content: string; 
-  lastUpdated: string; 
+  content: string;
+  lastUpdated: string;
 }
 
 export interface ThinkTankArticleStub {
@@ -68,23 +78,32 @@ export interface ThinkTankArticleStub {
   slug: string;
 }
 export interface ThinkTankArticle extends ThinkTankArticleStub {
-  date: string; 
-  authors: string[]; 
+  date: string;
+  authors: string[];
   abstract: string;
-  content: string; 
+  content: string;
   tags?: string[];
   imageUrl?: string;
   dataAiHint?: string;
 }
 
+export const MOCK_BLOG_SERIES: BlogSeries[] = [
+  {
+    id: "quantum-intro",
+    slug: "introduction-to-quantum-concepts",
+    title: "Introduction to Quantum Concepts",
+    description: "A beginner-friendly series exploring the fundamental ideas of quantum mechanics and computing."
+  }
+];
+
 export const MOCK_TOPICS: Topic[] = [
-  { 
-    id: "algorithms", 
+  {
+    id: "algorithms",
     slug: "algorithms",
-    name: "Algorithms", 
-    description: "Core concepts of computation and problem-solving strategies.", 
+    name: "Algorithms",
+    description: "Core concepts of computation and problem-solving strategies.",
     longDescription: "Delve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.",
-    imageUrl: "https://placehold.co/400x300.png", 
+    imageUrl: "https://placehold.co/400x300.png",
     dataAiHint: "abstract algorithm",
     subtopics: [
       {id: "sorting", slug: "sorting", name: "Sorting Algorithms", description: "Techniques for arranging data in a specific order."},
@@ -102,50 +121,50 @@ export const MOCK_TOPICS: Topic[] = [
       {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        # ... (merge logic)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n", description: "A classic divide-and-conquer sorting algorithm."},
     ]
   },
-  { 
-    id: "os", 
+  {
+    id: "os",
     slug: "operating-systems",
-    name: "Operating Systems", 
-    description: "Software managing computer hardware and resources.", 
+    name: "Operating Systems",
+    description: "Software managing computer hardware and resources.",
     longDescription: "Explore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "computer hardware" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "computer hardware"
   },
-  { 
-    id: "ml", 
+  {
+    id: "ml",
     slug: "machine-learning",
-    name: "Machine Learning", 
-    description: "Algorithms that learn from and make decisions based on data.", 
+    name: "Machine Learning",
+    description: "Algorithms that learn from and make decisions based on data.",
     longDescription: "Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "artificial intelligence" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "artificial intelligence"
   },
-  { 
-    id: "cybersecurity", 
+  {
+    id: "cybersecurity",
     slug: "cybersecurity",
-    name: "Cybersecurity", 
-    description: "Protecting systems from threats.", 
+    name: "Cybersecurity",
+    description: "Protecting systems from threats.",
     longDescription: "Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "hacker code" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "hacker code"
   },
-  { 
-    id: "compiler-theory", 
+  {
+    id: "compiler-theory",
     slug: "compiler-theory",
-    name: "Compiler Theory", 
-    description: "The art of translating high-level code to machine instructions.", 
+    name: "Compiler Theory",
+    description: "The art of translating high-level code to machine instructions.",
     longDescription: "Uncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "code compilation" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "code compilation"
   },
-  { 
-    id: "language-theory", 
+  {
+    id: "language-theory",
     slug: "language-theory",
-    name: "Language Theory", 
-    description: "Formal languages, automata, and computability.", 
+    name: "Language Theory",
+    description: "Formal languages, automata, and computability.",
     longDescription: "Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
-    imageUrl: "https://placehold.co/400x300.png", 
-    dataAiHint: "abstract symbols" 
+    imageUrl: "https://placehold.co/400x300.png",
+    dataAiHint: "abstract symbols"
   },
 ];
 
@@ -153,14 +172,16 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
   {
     id: "1",
     slug: "deep-dive-into-quantum-entanglement",
-    title: "A Deep Dive into Quantum Entanglement",
+    title: "A Deep Dive into Quantum Entanglement (Part 1)",
     date: "2024-07-15T10:00:00Z",
     author: "The Nocturnist",
     tags: ["Quantum Physics", "Theory"],
     excerpt: "Exploring the spooky action at a distance and its implications for computing...",
-    content: "# A Deep Dive into Quantum Entanglement\n\n## Introduction\nQuantum entanglement is a phenomenon ...\n\n## Implications\nThis has profound implications for...\n\n```python\n# Example of a Bell state\ndef create_bell_state():\n  # Theoretical representation\n  return \"|Φ+⟩ = 1/√2 (|00⟩ + |11⟩)\"\n```\n\nFurther reading is recommended.",
+    content: "# A Deep Dive into Quantum Entanglement\n\n## Introduction\nQuantum entanglement is a phenomenon ...\n\n## Implications\nThis has profound implications for...\n\n```python\n# Example of a Bell state\ndef create_bell_state():\n  # Theoretical representation\n  return \"|Φ+⟩ = 1/√2 (|00⟩ + |11⟩)\"\n```\n\nFurther reading is recommended. This is part 1 of our series on Quantum Concepts.",
     imageUrl: "https://placehold.co/800x400.png",
-    dataAiHint: "quantum physics"
+    dataAiHint: "quantum physics",
+    seriesId: "quantum-intro",
+    seriesOrder: 1,
   },
   {
     id: "2",
@@ -174,6 +195,34 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     imageUrl: "https://placehold.co/800x400.png",
     dataAiHint: "mathematical symbols"
   },
+  {
+    id: "3",
+    slug: "quantum-superposition-explained",
+    title: "Quantum Superposition Explained (Part 2)",
+    date: "2024-07-22T10:00:00Z",
+    author: "The Nocturnist",
+    tags: ["Quantum Physics", "Theory"],
+    excerpt: "Unpacking the concept of superposition where particles exist in multiple states at once.",
+    content: "# Quantum Superposition Explained\n\nSuperposition is another cornerstone of quantum mechanics... \n\nThis is part 2 of our series on Quantum Concepts.",
+    imageUrl: "https://placehold.co/800x400.png",
+    dataAiHint: "wave particle",
+    seriesId: "quantum-intro",
+    seriesOrder: 2,
+  },
+   {
+    id: "4",
+    slug: "basics-of-qubits",
+    title: "The Basics of Qubits (Part 3)",
+    date: "2024-07-29T10:00:00Z",
+    author: "The Nocturnist",
+    tags: ["Quantum Computing", "Theory"],
+    excerpt: "Introducing the quantum bit, or qubit, the fundamental unit of quantum information.",
+    content: "# The Basics of Qubits\n\nUnlike classical bits, qubits can represent a 0, a 1, or a quantum superposition of both... \n\nThis is part 3 of our series on Quantum Concepts.",
+    imageUrl: "https://placehold.co/800x400.png",
+    dataAiHint: "quantum circuit",
+    seriesId: "quantum-intro",
+    seriesOrder: 3,
+  }
 ];
 
 export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
@@ -234,3 +283,5 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
+
+    
