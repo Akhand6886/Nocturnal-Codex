@@ -1,31 +1,29 @@
 
+# Netlify Identity & Git Gateway
 backend:
-name: github
-  repo: akhand6886/Nocturnal-Codex # Use Netlify's Git Gateway
-  branch: master
-  
-  # Using PKCE (Proof Key for Code Exchange) for GitHub auth. 
-  # This is more secure than implicit flow and recommended.
-  auth_type: pkce 
-  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # !!! YOU MUST CREATE A GITHUB OAUTH APP AND PASTE THE CLIENT ID HERE !!!
-  
-  # If you have a custom domain, you can set it here. 
-  # For Netlify subdomains, it's usually not strictly needed for PKCE but doesn't hurt.
-  # site_domain: majestic-longma-cff6c5.netlify.app 
+  name: github
+  repo: your-github-username/your-repo-name # e.g. owner/repo
+  branch: master # Default branch for commits, usually main or master
+  auth_type: pkce # Use PKCE flow for better security
+  app_id: w6oC2eKlWUktCtJBQVUWtcvOMNjaEQYy # Client ID from your GitHub OAuth App
+  # base_url: https://your-custom-domain.com # Optional: if you have a custom domain
+  # auth_endpoint: /oauth/authorize # Optional: for custom OAuth server
 
+# Local backend for development (optional, comment out for production)
+# local_backend: true
 
-media_folder: "public/images/blog" # Where to store uploaded images
-public_folder: "/images/blog" # Public path to access uploaded images
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
 
-publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing workflow
+publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing
 
 collections:
   - name: "blog"
     label: "Blog"
-    folder: "content/blog" # The path to the folder where blog posts are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in frontmatter
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Author", name: "author", widget: "string", default: "The Nocturnist"}
