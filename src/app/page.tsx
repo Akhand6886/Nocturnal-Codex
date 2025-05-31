@@ -4,18 +4,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, FileText, Brain } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_BLOG_POSTS, MOCK_WIKI_ARTICLES } from "@/lib/data"; // MOCK_BLOG_POSTS will be replaced by getSortedPostsData
+import { MOCK_WIKI_ARTICLES } from "@/lib/data"; 
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
-import { getSortedPostsData } from "@/lib/blog"; // Import function to get actual blog posts
+import { allBlogPosts, type BlogPost } from "contentlayer/generated";
+import { compareDesc } from 'date-fns';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function HomePage() {
-  const allBlogPosts = getSortedPostsData(); // Fetch blog posts from Markdown files
-  const recentBlogPosts = allBlogPosts.slice(0, 2);
-  const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3); // Still using mock data for wiki on homepage
+  const sortedBlogPosts = allBlogPosts.sort((a, b) => 
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
+  const recentBlogPosts = sortedBlogPosts.slice(0, 2);
+  const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3); 
 
   return (
     <div className="space-y-16">
@@ -52,7 +55,7 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-10">
             {recentBlogPosts.map((post) => (
-              <BlogPostCard key={post.id} post={post} />
+              <BlogPostCard key={post.id} post={post as any} /> 
             ))}
             {allBlogPosts.length > 2 && (
                <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">

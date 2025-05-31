@@ -1,85 +1,22 @@
 
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import type { BlogPost } from './data'; // Ensure BlogPost type is imported
-import { remark } from 'remark';
-import html from 'remark-html';
+// This file is largely obsolete as Contentlayer now handles
+// Markdown processing, data fetching, and type generation for blog posts.
 
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+// You can import blog posts and their types directly from 'contentlayer/generated':
+// import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
 
-export function getSortedPostsData(): BlogPost[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => {
-      const id = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const matterResult = matter(fileContents);
+// If you had any utility functions here specific to blog posts that are *not*
+// covered by Contentlayer (e.g., very custom sorting or filtering logic that
+// you prefer to keep separate), you could retain them. Otherwise, this file
+// can be safely removed or kept empty.
 
-      return {
-        id,
-        slug: id,
-        title: matterResult.data.title || 'Untitled Post',
-        date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : new Date().toISOString(),
-        author: matterResult.data.author || 'Anonymous',
-        tags: matterResult.data.tags || [],
-        excerpt: matterResult.data.excerpt || '',
-        content: matterResult.content, // Raw markdown content
-        imageUrl: matterResult.data.imageUrl,
-        dataAiHint: matterResult.data.dataAiHint, // Added this field
-        seriesId: matterResult.data.seriesId,
-        seriesOrder: matterResult.data.seriesOrder,
-      } as BlogPost;
-    });
+// For example, functions like getSortedPostsData(), getAllPostSlugs(),
+// and getPostData() are now effectively replaced by:
+// - `allBlogPosts` (for all posts, then sort as needed)
+// - `allBlogPosts.map(post => ({ slug: post.slug }))` (for slugs)
+// - `allBlogPosts.find(post => post.slug === someSlug)` (for a single post)
 
-  return allPostsData.sort((a, b) => {
-    if (new Date(a.date) < new Date(b.date)) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-}
+// The remark and gray-matter dependencies might become unused if Contentlayer
+// handles all Markdown processing, unless used elsewhere.
 
-export function getAllPostSlugs() {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => {
-      return {
-        slug: fileName.replace(/\.md$/, ''),
-      };
-    });
-}
-
-export async function getPostData(slug: string): Promise<BlogPost | null> {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  try {
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
-    const processedContent = await remark()
-      .use(html)
-      .process(matterResult.content);
-    const contentHtml = processedContent.toString();
-
-    return {
-      id: slug,
-      slug,
-      title: matterResult.data.title || 'Untitled Post',
-      date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : new Date().toISOString(),
-      author: matterResult.data.author || 'Anonymous',
-      tags: matterResult.data.tags || [],
-      excerpt: matterResult.data.excerpt || '',
-      content: contentHtml, // HTML content
-      imageUrl: matterResult.data.imageUrl,
-      dataAiHint: matterResult.data.dataAiHint, // Added this field
-      seriesId: matterResult.data.seriesId,
-      seriesOrder: matterResult.data.seriesOrder,
-    } as BlogPost;
-  } catch (err) {
-    console.error(`Error reading blog post ${slug}:`, err);
-    return null;
-  }
-}
+export {}; // Add an empty export to make it a module if it's empty.

@@ -1,6 +1,7 @@
 
 import type { NavItem as NavItemType } from '@/components/layout/navbar';
 import type { CodeLanguage } from '@/components/content/code-snippet';
+// The BlogPost type will now be imported from 'contentlayer/generated' in files that need it.
 
 export interface Topic {
   id: string;
@@ -46,20 +47,12 @@ export interface BlogSeries {
   description?: string;
 }
 
-export interface BlogPost {
-  id: string; // slug from filename
-  title: string;
-  slug: string;
-  date: string; // ISO string
-  author: string;
-  tags: string[];
-  excerpt: string;
-  content: string; // This will be HTML string after processing markdown by lib/blog.ts for [slug] page, or raw markdown for list page
-  imageUrl?: string; // Optional
-  dataAiHint?: string; // Optional, for images
-  seriesId?: string; // Optional ID of the series this post belongs to
-  seriesOrder?: number; // Optional order of this post within the series
-}
+// The main BlogPost type is now handled by Contentlayer.
+// If MOCK_BLOG_POSTS is still needed for some fallback or specific test data,
+// ensure its structure matches what Contentlayer would produce for the fields it uses.
+// For now, we assume Contentlayer is the source of truth for all blog posts.
+// If you still need to reference blog posts here (e.g., for related content that ISN'T from contentlayer),
+// you might need to define a compatible stub or ensure data consistency.
 
 export interface WikiArticleStub {
   id: string;
@@ -174,63 +167,27 @@ export const MOCK_TOPICS: Topic[] = [
   },
 ];
 
-// MOCK_BLOG_POSTS is now mainly for series data if not fully managed by frontmatter in real files
-export const MOCK_BLOG_POSTS: BlogPost[] = [
-  {
-    id: "deep-dive-into-quantum-entanglement", // slug used as id
-    slug: "deep-dive-into-quantum-entanglement",
-    title: "A Deep Dive into Quantum Entanglement (Part 1)",
-    date: "2024-07-15T10:00:00Z",
-    author: "The Nocturnist",
-    tags: ["Quantum Physics", "Theory"],
-    excerpt: "Exploring the spooky action at a distance and its implications for computing...",
-    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
-    imageUrl: "https://placehold.co/800x400.png",
-    dataAiHint: "quantum physics",
-    seriesId: "quantum-intro",
-    seriesOrder: 1,
-  },
-  {
-    id: "the-elegance-of-lambda-calculus",
-    slug: "the-elegance-of-lambda-calculus",
-    title: "The Elegance of Lambda Calculus",
-    date: "2024-06-28T14:30:00Z",
-    author: "Lex Scripter",
-    tags: ["Functional Programming", "Theory", "Mathematics"],
-    excerpt: "Understanding the foundational principles of functional programming through Lambda Calculus.",
-    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
-    imageUrl: "https://placehold.co/800x400.png",
-    dataAiHint: "mathematical symbols"
-  },
-  {
-    id: "quantum-superposition-explained",
-    slug: "quantum-superposition-explained",
-    title: "Quantum Superposition Explained (Part 2)",
-    date: "2024-07-22T10:00:00Z",
-    author: "The Nocturnist",
-    tags: ["Quantum Physics", "Theory"],
-    excerpt: "Unpacking the concept of superposition where particles exist in multiple states at once.",
-    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
-    imageUrl: "https://placehold.co/800x400.png",
-    dataAiHint: "wave particle",
-    seriesId: "quantum-intro",
-    seriesOrder: 2,
-  },
-   {
-    id: "basics-of-qubits",
-    slug: "basics-of-qubits",
-    title: "The Basics of Qubits (Part 3)",
-    date: "2024-07-29T10:00:00Z",
-    author: "The Nocturnist",
-    tags: ["Quantum Computing", "Theory"],
-    excerpt: "Introducing the quantum bit, or qubit, the fundamental unit of quantum information.",
-    content: "This content would come from Markdown if this post was also a file. This mock data is now a fallback.",
-    imageUrl: "https://placehold.co/800x400.png",
-    dataAiHint: "quantum circuit",
-    seriesId: "quantum-intro",
-    seriesOrder: 3,
-  }
+// MOCK_BLOG_POSTS: Contentlayer is now the source of truth for blog posts.
+// This array might be useful if you have related content logic that needs to reference
+// blog posts not yet migrated or for specific testing scenarios.
+// For general blog display, use `allBlogPosts` from 'contentlayer/generated'.
+export const MOCK_BLOG_POSTS: Pick<import('contentlayer/generated').BlogPost, 'id' | 'slug' | 'title' | 'date' | 'author' | 'tags' | 'excerpt' | 'imageUrl' | 'dataAiHint' | 'seriesId' | 'seriesOrder'>[] = [
+  // Example: If you need to reference a known blog post for related content for ThinkTank or Wiki.
+  // {
+  //   id: "deep-dive-into-quantum-entanglement", 
+  //   slug: "deep-dive-into-quantum-entanglement",
+  //   title: "A Deep Dive into Quantum Entanglement (Part 1)",
+  //   date: "2024-07-15T10:00:00Z",
+  //   author: "The Nocturnist",
+  //   tags: ["Quantum Physics", "Theory"],
+  //   excerpt: "Exploring the spooky action at a distance and its implications for computing...",
+  //   imageUrl: "https://placehold.co/800x400.png",
+  //   dataAiHint: "quantum physics",
+  //   seriesId: "quantum-intro",
+  //   seriesOrder: 1,
+  // },
 ];
+
 
 export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
   {
