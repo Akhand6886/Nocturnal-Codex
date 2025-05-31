@@ -1,8 +1,8 @@
 
 backend:
-  name: github # Use GitHub backend
-  repo: your-github-username/your-repo-name # !!! YOU MUST CHANGE THIS to your actual GitHub username/repo !!!
-  branch: main # Or your default branch (e.g., master)
+name: github
+  repo: akhand6886/Nocturnal-Codex # Use Netlify's Git Gateway
+  branch: master
   
   # Using PKCE (Proof Key for Code Exchange) for GitHub auth. 
   # This is more secure than implicit flow and recommended.
@@ -12,6 +12,7 @@ backend:
   # If you have a custom domain, you can set it here. 
   # For Netlify subdomains, it's usually not strictly needed for PKCE but doesn't hurt.
   # site_domain: majestic-longma-cff6c5.netlify.app 
+
 
 media_folder: "public/images/blog" # Where to store uploaded images
 public_folder: "/images/blog" # Public path to access uploaded images
