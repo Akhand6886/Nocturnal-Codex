@@ -1,27 +1,17 @@
 
 backend:
-<<<<<<< HEAD
   name: git-gateway # Uses Netlify Identity and Git Gateway
   branch: master # Or your default branch name (e.g., main)
-=======
-  name: github
-  repo: your-github-username/your-repo-name # e.g. owner/repo
-  branch: master # Default branch for commits, usually main or master
-  auth_type: pkce # Use PKCE flow for better security
-  app_id: w6oC2eKlWUktCtJBQVUWtcvOMNjaEQYy # Client ID from your GitHub OAuth App
-  # base_url: https://your-custom-domain.com # Optional: if you have a custom domain
-  # auth_endpoint: /oauth/authorize # Optional: for custom OAuth server
->>>>>>> f114f83 (Update config.yml)
 
-media_folder: "public/images/blog" # Where to store uploaded images relative to the site root
-public_folder: "/images/blog" # The src attribute for "media_folder" in your site
+media_folder: "public/images/blog" # Where to store uploaded images relative to the project root
+public_folder: "/images/blog" # The src attribute for images in the app
 
-publish_mode: editorial_workflow # Enables a full UI for drafting, reviewing, and publishing
+publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing of content
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
-    folder: "content/blog" # The path to the folder where blog posts are stored
+    folder: "content/blog" # The path to the folder where blog posts are stored, relative to the project root
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in frontmatter
