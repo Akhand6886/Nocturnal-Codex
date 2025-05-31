@@ -1,32 +1,38 @@
 
 backend:
-  name: github
-  repo: Akhand6886/Nocturnal-Codex # Use Netlify's Git Gateway
+name: github
+  repo: akhand6886/Nocturnal-Codex # Use Netlify's Git Gateway
   branch: master
-  auth_scope: repo # Optional: defaults to main/master. Uncomment and set if your main branch is different.
-  # For Netlify Git Gateway, 'repo' is not needed here as Netlify handles it.
-  # client_id: YOUR_GITHUB_OAUTH_CLIENT_ID # Not needed for Git Gateway
+  
+  # Using PKCE (Proof Key for Code Exchange) for GitHub auth. 
+  # This is more secure than implicit flow and recommended.
+  auth_type: pkce 
+  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # !!! YOU MUST CREATE A GITHUB OAUTH APP AND PASTE THE CLIENT ID HERE !!!
+  
+  # If you have a custom domain, you can set it here. 
+  # For Netlify subdomains, it's usually not strictly needed for PKCE but doesn't hurt.
+  # site_domain: majestic-longma-cff6c5.netlify.app 
 
-media_folder: "public/images/blog" # Location where uploaded media will be stored
-public_folder: "/images/blog" # The src attribute for uploaded media will begin with this path
 
-publish_mode: editorial_workflow # Enables a more robust publishing workflow with drafts and reviews
+media_folder: "public/images/blog" # Where to store uploaded images
+public_folder: "/images/blog" # Public path to access uploaded images
+
+publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing workflow
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the Decap CMS UI
+  - name: "blog"
+    label: "Blog"
     folder: "content/blog" # The path to the folder where blog posts are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in frontmatter
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" } # Optional: can be used by template
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "The Nocturnist" }
-      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
-      - { label: "Banner Image URL", name: "imageUrl", widget: "image", required: false, allow_multiple: false, media_folder: "public/images/blog/banners", public_folder: "/images/blog/banners" }
-      - { label: "Image AI Hint (for Unsplash search)", name: "dataAiHint", widget: "string", required: false, hint: "One or two keywords for image search, e.g., 'technology abstract'" }
-      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'quantum-intro'. Must match an ID in MOCK_BLOG_SERIES."}
-      - { label: "Series Order", name: "seriesOrder", widget: "number", value_type: "int", required: false, hint: "Order of this post within the series (e.g., 1, 2, 3)."}
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "The Nocturnist"}
+      - {label: "Tags", name: "tags", widget: "list", default: []}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Image URL", name: "imageUrl", widget: "string", required: false}
+      - {label: "Image AI Hint", name: "dataAiHint", widget: "string", required: false}
+      - {label: "Series ID", name: "seriesId", widget: "string", required: false}
+      - {label: "Series Order", name: "seriesOrder", widget: "number", required: false, value_type: "int"}
+      - {label: "Body", name: "body", widget: "markdown"}
