@@ -1,17 +1,22 @@
 
 backend:
-  name: git-gateway # Uses Netlify Identity and Git Gateway
-  branch: master # Or your default branch name (e.g., main)
+  name: github
+  repo: your-github-username/your-repo-name # MANDATORY: Replace with your GitHub username/repo (e.g., YourUser/your-repo)
+  branch: master # Or 'main' or your default branch
+  auth_type: pkce # Use PKCE flow for better security
+  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # MANDATORY: Client ID from your GitHub OAuth App
+  # base_url: https://your-netlify-site-id.netlify.app # Optional: if Decap CMS has trouble determining it
+  # auth_endpoint: oauth/authorize # Optional: Decap CMS default for GitHub PKCE is usually fine
 
-media_folder: "public/images/blog" # Where to store uploaded images relative to the project root
-public_folder: "/images/blog" # The src attribute for images in the app
+media_folder: "public/images/blog" # Where to store uploaded images by the CMS
+public_folder: "/images/blog" # The public path to resolve uploaded images
 
-publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing of content
+publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
-    folder: "content/blog" # The path to the folder where blog posts are stored, relative to the project root
+    folder: "content/blog" # The path to the folder where blog posts are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in frontmatter
