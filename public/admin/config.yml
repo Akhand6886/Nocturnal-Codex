@@ -1,7 +1,17 @@
 
 backend:
+<<<<<<< HEAD
   name: git-gateway # Uses Netlify Identity and Git Gateway
   branch: master # Or your default branch name (e.g., main)
+=======
+  name: github
+  repo: your-github-username/your-repo-name # e.g. owner/repo
+  branch: master # Default branch for commits, usually main or master
+  auth_type: pkce # Use PKCE flow for better security
+  app_id: w6oC2eKlWUktCtJBQVUWtcvOMNjaEQYy # Client ID from your GitHub OAuth App
+  # base_url: https://your-custom-domain.com # Optional: if you have a custom domain
+  # auth_endpoint: /oauth/authorize # Optional: for custom OAuth server
+>>>>>>> f114f83 (Update config.yml)
 
 media_folder: "public/images/blog" # Where to store uploaded images relative to the site root
 public_folder: "/images/blog" # The src attribute for "media_folder" in your site
