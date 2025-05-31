@@ -1,7 +1,9 @@
 
 backend:
-  name: git-gateway # Use Netlify's Git Gateway
-  branch: master # Optional: defaults to main/master. Uncomment and set if your main branch is different.
+  name: github
+  repo: Akhand6886/Nocturnal-Codex # Use Netlify's Git Gateway
+  branch: master
+  auth_scope: repo # Optional: defaults to main/master. Uncomment and set if your main branch is different.
   # For Netlify Git Gateway, 'repo' is not needed here as Netlify handles it.
   # client_id: YOUR_GITHUB_OAUTH_CLIENT_ID # Not needed for Git Gateway
 
