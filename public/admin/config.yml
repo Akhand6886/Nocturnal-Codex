@@ -1,14 +1,22 @@
 
 backend:
-  name: github # Use direct GitHub backend
-  repo: your-github-username/your-repo-name # <<< IMPORTANT: REPLACE THIS with your actual GitHub repo (e.g., johndoe/nocturnal-codex)
-  branch: main # Or your default branch
-  auth_type: implicit # Uses GitHub's implicit grant flow for authentication
+  name: github # Use GitHub backend
+  repo: your-github-username/your-repo-name # !!! YOU MUST CHANGE THIS to your actual GitHub username/repo !!!
+  branch: main # Or your default branch (e.g., master)
+  
+  # Using PKCE (Proof Key for Code Exchange) for GitHub auth. 
+  # This is more secure than implicit flow and recommended.
+  auth_type: pkce 
+  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # !!! YOU MUST CREATE A GITHUB OAUTH APP AND PASTE THE CLIENT ID HERE !!!
+  
+  # If you have a custom domain, you can set it here. 
+  # For Netlify subdomains, it's usually not strictly needed for PKCE but doesn't hurt.
+  # site_domain: majestic-longma-cff6c5.netlify.app 
 
 media_folder: "public/images/blog" # Where to store uploaded images
-public_folder: "/images/blog" # Where to access uploaded images in the app
+public_folder: "/images/blog" # Public path to access uploaded images
 
-publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing
+publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing workflow
 
 collections:
   - name: "blog"
