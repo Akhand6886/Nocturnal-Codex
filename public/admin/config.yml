@@ -5,7 +5,7 @@ backend:
   repo: your-github-username/your-repo-name # e.g. owner/repo
   branch: master # Default branch for commits, usually main or master
   auth_type: pkce # Use PKCE flow for better security
-  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # Client ID from your GitHub OAuth App
+  app_id: w6oC2eKlWUktCtJBQVUWtcvOMNjaEQYy # Client ID from your GitHub OAuth App
   # base_url: https://your-custom-domain.com # Optional: if you have a custom domain
   # auth_endpoint: /oauth/authorize # Optional: for custom OAuth server
 
