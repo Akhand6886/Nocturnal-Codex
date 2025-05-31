@@ -1,22 +1,22 @@
 
-import type { BlogPost, BlogSeries } from "@/lib/data";
+import type { BlogSeries } from "@/lib/data"; // Keep for series type if needed
 import { MOCK_BLOG_SERIES, MOCK_THINK_TANK_ARTICLES } from "@/lib/data"; 
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import Image from "next/image";
 import { CalendarDays, UserCircle, Tag, Link as LinkIcon, ListOrdered, CheckCircle2, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import {format} from 'date-fns';
+import {format, compareDesc} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllPostSlugs, getPostData, getSortedPostsData } from '@/lib/blog';
+import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
+import { notFound } from 'next/navigation';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateStaticParams() {
-  const slugs = getAllPostSlugs();
-  return slugs.map((item) => ({
-    slug: item.slug,
+  return allBlogPosts.map((post) => ({
+    slug: post.slug,
   }));
 }
 
@@ -25,18 +25,10 @@ interface BlogPostPageProps {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getPostData(params.slug);
+  const post = allBlogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
-    return (
-      <div className="text-center py-10">
-        <h1 className="text-2xl font-bold">Post Not Found</h1>
-        <p className="text-muted-foreground">The requested blog post could not be found.</p>
-         <Link href="/blog" className="text-primary hover:underline mt-4 inline-block">
-          Back to Blog
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   const breadcrumbItems: BreadcrumbItem[] = [
@@ -44,20 +36,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     { label: "Blog", href: "/blog" },
     { label: post.title },
   ];
-
-  const allBlogPosts = getSortedPostsData(); 
+  
+  const allPostsForSeriesAndRelated = allBlogPosts.sort((a, b) => 
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
 
   const relatedArticles: RelatedArticle[] = [];
   if (post.tags && post.tags.length > 0) {
-    allBlogPosts.forEach(otherPost => { 
-      if (otherPost.id !== post.id && otherPost.tags.some(tag => post.tags.includes(tag))) {
+    allPostsForSeriesAndRelated.forEach(otherPost => { 
+      if (otherPost.id !== post.id && otherPost.tags && otherPost.tags.some(tag => post.tags!.includes(tag))) {
         if (relatedArticles.length < 3 && !relatedArticles.find(ra => ra.slug === otherPost.slug && ra.type === 'blog')) {
           relatedArticles.push({ title: otherPost.title, slug: otherPost.slug, type: 'blog', excerpt: otherPost.excerpt });
         }
       }
     });
     MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
-       if (otherArticle.tags && otherArticle.tags.some(tag => post.tags.includes(tag))) {
+       if (otherArticle.tags && post.tags && otherArticle.tags.some(tag => post.tags!.includes(tag))) {
         if (relatedArticles.length < 5 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
            relatedArticles.push({ title: otherArticle.title, slug: otherArticle.slug, type: 'think-tank', excerpt: otherArticle.abstract });
         }
@@ -70,7 +64,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (post.seriesId) {
     currentSeries = MOCK_BLOG_SERIES.find(s => s.id === post.seriesId);
     if (currentSeries) {
-      seriesPosts = allBlogPosts
+      seriesPosts = allPostsForSeriesAndRelated
         .filter(p => p.seriesId === post.seriesId)
         .sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
     }
@@ -108,8 +102,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Image 
               src={post.imageUrl} 
               alt={post.title} 
-              layout="fill" 
-              objectFit="cover" 
+              fill // layout="fill" is deprecated, use fill
+              style={{objectFit: "cover"}} // objectFit becomes a style property
               priority 
               data-ai-hint={post.dataAiHint || "blog header"}
             />
@@ -118,7 +112,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div 
             className="prose dark:prose-invert max-w-none markdown-content" 
-            dangerouslySetInnerHTML={{ __html: post.content }} 
+            dangerouslySetInnerHTML={{ __html: post.body.html }} 
         />
       </article>
 
@@ -175,7 +169,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = await getPostData(params.slug);
+  const post = allBlogPosts.find((p) => p.slug === params.slug);
   if (!post) {
     return { title: "Post Not Found | Nocturnal Codex" };
   }

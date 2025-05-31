@@ -1,5 +1,5 @@
 
-import { MOCK_THINK_TANK_ARTICLES, MOCK_BLOG_POSTS } from "@/lib/data";
+import { MOCK_THINK_TANK_ARTICLES } from "@/lib/data"; // MOCK_BLOG_POSTS removed as blog data comes from Contentlayer
 import type { ThinkTankArticle } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
+import { allBlogPosts } from 'contentlayer/generated'; // Import Contentlayer blog posts
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -47,14 +48,15 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
   const relatedArticles: RelatedArticle[] = [];
   if (article.tags && article.tags.length > 0) {
     MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
-      if (otherArticle.id !== article.id && otherArticle.tags && otherArticle.tags.some(tag => article.tags.includes(tag))) {
+      if (otherArticle.id !== article.id && otherArticle.tags && otherArticle.tags.some(tag => article.tags!.includes(tag))) {
         if (relatedArticles.length < 3 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
           relatedArticles.push({ title: otherArticle.title, slug: otherArticle.slug, type: 'think-tank', excerpt: otherArticle.abstract });
         }
       }
     });
-    MOCK_BLOG_POSTS.forEach(otherPost => {
-      if (otherPost.tags.some(tag => article.tags.includes(tag))) {
+    // Use Contentlayer's allBlogPosts for related blog content
+    allBlogPosts.forEach(otherPost => { 
+      if (otherPost.tags && article.tags!.some(tag => otherPost.tags!.includes(tag))) {
         if (relatedArticles.length < 5 && !relatedArticles.find(ra => ra.slug === otherPost.slug && ra.type === 'blog')) {
           relatedArticles.push({ title: otherPost.title, slug: otherPost.slug, type: 'blog', excerpt: otherPost.excerpt });
         }
@@ -94,8 +96,8 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
             <Image 
               src={article.imageUrl} 
               alt={article.title} 
-              layout="fill" 
-              objectFit="cover" 
+              fill // layout="fill" is deprecated, use fill
+              style={{objectFit: "cover"}} // objectFit becomes a style property
               priority 
               data-ai-hint={article.dataAiHint || "research concept"}
             />

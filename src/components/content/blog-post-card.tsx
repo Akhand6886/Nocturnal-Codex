@@ -1,5 +1,4 @@
 
-import type { BlogPost } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -7,9 +6,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CalendarDays, UserCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {format} from 'date-fns';
+import type { BlogPost as ContentLayerBlogPost } from 'contentlayer/generated';
 
+// Use a type that is compatible with ContentLayer's BlogPost but allows for flexibility if some fields are optional in your data
+// This is an adapter type. Ideally, your actual data passed to this component should fully match ContentLayerBlogPost.
 interface BlogPostCardProps {
-  post: BlogPost;
+  post: Pick<ContentLayerBlogPost, 'slug' | 'title' | 'date' | 'author' | 'excerpt' | 'tags' | 'imageUrl' | 'dataAiHint'>;
 }
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
@@ -20,8 +22,8 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
           <Image
             src={post.imageUrl}
             alt={post.title}
-            layout="fill"
-            objectFit="cover"
+            fill // layout="fill" is deprecated, use fill
+            style={{objectFit: "cover"}} // objectFit becomes a style property
             className="group-hover:scale-105 transition-transform duration-300 ease-in-out"
             data-ai-hint={post.dataAiHint || "blog image"}
           />

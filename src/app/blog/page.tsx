@@ -1,13 +1,15 @@
 
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { FileText } from "lucide-react";
-import { getSortedPostsData } from '@/lib/blog';
-import type { BlogPost } from '@/lib/data';
+import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
+import { compareDesc } from 'date-fns';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function BlogPage() {
-  const sortedPosts: BlogPost[] = getSortedPostsData();
+  const sortedPosts = allBlogPosts.sort((a, b) => 
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
 
   return (
     <div className="space-y-10">
@@ -24,7 +26,7 @@ export default async function BlogPage() {
       {sortedPosts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sortedPosts.map((post) => (
-            <BlogPostCard key={post.id} post={post} />
+            <BlogPostCard key={post.id} post={post as any} /> 
           ))}
         </div>
       ) : (
