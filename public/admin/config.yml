@@ -1,30 +1,23 @@
 
 backend:
-name: github
-  repo: akhand6886/Nocturnal-Codex # Use Netlify's Git Gateway
-  branch: master
-  
-  # Using PKCE (Proof Key for Code Exchange) for GitHub auth. 
-  # This is more secure than implicit flow and recommended.
-  auth_type: pkce 
-  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # !!! YOU MUST CREATE A GITHUB OAUTH APP AND PASTE THE CLIENT ID HERE !!!
-  
-  # If you have a custom domain, you can set it here. 
-  # For Netlify subdomains, it's usually not strictly needed for PKCE but doesn't hurt.
-  # site_domain: majestic-longma-cff6c5.netlify.app 
+  name: github
+  repo: your-github-username/your-repo-name # IMPORTANT: Replace with your actual repo path
+  branch: main # or your default branch, e.g., master
+  auth_type: pkce # Use PKCE flow
+  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # IMPORTANT: Replace with your GitHub OAuth App Client ID
+  # site_domain: majestic-longma-cff6c5.netlify.app # Optional: usually auto-detected by Decap
 
-
-media_folder: "public/images/blog" # Where to store uploaded images
-public_folder: "/images/blog" # Public path to access uploaded images
+media_folder: "public/images/blog" # Where Decap CMS will store uploaded images
+public_folder: "/images/blog" # The public path to access the images in your app
 
 publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing workflow
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "content/blog" # The path to the folder where blog posts are stored
+  - name: "blog" # Used in routes, e.g., /admin/#/collections/blog
+    label: "Blog" # Display name for the collection in the UI
+    folder: "content/blog" # The path to the folder where blog posts are stored in your repo
     create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template for new posts
     fields: # The fields for each document, usually in frontmatter
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
