@@ -1,32 +1,27 @@
-
 backend:
-  name: github
-  repo: your-github-username/your-repo-name # MANDATORY: Replace with your GitHub username/repo (e.g., YourUser/your-repo)
-  branch: master # Or 'main' or your default branch
-  auth_type: pkce # Use PKCE flow for better security
-  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # MANDATORY: Client ID from your GitHub OAuth App
-  # base_url: https://your-netlify-site-id.netlify.app # Optional: if Decap CMS has trouble determining it
-  # auth_endpoint: oauth/authorize # Optional: Decap CMS default for GitHub PKCE is usually fine
+  name: git-gateway # Use Netlify's Git Gateway for authentication and GitHub interaction
+  branch: master # Or 'main', or your default branch
 
-media_folder: "public/images/blog" # Where to store uploaded images by the CMS
-public_folder: "/images/blog" # The public path to resolve uploaded images
-
-publish_mode: editorial_workflow # Enables drafting, reviewing, and publishing
+media_folder: "public/images/blog" # Location where new media files will be saved
+public_folder: "/images/blog" # The src attribute for uploaded media will begin with this path
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
+    label: "Blog" # Used in the CMS UI
     folder: "content/blog" # The path to the folder where blog posts are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in frontmatter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Author", name: "author", widget: "string", default: "The Nocturnist"}
-      - {label: "Tags", name: "tags", widget: "list", default: []}
-      - {label: "Excerpt", name: "excerpt", widget: "text"}
-      - {label: "Image URL", name: "imageUrl", widget: "string", required: false}
-      - {label: "Image AI Hint", name: "dataAiHint", widget: "string", required: false}
-      - {label: "Series ID", name: "seriesId", widget: "string", required: false}
-      - {label: "Series Order", name: "seriesOrder", widget: "number", required: false, value_type: "int"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" } # Optional: for other SSGs
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "The Nocturnist" } # Default author
+      - { label: "Tags", name: "tags", widget: "list", default: ["New Post"] }
+      - { label: "Excerpt", name: "excerpt", widget: "text" } # Short summary
+      - { label: "Featured Image", name: "imageUrl", widget: "image", required: false }
+      - { label: "Image AI Hint", name: "dataAiHint", widget: "string", required: false, hint: "Keywords for AI image search if placeholder, e.g., 'abstract technology'" }
+      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'quantum-intro'. Must match an ID in lib/data.ts (for now)"}
+      - { label: "Series Order", name: "seriesOrder", widget: "number", value_type: "int", required: false, hint: "e.g., 1, 2, 3..."}
+      - { label: "Body", name: "body", widget: "markdown" }
+    editor: # Editor settings (optional)
+      preview: true
