@@ -1,4 +1,3 @@
-
 backend:
   name: git-gateway # Use Netlify's Git Gateway for authentication and GitHub interaction
   branch: master # Or 'main', or your default branch
