@@ -1,62 +1,28 @@
 
 backend:
-  name: github
-  repo: your-github-username/your-repo-name # IMPORTANT: Replace with your GitHub username/repo (e.g., MyUser/my-nocturnal-codex)
-  branch: master # Or 'main', or your default branch name
-  auth_type: pkce # Use PKCE flow for better security
-  app_id: YOUR_GITHUB_OAUTH_CLIENT_ID # IMPORTANT: Replace with the Client ID from your GitHub OAuth App
-  # base_url: https://your-custom-domain.com # Optional: if you have a custom domain
-  # auth_endpoint: /oauth/authorize # Optional: for custom auth flows, usually not needed
+  name: git-gateway # Use Netlify's Git Gateway for authentication and GitHub interaction
+  branch: master # Or 'main', or your default branch
 
-# This line should be at the root level
-publish_mode: editorial_workflow # Recommended for draft/review process
-
-# These lines should be at the root level for media management
-media_folder: "public/images/blog" # Path where new media uploads will be stored in the repo
-public_folder: "/images/blog" # The public URL path to access media files
+media_folder: "public/images/blog" # Location where new media files will be saved
+public_folder: "/images/blog" # The src attribute for uploaded media will begin with this path
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/#/collections/blog
-    label: "Blog Posts" # Display name in the CMS UI
-    folder: "content/blog" # Path to the directory in your repo where blog posts are stored
-    create: true # Allow creating new posts
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template for new posts
-    fields: # Defines the fields for each blog post
-      - { label: "Title", name: "title", widget: "string", hint: "The main title of the blog post." }
-      - { label: "Author", name: "author", widget: "string", default: "The Nocturnist" }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm:ssZ", format: "YYYY-MM-DDTHH:mm:ssZ" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["New Post"], hint: "Keywords related to the post." }
-      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "A short summary of the post." }
-      - { label: "Cover Image URL", name: "imageUrl", widget: "image", required: false, hint: "Upload or link to an image. Will be stored in 'public/images/blog'." }
-      - { label: "Cover Image AI Hint", name: "dataAiHint", widget: "string", required: false, hint: "e.g., 'abstract technology', 'forest path'. For image search if using AI image features."}
-      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'quantum-intro'. Used to group posts in a series." }
-      - { label: "Series Order", name: "seriesOrder", widget: "number", required: false, value_type: "int", hint: "e.g., 1, 2, 3. Order of this post within its series." }
-      - { label: "Body", name: "body", widget: "markdown", hint: "The main content of the post, written in Markdown." }
-  # You can add other collections here for different content types, for example:
-  # - name: "wiki"
-  #   label: "Wiki Articles"
-  #   folder: "content/wiki" # Assuming you create a content/wiki folder
-  #   create: true
-  #   slug: "{{slug}}"
-  #   fields:
-  #     - { label: "Title", name: "title", widget: "string" }
-  #     - { label: "Category", name: "category", widget: "string", required: false }
-  #     - { label: "Last Updated", name: "lastUpdated", widget: "datetime" }
-  #     - { label: "Body", name: "body", widget: "markdown" }
-
-  # - name: "think_tank"
-  #   label: "Think Tank Articles"
-  #   folder: "content/think-tank" # Assuming you create a content/think-tank folder
-  #   create: true
-  #   slug: "{{slug}}"
-  #   fields:
-  #     - { label: "Title", name: "title", widget: "string" }
-  #     - { label: "Authors", name: "authors", widget: "list" }
-  #     - { label: "Date", name: "date", widget: "datetime" }
-  #     - { label: "Tags", name: "tags", widget: "list", required: false }
-  #     - { label: "Abstract", name: "abstract", widget: "text" }
-  #     - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
-  #     - { label: "Image AI Hint", name: "dataAiHint", widget: "string", required: false }
-  #     - { label: "Body", name: "body", widget: "markdown" }
-
-    
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the CMS UI
+    folder: "content/blog" # The path to the folder where blog posts are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in frontmatter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" } # Optional: for other SSGs
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "The Nocturnist" } # Default author
+      - { label: "Tags", name: "tags", widget: "list", default: ["New Post"] }
+      - { label: "Excerpt", name: "excerpt", widget: "text" } # Short summary
+      - { label: "Featured Image", name: "imageUrl", widget: "image", required: false }
+      - { label: "Image AI Hint", name: "dataAiHint", widget: "string", required: false, hint: "Keywords for AI image search if placeholder, e.g., 'abstract technology'" }
+      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'quantum-intro'. Must match an ID in lib/data.ts (for now)"}
+      - { label: "Series Order", name: "seriesOrder", widget: "number", value_type: "int", required: false, hint: "e.g., 1, 2, 3..."}
+      - { label: "Body", name: "body", widget: "markdown" }
+    editor: # Editor settings (optional)
+      preview: true
