@@ -32,7 +32,7 @@ export function Navbar() {
     return NAV_ITEMS.map(item => 
       item.label === "Topics" ? { ...item, children: topicsNavItems } : item
     );
-  }, []); // Dependencies MOCK_TOPICS and NAV_ITEMS are constant, so empty array is appropriate.
+  }, []); 
 
 
   const renderNavItem = (item: NavItem, isMobile = false) => {
@@ -96,7 +96,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-lg supports-[backdrop-filter]:bg-background/75">
-      <div className="container flex h-16 max-w-screen-2xl items-center">
+      <div className="container flex h-16 max-w-screen-2xl items-center px-4">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
           <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" /> {/* Reverted to Eye */}
