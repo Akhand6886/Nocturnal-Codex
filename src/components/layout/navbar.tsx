@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Eye, Menu } from "lucide-react"; // Changed Aperture to Eye
+import { ChevronDown, Eye, Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +15,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data"; 
-import { useState, useMemo } from "react"; // Changed useEffect to useMemo
+import { useState, useMemo } from "react";
 
 export interface NavItem {
   label: string;
@@ -45,19 +45,27 @@ export function Navbar() {
             <Button
               variant="ghost"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary focus:text-primary",
-                isActive ? "text-primary font-semibold" : "text-foreground/80",
-                isMobile ? "w-full justify-start px-4 py-2.5 text-base" : "px-3 py-2" 
+                "text-sm font-medium", // Base styling
+                isMobile 
+                  ? "w-full justify-start px-4 py-2.5 text-base" // Mobile layout
+                  : "px-3 py-2 rounded-md", // Desktop layout (added rounded-md for consistency with Link)
+                isActive 
+                  ? (isMobile ? "text-primary font-semibold" : "text-primary font-semibold bg-primary/10 hover:bg-primary/15") // Active states
+                  : (isMobile ? "text-foreground/80" : "text-foreground/80") // Inactive states (desktop hover from ghost variant)
               )}
             >
               {item.label}
-              <ChevronDown className={cn("ml-1.5 h-4 w-4 transition-transform duration-200", {"rotate-180": isActive /* conceptual for open state */})} />
+              <ChevronDown className={cn(
+                  "ml-1.5 h-4 w-4 transition-transform duration-200",
+                  isActive && !isMobile ? "text-primary" : ""
+                  // {"rotate-180": open} // This would be tied to DropdownMenu's open state if needed
+                )} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent 
             align={isMobile ? "start" : "center"} 
             className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg"
-            sideOffset={isMobile ? 10 : 8} 
+            sideOffset={isMobile ? 10 : 12} // Increased desktop sideOffset
           >
             {item.children.map((child) => (
               <DropdownMenuItem key={child.label} asChild className="py-2 px-3 rounded-md">
@@ -83,9 +91,13 @@ export function Navbar() {
         key={item.label}
         href={item.href}
         className={cn(
-          "text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md",
-          isActive ? "text-primary font-semibold" : "text-foreground/80",
-          isMobile ? "block px-4 py-2.5 text-base" : "px-3 py-2"
+          "text-sm font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Common styling
+          isMobile 
+            ? "block px-4 py-2.5 text-base" // Mobile specific layout
+            : "px-3 py-2", // Desktop specific layout
+          isActive 
+            ? (isMobile ? "text-primary font-semibold" : "text-primary font-semibold bg-primary/10 hover:bg-primary/15") // Active states
+            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") // Inactive states
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -99,7 +111,7 @@ export function Navbar() {
       <div className="container flex h-16 max-w-screen-2xl items-center px-4">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" /> {/* Reverted to Eye */}
+          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
           <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
             Nocturnal Codex
           </span>
@@ -132,7 +144,7 @@ export function Navbar() {
                   className="mb-8 flex items-center space-x-2.5 px-6 group" 
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" /> {/* Reverted to Eye */}
+                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
                   <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
                 <nav className="flex flex-col space-y-1.5 px-4">
