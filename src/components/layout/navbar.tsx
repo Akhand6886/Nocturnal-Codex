@@ -45,27 +45,26 @@ export function Navbar() {
             <Button
               variant="ghost"
               className={cn(
-                "text-sm font-medium", // Base styling
+                "text-sm font-semibold", // Changed from font-medium
                 isMobile
-                  ? "w-full justify-start px-4 py-2.5 text-base" // Mobile layout
-                  : "px-3 py-2 rounded-md", // Desktop layout (added rounded-md for consistency with Link)
+                  ? "w-full justify-start px-4 py-2.5 text-base" 
+                  : "px-3 py-2 rounded-md", 
                 isActive
-                  ? (isMobile ? "text-primary font-semibold" : "text-primary font-semibold bg-primary/10 hover:bg-primary/15") // Active states
-                  : (isMobile ? "text-foreground/80" : "text-foreground/80") // Inactive states (desktop hover from ghost variant)
+                  ? (isMobile ? "text-primary font-bold" : "text-primary font-bold bg-primary/10 hover:bg-primary/15") // Used font-bold for active to be even clearer
+                  : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") 
               )}
             >
               {item.label}
               <ChevronDown className={cn(
                   "ml-1.5 h-4 w-4 transition-transform duration-200",
                   isActive && !isMobile ? "text-primary" : ""
-                  // {"rotate-180": open} // This would be tied to DropdownMenu's open state if needed
                 )} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align={isMobile ? "start" : "center"}
             className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg"
-            sideOffset={isMobile ? 10 : 12} // Increased desktop sideOffset
+            sideOffset={isMobile ? 10 : 12} 
           >
             {item.children.map((child) => (
               <DropdownMenuItem key={child.label} asChild className="py-2 px-3 rounded-md">
@@ -91,13 +90,13 @@ export function Navbar() {
         key={item.label}
         href={item.href}
         className={cn(
-          "text-sm font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Common styling
+          "text-sm font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Changed from font-medium
           isMobile
-            ? "block px-4 py-2.5 text-base" // Mobile specific layout
-            : "px-3 py-2", // Desktop specific layout
+            ? "block px-4 py-2.5 text-base" 
+            : "px-3 py-2", 
           isActive
-            ? (isMobile ? "text-primary font-semibold" : "text-primary font-semibold bg-primary/10 hover:bg-primary/15") // Active states
-            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") // Inactive states, reverted hover text to primary
+            ? (isMobile ? "text-primary font-bold" : "text-primary font-bold bg-primary/10 hover:bg-primary/15") // Used font-bold for active to be even clearer
+            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") 
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -118,7 +117,7 @@ export function Navbar() {
         </Link>
         
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-1.5 ml-auto md:ml-6">
+        <nav className="hidden md:flex items-center space-x-1.5 md:ml-6"> {/* Added md:ml-6 */}
           {dynamicNavItems.map((item) => renderNavItem(item))}
         </nav>
 
