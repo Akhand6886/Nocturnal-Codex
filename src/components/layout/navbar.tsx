@@ -97,7 +97,7 @@ export function Navbar() {
             : "px-3 py-2", // Desktop specific layout
           isActive 
             ? (isMobile ? "text-primary font-semibold" : "text-primary font-semibold bg-primary/10 hover:bg-primary/15") // Active states
-            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") // Inactive states
+            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-accent-foreground hover:bg-accent/10") // Inactive states
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
