@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data"; 
+import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data";
 import { useState, useMemo } from "react";
 
 export interface NavItem {
@@ -29,10 +29,10 @@ export function Navbar() {
 
   const dynamicNavItems = useMemo(() => {
     const topicsNavItems = MOCK_TOPICS.map(topic => ({ label: topic.name, href: `/topics/${topic.slug}` }));
-    return NAV_ITEMS.map(item => 
+    return NAV_ITEMS.map(item =>
       item.label === "Topics" ? { ...item, children: topicsNavItems } : item
     );
-  }, []); 
+  }, []);
 
 
   const renderNavItem = (item: NavItem, isMobile = false) => {
@@ -46,10 +46,10 @@ export function Navbar() {
               variant="ghost"
               className={cn(
                 "text-sm font-medium", // Base styling
-                isMobile 
+                isMobile
                   ? "w-full justify-start px-4 py-2.5 text-base" // Mobile layout
                   : "px-3 py-2 rounded-md", // Desktop layout (added rounded-md for consistency with Link)
-                isActive 
+                isActive
                   ? (isMobile ? "text-primary font-semibold" : "text-primary font-semibold bg-primary/10 hover:bg-primary/15") // Active states
                   : (isMobile ? "text-foreground/80" : "text-foreground/80") // Inactive states (desktop hover from ghost variant)
               )}
@@ -62,8 +62,8 @@ export function Navbar() {
                 )} />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent 
-            align={isMobile ? "start" : "center"} 
+          <DropdownMenuContent
+            align={isMobile ? "start" : "center"}
             className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg"
             sideOffset={isMobile ? 10 : 12} // Increased desktop sideOffset
           >
@@ -92,12 +92,12 @@ export function Navbar() {
         href={item.href}
         className={cn(
           "text-sm font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Common styling
-          isMobile 
+          isMobile
             ? "block px-4 py-2.5 text-base" // Mobile specific layout
             : "px-3 py-2", // Desktop specific layout
-          isActive 
+          isActive
             ? (isMobile ? "text-primary font-semibold" : "text-primary font-semibold bg-primary/10 hover:bg-primary/15") // Active states
-            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-accent-foreground hover:bg-accent/10") // Inactive states
+            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") // Inactive states, reverted hover text to primary
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -139,9 +139,9 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] bg-background p-0 pt-8 shadow-2xl border-r-border/70">
-                <Link 
-                  href="/" 
-                  className="mb-8 flex items-center space-x-2.5 px-6 group" 
+                <Link
+                  href="/"
+                  className="mb-8 flex items-center space-x-2.5 px-6 group"
                   onClick={() => setIsSheetOpen(false)}
                 >
                   <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
