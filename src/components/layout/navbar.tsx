@@ -15,7 +15,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data"; 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react"; // Changed useEffect to useMemo
 
 export interface NavItem {
   label: string;
@@ -26,15 +26,13 @@ export interface NavItem {
 export function Navbar() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [dynamicNavItems, setDynamicNavItems] = useState<NavItem[]>(NAV_ITEMS);
 
-  useEffect(() => {
+  const dynamicNavItems = useMemo(() => {
     const topicsNavItems = MOCK_TOPICS.map(topic => ({ label: topic.name, href: `/topics/${topic.slug}` }));
-    const updatedNavItems = NAV_ITEMS.map(item => 
+    return NAV_ITEMS.map(item => 
       item.label === "Topics" ? { ...item, children: topicsNavItems } : item
     );
-    setDynamicNavItems(updatedNavItems);
-  }, []);
+  }, []); // Dependencies MOCK_TOPICS and NAV_ITEMS are constant, so empty array is appropriate.
 
 
   const renderNavItem = (item: NavItem, isMobile = false) => {
