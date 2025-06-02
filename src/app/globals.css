@@ -5,8 +5,8 @@
 
 @layer base {
   :root {
-    /* Little Cream - Light Mode */
-    --background: 40 75% 97%; /* Very light creamy - #fefaf0 */
+    /* Little Cream - Light Mode - Updated with Golden Tones */
+    --background: 40 85% 98%; /* Whiter, still slightly creamy - #fdf9f2 */
     --foreground: 35 30% 25%; /* Dark warm brown/grey - #594E42 */
 
     --card: 0 0% 100%; /* White */
@@ -15,8 +15,8 @@
     --popover: 0 0% 100%; /* White */
     --popover-foreground: 35 30% 25%; /* Dark warm brown/grey */
 
-    --primary: 25 60% 55%; /* Warm Terracotta/Clay - #D48752 */
-    --primary-foreground: 40 75% 98%; /* Very light cream, almost white */
+    --primary: 40 70% 50%; /* Golden - #D4A229 */
+    --primary-foreground: 40 70% 10%; /* Dark rich brown for contrast - #2B2208 */
 
     --secondary: 35 25% 88%; /* Light warm grey/beige - #EBE6E0 */
     --secondary-foreground: 35 30% 35%; /* Darker warm grey */
@@ -32,11 +32,11 @@
 
     --border: 35 20% 85%; /* Very light warm grey border - #E0DCD7 */
     --input: 35 30% 90%; /* Slightly off-white input bg - #EDEAE6 */
-    --ring: 25 60% 55%; /* Primary color for ring */
+    --ring: 40 70% 50%; /* Golden for ring, matches new primary */
 
     --radius: 0.65rem;
 
-    --chart-1: 25 60% 60%; /* Primary variant */
+    --chart-1: 40 70% 55%; /* Golden variant for charts */
     --chart-2: 160 40% 60%; /* Accent variant */
     --chart-3: 35 40% 65%; /* Warm brown variant */
     --chart-4: 200 50% 70%; /* Soft Blue */
