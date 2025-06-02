@@ -26,7 +26,7 @@ export default async function BlogPage() {
       {sortedPosts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sortedPosts.map((post) => (
-            <BlogPostCard key={post.id} post={post as any} /> 
+            <BlogPostCard key={post.id} post={post} /> 
           ))}
         </div>
       ) : (

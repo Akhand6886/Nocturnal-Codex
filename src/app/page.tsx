@@ -55,7 +55,7 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-10">
             {recentBlogPosts.map((post) => (
-              <BlogPostCard key={post.id} post={post as any} /> 
+              <BlogPostCard key={post.id} post={post} /> 
             ))}
             {allBlogPosts.length > 2 && (
                <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">

@@ -47,13 +47,6 @@ export interface BlogSeries {
   description?: string;
 }
 
-// The main BlogPost type is now handled by Contentlayer.
-// If MOCK_BLOG_POSTS is still needed for some fallback or specific test data,
-// ensure its structure matches what Contentlayer would produce for the fields it uses.
-// For now, we assume Contentlayer is the source of truth for all blog posts.
-// If you still need to reference blog posts here (e.g., for related content that ISN'T from contentlayer),
-// you might need to define a compatible stub or ensure data consistency.
-
 export interface WikiArticleStub {
   id: string;
   title: string;
@@ -167,28 +160,6 @@ export const MOCK_TOPICS: Topic[] = [
   },
 ];
 
-// MOCK_BLOG_POSTS: Contentlayer is now the source of truth for blog posts.
-// This array might be useful if you have related content logic that needs to reference
-// blog posts not yet migrated or for specific testing scenarios.
-// For general blog display, use `allBlogPosts` from 'contentlayer/generated'.
-export const MOCK_BLOG_POSTS: Pick<import('contentlayer/generated').BlogPost, 'id' | 'slug' | 'title' | 'date' | 'author' | 'tags' | 'excerpt' | 'imageUrl' | 'dataAiHint' | 'seriesId' | 'seriesOrder'>[] = [
-  // Example: If you need to reference a known blog post for related content for ThinkTank or Wiki.
-  // {
-  //   id: "deep-dive-into-quantum-entanglement", 
-  //   slug: "deep-dive-into-quantum-entanglement",
-  //   title: "A Deep Dive into Quantum Entanglement (Part 1)",
-  //   date: "2024-07-15T10:00:00Z",
-  //   author: "The Nocturnist",
-  //   tags: ["Quantum Physics", "Theory"],
-  //   excerpt: "Exploring the spooky action at a distance and its implications for computing...",
-  //   imageUrl: "https://placehold.co/800x400.png",
-  //   dataAiHint: "quantum physics",
-  //   seriesId: "quantum-intro",
-  //   seriesOrder: 1,
-  // },
-];
-
-
 export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
   {
     id: "1",
@@ -240,7 +211,7 @@ export const NAV_ITEMS: NavItemType[] = [
   {
     label: "Topics",
     href: "/topics",
-    children: MOCK_TOPICS.map(topic => ({ label: topic.name, href: `/topics/${topic.slug}` })),
+    // children are dynamically populated in Navbar component
   },
   { label: "Blog", href: "/blog" },
   { label: "Wiki", href: "/wiki" },
