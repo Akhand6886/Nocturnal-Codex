@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb } from "lucide-react"; // Removed Search
+import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
 import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from "@/lib/data";
 import { BlogPostCard } from "@/components/content/blog-post-card";
@@ -10,7 +10,6 @@ import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import { allBlogPosts, type BlogPost } from "contentlayer/generated";
 import { compareDesc } from 'date-fns';
-// Removed import { Input } from "@/components/ui/input";
 import { TopicTile } from "@/components/content/topic-tile";
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -21,12 +20,11 @@ export default async function HomePage() {
   );
   const recentBlogPosts = sortedBlogPosts.slice(0, 2);
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
-  const featuredTopics = MOCK_TOPICS.slice(0, 3); // Select 3 topics to feature
+  const featuredTopics = MOCK_TOPICS.slice(0, 3); 
 
   return (
     <div className="space-y-16">
       <HeroTextGradientStyle />
-      {/* The elaborate hero section with search bar has been removed as per your request. */}
 
       {/* Random Theory Drop */}
       <section>
