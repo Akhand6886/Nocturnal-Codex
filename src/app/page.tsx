@@ -25,6 +25,22 @@ export default async function HomePage() {
   return (
     <div className="space-y-16">
       <HeroTextGradientStyle />
+      {/* Hero Section */}
+      <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-primary/10 to-accent/15 rounded-xl shadow-2xl overflow-hidden">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary/70 animate-text-gradient-flow-alt">
+            For Hackers, Theorists, Builders, Learners.
+          </h1>
+          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
+            Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world. Explore, learn, and contribute to the collective intellect.
+          </p>
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-primary/40 transform hover:scale-105 transition-all duration-300 ease-in-out rounded-lg">
+            <Link href="/topics">
+              Explore Topics <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
+      </section>
 
       {/* Random Theory Drop */}
       <section>
