@@ -11,6 +11,7 @@ export interface Topic {
   longDescription?: string;
   imageUrl?: string;
   dataAiHint?: string;
+  category?: string; // Added category field
   subtopics?: SubTopic[];
   tutorials?: Tutorial[];
   references?: WikiArticleStub[];
@@ -206,6 +207,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "algorithms",
     slug: "algorithms",
     name: "Algorithms",
+    category: "Core Computer Science",
     description: "Core concepts of computation and problem-solving strategies.",
     longDescription: "Delve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -230,6 +232,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "os",
     slug: "operating-systems",
     name: "Operating Systems",
+    category: "Core Computer Science",
     description: "Software managing computer hardware and resources.",
     longDescription: "Explore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -239,6 +242,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "ml",
     slug: "machine-learning",
     name: "Machine Learning",
+    category: "Artificial Intelligence",
     description: "Algorithms that learn from and make decisions based on data.",
     longDescription: "Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -248,6 +252,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "cybersecurity",
     slug: "cybersecurity",
     name: "Cybersecurity",
+    category: "Security",
     description: "Protecting systems from threats.",
     longDescription: "Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -257,6 +262,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "compiler-theory",
     slug: "compiler-theory",
     name: "Compiler Theory",
+    category: "Theoretical Computer Science",
     description: "The art of translating high-level code to machine instructions.",
     longDescription: "Uncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -266,6 +272,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "language-theory",
     slug: "language-theory",
     name: "Language Theory",
+    category: "Theoretical Computer Science",
     description: "Formal languages, automata, and computability.",
     longDescription: "Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -331,6 +338,5 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
-
 
     
