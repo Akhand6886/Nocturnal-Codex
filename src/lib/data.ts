@@ -73,6 +73,74 @@ export interface ThinkTankArticle extends ThinkTankArticleStub {
   dataAiHint?: string;
 }
 
+export interface ProgrammingLanguage {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  iconUrl: string;
+  dataAiHint: string;
+  category?: string;
+}
+
+export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
+  {
+    id: "python",
+    slug: "python",
+    name: "Python",
+    description: "Versatile for web, data science, AI, and scripting.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "python logo",
+    category: "General Purpose"
+  },
+  {
+    id: "javascript",
+    slug: "javascript",
+    name: "JavaScript",
+    description: "Essential for web development, front-end and back-end.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "javascript logo",
+    category: "Web Development"
+  },
+  {
+    id: "java",
+    slug: "java",
+    name: "Java",
+    description: "Enterprise-level applications, Android development.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "java logo",
+    category: "Enterprise"
+  },
+  {
+    id: "cplusplus",
+    slug: "cplusplus",
+    name: "C++",
+    description: "High-performance systems, game development, OS.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "cplusplus logo",
+    category: "Systems Programming"
+  },
+  {
+    id: "csharp",
+    slug: "csharp",
+    name: "C#",
+    description: "Windows apps, game dev (Unity), web with .NET.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "csharp logo",
+    category: "Microsoft Ecosystem"
+  },
+   {
+    id: "typescript",
+    slug: "typescript",
+    name: "TypeScript",
+    description: "JavaScript superset adding static types for large apps.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "typescript logo",
+    category: "Web Development"
+  }
+];
+
+
 export const MOCK_BLOG_SERIES: BlogSeries[] = [
   {
     id: "quantum-intro",
@@ -218,3 +286,6 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
+
+
+    

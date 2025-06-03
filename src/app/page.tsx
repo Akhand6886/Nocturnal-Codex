@@ -2,15 +2,17 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb } from "lucide-react";
+import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2 } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from "@/lib/data";
+import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from "@/lib/data";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import { allBlogPosts, type BlogPost } from "contentlayer/generated";
 import { compareDesc } from 'date-fns';
 import { TopicTile } from "@/components/content/topic-tile";
+import { LanguageTile } from "@/components/content/language-tile";
+
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -21,6 +23,7 @@ export default async function HomePage() {
   const recentBlogPosts = sortedBlogPosts.slice(0, 2);
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
   const featuredTopics = MOCK_TOPICS.slice(0, 3); 
+  const featuredLanguages = MOCK_PROGRAMMING_LANGUAGES.slice(0, 4);
 
   return (
     <div className="space-y-16">
@@ -67,12 +70,33 @@ export default async function HomePage() {
         )}
       </section>
 
+      {/* Explore Programming Languages Section */}
+      <section>
+        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-accent/70 flex items-center text-foreground/90">
+          <Code2 className="mr-3 h-7 w-7 text-accent" />
+          Featured Programming Languages
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredLanguages.map((lang) => (
+            <LanguageTile key={lang.id} language={lang} />
+          ))}
+        </div>
+        {MOCK_PROGRAMMING_LANGUAGES.length > 4 && (
+            <div className="mt-10 text-center">
+                <Button asChild variant="outline" size="lg" className="hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent">
+                    <Link href="/topics">View All Languages <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+            </div>
+        )}
+      </section>
+
+
       {/* Main Content Sections Grid */}
       <div className="grid md:grid-cols-2 gap-12 pt-8 border-t border-border">
         {/* Recent Blog Posts Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-accent/70 flex items-center text-foreground/90">
-            <FileText className="mr-3 h-7 w-7 text-accent" />
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90"> {/* Changed icon color and border to primary */}
+            <FileText className="mr-3 h-7 w-7 text-primary" />
             Latest From The Blog
           </h2>
           <div className="space-y-10">
@@ -80,7 +104,7 @@ export default async function HomePage() {
               <BlogPostCard key={post.id} post={post} />
             ))}
             {allBlogPosts.length > 2 && (
-               <Button asChild variant="outline" className="w-full mt-6 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent">
+               <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> {/* Matched hover to section accent */}
                 <Link href="/blog">View All Blog Posts <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             )}
@@ -93,7 +117,7 @@ export default async function HomePage() {
         {/* Key Concepts from the Wiki Section */}
         <section>
           <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-secondary/70 flex items-center text-foreground/90">
-            <Lightbulb className="mr-3 h-7 w-7 text-secondary-foreground" /> {/* Changed icon and color */}
+            <Lightbulb className="mr-3 h-7 w-7 text-secondary-foreground" />
             Key Concepts from the Wiki
           </h2>
           <Card className="bg-card shadow-xl border border-border/30 hover:border-secondary/50 hover:shadow-secondary/20 transition-all duration-300 ease-in-out rounded-xl">
@@ -116,3 +140,6 @@ export default async function HomePage() {
     </div>
   );
 }
+
+
+    
