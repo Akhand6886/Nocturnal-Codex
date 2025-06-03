@@ -14,18 +14,32 @@ export function LanguageTile({ language }: LanguageTileProps) {
 
   return (
     <Link href={languagePageUrl} className="group block">
-      <Card className="overflow-hidden shadow-sm hover:shadow-md border border-border/20 hover:border-primary/30 transition-all duration-200 ease-in-out bg-card group rounded-lg flex flex-col items-center justify-center p-3 text-center h-28">
-        <div className="relative h-10 w-10 mb-1.5 flex-shrink-0">
+      <Card className="
+        h-32
+        p-4
+        flex flex-col items-center justify-center text-center
+        bg-card 
+        border border-border/40 group-hover:border-primary/60
+        shadow-lg group-hover:shadow-primary/20
+        rounded-xl
+        transition-all duration-300 ease-in-out
+        transform group-hover:-translate-y-1
+      ">
+        <div className="relative h-12 w-12 mb-2.5 flex-shrink-0">
           <Image
             src={language.iconUrl}
             alt={`${language.name} logo`}
-            width={36} 
-            height={36}
-            className="transition-transform duration-300 group-hover:scale-105 ease-in-out object-contain"
+            width={44}
+            height={44}
+            className="object-contain transition-transform duration-300 group-hover:scale-110 ease-in-out"
             data-ai-hint={language.dataAiHint}
           />
         </div>
-        <p className="text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors duration-200 ease-in-out">
+        <p className="
+          text-sm font-semibold
+          text-foreground/80 group-hover:text-primary
+          transition-colors duration-200 ease-in-out
+        ">
           {language.name}
         </p>
       </Card>
