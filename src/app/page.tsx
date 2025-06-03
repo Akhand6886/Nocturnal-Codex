@@ -22,8 +22,8 @@ export default async function HomePage() {
   );
   const recentBlogPosts = sortedBlogPosts.slice(0, 2);
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
-  const featuredTopics = MOCK_TOPICS.slice(0, 3); 
-  const featuredLanguages = MOCK_PROGRAMMING_LANGUAGES.slice(0, 4);
+  const featuredTopics = MOCK_TOPICS.slice(0, 6); 
+  const featuredLanguages = MOCK_PROGRAMMING_LANGUAGES.slice(0, 8);
 
   return (
     <div className="space-y-16">
@@ -61,7 +61,7 @@ export default async function HomePage() {
             <TopicTile key={topic.id} topic={topic} />
           ))}
         </div>
-        {MOCK_TOPICS.length > 3 && (
+        {MOCK_TOPICS.length > 6 && (
             <div className="mt-10 text-center">
                 <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
                     <Link href="/topics">View All Topics <ArrowRight className="ml-2 h-4 w-4" /></Link>
@@ -81,7 +81,7 @@ export default async function HomePage() {
             <LanguageTile key={lang.id} language={lang} />
           ))}
         </div>
-        {MOCK_PROGRAMMING_LANGUAGES.length > 4 && (
+        {MOCK_PROGRAMMING_LANGUAGES.length > 8 && (
             <div className="mt-10 text-center">
                 <Button asChild variant="outline" size="lg" className="hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent">
                     <Link href="/topics">View All Languages <ArrowRight className="ml-2 h-4 w-4" /></Link>
