@@ -137,6 +137,51 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "typescript logo",
     category: "Web Development"
+  },
+  {
+    id: "c",
+    slug: "c",
+    name: "C",
+    description: "Foundation for many languages, OS, embedded systems.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "c logo",
+    category: "Systems Programming"
+  },
+  {
+    id: "sql",
+    slug: "sql",
+    name: "SQL",
+    description: "Standard language for managing relational databases.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "sql logo",
+    category: "Databases"
+  },
+  {
+    id: "php",
+    slug: "php",
+    name: "PHP",
+    description: "Server-side scripting language for web development.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "php logo",
+    category: "Web Development"
+  },
+  {
+    id: "html",
+    slug: "html",
+    name: "HTML",
+    description: "Standard markup language for creating web pages.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "html logo",
+    category: "Web Development"
+  },
+  {
+    id: "css",
+    slug: "css",
+    name: "CSS",
+    description: "Style sheet language for describing web page presentation.",
+    iconUrl: "https://placehold.co/64x64.png",
+    dataAiHint: "css logo",
+    category: "Web Development"
   }
 ];
 
