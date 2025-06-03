@@ -17,7 +17,7 @@ const buttonVariants = cva(
           "border border-input bg-background hover:bg-accent/10 hover:text-accent-foreground shadow-sm hover:shadow-md", // Softer hover bg
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm hover:shadow-md",
-        ghost: "hover:bg-accent/15 hover:text-accent-foreground", // Softer hover bg
+        ghost: "hover:bg-accent/15 hover:text-foreground dark:hover:text-accent-foreground", // Softer hover bg, adjusted for light/dark contrast
         link: "text-primary underline-offset-4 hover:underline hover:text-primary/80",
       },
       size: {

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Eye, Menu } from "lucide-react"; // Changed Aperture to Eye
+import { ChevronDown, Eye, Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,8 +14,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data"; 
-import { useState, useEffect } from "react";
+import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data";
+import { useState, useMemo } from "react";
 
 export interface NavItem {
   label: string;
@@ -26,14 +26,12 @@ export interface NavItem {
 export function Navbar() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [dynamicNavItems, setDynamicNavItems] = useState<NavItem[]>(NAV_ITEMS);
 
-  useEffect(() => {
+  const dynamicNavItems = useMemo(() => {
     const topicsNavItems = MOCK_TOPICS.map(topic => ({ label: topic.name, href: `/topics/${topic.slug}` }));
-    const updatedNavItems = NAV_ITEMS.map(item => 
+    return NAV_ITEMS.map(item =>
       item.label === "Topics" ? { ...item, children: topicsNavItems } : item
     );
-    setDynamicNavItems(updatedNavItems);
   }, []);
 
 
@@ -47,19 +45,26 @@ export function Navbar() {
             <Button
               variant="ghost"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary focus:text-primary",
-                isActive ? "text-primary font-semibold" : "text-foreground/80",
-                isMobile ? "w-full justify-start px-4 py-2.5 text-base" : "px-3 py-2" 
+                "text-sm font-semibold", // Changed from font-medium
+                isMobile
+                  ? "w-full justify-start px-4 py-2.5 text-base" 
+                  : "px-3 py-2 rounded-md", 
+                isActive
+                  ? (isMobile ? "text-primary font-bold" : "text-primary font-bold bg-primary/10 hover:bg-primary/15") // Used font-bold for active to be even clearer
+                  : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") 
               )}
             >
               {item.label}
-              <ChevronDown className={cn("ml-1.5 h-4 w-4 transition-transform duration-200", {"rotate-180": isActive /* conceptual for open state */})} />
+              <ChevronDown className={cn(
+                  "ml-1.5 h-4 w-4 transition-transform duration-200",
+                  isActive && !isMobile ? "text-primary" : ""
+                )} />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent 
-            align={isMobile ? "start" : "center"} 
+          <DropdownMenuContent
+            align={isMobile ? "start" : "center"}
             className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg"
-            sideOffset={isMobile ? 10 : 8} 
+            sideOffset={isMobile ? 10 : 12} 
           >
             {item.children.map((child) => (
               <DropdownMenuItem key={child.label} asChild className="py-2 px-3 rounded-md">
@@ -85,9 +90,13 @@ export function Navbar() {
         key={item.label}
         href={item.href}
         className={cn(
-          "text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md",
-          isActive ? "text-primary font-semibold" : "text-foreground/80",
-          isMobile ? "block px-4 py-2.5 text-base" : "px-3 py-2"
+          "text-sm font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Changed from font-medium
+          isMobile
+            ? "block px-4 py-2.5 text-base" 
+            : "px-3 py-2", 
+          isActive
+            ? (isMobile ? "text-primary font-bold" : "text-primary font-bold bg-primary/10 hover:bg-primary/15") // Used font-bold for active to be even clearer
+            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") 
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -98,17 +107,17 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-lg supports-[backdrop-filter]:bg-background/75">
-      <div className="container flex h-16 max-w-screen-2xl items-center">
+      <div className="container flex h-16 max-w-screen-2xl items-center px-4">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" /> {/* Reverted to Eye */}
+          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
           <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
             Nocturnal Codex
           </span>
         </Link>
         
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-1.5 ml-auto md:ml-6">
+        <nav className="hidden md:flex items-center space-x-1.5 md:ml-6"> {/* Added md:ml-6 */}
           {dynamicNavItems.map((item) => renderNavItem(item))}
         </nav>
 
@@ -129,12 +138,12 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] bg-background p-0 pt-8 shadow-2xl border-r-border/70">
-                <Link 
-                  href="/" 
-                  className="mb-8 flex items-center space-x-2.5 px-6 group" 
+                <Link
+                  href="/"
+                  className="mb-8 flex items-center space-x-2.5 px-6 group"
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" /> {/* Reverted to Eye */}
+                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
                   <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
                 <nav className="flex flex-col space-y-1.5 px-4">
