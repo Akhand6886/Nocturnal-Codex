@@ -2,57 +2,31 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { ArrowRight, FileText, Brain, BookOpenText, Search, Lightbulb } from "lucide-react"; // Added BookOpenText, Search, Lightbulb
+import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb } from "lucide-react"; // Removed Search
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from "@/lib/data"; 
+import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from "@/lib/data";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import { allBlogPosts, type BlogPost } from "contentlayer/generated";
 import { compareDesc } from 'date-fns';
-import { Input } from "@/components/ui/input"; // Added Input
-import { TopicTile } from "@/components/content/topic-tile"; // Added TopicTile
+// Removed import { Input } from "@/components/ui/input";
+import { TopicTile } from "@/components/content/topic-tile";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function HomePage() {
-  const sortedBlogPosts = allBlogPosts.sort((a, b) => 
+  const sortedBlogPosts = allBlogPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
   const recentBlogPosts = sortedBlogPosts.slice(0, 2);
-  const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3); 
+  const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
   const featuredTopics = MOCK_TOPICS.slice(0, 3); // Select 3 topics to feature
 
   return (
     <div className="space-y-16">
       <HeroTextGradientStyle />
-      {/* Hero Section */}
-      <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-primary/10 to-accent/15 rounded-xl shadow-2xl overflow-hidden">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary/70 animate-text-gradient-flow-alt">
-            Dive Deep into CS & Theory.
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
-            Explore a curated sanctuary of knowledge in computer science, mathematics, and the theories shaping our digital world.
-          </p>
-          <div className="max-w-xl mx-auto flex flex-col sm:flex-row items-center gap-3 mb-10 px-4 sm:px-0">
-            <Input 
-              type="search" 
-              placeholder="Search topics, articles, concepts..." 
-              className="h-12 text-base bg-background/80 border-border focus:border-primary"
-              aria-label="Search content"
-            />
-            <Button asChild size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-primary/40 transform hover:scale-105 transition-all duration-300 ease-in-out rounded-lg">
-              <Link href="/topics"> {/* For now, search button links to topics */}
-                <Search className="mr-2 h-5 w-5" /> Explore
-              </Link>
-            </Button>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Or jump directly to <Link href="/blog" className="text-primary hover:underline">our blog</Link> or <Link href="/wiki" className="text-primary hover:underline">the wiki</Link>.
-          </p>
-        </div>
-      </section>
+      {/* The elaborate hero section with search bar has been removed as per your request. */}
 
       {/* Random Theory Drop */}
       <section>
@@ -89,7 +63,7 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-10">
             {recentBlogPosts.map((post) => (
-              <BlogPostCard key={post.id} post={post} /> 
+              <BlogPostCard key={post.id} post={post} />
             ))}
             {allBlogPosts.length > 2 && (
                <Button asChild variant="outline" className="w-full mt-6 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent">
@@ -104,7 +78,7 @@ export default async function HomePage() {
 
         {/* Key Concepts from the Wiki Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-secondary/70 flex items-center text-foreground/90"> 
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-secondary/70 flex items-center text-foreground/90">
             <Lightbulb className="mr-3 h-7 w-7 text-secondary-foreground" /> {/* Changed icon and color */}
             Key Concepts from the Wiki
           </h2>
