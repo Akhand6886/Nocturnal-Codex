@@ -9,8 +9,7 @@ interface LanguageTileProps {
 }
 
 export function LanguageTile({ language }: LanguageTileProps) {
-  // For now, all language tiles link to /topics as a placeholder
-  const languagePageUrl = `/topics`; 
+  const languagePageUrl = `/languages/${language.slug}`; 
 
   return (
     <Link href={languagePageUrl} className="group block">
@@ -46,3 +45,5 @@ export function LanguageTile({ language }: LanguageTileProps) {
     </Link>
   );
 }
+
+    
