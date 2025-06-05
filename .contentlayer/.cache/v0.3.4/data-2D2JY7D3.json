@@ -1,0 +1,38 @@
+{
+  "cacheItemsMap": {
+    "blog/hello-world.md": {
+      "document": {
+        "title": "Hello World - My First Post via Decap CMS",
+        "date": "2024-08-15T10:00:00.000Z",
+        "author": "The Nocturnist",
+        "tags": [
+          "Welcome",
+          "CMS"
+        ],
+        "category": "Announcements",
+        "excerpt": "This is the very first blog post managed by Decap CMS!",
+        "imageUrl": "/images/blog/placeholder-banner.png",
+        "dataAiHint": "technology abstract",
+        "seriesId": "",
+        "body": {
+          "raw": "\n## Welcome to the New Blog!\n\nThis post is a demonstration of how content can be managed using Decap CMS and stored as Markdown files in the `content/blog` directory.\n\nYou can write **bold text**, *italic text*, and even include:\n\n```javascript\nconsole.log('Hello from Markdown!');\n```\n\nMore content will follow soon.\n",
+          "html": "<h2>Welcome to the New Blog!</h2>\n<p>This post is a demonstration of how content can be managed using Decap CMS and stored as Markdown files in the <code>content/blog</code> directory.</p>\n<p>You can write <strong>bold text</strong>, <em>italic text</em>, and even include:</p>\n<pre><code class=\"language-javascript\">console.log('Hello from Markdown!');\n</code></pre>\n<p>More content will follow soon.</p>"
+        },
+        "_id": "blog/hello-world.md",
+        "_raw": {
+          "sourceFilePath": "blog/hello-world.md",
+          "sourceFileName": "hello-world.md",
+          "sourceFileDir": "blog",
+          "contentType": "markdown",
+          "flattenedPath": "blog/hello-world"
+        },
+        "type": "BlogPost",
+        "slug": "hello-world",
+        "id": "hello-world"
+      },
+      "documentHash": "1749143747192",
+      "hasWarnings": false,
+      "documentTypeName": "BlogPost"
+    }
+  }
+}

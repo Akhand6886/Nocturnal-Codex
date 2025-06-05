@@ -12,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/blog',
     '/contact',
     '/tags',
+    '/categories', // Added categories page
     '/think-tank',
     '/topics',
     '/wiki',
@@ -45,7 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const topicPages = MOCK_TOPICS.map((topic) => ({
     url: `${BASE_URL}/topics/${topic.slug}`,
-    lastModified: new Date().toISOString(), // Assuming topics don't have a lastModified date in mock data
+    lastModified: new Date().toISOString(), 
     changeFrequency: 'weekly',
     priority: 0.7,
   }));
@@ -67,6 +68,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
+  const uniqueCategories = Array.from(
+    new Set(allBlogPosts.map((post) => post.category).filter(Boolean as any as (value: string | undefined) => value is string))
+  );
+  const categoryDetailPages = uniqueCategories.map((category) => ({
+    url: `${BASE_URL}/categories/${encodeURIComponent(category.toLowerCase().replace(/\s+/g, '-'))}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: 'weekly',
+    priority: 0.5,
+  }));
+
   return [
     ...staticPages,
     ...blogPosts,
@@ -75,5 +86,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...topicPages,
     ...languagePages,
     ...tagDetailPages,
+    ...categoryDetailPages, // Added category detail pages
   ];
 }

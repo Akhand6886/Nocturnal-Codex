@@ -10,6 +10,8 @@ var BlogPost = defineDocumentType(() => ({
     date: { type: "date", required: true },
     author: { type: "string", required: true },
     tags: { type: "list", of: { type: "string" }, default: [] },
+    category: { type: "string", required: false },
+    // Added category field
     excerpt: { type: "string", required: true },
     imageUrl: { type: "string" },
     dataAiHint: { type: "string" },
@@ -42,4 +44,4 @@ export {
   BlogPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-R3WCXUHJ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-2D2JY7D3.mjs.map

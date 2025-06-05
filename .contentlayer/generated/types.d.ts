@@ -17,6 +17,7 @@ export type BlogPost = {
   date: IsoDateTimeString
   author: string
   tags: string[]
+  category?: string | undefined
   excerpt: string
   imageUrl?: string | undefined
   dataAiHint?: string | undefined

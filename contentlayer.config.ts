@@ -10,6 +10,7 @@ export const BlogPost = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     author: { type: 'string', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
+    category: { type: 'string', required: false }, // Added category field
     excerpt: { type: 'string', required: true },
     imageUrl: { type: 'string' },
     dataAiHint: { type: 'string' },
