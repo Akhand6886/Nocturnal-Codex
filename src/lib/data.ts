@@ -325,7 +325,7 @@ export const MOCK_BLOG_SERIES: BlogSeries[] = [
     id: "getting-started",
     slug: "getting-started-series",
     title: "Getting Started Series",
-    description: "General posts to help you get started."
+    description: "General posts to help you get started on your journey with Nocturnal Codex."
   }
 ];
 
@@ -475,5 +475,3 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
-
-    

@@ -11,12 +11,13 @@ var BlogPost = defineDocumentType(() => ({
     author: { type: "string", required: true },
     tags: { type: "list", of: { type: "string" }, default: [] },
     category: { type: "string", required: false },
-    // Added category field
     excerpt: { type: "string", required: true },
     imageUrl: { type: "string" },
     dataAiHint: { type: "string" },
-    seriesId: { type: "string" },
-    seriesOrder: { type: "number" }
+    seriesId: { type: "string", required: false },
+    // Added seriesId
+    seriesOrder: { type: "number", required: false }
+    // Added seriesOrder
   },
   computedFields: {
     slug: {
@@ -44,4 +45,4 @@ export {
   BlogPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-2D2JY7D3.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-EENLC4UU.mjs.map
