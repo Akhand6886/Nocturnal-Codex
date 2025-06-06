@@ -1,0 +1,94 @@
+{
+  "cacheItemsMap": {
+    "blog/hello-world.md": {
+      "document": {
+        "title": "Hello World - My First Post via Decap CMS",
+        "date": "2024-08-15T10:00:00.000Z",
+        "author": "The Nocturnist",
+        "tags": [
+          "Welcome",
+          "CMS"
+        ],
+        "category": "Announcements",
+        "excerpt": "This is the very first blog post managed by Decap CMS!",
+        "imageUrl": "/images/blog/placeholder-banner.png",
+        "dataAiHint": "technology abstract",
+        "seriesId": "getting-started",
+        "seriesOrder": 1,
+        "featured": true,
+        "body": {
+          "raw": "\n## Welcome to the New Blog!\n\nThis post is a demonstration of how content can be managed using Decap CMS and stored as Markdown files in the `content/blog` directory.\n\nYou can write **bold text**, *italic text*, and even include:\n\n```javascript\nconsole.log('Hello from Markdown!');\n```\n\nMore content will follow soon.\n",
+          "html": "<h2>Welcome to the New Blog!</h2>\n<p>This post is a demonstration of how content can be managed using Decap CMS and stored as Markdown files in the <code>content/blog</code> directory.</p>\n<p>You can write <strong>bold text</strong>, <em>italic text</em>, and even include:</p>\n<pre><code class=\"language-javascript\">console.log('Hello from Markdown!');\n</code></pre>\n<p>More content will follow soon.</p>"
+        },
+        "_id": "blog/hello-world.md",
+        "_raw": {
+          "sourceFilePath": "blog/hello-world.md",
+          "sourceFileName": "hello-world.md",
+          "sourceFileDir": "blog",
+          "contentType": "markdown",
+          "flattenedPath": "blog/hello-world"
+        },
+        "type": "BlogPost",
+        "slug": "hello-world",
+        "id": "hello-world"
+      },
+      "documentHash": "1749177937386",
+      "hasWarnings": false,
+      "documentTypeName": "BlogPost"
+    },
+    "tutorials/python/introduction.md": {
+      "document": {
+        "title": "Introduction to Python",
+        "slug": "introduction-to-python",
+        "order": 1,
+        "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
+        "body": {
+          "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions.\n- **Dynamically Typed**: Variable types are checked at runtime.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming.\n",
+          "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions.</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming.</p>"
+        },
+        "_id": "tutorials/python/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/introduction"
+        },
+        "type": "TutorialPost",
+        "path": "tutorials/python/introduction",
+        "language": "python",
+        "id": "tutorials/python/introduction"
+      },
+      "documentHash": "1749214129107",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/variables-and-data-types.md": {
+      "document": {
+        "title": "Python Variables and Data Types",
+        "slug": "python-variables-data-types",
+        "order": 2,
+        "description": "Learn about variables, naming conventions, and fundamental data types in Python.",
+        "body": {
+          "raw": "\n## Variables\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\n## Data Types\n\nPython has various built-in data types. Here are some fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\n### Example of Data Types\n\n```python\nmy_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n```\n\nUnderstanding variables and data types is crucial for writing any Python program.\n",
+          "html": "<h2>Variables</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<h2>Data Types</h2>\n<p>Python has various built-in data types. Here are some fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<h3>Example of Data Types</h3>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n</code></pre>\n<p>Understanding variables and data types is crucial for writing any Python program.</p>"
+        },
+        "_id": "tutorials/python/variables-and-data-types.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/variables-and-data-types.md",
+          "sourceFileName": "variables-and-data-types.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/variables-and-data-types"
+        },
+        "type": "TutorialPost",
+        "path": "tutorials/python/variables-and-data-types",
+        "language": "python",
+        "id": "tutorials/python/variables-and-data-types"
+      },
+      "documentHash": "1749214129111",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    }
+  }
+}
