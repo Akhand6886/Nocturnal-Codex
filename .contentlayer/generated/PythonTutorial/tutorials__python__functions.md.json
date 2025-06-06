@@ -1,0 +1,20 @@
+{
+  "title": "Functions in Python",
+  "slug": "functions",
+  "order": 5,
+  "description": "Understand how to define and use functions in Python for reusable code.",
+  "body": {
+    "raw": "\n## Defining and Using Functions\n\nA function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.\n\n### Creating a Function\n\nIn Python a function is defined using the `def` keyword:\n\n```python\ndef my_function():\n  print(\"Hello from a function\")\n\nmy_function() # Calling the function\n```\n\n### Parameters and Arguments\n\nInformation can be passed into functions as arguments.\n\n```python\ndef greet(name):\n  print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")\n```\n\nThis tutorial explains Python functions in detail.\n",
+    "html": "<h2>Defining and Using Functions</h2>\n<p>A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.</p>\n<h3>Creating a Function</h3>\n<p>In Python a function is defined using the <code>def</code> keyword:</p>\n<pre><code class=\"language-python\">def my_function():\n  print(\"Hello from a function\")\n\nmy_function() # Calling the function\n</code></pre>\n<h3>Parameters and Arguments</h3>\n<p>Information can be passed into functions as arguments.</p>\n<pre><code class=\"language-python\">def greet(name):\n  print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")\n</code></pre>\n<p>This tutorial explains Python functions in detail.</p>"
+  },
+  "_id": "tutorials/python/functions.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/functions.md",
+    "sourceFileName": "functions.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/functions"
+  },
+  "type": "PythonTutorial",
+  "url": "/tutorial/python/functions"
+}

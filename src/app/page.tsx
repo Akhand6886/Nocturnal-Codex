@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2 } from "lucide-react";
+import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2, Star } from "lucide-react"; // Added Star
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
 import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from "@/lib/data";
 import { BlogPostCard } from "@/components/content/blog-post-card";
@@ -12,15 +12,27 @@ import { allBlogPosts, type BlogPost } from "contentlayer/generated";
 import { compareDesc } from 'date-fns';
 import { TopicTile } from "@/components/content/topic-tile";
 import { LanguageTile } from "@/components/content/language-tile";
-
+import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
+
+export const metadata: Metadata = {
+  title: 'Nocturnal Codex - For Hackers, Theorists, Builders, Learners',
+  description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
+  // Open Graph and Twitter metadata will inherit defaults from layout.tsx but can be overridden here if needed
+};
 
 export default async function HomePage() {
   const sortedBlogPosts = allBlogPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
   const recentBlogPosts = sortedBlogPosts.slice(0, 2);
+  
+  const featuredBlogPosts = allBlogPosts
+    .filter(post => post.featured)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+    .slice(0, 2); // Show up to 2 featured posts
+
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
   const featuredTopics = MOCK_TOPICS.slice(0, 6); 
   const featuredLanguages = MOCK_PROGRAMMING_LANGUAGES.slice(0, 8);
@@ -90,12 +102,26 @@ export default async function HomePage() {
         )}
       </section>
 
+      {/* Featured Posts Section */}
+      {featuredBlogPosts.length > 0 && (
+        <section>
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90">
+            <Star className="mr-3 h-7 w-7 text-primary" />
+            Featured Insights
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {featuredBlogPosts.map((post) => (
+              <BlogPostCard key={post.id} post={post} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Main Content Sections Grid */}
       <div className="grid md:grid-cols-2 gap-12 pt-8 border-t border-border">
         {/* Recent Blog Posts Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90"> {/* Changed icon color and border to primary */}
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90"> 
             <FileText className="mr-3 h-7 w-7 text-primary" />
             Latest From The Blog
           </h2>
@@ -104,7 +130,7 @@ export default async function HomePage() {
               <BlogPostCard key={post.id} post={post} />
             ))}
             {allBlogPosts.length > 2 && (
-               <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> {/* Matched hover to section accent */}
+               <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> 
                 <Link href="/blog">View All Blog Posts <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             )}
@@ -140,6 +166,3 @@ export default async function HomePage() {
     </div>
   );
 }
-
-
-    

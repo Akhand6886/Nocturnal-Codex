@@ -1,14 +1,16 @@
 ---
 title: "Hello World - My First Post via Decap CMS"
 date: "2024-08-15T10:00:00Z"
+# updatedDate: "2024-08-16T12:00:00Z" # Example: Uncomment and set if updated
 author: "The Nocturnist"
 tags: ["Welcome", "CMS"]
 category: "Announcements"
 excerpt: "This is the very first blog post managed by Decap CMS!"
 imageUrl: "/images/blog/placeholder-banner.png"
 dataAiHint: "technology abstract"
-seriesId: "getting-started" # Added seriesId
-seriesOrder: 1 # Added seriesOrder
+seriesId: "getting-started"
+seriesOrder: 1
+featured: true 
 ---
 
 ## Welcome to the New Blog!

@@ -15,6 +15,7 @@ export type BlogPost = {
   type: 'BlogPost'
   title: string
   date: IsoDateTimeString
+  updatedDate?: IsoDateTimeString | undefined
   author: string
   tags: string[]
   category?: string | undefined
@@ -23,10 +24,25 @@ export type BlogPost = {
   dataAiHint?: string | undefined
   seriesId?: string | undefined
   seriesOrder?: number | undefined
+  featured: boolean
   /** Markdown file body */
   body: Markdown
   slug: string
   id: string
+}
+
+export type PythonTutorial = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'PythonTutorial'
+  title: string
+  slug: string
+  order: number
+  description?: string | undefined
+  /** Markdown file body */
+  body: Markdown
+  url: string
 }  
 
 /** Nested types */
@@ -37,8 +53,8 @@ export type BlogPost = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = BlogPost
-export type DocumentTypeNames = 'BlogPost'
+export type DocumentTypes = BlogPost | PythonTutorial
+export type DocumentTypeNames = 'BlogPost' | 'PythonTutorial'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
@@ -46,6 +62,7 @@ export type NestedTypeNames = never
 export type DataExports = {
   allDocuments: DocumentTypes[]
   allBlogPosts: BlogPost[]
+  allPythonTutorials: PythonTutorial[]
 }
 
 
@@ -66,6 +83,7 @@ declare global {
 
 export type DocumentTypeMap = {
   BlogPost: BlogPost
+  PythonTutorial: PythonTutorial
 }
 
 export type NestedTypeMap = {

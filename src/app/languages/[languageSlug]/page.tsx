@@ -50,23 +50,23 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
     <div className="space-y-8">
       <Breadcrumbs items={breadcrumbItems} />
       
-      <header className="pb-6 border-b border-border flex items-start gap-6">
+      <header className="pb-6 border-b border-border flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
         <Image 
             src={language.iconUrl} 
             alt={`${language.name} logo`} 
-            width={80} 
-            height={80} 
-            className="rounded-lg shadow-md border border-border p-2 bg-card flex-shrink-0"
+            width={80} // Max width for optimization
+            height={80} // Max height for optimization
+            className="rounded-lg shadow-md border border-border p-2 bg-card flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20"
             data-ai-hint={language.dataAiHint}
         />
         <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-2">{language.name}</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-2">{language.name}</h1>
             {language.longDescription && <p className="mt-1 text-lg text-muted-foreground">{language.longDescription}</p>}
         </div>
       </header>
 
       <Tabs defaultValue={defaultTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-6">
+        <TabsList className="flex flex-wrap justify-center gap-2 mb-6">
           {hasMainContent && <TabsTrigger value="introduction">Introduction</TabsTrigger>}
           {hasSections && <TabsTrigger value="core-concepts">Core Concepts</TabsTrigger>}
           {hasCodeSnippets && <TabsTrigger value="examples">Examples</TabsTrigger>}
