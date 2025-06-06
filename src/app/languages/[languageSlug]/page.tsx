@@ -1,4 +1,5 @@
 
+
 import { MOCK_PROGRAMMING_LANGUAGES, type ProgrammingLanguage, type CodeSnippetItem, type Tutorial, type WikiArticleStub } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,21 +12,40 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import { Button } from "@/components/ui/button";
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
-export async function generateStaticParams() {
-  return MOCK_PROGRAMMING_LANGUAGES.map((lang) => ({
-    languageSlug: lang.slug,
-  }));
-}
+// generateStaticParams might be better in layout.tsx if it's fetching data for layout too
+// export async function generateStaticParams() {
+//   return MOCK_PROGRAMMING_LANGUAGES.map((lang) => ({
+//     languageSlug: lang.slug,
+//   }));
+// }
 
 interface LanguagePageProps {
   params: { languageSlug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default async function LanguagePage({ params }: LanguagePageProps) {
-  const language = MOCK_PROGRAMMING_LANGUAGES.find((lang) => lang.slug === params.languageSlug);
+async function getLanguage(slug: string): Promise<ProgrammingLanguage | undefined> {
+  return MOCK_PROGRAMMING_LANGUAGES.find((lang) => lang.slug === slug);
+}
+
+export async function generateMetadata({ params }: LanguagePageProps): Promise<Metadata> {
+  const language = await getLanguage(params.languageSlug);
+  if (!language) {
+    return { title: "Language Not Found | Nocturnal Codex" };
+  }
+  return {
+    title: `${language.name} Language | Nocturnal Codex`,
+    description: language.longDescription || `Learn about the ${language.name} programming language.`,
+  };
+}
+
+
+export default async function LanguagePage({ params, searchParams }: LanguagePageProps) {
+  const language = await getLanguage(params.languageSlug);
 
   if (!language) {
     notFound();
@@ -37,25 +57,49 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
     { label: language.name },
   ];
 
-  // Determine active tabs
+  // Determine active tabs based on content
   const hasMainContent = !!language.mainContent;
   const hasSections = language.sections && language.sections.length > 0;
   const hasCodeSnippets = language.codeSnippets && language.codeSnippets.length > 0;
   const hasTutorials = language.tutorials && language.tutorials.length > 0;
   const hasResources = (language.relatedWikiArticles && language.relatedWikiArticles.length > 0) || language.officialDocumentationUrl;
   
-  const defaultTab = hasMainContent ? "introduction" : (hasSections ? "core-concepts" : (hasCodeSnippets ? "examples" : (hasTutorials ? "tutorials" : "resources")));
+  // Determine default tab from searchParams or content availability
+  const tabQuery = searchParams?.tab as string;
+  let defaultTabValue = "introduction"; // Default fallback
+
+  if (tabQuery) {
+    if (tabQuery === "introduction" && hasMainContent) defaultTabValue = "introduction";
+    else if (tabQuery === "core-concepts" && hasSections) defaultTabValue = "core-concepts";
+    else if (tabQuery === "examples" && hasCodeSnippets) defaultTabValue = "examples";
+    else if (tabQuery === "tutorials" && hasTutorials) defaultTabValue = "tutorials";
+    else if (tabQuery === "resources" && hasResources) defaultTabValue = "resources";
+    // If tabQuery is invalid, it will fall back to the content-based default below
+  }
+
+  if (!tabQuery || (tabQuery && !eval(`has${tabQuery.charAt(0).toUpperCase() + tabQuery.slice(1).replace(/-/g, '')}`))) {
+     // If no valid tab query, determine default based on content
+    if (hasMainContent) defaultTabValue = "introduction";
+    else if (hasSections) defaultTabValue = "core-concepts";
+    else if (hasCodeSnippets) defaultTabValue = "examples";
+    else if (hasTutorials) defaultTabValue = "tutorials";
+    else if (hasResources) defaultTabValue = "resources";
+    else defaultTabValue = "no-content"; // A fallback if truly no content
+  }
+
 
   return (
-    <div className="space-y-8">
+    // Removed outer space-y-8 as layout will handle spacing if needed
+    // Main content padding is also adjusted in layout
+    <div className="py-2 px-2 md:py-6 md:px-6"> 
       <Breadcrumbs items={breadcrumbItems} />
       
-      <header className="pb-6 border-b border-border flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+      <header className="pb-6 border-b border-border flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mt-6">
         <Image 
             src={language.iconUrl} 
             alt={`${language.name} logo`} 
-            width={80} // Max width for optimization
-            height={80} // Max height for optimization
+            width={80}
+            height={80}
             className="rounded-lg shadow-md border border-border p-2 bg-card flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20"
             data-ai-hint={language.dataAiHint}
         />
@@ -65,17 +109,17 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </div>
       </header>
 
-      <Tabs defaultValue={defaultTab} className="w-full">
-        <TabsList className="flex flex-wrap justify-center gap-2 mb-6">
-          {hasMainContent && <TabsTrigger value="introduction">Introduction</TabsTrigger>}
-          {hasSections && <TabsTrigger value="core-concepts">Core Concepts</TabsTrigger>}
-          {hasCodeSnippets && <TabsTrigger value="examples">Examples</TabsTrigger>}
-          {hasTutorials && <TabsTrigger value="tutorials">Tutorials</TabsTrigger>}
-          {hasResources && <TabsTrigger value="resources">Resources</TabsTrigger>}
+      <Tabs defaultValue={defaultTabValue} className="w-full mt-8">
+        <TabsList className="flex flex-wrap justify-start sm:justify-center gap-1 sm:gap-2 mb-6 bg-muted/60 p-1 rounded-lg">
+          {hasMainContent && <TabsTrigger value="introduction" id="introduction-tab">Introduction</TabsTrigger>}
+          {hasSections && <TabsTrigger value="core-concepts" id="core-concepts-tab">Core Concepts</TabsTrigger>}
+          {hasCodeSnippets && <TabsTrigger value="examples" id="examples-tab">Examples</TabsTrigger>}
+          {hasTutorials && <TabsTrigger value="tutorials" id="tutorials-tab">Tutorials</TabsTrigger>}
+          {hasResources && <TabsTrigger value="resources" id="resources-tab">Resources</TabsTrigger>}
         </TabsList>
 
         {hasMainContent && (
-            <TabsContent value="introduction">
+            <TabsContent value="introduction" id="introduction">
             <Card>
                 <CardHeader>
                 <CardTitle className="flex items-center text-2xl"><FileText className="mr-2 h-6 w-6 text-primary" /> Introduction to {language.name}</CardTitle>
@@ -88,9 +132,9 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         )}
 
         {hasSections && (
-          <TabsContent value="core-concepts" className="space-y-6">
+          <TabsContent value="core-concepts" id="core-concepts" className="space-y-6">
             {language.sections?.map((section) => (
-              <Card key={section.id}>
+              <Card key={section.id} id={section.id}>
                 <CardHeader>
                   <CardTitle className="flex items-center text-xl"><BookOpen className="mr-2 h-5 w-5 text-primary" /> {section.title}</CardTitle>
                 </CardHeader>
@@ -123,7 +167,7 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         )}
         
         {hasCodeSnippets && (
-          <TabsContent value="examples">
+          <TabsContent value="examples" id="examples">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center text-2xl"><Code2 className="mr-2 h-6 w-6 text-primary" /> Code Examples</CardTitle>
@@ -141,7 +185,7 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         )}
 
         {hasTutorials && (
-          <TabsContent value="tutorials">
+          <TabsContent value="tutorials" id="tutorials">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center text-2xl"><GraduationCap className="mr-2 h-6 w-6 text-primary" /> Tutorials</CardTitle>
@@ -166,7 +210,7 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         )}
         
         {hasResources && (
-          <TabsContent value="resources">
+          <TabsContent value="resources" id="resources">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center text-2xl"><Lightbulb className="mr-2 h-6 w-6 text-primary" /> Resources</CardTitle>
@@ -203,7 +247,7 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         )}
 
         { !hasMainContent && !hasSections && !hasCodeSnippets && !hasTutorials && !hasResources && (
-            <TabsContent value={defaultTab}>
+            <TabsContent value={defaultTabValue} id="no-content">
                 <Alert>
                 <Lightbulb className="h-4 w-4" />
                 <AlertTitle>Content Coming Soon!</AlertTitle>
@@ -217,16 +261,3 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
     </div>
   );
 }
-
-export async function generateMetadata({ params }: LanguagePageProps) {
-  const language = MOCK_PROGRAMMING_LANGUAGES.find((lang) => lang.slug === params.languageSlug);
-  if (!language) {
-    return { title: "Language Not Found | Nocturnal Codex" };
-  }
-  return {
-    title: `${language.name} Language | Nocturnal Codex`,
-    description: language.longDescription || `Learn about the ${language.name} programming language.`,
-  };
-}
-
-    
