@@ -30,6 +30,23 @@ var BlogPost = defineDocumentType(() => ({
     }
   }
 }));
+var PythonTutorial = defineDocumentType(() => ({
+  name: "PythonTutorial",
+  filePathPattern: `tutorials/python/*.md`,
+  contentType: "markdown",
+  fields: {
+    title: { type: "string", required: true },
+    slug: { type: "string", required: true },
+    order: { type: "number", required: true },
+    description: { type: "string", required: false }
+  },
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (doc) => `/tutorial/python/${doc.slug}`
+    }
+  }
+}));
 var TutorialPost = defineDocumentType(() => ({
   name: "TutorialPost",
   filePathPattern: `tutorials/python/**/*.md`,
@@ -63,8 +80,8 @@ var TutorialPost = defineDocumentType(() => ({
 }));
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
-  documentTypes: [BlogPost, TutorialPost],
-  // Added TutorialPost
+  documentTypes: [BlogPost, PythonTutorial],
+  // Removed TutorialPost
   mdx: {
     remarkPlugins: [],
     rehypePlugins: []
@@ -72,7 +89,8 @@ var contentlayer_config_default = makeSource({
 });
 export {
   BlogPost,
+  PythonTutorial,
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-DB5RAXLA.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-XUW3UQV2.mjs.map

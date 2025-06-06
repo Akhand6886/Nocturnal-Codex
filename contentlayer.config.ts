@@ -31,6 +31,24 @@ export const BlogPost = defineDocumentType(() => ({
   },
 }))
 
+export const PythonTutorial = defineDocumentType(() => ({
+  name: "PythonTutorial",
+  filePathPattern: `tutorials/python/*.md`,
+  contentType: "markdown",
+  fields: {
+    title: { type: "string", required: true },
+    slug: { type: "string", required: true },
+    order: { type: "number", required: true },
+    description: { type: "string", required: false },
+  },
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (doc) => `/tutorial/python/${doc.slug}`,
+    },
+  },
+}))
+
 export const TutorialPost = defineDocumentType(() => ({
   name: 'TutorialPost',
   filePathPattern: `tutorials/python/**/*.md`, // Specific to Python tutorials for now
@@ -64,7 +82,7 @@ export const TutorialPost = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, TutorialPost], // Added TutorialPost
+  documentTypes: [BlogPost, PythonTutorial], // Removed TutorialPost
   mdx: { 
     remarkPlugins: [], 
     rehypePlugins: [],

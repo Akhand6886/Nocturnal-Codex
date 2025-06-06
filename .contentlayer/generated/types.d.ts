@@ -31,20 +31,18 @@ export type BlogPost = {
   id: string
 }
 
-export type TutorialPost = {
+export type PythonTutorial = {
   /** File path relative to `contentDirPath` */
   _id: string
   _raw: Local.RawDocumentData
-  type: 'TutorialPost'
+  type: 'PythonTutorial'
   title: string
   slug: string
   order: number
-  description: string
+  description?: string | undefined
   /** Markdown file body */
   body: Markdown
-  path: string
-  language: string
-  id: string
+  url: string
 }  
 
 /** Nested types */
@@ -55,8 +53,8 @@ export type TutorialPost = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = BlogPost | TutorialPost
-export type DocumentTypeNames = 'BlogPost' | 'TutorialPost'
+export type DocumentTypes = BlogPost | PythonTutorial
+export type DocumentTypeNames = 'BlogPost' | 'PythonTutorial'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
@@ -64,7 +62,7 @@ export type NestedTypeNames = never
 export type DataExports = {
   allDocuments: DocumentTypes[]
   allBlogPosts: BlogPost[]
-  allTutorialPosts: TutorialPost[]
+  allPythonTutorials: PythonTutorial[]
 }
 
 
@@ -85,7 +83,7 @@ declare global {
 
 export type DocumentTypeMap = {
   BlogPost: BlogPost
-  TutorialPost: TutorialPost
+  PythonTutorial: PythonTutorial
 }
 
 export type NestedTypeMap = {
