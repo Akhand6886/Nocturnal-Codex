@@ -1,6 +1,7 @@
 ---
 title: "Hello World - My First Post via Decap CMS"
 date: "2024-08-15T10:00:00Z"
+# updatedDate: "2024-08-16T12:00:00Z" # Example: Uncomment and set if updated
 author: "The Nocturnist"
 tags: ["Welcome", "CMS"]
 category: "Announcements"
@@ -9,7 +10,7 @@ imageUrl: "/images/blog/placeholder-banner.png"
 dataAiHint: "technology abstract"
 seriesId: "getting-started"
 seriesOrder: 1
-featured: true # Added featured flag
+featured: true 
 ---
 
 ## Welcome to the New Blog!

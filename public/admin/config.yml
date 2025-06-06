@@ -1,27 +1,30 @@
+
 backend:
-  name: git-gateway # For Netlify hosting with Git Gateway
+  name: git-gateway # For Netlify deployment, enables Netlify Identity
   branch: main # Or your default branch
 
-# Optional: if you want to enable editorial workflow
-# publish_mode: editorial_workflow
+# local_backend: true # Uncomment for local development without Netlify
 
-media_folder: "public/images/blog/uploads" # Location where new files should be saved
-public_folder: "/images/blog/uploads" # The src attribute for uploaded media
+media_folder: "public/images/blog/uploads" # Where to store uploaded images
+public_folder: "/images/blog/uploads" # The public path for accessing uploaded images
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog Posts" # Used in the UI
-    folder: "content/blog" # The path to the folder where the documents are stored
+  - name: "blog" # Used in routes, e.g., /admin/#/collections/blog
+    label: "Blog" # Used in the CMS UI
+    folder: "content/blog" # The path to the folder where blog posts are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    fields: # The fields for each document, usually in frontmatter
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "The Nocturnist" }
-      - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" }, allow_add: true, required: false }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["general"] }
+      - { label: "Category", name: "category", widget: "string", required: false }
+      - { label: "Featured Post", name: "featured", widget: "boolean", default: false, required: false }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-      - { label: "Featured Image URL", name: "imageUrl", widget: "image", required: false }
-      - { label: "Image AI Hint (for placeholder)", name: "dataAiHint", widget: "string", required: false }
-      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'quantum-intro'. Leave empty if not part of a series." }
-      - { label: "Series Order", name: "seriesOrder", widget: "number", required: false, value_type: "int", hint: "Order within the series (e.g., 1, 2, 3). Required if Series ID is set."}
+      - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
+      - { label: "Image AI Hint", name: "dataAiHint", widget: "string", required: false, hint: "One or two keywords for image search (e.g., 'technology abstract')" }
+      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'intro-to-quantum'" }
+      - { label: "Series Order", name: "seriesOrder", widget: "number", value_type: "int", required: false, hint: "e.g., 1, 2, 3" }
       - { label: "Body", name: "body", widget: "markdown" }

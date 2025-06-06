@@ -8,6 +8,8 @@ var BlogPost = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
+    updatedDate: { type: "date", required: false },
+    // Added updatedDate
     author: { type: "string", required: true },
     tags: { type: "list", of: { type: "string" }, default: [] },
     category: { type: "string", required: false },
@@ -17,7 +19,6 @@ var BlogPost = defineDocumentType(() => ({
     seriesId: { type: "string", required: false },
     seriesOrder: { type: "number", required: false },
     featured: { type: "boolean", default: false, required: false }
-    // Added featured flag
   },
   computedFields: {
     slug: {
@@ -45,4 +46,4 @@ export {
   BlogPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-BT7PGXOE.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-ZHJUPIBE.mjs.map

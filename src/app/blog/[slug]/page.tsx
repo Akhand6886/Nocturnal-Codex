@@ -74,6 +74,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     }
   }
 
+  const publishedDate = new Date(post.date);
+  const modifiedDate = post.updatedDate ? new Date(post.updatedDate) : publishedDate;
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article", // Could also be BlogPosting
@@ -84,8 +87,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     "headline": post.title,
     "description": post.excerpt,
     "image": post.imageUrl ? `${siteUrl}${post.imageUrl}` : defaultOgImage,
-    "datePublished": new Date(post.date).toISOString(),
-    "dateModified": new Date(post.date).toISOString(), // Use a more specific modification date if available
+    "datePublished": publishedDate.toISOString(),
+    "dateModified": modifiedDate.toISOString(),
     "author": {
       "@type": "Person", // Or Organization if appropriate
       "name": post.author
@@ -95,7 +98,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       "name": "Nocturnal Codex",
       "logo": {
         "@type": "ImageObject",
-        "url": `${siteUrl}/images/logo.png` // Replace with your actual logo URL
+        "url": `${siteUrl}/images/logo.png` 
       }
     }
   };
@@ -120,7 +123,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
               <div className="flex items-center space-x-1.5">
                 <CalendarDays className="h-4 w-4" />
-                <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+                <span>
+                  Published: {format(publishedDate, "MMMM d, yyyy")}
+                  {post.updatedDate && modifiedDate.getTime() !== publishedDate.getTime() && (
+                    <span className="ml-1 text-xs">(Updated: {format(modifiedDate, "MMMM d, yyyy")})</span>
+                  )}
+                </span>
               </div>
             </div>
             {post.tags && post.tags.length > 0 && (
@@ -216,6 +224,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const postImageUrl = post.imageUrl ? `${siteUrl}${post.imageUrl}` : defaultOgImage;
+  const publishedDate = new Date(post.date);
+  const modifiedDate = post.updatedDate ? new Date(post.updatedDate) : publishedDate;
 
   return {
     title: post.title,
@@ -228,13 +238,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.excerpt,
       url: `${siteUrl}/blog/${post.slug}`,
       type: 'article',
-      publishedTime: new Date(post.date).toISOString(),
-      modifiedTime: new Date(post.date).toISOString(), // Or a more specific modification date
-      authors: [post.author], // Can be an array of author names or URLs
+      publishedTime: publishedDate.toISOString(),
+      modifiedTime: modifiedDate.toISOString(), 
+      authors: [post.author], 
       images: [
         {
           url: postImageUrl,
-          width: post.imageUrl ? 1200 : undefined, // Provide dimensions if known
+          width: post.imageUrl ? 1200 : undefined, 
           height: post.imageUrl ? 630 : undefined,
           alt: post.title,
         }
@@ -248,3 +258,4 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     },
   };
 }
+
