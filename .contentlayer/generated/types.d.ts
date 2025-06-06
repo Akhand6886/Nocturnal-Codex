@@ -23,6 +23,7 @@ export type BlogPost = {
   dataAiHint?: string | undefined
   seriesId?: string | undefined
   seriesOrder?: number | undefined
+  featured: boolean
   /** Markdown file body */
   body: Markdown
   slug: string

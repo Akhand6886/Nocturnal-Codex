@@ -15,9 +15,9 @@ var BlogPost = defineDocumentType(() => ({
     imageUrl: { type: "string" },
     dataAiHint: { type: "string" },
     seriesId: { type: "string", required: false },
-    // Added seriesId
-    seriesOrder: { type: "number", required: false }
-    // Added seriesOrder
+    seriesOrder: { type: "number", required: false },
+    featured: { type: "boolean", default: false, required: false }
+    // Added featured flag
   },
   computedFields: {
     slug: {
@@ -45,4 +45,4 @@ export {
   BlogPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-EENLC4UU.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-BT7PGXOE.mjs.map

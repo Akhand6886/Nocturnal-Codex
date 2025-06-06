@@ -12,6 +12,7 @@
   "dataAiHint": "technology abstract",
   "seriesId": "getting-started",
   "seriesOrder": 1,
+  "featured": true,
   "body": {
     "raw": "\n## Welcome to the New Blog!\n\nThis post is a demonstration of how content can be managed using Decap CMS and stored as Markdown files in the `content/blog` directory.\n\nYou can write **bold text**, *italic text*, and even include:\n\n```javascript\nconsole.log('Hello from Markdown!');\n```\n\nMore content will follow soon.\n",
     "html": "<h2>Welcome to the New Blog!</h2>\n<p>This post is a demonstration of how content can be managed using Decap CMS and stored as Markdown files in the <code>content/blog</code> directory.</p>\n<p>You can write <strong>bold text</strong>, <em>italic text</em>, and even include:</p>\n<pre><code class=\"language-javascript\">console.log('Hello from Markdown!');\n</code></pre>\n<p>More content will follow soon.</p>"

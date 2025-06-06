@@ -14,8 +14,9 @@ export const BlogPost = defineDocumentType(() => ({
     excerpt: { type: 'string', required: true },
     imageUrl: { type: 'string' },
     dataAiHint: { type: 'string' },
-    seriesId: { type: 'string', required: false }, // Added seriesId
-    seriesOrder: { type: 'number', required: false }, // Added seriesOrder
+    seriesId: { type: 'string', required: false }, 
+    seriesOrder: { type: 'number', required: false },
+    featured: { type: 'boolean', default: false, required: false }, // Added featured flag
   },
   computedFields: {
     slug: {
@@ -37,3 +38,4 @@ export default makeSource({
     rehypePlugins: [],
   },
 })
+

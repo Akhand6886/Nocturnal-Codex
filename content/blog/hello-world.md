@@ -7,8 +7,9 @@ category: "Announcements"
 excerpt: "This is the very first blog post managed by Decap CMS!"
 imageUrl: "/images/blog/placeholder-banner.png"
 dataAiHint: "technology abstract"
-seriesId: "getting-started" # Added seriesId
-seriesOrder: 1 # Added seriesOrder
+seriesId: "getting-started"
+seriesOrder: 1
+featured: true # Added featured flag
 ---
 
 ## Welcome to the New Blog!
