@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, LinkIcon, Brain } from "lucide-react";
+import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, Link as LinkIcon, Brain } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Image from "next/image";
 
@@ -49,7 +49,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       <header className="pb-6 border-b border-border">
         {topic.imageUrl && (
           <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden mb-6 shadow-lg">
-            <Image src={topic.imageUrl} alt={topic.name} layout="fill" objectFit="cover" data-ai-hint={topic.dataAiHint || "topic banner"} />
+            <Image src={topic.imageUrl} alt={topic.name} fill objectFit="cover" data-ai-hint={topic.dataAiHint || "topic banner"} />
             <div className="absolute inset-0 bg-black/50 flex items-end p-6">
               <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">{topic.name}</h1>
             </div>
@@ -60,7 +60,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       </header>
 
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-6">
+        <TabsList className="flex flex-wrap justify-center gap-2 mb-6">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           {topic.tutorials && topic.tutorials.length > 0 && <TabsTrigger value="tutorials">Tutorials</TabsTrigger>}
           {topic.references && topic.references.length > 0 && <TabsTrigger value="references">References</TabsTrigger>}
