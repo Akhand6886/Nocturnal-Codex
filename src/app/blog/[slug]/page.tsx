@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     if (currentSeries) {
       seriesPosts = allPostsForSeriesAndRelated
         .filter(p => p.seriesId === post.seriesId)
-        .sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
+        .sort((a, b) => (a.seriesOrder ?? Infinity) - (b.seriesOrder ?? Infinity) || compareDesc(new Date(a.date), new Date(b.date)));
     }
   }
 
@@ -102,8 +102,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Image 
               src={post.imageUrl} 
               alt={post.title} 
-              fill // layout="fill" is deprecated, use fill
-              style={{objectFit: "cover"}} // objectFit becomes a style property
+              fill 
+              style={{objectFit: "cover"}} 
               priority 
               data-ai-hint={post.dataAiHint || "blog header"}
             />
@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <Link href={`/blog/${seriesPost.slug}`} className="flex items-center justify-between group">
                       <div>
                         <span className={`font-medium ${seriesPost.id === post.id ? 'text-primary' : 'text-foreground/90 group-hover:text-primary'}`}>
-                          Part {index + 1}: {seriesPost.title}
+                          Part {seriesPost.seriesOrder || index + 1}: {seriesPost.title}
                         </span>
                         {seriesPost.id === post.id && (
                           <span className="text-xs text-primary ml-2 inline-flex items-center">

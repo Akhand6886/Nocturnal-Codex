@@ -11,6 +11,7 @@ export interface Topic {
   longDescription?: string;
   imageUrl?: string;
   dataAiHint?: string;
+  category?: string; 
   subtopics?: SubTopic[];
   tutorials?: Tutorial[];
   references?: WikiArticleStub[];
@@ -73,6 +74,14 @@ export interface ThinkTankArticle extends ThinkTankArticleStub {
   dataAiHint?: string;
 }
 
+export interface LanguageSection {
+  id: string;
+  title: string;
+  content: string; // Markdown
+  codeSnippets?: CodeSnippetItem[];
+  tutorials?: Tutorial[];
+}
+
 export interface ProgrammingLanguage {
   id: string;
   slug: string;
@@ -81,6 +90,13 @@ export interface ProgrammingLanguage {
   iconUrl: string;
   dataAiHint: string;
   category?: string;
+  longDescription?: string;
+  mainContent?: string; // Markdown for Introduction/Overview
+  sections?: LanguageSection[];
+  tutorials?: Tutorial[]; // General tutorials
+  codeSnippets?: CodeSnippetItem[]; // General examples
+  relatedWikiArticles?: WikiArticleStub[];
+  officialDocumentationUrl?: string;
 }
 
 export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
@@ -91,7 +107,119 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     description: "Versatile for web, data science, AI, and scripting.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "python logo",
-    category: "General Purpose"
+    category: "General Purpose",
+    longDescription: "Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant indentation. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.",
+    officialDocumentationUrl: "https://docs.python.org/3/",
+    mainContent: `
+# Introduction to Python
+
+Python is a versatile and widely-used programming language known for its simplicity and readability. 
+It was created by Guido van Rossum and first released in 1991.
+
+## Key Features:
+- **Easy to Learn:** Python has a simple syntax similar to the English language.
+- **Interpreted:** Python is processed at runtime by the interpreter. You do not need to compile your program before executing it.
+- **Cross-platform:** Python can run on various platforms like Windows, Mac, Linux, Raspberry Pi, etc.
+- **Extensive Libraries:** Python has a rich set of standard libraries and a vast ecosystem of third-party packages (e.g., NumPy, Pandas, Django, Flask).
+- **Object-Oriented:** Python supports object-oriented programming principles.
+- **Dynamically Typed:** You don't need to declare variable types.
+    `,
+    sections: [
+      {
+        id: "basic-syntax",
+        title: "Basic Syntax",
+        content: `
+### Variables and Data Types
+\`\`\`python
+name = "Alice"  # String
+age = 30       # Integer
+height = 5.5   # Float
+is_student = False # Boolean
+\`\`\`
+### Comments
+Comments start with a \`#\`, and Python will ignore them:
+\`\`\`python
+# This is a single-line comment
+print("Hello, World!") 
+\`\`\`
+### Print Output
+Use the \`print()\` function to output data to the standard output device.
+\`\`\`python
+print("Hello, Python!")
+x = 10
+print(f"The value of x is {x}") # Using f-strings (formatted string literals)
+\`\`\`
+        `,
+        codeSnippets: [
+            { id: "py-var", title: "Variable Declaration", language: "python", code: 'name = "Bob"\nage = 25\npi = 3.14159', description: "Basic variable assignments."}
+        ]
+      },
+      {
+        id: "control-flow",
+        title: "Control Flow",
+        content: `
+### If-Else Statements
+\`\`\`python
+x = 10
+if x > 5:
+    print("x is greater than 5")
+elif x == 5:
+    print("x is 5")
+else:
+    print("x is less than 5")
+\`\`\`
+### For Loops
+\`\`\`python
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+
+for i in range(5):  # 0 to 4
+    print(i)
+\`\`\`
+### While Loops
+\`\`\`python
+count = 0
+while count < 3:
+    print(f"Count is {count}")
+    count += 1
+\`\`\`
+        `,
+        codeSnippets: [
+             { id: "py-loop", title: "For Loop Example", language: "python", code: 'for i in range(3):\n    print(f"Iteration {i+1}")', description: "Iterating with a for loop."}
+        ]
+      },
+      {
+        id: "functions",
+        title: "Functions",
+        content: `
+Functions are defined using the \`def\` keyword.
+\`\`\`python
+def greet(name):
+    return f"Hello, {name}!"
+
+message = greet("Pythonista")
+print(message)
+
+def add(a, b=5): # b has a default value
+    return a + b
+
+print(add(3))      # Output: 8
+print(add(3, 7))   # Output: 10
+\`\`\`
+        `
+      }
+    ],
+    codeSnippets: [
+        { id: "py-hello", title: "Hello World in Python", language: "python", code: 'print("Hello, World!")', description: "The quintessential first program."}
+    ],
+    tutorials: [
+        { id: "py-tut-1", title: "Official Python Tutorial", url: "https://docs.python.org/3/tutorial/", sourceName: "Python Software Foundation"},
+        { id: "py-tut-2", title: "Python for Beginners", url: "#", sourceName: "Real Python (example)"}
+    ],
+    relatedWikiArticles: [
+        {id: "wiki-pep8", slug: "pep-8-style-guide", title: "PEP 8 Style Guide"},
+    ]
   },
   {
     id: "javascript",
@@ -197,7 +325,7 @@ export const MOCK_BLOG_SERIES: BlogSeries[] = [
     id: "getting-started",
     slug: "getting-started-series",
     title: "Getting Started Series",
-    description: "General posts to help you get started."
+    description: "General posts to help you get started on your journey with Nocturnal Codex."
   }
 ];
 
@@ -206,6 +334,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "algorithms",
     slug: "algorithms",
     name: "Algorithms",
+    category: "Core Computer Science",
     description: "Core concepts of computation and problem-solving strategies.",
     longDescription: "Delve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -230,6 +359,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "os",
     slug: "operating-systems",
     name: "Operating Systems",
+    category: "Core Computer Science",
     description: "Software managing computer hardware and resources.",
     longDescription: "Explore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -239,6 +369,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "ml",
     slug: "machine-learning",
     name: "Machine Learning",
+    category: "Artificial Intelligence",
     description: "Algorithms that learn from and make decisions based on data.",
     longDescription: "Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -248,6 +379,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "cybersecurity",
     slug: "cybersecurity",
     name: "Cybersecurity",
+    category: "Security",
     description: "Protecting systems from threats.",
     longDescription: "Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -257,6 +389,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "compiler-theory",
     slug: "compiler-theory",
     name: "Compiler Theory",
+    category: "Theoretical Computer Science",
     description: "The art of translating high-level code to machine instructions.",
     longDescription: "Uncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -266,6 +399,7 @@ export const MOCK_TOPICS: Topic[] = [
     id: "language-theory",
     slug: "language-theory",
     name: "Language Theory",
+    category: "Theoretical Computer Science",
     description: "Formal languages, automata, and computability.",
     longDescription: "Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
     imageUrl: "https://placehold.co/400x300.png",
@@ -290,6 +424,14 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     lastUpdated: "2024-05-20T09:00:00Z",
     content: "# Turing Machines\n\nA Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules. Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm, and is particularly useful in explaining the functions of a CPU inside a computer.\n\n## Components\n1. A tape divided into cells.\n2. A head that can read and write symbols on the tape and move left or right.\n3. A state register that stores the state of the Turing machine.\n4. A finite table of instructions."
   },
+  {
+    id: "wiki-pep8", // Added for Python page linking
+    slug: "pep-8-style-guide",
+    title: "PEP 8 Style Guide for Python Code",
+    category: "Programming Practices",
+    lastUpdated: "2024-02-15T10:00:00Z",
+    content: "# PEP 8 - Style Guide for Python Code\n\nPEP 8, sometimes spelled PEP8 or PEP-8, is a document that provides guidelines and best practices on how to write Python code. It was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan. The primary focus of PEP 8 is to improve the readability and consistency of Python code.\n\nKey areas covered:\n- Code lay-out (indentation, tabs vs. spaces, line length)\n- Naming conventions (variables, functions, classes)\n- Comments and docstrings\n- Programming recommendations"
+  }
 ];
 
 export const MOCK_THINK_TANK_ARTICLES: ThinkTankArticle[] = [
@@ -326,11 +468,10 @@ export const NAV_ITEMS: NavItemType[] = [
     href: "/topics",
     // children are dynamically populated in Navbar component
   },
+  // Consider adding "Languages" here if it becomes a major section
+  // { label: "Languages", href: "/languages" }, 
   { label: "Blog", href: "/blog" },
   { label: "Wiki", href: "/wiki" },
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
-
-
-    
