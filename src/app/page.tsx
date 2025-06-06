@@ -12,9 +12,15 @@ import { allBlogPosts, type BlogPost } from "contentlayer/generated";
 import { compareDesc } from 'date-fns';
 import { TopicTile } from "@/components/content/topic-tile";
 import { LanguageTile } from "@/components/content/language-tile";
-
+import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
+
+export const metadata: Metadata = {
+  title: 'Nocturnal Codex - For Hackers, Theorists, Builders, Learners',
+  description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
+  // Open Graph and Twitter metadata will inherit defaults from layout.tsx but can be overridden here if needed
+};
 
 export default async function HomePage() {
   const sortedBlogPosts = allBlogPosts.sort((a, b) =>
@@ -108,8 +114,6 @@ export default async function HomePage() {
               <BlogPostCard key={post.id} post={post} />
             ))}
           </div>
-          {/* Optional: Button to view all blog posts if you have many featured posts and only show a few.
-              For now, this might be redundant if the "Latest from the Blog" section has a "View All" that leads to /blog. */}
         </section>
       )}
 
