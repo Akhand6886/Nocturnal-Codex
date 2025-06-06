@@ -32,90 +32,9 @@
         "slug": "hello-world",
         "id": "hello-world"
       },
-      "documentHash": "1749177937386",
+      "documentHash": "1749215090351",
       "hasWarnings": false,
       "documentTypeName": "BlogPost"
-    },
-    "tutorials/python/introduction.md": {
-      "document": {
-        "title": "Introduction to Python",
-        "slug": "introduction-to-python",
-        "order": 1,
-        "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
-        "body": {
-          "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions.\n- **Dynamically Typed**: Variable types are checked at runtime.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming.\n",
-          "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions.</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming.</p>"
-        },
-        "_id": "tutorials/python/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/python/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/python",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/python/introduction"
-        },
-        "type": "TutorialPost",
-        "path": "tutorials/python/introduction",
-        "language": "python",
-        "id": "tutorials/python/introduction"
-      },
-      "documentHash": "1749214129107",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/python/intro.md": {
-      "document": {
-        "title": "Introduction to Python",
-        "slug": "introduction",
-        "order": 1,
-        "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
-        "body": {
-          "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions.\n- **Dynamically Typed**: Variable types are checked at runtime.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming.\n",
-          "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions.</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming.</p>"
-        },
-        "_id": "tutorials/python/intro.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/python/intro.md",
-          "sourceFileName": "intro.md",
-          "sourceFileDir": "tutorials/python",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/python/intro"
-        },
-        "type": "TutorialPost",
-        "path": "tutorials/python/intro",
-        "language": "python",
-        "id": "tutorials/python/intro"
-      },
-      "documentHash": "1749214489281",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/python/variables.md": {
-      "document": {
-        "title": "Variables in Python",
-        "slug": "variables",
-        "order": 2,
-        "description": "Learn about variables, naming conventions, and assignment in Python.",
-        "body": {
-          "raw": "\n## Understanding Variables in Python\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\nThis tutorial covers Python variables in more detail.\n",
-          "html": "<h2>Understanding Variables in Python</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<p>This tutorial covers Python variables in more detail.</p>"
-        },
-        "_id": "tutorials/python/variables.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/python/variables.md",
-          "sourceFileName": "variables.md",
-          "sourceFileDir": "tutorials/python",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/python/variables"
-        },
-        "type": "TutorialPost",
-        "path": "tutorials/python/variables",
-        "language": "python",
-        "id": "tutorials/python/variables"
-      },
-      "documentHash": "1749214489361",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
     },
     "tutorials/python/datatypes.md": {
       "document": {
@@ -140,7 +59,7 @@
         "language": "python",
         "id": "tutorials/python/datatypes"
       },
-      "documentHash": "1749214489444",
+      "documentHash": "1749215090351",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -167,7 +86,61 @@
         "language": "python",
         "id": "tutorials/python/functions"
       },
-      "documentHash": "1749214489454",
+      "documentHash": "1749215090351",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/intro.md": {
+      "document": {
+        "title": "Introduction to Python",
+        "slug": "introduction",
+        "order": 1,
+        "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
+        "body": {
+          "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions.\n- **Dynamically Typed**: Variable types are checked at runtime.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming.\n",
+          "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions.</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming.</p>"
+        },
+        "_id": "tutorials/python/intro.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/intro.md",
+          "sourceFileName": "intro.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/intro"
+        },
+        "type": "TutorialPost",
+        "path": "tutorials/python/intro",
+        "language": "python",
+        "id": "tutorials/python/intro"
+      },
+      "documentHash": "1749215090351",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/introduction.md": {
+      "document": {
+        "title": "Introduction to Python",
+        "slug": "introduction-to-python",
+        "order": 1,
+        "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
+        "body": {
+          "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions.\n- **Dynamically Typed**: Variable types are checked at runtime.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming.\n",
+          "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions.</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming.</p>"
+        },
+        "_id": "tutorials/python/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/introduction"
+        },
+        "type": "TutorialPost",
+        "path": "tutorials/python/introduction",
+        "language": "python",
+        "id": "tutorials/python/introduction"
+      },
+      "documentHash": "1749215090351",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -194,7 +167,34 @@
         "language": "python",
         "id": "tutorials/python/loops"
       },
-      "documentHash": "1749214489450",
+      "documentHash": "1749215090351",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/variables.md": {
+      "document": {
+        "title": "Variables in Python",
+        "slug": "variables",
+        "order": 2,
+        "description": "Learn about variables, naming conventions, and assignment in Python.",
+        "body": {
+          "raw": "\n## Understanding Variables in Python\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\nThis tutorial covers Python variables in more detail.\n",
+          "html": "<h2>Understanding Variables in Python</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<p>This tutorial covers Python variables in more detail.</p>"
+        },
+        "_id": "tutorials/python/variables.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/variables.md",
+          "sourceFileName": "variables.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/variables"
+        },
+        "type": "TutorialPost",
+        "path": "tutorials/python/variables",
+        "language": "python",
+        "id": "tutorials/python/variables"
+      },
+      "documentHash": "1749215090352",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }
