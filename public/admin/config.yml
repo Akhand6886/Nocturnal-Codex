@@ -1,31 +1,27 @@
 backend:
-  name: git-gateway
-  branch: master # or 'master' — match your repo's default
-  identity_url: https://nocturnal-codex.netlify.app/.netlify/identity
-  gateway_url: https://nocturnal-codex.netlify.app/.netlify/git
-  role: editor
+  name: git-gateway # For Netlify hosting with Git Gateway
+  branch: main # Or your default branch
 
-media_folder: "public/images/blog"
-public_folder: "/images/blog"
+# Optional: if you want to enable editorial workflow
+# publish_mode: editorial_workflow
+
+media_folder: "public/images/blog/uploads" # Location where new files should be saved
+public_folder: "/images/blog/uploads" # The src attribute for uploaded media
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "content/blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    folder: "content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Author", name: "author", widget: "string", default: "The Nocturnist" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["New Post"] }
+      - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" }, allow_add: true, required: false }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-      - { label: "Featured Image", name: "imageUrl", widget: "image", required: false }
-      - { label: "Image AI Hint", name: "dataAiHint", widget: "string", required: false, hint: "Keywords for AI image search if placeholder, e.g., 'abstract technology'" }
-      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'quantum-intro'. Must match an ID in lib/data.ts (for now)"}
-      - { label: "Series Order", name: "seriesOrder", widget: "number", value_type: "int", required: false, hint: "e.g., 1, 2, 3..."}
+      - { label: "Featured Image URL", name: "imageUrl", widget: "image", required: false }
+      - { label: "Image AI Hint (for placeholder)", name: "dataAiHint", widget: "string", required: false }
+      - { label: "Series ID", name: "seriesId", widget: "string", required: false, hint: "e.g., 'quantum-intro'. Leave empty if not part of a series." }
+      - { label: "Series Order", name: "seriesOrder", widget: "number", required: false, value_type: "int", hint: "Order within the series (e.g., 1, 2, 3). Required if Series ID is set."}
       - { label: "Body", name: "body", widget: "markdown" }
-
-    editor:
-      preview: true

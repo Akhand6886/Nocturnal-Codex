@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, LinkIcon, Brain } from "lucide-react"; // Added Brain
+import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, LinkIcon, Brain } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Image from "next/image";
 
@@ -210,3 +210,5 @@ export async function generateMetadata({ params }: TopicPageProps) {
     description: topic.description,
   };
 }
+
+    

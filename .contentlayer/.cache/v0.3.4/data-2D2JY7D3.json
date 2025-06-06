@@ -9,6 +9,7 @@
           "Welcome",
           "CMS"
         ],
+        "category": "Announcements",
         "excerpt": "This is the very first blog post managed by Decap CMS!",
         "imageUrl": "/images/blog/placeholder-banner.png",
         "dataAiHint": "technology abstract",
@@ -29,11 +30,7 @@
         "slug": "hello-world",
         "id": "hello-world"
       },
-<<<<<<< HEAD
-      "documentHash": "1749214580203",
-=======
-      "documentHash": "1748921136711",
->>>>>>> 261247abfb916f5256d5bff3f478a2c1eace96ce
+      "documentHash": "1749143747192",
       "hasWarnings": false,
       "documentTypeName": "BlogPost"
     }

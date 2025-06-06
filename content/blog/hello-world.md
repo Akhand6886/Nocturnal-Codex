@@ -3,10 +3,12 @@ title: "Hello World - My First Post via Decap CMS"
 date: "2024-08-15T10:00:00Z"
 author: "The Nocturnist"
 tags: ["Welcome", "CMS"]
+category: "Announcements"
 excerpt: "This is the very first blog post managed by Decap CMS!"
 imageUrl: "/images/blog/placeholder-banner.png"
 dataAiHint: "technology abstract"
-seriesId: ""
+seriesId: "getting-started" # Added seriesId
+seriesOrder: 1 # Added seriesOrder
 ---
 
 ## Welcome to the New Blog!
