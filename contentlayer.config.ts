@@ -1,59 +1,34 @@
 
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
-export const BlogPost = defineDocumentType(() => ({
-  name: 'BlogPost',
-  filePathPattern: `blog/**/*.md`, // Matches files in content/blog
-  contentType: 'markdown',
-  fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    updatedDate: { type: 'date', required: false },
-    author: { type: 'string', required: true },
-    tags: { type: 'list', of: { type: 'string' }, default: [] },
-    category: { type: 'string', required: false },
-    excerpt: { type: 'string', required: true },
-    imageUrl: { type: 'string' },
-    dataAiHint: { type: 'string' },
-    seriesId: { type: 'string', required: false }, 
-    seriesOrder: { type: 'number', required: false },
-    featured: { type: 'boolean', default: false, required: false },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/^blog\/?/, ''),
-    },
-    id: { 
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/^blog\/?/, ''),
-    }
-  },
-}))
+// BlogPost definition removed as it's now handled by Sanity CMS
 
 export const PythonTutorial = defineDocumentType(() => ({
   name: "PythonTutorial",
-  filePathPattern: `tutorials/python/*.md`,
+  filePathPattern: `tutorials/python/*.md`, // Matches files in content/tutorials/python
   contentType: "markdown",
   fields: {
     title: { type: "string", required: true },
-    slug: { type: "string", required: true },
-    order: { type: "number", required: true },
-    description: { type: "string", required: false },
+    slug: { type: "string", required: true }, // Used for the URL segment
+    order: { type: "number", required: true }, // For ordering tutorials in a series
+    description: { type: "string", required: false }, // Short summary
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/tutorial/python/${doc.slug}`,
+      resolve: (doc) => `/tutorial/python/${doc.slug}`, // Example: /tutorial/python/getting-started
     },
+    // If you want an 'id' field similar to BlogPost for consistency, you could add:
+    // id: {
+    //   type: 'string',
+    //   resolve: (doc) => doc._raw.flattenedPath.replace(/^tutorials\/python\/?/, ''),
+    // }
   },
 }))
 
-// The TutorialPost definition was here and has been removed.
-
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, PythonTutorial], 
+  documentTypes: [PythonTutorial], // Only PythonTutorial is left
   mdx: { 
     remarkPlugins: [], 
     rehypePlugins: [],
