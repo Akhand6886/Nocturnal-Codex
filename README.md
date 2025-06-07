@@ -27,9 +27,9 @@ The project utilizes a hybrid approach for content management:
 *   **Content Model**: The schema for blog posts is defined in `sanity/schemas/post.ts`.
 *   **Fetching Content**: The Next.js app fetches blog content from Sanity using the official `next-sanity` client and GROQ queries. See `src/lib/sanity.ts` for client configuration and `src/app/blog/**` for example usage.
 *   **Environment Variables for Sanity**:
-    *   `NEXT_PUBLIC_SANITY_PROJECT_ID`: Your Sanity project ID (e.g., `hxzbjy6y`).
-    *   `NEXT_PUBLIC_SANITY_DATASET`: The dataset to use (e.g., `production`).
-    *   `NEXT_PUBLIC_SANITY_API_VERSION`: The API version (e.g., `2024-08-20`).
+    *   `NEXT_PUBLIC_SANITY_PROJECT_ID`: Your Sanity project ID .
+    *   `NEXT_PUBLIC_SANITY_DATASET`: The dataset to use .
+    *   `NEXT_PUBLIC_SANITY_API_VERSION`: The API version .
     *   `SANITY_STUDIO_API_READ_TOKEN` (Optional, for more advanced Studio features or secured datasets, managed in Sanity project settings if needed).
 
 ### 2. Contentlayer (for Python Tutorials)
