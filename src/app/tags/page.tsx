@@ -1,18 +1,29 @@
 
-import { allBlogPosts } from "contentlayer/generated";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Tag } from "lucide-react";
+import { client } from '@/lib/sanity';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const revalidate = 60;
+
+export const metadata: Metadata = {
   title: "All Tags | Nocturnal Codex",
   description: "Browse content by tags on Nocturnal Codex.",
 };
 
+async function getAllTags(): Promise<string[]> {
+  const query = `*[_type == "post" && defined(tags)].tags[]`;
+  // Fetch all tags, then flatten, filter out nulls/empties, get unique, and sort.
+  const results = await client.fetch<string[][]>(query); // tags is an array of arrays if not flattened by query
+  
+  const allTagsRaw = results.flat().filter(Boolean);
+  return Array.from(new Set(allTagsRaw)).sort((a, b) => a.localeCompare(b));
+}
+
+
 export default async function TagsPage() {
-  const allTags = Array.from(
-    new Set(allBlogPosts.flatMap((post) => post.tags || []))
-  ).sort((a, b) => a.localeCompare(b));
+  const allTags = await getAllTags();
 
   return (
     <div className="space-y-10">

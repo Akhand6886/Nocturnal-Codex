@@ -1,18 +1,26 @@
 
-import { allBlogPosts } from "contentlayer/generated";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { FolderArchive } from "lucide-react"; // Using a different icon for categories
+import { FolderArchive } from "lucide-react";
+import { client } from '@/lib/sanity';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const revalidate = 60;
+
+export const metadata: Metadata = {
   title: "All Categories | Nocturnal Codex",
   description: "Browse blog posts by category on Nocturnal Codex.",
 };
 
+async function getAllCategories(): Promise<string[]> {
+  const query = `*[_type == "post" && defined(category)].category`;
+  const categories = await client.fetch<string[]>(query);
+  // Filter out null/undefined and remove duplicates
+  return Array.from(new Set(categories.filter(Boolean))).sort((a, b) => a.localeCompare(b));
+}
+
 export default async function CategoriesPage() {
-  const allCategories = Array.from(
-    new Set(allBlogPosts.map((post) => post.category).filter(Boolean as any as (value: string | undefined) => value is string))
-  ).sort((a, b) => a.localeCompare(b));
+  const allCategories = await getAllCategories();
 
   return (
     <div className="space-y-10">

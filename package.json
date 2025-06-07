@@ -1,11 +1,10 @@
-
 {
   "name": "nextn",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "contentlayer build && next dev",
-    "build": "contentlayer build && next build",
+    "dev": "contentlayer build || true && next dev",
+    "build": "contentlayer build || true && next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
@@ -81,4 +80,3 @@
     "@inquirer/type": "^2.0.0"
   }
 }
-
