@@ -3,19 +3,21 @@ import {createClient, type SanityClient, type SanityDocument} from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url';
 import type { Image } from 'sanity'; // Import the Image type from Sanity
 
+// Function to sanitize projectId
+function sanitizeProjectId(id?: string): string | undefined {
+  if (!id) return undefined;
+  return id.toLowerCase().replace(/[^a-z0-9-]/g, '-'); // Ensure only valid characters
+}
+
 // Replace these with your actual project ID and dataset from sanity.io/manage
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'YOUR_PROJECT_ID';
+const rawProjectIdFromEnv = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+export const projectId = sanitizeProjectId(rawProjectIdFromEnv) || 'hxzbjy6y'; // Updated placeholder
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-08-20'; // Use a recent API version
 
-if (!projectId || projectId === 'YOUR_PROJECT_ID') {
+if (!rawProjectIdFromEnv || rawProjectIdFromEnv === 'your-project-id' || rawProjectIdFromEnv === 'hxzbjy6y' && process.env.NODE_ENV !== 'test' && !rawProjectIdFromEnv) { // Adjusted warning logic
   console.warn(
-    `Sanity project ID is not set. Please update NEXT_PUBLIC_SANITY_PROJECT_ID in your .env file or replace 'YOUR_PROJECT_ID' directly in sanity.ts and sanity.config.ts.`
-  );
-}
-if (!dataset) {
-  console.warn(
-    `Sanity dataset is not set. Please update NEXT_PUBLIC_SANITY_DATASET in your .env file or replace 'production' if needed.`
+    `Sanity project ID from environment variable NEXT_PUBLIC_SANITY_PROJECT_ID is preferred. Currently using: ${projectId}. Ensure it's set in your .env file and deployment environment.`
   );
 }
 
@@ -23,7 +25,7 @@ if (!dataset) {
 export const client: SanityClient = createClient({
   projectId,
   dataset,
-  apiVersion, 
+  apiVersion,
   useCdn: process.env.NODE_ENV === 'production', // Use CDN in production, false in development for fresher data
 });
 
@@ -45,7 +47,8 @@ export interface SanityPost extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string; // ISO date string
-  author?: string; // Assuming author is a simple string for now
+  updatedDate?: string; // Added from blog/[slug] page, maps to _updatedAt
+  author?: string;
   excerpt?: string;
   mainImage?: Image & { alt?: string; dataAiHint?: string; caption?: string };
   tags?: string[];
