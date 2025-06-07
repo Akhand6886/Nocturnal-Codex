@@ -11,8 +11,8 @@ export default {
   theme: {
   	extend: {
       fontFamily: {
-        sans: ['var(--font-inter)'], // Changed from --font-geist-sans
-        mono: ['var(--font-roboto-mono)'], // Changed from --font-geist-mono
+        sans: ['var(--font-inter)'], 
+        mono: ['var(--font-roboto-mono)'], 
       },
   		colors: {
   			background: 'hsl(var(--background))',
@@ -67,9 +67,9 @@ export default {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)', // Default is 0.65rem
-  			md: 'calc(var(--radius) - 0.15rem)', // Adjusted for new lg
-  			sm: 'calc(var(--radius) - 0.3rem)'  // Adjusted for new lg
+  			lg: 'var(--radius)', 
+  			md: 'calc(var(--radius) - 0.15rem)', 
+  			sm: 'calc(var(--radius) - 0.3rem)'  
   		},
   		keyframes: {
   			'accordion-down': {
@@ -88,7 +88,7 @@ export default {
   					height: '0'
   				}
   			},
-        'spin-slow': { // Added for navbar logo
+        'spin-slow': { 
           to: {
             transform: 'rotate(360deg)',
           },
@@ -97,9 +97,13 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'spin-slow': 'spin-slow 3s linear infinite', // Added for navbar logo
+        'spin-slow': 'spin-slow 3s linear infinite', 
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography")
+  ],
 } satisfies Config;
+
