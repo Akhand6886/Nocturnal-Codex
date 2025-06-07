@@ -1,24 +1,24 @@
 
 import type { Metadata } from 'next';
-import { Inter, Roboto_Mono } from 'next/font/google'; // Changed from Geist_Sans, Geist_Mono
+import { Inter, Roboto_Mono } from 'next/font/google'; 
 import './globals.css';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({ // Changed from Geist_Sans
-  variable: '--font-inter', // Changed variable name
+const inter = Inter({ 
+  variable: '--font-inter', 
   subsets: ['latin'],
 });
 
-const robotoMono = Roboto_Mono({ // Changed from Geist_Mono
-  variable: '--font-roboto-mono', // Changed variable name
+const robotoMono = Roboto_Mono({ 
+  variable: '--font-roboto-mono', 
   subsets: ['latin'],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-const defaultOgImage = `${siteUrl}/images/og-default.png`; // You should create this image
+const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: 'Nocturnal Codex',
     images: [
       {
-        url: defaultOgImage, // Replace with your actual default OG image URL
+        url: defaultOgImage, 
         width: 1200,
         height: 630,
         alt: 'Nocturnal Codex',
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nocturnal Codex',
     description: 'For Hackers, Theorists, Builders, Learners.',
-    images: [defaultOgImage], // Replace with your actual default Twitter image URL
-    // site: '@yourtwitterhandle', // Optional: Add your Twitter handle
-    // creator: '@yourtwitterhandle', // Optional: Add your Twitter handle
+    images: [defaultOgImage], 
+    // site: '@yourtwitterhandle', 
+    // creator: '@yourtwitterhandle', 
   },
   robots: {
     index: true,
@@ -62,12 +62,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // alternates: { // Already handled by sitemap.ts for the most part
-  //   canonical: '/', 
-  // },
-  icons: { // Add if you have favicons
-    // icon: '/favicon.ico',
-    // apple: '/apple-touch-icon.png',
+  // Favicon example (ensure you have these files in /public)
+  icons: { 
+     icon: '/favicon.ico', // Standard favicon
+     shortcut: '/favicon-16x16.png', // For older browsers, can be same as favicon.ico
+     apple: '/apple-touch-icon.png', // For Apple devices
+    // other: [ // You can add more specific icons if needed
+    //   { rel: 'icon', url: '/favicon-32x32.png', sizes: '32x32' },
+    // ],
   }
 };
 
@@ -81,8 +83,8 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Nocturnal Codex",
     "url": siteUrl,
-    "logo": `${siteUrl}/images/logo.png`, // Replace with your actual logo URL
-    "sameAs": [ // Optional: Add social media links
+    "logo": `${siteUrl}/images/logo.png`, // Ensure logo.png is in /public/images
+    "sameAs": [ 
       // "https://twitter.com/yourtwitterhandle",
       // "https://github.com/yourgithubhandle"
     ]
@@ -93,10 +95,18 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "Nocturnal Codex",
     "url": siteUrl,
-    "potentialAction": { // Optional: if you have site search
+    "potentialAction": { 
       "@type": "SearchAction",
-      "target": `${siteUrl}/search?q={search_term_string}`,
+      "target": `${siteUrl}/search?q={search_term_string}`, // Example search URL
       "query-input": "required name=search_term_string"
+    },
+    "publisher": { // Added publisher to WebSite schema as well
+        "@type": "Organization",
+        "name": "Nocturnal Codex",
+        "logo": {
+            "@type": "ImageObject",
+            "url": `${siteUrl}/images/logo.png`
+        }
     }
   };
 
@@ -115,7 +125,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${robotoMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <ThemeProvider>
           <Navbar />
-          <main className="flex-grow container mx-auto px-4 py-10 md:py-12"> {/* Increased padding */}
+          <main className="flex-grow container mx-auto px-4 py-10 md:py-12"> 
             {children}
           </main>
           <Footer />
