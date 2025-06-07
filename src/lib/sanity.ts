@@ -6,23 +6,18 @@ import type { Image } from 'sanity'; // Import the Image type from Sanity
 // Function to sanitize projectId
 function sanitizeProjectId(id?: string): string | undefined {
   if (!id) return undefined;
-  return id.toLowerCase().replace(/_/g, '-');
+  return id.toLowerCase().replace(/[^a-z0-9-]/g, '-'); // Ensure only valid characters
 }
 
 // Replace these with your actual project ID and dataset from sanity.io/manage
-const rawProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-export const projectId = sanitizeProjectId(rawProjectId) || 'your-project-id'; // Corrected placeholder format and sanitization
+const rawProjectIdFromEnv = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+export const projectId = sanitizeProjectId(rawProjectIdFromEnv) || 'hxzbjy6y'; // Updated placeholder
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-08-20'; // Use a recent API version
 
-if (!rawProjectId || rawProjectId === 'your-project-id' || projectId === 'your-project-id') {
+if (!rawProjectIdFromEnv || rawProjectIdFromEnv === 'your-project-id' || rawProjectIdFromEnv === 'hxzbjy6y' && process.env.NODE_ENV !== 'test' && !rawProjectIdFromEnv) { // Adjusted warning logic
   console.warn(
-    `Sanity project ID is not set or is using the default placeholder. Please update NEXT_PUBLIC_SANITY_PROJECT_ID in your .env file. The ID used is: ${projectId}`
-  );
-}
-if (!dataset) {
-  console.warn(
-    `Sanity dataset is not set. Please update NEXT_PUBLIC_SANITY_DATASET in your .env file or replace 'production' if needed.`
+    `Sanity project ID from environment variable NEXT_PUBLIC_SANITY_PROJECT_ID is preferred. Currently using: ${projectId}. Ensure it's set in your .env file and deployment environment.`
   );
 }
 

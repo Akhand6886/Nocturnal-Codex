@@ -7,12 +7,12 @@ import {post} from './schemas/post' // We will create this schema next
 // Function to sanitize projectId
 function sanitizeProjectId(id?: string): string | undefined {
   if (!id) return undefined;
-  return id.toLowerCase().replace(/_/g, '-');
+  return id.toLowerCase().replace(/[^a-z0-9-]/g, '-'); // Ensure only valid characters
 }
 
 // Replace these with your actual project ID and dataset
-const rawProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const projectId = sanitizeProjectId(rawProjectId) || 'your-project-id'; // Corrected placeholder format and sanitization
+const rawProjectIdFromEnv = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const projectId = sanitizeProjectId(rawProjectIdFromEnv) || 'hxzbjy6y'; // Updated placeholder
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 
 export default defineConfig({
