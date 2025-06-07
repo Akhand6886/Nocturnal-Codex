@@ -49,40 +49,11 @@ export const PythonTutorial = defineDocumentType(() => ({
   },
 }))
 
-export const TutorialPost = defineDocumentType(() => ({
-  name: 'TutorialPost',
-  filePathPattern: `tutorials/python/**/*.md`, // Specific to Python tutorials for now
-  contentType: 'markdown',
-  fields: {
-    title: { type: 'string', required: true },
-    slug: { type: 'string', required: true }, // Slug from frontmatter for URL
-    order: { type: 'number', required: true },
-    description: { type: 'string', required: true },
-  },
-  computedFields: {
-    path: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath,
-    },
-    language: {
-      type: 'string',
-      resolve: (doc) => {
-        // Extracts 'python' from 'tutorials/python/filename.md'
-        const parts = doc._raw.sourceFileDir.split('/');
-        return parts.length > 1 ? parts[1] : 'unknown';
-      }
-    },
-    // id can be the path or just the slug if slugs are unique per language
-    id: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath,
-    }
-  },
-}))
+// The TutorialPost definition was here and has been removed.
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, PythonTutorial], // Removed TutorialPost
+  documentTypes: [BlogPost, PythonTutorial], 
   mdx: { 
     remarkPlugins: [], 
     rehypePlugins: [],

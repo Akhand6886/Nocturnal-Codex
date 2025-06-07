@@ -55,14 +55,10 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
   const hasIntroduction = !!language.mainContent;
   const hasCoreConcepts = language.sections && language.sections.length > 0;
   const hasExamples = language.codeSnippets && language.codeSnippets.length > 0;
-  const hasTutorialsTab = language.tutorials && language.tutorials.length > 0; // Renamed to avoid conflict
+  const hasTutorialsTab = language.tutorials && language.tutorials.length > 0; 
   const hasResources = (language.relatedWikiArticles && language.relatedWikiArticles.length > 0) || language.officialDocumentationUrl;
   
-  // Determine default tab from searchParams (hash) or content availability
-  // Note: Client-side JavaScript would be needed for true tab syncing with URL hash changes without page reload.
-  // For server-side rendering, we can use a query param if preferred, or just a default.
-  // Let's try to read the hash from searchParams if passed, or default based on content.
-  const tabQuery = searchParams?.tab as string; // If we decide to use query like ?tab=examples
+  const tabQuery = searchParams?.tab as string; 
   
   let defaultTabValue = "introduction"; 
 
@@ -87,14 +83,14 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
       <Breadcrumbs items={breadcrumbItems} />
       
       <header className="pb-6 border-b border-border flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mt-6">
-        <Image 
+        {/* <Image 
             src={language.iconUrl} 
             alt={`${language.name} logo`} 
-            width={80} // Max render size
-            height={80} // Max render size
+            width={80} 
+            height={80} 
             className="rounded-lg shadow-md border border-border p-2 bg-card flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20"
             data-ai-hint={language.dataAiHint}
-        />
+        /> */}
         <div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-2">{language.name}</h1>
             {language.longDescription && <p className="mt-1 text-lg text-muted-foreground">{language.longDescription}</p>}
@@ -245,7 +241,7 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
                 <AlertTitle>Content Coming Soon!</AlertTitle>
                 <AlertDescription>
                     Detailed information for {language.name} is currently under development. Check back soon for more content.
-                </Description>
+                </AlertDescription>
                 </Alert>
             </TabsContent>
         )}
@@ -254,5 +250,6 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
   );
 }
 
+    
 
     
