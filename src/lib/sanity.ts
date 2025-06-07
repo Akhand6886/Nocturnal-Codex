@@ -5,22 +5,45 @@ import type { Image } from 'sanity'; // Import the Image type from Sanity
 
 // Function to sanitize projectId
 function sanitizeProjectId(id?: string): string | undefined {
-  if (!id) return undefined;
-  return id.toLowerCase().replace(/[^a-z0-9-]/g, '-'); // Ensure only valid characters
+  if (!id || typeof id !== 'string' || id.trim() === '') return undefined;
+
+  let sanitized = id.toLowerCase();
+  // Replace any character that is not a-z, 0-9, or hyphen with a hyphen.
+  // Multiple invalid characters in a row become a single hyphen.
+  sanitized = sanitized.replace(/[^a-z0-9-]+/g, '-');
+  // Collapse multiple hyphens into one.
+  sanitized = sanitized.replace(/-+/g, '-');
+  // Remove leading and trailing hyphens.
+  sanitized = sanitized.replace(/^-+|-+$/g, '');
+
+  if (sanitized === '') return undefined; // If sanitization results in empty, treat as invalid
+  return sanitized;
 }
 
-// Replace these with your actual project ID and dataset from sanity.io/manage
 const rawProjectIdFromEnv = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-export const projectId = sanitizeProjectId(rawProjectIdFromEnv) || 'hxzbjy6y'; // Updated placeholder
+const fallbackProjectId = 'hxzbjy6y';
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
-export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-08-20'; // Use a recent API version
+export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-08-20';
 
-if (!rawProjectIdFromEnv || rawProjectIdFromEnv === 'your-project-id' || rawProjectIdFromEnv === 'hxzbjy6y' && process.env.NODE_ENV !== 'test' && !rawProjectIdFromEnv) { // Adjusted warning logic
-  console.warn(
-    `Sanity project ID from environment variable NEXT_PUBLIC_SANITY_PROJECT_ID is preferred. Currently using: ${projectId}. Ensure it's set in your .env file and deployment environment.`
-  );
+let projectIdToUse = sanitizeProjectId(rawProjectIdFromEnv);
+
+if (!projectIdToUse) {
+  projectIdToUse = fallbackProjectId;
+  if (process.env.NODE_ENV !== 'test' && rawProjectIdFromEnv && rawProjectIdFromEnv.trim() !== '') {
+    // Warn only if there was an attempt to set it via env var but it was invalid
+    console.warn(
+      `Sanity project ID from environment variable NEXT_PUBLIC_SANITY_PROJECT_ID ("${rawProjectIdFromEnv}") was invalid after sanitization. Using fallback project ID: "${fallbackProjectId}". Ensure NEXT_PUBLIC_SANITY_PROJECT_ID is correctly set.`
+    );
+  } else if (!rawProjectIdFromEnv && process.env.NODE_ENV !== 'test') {
+    // Warn if env var was not set at all
+     console.warn(
+      `Sanity project ID from environment variable NEXT_PUBLIC_SANITY_PROJECT_ID is not set. Using fallback project ID: "${fallbackProjectId}". Ensure NEXT_PUBLIC_SANITY_PROJECT_ID is correctly set in your .env file and deployment environment.`
+    );
+  }
 }
 
+
+export const projectId = projectIdToUse;
 
 export const client: SanityClient = createClient({
   projectId,
@@ -33,21 +56,17 @@ const builder = imageUrlBuilder(client);
 
 export function urlFor(source: Image | undefined | null) {
   if (!source || !source.asset) {
-    // Return a placeholder or null if the source is invalid
-    // For example, return 'https://placehold.co/600x400.png?text=Image+Not+Available';
-    return undefined; // Or a specific placeholder URL
+    return undefined; 
   }
   return builder.image(source);
 }
 
-// Define a TypeScript type for your Sanity blog posts
-// This should match the fields you've defined in your Sanity schema (sanity/schemas/post.ts)
 export interface SanityPost extends SanityDocument {
   _id: string;
   title: string;
   slug: { current: string };
-  publishedAt: string; // ISO date string
-  updatedDate?: string; // Added from blog/[slug] page, maps to _updatedAt
+  publishedAt: string; 
+  updatedDate?: string; 
   author?: string;
   excerpt?: string;
   mainImage?: Image & { alt?: string; dataAiHint?: string; caption?: string };
@@ -56,5 +75,5 @@ export interface SanityPost extends SanityDocument {
   seriesId?: string;
   seriesOrder?: number;
   featured?: boolean;
-  body?: any[]; // Portable Text content
+  body?: any[]; 
 }
