@@ -16,12 +16,6 @@ import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
-// generateStaticParams might be better in layout.tsx if it's fetching data for layout too
-// export async function generateStaticParams() {
-//   return MOCK_PROGRAMMING_LANGUAGES.map((lang) => ({
-//     languageSlug: lang.slug,
-//   }));
-// }
 
 interface LanguagePageProps {
   params: { languageSlug: string };
@@ -53,44 +47,42 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
-    { label: "Languages", href: "/topics" }, // Or a future /languages page
+    { label: "Languages", href: "/topics" }, 
     { label: language.name },
   ];
 
   // Determine active tabs based on content
-  const hasMainContent = !!language.mainContent;
-  const hasSections = language.sections && language.sections.length > 0;
-  const hasCodeSnippets = language.codeSnippets && language.codeSnippets.length > 0;
-  const hasTutorials = language.tutorials && language.tutorials.length > 0;
+  const hasIntroduction = !!language.mainContent;
+  const hasCoreConcepts = language.sections && language.sections.length > 0;
+  const hasExamples = language.codeSnippets && language.codeSnippets.length > 0;
+  const hasTutorialsTab = language.tutorials && language.tutorials.length > 0; // Renamed to avoid conflict
   const hasResources = (language.relatedWikiArticles && language.relatedWikiArticles.length > 0) || language.officialDocumentationUrl;
   
-  // Determine default tab from searchParams or content availability
-  const tabQuery = searchParams?.tab as string;
-  let defaultTabValue = "introduction"; // Default fallback
+  // Determine default tab from searchParams (hash) or content availability
+  // Note: Client-side JavaScript would be needed for true tab syncing with URL hash changes without page reload.
+  // For server-side rendering, we can use a query param if preferred, or just a default.
+  // Let's try to read the hash from searchParams if passed, or default based on content.
+  const tabQuery = searchParams?.tab as string; // If we decide to use query like ?tab=examples
+  
+  let defaultTabValue = "introduction"; 
 
   if (tabQuery) {
-    if (tabQuery === "introduction" && hasMainContent) defaultTabValue = "introduction";
-    else if (tabQuery === "core-concepts" && hasSections) defaultTabValue = "core-concepts";
-    else if (tabQuery === "examples" && hasCodeSnippets) defaultTabValue = "examples";
-    else if (tabQuery === "tutorials" && hasTutorials) defaultTabValue = "tutorials";
+    if (tabQuery === "introduction" && hasIntroduction) defaultTabValue = "introduction";
+    else if (tabQuery === "core-concepts" && hasCoreConcepts) defaultTabValue = "core-concepts";
+    else if (tabQuery === "examples" && hasExamples) defaultTabValue = "examples";
+    else if (tabQuery === "tutorials" && hasTutorialsTab) defaultTabValue = "tutorials";
     else if (tabQuery === "resources" && hasResources) defaultTabValue = "resources";
-    // If tabQuery is invalid, it will fall back to the content-based default below
-  }
-
-  if (!tabQuery || (tabQuery && !eval(`has${tabQuery.charAt(0).toUpperCase() + tabQuery.slice(1).replace(/-/g, '')}`))) {
-     // If no valid tab query, determine default based on content
-    if (hasMainContent) defaultTabValue = "introduction";
-    else if (hasSections) defaultTabValue = "core-concepts";
-    else if (hasCodeSnippets) defaultTabValue = "examples";
-    else if (hasTutorials) defaultTabValue = "tutorials";
+  } else {
+    if (hasIntroduction) defaultTabValue = "introduction";
+    else if (hasCoreConcepts) defaultTabValue = "core-concepts";
+    else if (hasExamples) defaultTabValue = "examples";
+    else if (hasTutorialsTab) defaultTabValue = "tutorials";
     else if (hasResources) defaultTabValue = "resources";
-    else defaultTabValue = "no-content"; // A fallback if truly no content
+    else defaultTabValue = "no-content"; 
   }
 
 
   return (
-    // Removed outer space-y-8 as layout will handle spacing if needed
-    // Main content padding is also adjusted in layout
     <div className="py-2 px-2 md:py-6 md:px-6"> 
       <Breadcrumbs items={breadcrumbItems} />
       
@@ -98,8 +90,8 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
         <Image 
             src={language.iconUrl} 
             alt={`${language.name} logo`} 
-            width={80}
-            height={80}
+            width={80} // Max render size
+            height={80} // Max render size
             className="rounded-lg shadow-md border border-border p-2 bg-card flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20"
             data-ai-hint={language.dataAiHint}
         />
@@ -111,14 +103,14 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
 
       <Tabs defaultValue={defaultTabValue} className="w-full mt-8">
         <TabsList className="flex flex-wrap justify-start sm:justify-center gap-1 sm:gap-2 mb-6 bg-muted/60 p-1 rounded-lg">
-          {hasMainContent && <TabsTrigger value="introduction" id="introduction-tab">Introduction</TabsTrigger>}
-          {hasSections && <TabsTrigger value="core-concepts" id="core-concepts-tab">Core Concepts</TabsTrigger>}
-          {hasCodeSnippets && <TabsTrigger value="examples" id="examples-tab">Examples</TabsTrigger>}
-          {hasTutorials && <TabsTrigger value="tutorials" id="tutorials-tab">Tutorials</TabsTrigger>}
-          {hasResources && <TabsTrigger value="resources" id="resources-tab">Resources</TabsTrigger>}
+          {hasIntroduction && <TabsTrigger value="introduction" id="tab-trigger-introduction">Introduction</TabsTrigger>}
+          {hasCoreConcepts && <TabsTrigger value="core-concepts" id="tab-trigger-core-concepts">Core Concepts</TabsTrigger>}
+          {hasExamples && <TabsTrigger value="examples" id="tab-trigger-examples">Examples</TabsTrigger>}
+          {hasTutorialsTab && <TabsTrigger value="tutorials" id="tab-trigger-tutorials">Quick Tutorials</TabsTrigger>}
+          {hasResources && <TabsTrigger value="resources" id="tab-trigger-resources">Resources</TabsTrigger>}
         </TabsList>
 
-        {hasMainContent && (
+        {hasIntroduction && (
             <TabsContent value="introduction" id="introduction">
             <Card>
                 <CardHeader>
@@ -131,7 +123,7 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
             </TabsContent>
         )}
 
-        {hasSections && (
+        {hasCoreConcepts && (
           <TabsContent value="core-concepts" id="core-concepts" className="space-y-6">
             {language.sections?.map((section) => (
               <Card key={section.id} id={section.id}>
@@ -166,7 +158,7 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
           </TabsContent>
         )}
         
-        {hasCodeSnippets && (
+        {hasExamples && (
           <TabsContent value="examples" id="examples">
             <Card>
               <CardHeader>
@@ -184,11 +176,11 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
           </TabsContent>
         )}
 
-        {hasTutorials && (
+        {hasTutorialsTab && (
           <TabsContent value="tutorials" id="tutorials">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center text-2xl"><GraduationCap className="mr-2 h-6 w-6 text-primary" /> Tutorials</CardTitle>
+                <CardTitle className="flex items-center text-2xl"><GraduationCap className="mr-2 h-6 w-6 text-primary" /> Quick Tutorials</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
@@ -246,14 +238,14 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
           </TabsContent>
         )}
 
-        { !hasMainContent && !hasSections && !hasCodeSnippets && !hasTutorials && !hasResources && (
+        { !hasIntroduction && !hasCoreConcepts && !hasExamples && !hasTutorialsTab && !hasResources && (
             <TabsContent value={defaultTabValue} id="no-content">
                 <Alert>
                 <Lightbulb className="h-4 w-4" />
                 <AlertTitle>Content Coming Soon!</AlertTitle>
                 <AlertDescription>
                     Detailed information for {language.name} is currently under development. Check back soon for more content.
-                </AlertDescription>
+                </Description>
                 </Alert>
             </TabsContent>
         )}
@@ -261,3 +253,6 @@ export default async function LanguagePage({ params, searchParams }: LanguagePag
     </div>
   );
 }
+
+
+    

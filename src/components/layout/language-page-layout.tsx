@@ -25,21 +25,21 @@ interface LanguagePageLayoutProps extends PropsWithChildren {
 }
 
 export function LanguagePageLayout({ children, language }: LanguagePageLayoutProps) {
-  const pathname = usePathname();
+  const pathname = usePathname(); // Gets the full path without hash
+
+  // Construct base path for language page
+  const baseLanguagePath = `/languages/${language.slug}`;
 
   const sidebarNavItems = [
-    ...(language.mainContent ? [{ title: 'Introduction', href: `${pathname}#introduction`, icon: BookOpen }] : []),
-    ...(language.sections && language.sections.length > 0 ? [{ title: 'Core Concepts', href: `${pathname}#core-concepts`, icon: FolderOpen }] : []),
-    // Individual sections as sub-items (optional future enhancement)
-    // ...language.sections?.map(section => ({ title: section.title, href: `${pathname}#${section.id}`})) || [],
-    ...(language.codeSnippets && language.codeSnippets.length > 0 ? [{ title: 'Examples', href: `${pathname}#examples`, icon: Code2 }] : []),
-    ...(language.tutorials && language.tutorials.length > 0 ? [{ title: 'Quick Tutorials', href: `${pathname}#tutorials`, icon: GraduationCap }] : []),
-    ...((language.relatedWikiArticles && language.relatedWikiArticles.length > 0) || language.officialDocumentationUrl ? [{ title: 'Resources', href: `${pathname}#resources`, icon: Lightbulb }] : []),
+    ...(language.mainContent ? [{ title: 'Introduction', href: `${baseLanguagePath}#introduction`, icon: BookOpen, id: 'introduction' }] : []),
+    ...(language.sections && language.sections.length > 0 ? [{ title: 'Core Concepts', href: `${baseLanguagePath}#core-concepts`, icon: FolderOpen, id: 'core-concepts' }] : []),
+    ...(language.codeSnippets && language.codeSnippets.length > 0 ? [{ title: 'Examples', href: `${baseLanguagePath}#examples`, icon: Code2, id: 'examples' }] : []),
+    ...(language.tutorials && language.tutorials.length > 0 ? [{ title: 'Quick Tutorials', href: `${baseLanguagePath}#tutorials`, icon: GraduationCap, id: 'tutorials' }] : []),
+    ...((language.relatedWikiArticles && language.relatedWikiArticles.length > 0) || language.officialDocumentationUrl ? [{ title: 'Resources', href: `${baseLanguagePath}#resources`, icon: Lightbulb, id: 'resources' }] : []),
   ];
   
-  // Add a link to the full tutorial series if it's Python (currently only Python has a dedicated tutorial section)
   const fullTutorialSeriesLink = language.slug === 'python' 
-    ? { title: 'Full Python Tutorial Series', href: '/tutorial/python', icon: GraduationCap, isPrimary: true }
+    ? { title: 'Full Python Tutorial Series', href: '/tutorial/python', icon: GraduationCap, isPrimary: true, id: 'full-python-tutorials' }
     : null;
 
 
@@ -61,7 +61,8 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
             <ScrollArea className="h-full p-4">
               <SidebarMenu>
                 {sidebarNavItems.map((item) => {
-                  const isActive = pathname + (item.href.includes('#') ? item.href.substring(item.href.indexOf('#')) : '') === item.href; // Basic active check
+                  // Check if current pathname (without hash) + item's hash matches the item's full href
+                  const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
                   return (
                     <SidebarMenuItem key={item.title}>
                       <Link href={item.href} legacyBehavior passHref>
@@ -84,7 +85,7 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
                      <SidebarMenuItem className="mt-2 pt-2 border-t border-sidebar-border/50">
                         <Link href={fullTutorialSeriesLink.href} legacyBehavior passHref>
                             <SidebarMenuButton
-                            isActive={pathname.startsWith(fullTutorialSeriesLink.href)}
+                            isActive={pathname.startsWith(fullTutorialSeriesLink.href)} // Active if on any page within python tutorials
                             className={cn(
                                 'w-full justify-start text-sm font-medium',
                                 pathname.startsWith(fullTutorialSeriesLink.href) ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'text-sidebar-primary hover:bg-sidebar-primary/90 hover:text-sidebar-primary-foreground'
@@ -118,16 +119,21 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
                 <ScrollArea className="h-full p-4">
                   <SidebarMenu>
                       {sidebarNavItems.map((item) => {
-                      const isActive = pathname + (item.href.includes('#') ? item.href.substring(item.href.indexOf('#')) : '') === item.href;
+                      const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
                       return (
                           <SidebarMenuItem key={item.title}>
                             <Link href={item.href} legacyBehavior passHref>
                                 <SidebarMenuButton
-                                isActive={isActive}
-                                className={cn(
-                                    'w-full justify-start text-sm',
-                                    isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold' : 'text-sidebar-foreground hover:bg-sidebar-accent/80 hover:text-sidebar-accent-foreground'
-                                )}
+                                  isActive={isActive}
+                                  className={cn(
+                                      'w-full justify-start text-sm',
+                                      isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold' : 'text-sidebar-foreground hover:bg-sidebar-accent/80 hover:text-sidebar-accent-foreground'
+                                  )}
+                                  onClick={() => {
+                                    // For mobile, ensure sheet closes after navigation.
+                                    // This might need to be handled by the Sidebar component itself via context.
+                                    // For now, let's assume the Sheet component in ui/sidebar.tsx closes on link clicks.
+                                  }}
                                 >
                                 {item.icon && <item.icon className={cn("mr-2.5 h-4 w-4 flex-shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground group-hover/menu-button:text-sidebar-primary")} />}
                                 <span className="truncate">{item.title}</span>
@@ -167,7 +173,7 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
               <span className="ml-2">{language.name} Menu</span>
             </SidebarTrigger>
           </div>
-          <div className="p-1 md:p-0"> {/* Adjusted padding for content area */}
+          <div className="p-1 md:p-0">
             {children}
           </div>
         </SidebarInset>
@@ -175,3 +181,5 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
     </SidebarProvider>
   );
 }
+
+    
