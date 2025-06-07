@@ -1,36 +1,55 @@
 
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { FileText } from "lucide-react";
-import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
-import { compareDesc } from 'date-fns';
+import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client and Post type
 import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Read the latest articles, insights, and musings from the custodians of the Nocturnal Codex.",
-  alternates: {
-    canonical: "/blog",
-  },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return {
     title: "Blog | Nocturnal Codex",
-    description: "Read the latest articles and insights from Nocturnal Codex.",
-    url: `${siteUrl}/blog`,
-    type: 'website', // or 'blog' if it's primarily a blog listing
-  },
-};
+    description: "Read the latest articles, insights, and musings from the custodians of the Nocturnal Codex, powered by Sanity CMS.",
+    alternates: {
+      canonical: "/blog",
+    },
+    openGraph: {
+      title: "Blog | Nocturnal Codex",
+      description: "Read the latest articles and insights from Nocturnal Codex.",
+      url: `${siteUrl}/blog`,
+      type: 'website',
+    },
+  };
+}
+
+async function getBlogPosts(): Promise<SanityPost[]> {
+  const query = `*[_type == "post"] | order(publishedAt desc) [0...10] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    author,
+    excerpt,
+    mainImage {
+      asset,
+      alt,
+      dataAiHint
+    },
+    tags,
+    category
+  }`;
+  const posts = await client.fetch<SanityPost[]>(query);
+  return posts;
+}
 
 export default async function BlogPage() {
-  const sortedPosts = allBlogPosts.sort((a, b) => 
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
+  const posts = await getBlogPosts();
 
   const blogPageJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Blog", // Or CollectionPage if more appropriate
+    "@type": "Blog",
     "name": "Nocturnal Codex Blog",
     "description": "Insights, articles, and musings from the custodians of the Nocturnal Codex.",
     "url": `${siteUrl}/blog`,
@@ -39,18 +58,18 @@ export default async function BlogPage() {
         "name": "Nocturnal Codex",
         "logo": {
             "@type": "ImageObject",
-            "url": `${siteUrl}/images/logo.png` // Replace with your actual logo URL
+            "url": `${siteUrl}/images/logo.png`
         }
     },
-    "blogPost": sortedPosts.map(post => ({
+    "blogPost": posts.map(post => ({
         "@type": "BlogPosting",
-        "mainEntityOfPage": `${siteUrl}/blog/${post.slug}`,
+        "mainEntityOfPage": `${siteUrl}/blog/${post.slug?.current}`,
         "headline": post.title,
-        "image": post.imageUrl ? `${siteUrl}${post.imageUrl}` : undefined,
-        "datePublished": new Date(post.date).toISOString(),
+        "image": post.mainImage?.asset ? `${siteUrl}/api/imageProxy?url=${encodeURIComponent(client.config().projectId + '/images/' + post.mainImage.asset._ref.split('-')[1] + '.' + post.mainImage.asset._ref.split('-')[2])}` : undefined, // Simplified image URL for LD+JSON
+        "datePublished": new Date(post.publishedAt).toISOString(),
         "author": {
             "@type": "Person",
-            "name": post.author
+            "name": post.author || "The Nocturnist"
         }
     }))
   };
@@ -68,14 +87,14 @@ export default async function BlogPage() {
             Blog
           </h1>
           <p className="mt-3 text-lg text-muted-foreground">
-            Insights, articles, and musings from the custodians of the Nocturnal Codex.
+            Insights, articles, and musings from the custodians of the Nocturnal Codex. Now powered by Sanity.
           </p>
         </header>
         
-        {sortedPosts.length > 0 ? (
+        {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedPosts.map((post) => (
-              <BlogPostCard key={post.id} post={post} /> 
+            {posts.map((post) => (
+              <BlogPostCard key={post._id} post={post} /> 
             ))}
           </div>
         ) : (

@@ -47,41 +47,9 @@ var PythonTutorial = defineDocumentType(() => ({
     }
   }
 }));
-var TutorialPost = defineDocumentType(() => ({
-  name: "TutorialPost",
-  filePathPattern: `tutorials/python/**/*.md`,
-  // Specific to Python tutorials for now
-  contentType: "markdown",
-  fields: {
-    title: { type: "string", required: true },
-    slug: { type: "string", required: true },
-    // Slug from frontmatter for URL
-    order: { type: "number", required: true },
-    description: { type: "string", required: true }
-  },
-  computedFields: {
-    path: {
-      type: "string",
-      resolve: (doc) => doc._raw.flattenedPath
-    },
-    language: {
-      type: "string",
-      resolve: (doc) => {
-        const parts = doc._raw.sourceFileDir.split("/");
-        return parts.length > 1 ? parts[1] : "unknown";
-      }
-    },
-    // id can be the path or just the slug if slugs are unique per language
-    id: {
-      type: "string",
-      resolve: (doc) => doc._raw.flattenedPath
-    }
-  }
-}));
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
   documentTypes: [BlogPost, PythonTutorial],
-  // Removed TutorialPost
   mdx: {
     remarkPlugins: [],
     rehypePlugins: []
@@ -90,7 +58,6 @@ var contentlayer_config_default = makeSource({
 export {
   BlogPost,
   PythonTutorial,
-  TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-XUW3UQV2.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-XOAO4XM5.mjs.map
