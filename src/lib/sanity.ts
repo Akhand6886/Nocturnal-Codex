@@ -3,14 +3,21 @@ import {createClient, type SanityClient, type SanityDocument} from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url';
 import type { Image } from 'sanity'; // Import the Image type from Sanity
 
+// Function to sanitize projectId
+function sanitizeProjectId(id?: string): string | undefined {
+  if (!id) return undefined;
+  return id.toLowerCase().replace(/_/g, '-');
+}
+
 // Replace these with your actual project ID and dataset from sanity.io/manage
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'YOUR_PROJECT_ID';
+const rawProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+export const projectId = sanitizeProjectId(rawProjectId) || 'your-project-id'; // Corrected placeholder format and sanitization
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-08-20'; // Use a recent API version
 
-if (!projectId || projectId === 'YOUR_PROJECT_ID') {
+if (!rawProjectId || rawProjectId === 'your-project-id' || projectId === 'your-project-id') {
   console.warn(
-    `Sanity project ID is not set. Please update NEXT_PUBLIC_SANITY_PROJECT_ID in your .env file or replace 'YOUR_PROJECT_ID' directly in sanity.ts and sanity.config.ts.`
+    `Sanity project ID is not set or is using the default placeholder. Please update NEXT_PUBLIC_SANITY_PROJECT_ID in your .env file. The ID used is: ${projectId}`
   );
 }
 if (!dataset) {
@@ -23,7 +30,7 @@ if (!dataset) {
 export const client: SanityClient = createClient({
   projectId,
   dataset,
-  apiVersion, 
+  apiVersion,
   useCdn: process.env.NODE_ENV === 'production', // Use CDN in production, false in development for fresher data
 });
 
@@ -45,7 +52,8 @@ export interface SanityPost extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string; // ISO date string
-  author?: string; // Assuming author is a simple string for now
+  updatedDate?: string; // Added from blog/[slug] page, maps to _updatedAt
+  author?: string;
   excerpt?: string;
   mainImage?: Image & { alt?: string; dataAiHint?: string; caption?: string };
   tags?: string[];
