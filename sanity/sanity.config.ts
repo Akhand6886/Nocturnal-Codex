@@ -2,21 +2,34 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {post} from './schemas/post' // We will create this schema next
+import {post} from './schemas/post'
 
-// Function to sanitize projectId
+// Function to sanitize projectId (ensure it's robust)
 function sanitizeProjectId(id?: string): string | undefined {
   if (!id) return undefined;
-  return id.toLowerCase().replace(/[^a-z0-9-]/g, '-'); // Ensure only valid characters
+  let sanitized = id.toLowerCase();
+  sanitized = sanitized.replace(/[^a-z0-9-]+/g, '-'); // Allow hyphens, replace others
+  sanitized = sanitized.replace(/-+/g, '-');          // Collapse multiple hyphens
+  sanitized = sanitized.replace(/^-+|-+$/g, '');       // Remove leading/trailing hyphens
+  return sanitized === '' ? undefined : sanitized;
 }
 
-// Replace these with your actual project ID and dataset
 const rawProjectIdFromEnv = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const projectId = sanitizeProjectId(rawProjectIdFromEnv) || 'hxzbjy6y'; // Updated placeholder
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
+const defaultProjectId = '0tkhb307'; // Updated default
+const datasetFromEnv = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const defaultDataset = 'production';
+
+const projectId = sanitizeProjectId(rawProjectIdFromEnv) || defaultProjectId;
+const dataset = datasetFromEnv || defaultDataset;
+
+if ((!rawProjectIdFromEnv || rawProjectIdFromEnv === 'your-sanity-project-id' || rawProjectIdFromEnv === '0tkhb307') && process.env.NODE_ENV !== 'test' && projectId === defaultProjectId) {
+  console.warn(
+    `Sanity Studio Config Warning: NEXT_PUBLIC_SANITY_PROJECT_ID is not set or uses a placeholder. Falling back to default projectId: "${defaultProjectId}" for Studio. Ensure environment variables are correctly set.`
+  );
+}
 
 export default defineConfig({
-  basePath: '/studio', // This will be the path to your Sanity Studio in the Next.js app
+  basePath: '/studio',
   name: 'nocturnal_codex_studio',
   title: 'Nocturnal Codex Studio',
 
@@ -25,10 +38,10 @@ export default defineConfig({
 
   plugins: [
     structureTool(),
-    visionTool() // Vision tool for querying data in the Studio
+    visionTool()
   ],
 
   schema: {
-    types: [post], // Add your schemas here
+    types: [post],
   },
 })
