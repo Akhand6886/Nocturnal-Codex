@@ -5,6 +5,7 @@ import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, type SanityPost } from "@/lib/sanity"; // Adjusted import path for client and SanityPost type
 import Link from "next/link";
 import type { Metadata } from 'next';
+import imageUrlBuilder from '@sanity/image-url'; // Added this import
 
 // Retaining existing revalidate and metadata functions
 export const revalidate = 60; 
