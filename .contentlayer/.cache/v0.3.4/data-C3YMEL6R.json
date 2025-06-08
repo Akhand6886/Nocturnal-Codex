@@ -21,7 +21,7 @@
         "type": "PythonTutorial",
         "url": "/tutorial/python/datatypes"
       },
-      "documentHash": "1749303348511",
+      "documentHash": "1749308920165",
       "hasWarnings": false,
       "documentTypeName": "PythonTutorial"
     },
@@ -46,7 +46,7 @@
         "type": "PythonTutorial",
         "url": "/tutorial/python/functions"
       },
-      "documentHash": "1749303348511",
+      "documentHash": "1749308920166",
       "hasWarnings": false,
       "documentTypeName": "PythonTutorial"
     },
@@ -71,7 +71,7 @@
         "type": "PythonTutorial",
         "url": "/tutorial/python/introduction"
       },
-      "documentHash": "1749303348511",
+      "documentHash": "1749308920166",
       "hasWarnings": false,
       "documentTypeName": "PythonTutorial"
     },
@@ -96,7 +96,7 @@
         "type": "PythonTutorial",
         "url": "/tutorial/python/introduction-to-python"
       },
-      "documentHash": "1749303348511",
+      "documentHash": "1749308920166",
       "hasWarnings": false,
       "documentTypeName": "PythonTutorial"
     },
@@ -121,7 +121,7 @@
         "type": "PythonTutorial",
         "url": "/tutorial/python/loops"
       },
-      "documentHash": "1749303348516",
+      "documentHash": "1749308920166",
       "hasWarnings": false,
       "documentTypeName": "PythonTutorial"
     },
@@ -146,7 +146,7 @@
         "type": "PythonTutorial",
         "url": "/tutorial/python/variables"
       },
-      "documentHash": "1749303348516",
+      "documentHash": "1749308920166",
       "hasWarnings": false,
       "documentTypeName": "PythonTutorial"
     }

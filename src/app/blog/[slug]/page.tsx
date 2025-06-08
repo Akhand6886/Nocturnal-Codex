@@ -1,6 +1,6 @@
 
 import { PortableText, type SanityDocument } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url/lib/common"; // Corrected import for types
+// Corrected import for types
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, type SanityPost } from "@/lib/sanity"; // Adjusted import path for client and SanityPost type
 import Link from "next/link";
