@@ -1,7 +1,7 @@
 
 import {createClient, type SanityClient, type SanityDocument} from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url';
-import type { Image } from 'sanity'; // Import the Image type from Sanity
+import type { Image } from 'sanity';
 
 // Function to sanitize projectId
 function sanitizeProjectId(id?: string): string | undefined {
@@ -16,47 +16,61 @@ function sanitizeProjectId(id?: string): string | undefined {
   // Remove leading and trailing hyphens.
   sanitized = sanitized.replace(/^-+|-+$/g, '');
 
-  if (sanitized === '') return undefined; // If sanitization results in empty, treat as invalid
+  if (sanitized === '') return undefined;
   return sanitized;
 }
 
 const rawProjectIdFromEnv = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const fallbackProjectId = 'hxzbjy6y';
-export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
-export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-08-20';
+const fallbackProjectId = 'hxzbjy6y'; // User-provided project ID
+const rawDatasetFromEnv = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const fallbackDataset = 'production'; // User-confirmed dataset name
+
+export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-01-01'; // Updated API version
 
 let projectIdToUse = sanitizeProjectId(rawProjectIdFromEnv);
+let projectIdSource = 'environment variable';
 
 if (!projectIdToUse) {
   projectIdToUse = fallbackProjectId;
-  if (process.env.NODE_ENV !== 'test' && rawProjectIdFromEnv && rawProjectIdFromEnv.trim() !== '') {
-    // Warn only if there was an attempt to set it via env var but it was invalid
-    console.warn(
-      `Sanity project ID from environment variable NEXT_PUBLIC_SANITY_PROJECT_ID ("${rawProjectIdFromEnv}") was invalid after sanitization. Using fallback project ID: "${fallbackProjectId}". Ensure NEXT_PUBLIC_SANITY_PROJECT_ID is correctly set.`
-    );
-  } else if (!rawProjectIdFromEnv && process.env.NODE_ENV !== 'test') {
-    // Warn if env var was not set at all
-     console.warn(
-      `Sanity project ID from environment variable NEXT_PUBLIC_SANITY_PROJECT_ID is not set. Using fallback project ID: "${fallbackProjectId}". Ensure NEXT_PUBLIC_SANITY_PROJECT_ID is correctly set in your .env file and deployment environment.`
-    );
+  projectIdSource = 'fallback';
+  if (process.env.NODE_ENV !== 'test') {
+    if (rawProjectIdFromEnv && rawProjectIdFromEnv.trim() !== '') {
+      console.warn(
+        `[Sanity Client Setup] Sanitized Project ID from NEXT_PUBLIC_SANITY_PROJECT_ID ("${rawProjectIdFromEnv}") was invalid. Using fallback: "${fallbackProjectId}".`
+      );
+    } else {
+      console.log(
+        `[Sanity Client Setup] NEXT_PUBLIC_SANITY_PROJECT_ID not set or empty. Using fallback Project ID: "${fallbackProjectId}".`
+      );
+    }
   }
 }
 
+export const dataset = rawDatasetFromEnv || fallbackDataset;
+const datasetSource = rawDatasetFromEnv ? 'environment variable' : 'fallback';
 
 export const projectId = projectIdToUse;
+
+if (process.env.NODE_ENV !== 'test') {
+  console.log(`[Sanity Client Initializing With]
+    Project ID: ${projectId} (Source: ${projectIdSource})
+    Dataset:    ${dataset} (Source: ${datasetSource})
+    API Version: ${apiVersion}
+    Use CDN: ${process.env.NODE_ENV === 'production'}`);
+}
 
 export const client: SanityClient = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: process.env.NODE_ENV === 'production', // Use CDN in production, false in development for fresher data
+  useCdn: false, // As per user request
 });
 
 const builder = imageUrlBuilder(client);
 
 export function urlFor(source: Image | undefined | null) {
   if (!source || !source.asset) {
-    return undefined; 
+    return undefined;
   }
   return builder.image(source);
 }
@@ -65,8 +79,8 @@ export interface SanityPost extends SanityDocument {
   _id: string;
   title: string;
   slug: { current: string };
-  publishedAt: string; 
-  updatedDate?: string; 
+  publishedAt: string;
+  updatedDate?: string;
   author?: string;
   excerpt?: string;
   mainImage?: Image & { alt?: string; dataAiHint?: string; caption?: string };
@@ -75,5 +89,6 @@ export interface SanityPost extends SanityDocument {
   seriesId?: string;
   seriesOrder?: number;
   featured?: boolean;
-  body?: any[]; 
+  body?: any[];
+  image?: Image & { alt?: string; dataAiHint?: string; caption?: string }; // Added from user's post page snippet
 }
