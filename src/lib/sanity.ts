@@ -8,37 +8,37 @@ function sanitizeProjectId(id?: string): string | undefined {
   if (!id || typeof id !== 'string' || id.trim() === '') return undefined;
 
   let sanitized = id.toLowerCase();
-  // Replace any character that is not a-z, 0-9, or hyphen with a hyphen.
-  // Multiple invalid characters in a row become a single hyphen.
-  sanitized = sanitized.replace(/[^a-z0-9-]+/g, '-');
-  // Collapse multiple hyphens into one.
-  sanitized = sanitized.replace(/-+/g, '-');
+  // Replace any character that is not a-z, 0-9 with a hyphen.
+  // Handles sequences of invalid chars as a single hyphen.
+  sanitized = sanitized.replace(/[^a-z0-9]+/g, '-');
   // Remove leading and trailing hyphens.
   sanitized = sanitized.replace(/^-+|-+$/g, '');
 
-  if (sanitized === '') return undefined;
+  if (sanitized === '') return undefined; // Return undefined if sanitization results in empty string
   return sanitized;
 }
 
 const rawProjectIdFromEnv = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const fallbackProjectId = 'hxzbjy6y'; // User-provided project ID
+const fallbackProjectId = '0tkhb307'; // Updated fallback Project ID
 const rawDatasetFromEnv = process.env.NEXT_PUBLIC_SANITY_DATASET;
-const fallbackDataset = 'production'; // User-confirmed dataset name
+const fallbackDataset = 'production';
 
-export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-01-01'; // Updated API version
+export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-01-01';
 
 let projectIdToUse = sanitizeProjectId(rawProjectIdFromEnv);
-let projectIdSource = 'environment variable';
+let projectIdSource = 'environment variable NEXT_PUBLIC_SANITY_PROJECT_ID';
 
 if (!projectIdToUse) {
-  projectIdToUse = fallbackProjectId;
-  projectIdSource = 'fallback';
+  projectIdToUse = fallbackProjectId; // Sanitization of fallback is not strictly needed if it's always valid
+  projectIdSource = 'fallback value';
   if (process.env.NODE_ENV !== 'test') {
     if (rawProjectIdFromEnv && rawProjectIdFromEnv.trim() !== '') {
+      // This case means the env var was set but sanitized to an empty/invalid string
       console.warn(
         `[Sanity Client Setup] Sanitized Project ID from NEXT_PUBLIC_SANITY_PROJECT_ID ("${rawProjectIdFromEnv}") was invalid. Using fallback: "${fallbackProjectId}".`
       );
     } else {
+      // This case means the env var was not set or was empty
       console.log(
         `[Sanity Client Setup] NEXT_PUBLIC_SANITY_PROJECT_ID not set or empty. Using fallback Project ID: "${fallbackProjectId}".`
       );
@@ -46,24 +46,40 @@ if (!projectIdToUse) {
   }
 }
 
-export const dataset = rawDatasetFromEnv || fallbackDataset;
-const datasetSource = rawDatasetFromEnv ? 'environment variable' : 'fallback';
+
+let datasetToUse = rawDatasetFromEnv;
+let datasetSource = 'environment variable NEXT_PUBLIC_SANITY_DATASET';
+
+if(!datasetToUse) {
+  datasetToUse = fallbackDataset;
+  datasetSource = 'fallback value';
+   if (process.env.NODE_ENV !== 'test') {
+    console.log(
+        `[Sanity Client Setup] NEXT_PUBLIC_SANITY_DATASET not set or empty. Using fallback Dataset: "${fallbackDataset}".`
+      );
+   }
+}
+
 
 export const projectId = projectIdToUse;
+export const dataset = datasetToUse;
 
+
+// Log the final values being used, especially during development/build
 if (process.env.NODE_ENV !== 'test') {
   console.log(`[Sanity Client Initializing With]
     Project ID: ${projectId} (Source: ${projectIdSource})
     Dataset:    ${dataset} (Source: ${datasetSource})
     API Version: ${apiVersion}
-    Use CDN: ${process.env.NODE_ENV === 'production'}`);
+    Use CDN: false`); // Updated useCdn to false as per previous request
 }
+
 
 export const client: SanityClient = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false, // As per user request
+  useCdn: false, // Set to false for fresh data, true for cached data (production)
 });
 
 const builder = imageUrlBuilder(client);
@@ -80,15 +96,15 @@ export interface SanityPost extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string;
-  updatedDate?: string;
+  updatedDate?: string; // from Sanity _updatedAt
   author?: string;
   excerpt?: string;
   mainImage?: Image & { alt?: string; dataAiHint?: string; caption?: string };
+  image?: Image & { alt?: string; dataAiHint?: string; caption?: string }; // Added this from user's code
   tags?: string[];
   category?: string;
   seriesId?: string;
   seriesOrder?: number;
   featured?: boolean;
-  body?: any[];
-  image?: Image & { alt?: string; dataAiHint?: string; caption?: string }; // Added from user's post page snippet
+  body?: any[]; // Portable Text
 }
