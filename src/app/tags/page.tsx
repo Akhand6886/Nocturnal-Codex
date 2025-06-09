@@ -1,24 +1,31 @@
 
-import { allBlogPosts } from "contentlayer/generated";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Tag } from "lucide-react";
+import { Tag as TagIcon } from "lucide-react"; // Renamed to avoid conflict
+import { client } from '@/lib/sanity';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const revalidate = 60;
+
+export const metadata: Metadata = {
   title: "All Tags | Nocturnal Codex",
   description: "Browse content by tags on Nocturnal Codex.",
 };
 
+async function getAllTags(): Promise<string[]> {
+  const query = `array::unique(*[_type == "post" && defined(tags) && count(tags) > 0].tags[])`;
+  const tags = await client.fetch<string[]>(query);
+  return tags.filter(Boolean).sort((a, b) => a.localeCompare(b));
+}
+
 export default async function TagsPage() {
-  const allTags = Array.from(
-    new Set(allBlogPosts.flatMap((post) => post.tags || []))
-  ).sort((a, b) => a.localeCompare(b));
+  const allTags = await getAllTags();
 
   return (
     <div className="space-y-10">
       <header className="pb-6 border-b border-border">
         <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
-          <Tag className="mr-4 h-10 w-10 text-primary" />
+          <TagIcon className="mr-4 h-10 w-10 text-primary" />
           All Tags
         </h1>
         <p className="mt-3 text-lg text-muted-foreground">

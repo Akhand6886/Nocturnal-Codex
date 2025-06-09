@@ -1,9 +1,9 @@
 
 import { MetadataRoute } from 'next';
-import { allBlogPosts } from 'contentlayer/generated';
 import { MOCK_THINK_TANK_ARTICLES, MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from '@/lib/data';
+import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'; // Ensure you have NEXT_PUBLIC_SITE_URL in .env
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/blog',
     '/contact',
     '/tags',
-    '/categories', // Added categories page
+    '/categories',
     '/think-tank',
     '/topics',
     '/wiki',
@@ -23,9 +23,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '/' ? 1 : 0.8,
   }));
 
-  const blogPosts = allBlogPosts.map((post) => ({
+  // Fetch blog posts from Sanity
+  const sanityPostsQuery = `*[_type == "post" && defined(slug.current) && defined(publishedAt)]{ "slug": slug.current, "publishedAt": publishedAt, "updatedDate": _updatedAt }`;
+  const sanityBlogPosts = await client.fetch<Array<{ slug: string; publishedAt: string; updatedDate: string }>>(sanityPostsQuery);
+  
+  const blogPosts = sanityBlogPosts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.date).toISOString(),
+    lastModified: new Date(post.updatedDate || post.publishedAt).toISOString(),
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
@@ -58,20 +62,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const uniqueTags = Array.from(
-    new Set(allBlogPosts.flatMap((post) => post.tags || []))
-  );
-  const tagDetailPages = uniqueTags.map((tag) => ({
+  // Fetch unique tags from Sanity
+  const tagsQuery = `array::unique(*[_type == "post" && defined(tags) && count(tags) > 0].tags[])`;
+  const uniqueTagsFromSanity = await client.fetch<string[]>(tagsQuery);
+  const tagDetailPages = uniqueTagsFromSanity.filter(Boolean).map((tag) => ({
     url: `${BASE_URL}/tags/${encodeURIComponent(tag.toLowerCase())}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
     priority: 0.5,
   }));
 
-  const uniqueCategories = Array.from(
-    new Set(allBlogPosts.map((post) => post.category).filter(Boolean as any as (value: string | undefined) => value is string))
-  );
-  const categoryDetailPages = uniqueCategories.map((category) => ({
+  // Fetch unique categories from Sanity
+  const categoriesQuery = `array::unique(*[_type == "post" && defined(category)].category)`;
+  const uniqueCategoriesFromSanity = await client.fetch<string[]>(categoriesQuery);
+  const categoryDetailPages = uniqueCategoriesFromSanity.filter(Boolean).map((category) => ({
     url: `${BASE_URL}/categories/${encodeURIComponent(category.toLowerCase().replace(/\s+/g, '-'))}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
@@ -86,6 +90,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...topicPages,
     ...languagePages,
     ...tagDetailPages,
-    ...categoryDetailPages, // Added category detail pages
+    ...categoryDetailPages,
   ];
 }

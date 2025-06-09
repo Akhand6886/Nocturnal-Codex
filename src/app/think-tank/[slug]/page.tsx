@@ -1,16 +1,17 @@
 
-import { MOCK_THINK_TANK_ARTICLES } from "@/lib/data"; // MOCK_BLOG_POSTS removed as blog data comes from Contentlayer
+import { MOCK_THINK_TANK_ARTICLES } from "@/lib/data";
 import type { ThinkTankArticle } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import Image from "next/image";
-import { Users, CalendarDays, Tag, FileText, Sigma, Link as LinkIcon } from "lucide-react";
+import { Users, CalendarDays, Tag as TagIcon, FileText, Sigma, Link as LinkIconLucide } from "lucide-react"; // Renamed Tag and Link
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
-import { allBlogPosts } from 'contentlayer/generated'; // Import Contentlayer blog posts
+import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client
+import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -47,22 +48,36 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
 
   const relatedArticles: RelatedArticle[] = [];
   if (article.tags && article.tags.length > 0) {
+    // Related Think Tank articles (mock data)
     MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
       if (otherArticle.id !== article.id && otherArticle.tags && otherArticle.tags.some(tag => article.tags!.includes(tag))) {
-        if (relatedArticles.length < 3 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
+        if (relatedArticles.length < 2 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) { // Limit to 2 from mock
           relatedArticles.push({ title: otherArticle.title, slug: otherArticle.slug, type: 'think-tank', excerpt: otherArticle.abstract });
         }
       }
     });
-    // Use Contentlayer's allBlogPosts for related blog content
-    allBlogPosts.forEach(otherPost => { 
-      if (otherPost.tags && article.tags!.some(tag => otherPost.tags!.includes(tag))) {
-        if (relatedArticles.length < 5 && !relatedArticles.find(ra => ra.slug === otherPost.slug && ra.type === 'blog')) {
-          relatedArticles.push({ title: otherPost.title, slug: otherPost.slug, type: 'blog', excerpt: otherPost.excerpt });
-        }
+
+    // Related Blog posts (from Sanity)
+    const sanityBlogQuery = `*[_type == "post" && count(tags[@ in $articleTags]) > 0 && _id != $currentArticleId] | order(publishedAt desc) [0...3] {
+      title, "slug": slug.current, excerpt
+    }`;
+    const relatedSanityPosts = await client.fetch<Array<Pick<SanityPost, 'title' | 'slug' | 'excerpt'>>>(
+      sanityBlogQuery, 
+      { articleTags: article.tags, currentArticleId: "" } // currentArticleId isn't relevant for blog posts, but Sanity needs defined params
+    );
+
+    relatedSanityPosts.forEach(otherPost => {
+      if (relatedArticles.length < 5 && otherPost.slug) { // Ensure slug exists
+         relatedArticles.push({ 
+            title: otherPost.title, 
+            slug: otherPost.slug, 
+            type: 'blog', 
+            excerpt: otherPost.excerpt 
+        });
       }
     });
   }
+
 
   return (
     <div className="max-w-4xl mx-auto py-8">
@@ -83,7 +98,7 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
           </div>
            {article.tags && article.tags.length > 0 && (
             <div className="flex flex-wrap items-center gap-2 pt-2">
-              <Tag className="h-4 w-4 text-muted-foreground" />
+              <TagIcon className="h-4 w-4 text-muted-foreground" />
               {article.tags.map((tag) => (
                 <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
               ))}
@@ -96,8 +111,8 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
             <Image 
               src={article.imageUrl} 
               alt={article.title} 
-              fill // layout="fill" is deprecated, use fill
-              style={{objectFit: "cover"}} // objectFit becomes a style property
+              fill 
+              style={{objectFit: "cover"}} 
               priority 
               data-ai-hint={article.dataAiHint || "research concept"}
             />
@@ -132,7 +147,7 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
       {relatedArticles.length > 0 && (
         <section className="mt-16 pt-8 border-t border-border">
           <h2 className="text-2xl font-semibold mb-6 text-foreground flex items-center">
-            <LinkIcon className="h-6 w-6 mr-3 text-primary" />
+            <LinkIconLucide className="h-6 w-6 mr-3 text-primary" />
             Related Content
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -146,7 +161,7 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
   );
 }
 
-export async function generateMetadata({ params }: ThinkTankArticlePageProps) {
+export async function generateMetadata({ params }: ThinkTankArticlePageProps): Promise<Metadata> {
   const article = MOCK_THINK_TANK_ARTICLES.find((a) => a.slug === params.slug);
   if (!article) {
     return { title: "Article Not Found | Nocturnal Codex" };
