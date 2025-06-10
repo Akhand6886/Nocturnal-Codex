@@ -1,3 +1,4 @@
+
 {
   "name": "nextn",
   "version": "0.1.0",
@@ -78,6 +79,9 @@
     "@babel/types": "^7.24.7",
     "@inquirer/core": "^4.0.0",
     "@inquirer/prompts": "^5.1.2",
-    "@inquirer/type": "^2.0.0"
+    "@inquirer/type": "^2.0.0",
+    "@sanity/visual-editing": {
+      "@sanity/client": "^6.15.0"
+    }
   }
 }
