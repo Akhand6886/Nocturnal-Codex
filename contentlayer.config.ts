@@ -29,8 +29,7 @@ export const PythonTutorial = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [PythonTutorial], // Only PythonTutorial is left
-  mdx: { 
-    remarkPlugins: [], 
-    rehypePlugins: [],
-  },
+  // The mdx block is removed as PythonTutorial uses contentType: "markdown"
+  // and no other document types are currently using MDX.
 })
+

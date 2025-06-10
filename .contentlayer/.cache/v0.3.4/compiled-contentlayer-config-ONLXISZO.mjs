@@ -29,15 +29,13 @@ var PythonTutorial = defineDocumentType(() => ({
 }));
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
-  documentTypes: [PythonTutorial],
+  documentTypes: [PythonTutorial]
   // Only PythonTutorial is left
-  mdx: {
-    remarkPlugins: [],
-    rehypePlugins: []
-  }
+  // The mdx block is removed as PythonTutorial uses contentType: "markdown"
+  // and no other document types are currently using MDX.
 });
 export {
   PythonTutorial,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-C3YMEL6R.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-ONLXISZO.mjs.map
