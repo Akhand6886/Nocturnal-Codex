@@ -2,9 +2,8 @@
 
 import tutorials__python__datatypesMd from './tutorials__python__datatypes.md.json' assert { type: 'json' }
 import tutorials__python__functionsMd from './tutorials__python__functions.md.json' assert { type: 'json' }
-import tutorials__python__introMd from './tutorials__python__intro.md.json' assert { type: 'json' }
 import tutorials__python__introductionMd from './tutorials__python__introduction.md.json' assert { type: 'json' }
 import tutorials__python__loopsMd from './tutorials__python__loops.md.json' assert { type: 'json' }
 import tutorials__python__variablesMd from './tutorials__python__variables.md.json' assert { type: 'json' }
 
-export const allPythonTutorials = [tutorials__python__datatypesMd, tutorials__python__functionsMd, tutorials__python__introMd, tutorials__python__introductionMd, tutorials__python__loopsMd, tutorials__python__variablesMd]
+export const allPythonTutorials = [tutorials__python__datatypesMd, tutorials__python__functionsMd, tutorials__python__introductionMd, tutorials__python__loopsMd, tutorials__python__variablesMd]
