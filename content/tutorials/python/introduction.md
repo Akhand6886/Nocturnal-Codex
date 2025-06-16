@@ -7,7 +7,7 @@ description: "A brief overview of Python, its history, and why it's a popular ch
 
 ## What is Python?
 
-Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.
+Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace LOL.
 
 ## Key Features
 
