@@ -11,7 +11,7 @@ export interface Topic {
   longDescription?: string;
   imageUrl?: string;
   dataAiHint?: string;
-  category?: string; 
+  category?: string;
   subtopics?: SubTopic[];
   tutorials?: Tutorial[];
   references?: WikiArticleStub[];
@@ -208,6 +208,41 @@ print(add(3))      # Output: 8
 print(add(3, 7))   # Output: 10
 \`\`\`
         `
+      },
+      {
+        id: "python-decorators-deep-dive",
+        title: "Python Decorators Deep Dive",
+        content: `
+### Understanding Decorators
+Decorators are a powerful and expressive feature in Python that allow you to modify or enhance functions and methods in a clean and readable way. They are a form of metaprogramming.
+
+### Use Cases
+- Logging function calls
+- Access control and authentication
+- Caching results
+- Adding instrumentation
+
+### Example: A Simple Logging Decorator
+\`\`\`python
+import functools
+
+def log_calls(func):
+    @functools.wraps(func) # Preserves original function metadata
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} returned: {result}")
+        return result
+    return wrapper
+
+@log_calls
+def add(a, b):
+    return a + b
+
+add(5, 3)
+\`\`\`
+This provides a more in-depth look at decorators, complementing the new tutorial.
+        `
       }
     ],
     codeSnippets: [
@@ -343,6 +378,7 @@ export const MOCK_TOPICS: Topic[] = [
       {id: "sorting", slug: "sorting", name: "Sorting Algorithms", description: "Techniques for arranging data in a specific order."},
       {id: "graphs", slug: "graphs", name: "Graph Theory", description: "Study of networks and relationships between objects."},
       {id: "dp", slug: "dynamic-programming", name: "Dynamic Programming", description: "Optimization technique by breaking down problems."},
+      {id: "complexity-analysis", slug: "complexity-analysis", name: "Complexity Analysis", description: "Understanding how algorithms scale with input size, using notations like Big O."}
     ],
     tutorials: [
       {id: "tut-algo-1", title: "Introduction to Big O Notation", url: "#", sourceName: "CS Dojo"},
@@ -353,6 +389,23 @@ export const MOCK_TOPICS: Topic[] = [
     ],
     codeSnippets: [
       {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        # ... (merge logic)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n", description: "A classic divide-and-conquer sorting algorithm."},
+      {
+        id: "cs-algo-bigo-example",
+        title: "Big O Notation Example (Linear Time)",
+        language: "python",
+        code:
+      `def find_element(arr, target):
+    # O(n) - Linear time complexity
+    for element in arr:
+        if element == target:
+            return True
+    return False
+
+my_list = [1, 2, 3, 4, 5]
+print(find_element(my_list, 3)) # True
+print(find_element(my_list, 6)) # False`,
+        description: "Illustrates an algorithm with O(n) time complexity."
+      }
     ]
   },
   {
@@ -475,3 +528,6 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
+
+
+    
