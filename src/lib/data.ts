@@ -354,7 +354,7 @@ Java is a robust, object-oriented language known for its platform independence a
 - **Rich API:** Provides a comprehensive standard library for various tasks.
 - **Concurrency Support:** Built-in support for multithreaded programming.
 - **Security:** Designed with security features like a sandbox environment.
-  \`,
+\`,
     keyFeatures: [
       { id: "platform-independent", name: "Platform Independent", description: "Compile once, run on any JVM-enabled device.", icon: "Globe" },
       { id: "object-oriented", name: "Object-Oriented", description: "Embraces encapsulation, inheritance, and polymorphism.", icon: "Blocks" },
@@ -474,7 +474,26 @@ Bundling data (attributes) and methods that operate on the data within a single 
       }
     ],
     codeSnippets: [
-      { id: "java-class-example", title: "Simple Java Class", language: "java", code: \`public class Vehicle {\n    String modelName;\n    int year;\n\n    public Vehicle(String model, int yr) {\n        modelName = model;\n        year = yr;\n    }\n\n    public void displayInfo() {\n        System.out.println("Model: " + modelName + ", Year: " + year);\n    }\n\n    public static void main(String[] args) {\n        Vehicle car = new Vehicle("SedanX", 2023);\n        car.displayInfo();\n    }\n}\`, description: "A basic example of a class with a constructor and a method."}
+      { id: "java-class-example", title: "Simple Java Class", language: "java", code: \`
+public class Vehicle {
+    String modelName;
+    int year;
+
+    public Vehicle(String model, int yr) {
+        modelName = model;
+        year = yr;
+    }
+
+    public void displayInfo() {
+        System.out.println("Model: " + modelName + ", Year: " + year);
+    }
+
+    public static void main(String[] args) {
+        Vehicle car = new Vehicle("SedanX", 2023);
+        car.displayInfo();
+    }
+}
+\`, description: "A basic example of a class with a constructor and a method."}
     ],
     tutorials: [
       { id: "java-tut-oracle", title: "Oracle Java Tutorials", url: "https://docs.oracle.com/javase/tutorial/", sourceName: "Oracle"},
@@ -499,7 +518,8 @@ Bundling data (attributes) and methods that operate on the data within a single 
     category: "Systems Programming",
     mainContent: \`
 ## C++: Performance and Control
-C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.\`
+C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.
+\`
   },
   {
     id: "csharp",
@@ -511,7 +531,8 @@ C++ is a general-purpose programming language created by Bjarne Stroustrup as an
     category: "Microsoft Ecosystem",
     mainContent: \`
 ## C#: Versatile and Modern
-C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem.\`
+C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem.
+\`
   },
    {
     id: "typescript",
@@ -523,7 +544,8 @@ C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C
     category: "Web Development",
     mainContent: \`
 ## TypeScript: JavaScript That Scales
-TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.\`
+TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.
+\`
   },
   {
     id: "c",
@@ -535,7 +557,8 @@ TypeScript is a strongly typed programming language that builds on JavaScript, g
     category: "Systems Programming",
     mainContent: \`
 ## C: The Bedrock of Modern Computing
-The C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.\`
+The C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.
+\`
   },
   {
     id: "sql",
@@ -547,7 +570,8 @@ The C programming language is a general-purpose, procedural computer programming
     category: "Databases",
     mainContent: \`
 ## SQL: Querying Your Data
-SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS).\`
+SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS).
+\`
   },
   {
     id: "php",
@@ -559,7 +583,8 @@ SQL (Structured Query Language) is a domain-specific language used in programmin
     category: "Web Development",
     mainContent: \`
 ## PHP: Powering the Web
-PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.\`
+PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.
+\`
   },
   {
     id: "html",
@@ -571,7 +596,8 @@ PHP is a popular general-purpose scripting language that is especially suited to
     category: "Web Development",
     mainContent: \`
 ## HTML: The Structure of Web Pages
-HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.\`
+HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
+\`
   },
   {
     id: "css",
@@ -583,7 +609,8 @@ HTML (HyperText Markup Language) is the standard markup language for documents d
     category: "Web Development",
     mainContent: \`
 ## CSS: Styling the Web
-Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.\`
+Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.
+\`
   }
 ];
 
@@ -628,13 +655,40 @@ export const MOCK_TOPICS: Topic[] = [
       {id: "wiki-big-o", slug: "big-o-notation", title: "Big O Notation"}
     ],
     codeSnippets: [
-      {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        # ... (merge logic)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n", description: "A classic divide-and-conquer sorting algorithm."},
+      {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: \`
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+        merge_sort(L)
+        merge_sort(R)
+        # ... (merge logic)
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+\`, description: "A classic divide-and-conquer sorting algorithm."},
       {
         id: "cs-algo-bigo-example",
         title: "Big O Notation Example (Linear Time)",
         language: "python",
         code:
-      \`def find_element(arr, target):
+      \`
+def find_element(arr, target):
     # O(n) - Linear time complexity
     for element in arr:
         if element == target:
@@ -643,7 +697,8 @@ export const MOCK_TOPICS: Topic[] = [
 
 my_list = [1, 2, 3, 4, 5]
 print(find_element(my_list, 3)) # True
-print(find_element(my_list, 6)) # False\`,
+print(find_element(my_list, 6)) # False
+\`,
         description: "Illustrates an algorithm with O(n) time complexity."
       }
     ]
@@ -900,11 +955,6 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
- 
     
 
     
-
-    
-
-
