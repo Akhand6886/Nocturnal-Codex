@@ -241,8 +241,8 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
                         <CardHeader>
                             <CardTitle className="text-xl text-primary">Official Documentation</CardTitle>
                         </CardHeader>
-                        <CardContent className="p-6">
-                            <Button asChild variant="default" className="bg-primary hover:bg-primary/90 w-full lg:w-auto">
+                        <CardContent className="p-6 flex justify-center items-center">
+                            <Button asChild variant="default" className="bg-primary hover:bg-primary/90">
                                 <Link href={language.officialDocumentationUrl} target="_blank" rel="noopener noreferrer">
                                     View Documentation <ExternalLink className="ml-2 h-4 w-4"/>
                                 </Link>
