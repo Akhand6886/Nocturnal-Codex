@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { List, ChevronRight, PanelLeft, BookOpen, Code2, GraduationCap, Lightbulb, FolderOpen } from 'lucide-react';
+import { List, ChevronRight, PanelLeft, FileText, Star, Workflow, BookOpen, Code2, GraduationCap, Users, Lightbulb } from 'lucide-react';
 import {
   SidebarProvider,
   Sidebar,
@@ -25,21 +25,24 @@ interface LanguagePageLayoutProps extends PropsWithChildren {
 }
 
 export function LanguagePageLayout({ children, language }: LanguagePageLayoutProps) {
-  const pathname = usePathname(); // Gets the full path without hash
+  const pathname = usePathname(); // Gets the full path, e.g., /languages/python
 
-  // Construct base path for language page
   const baseLanguagePath = `/languages/${language.slug}`;
 
+  // Define sidebar navigation items based on available content in the language object
   const sidebarNavItems = [
-    ...(language.mainContent ? [{ title: 'Introduction', href: `${baseLanguagePath}#introduction`, icon: BookOpen, id: 'introduction' }] : []),
-    ...(language.sections && language.sections.length > 0 ? [{ title: 'Core Concepts', href: `${baseLanguagePath}#core-concepts`, icon: FolderOpen, id: 'core-concepts' }] : []),
-    ...(language.codeSnippets && language.codeSnippets.length > 0 ? [{ title: 'Examples', href: `${baseLanguagePath}#examples`, icon: Code2, id: 'examples' }] : []),
-    ...(language.tutorials && language.tutorials.length > 0 ? [{ title: 'Quick Tutorials', href: `${baseLanguagePath}#tutorials`, icon: GraduationCap, id: 'tutorials' }] : []),
-    ...((language.relatedWikiArticles && language.relatedWikiArticles.length > 0) || language.officialDocumentationUrl ? [{ title: 'Resources', href: `${baseLanguagePath}#resources`, icon: Lightbulb, id: 'resources' }] : []),
+    ...(language.mainContent ? [{ id: 'introduction', title: 'Introduction', href: `${baseLanguagePath}#introduction`, icon: FileText }] : []),
+    ...(language.keyFeatures && language.keyFeatures.length > 0 ? [{ id: 'key-features', title: 'Key Features', href: `${baseLanguagePath}#key-features`, icon: Star }] : []),
+    ...(language.useCases && language.useCases.length > 0 ? [{ id: 'use-cases', title: 'Use Cases', href: `${baseLanguagePath}#use-cases`, icon: Workflow }] : []),
+    ...(language.sections && language.sections.length > 0 ? [{ id: 'core-concepts', title: 'Core Concepts', href: `${baseLanguagePath}#core-concepts`, icon: BookOpen }] : []),
+    ...(language.codeSnippets && language.codeSnippets.length > 0 ? [{ id: 'code-examples', title: 'Code Examples', href: `${baseLanguagePath}#code-examples`, icon: Code2 }] : []),
+    ...(language.tutorials && language.tutorials.length > 0 ? [{ id: 'learning-resources', title: 'Learning Resources', href: `${baseLanguagePath}#learning-resources`, icon: GraduationCap }] : []),
+    ...((language.officialDocumentationUrl || (language.communityLinks && language.communityLinks.length > 0)) ? [{ id: 'documentation-community', title: 'Docs & Community', href: `${baseLanguagePath}#documentation-community`, icon: Users }] : []),
+    ...(language.relatedWikiArticles && language.relatedWikiArticles.length > 0 ? [{ id: 'related-content', title: 'Related Content', href: `${baseLanguagePath}#related-content`, icon: Lightbulb }] : []),
   ];
   
   const fullTutorialSeriesLink = language.slug === 'python' 
-    ? { title: 'Full Python Tutorial Series', href: '/tutorial/python', icon: GraduationCap, isPrimary: true, id: 'full-python-tutorials' }
+    ? { title: 'Full Python Tutorial Series', href: '/tutorial/python', icon: GraduationCap, id: 'full-python-tutorials' }
     : null;
 
 
@@ -54,17 +57,16 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
           <SidebarHeader className="p-4 border-b border-sidebar-border">
             <h3 className="text-lg font-semibold flex items-center text-sidebar-primary">
               <List className="mr-2 h-5 w-5" />
-              {language.name} Topics
+              {language.name} Sections
             </h3>
           </SidebarHeader>
           <SidebarContent className="p-0">
             <ScrollArea className="h-full p-4">
               <SidebarMenu>
                 {sidebarNavItems.map((item) => {
-                  // Check if current pathname (without hash) + item's hash matches the item's full href
                   const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
                   return (
-                    <SidebarMenuItem key={item.title}>
+                    <SidebarMenuItem key={item.id}>
                       <Link href={item.href} legacyBehavior passHref>
                         <SidebarMenuButton
                           isActive={isActive}
@@ -85,7 +87,7 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
                      <SidebarMenuItem className="mt-2 pt-2 border-t border-sidebar-border/50">
                         <Link href={fullTutorialSeriesLink.href} legacyBehavior passHref>
                             <SidebarMenuButton
-                            isActive={pathname.startsWith(fullTutorialSeriesLink.href)} // Active if on any page within python tutorials
+                            isActive={pathname.startsWith(fullTutorialSeriesLink.href)} 
                             className={cn(
                                 'w-full justify-start text-sm font-medium',
                                 pathname.startsWith(fullTutorialSeriesLink.href) ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'text-sidebar-primary hover:bg-sidebar-primary/90 hover:text-sidebar-primary-foreground'
@@ -112,7 +114,7 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
              <SidebarHeader className="p-4 border-b border-sidebar-border">
                 <h3 className="text-lg font-semibold flex items-center text-sidebar-primary">
                   <List className="mr-2 h-5 w-5" />
-                  {language.name} Topics
+                  {language.name} Sections
                 </h3>
             </SidebarHeader>
             <SidebarContent className="p-0">
@@ -121,7 +123,7 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
                       {sidebarNavItems.map((item) => {
                       const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
                       return (
-                          <SidebarMenuItem key={item.title}>
+                          <SidebarMenuItem key={item.id}>
                             <Link href={item.href} legacyBehavior passHref>
                                 <SidebarMenuButton
                                   isActive={isActive}
@@ -130,9 +132,7 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
                                       isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold' : 'text-sidebar-foreground hover:bg-sidebar-accent/80 hover:text-sidebar-accent-foreground'
                                   )}
                                   onClick={() => {
-                                    // For mobile, ensure sheet closes after navigation.
-                                    // This might need to be handled by the Sidebar component itself via context.
-                                    // For now, let's assume the Sheet component in ui/sidebar.tsx closes on link clicks.
+                                    // This assumes the Sheet component in ui/sidebar.tsx closes on link clicks or state change.
                                   }}
                                 >
                                 {item.icon && <item.icon className={cn("mr-2.5 h-4 w-4 flex-shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground group-hover/menu-button:text-sidebar-primary")} />}
@@ -167,13 +167,13 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
         </div>
 
         <SidebarInset className="flex-grow min-w-0 bg-background">
-          <div className="p-4 md:hidden">
+          <div className="p-4 md:hidden sticky top-0 bg-background/80 backdrop-blur-md z-10 border-b border-border"> {/* Mobile trigger and sticky for visibility */}
             <SidebarTrigger className="border border-border bg-card hover:bg-muted">
               <PanelLeft className="h-5 w-5" />
               <span className="ml-2">{language.name} Menu</span>
             </SidebarTrigger>
           </div>
-          <div className="p-1 md:p-0">
+          <div className="p-4 md:p-6 lg:p-8"> {/* Adjusted padding for content area */}
             {children}
           </div>
         </SidebarInset>

@@ -74,29 +74,42 @@ export interface ThinkTankArticle extends ThinkTankArticleStub {
   dataAiHint?: string;
 }
 
-export interface LanguageSection {
-  id: string;
+export interface LanguageSection { // Represents Core Concepts or detailed aspects
+  id: string; // slug-like, for URL hash
   title: string;
   content: string; // Markdown
   codeSnippets?: CodeSnippetItem[];
   tutorials?: Tutorial[];
 }
 
+export interface KeyFeature {
+    id: string;
+    name: string;
+    description: string;
+    icon?: string; // Lucide icon name, optional
+}
+
 export interface ProgrammingLanguage {
   id: string;
   slug: string;
   name: string;
-  description: string;
+  description: string; // Short description for tiles/lists
   iconUrl: string;
   dataAiHint: string;
   category?: string;
-  longDescription?: string;
-  mainContent?: string; // Markdown for Introduction/Overview
-  sections?: LanguageSection[];
-  tutorials?: Tutorial[]; // General tutorials
-  codeSnippets?: CodeSnippetItem[]; // General examples
+  longDescription?: string; // Longer intro for the language page header
+  mainContent?: string; // Markdown for detailed Introduction/Overview section
+  keyFeatures?: KeyFeature[];
+  useCases?: string[];
+  paradigms?: string[];
+  typing?: string; // e.g., "Dynamically Typed", "Statically Typed"
+  version?: string; // Current stable version or relevant version info
+  sections?: LanguageSection[]; // For Core Concepts or other detailed sections
+  tutorials?: Tutorial[]; // General tutorials for a dedicated "Tutorials" section
+  codeSnippets?: CodeSnippetItem[]; // General examples for a dedicated "Examples" section
   relatedWikiArticles?: WikiArticleStub[];
   officialDocumentationUrl?: string;
+  communityLinks?: Array<{ name: string, url: string, type: 'forum' | 'discord' | 'subreddit' | 'other' }>;
 }
 
 export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
@@ -105,36 +118,65 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     slug: "python",
     name: "Python",
     description: "Versatile for web, data science, AI, and scripting.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://placehold.co/64x64.png", // Replace with actual Python logo if possible
     dataAiHint: "python logo",
     category: "General Purpose",
-    longDescription: "Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant indentation. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.",
+    longDescription: "Python is an interpreted, high-level and general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python aims to help programmers write clear, logical code for small and large-scale projects.",
     officialDocumentationUrl: "https://docs.python.org/3/",
     mainContent: `
-# Introduction to Python
+# Welcome to the World of Python
 
-Python is a versatile and widely-used programming language known for its simplicity and readability. 
-It was created by Guido van Rossum and first released in 1991.
+Python stands out for its simplicity and readability, making it an excellent choice for beginners and a powerful tool for experts. Created by Guido van Rossum and first released in 1991, Python's ecosystem has grown immensely, supporting a vast array of applications.
 
-## Key Features:
-- **Easy to Learn:** Python has a simple syntax similar to the English language.
-- **Interpreted:** Python is processed at runtime by the interpreter. You do not need to compile your program before executing it.
-- **Cross-platform:** Python can run on various platforms like Windows, Mac, Linux, Raspberry Pi, etc.
-- **Extensive Libraries:** Python has a rich set of standard libraries and a vast ecosystem of third-party packages (e.g., NumPy, Pandas, Django, Flask).
-- **Object-Oriented:** Python supports object-oriented programming principles.
-- **Dynamically Typed:** You don't need to declare variable types.
+## Why Python?
+- **Ease of Learning:** Its syntax is designed to be intuitive and closely resembles plain English.
+- **Vast Libraries:** A rich standard library and an extensive collection of third-party packages (like NumPy, Pandas for data science, Django and Flask for web development) accelerate development.
+- **Versatility:** From web servers and data analysis to machine learning and automation, Python is a jack-of-all-trades.
+- **Strong Community:** A large, active global community means abundant resources, tutorials, and support.
+- **Cross-Platform:** Python programs can run on Windows, macOS, Linux, and other platforms without modification.
     `,
-    sections: [
+    keyFeatures: [
+        { id: "readability", name: "High Readability", description: "Clean syntax emphasizes readability, reducing the cost of program maintenance.", icon: " الكتابة"}, // Placeholder, replace with actual Lucide icon name
+        { id: "libraries", name: "Extensive Standard Library", description: "Offers a wide range of modules and functions for various tasks, often called 'batteries included'.", icon: "Library"},
+        { id: "dynamic-typing", name: "Dynamic Typing", description: "Variable types are checked at runtime, offering flexibility during development.", icon: "Type"},
+        { id: "interprete", name: "Interpreted Language", description: "Code is executed line by line, simplifying debugging and prototyping.", icon: "PlayCircle"},
+        { id: "oop", name: "Object-Oriented", description: "Supports object-oriented programming paradigms, allowing for modular and reusable code.", icon: "Box"},
+    ],
+    useCases: [
+        "Web Development (Django, Flask, FastAPI)",
+        "Data Science & Machine Learning (NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch)",
+        "Automation & Scripting",
+        "Artificial Intelligence & Natural Language Processing",
+        "Scientific Computing & Research",
+        "Software Testing",
+        "Game Development (Pygame)",
+    ],
+    paradigms: ["Object-Oriented", "Imperative", "Functional", "Procedural"],
+    typing: "Dynamically Typed, Strong Typing",
+    version: "Python 3.x is the current standard",
+    sections: [ // These are for "Core Concepts"
       {
         id: "basic-syntax",
         title: "Basic Syntax",
         content: `
+Python's syntax is designed for clarity.
+
 ### Variables and Data Types
+Variables are created when you assign a value to them. Python has several built-in data types:
+- **Numbers**: \`int\`, \`float\`, \`complex\`
+- **Strings**: \`str\` (e.g., \`"Hello"\`, \`'World'\`)
+- **Booleans**: \`bool\` (\`True\`, \`False\`)
+- **Sequences**: \`list\`, \`tuple\`, \`range\`
+- **Mappings**: \`dict\`
+- **Sets**: \`set\`, \`frozenset\`
+
 \`\`\`python
-name = "Alice"  # String
-age = 30       # Integer
-height = 5.5   # Float
-is_student = False # Boolean
+name = "Alice"      # str
+age = 30           # int
+height = 5.5       # float
+is_student = False # bool
+numbers = [1, 2, 3]  # list
+person = {"name": "Bob", "age": 25} # dict
 \`\`\`
 ### Comments
 Comments start with a \`#\`, and Python will ignore them:
@@ -142,23 +184,15 @@ Comments start with a \`#\`, and Python will ignore them:
 # This is a single-line comment
 print("Hello, World!") 
 \`\`\`
-### Print Output
-Use the \`print()\` function to output data to the standard output device.
-\`\`\`python
-print("Hello, Python!")
-x = 10
-print(f"The value of x is {x}") # Using f-strings (formatted string literals)
-\`\`\`
         `,
-        codeSnippets: [
-            { id: "py-var", title: "Variable Declaration", language: "python", code: 'name = "Bob"\nage = 25\npi = 3.14159', description: "Basic variable assignments."}
-        ]
       },
       {
         id: "control-flow",
         title: "Control Flow",
         content: `
-### If-Else Statements
+Control flow statements direct the order of execution.
+
+### Conditional Statements (\`if\`, \`elif\`, \`else\`)
 \`\`\`python
 x = 10
 if x > 5:
@@ -168,16 +202,17 @@ elif x == 5:
 else:
     print("x is less than 5")
 \`\`\`
-### For Loops
+### Loops (\`for\`, \`while\`)
+**For Loops** are used for iterating over a sequence:
 \`\`\`python
 fruits = ["apple", "banana", "cherry"]
 for fruit in fruits:
     print(fruit)
 
-for i in range(5):  # 0 to 4
+for i in range(5):  # Iterates from 0 to 4
     print(i)
 \`\`\`
-### While Loops
+**While Loops** repeat as long as a condition is true:
 \`\`\`python
 count = 0
 while count < 3:
@@ -185,27 +220,26 @@ while count < 3:
     count += 1
 \`\`\`
         `,
-        codeSnippets: [
-             { id: "py-loop", title: "For Loop Example", language: "python", code: 'for i in range(3):\n    print(f"Iteration {i+1}")', description: "Iterating with a for loop."}
-        ]
       },
       {
         id: "functions",
         title: "Functions",
         content: `
-Functions are defined using the \`def\` keyword.
+Functions are blocks of reusable code, defined using the \`def\` keyword.
 \`\`\`python
 def greet(name):
+    """This function greets the person passed in as a parameter."""
     return f"Hello, {name}!"
 
 message = greet("Pythonista")
-print(message)
+print(message)  # Output: Hello, Pythonista!
 
-def add(a, b=5): # b has a default value
+# Functions can have default arguments
+def add(a, b=5):
     return a + b
 
-print(add(3))      # Output: 8
-print(add(3, 7))   # Output: 10
+print(add(3))      # Output: 8 (uses default b=5)
+print(add(3, 7))   # Output: 10 (overrides default b)
 \`\`\`
         `
       },
@@ -214,46 +248,54 @@ print(add(3, 7))   # Output: 10
         title: "Python Decorators Deep Dive",
         content: `
 ### Understanding Decorators
-Decorators are a powerful and expressive feature in Python that allow you to modify or enhance functions and methods in a clean and readable way. They are a form of metaprogramming.
+Decorators are a powerful and expressive feature in Python that allow you to modify or enhance functions and methods in a clean and readable way. They are a form of metaprogramming, where one function takes another function and extends its behavior without explicitly modifying it.
 
 ### Use Cases
-- Logging function calls
-- Access control and authentication
-- Caching results
-- Adding instrumentation
+- Logging function calls and their arguments/return values.
+- Enforcing access control and authentication.
+- Caching the results of expensive function calls.
+- Adding instrumentation for performance monitoring.
+- Implementing frameworks and APIs (e.g., route handling in web frameworks).
 
 ### Example: A Simple Logging Decorator
 \`\`\`python
 import functools
 
 def log_calls(func):
-    @functools.wraps(func) # Preserves original function metadata
+    @functools.wraps(func) # Preserves original function metadata (name, docstring, etc.)
     def wrapper(*args, **kwargs):
-        print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")
+        print(f"Calling function '{func.__name__}' with arguments: {args}, keyword arguments: {kwargs}")
         result = func(*args, **kwargs)
-        print(f"{func.__name__} returned: {result}")
+        print(f"Function '{func.__name__}' returned: {result}")
         return result
     return wrapper
 
 @log_calls
 def add(a, b):
+    """Adds two numbers."""
     return a + b
 
-add(5, 3)
+sum_result = add(5, 3)
+# Output will show logs before and after the add function call
 \`\`\`
-This provides a more in-depth look at decorators, complementing the new tutorial.
+This example demonstrates how a decorator can wrap around the \`add\` function to log its execution details.
         `
       }
     ],
-    codeSnippets: [
-        { id: "py-hello", title: "Hello World in Python", language: "python", code: 'print("Hello, World!")', description: "The quintessential first program."}
+    codeSnippets: [ // General examples for the language
+        { id: "py-hello-world", title: "Hello World in Python", language: "python", code: 'print("Hello, World!")', description: "The quintessential first program demonstrating basic output."}
     ],
-    tutorials: [
-        { id: "py-tut-1", title: "Official Python Tutorial", url: "https://docs.python.org/3/tutorial/", sourceName: "Python Software Foundation"},
-        { id: "py-tut-2", title: "Python for Beginners", url: "#", sourceName: "Real Python (example)"}
+    tutorials: [ // General tutorials list
+        { id: "py-tut-official", title: "Official Python Tutorial", url: "https://docs.python.org/3/tutorial/", sourceName: "Python Software Foundation"},
+        { id: "py-tut-realpython", title: "Python for Beginners on Real Python", url: "https://realpython.com/learning-paths/python3-introduction/", sourceName: "Real Python"}
     ],
     relatedWikiArticles: [
-        {id: "wiki-pep8", slug: "pep-8-style-guide", title: "PEP 8 Style Guide"},
+        {id: "wiki-pep8", slug: "pep-8-style-guide", title: "PEP 8 - Python Style Guide"},
+        {id: "wiki-python-history", slug: "python-history", title: "History of Python"},
+    ],
+    communityLinks: [
+        { name: "Python Forum", url: "https://discuss.python.org/", type: "forum"},
+        { name: "r/Python Subreddit", url: "https://www.reddit.com/r/Python/", type: "subreddit"}
     ]
   },
   {
@@ -263,7 +305,32 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Essential for web development, front-end and back-end.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "javascript logo",
-    category: "Web Development"
+    category: "Web Development",
+    longDescription: "JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification. It is a cornerstone technology of the World Wide Web, alongside HTML and CSS.",
+    mainContent: `
+# Exploring JavaScript
+JavaScript (JS) is a versatile programming language primarily known as the scripting language for Web pages, but it's also used in many non-browser environments thanks to Node.js.
+
+## Key Aspects:
+- **Client-Side Scripting:** Dynamically update content, control multimedia, animate images, and much more.
+- **Server-Side Development:** With Node.js, JavaScript can be used to build scalable network applications.
+- **Asynchronous Nature:** Features like Promises and async/await make handling asynchronous operations elegant.
+- **Rich Ecosystem:** A vast number of frameworks and libraries (React, Angular, Vue, Express, etc.) simplify development.
+`,
+    keyFeatures: [
+      { id: "dynamic", name: "Dynamic and Interpreted", description: "Executed directly by the browser or Node.js runtime.", icon: "Zap"},
+      { id: "prototype-based", name: "Prototype-based OOP", description: "Uses prototypes for inheritance rather than classes (though ES6 classes are syntactic sugar).", icon: "Share2"},
+      { id: "single-threaded", name: "Single-threaded Event Loop", description: "Manages asynchronous operations efficiently without blocking the main thread.", icon: "RefreshCw"},
+    ],
+    useCases: [
+      "Interactive Front-End Web Development (React, Vue, Angular)",
+      "Server-Side Web Applications (Node.js, Express.js)",
+      "Mobile App Development (React Native, Ionic)",
+      "Desktop App Development (Electron)",
+      "Game Development (Phaser, PixiJS)",
+    ],
+    typing: "Dynamically Typed, Weakly Typed",
+    paradigms: ["Event-Driven", "Functional", "Object-Oriented (Prototype-based)"],
   },
   {
     id: "java",
@@ -272,7 +339,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Enterprise-level applications, Android development.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "java logo",
-    category: "Enterprise"
+    category: "Enterprise",
+    mainContent: "# Java: Write Once, Run Anywhere\nJava is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation."
   },
   {
     id: "cplusplus",
@@ -281,7 +349,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "High-performance systems, game development, OS.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "cplusplus logo",
-    category: "Systems Programming"
+    category: "Systems Programming",
+    mainContent: "# C++: Performance and Control\nC++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation."
   },
   {
     id: "csharp",
@@ -290,7 +359,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Windows apps, game dev (Unity), web with .NET.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "csharp logo",
-    category: "Microsoft Ecosystem"
+    category: "Microsoft Ecosystem",
+    mainContent: "# C#: Versatile and Modern\nC# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem."
   },
    {
     id: "typescript",
@@ -299,7 +369,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "JavaScript superset adding static types for large apps.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "typescript logo",
-    category: "Web Development"
+    category: "Web Development",
+    mainContent: "# TypeScript: JavaScript That Scales\nTypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS."
   },
   {
     id: "c",
@@ -308,7 +379,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Foundation for many languages, OS, embedded systems.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "c logo",
-    category: "Systems Programming"
+    category: "Systems Programming",
+    mainContent: "# C: The Bedrock of Modern Computing\nThe C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions."
   },
   {
     id: "sql",
@@ -317,7 +389,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Standard language for managing relational databases.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "sql logo",
-    category: "Databases"
+    category: "Databases",
+    mainContent: "# SQL: Querying Your Data\nSQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)."
   },
   {
     id: "php",
@@ -326,7 +399,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Server-side scripting language for web development.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "php logo",
-    category: "Web Development"
+    category: "Web Development",
+    mainContent: "# PHP: Powering the Web\nPHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world."
   },
   {
     id: "html",
@@ -335,7 +409,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Standard markup language for creating web pages.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "html logo",
-    category: "Web Development"
+    category: "Web Development",
+    mainContent: "# HTML: The Structure of Web Pages\nHTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript."
   },
   {
     id: "css",
@@ -344,7 +419,8 @@ This provides a more in-depth look at decorators, complementing the new tutorial
     description: "Style sheet language for describing web page presentation.",
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "css logo",
-    category: "Web Development"
+    category: "Web Development",
+    mainContent: "# CSS: Styling the Web\nCascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript."
   }
 ];
 
@@ -386,6 +462,7 @@ export const MOCK_TOPICS: Topic[] = [
     ],
     references: [
       {id: "wiki-clrs", slug: "clrs-summary", title: "CLRS Summary Notes"},
+      {id: "wiki-big-o", slug: "big-o-notation", title: "Big O Notation"}
     ],
     codeSnippets: [
       {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        # ... (merge logic)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n", description: "A classic divide-and-conquer sorting algorithm."},
@@ -467,7 +544,7 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "Big O Notation",
     category: "Algorithms",
     lastUpdated: "2024-07-01T12:00:00Z",
-    content: "# Big O Notation\n\nBig O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. In computer science, it is used to classify algorithms according to how their run time or space requirements grow as the input size grows.\n\n## Common Complexities\n- O(1): Constant time\n- O(log n): Logarithmic time\n- O(n): Linear time\n- O(n log n): Linearithmic time\n- O(n^2): Quadratic time\n- O(2^n): Exponential time"
+    content: "# Big O Notation\n\nBig O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. In computer science, it is used to classify algorithms according to how their run time or space requirements grow as the input size grows.\n\n## Common Complexities\n- **O(1)**: Constant time - The algorithm takes the same amount of time regardless of the input size.\n- **O(log n)**: Logarithmic time - Time increases logarithmically with input size (e.g., binary search).\n- **O(n)**: Linear time - Time increases linearly with input size (e.g., iterating through a list).\n- **O(n log n)**: Linearithmic time - Common in efficient sorting algorithms (e.g., merge sort, quicksort).\n- **O(n^2)**: Quadratic time - Time increases with the square of the input size (e.g., nested loops over the same collection).\n- **O(2^n)**: Exponential time - Time doubles with each addition to the input size (e.g., some recursive algorithms without memoization).\n- **O(n!)**: Factorial time - Time increases factorially, often seen in permutations.\n\nUnderstanding Big O is crucial for writing efficient and scalable code."
   },
   {
     id: "2",
@@ -475,7 +552,7 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "Turing Machines",
     category: "Theory of Computation",
     lastUpdated: "2024-05-20T09:00:00Z",
-    content: "# Turing Machines\n\nA Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules. Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm, and is particularly useful in explaining the functions of a CPU inside a computer.\n\n## Components\n1. A tape divided into cells.\n2. A head that can read and write symbols on the tape and move left or right.\n3. A state register that stores the state of the Turing machine.\n4. A finite table of instructions."
+    content: "# Turing Machines\n\nA Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules. Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm, and is particularly useful in explaining the functions of a CPU inside a computer.\n\n## Components\n1.  **Tape**: An infinitely long strip divided into cells. Each cell can hold one symbol from a finite alphabet.\n2.  **Head**: Can read the symbol in the current cell, write a new symbol, and move one cell to the left or right.\n3.  **State Register**: Stores the current state of the machine, chosen from a finite set of states.\n4.  **Transition Function (Finite Table of Instructions)**: Given the current state and the symbol under the head, it dictates:\n    *   The symbol to write on the tape.\n    *   How to move the head (left, right, or stay).\n    *   The next state of the machine.\n\nTuring machines are fundamental to the study of computability and complexity theory."
   },
   {
     id: "wiki-pep8", // Added for Python page linking
@@ -483,7 +560,15 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "PEP 8 Style Guide for Python Code",
     category: "Programming Practices",
     lastUpdated: "2024-02-15T10:00:00Z",
-    content: "# PEP 8 - Style Guide for Python Code\n\nPEP 8, sometimes spelled PEP8 or PEP-8, is a document that provides guidelines and best practices on how to write Python code. It was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan. The primary focus of PEP 8 is to improve the readability and consistency of Python code.\n\nKey areas covered:\n- Code lay-out (indentation, tabs vs. spaces, line length)\n- Naming conventions (variables, functions, classes)\n- Comments and docstrings\n- Programming recommendations"
+    content: "# PEP 8 - Style Guide for Python Code\n\nPEP 8, sometimes spelled PEP8 or PEP-8, is a document that provides guidelines and best practices on how to write Python code. It was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan. The primary focus of PEP 8 is to improve the readability and consistency of Python code.\n\n## Key areas covered by PEP 8:\n\n- **Code Lay-out**: Indentation (4 spaces per level), tabs vs. spaces (spaces are preferred), maximum line length (79 characters for code, 72 for docstrings/comments), blank lines, source file encoding (UTF-8).\n- **String Quotes**: Consistency in using single or double quotes.\n- **Whitespace in Expressions and Statements**: Proper use of spaces around operators and after commas.\n- **Comments**: Block comments, inline comments, and documentation strings (docstrings).\n- **Naming Conventions**: \`lowercase\` for functions and variables, \`CapWords\` for classes, \`UPPERCASE_WITH_UNDERSCORES\` for constants.\n- **Programming Recommendations**: Comparisons to singletons like \`None\` should always be done with \`is\` or \`is not\`, never with equality operators. Use \`isinstance()\` for type checking.\n\nAdhering to PEP 8 makes Python code more readable and maintainable across different projects and teams."
+  },
+  {
+    id: "wiki-python-history",
+    slug: "python-history",
+    title: "History of Python",
+    category: "Programming Languages",
+    lastUpdated: "2024-01-10T14:00:00Z",
+    content: "# History of Python\n\nPython was conceived in the late 1980s by Guido van Rossum at Centrum Wiskunde & Informatica (CWI) in the Netherlands as a successor to the ABC language (itself inspired by SETL), capable of exception handling and interfacing with the Amoeba operating system. Its implementation began in December 1989.\n\n- **Python 0.9.0** was released in February 1991.\n- **Python 1.0** was released in January 1994, with major new features including lambda, map, filter, and reduce.\n- **Python 2.0**, released in October 2000, introduced list comprehensions, garbage collection system capable of collecting reference cycles, and support for Unicode.\n- **Python 3.0** (also known as Python 3000 or Py3k), a major, backward-incompatible release, was released in December 2008 after a long period of testing. Many of its major features were backported to Python 2.6.x and 2.7.x version series.\n\nPython's philosophy emphasizes code readability and a syntax that allows programmers to express concepts in fewer lines of code than might be used in languages such as C++ or Java."
   }
 ];
 
@@ -528,6 +613,5 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
-
-
+ 
     
