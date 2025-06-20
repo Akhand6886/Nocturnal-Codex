@@ -124,19 +124,19 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     longDescription: "Python is an interpreted, high-level and general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python aims to help programmers write clear, logical code for small and large-scale projects.",
     officialDocumentationUrl: "https://docs.python.org/3/",
     mainContent: `
-# Welcome to the World of Python
+## Welcome to the World of Python
 
 Python stands out for its simplicity and readability, making it an excellent choice for beginners and a powerful tool for experts. Created by Guido van Rossum and first released in 1991, Python's ecosystem has grown immensely, supporting a vast array of applications.
 
-## Why Python?
+### Why Python?
 - **Ease of Learning:** Its syntax is designed to be intuitive and closely resembles plain English.
 - **Vast Libraries:** A rich standard library and an extensive collection of third-party packages (like NumPy, Pandas for data science, Django and Flask for web development) accelerate development.
-- **Versatility:** From web servers and data analysis to machine learning and automation, Python is a jack-of-all-trades.
+- **Versatility:** From web servers and data analysis to machine learning and automation, Python is highly versatile.
 - **Strong Community:** A large, active global community means abundant resources, tutorials, and support.
 - **Cross-Platform:** Python programs can run on Windows, macOS, Linux, and other platforms without modification.
     `,
     keyFeatures: [
-        { id: "readability", name: "High Readability", description: "Clean syntax emphasizes readability, reducing the cost of program maintenance.", icon: " الكتابة"}, // Placeholder, replace with actual Lucide icon name
+        { id: "readability", name: "High Readability", description: "Clean syntax emphasizes readability, reducing the cost of program maintenance.", icon: "Baseline"},
         { id: "libraries", name: "Extensive Standard Library", description: "Offers a wide range of modules and functions for various tasks, often called 'batteries included'.", icon: "Library"},
         { id: "dynamic-typing", name: "Dynamic Typing", description: "Variable types are checked at runtime, offering flexibility during development.", icon: "Type"},
         { id: "interprete", name: "Interpreted Language", description: "Code is executed line by line, simplifying debugging and prototyping.", icon: "PlayCircle"},
@@ -262,7 +262,7 @@ Decorators are a powerful and expressive feature in Python that allow you to mod
 import functools
 
 def log_calls(func):
-    @functools.wraps(func) # Preserves original function metadata (name, docstring, etc.)
+    @functools.wraps(func) # Preserves original function metadata
     def wrapper(*args, **kwargs):
         print(f"Calling function '{func.__name__}' with arguments: {args}, keyword arguments: {kwargs}")
         result = func(*args, **kwargs)
@@ -308,10 +308,10 @@ This example demonstrates how a decorator can wrap around the \`add\` function t
     category: "Web Development",
     longDescription: "JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification. It is a cornerstone technology of the World Wide Web, alongside HTML and CSS.",
     mainContent: `
-# Exploring JavaScript
+## Exploring JavaScript
 JavaScript (JS) is a versatile programming language primarily known as the scripting language for Web pages, but it's also used in many non-browser environments thanks to Node.js.
 
-## Key Aspects:
+### Key Aspects:
 - **Client-Side Scripting:** Dynamically update content, control multimedia, animate images, and much more.
 - **Server-Side Development:** With Node.js, JavaScript can be used to build scalable network applications.
 - **Asynchronous Nature:** Features like Promises and async/await make handling asynchronous operations elegant.
@@ -340,7 +340,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "java logo",
     category: "Enterprise",
-    mainContent: "# Java: Write Once, Run Anywhere\nJava is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation."
+    mainContent: "## Java: Write Once, Run Anywhere\nJava is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation."
   },
   {
     id: "cplusplus",
@@ -350,7 +350,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "cplusplus logo",
     category: "Systems Programming",
-    mainContent: "# C++: Performance and Control\nC++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation."
+    mainContent: "## C++: Performance and Control\nC++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation."
   },
   {
     id: "csharp",
@@ -360,7 +360,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "csharp logo",
     category: "Microsoft Ecosystem",
-    mainContent: "# C#: Versatile and Modern\nC# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem."
+    mainContent: "## C#: Versatile and Modern\nC# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem."
   },
    {
     id: "typescript",
@@ -370,7 +370,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "typescript logo",
     category: "Web Development",
-    mainContent: "# TypeScript: JavaScript That Scales\nTypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS."
+    mainContent: "## TypeScript: JavaScript That Scales\nTypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS."
   },
   {
     id: "c",
@@ -380,7 +380,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "c logo",
     category: "Systems Programming",
-    mainContent: "# C: The Bedrock of Modern Computing\nThe C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions."
+    mainContent: "## C: The Bedrock of Modern Computing\nThe C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions."
   },
   {
     id: "sql",
@@ -390,7 +390,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "sql logo",
     category: "Databases",
-    mainContent: "# SQL: Querying Your Data\nSQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)."
+    mainContent: "## SQL: Querying Your Data\nSQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)."
   },
   {
     id: "php",
@@ -400,7 +400,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "php logo",
     category: "Web Development",
-    mainContent: "# PHP: Powering the Web\nPHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world."
+    mainContent: "## PHP: Powering the Web\nPHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world."
   },
   {
     id: "html",
@@ -410,7 +410,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "html logo",
     category: "Web Development",
-    mainContent: "# HTML: The Structure of Web Pages\nHTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript."
+    mainContent: "## HTML: The Structure of Web Pages\nHTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript."
   },
   {
     id: "css",
@@ -420,7 +420,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "css logo",
     category: "Web Development",
-    mainContent: "# CSS: Styling the Web\nCascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript."
+    mainContent: "## CSS: Styling the Web\nCascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript."
   }
 ];
 
