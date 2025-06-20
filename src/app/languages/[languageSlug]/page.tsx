@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, ExternalLink, FileText, CheckCircle, Terminal, Users, Palette, Workflow, Star, Brain } from "lucide-react";
+import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, ExternalLink, FileText, CheckCircle, Terminal, Users, Palette, Workflow, Star, Brain, Globe, Blocks, ShieldCheck, Baseline } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import { Button } from "@/components/ui/button";
@@ -19,10 +19,10 @@ import { cn } from "@/lib/utils";
 const getLucideIcon = (iconName?: string): React.ElementType | null => {
   if (!iconName) return null;
   const icons: { [key: string]: React.ElementType } = {
-    CheckCircle, Terminal, Users, Palette, Workflow, Star, Library: BookOpen, Type: Brain, PlayCircle: Code2, Box: Lightbulb, // Map string names to actual Lucide components
-    // Add more icons as needed
+    CheckCircle, Terminal, Users, Palette, Workflow, Star, Library: BookOpen, Type: Brain, PlayCircle: Code2, Box: Lightbulb, Zap: Lightbulb, Share2: Users, RefreshCw: Workflow, // Example mappings, adjust as needed
+    Globe, Blocks, ShieldCheck, Baseline
   };
-  return icons[iconName] || null;
+  return icons[iconName] || Lightbulb; // Default to Lightbulb if not found
 };
 
 
@@ -57,11 +57,10 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
-    { label: "Languages", href: "/topics" }, // Assuming /topics lists languages or links to a dedicated language index
+    { label: "Languages", href: "/topics" }, 
     { label: language.name },
   ];
   
-  // Sections for the page, to be linked by sidebar
   const pageSections = [
     { id: "introduction", title: "Introduction", hasContent: !!language.mainContent },
     { id: "key-features", title: "Key Features", hasContent: !!language.keyFeatures && language.keyFeatures.length > 0 },
@@ -75,7 +74,7 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
 
 
   return (
-    <div className="py-2 px-2 md:py-6 md:px-0 max-w-5xl mx-auto"> {/* Adjusted padding and max-width */}
+    <div className="py-2 px-2 md:py-6 md:px-0 max-w-5xl mx-auto"> 
       <Breadcrumbs items={breadcrumbItems} className="mb-8" />
       
       <header className="pb-8 border-b border-border flex flex-col md:flex-row items-start gap-6 mb-12">
@@ -109,7 +108,6 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </Alert>
       )}
 
-      {/* Introduction Section */}
       {language.mainContent && (
         <section id="introduction" className="mb-16 scroll-mt-20">
           <h2 className="text-3xl font-semibold mb-6 pb-2 border-b-2 border-primary flex items-center"><FileText className="mr-3 h-7 w-7 text-primary" />Introduction to {language.name}</h2>
@@ -121,7 +119,6 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </section>
       )}
 
-      {/* Key Features Section */}
       {language.keyFeatures && language.keyFeatures.length > 0 && (
         <section id="key-features" className="mb-16 scroll-mt-20">
           <h2 className="text-3xl font-semibold mb-6 pb-2 border-b-2 border-primary flex items-center"><Star className="mr-3 h-7 w-7 text-primary" />Key Features</h2>
@@ -146,7 +143,6 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </section>
       )}
 
-      {/* Use Cases Section */}
       {language.useCases && language.useCases.length > 0 && (
         <section id="use-cases" className="mb-16 scroll-mt-20">
           <h2 className="text-3xl font-semibold mb-6 pb-2 border-b-2 border-primary flex items-center"><Workflow className="mr-3 h-7 w-7 text-primary" />Common Use Cases</h2>
@@ -160,13 +156,12 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </section>
       )}
 
-      {/* Core Concepts/Detailed Sections */}
       {language.sections && language.sections.length > 0 && (
         <section id="core-concepts" className="mb-16 scroll-mt-20">
             <h2 className="text-3xl font-semibold mb-8 pb-2 border-b-2 border-primary flex items-center"><BookOpen className="mr-3 h-7 w-7 text-primary" />Core Concepts</h2>
             <div className="space-y-8">
             {language.sections.map((section: LanguageSection) => (
-              <Card key={section.id} id={section.id} className="shadow-lg overflow-hidden">
+              <Card key={section.id} id={section.id} className="shadow-lg overflow-hidden scroll-mt-20">
                 <CardHeader className="bg-muted/30">
                   <CardTitle className="text-2xl text-foreground/90">{section.title}</CardTitle>
                 </CardHeader>
@@ -199,7 +194,6 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </section>
       )}
       
-      {/* Code Examples Section */}
       {language.codeSnippets && language.codeSnippets.length > 0 && (
         <section id="code-examples" className="mb-16 scroll-mt-20">
           <h2 className="text-3xl font-semibold mb-6 pb-2 border-b-2 border-primary flex items-center"><Code2 className="mr-3 h-7 w-7 text-primary" />Code Examples</h2>
@@ -211,7 +205,6 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </section>
       )}
 
-      {/* Learning Resources/Tutorials Section */}
       {language.tutorials && language.tutorials.length > 0 && (
         <section id="learning-resources" className="mb-16 scroll-mt-20">
           <h2 className="text-3xl font-semibold mb-6 pb-2 border-b-2 border-primary flex items-center"><GraduationCap className="mr-3 h-7 w-7 text-primary" />Learning Resources</h2>
@@ -231,7 +224,6 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </section>
       )}
       
-      {/* Documentation and Community Section */}
       {(language.officialDocumentationUrl || (language.communityLinks && language.communityLinks.length > 0)) && (
         <section id="documentation-community" className="mb-16 scroll-mt-20">
             <h2 className="text-3xl font-semibold mb-6 pb-2 border-b-2 border-primary flex items-center"><Users className="mr-3 h-7 w-7 text-primary" />Documentation & Community</h2>
@@ -268,7 +260,6 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
         </section>
       )}
 
-      {/* Related Content Section */}
       {language.relatedWikiArticles && language.relatedWikiArticles.length > 0 && (
         <section id="related-content" className="mb-16 scroll-mt-20">
             <h2 className="text-3xl font-semibold mb-6 pb-2 border-b-2 border-primary flex items-center"><Lightbulb className="mr-3 h-7 w-7 text-primary" />Related Content</h2>

@@ -118,7 +118,7 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     slug: "python",
     name: "Python",
     description: "Versatile for web, data science, AI, and scripting.",
-    iconUrl: "https://placehold.co/64x64.png", // Replace with actual Python logo if possible
+    iconUrl: "https://placehold.co/64x64.png", 
     dataAiHint: "python logo",
     category: "General Purpose",
     longDescription: "Python is an interpreted, high-level and general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python aims to help programmers write clear, logical code for small and large-scale projects.",
@@ -154,7 +154,7 @@ Python stands out for its simplicity and readability, making it an excellent cho
     paradigms: ["Object-Oriented", "Imperative", "Functional", "Procedural"],
     typing: "Dynamically Typed, Strong Typing",
     version: "Python 3.x is the current standard",
-    sections: [ // These are for "Core Concepts"
+    sections: [ 
       {
         id: "basic-syntax",
         title: "Basic Syntax",
@@ -282,10 +282,10 @@ This example demonstrates how a decorator can wrap around the \`add\` function t
         `
       }
     ],
-    codeSnippets: [ // General examples for the language
+    codeSnippets: [ 
         { id: "py-hello-world", title: "Hello World in Python", language: "python", code: 'print("Hello, World!")', description: "The quintessential first program demonstrating basic output."}
     ],
-    tutorials: [ // General tutorials list
+    tutorials: [ 
         { id: "py-tut-official", title: "Official Python Tutorial", url: "https://docs.python.org/3/tutorial/", sourceName: "Python Software Foundation"},
         { id: "py-tut-realpython", title: "Python for Beginners on Real Python", url: "https://realpython.com/learning-paths/python3-introduction/", sourceName: "Real Python"}
     ],
@@ -340,7 +340,154 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "java logo",
     category: "Enterprise",
-    mainContent: "## Java: Write Once, Run Anywhere\nJava is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation."
+    longDescription: "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA).",
+    officialDocumentationUrl: "https://docs.oracle.com/en/java/",
+    mainContent: `
+## Java: Write Once, Run Anywhere
+
+Java is a robust, object-oriented language known for its platform independence and extensive use in enterprise-level applications, large-scale systems, and Android mobile development.
+
+### Key Aspects:
+- **Platform Independence (WORA):** Java code is compiled into bytecode that runs on any device with a Java Virtual Machine (JVM).
+- **Object-Oriented:** Fully supports OOP principles like encapsulation, inheritance, and polymorphism.
+- **Strong Memory Management:** Features automatic garbage collection.
+- **Rich API:** Provides a comprehensive standard library for various tasks.
+- **Concurrency Support:** Built-in support for multithreaded programming.
+- **Security:** Designed with security features like a sandbox environment.
+  `,
+    keyFeatures: [
+      { id: "platform-independent", name: "Platform Independent", description: "Compile once, run on any JVM-enabled device.", icon: "Globe" },
+      { id: "object-oriented", name: "Object-Oriented", description: "Embraces encapsulation, inheritance, and polymorphism.", icon: "Blocks" },
+      { id: "robust", name: "Robust & Secure", description: "Strong memory management, exception handling, and security features.", icon: "ShieldCheck" },
+      { id: "multithreaded", name: "Multithreaded", description: "Built-in support for concurrent execution of tasks.", icon: "Users" },
+      { id: "large-ecosystem", name: "Large Ecosystem", description: "Vast collection of libraries, frameworks (e.g., Spring, Hibernate), and tools.", icon: "Library" }
+    ],
+    useCases: [
+      "Enterprise Applications (Spring Framework)",
+      "Android Mobile App Development",
+      "Big Data Technologies (Hadoop, Spark)",
+      "Web Servers and Application Servers",
+      "Scientific Applications",
+      "Financial Services Industry Software",
+      "Embedded Systems & IoT"
+    ],
+    paradigms: ["Object-Oriented", "Imperative", "Generic", "Concurrent"],
+    typing: "Statically Typed, Strong Typing",
+    version: "Java LTS (e.g., 11, 17, 21)",
+    sections: [
+      {
+        id: "java-basic-syntax",
+        title: "Basic Syntax and Structure",
+        content: \`
+Java syntax is similar to C++ but simplified to eliminate language features that cause common programming errors.
+
+### Hello World Example
+\`\`\`java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+\`\`\`
+
+### Variables and Data Types
+Java has primitive data types (\`int\`, \`float\`, \`boolean\`, \`char\`, etc.) and object types (classes).
+\`\`\`java
+int age = 30;
+double salary = 75000.50;
+boolean isActive = true;
+String name = "Java Developer"; // String is an object
+\`\`\`
+
+### Control Flow
+Java uses standard control flow statements:
+- **Conditional:** \`if\`, \`else if\`, \`else\`, \`switch\`
+- **Loops:** \`for\`, \`while\`, \`do-while\`
+
+\`\`\`java
+int number = 10;
+if (number % 2 == 0) {
+    System.out.println(number + " is even.");
+} else {
+    System.out.println(number + " is odd.");
+}
+
+for (int i = 0; i < 5; i++) {
+    System.out.println("Iteration: " + i);
+}
+\`\`\`
+      \`
+      },
+      {
+        id: "java-oop",
+        title: "Object-Oriented Programming (OOP) in Java",
+        content: \`
+Java is fundamentally object-oriented. Key OOP concepts include:
+
+### Classes and Objects
+A class is a blueprint for creating objects. An object is an instance of a class.
+\`\`\`java
+class Dog {
+    String name;
+    String breed;
+
+    public Dog(String name, String breed) {
+        this.name = name;
+        this.breed = breed;
+    }
+
+    void bark() {
+        System.out.println(name + " says: Woof!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog("Buddy", "Golden Retriever");
+        myDog.bark(); // Buddy says: Woof!
+    }
+}
+\`\`\`
+
+### Inheritance
+Allows a class (subclass) to inherit fields and methods from another class (superclass).
+\`\`\`java
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Cat extends Animal { // Cat inherits from Animal
+    void meow() {
+        System.out.println("Meow!");
+    }
+}
+\`\`\`
+
+### Polymorphism
+Allows objects of different classes to respond to the same method call in different ways.
+
+### Encapsulation
+Bundling data (attributes) and methods that operate on the data within a single unit (class), often with access control (public, private, protected).
+      \`
+      }
+    ],
+    codeSnippets: [
+      { id: "java-class-example", title: "Simple Java Class", language: "java", code: \`public class Vehicle {\n    String modelName;\n    int year;\n\n    public Vehicle(String model, int yr) {\n        modelName = model;\n        year = yr;\n    }\n\n    public void displayInfo() {\n        System.out.println("Model: " + modelName + ", Year: " + year);\n    }\n\n    public static void main(String[] args) {\n        Vehicle car = new Vehicle("SedanX", 2023);\n        car.displayInfo();\n    }\n}\`, description: "A basic example of a class with a constructor and a method."}
+    ],
+    tutorials: [
+      { id: "java-tut-oracle", title: "Oracle Java Tutorials", url: "https://docs.oracle.com/javase/tutorial/", sourceName: "Oracle"},
+      { id: "java-tut-baeldung", title: "Baeldung Java Tutorials", url: "https://www.baeldung.com/java-tutorial", sourceName: "Baeldung"}
+    ],
+    relatedWikiArticles: [
+      {id: "wiki-jvm", slug: "jvm-overview", title: "Java Virtual Machine (JVM)"},
+      {id: "wiki-garbage-collection", slug: "java-garbage-collection", title: "Garbage Collection in Java"},
+    ],
+    communityLinks: [
+      { name: "Stack Overflow (Java)", url: "https://stackoverflow.com/questions/tagged/java", type: "forum"},
+      { name: "r/java Subreddit", url: "https://www.reddit.com/r/java/", type: "subreddit"}
+    ]
   },
   {
     id: "cplusplus",
@@ -471,7 +618,7 @@ export const MOCK_TOPICS: Topic[] = [
         title: "Big O Notation Example (Linear Time)",
         language: "python",
         code:
-      `def find_element(arr, target):
+      \`def find_element(arr, target):
     # O(n) - Linear time complexity
     for element in arr:
         if element == target:
@@ -480,7 +627,7 @@ export const MOCK_TOPICS: Topic[] = [
 
 my_list = [1, 2, 3, 4, 5]
 print(find_element(my_list, 3)) # True
-print(find_element(my_list, 6)) # False`,
+print(find_element(my_list, 6)) # False\`,
         description: "Illustrates an algorithm with O(n) time complexity."
       }
     ]
@@ -555,7 +702,7 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     content: "# Turing Machines\n\nA Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules. Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm, and is particularly useful in explaining the functions of a CPU inside a computer.\n\n## Components\n1.  **Tape**: An infinitely long strip divided into cells. Each cell can hold one symbol from a finite alphabet.\n2.  **Head**: Can read the symbol in the current cell, write a new symbol, and move one cell to the left or right.\n3.  **State Register**: Stores the current state of the machine, chosen from a finite set of states.\n4.  **Transition Function (Finite Table of Instructions)**: Given the current state and the symbol under the head, it dictates:\n    *   The symbol to write on the tape.\n    *   How to move the head (left, right, or stay).\n    *   The next state of the machine.\n\nTuring machines are fundamental to the study of computability and complexity theory."
   },
   {
-    id: "wiki-pep8", // Added for Python page linking
+    id: "wiki-pep8", 
     slug: "pep-8-style-guide",
     title: "PEP 8 Style Guide for Python Code",
     category: "Programming Practices",
@@ -569,6 +716,22 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     category: "Programming Languages",
     lastUpdated: "2024-01-10T14:00:00Z",
     content: "# History of Python\n\nPython was conceived in the late 1980s by Guido van Rossum at Centrum Wiskunde & Informatica (CWI) in the Netherlands as a successor to the ABC language (itself inspired by SETL), capable of exception handling and interfacing with the Amoeba operating system. Its implementation began in December 1989.\n\n- **Python 0.9.0** was released in February 1991.\n- **Python 1.0** was released in January 1994, with major new features including lambda, map, filter, and reduce.\n- **Python 2.0**, released in October 2000, introduced list comprehensions, garbage collection system capable of collecting reference cycles, and support for Unicode.\n- **Python 3.0** (also known as Python 3000 or Py3k), a major, backward-incompatible release, was released in December 2008 after a long period of testing. Many of its major features were backported to Python 2.6.x and 2.7.x version series.\n\nPython's philosophy emphasizes code readability and a syntax that allows programmers to express concepts in fewer lines of code than might be used in languages such as C++ or Java."
+  },
+  {
+    id: "wiki-jvm",
+    slug: "jvm-overview",
+    title: "Java Virtual Machine (JVM)",
+    category: "Programming Languages",
+    lastUpdated: "2024-03-10T11:00:00Z",
+    content: "# Java Virtual Machine (JVM)\n\nThe Java Virtual Machine (JVM) is an abstract computing machine that enables a computer to run a Java program. When a Java program is compiled, it is compiled into an intermediate language called bytecode. The JVM translates this bytecode into machine code that can be executed by the computer's processor.\n\n## Key Functions:\n- **Loads code**\n- **Verifies code**\n- **Executes code**\n- **Provides runtime environment**\n\nKey components include the Classloader, Execution Engine, and Runtime Data Areas (Heap, Stack, Method Area, etc.). The JVM is a crucial part of the \"Write Once, Run Anywhere\" (WORA) capability of Java."
+  },
+  {
+    id: "wiki-garbage-collection",
+    slug: "java-garbage-collection",
+    title: "Garbage Collection in Java",
+    category: "Programming Languages",
+    lastUpdated: "2024-04-05T16:30:00Z",
+    content: "# Garbage Collection in Java\n\nGarbage Collection (GC) in Java is the process of automatically managing memory. It identifies and discards objects that are no longer needed by a program so that their resources can be reclaimed and reused.\n\n## How it Works (Simplified):\n1.  **Marking**: The garbage collector identifies which pieces of memory are in use and which are not.\n2.  **Sweeping/Deleting**: The garbage collector removes objects identified during the \"marking\" phase.\n3.  **Compacting** (Optional): After deleting unused objects, the memory can be compacted to reduce fragmentation.\n\nJava provides different garbage collection algorithms (e.g., Serial GC, Parallel GC, CMS GC, G1 GC, ZGC, Shenandoah) that offer different trade-offs in terms of pause times and throughput."
   }
 ];
 
