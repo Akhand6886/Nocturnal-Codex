@@ -1,4 +1,3 @@
-
 ---
 title: "Understanding Python Decorators"
 slug: "python-decorators"
@@ -64,5 +63,3 @@ print(greet.__doc__)  # Output: Greets a person. (thanks to @functools.wraps)
 ```
 
 Decorators are a very useful tool in Python for writing cleaner and more modular code.
-
-    
