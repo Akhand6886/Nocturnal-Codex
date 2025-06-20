@@ -123,7 +123,7 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     category: "General Purpose",
     longDescription: "Python is an interpreted, high-level and general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python aims to help programmers write clear, logical code for small and large-scale projects.",
     officialDocumentationUrl: "https://docs.python.org/3/",
-    mainContent: `
+    mainContent: \`
 ## Welcome to the World of Python
 
 Python stands out for its simplicity and readability, making it an excellent choice for beginners and a powerful tool for experts. Created by Guido van Rossum and first released in 1991, Python's ecosystem has grown immensely, supporting a vast array of applications.
@@ -134,7 +134,7 @@ Python stands out for its simplicity and readability, making it an excellent cho
 - **Versatility:** From web servers and data analysis to machine learning and automation, Python is highly versatile.
 - **Strong Community:** A large, active global community means abundant resources, tutorials, and support.
 - **Cross-Platform:** Python programs can run on Windows, macOS, Linux, and other platforms without modification.
-    `,
+\`,
     keyFeatures: [
         { id: "readability", name: "High Readability", description: "Clean syntax emphasizes readability, reducing the cost of program maintenance.", icon: "Baseline"},
         { id: "libraries", name: "Extensive Standard Library", description: "Offers a wide range of modules and functions for various tasks, often called 'batteries included'.", icon: "Library"},
@@ -241,7 +241,7 @@ def add(a, b=5):
 print(add(3))      # Output: 8 (uses default b=5)
 print(add(3, 7))   # Output: 10 (overrides default b)
 \`\`\`
-        \`
+        \`,
       },
       {
         id: "python-decorators-deep-dive",
@@ -279,7 +279,7 @@ sum_result = add(5, 3)
 # Output will show logs before and after the add function call
 \`\`\`
 This example demonstrates how a decorator can wrap around the \`add\` function to log its execution details.
-        \`
+        \`,
       }
     ],
     codeSnippets: [ 
@@ -416,7 +416,7 @@ for (int i = 0; i < 5; i++) {
     System.out.println("Iteration: " + i);
 }
 \`\`\`
-      \`
+      \`,
       },
       {
         id: "java-oop",
@@ -470,7 +470,7 @@ Allows objects of different classes to respond to the same method call in differ
 
 ### Encapsulation
 Bundling data (attributes) and methods that operate on the data within a single unit (class), often with access control (public, private, protected).
-      \`
+      \`,
       }
     ],
     codeSnippets: [
@@ -497,9 +497,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "cplusplus logo",
     category: "Systems Programming",
-    mainContent: `
+    mainContent: \`
 ## C++: Performance and Control
-C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.`
+C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.\`
   },
   {
     id: "csharp",
@@ -509,9 +509,9 @@ C++ is a general-purpose programming language created by Bjarne Stroustrup as an
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "csharp logo",
     category: "Microsoft Ecosystem",
-    mainContent: `
+    mainContent: \`
 ## C#: Versatile and Modern
-C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem.`
+C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem.\`
   },
    {
     id: "typescript",
@@ -521,9 +521,9 @@ C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "typescript logo",
     category: "Web Development",
-    mainContent: `
+    mainContent: \`
 ## TypeScript: JavaScript That Scales
-TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.`
+TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.\`
   },
   {
     id: "c",
@@ -533,9 +533,9 @@ TypeScript is a strongly typed programming language that builds on JavaScript, g
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "c logo",
     category: "Systems Programming",
-    mainContent: `
+    mainContent: \`
 ## C: The Bedrock of Modern Computing
-The C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.`
+The C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.\`
   },
   {
     id: "sql",
@@ -545,9 +545,9 @@ The C programming language is a general-purpose, procedural computer programming
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "sql logo",
     category: "Databases",
-    mainContent: `
+    mainContent: \`
 ## SQL: Querying Your Data
-SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS).`
+SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS).\`
   },
   {
     id: "php",
@@ -557,9 +557,9 @@ SQL (Structured Query Language) is a domain-specific language used in programmin
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "php logo",
     category: "Web Development",
-    mainContent: `
+    mainContent: \`
 ## PHP: Powering the Web
-PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.`
+PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.\`
   },
   {
     id: "html",
@@ -569,9 +569,9 @@ PHP is a popular general-purpose scripting language that is especially suited to
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "html logo",
     category: "Web Development",
-    mainContent: `
+    mainContent: \`
 ## HTML: The Structure of Web Pages
-HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.`
+HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.\`
   },
   {
     id: "css",
@@ -581,9 +581,9 @@ HTML (HyperText Markup Language) is the standard markup language for documents d
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "css logo",
     category: "Web Development",
-    mainContent: `
+    mainContent: \`
 ## CSS: Styling the Web
-Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.`
+Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.\`
   }
 ];
 
@@ -707,7 +707,22 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "Big O Notation",
     category: "Algorithms",
     lastUpdated: "2024-07-01T12:00:00Z",
-    content: "# Big O Notation\n\nBig O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. In computer science, it is used to classify algorithms according to how their run time or space requirements grow as the input size grows.\n\n## Common Complexities\n- **O(1)**: Constant time - The algorithm takes the same amount of time regardless of the input size.\n- **O(log n)**: Logarithmic time - Time increases logarithmically with input size (e.g., binary search).\n- **O(n)**: Linear time - Time increases linearly with input size (e.g., iterating through a list).\n- **O(n log n)**: Linearithmic time - Common in efficient sorting algorithms (e.g., merge sort, quicksort).\n- **O(n^2)**: Quadratic time - Time increases with the square of the input size (e.g., nested loops over the same collection).\n- **O(2^n)**: Exponential time - Time doubles with each addition to the input size (e.g., some recursive algorithms without memoization).\n- **O(n!)**: Factorial time - Time increases factorially, often seen in permutations.\n\nUnderstanding Big O is crucial for writing efficient and scalable code."
+    content: \`
+# Big O Notation
+
+Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. In computer science, it is used to classify algorithms according to how their run time or space requirements grow as the input size grows.
+
+## Common Complexities
+- **O(1)**: Constant time - The algorithm takes the same amount of time regardless of the input size.
+- **O(log n)**: Logarithmic time - Time increases logarithmically with input size (e.g., binary search).
+- **O(n)**: Linear time - Time increases linearly with input size (e.g., iterating through a list).
+- **O(n log n)**: Linearithmic time - Common in efficient sorting algorithms (e.g., merge sort, quicksort).
+- **O(n^2)**: Quadratic time - Time increases with the square of the input size (e.g., nested loops over the same collection).
+- **O(2^n)**: Exponential time - Time doubles with each addition to the input size (e.g., some recursive algorithms without memoization).
+- **O(n!)**: Factorial time - Time increases factorially, often seen in permutations.
+
+Understanding Big O is crucial for writing efficient and scalable code.
+    \`
   },
   {
     id: "2",
@@ -715,7 +730,22 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "Turing Machines",
     category: "Theory of Computation",
     lastUpdated: "2024-05-20T09:00:00Z",
-    content: "# Turing Machines\n\nA Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules. Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm, and is particularly useful in explaining the functions of a CPU inside a computer.\n\n## Components\n1.  **Tape**: An infinitely long strip divided into cells. Each cell can hold one symbol from a finite alphabet.\n2.  **Head**: Can read the symbol in the current cell, write a new symbol, and move one cell to the left or right.\n3.  **State Register**: Stores the current state of the machine, chosen from a finite set of states.\n4.  **Transition Function (Finite Table of Instructions)**: Given the current state and the symbol under the head, it dictates:\n    *   The symbol to write on the tape.\n    *   How to move the head (left, right, or stay).\n    *   The next state of the machine.\n\nTuring machines are fundamental to the study of computability and complexity theory."
+    content: \`
+# Turing Machines
+
+A Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules. Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm, and is particularly useful in explaining the functions of a CPU inside a computer.
+
+## Components
+1.  **Tape**: An infinitely long strip divided into cells. Each cell can hold one symbol from a finite alphabet.
+2.  **Head**: Can read the symbol in the current cell, write a new symbol, and move one cell to the left or right.
+3.  **State Register**: Stores the current state of the machine, chosen from a finite set of states.
+4.  **Transition Function (Finite Table of Instructions)**: Given the current state and the symbol under the head, it dictates:
+    *   The symbol to write on the tape.
+    *   How to move the head (left, right, or stay).
+    *   The next state of the machine.
+
+Turing machines are fundamental to the study of computability and complexity theory.
+    \`
   },
   {
     id: "wiki-pep8", 
@@ -723,7 +753,22 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "PEP 8 Style Guide for Python Code",
     category: "Programming Practices",
     lastUpdated: "2024-02-15T10:00:00Z",
-    content: "# PEP 8 - Style Guide for Python Code\n\nPEP 8, sometimes spelled PEP8 or PEP-8, is a document that provides guidelines and best practices on how to write Python code. It was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan. The primary focus of PEP 8 is to improve the readability and consistency of Python code.\n\n## Key areas covered by PEP 8:\n\n- **Code Lay-out**: Indentation (4 spaces per level), tabs vs. spaces (spaces are preferred), maximum line length (79 characters for code, 72 for docstrings/comments), blank lines, source file encoding (UTF-8).\n- **String Quotes**: Consistency in using single or double quotes.\n- **Whitespace in Expressions and Statements**: Proper use of spaces around operators and after commas.\n- **Comments**: Block comments, inline comments, and documentation strings (docstrings).\n- **Naming Conventions**: \`lowercase\` for functions and variables, \`CapWords\` for classes, \`UPPERCASE_WITH_UNDERSCORES\` for constants.\n- **Programming Recommendations**: Comparisons to singletons like \`None\` should always be done with \`is\` or \`is not\`, never with equality operators. Use \`isinstance()\` for type checking.\n\nAdhering to PEP 8 makes Python code more readable and maintainable across different projects and teams."
+    content: \`
+# PEP 8 - Style Guide for Python Code
+
+PEP 8, sometimes spelled PEP8 or PEP-8, is a document that provides guidelines and best practices on how to write Python code. It was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan. The primary focus of PEP 8 is to improve the readability and consistency of Python code.
+
+## Key areas covered by PEP 8:
+
+- **Code Lay-out**: Indentation (4 spaces per level), tabs vs. spaces (spaces are preferred), maximum line length (79 characters for code, 72 for docstrings/comments), blank lines, source file encoding (UTF-8).
+- **String Quotes**: Consistency in using single or double quotes.
+- **Whitespace in Expressions and Statements**: Proper use of spaces around operators and after commas.
+- **Comments**: Block comments, inline comments, and documentation strings (docstrings).
+- **Naming Conventions**: \`lowercase\` for functions and variables, \`CapWords\` for classes, \`UPPERCASE_WITH_UNDERSCORES\` for constants.
+- **Programming Recommendations**: Comparisons to singletons like \`None\` should always be done with \`is\` or \`is not\`, never with equality operators. Use \`isinstance()\` for type checking.
+
+Adhering to PEP 8 makes Python code more readable and maintainable across different projects and teams.
+    \`
   },
   {
     id: "wiki-python-history",
@@ -731,7 +776,18 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "History of Python",
     category: "Programming Languages",
     lastUpdated: "2024-01-10T14:00:00Z",
-    content: "# History of Python\n\nPython was conceived in the late 1980s by Guido van Rossum at Centrum Wiskunde & Informatica (CWI) in the Netherlands as a successor to the ABC language (itself inspired by SETL), capable of exception handling and interfacing with the Amoeba operating system. Its implementation began in December 1989.\n\n- **Python 0.9.0** was released in February 1991.\n- **Python 1.0** was released in January 1994, with major new features including lambda, map, filter, and reduce.\n- **Python 2.0**, released in October 2000, introduced list comprehensions, garbage collection system capable of collecting reference cycles, and support for Unicode.\n- **Python 3.0** (also known as Python 3000 or Py3k), a major, backward-incompatible release, was released in December 2008 after a long period of testing. Many of its major features were backported to Python 2.6.x and 2.7.x version series.\n\nPython's philosophy emphasizes code readability and a syntax that allows programmers to express concepts in fewer lines of code than might be used in languages such as C++ or Java."
+    content: \`
+# History of Python
+
+Python was conceived in the late 1980s by Guido van Rossum at Centrum Wiskunde & Informatica (CWI) in the Netherlands as a successor to the ABC language (itself inspired by SETL), capable of exception handling and interfacing with the Amoeba operating system. Its implementation began in December 1989.
+
+- **Python 0.9.0** was released in February 1991.
+- **Python 1.0** was released in January 1994, with major new features including lambda, map, filter, and reduce.
+- **Python 2.0**, released in October 2000, introduced list comprehensions, garbage collection system capable of collecting reference cycles, and support for Unicode.
+- **Python 3.0** (also known as Python 3000 or Py3k), a major, backward-incompatible release, was released in December 2008 after a long period of testing. Many of its major features were backported to Python 2.6.x and 2.7.x version series.
+
+Python's philosophy emphasizes code readability and a syntax that allows programmers to express concepts in fewer lines of code than might be used in languages such as C++ or Java.
+    \`
   },
   {
     id: "wiki-jvm",
@@ -739,7 +795,19 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "Java Virtual Machine (JVM)",
     category: "Programming Languages",
     lastUpdated: "2024-03-10T11:00:00Z",
-    content: "# Java Virtual Machine (JVM)\n\nThe Java Virtual Machine (JVM) is an abstract computing machine that enables a computer to run a Java program. When a Java program is compiled, it is compiled into an intermediate language called bytecode. The JVM translates this bytecode into machine code that can be executed by the computer's processor.\n\n## Key Functions:\n- **Loads code**\n- **Verifies code**\n- **Executes code**\n- **Provides runtime environment**\n\nKey components include the Classloader, Execution Engine, and Runtime Data Areas (Heap, Stack, Method Area, etc.). The JVM is a crucial part of the \"Write Once, Run Anywhere\" (WORA) capability of Java."
+    content: \`
+# Java Virtual Machine (JVM)
+
+The Java Virtual Machine (JVM) is an abstract computing machine that enables a computer to run a Java program. When a Java program is compiled, it is compiled into an intermediate language called bytecode. The JVM translates this bytecode into machine code that can be executed by the computer's processor.
+
+## Key Functions:
+- **Loads code**
+- **Verifies code**
+- **Executes code**
+- **Provides runtime environment**
+
+Key components include the Classloader, Execution Engine, and Runtime Data Areas (Heap, Stack, Method Area, etc.). The JVM is a crucial part of the "Write Once, Run Anywhere" (WORA) capability of Java.
+    \`
   },
   {
     id: "wiki-garbage-collection",
@@ -747,7 +815,18 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "Garbage Collection in Java",
     category: "Programming Languages",
     lastUpdated: "2024-04-05T16:30:00Z",
-    content: "# Garbage Collection in Java\n\nGarbage Collection (GC) in Java is the process of automatically managing memory. It identifies and discards objects that are no longer needed by a program so that their resources can be reclaimed and reused.\n\n## How it Works (Simplified):\n1.  **Marking**: The garbage collector identifies which pieces of memory are in use and which are not.\n2.  **Sweeping/Deleting**: The garbage collector removes objects identified during the \"marking\" phase.\n3.  **Compacting** (Optional): After deleting unused objects, the memory can be compacted to reduce fragmentation.\n\nJava provides different garbage collection algorithms (e.g., Serial GC, Parallel GC, CMS GC, G1 GC, ZGC, Shenandoah) that offer different trade-offs in terms of pause times and throughput."
+    content: \`
+# Garbage Collection in Java
+
+Garbage Collection (GC) in Java is the process of automatically managing memory. It identifies and discards objects that are no longer needed by a program so that their resources can be reclaimed and reused.
+
+## How it Works (Simplified):
+1.  **Marking**: The garbage collector identifies which pieces of memory are in use and which are not.
+2.  **Sweeping/Deleting**: The garbage collector removes objects identified during the "marking" phase.
+3.  **Compacting** (Optional): After deleting unused objects, the memory can be compacted to reduce fragmentation.
+
+Java provides different garbage collection algorithms (e.g., Serial GC, Parallel GC, CMS GC, G1 GC, ZGC, Shenandoah) that offer different trade-offs in terms of pause times and throughput.
+    \`
   }
 ];
 
@@ -760,7 +839,23 @@ export const MOCK_THINK_TANK_ARTICLES: ThinkTankArticle[] = [
     authors: ["Dr. E. Coddsworth"],
     tags: ["Complexity Theory", "Unsolved Problems"],
     abstract: "A speculative exploration into the P versus NP problem, considering novel approaches from information theory and thermodynamics.",
-    content: "# On the Nature of P vs NP\n\nThe P versus NP problem is a major unsolved problem in computer science. It asks whether every problem whose solution can be quickly verified can also be quickly solved.\n\nThis paper explores...\n\n## Mathematical Formalism\nLet $P$ be the set of decision problems solvable in polynomial time by a deterministic Turing machine. \nLet $NP$ be the set of decision problems solvable in polynomial time by a non-deterministic Turing machine.\n\nThe question is whether $P = NP$.\n\n$$ \\sum_{i=1}^n i = \\frac{n(n+1)}{2} $$ \n\nWe hypothesize that...",
+    content: \`
+# On the Nature of P vs NP
+
+The P versus NP problem is a major unsolved problem in computer science. It asks whether every problem whose solution can be quickly verified can also be quickly solved.
+
+This paper explores...
+
+## Mathematical Formalism
+Let $P$ be the set of decision problems solvable in polynomial time by a deterministic Turing machine. 
+Let $NP$ be the set of decision problems solvable in polynomial time by a non-deterministic Turing machine.
+
+The question is whether $P = NP$.
+
+$$ \\sum_{i=1}^n i = \\frac{n(n+1)}{2} $$ 
+
+We hypothesize that...
+    \`,
     imageUrl: "https://placehold.co/800x450.png",
     dataAiHint: "complex graph"
   },
@@ -772,7 +867,20 @@ export const MOCK_THINK_TANK_ARTICLES: ThinkTankArticle[] = [
     authors: ["Ada Bitwise", "Claude Shannonesque"],
     tags: ["Information Theory", "Systems Theory"],
     abstract: "This article proposes a unified framework for understanding entropy across various information systems, from communication channels to software architecture.",
-    content: "# Entropy in Information Systems: A Unified Theory\n\nEntropy, a concept originating from thermodynamics, has found profound applications in information theory, largely due to Claude Shannon's work. This paper extends the notion of entropy to broader information systems, including software architecture and data structures.\n\n## Shannon Entropy\nFor a discrete random variable $X$ with possible values \\{x_1, ..., x_n\\} and probability mass function $P(X)$, the entropy $H(X)$ is defined as:\n\n$$ H(X) = - \\sum_{i=1}^n P(x_i) \\log_b P(x_i) $$ \n\nWhere $b$ is the base of the logarithm used. Common values for $b$ are 2, Euler's number $e$, or 10.\n\nThis framework can be used to analyze system complexity, information flow, and potential for degradation or 'code rot'.",
+    content: \`
+# Entropy in Information Systems: A Unified Theory
+
+Entropy, a concept originating from thermodynamics, has found profound applications in information theory, largely due to Claude Shannon's work. This paper extends the notion of entropy to broader information systems, including software architecture and data structures.
+
+## Shannon Entropy
+For a discrete random variable $X$ with possible values \\{x_1, ..., x_n\\} and probability mass function $P(X)$, the entropy $H(X)$ is defined as:
+
+$$ H(X) = - \\sum_{i=1}^n P(x_i) \\log_b P(x_i) $$ 
+
+Where $b$ is the base of the logarithm used. Common values for $b$ are 2, Euler's number $e$, or 10.
+
+This framework can be used to analyze system complexity, information flow, and potential for degradation or 'code rot'.
+    \`,
     imageUrl: "https://placehold.co/800x450.png",
     dataAiHint: "data flow"
   },
@@ -798,3 +906,5 @@ export const NAV_ITEMS: NavItemType[] = [
     
 
     
+
+
