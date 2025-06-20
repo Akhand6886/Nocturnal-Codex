@@ -158,7 +158,7 @@ Python stands out for its simplicity and readability, making it an excellent cho
       {
         id: "basic-syntax",
         title: "Basic Syntax",
-        content: `
+        content: \`
 Python's syntax is designed for clarity.
 
 ### Variables and Data Types
@@ -184,12 +184,12 @@ Comments start with a \`#\`, and Python will ignore them:
 # This is a single-line comment
 print("Hello, World!") 
 \`\`\`
-        `,
+        \`,
       },
       {
         id: "control-flow",
         title: "Control Flow",
-        content: `
+        content: \`
 Control flow statements direct the order of execution.
 
 ### Conditional Statements (\`if\`, \`elif\`, \`else\`)
@@ -219,12 +219,12 @@ while count < 3:
     print(f"Count is {count}")
     count += 1
 \`\`\`
-        `,
+        \`,
       },
       {
         id: "functions",
         title: "Functions",
-        content: `
+        content: \`
 Functions are blocks of reusable code, defined using the \`def\` keyword.
 \`\`\`python
 def greet(name):
@@ -241,12 +241,12 @@ def add(a, b=5):
 print(add(3))      # Output: 8 (uses default b=5)
 print(add(3, 7))   # Output: 10 (overrides default b)
 \`\`\`
-        `
+        \`
       },
       {
         id: "python-decorators-deep-dive",
         title: "Python Decorators Deep Dive",
-        content: `
+        content: \`
 ### Understanding Decorators
 Decorators are a powerful and expressive feature in Python that allow you to modify or enhance functions and methods in a clean and readable way. They are a form of metaprogramming, where one function takes another function and extends its behavior without explicitly modifying it.
 
@@ -279,7 +279,7 @@ sum_result = add(5, 3)
 # Output will show logs before and after the add function call
 \`\`\`
 This example demonstrates how a decorator can wrap around the \`add\` function to log its execution details.
-        `
+        \`
       }
     ],
     codeSnippets: [ 
@@ -307,7 +307,7 @@ This example demonstrates how a decorator can wrap around the \`add\` function t
     dataAiHint: "javascript logo",
     category: "Web Development",
     longDescription: "JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification. It is a cornerstone technology of the World Wide Web, alongside HTML and CSS.",
-    mainContent: `
+    mainContent: \`
 ## Exploring JavaScript
 JavaScript (JS) is a versatile programming language primarily known as the scripting language for Web pages, but it's also used in many non-browser environments thanks to Node.js.
 
@@ -316,7 +316,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
 - **Server-Side Development:** With Node.js, JavaScript can be used to build scalable network applications.
 - **Asynchronous Nature:** Features like Promises and async/await make handling asynchronous operations elegant.
 - **Rich Ecosystem:** A vast number of frameworks and libraries (React, Angular, Vue, Express, etc.) simplify development.
-`,
+\`,
     keyFeatures: [
       { id: "dynamic", name: "Dynamic and Interpreted", description: "Executed directly by the browser or Node.js runtime.", icon: "Zap"},
       { id: "prototype-based", name: "Prototype-based OOP", description: "Uses prototypes for inheritance rather than classes (though ES6 classes are syntactic sugar).", icon: "Share2"},
@@ -342,7 +342,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     category: "Enterprise",
     longDescription: "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA).",
     officialDocumentationUrl: "https://docs.oracle.com/en/java/",
-    mainContent: `
+    mainContent: \`
 ## Java: Write Once, Run Anywhere
 
 Java is a robust, object-oriented language known for its platform independence and extensive use in enterprise-level applications, large-scale systems, and Android mobile development.
@@ -354,7 +354,7 @@ Java is a robust, object-oriented language known for its platform independence a
 - **Rich API:** Provides a comprehensive standard library for various tasks.
 - **Concurrency Support:** Built-in support for multithreaded programming.
 - **Security:** Designed with security features like a sandbox environment.
-  `,
+  \`,
     keyFeatures: [
       { id: "platform-independent", name: "Platform Independent", description: "Compile once, run on any JVM-enabled device.", icon: "Globe" },
       { id: "object-oriented", name: "Object-Oriented", description: "Embraces encapsulation, inheritance, and polymorphism.", icon: "Blocks" },
@@ -497,7 +497,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "cplusplus logo",
     category: "Systems Programming",
-    mainContent: "## C++: Performance and Control\nC++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation."
+    mainContent: `
+## C++: Performance and Control
+C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.`
   },
   {
     id: "csharp",
@@ -507,7 +509,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "csharp logo",
     category: "Microsoft Ecosystem",
-    mainContent: "## C#: Versatile and Modern\nC# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem."
+    mainContent: `
+## C#: Versatile and Modern
+C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem.`
   },
    {
     id: "typescript",
@@ -517,7 +521,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "typescript logo",
     category: "Web Development",
-    mainContent: "## TypeScript: JavaScript That Scales\nTypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS."
+    mainContent: `
+## TypeScript: JavaScript That Scales
+TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.`
   },
   {
     id: "c",
@@ -527,7 +533,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "c logo",
     category: "Systems Programming",
-    mainContent: "## C: The Bedrock of Modern Computing\nThe C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions."
+    mainContent: `
+## C: The Bedrock of Modern Computing
+The C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.`
   },
   {
     id: "sql",
@@ -537,7 +545,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "sql logo",
     category: "Databases",
-    mainContent: "## SQL: Querying Your Data\nSQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)."
+    mainContent: `
+## SQL: Querying Your Data
+SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS).`
   },
   {
     id: "php",
@@ -547,7 +557,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "php logo",
     category: "Web Development",
-    mainContent: "## PHP: Powering the Web\nPHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world."
+    mainContent: `
+## PHP: Powering the Web
+PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.`
   },
   {
     id: "html",
@@ -557,7 +569,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "html logo",
     category: "Web Development",
-    mainContent: "## HTML: The Structure of Web Pages\nHTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript."
+    mainContent: `
+## HTML: The Structure of Web Pages
+HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.`
   },
   {
     id: "css",
@@ -567,7 +581,9 @@ Bundling data (attributes) and methods that operate on the data within a single 
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "css logo",
     category: "Web Development",
-    mainContent: "## CSS: Styling the Web\nCascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript."
+    mainContent: `
+## CSS: Styling the Web
+Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.`
   }
 ];
 
@@ -777,4 +793,8 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "About", href: "/about" },
 ];
  
+    
+
+    
+
     

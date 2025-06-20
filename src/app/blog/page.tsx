@@ -1,12 +1,13 @@
 
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { FileText } from "lucide-react";
-import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client and Post type
+import { client, type SanityPost, urlFor } from '@/lib/sanity'; // Import Sanity client, Post type, and urlFor
 import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const defaultLogoUrl = `${siteUrl}/images/logo.png`; // Define a default logo URL
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -33,9 +34,8 @@ async function getBlogPosts(): Promise<SanityPost[]> {
     author,
     excerpt,
     mainImage {
-      asset,
-      alt,
-      dataAiHint
+      ..., // Include all fields from mainImage
+      asset-> // Resolve the asset reference
     },
     tags,
     category
@@ -58,20 +58,23 @@ export default async function BlogPage() {
         "name": "Nocturnal Codex",
         "logo": {
             "@type": "ImageObject",
-            "url": `${siteUrl}/images/logo.png`
+            "url": defaultLogoUrl 
         }
     },
-    "blogPost": posts.map(post => ({
+    "blogPost": posts.map(post => {
+      const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : undefined;
+      return {
         "@type": "BlogPosting",
         "mainEntityOfPage": `${siteUrl}/blog/${post.slug?.current}`,
         "headline": post.title,
-        "image": post.mainImage?.asset ? `${siteUrl}/api/imageProxy?url=${encodeURIComponent(client.config().projectId + '/images/' + post.mainImage.asset._ref.split('-')[1] + '.' + post.mainImage.asset._ref.split('-')[2])}` : undefined, // Simplified image URL for LD+JSON
+        "image": imageUrl, // Use urlFor for image
         "datePublished": new Date(post.publishedAt).toISOString(),
         "author": {
             "@type": "Person",
             "name": post.author || "The Nocturnist"
         }
-    }))
+      }
+    })
   };
 
   return (
