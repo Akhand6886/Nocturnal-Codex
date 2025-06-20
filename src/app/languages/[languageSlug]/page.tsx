@@ -241,7 +241,7 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
                         <CardHeader>
                             <CardTitle className="text-xl text-primary">Official Documentation</CardTitle>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="p-6">
                             <Button asChild variant="default" className="bg-primary hover:bg-primary/90">
                                 <Link href={language.officialDocumentationUrl} target="_blank" rel="noopener noreferrer">
                                     View Documentation <ExternalLink className="ml-2 h-4 w-4"/>
@@ -255,7 +255,7 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
                         <CardHeader>
                             <CardTitle className="text-xl text-accent">Community Hubs</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-2">
+                        <CardContent className="p-6 space-y-2">
                             {language.communityLinks.map(link => (
                                 <Link key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="group flex items-center text-sm text-primary hover:underline">
                                     {link.name} <ExternalLink className="ml-1.5 h-3.5 w-3.5 opacity-70 group-hover:opacity-100"/>
