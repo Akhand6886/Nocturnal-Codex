@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
 import { cn } from '@/lib/utils';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { List, ChevronRight, PanelLeft, FileText, Star, Workflow, BookOpen, Code2, GraduationCap, Users, Lightbulb } from 'lucide-react';
 import {
   SidebarProvider,
@@ -60,48 +59,46 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
               {language.name} Sections
             </h3>
           </SidebarHeader>
-          <SidebarContent className="p-0">
-            <ScrollArea className="h-full p-4">
-              <SidebarMenu>
-                {sidebarNavItems.map((item) => {
-                  const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
-                  return (
-                    <SidebarMenuItem key={item.id}>
-                      <Link href={item.href} legacyBehavior passHref>
-                        <SidebarMenuButton
-                          isActive={isActive}
+          <SidebarContent className="p-4">
+            <SidebarMenu>
+              {sidebarNavItems.map((item) => {
+                const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
+                return (
+                  <SidebarMenuItem key={item.id}>
+                    <Link href={item.href} legacyBehavior passHref>
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        className={cn(
+                          'w-full justify-start text-sm',
+                          isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold' : 'text-sidebar-foreground hover:bg-sidebar-accent/80 hover:text-sidebar-accent-foreground'
+                        )}
+                      >
+                        {item.icon && <item.icon className={cn("mr-2.5 h-4 w-4 flex-shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground group-hover/menu-button:text-sidebar-primary")} />}
+                        <span className="truncate">{item.title}</span>
+                        {isActive && <ChevronRight className="ml-auto h-4 w-4 text-sidebar-primary flex-shrink-0" />}
+                      </SidebarMenuButton>
+                    </Link>
+                  </SidebarMenuItem>
+                );
+              })}
+              {fullTutorialSeriesLink && (
+                   <SidebarMenuItem className="mt-2 pt-2 border-t border-sidebar-border/50">
+                      <Link href={fullTutorialSeriesLink.href} legacyBehavior passHref>
+                          <SidebarMenuButton
+                          isActive={pathname.startsWith(fullTutorialSeriesLink.href)} 
                           className={cn(
-                            'w-full justify-start text-sm',
-                            isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold' : 'text-sidebar-foreground hover:bg-sidebar-accent/80 hover:text-sidebar-accent-foreground'
+                              'w-full justify-start text-sm font-medium',
+                              pathname.startsWith(fullTutorialSeriesLink.href) ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'text-sidebar-primary hover:bg-sidebar-primary/90 hover:text-sidebar-primary-foreground'
                           )}
-                        >
-                          {item.icon && <item.icon className={cn("mr-2.5 h-4 w-4 flex-shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground group-hover/menu-button:text-sidebar-primary")} />}
-                          <span className="truncate">{item.title}</span>
-                          {isActive && <ChevronRight className="ml-auto h-4 w-4 text-sidebar-primary flex-shrink-0" />}
-                        </SidebarMenuButton>
+                          >
+                          {fullTutorialSeriesLink.icon && <fullTutorialSeriesLink.icon className="mr-2.5 h-4 w-4 flex-shrink-0" />}
+                          <span className="truncate">{fullTutorialSeriesLink.title}</span>
+                          <ChevronRight className="ml-auto h-4 w-4 flex-shrink-0" />
+                          </SidebarMenuButton>
                       </Link>
-                    </SidebarMenuItem>
-                  );
-                })}
-                {fullTutorialSeriesLink && (
-                     <SidebarMenuItem className="mt-2 pt-2 border-t border-sidebar-border/50">
-                        <Link href={fullTutorialSeriesLink.href} legacyBehavior passHref>
-                            <SidebarMenuButton
-                            isActive={pathname.startsWith(fullTutorialSeriesLink.href)} 
-                            className={cn(
-                                'w-full justify-start text-sm font-medium',
-                                pathname.startsWith(fullTutorialSeriesLink.href) ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'text-sidebar-primary hover:bg-sidebar-primary/90 hover:text-sidebar-primary-foreground'
-                            )}
-                            >
-                            {fullTutorialSeriesLink.icon && <fullTutorialSeriesLink.icon className="mr-2.5 h-4 w-4 flex-shrink-0" />}
-                            <span className="truncate">{fullTutorialSeriesLink.title}</span>
-                            <ChevronRight className="ml-auto h-4 w-4 flex-shrink-0" />
-                            </SidebarMenuButton>
-                        </Link>
-                    </SidebarMenuItem>
-                )}
-              </SidebarMenu>
-            </ScrollArea>
+                  </SidebarMenuItem>
+              )}
+            </SidebarMenu>
           </SidebarContent>
         </Sidebar>
 
@@ -117,51 +114,49 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
                   {language.name} Sections
                 </h3>
             </SidebarHeader>
-            <SidebarContent className="p-0">
-                <ScrollArea className="h-full p-4">
-                  <SidebarMenu>
-                      {sidebarNavItems.map((item) => {
-                      const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
-                      return (
-                          <SidebarMenuItem key={item.id}>
-                            <Link href={item.href} legacyBehavior passHref>
-                                <SidebarMenuButton
-                                  isActive={isActive}
-                                  className={cn(
-                                      'w-full justify-start text-sm',
-                                      isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold' : 'text-sidebar-foreground hover:bg-sidebar-accent/80 hover:text-sidebar-accent-foreground'
-                                  )}
-                                  onClick={() => {
-                                    // This assumes the Sheet component in ui/sidebar.tsx closes on link clicks or state change.
-                                  }}
-                                >
-                                {item.icon && <item.icon className={cn("mr-2.5 h-4 w-4 flex-shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground group-hover/menu-button:text-sidebar-primary")} />}
-                                <span className="truncate">{item.title}</span>
-                                {isActive && <ChevronRight className="ml-auto h-4 w-4 text-sidebar-primary flex-shrink-0" />}
-                                </SidebarMenuButton>
-                            </Link>
-                          </SidebarMenuItem>
-                      );
-                      })}
-                      {fullTutorialSeriesLink && (
-                        <SidebarMenuItem className="mt-2 pt-2 border-t border-sidebar-border/50">
-                            <Link href={fullTutorialSeriesLink.href} legacyBehavior passHref>
-                                <SidebarMenuButton
-                                isActive={pathname.startsWith(fullTutorialSeriesLink.href)}
-                                className={cn(
-                                    'w-full justify-start text-sm font-medium',
-                                    pathname.startsWith(fullTutorialSeriesLink.href) ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'text-sidebar-primary hover:bg-sidebar-primary/90 hover:text-sidebar-primary-foreground'
-                                )}
-                                >
-                                {fullTutorialSeriesLink.icon && <fullTutorialSeriesLink.icon className="mr-2.5 h-4 w-4 flex-shrink-0" />}
-                                <span className="truncate">{fullTutorialSeriesLink.title}</span>
-                                <ChevronRight className="ml-auto h-4 w-4 flex-shrink-0" />
-                                </SidebarMenuButton>
-                            </Link>
-                        </SidebarMenuItem>
-                      )}
-                  </SidebarMenu>
-                </ScrollArea>
+            <SidebarContent className="p-4">
+              <SidebarMenu>
+                  {sidebarNavItems.map((item) => {
+                  const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
+                  return (
+                      <SidebarMenuItem key={item.id}>
+                        <Link href={item.href} legacyBehavior passHref>
+                            <SidebarMenuButton
+                              isActive={isActive}
+                              className={cn(
+                                  'w-full justify-start text-sm',
+                                  isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold' : 'text-sidebar-foreground hover:bg-sidebar-accent/80 hover:text-sidebar-accent-foreground'
+                              )}
+                              onClick={() => {
+                                // This assumes the Sheet component in ui/sidebar.tsx closes on link clicks or state change.
+                              }}
+                            >
+                            {item.icon && <item.icon className={cn("mr-2.5 h-4 w-4 flex-shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground group-hover/menu-button:text-sidebar-primary")} />}
+                            <span className="truncate">{item.title}</span>
+                            {isActive && <ChevronRight className="ml-auto h-4 w-4 text-sidebar-primary flex-shrink-0" />}
+                            </SidebarMenuButton>
+                        </Link>
+                      </SidebarMenuItem>
+                  );
+                  })}
+                  {fullTutorialSeriesLink && (
+                    <SidebarMenuItem className="mt-2 pt-2 border-t border-sidebar-border/50">
+                        <Link href={fullTutorialSeriesLink.href} legacyBehavior passHref>
+                            <SidebarMenuButton
+                            isActive={pathname.startsWith(fullTutorialSeriesLink.href)}
+                            className={cn(
+                                'w-full justify-start text-sm font-medium',
+                                pathname.startsWith(fullTutorialSeriesLink.href) ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'text-sidebar-primary hover:bg-sidebar-primary/90 hover:text-sidebar-primary-foreground'
+                            )}
+                            >
+                            {fullTutorialSeriesLink.icon && <fullTutorialSeriesLink.icon className="mr-2.5 h-4 w-4 flex-shrink-0" />}
+                            <span className="truncate">{fullTutorialSeriesLink.title}</span>
+                            <ChevronRight className="ml-auto h-4 w-4 flex-shrink-0" />
+                            </SidebarMenuButton>
+                        </Link>
+                    </SidebarMenuItem>
+                  )}
+              </SidebarMenu>
             </SidebarContent>
            </Sidebar>
         </div>
@@ -181,5 +176,3 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
     </SidebarProvider>
   );
 }
-
-    
