@@ -36,7 +36,7 @@ export default function ContactPage() {
   };
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-10 md:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
@@ -59,6 +59,6 @@ export default function ContactPage() {
           <ContactForm />
         </section>
       </div>
-    </>
+    </div>
   );
 }

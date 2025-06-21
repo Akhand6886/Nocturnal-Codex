@@ -42,7 +42,7 @@ export default function AboutPage() {
   };
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-10 md:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
@@ -117,6 +117,6 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 }

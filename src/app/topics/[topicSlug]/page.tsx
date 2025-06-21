@@ -43,7 +43,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="container mx-auto max-w-5xl px-4 py-10 md:py-12 space-y-8">
       <Breadcrumbs items={breadcrumbItems} />
       
       <header className="pb-6 border-b border-border">
@@ -210,5 +210,3 @@ export async function generateMetadata({ params }: TopicPageProps) {
     description: topic.description,
   };
 }
-
-    

@@ -20,7 +20,7 @@ export default function WikiPage() {
 
 
   return (
-    <div className="space-y-10">
+    <div className="container mx-auto px-4 py-10 md:py-12 space-y-10">
       <header className="pb-6 border-b border-border">
         <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
           <BookMarked className="mr-4 h-10 w-10 text-primary" />

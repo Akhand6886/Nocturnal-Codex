@@ -23,7 +23,7 @@ export default function TopicsExplorerPage() {
   });
 
   return (
-    <div className="space-y-12">
+    <div className="container mx-auto px-4 py-10 md:py-12 space-y-12">
       <header className="pb-6 border-b border-border">
         <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
           <BookOpenText className="mr-4 h-10 w-10 text-primary" />
@@ -58,5 +58,3 @@ export const metadata = {
   title: "Topics | Nocturnal Codex",
   description: "Explore various topics in computer science and related fields, organized by category.",
 };
-
-    

@@ -78,7 +78,7 @@ export default async function BlogPage() {
   };
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-10 md:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPageJsonLd) }}
@@ -104,6 +104,6 @@ export default async function BlogPage() {
           <p className="text-muted-foreground text-center py-10">No blog posts yet. Check back soon!</p>
         )}
       </div>
-    </>
+    </div>
   );
 }

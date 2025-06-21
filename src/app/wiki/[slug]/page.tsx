@@ -57,7 +57,7 @@ export default async function WikiArticlePage({ params }: WikiArticlePageProps) 
     .slice(0, 4); 
 
   return (
-    <div className="max-w-3xl mx-auto py-8">
+    <div className="container mx-auto max-w-3xl px-4 py-8">
       <article className="space-y-8">
         <Breadcrumbs items={breadcrumbItems} />
         

@@ -39,7 +39,7 @@ export default async function HomePage() {
   const featuredLanguages = MOCK_PROGRAMMING_LANGUAGES.slice(0, 8);
 
   return (
-    <div className="space-y-16">
+    <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
       <HeroTextGradientStyle />
       {/* Hero Section */}
       <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-primary/10 to-accent/15 rounded-xl shadow-2xl overflow-hidden">

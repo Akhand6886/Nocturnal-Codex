@@ -60,7 +60,7 @@ export default async function TagPage({ params }: TagPageProps) {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="container mx-auto px-4 py-10 md:py-12 space-y-10">
       <Breadcrumbs items={breadcrumbItems} />
       <header className="pb-6 border-b border-border">
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight flex items-center text-foreground">

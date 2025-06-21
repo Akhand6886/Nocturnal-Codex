@@ -115,7 +115,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${robotoMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <ThemeProvider>
           <Navbar />
-          <main className="flex-grow container mx-auto px-4 py-10 md:py-12"> {/* Increased padding */}
+          <main className="flex-grow">
             {children}
           </main>
           <Footer />

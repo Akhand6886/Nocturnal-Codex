@@ -80,7 +80,7 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
 
 
   return (
-    <div className="max-w-4xl mx-auto py-8">
+    <div className="container mx-auto max-w-4xl px-4 py-8">
       <article className="space-y-8">
         <Breadcrumbs items={breadcrumbItems} />
         

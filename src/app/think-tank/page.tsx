@@ -9,7 +9,7 @@ export default function ThinkTankPage() {
   const sortedArticles = MOCK_THINK_TANK_ARTICLES.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="space-y-10">
+    <div className="container mx-auto px-4 py-10 md:py-12 space-y-10">
       <header className="pb-6 border-b border-border">
         <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
           <BrainCircuit className="mr-4 h-10 w-10 text-primary" />
