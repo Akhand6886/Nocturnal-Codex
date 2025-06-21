@@ -907,7 +907,7 @@ Let $NP$ be the set of decision problems solvable in polynomial time by a non-de
 
 The question is whether $P = NP$.
 
-$$ \\sum_{i=1}^n i = \\frac{n(n+1)}{2} $$ 
+$$ \\\\sum_{i=1}^n i = \\\\frac{n(n+1)}{2} $$ 
 
 We hypothesize that...
     `,
@@ -930,7 +930,7 @@ Entropy, a concept originating from thermodynamics, has found profound applicati
 ## Shannon Entropy
 For a discrete random variable $X$ with possible values \\{x_1, ..., x_n\\} and probability mass function $P(X)$, the entropy $H(X)$ is defined as:
 
-$$ H(X) = - \\sum_{i=1}^n P(x_i) \\log_b P(x_i) $$ 
+$$ H(X) = - \\\\sum_{i=1}^n P(x_i) \\\\log_b P(x_i) $$ 
 
 Where $b$ is the base of the logarithm used. Common values for $b$ are 2, Euler's number $e$, or 10.
 
