@@ -1,6 +1,6 @@
 ---
-title: "Understanding Python Decorators"
-slug: "python-decorators"
+title: "learn Understanding Python Decorators"
+slug: "level python-decorators"
 order: 6
 description: "A practical guide to understanding and using decorators in Python."
 ---
