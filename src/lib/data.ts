@@ -123,7 +123,7 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     category: "General Purpose",
     longDescription: "Python is an interpreted, high-level and general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python aims to help programmers write clear, logical code for small and large-scale projects.",
     officialDocumentationUrl: "https://docs.python.org/3/",
-    mainContent: \`
+    mainContent: `
 ## Welcome to the World of Python
 
 Python stands out for its simplicity and readability, making it an excellent choice for beginners and a powerful tool for experts. Created by Guido van Rossum and first released in 1991, Python's ecosystem has grown immensely, supporting a vast array of applications.
@@ -134,7 +134,7 @@ Python stands out for its simplicity and readability, making it an excellent cho
 - **Versatility:** From web servers and data analysis to machine learning and automation, Python is highly versatile.
 - **Strong Community:** A large, active global community means abundant resources, tutorials, and support.
 - **Cross-Platform:** Python programs can run on Windows, macOS, Linux, and other platforms without modification.
-\`,
+`,
     keyFeatures: [
         { id: "readability", name: "High Readability", description: "Clean syntax emphasizes readability, reducing the cost of program maintenance.", icon: "Baseline"},
         { id: "libraries", name: "Extensive Standard Library", description: "Offers a wide range of modules and functions for various tasks, often called 'batteries included'.", icon: "Library"},
@@ -158,7 +158,7 @@ Python stands out for its simplicity and readability, making it an excellent cho
       {
         id: "basic-syntax",
         title: "Basic Syntax",
-        content: \`
+        content: `
 Python's syntax is designed for clarity.
 
 ### Variables and Data Types
@@ -184,12 +184,12 @@ Comments start with a \`#\`, and Python will ignore them:
 # This is a single-line comment
 print("Hello, World!") 
 \`\`\`
-        \`,
+        `,
       },
       {
         id: "control-flow",
         title: "Control Flow",
-        content: \`
+        content: `
 Control flow statements direct the order of execution.
 
 ### Conditional Statements (\`if\`, \`elif\`, \`else\`)
@@ -219,12 +219,12 @@ while count < 3:
     print(f"Count is {count}")
     count += 1
 \`\`\`
-        \`,
+        `,
       },
       {
         id: "functions",
         title: "Functions",
-        content: \`
+        content: `
 Functions are blocks of reusable code, defined using the \`def\` keyword.
 \`\`\`python
 def greet(name):
@@ -241,12 +241,12 @@ def add(a, b=5):
 print(add(3))      # Output: 8 (uses default b=5)
 print(add(3, 7))   # Output: 10 (overrides default b)
 \`\`\`
-        \`,
+        `,
       },
       {
         id: "python-decorators-deep-dive",
         title: "Python Decorators Deep Dive",
-        content: \`
+        content: `
 ### Understanding Decorators
 Decorators are a powerful and expressive feature in Python that allow you to modify or enhance functions and methods in a clean and readable way. They are a form of metaprogramming, where one function takes another function and extends its behavior without explicitly modifying it.
 
@@ -279,7 +279,7 @@ sum_result = add(5, 3)
 # Output will show logs before and after the add function call
 \`\`\`
 This example demonstrates how a decorator can wrap around the \`add\` function to log its execution details.
-        \`,
+        `,
       }
     ],
     codeSnippets: [ 
@@ -307,7 +307,7 @@ This example demonstrates how a decorator can wrap around the \`add\` function t
     dataAiHint: "javascript logo",
     category: "Web Development",
     longDescription: "JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification. It is a cornerstone technology of the World Wide Web, alongside HTML and CSS.",
-    mainContent: \`
+    mainContent: `
 ## Exploring JavaScript
 JavaScript (JS) is a versatile programming language primarily known as the scripting language for Web pages, but it's also used in many non-browser environments thanks to Node.js.
 
@@ -316,7 +316,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
 - **Server-Side Development:** With Node.js, JavaScript can be used to build scalable network applications.
 - **Asynchronous Nature:** Features like Promises and async/await make handling asynchronous operations elegant.
 - **Rich Ecosystem:** A vast number of frameworks and libraries (React, Angular, Vue, Express, etc.) simplify development.
-\`,
+`,
     keyFeatures: [
       { id: "dynamic", name: "Dynamic and Interpreted", description: "Executed directly by the browser or Node.js runtime.", icon: "Zap"},
       { id: "prototype-based", name: "Prototype-based OOP", description: "Uses prototypes for inheritance rather than classes (though ES6 classes are syntactic sugar).", icon: "Share2"},
@@ -342,7 +342,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     category: "Enterprise",
     longDescription: "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA).",
     officialDocumentationUrl: "https://docs.oracle.com/en/java/",
-    mainContent: \`
+    mainContent: `
 ## Java: Write Once, Run Anywhere
 
 Java is a robust, object-oriented language known for its platform independence and extensive use in enterprise-level applications, large-scale systems, and Android mobile development.
@@ -354,7 +354,7 @@ Java is a robust, object-oriented language known for its platform independence a
 - **Rich API:** Provides a comprehensive standard library for various tasks.
 - **Concurrency Support:** Built-in support for multithreaded programming.
 - **Security:** Designed with security features like a sandbox environment.
-\`,
+`,
     keyFeatures: [
       { id: "platform-independent", name: "Platform Independent", description: "Compile once, run on any JVM-enabled device.", icon: "Globe" },
       { id: "object-oriented", name: "Object-Oriented", description: "Embraces encapsulation, inheritance, and polymorphism.", icon: "Blocks" },
@@ -378,7 +378,7 @@ Java is a robust, object-oriented language known for its platform independence a
       {
         id: "java-basic-syntax",
         title: "Basic Syntax and Structure",
-        content: \`
+        content: `
 Java syntax is similar to C++ but simplified to eliminate language features that cause common programming errors.
 
 ### Hello World Example
@@ -416,12 +416,12 @@ for (int i = 0; i < 5; i++) {
     System.out.println("Iteration: " + i);
 }
 \`\`\`
-      \`,
+      `,
       },
       {
         id: "java-oop",
         title: "Object-Oriented Programming (OOP) in Java",
-        content: \`
+        content: `
 Java is fundamentally object-oriented. Key OOP concepts include:
 
 ### Classes and Objects
@@ -470,11 +470,11 @@ Allows objects of different classes to respond to the same method call in differ
 
 ### Encapsulation
 Bundling data (attributes) and methods that operate on the data within a single unit (class), often with access control (public, private, protected).
-      \`,
+      `,
       }
     ],
     codeSnippets: [
-      { id: "java-class-example", title: "Simple Java Class", language: "java", code: \`
+      { id: "java-class-example", title: "Simple Java Class", language: "java", code: `
 public class Vehicle {
     String modelName;
     int year;
@@ -493,7 +493,7 @@ public class Vehicle {
         car.displayInfo();
     }
 }
-\`, description: "A basic example of a class with a constructor and a method."}
+`, description: "A basic example of a class with a constructor and a method."}
     ],
     tutorials: [
       { id: "java-tut-oracle", title: "Oracle Java Tutorials", url: "https://docs.oracle.com/javase/tutorial/", sourceName: "Oracle"},
@@ -516,10 +516,10 @@ public class Vehicle {
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "cplusplus logo",
     category: "Systems Programming",
-    mainContent: \`
+    mainContent: `
 ## C++: Performance and Control
 C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.
-\`
+`
   },
   {
     id: "csharp",
@@ -529,10 +529,10 @@ C++ is a general-purpose programming language created by Bjarne Stroustrup as an
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "csharp logo",
     category: "Microsoft Ecosystem",
-    mainContent: \`
+    mainContent: `
 ## C#: Versatile and Modern
 C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem.
-\`
+`
   },
    {
     id: "typescript",
@@ -542,10 +542,10 @@ C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "typescript logo",
     category: "Web Development",
-    mainContent: \`
+    mainContent: `
 ## TypeScript: JavaScript That Scales
 TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.
-\`
+`
   },
   {
     id: "c",
@@ -555,10 +555,10 @@ TypeScript is a strongly typed programming language that builds on JavaScript, g
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "c logo",
     category: "Systems Programming",
-    mainContent: \`
+    mainContent: `
 ## C: The Bedrock of Modern Computing
 The C programming language is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.
-\`
+`
   },
   {
     id: "sql",
@@ -568,10 +568,10 @@ The C programming language is a general-purpose, procedural computer programming
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "sql logo",
     category: "Databases",
-    mainContent: \`
+    mainContent: `
 ## SQL: Querying Your Data
 SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS).
-\`
+`
   },
   {
     id: "php",
@@ -581,10 +581,10 @@ SQL (Structured Query Language) is a domain-specific language used in programmin
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "php logo",
     category: "Web Development",
-    mainContent: \`
+    mainContent: `
 ## PHP: Powering the Web
 PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.
-\`
+`
   },
   {
     id: "html",
@@ -594,10 +594,10 @@ PHP is a popular general-purpose scripting language that is especially suited to
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "html logo",
     category: "Web Development",
-    mainContent: \`
+    mainContent: `
 ## HTML: The Structure of Web Pages
 HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
-\`
+`
   },
   {
     id: "css",
@@ -607,10 +607,10 @@ HTML (HyperText Markup Language) is the standard markup language for documents d
     iconUrl: "https://placehold.co/64x64.png",
     dataAiHint: "css logo",
     category: "Web Development",
-    mainContent: \`
+    mainContent: `
 ## CSS: Styling the Web
 Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.
-\`
+`
   }
 ];
 
@@ -655,7 +655,7 @@ export const MOCK_TOPICS: Topic[] = [
       {id: "wiki-big-o", slug: "big-o-notation", title: "Big O Notation"}
     ],
     codeSnippets: [
-      {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: \`
+      {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: `
 def merge_sort(arr):
     if len(arr) > 1:
         mid = len(arr) // 2
@@ -681,13 +681,13 @@ def merge_sort(arr):
             arr[k] = R[j]
             j += 1
             k += 1
-\`, description: "A classic divide-and-conquer sorting algorithm."},
+`, description: "A classic divide-and-conquer sorting algorithm."},
       {
         id: "cs-algo-bigo-example",
         title: "Big O Notation Example (Linear Time)",
         language: "python",
         code:
-      \`
+      `
 def find_element(arr, target):
     # O(n) - Linear time complexity
     for element in arr:
@@ -698,7 +698,7 @@ def find_element(arr, target):
 my_list = [1, 2, 3, 4, 5]
 print(find_element(my_list, 3)) # True
 print(find_element(my_list, 6)) # False
-\`,
+`,
         description: "Illustrates an algorithm with O(n) time complexity."
       }
     ]
@@ -762,7 +762,7 @@ export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
     title: "Big O Notation",
     category: "Algorithms",
     lastUpdated: "2024-07-01T12:00:00Z",
-    content: \`
+    content: `
 # Big O Notation
 
 Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. In computer science, it is used to classify algorithms according to how their run time or space requirements grow as the input size grows.
@@ -777,7 +777,7 @@ Big O notation is a mathematical notation that describes the limiting behavior o
 - **O(n!)**: Factorial time - Time increases factorially, often seen in permutations.
 
 Understanding Big O is crucial for writing efficient and scalable code.
-    \`
+    `
   },
   {
     id: "2",
@@ -785,7 +785,7 @@ Understanding Big O is crucial for writing efficient and scalable code.
     title: "Turing Machines",
     category: "Theory of Computation",
     lastUpdated: "2024-05-20T09:00:00Z",
-    content: \`
+    content: `
 # Turing Machines
 
 A Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules. Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm, and is particularly useful in explaining the functions of a CPU inside a computer.
@@ -800,7 +800,7 @@ A Turing machine is a mathematical model of computation that defines an abstract
     *   The next state of the machine.
 
 Turing machines are fundamental to the study of computability and complexity theory.
-    \`
+    `
   },
   {
     id: "wiki-pep8", 
@@ -808,7 +808,7 @@ Turing machines are fundamental to the study of computability and complexity the
     title: "PEP 8 Style Guide for Python Code",
     category: "Programming Practices",
     lastUpdated: "2024-02-15T10:00:00Z",
-    content: \`
+    content: `
 # PEP 8 - Style Guide for Python Code
 
 PEP 8, sometimes spelled PEP8 or PEP-8, is a document that provides guidelines and best practices on how to write Python code. It was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan. The primary focus of PEP 8 is to improve the readability and consistency of Python code.
@@ -823,7 +823,7 @@ PEP 8, sometimes spelled PEP8 or PEP-8, is a document that provides guidelines a
 - **Programming Recommendations**: Comparisons to singletons like \`None\` should always be done with \`is\` or \`is not\`, never with equality operators. Use \`isinstance()\` for type checking.
 
 Adhering to PEP 8 makes Python code more readable and maintainable across different projects and teams.
-    \`
+    `
   },
   {
     id: "wiki-python-history",
@@ -831,7 +831,7 @@ Adhering to PEP 8 makes Python code more readable and maintainable across differ
     title: "History of Python",
     category: "Programming Languages",
     lastUpdated: "2024-01-10T14:00:00Z",
-    content: \`
+    content: `
 # History of Python
 
 Python was conceived in the late 1980s by Guido van Rossum at Centrum Wiskunde & Informatica (CWI) in the Netherlands as a successor to the ABC language (itself inspired by SETL), capable of exception handling and interfacing with the Amoeba operating system. Its implementation began in December 1989.
@@ -842,7 +842,7 @@ Python was conceived in the late 1980s by Guido van Rossum at Centrum Wiskunde &
 - **Python 3.0** (also known as Python 3000 or Py3k), a major, backward-incompatible release, was released in December 2008 after a long period of testing. Many of its major features were backported to Python 2.6.x and 2.7.x version series.
 
 Python's philosophy emphasizes code readability and a syntax that allows programmers to express concepts in fewer lines of code than might be used in languages such as C++ or Java.
-    \`
+    `
   },
   {
     id: "wiki-jvm",
@@ -850,7 +850,7 @@ Python's philosophy emphasizes code readability and a syntax that allows program
     title: "Java Virtual Machine (JVM)",
     category: "Programming Languages",
     lastUpdated: "2024-03-10T11:00:00Z",
-    content: \`
+    content: `
 # Java Virtual Machine (JVM)
 
 The Java Virtual Machine (JVM) is an abstract computing machine that enables a computer to run a Java program. When a Java program is compiled, it is compiled into an intermediate language called bytecode. The JVM translates this bytecode into machine code that can be executed by the computer's processor.
@@ -862,7 +862,7 @@ The Java Virtual Machine (JVM) is an abstract computing machine that enables a c
 - **Provides runtime environment**
 
 Key components include the Classloader, Execution Engine, and Runtime Data Areas (Heap, Stack, Method Area, etc.). The JVM is a crucial part of the "Write Once, Run Anywhere" (WORA) capability of Java.
-    \`
+    `
   },
   {
     id: "wiki-garbage-collection",
@@ -870,7 +870,7 @@ Key components include the Classloader, Execution Engine, and Runtime Data Areas
     title: "Garbage Collection in Java",
     category: "Programming Languages",
     lastUpdated: "2024-04-05T16:30:00Z",
-    content: \`
+    content: `
 # Garbage Collection in Java
 
 Garbage Collection (GC) in Java is the process of automatically managing memory. It identifies and discards objects that are no longer needed by a program so that their resources can be reclaimed and reused.
@@ -881,7 +881,7 @@ Garbage Collection (GC) in Java is the process of automatically managing memory.
 3.  **Compacting** (Optional): After deleting unused objects, the memory can be compacted to reduce fragmentation.
 
 Java provides different garbage collection algorithms (e.g., Serial GC, Parallel GC, CMS GC, G1 GC, ZGC, Shenandoah) that offer different trade-offs in terms of pause times and throughput.
-    \`
+    `
   }
 ];
 
@@ -894,7 +894,7 @@ export const MOCK_THINK_TANK_ARTICLES: ThinkTankArticle[] = [
     authors: ["Dr. E. Coddsworth"],
     tags: ["Complexity Theory", "Unsolved Problems"],
     abstract: "A speculative exploration into the P versus NP problem, considering novel approaches from information theory and thermodynamics.",
-    content: \`
+    content: `
 # On the Nature of P vs NP
 
 The P versus NP problem is a major unsolved problem in computer science. It asks whether every problem whose solution can be quickly verified can also be quickly solved.
@@ -910,7 +910,7 @@ The question is whether $P = NP$.
 $$ \\sum_{i=1}^n i = \\frac{n(n+1)}{2} $$ 
 
 We hypothesize that...
-    \`,
+    `,
     imageUrl: "https://placehold.co/800x450.png",
     dataAiHint: "complex graph"
   },
@@ -922,7 +922,7 @@ We hypothesize that...
     authors: ["Ada Bitwise", "Claude Shannonesque"],
     tags: ["Information Theory", "Systems Theory"],
     abstract: "This article proposes a unified framework for understanding entropy across various information systems, from communication channels to software architecture.",
-    content: \`
+    content: `
 # Entropy in Information Systems: A Unified Theory
 
 Entropy, a concept originating from thermodynamics, has found profound applications in information theory, largely due to Claude Shannon's work. This paper extends the notion of entropy to broader information systems, including software architecture and data structures.
@@ -935,7 +935,7 @@ $$ H(X) = - \\sum_{i=1}^n P(x_i) \\log_b P(x_i) $$
 Where $b$ is the base of the logarithm used. Common values for $b$ are 2, Euler's number $e$, or 10.
 
 This framework can be used to analyze system complexity, information flow, and potential for degradation or 'code rot'.
-    \`,
+    `,
     imageUrl: "https://placehold.co/800x450.png",
     dataAiHint: "data flow"
   },
