@@ -102,8 +102,8 @@
     },
     "tutorials/python/python-decorators.md": {
       "document": {
-        "title": "Understanding Python Decorators",
-        "slug": "python-decorators",
+        "title": "learn Understanding Python Decorators",
+        "slug": "level python-decorators",
         "order": 6,
         "description": "A practical guide to understanding and using decorators in Python.",
         "body": {
@@ -119,9 +119,9 @@
           "flattenedPath": "tutorials/python/python-decorators"
         },
         "type": "PythonTutorial",
-        "url": "/tutorial/python/python-decorators"
+        "url": "/tutorial/python/level python-decorators"
       },
-      "documentHash": "1750442197434",
+      "documentHash": "1750490047407",
       "hasWarnings": false,
       "documentTypeName": "PythonTutorial"
     },
