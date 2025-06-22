@@ -118,7 +118,7 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     slug: "python",
     name: "Python",
     description: "Versatile for web, data science, AI, and scripting.",
-    iconUrl: "https://placehold.co/64x64.png", 
+    iconUrl: "/images/languages/python.svg", 
     dataAiHint: "python logo",
     category: "General Purpose",
     longDescription: "Python is an interpreted, high-level and general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python aims to help programmers write clear, logical code for small and large-scale projects.",
@@ -303,7 +303,7 @@ This example demonstrates how a decorator can wrap around the \`add\` function t
     slug: "javascript",
     name: "JavaScript",
     description: "Essential for web development, front-end and back-end.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "/images/languages/javascript.svg",
     dataAiHint: "javascript logo",
     category: "Web Development",
     longDescription: "JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification. It is a cornerstone technology of the World Wide Web, alongside HTML and CSS.",
@@ -907,7 +907,7 @@ Let $NP$ be the set of decision problems solvable in polynomial time by a non-de
 
 The question is whether $P = NP$.
 
-$$ \\\\sum_{i=1}^n i = \\\\frac{n(n+1)}{2} $$ 
+$$ \\sum_{i=1}^n i = \\frac{n(n+1)}{2} $$ 
 
 We hypothesize that...
     `,
@@ -930,7 +930,7 @@ Entropy, a concept originating from thermodynamics, has found profound applicati
 ## Shannon Entropy
 For a discrete random variable $X$ with possible values \\{x_1, ..., x_n\\} and probability mass function $P(X)$, the entropy $H(X)$ is defined as:
 
-$$ H(X) = - \\\\sum_{i=1}^n P(x_i) \\\\log_b P(x_i) $$ 
+$$ H(X) = - \\sum_{i=1}^n P(x_i) \\log_b P(x_i) $$ 
 
 Where $b$ is the base of the logarithm used. Common values for $b$ are 2, Euler's number $e$, or 10.
 
