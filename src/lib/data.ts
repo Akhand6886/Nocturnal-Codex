@@ -118,7 +118,7 @@ export const MOCK_PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     slug: "python",
     name: "Python",
     description: "Versatile for web, data science, AI, and scripting.",
-    iconUrl: "https://placehold.co/64x64.png", 
+    iconUrl: "https://cdn.simpleicons.org/python", 
     dataAiHint: "python logo",
     category: "General Purpose",
     longDescription: "Python is an interpreted, high-level and general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant indentation. Python aims to help programmers write clear, logical code for small and large-scale projects.",
@@ -303,7 +303,7 @@ This example demonstrates how a decorator can wrap around the \`add\` function t
     slug: "javascript",
     name: "JavaScript",
     description: "Essential for web development, front-end and back-end.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/javascript",
     dataAiHint: "javascript logo",
     category: "Web Development",
     longDescription: "JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification. It is a cornerstone technology of the World Wide Web, alongside HTML and CSS.",
@@ -337,7 +337,7 @@ JavaScript (JS) is a versatile programming language primarily known as the scrip
     slug: "java",
     name: "Java",
     description: "Enterprise-level applications, Android development.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/java",
     dataAiHint: "java logo",
     category: "Enterprise",
     longDescription: "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA).",
@@ -513,7 +513,7 @@ public class Vehicle {
     slug: "cplusplus",
     name: "C++",
     description: "High-performance systems, game development, OS.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/cplusplus",
     dataAiHint: "cplusplus logo",
     category: "Systems Programming",
     mainContent: `
@@ -526,7 +526,7 @@ C++ is a general-purpose programming language created by Bjarne Stroustrup as an
     slug: "csharp",
     name: "C#",
     description: "Windows apps, game dev (Unity), web with .NET.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/csharp",
     dataAiHint: "csharp logo",
     category: "Microsoft Ecosystem",
     mainContent: `
@@ -539,7 +539,7 @@ C# (C-Sharp) is a modern, object-oriented, and type-safe programming language. C
     slug: "typescript",
     name: "TypeScript",
     description: "JavaScript superset adding static types for large apps.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/typescript",
     dataAiHint: "typescript logo",
     category: "Web Development",
     mainContent: `
@@ -552,7 +552,7 @@ TypeScript is a strongly typed programming language that builds on JavaScript, g
     slug: "c",
     name: "C",
     description: "Foundation for many languages, OS, embedded systems.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/c",
     dataAiHint: "c logo",
     category: "Systems Programming",
     mainContent: `
@@ -578,7 +578,7 @@ SQL (Structured Query Language) is a domain-specific language used in programmin
     slug: "php",
     name: "PHP",
     description: "Server-side scripting language for web development.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/php",
     dataAiHint: "php logo",
     category: "Web Development",
     mainContent: `
@@ -591,7 +591,7 @@ PHP is a popular general-purpose scripting language that is especially suited to
     slug: "html",
     name: "HTML",
     description: "Standard markup language for creating web pages.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/html5",
     dataAiHint: "html logo",
     category: "Web Development",
     mainContent: `
@@ -604,7 +604,7 @@ HTML (HyperText Markup Language) is the standard markup language for documents d
     slug: "css",
     name: "CSS",
     description: "Style sheet language for describing web page presentation.",
-    iconUrl: "https://placehold.co/64x64.png",
+    iconUrl: "https://cdn.simpleicons.org/css3",
     dataAiHint: "css logo",
     category: "Web Development",
     mainContent: `
@@ -907,7 +907,7 @@ Let $NP$ be the set of decision problems solvable in polynomial time by a non-de
 
 The question is whether $P = NP$.
 
-$$ \\\\sum_{i=1}^n i = \\\\frac{n(n+1)}{2} $$ 
+$$ \\sum_{i=1}^n i = \\frac{n(n+1)}{2} $$ 
 
 We hypothesize that...
     `,
@@ -930,7 +930,7 @@ Entropy, a concept originating from thermodynamics, has found profound applicati
 ## Shannon Entropy
 For a discrete random variable $X$ with possible values \\{x_1, ..., x_n\\} and probability mass function $P(X)$, the entropy $H(X)$ is defined as:
 
-$$ H(X) = - \\\\sum_{i=1}^n P(x_i) \\\\log_b P(x_i) $$ 
+$$ H(X) = - \\sum_{i=1}^n P(x_i) \\log_b P(x_i) $$ 
 
 Where $b$ is the base of the logarithm used. Common values for $b$ are 2, Euler's number $e$, or 10.
 

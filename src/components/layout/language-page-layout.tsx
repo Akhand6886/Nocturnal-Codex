@@ -17,7 +17,7 @@ interface LanguagePageLayoutProps extends PropsWithChildren {
 }
 
 export function LanguagePageLayout({ children, language }: LanguagePageLayoutProps) {
-  const pathname = usePathname();
+    const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const baseLanguagePath = `/languages/${language.slug}`;
@@ -45,18 +45,16 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
           {language.name} Sections
         </h3>
       </div>
-      <ScrollArea className="flex-grow p-4">
+      <ScrollArea className="h-full p-4">
         <ul className="space-y-1">
           {navItems.map((item) => {
-            const isActive = typeof window !== 'undefined' && window.location.hash === `#${item.id}`;
             return (
               <li key={item.id}>
                 <Link
                   href={item.href}
                   onClick={() => isSheetOpen && setIsSheetOpen(false)}
                   className={cn(
-                    "flex items-center p-2 text-sm font-medium rounded-md transition-colors",
-                    isActive ? "bg-accent text-accent-foreground" : "text-foreground/80 hover:bg-muted"
+                    "flex items-center p-2 text-sm font-medium rounded-md transition-colors text-foreground/80 hover:bg-muted"
                   )}
                 >
                   {item.icon && <item.icon className="mr-3 h-4 w-4 flex-shrink-0" />}
@@ -91,15 +89,12 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
   );
 
   return (
-    <div className="flex flex-col md:flex-row w-full">
-      {/* Desktop Sidebar */}
-      <aside className="w-72 lg:w-80 flex-shrink-0 hidden md:flex flex-col h-screen sticky top-0 border-r border-border bg-card">
+    <div className="flex-1 md:grid md:grid-cols-[280px_1fr]">
+      <aside className="h-full hidden md:flex md:flex-col sticky top-0 border-r border-border bg-card">
         <SidebarContent />
       </aside>
-      
-      {/* Main Content Area */}
+
       <div className="flex-grow flex flex-col min-w-0">
-        {/* Mobile Header with Sheet Trigger */}
         <header className="md:hidden p-4 border-b border-border sticky top-0 bg-background/80 backdrop-blur-sm z-10 flex items-center">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
@@ -114,8 +109,7 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
           </Sheet>
         </header>
 
-        {/* Page Content */}
-        <main className="flex-grow p-4 md:p-6 lg:p-8">
+        <main className="flex-grow">
           {children}
         </main>
       </div>
