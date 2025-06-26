@@ -72,8 +72,8 @@
     --muted: 222 30% 25%; /* Darker muted blue - #2C3A58 */
     --muted-foreground: 220 15% 65%; /* Greyish - #989fB0 */
 
-    --accent: 320 80% 65%; /* Bright Pink/Magenta - #F76AD1 */
-    --accent-foreground: 222 47% 11%; /* Dark for contrast */
+    --accent: 0 70% 55%; /* Blood Red */
+    --accent-foreground: 0 0% 100%; /* White for contrast on red */
 
     --destructive: 0 70% 55%; /* Clear Red - #D94444 */
     --destructive-foreground: 0 0% 100%; /* White */
@@ -83,7 +83,7 @@
     --ring: 175 70% 45%; /* Primary color for ring */
     
     --chart-1: 175 70% 50%; 
-    --chart-2: 320 70% 60%; 
+    --chart-2: 0 70% 55%; /* Blood Red */
     --chart-3: 260 60% 65%; 
     --chart-4: 45 80% 60%; /* Yellow/Orange */
     --chart-5: 200 70% 60%; /* Another Blue/Cyan */
