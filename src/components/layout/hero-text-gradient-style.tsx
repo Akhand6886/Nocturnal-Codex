@@ -6,16 +6,16 @@ export function HeroTextGradientStyle() {
   return (
     <style jsx global>{`
       @keyframes text-gradient-flow {
-        0% {
-          background-position: 0% 50%;
+        from {
+          background-position: 200% center;
         }
-        100% {
-          background-position: 200% 50%;
+        to {
+          background-position: 0% center;
         }
       }
       .animate-text-gradient-flow-alt {
         background-size: 200% 200%;
-        animation: text-gradient-flow 8s linear infinite;
+        animation: text-gradient-flow 15s linear infinite;
       }
     `}</style>
   );
