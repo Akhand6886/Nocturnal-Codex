@@ -15,7 +15,7 @@
     --popover: 0 0% 100%; /* White */
     --popover-foreground: 222 47% 11%;
 
-    --primary: 160 60% 40%; /* Sea Green */
+    --primary: 0 65% 50%; /* Blood Red */
     --primary-foreground: 0 0% 100%; /* White */
 
     --secondary: 220 15% 95%; /* Very light cool grey */
@@ -24,7 +24,7 @@
     --muted: 220 15% 95%;
     --muted-foreground: 220 10% 45%; /* Muted grey */
 
-    --accent: 0 65% 50%; /* Blood Red */
+    --accent: 160 60% 40%; /* Sea Green */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 65% 50%; /* Blood Red */
@@ -32,24 +32,24 @@
 
     --border: 220 15% 88%; /* Light cool grey border */
     --input: 220 15% 88%;
-    --ring: 160 60% 40%; /* Sea Green for ring */
+    --ring: 0 65% 50%; /* Blood Red for ring */
 
     --radius: 0.65rem;
 
-    --chart-1: 160 60% 40%; /* Sea Green */
-    --chart-2: 0 65% 50%;   /* Blood Red */
+    --chart-1: 0 65% 50%;   /* Blood Red */
+    --chart-2: 160 60% 40%; /* Sea Green */
     --chart-3: 210 60% 55%; /* A complementary blue */
     --chart-4: 40 70% 50%;  /* A complementary yellow/gold */
     --chart-5: 280 50% 60%; /* A complementary purple */
 
     --sidebar-background: 220 15% 97%;
     --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 160 60% 35%; /* Darker Sea Green */
+    --sidebar-primary: 0 65% 45%; /* Darker Blood Red */
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 160 20% 90%; /* Light Sea Green */
-    --sidebar-accent-foreground: 160 60% 35%;
+    --sidebar-accent: 0 80% 95%; /* Light Blood Red/Pink */
+    --sidebar-accent-foreground: 0 65% 45%;
     --sidebar-border: 220 15% 88%;
-    --sidebar-ring: 160 60% 45%;
+    --sidebar-ring: 0 65% 50%;
   }
 
   .dark {
