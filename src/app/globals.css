@@ -5,51 +5,51 @@
 
 @layer base {
   :root {
-    /* Little Cream - Light Mode - Updated with Golden Tones */
-    --background: 40 85% 98%; /* Whiter, still slightly creamy - #fdf9f2 */
-    --foreground: 35 30% 25%; /* Dark warm brown/grey - #594E42 */
+    /* Sea Green & Blood Red - Light Mode */
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 222 47% 11%; /* Dark Blue/Black for strong contrast */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 35 30% 25%; /* Dark warm brown/grey */
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 35 30% 25%; /* Dark warm brown/grey */
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 40 70% 50%; /* Golden - #D4A229 */
-    --primary-foreground: 40 70% 10%; /* Dark rich brown for contrast - #2B2208 */
+    --primary: 160 60% 40%; /* Sea Green */
+    --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 35 25% 88%; /* Light warm grey/beige - #EBE6E0 */
-    --secondary-foreground: 35 30% 35%; /* Darker warm grey */
+    --secondary: 220 15% 95%; /* Very light cool grey */
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 40 50% 93%; /* Slightly darker cream - #F7F2E8 */
-    --muted-foreground: 35 20% 55%; /* Medium warm grey - #A19A91 */
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 45%; /* Muted grey */
 
-    --accent: 160 40% 55%; /* Soft Teal/Jade - #5CC2A4 */
+    --accent: 0 65% 50%; /* Blood Red */
     --accent-foreground: 0 0% 100%; /* White */
 
-    --destructive: 0 60% 60%; /* Soft Red - #e67373 */
-    --destructive-foreground: 0 0% 100%; /* White */
+    --destructive: 0 65% 50%; /* Blood Red */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 85%; /* Very light warm grey border - #E0DCD7 */
-    --input: 35 30% 90%; /* Slightly off-white input bg - #EDEAE6 */
-    --ring: 40 70% 50%; /* Golden for ring, matches new primary */
+    --border: 220 15% 88%; /* Light cool grey border */
+    --input: 220 15% 88%;
+    --ring: 160 60% 40%; /* Sea Green for ring */
 
     --radius: 0.65rem;
 
-    --chart-1: 40 70% 55%; /* Golden variant for charts */
-    --chart-2: 160 40% 60%; /* Accent variant */
-    --chart-3: 35 40% 65%; /* Warm brown variant */
-    --chart-4: 200 50% 70%; /* Soft Blue */
-    --chart-5: 0 40% 70%; /* Soft Rose */
+    --chart-1: 160 60% 40%; /* Sea Green */
+    --chart-2: 0 65% 50%;   /* Blood Red */
+    --chart-3: 210 60% 55%; /* A complementary blue */
+    --chart-4: 40 70% 50%;  /* A complementary yellow/gold */
+    --chart-5: 280 50% 60%; /* A complementary purple */
 
-    --sidebar-background: 40 60% 95%;
-    --sidebar-foreground: 35 30% 30%;
-    --sidebar-primary: 25 55% 50%;
-    --sidebar-primary-foreground: 40 75% 98%;
-    --sidebar-accent: 40 40% 90%;
-    --sidebar-accent-foreground: 35 30% 25%;
-    --sidebar-border: 35 20% 82%;
-    --sidebar-ring: 25 60% 55%;
+    --sidebar-background: 220 15% 97%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 160 60% 35%; /* Darker Sea Green */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 20% 90%; /* Light Sea Green */
+    --sidebar-accent-foreground: 160 60% 35%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 160 60% 45%;
   }
 
   .dark {
@@ -141,4 +141,3 @@
 html {
   scroll-behavior: smooth;
 }
-
