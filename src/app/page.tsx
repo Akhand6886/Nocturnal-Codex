@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -10,20 +11,18 @@ import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-st
 import { TopicTile } from "@/components/content/topic-tile";
 import { LanguageTile } from "@/components/content/language-tile";
 import type { Metadata } from 'next';
-import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client and Post type
+import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
+import { compareDesc } from "date-fns";
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60; 
 
 export const metadata: Metadata = {
   title: 'Nocturnal Codex - For Hackers, Theorists, Builders, Learners',
   description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
 };
 
-async function getHomepageBlogPosts(): Promise<{ recentPosts: SanityPost[], featuredPosts: SanityPost[] }> {
-  const query = `*[_type == "post"] | order(publishedAt desc) {
-    _id, title, slug, publishedAt, author, excerpt, mainImage{asset, alt, dataAiHint}, tags, featured
-  }`;
-  const allPosts = await client.fetch<SanityPost[]>(query);
+async function getHomepageBlogPosts(): Promise<{ recentPosts: BlogPost[], featuredPosts: BlogPost[] }> {
+  const allPosts = allBlogPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
   
   const recentPosts = allPosts.slice(0, 2);
   const featuredPosts = allPosts.filter(post => post.featured).slice(0, 2);
@@ -130,7 +129,7 @@ export default async function HomePage() {
             {recentBlogPosts.map((post) => (
               <BlogPostCard key={post._id} post={post} />
             ))}
-            {recentBlogPosts.length >= 2 && ( // Show "View All" if there are 2 or more, implying there might be more than 2 total
+            {recentBlogPosts.length >= 2 && ( 
                <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> 
                 <Link href="/blog">View All Blog Posts <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>

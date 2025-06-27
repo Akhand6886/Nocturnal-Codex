@@ -1,17 +1,15 @@
 
-import { client, type SanityPost } from "@/lib/sanity";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
-import { Tag as TagIcon } from "lucide-react"; // Renamed to avoid conflict with HTML tag
+import { Tag as TagIcon } from "lucide-react";
 import { notFound } from "next/navigation";
-import { compareDesc } from "date-fns"; // For sorting, though Sanity query can also sort
 import type { Metadata } from 'next';
+import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const query = `array::unique(*[_type == "post" && defined(tags) && count(tags) > 0].tags[])`;
-  const tags = await client.fetch<string[]>(query);
+  const tags = allBlogPosts.flatMap(post => post.tags || []);
   const uniqueTags = Array.from(new Set(tags.filter(Boolean)));
   
   return uniqueTags.map((tag) => ({
@@ -32,15 +30,11 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
   };
 }
 
-async function getPostsByTag(tagSlug: string): Promise<SanityPost[]> {
+async function getPostsByTag(tagSlug: string): Promise<BlogPost[]> {
   const tagName = decodeURIComponent(tagSlug);
-  // Sanity array matching is case-sensitive. We store tags as they are entered.
-  // To make this robust, we might need to query for various casings or normalize tags on input.
-  // For now, we assume the slug matches the case-sensitive tag or a lowercase version.
-  const postsQuery = `*[_type == "post" && ($tagName in tags || $lowercaseTagName in tags)] | order(publishedAt desc) {
-    _id, title, slug, publishedAt, author, excerpt, mainImage{asset, alt, dataAiHint}, tags, category
-  }`;
-  const posts = await client.fetch<SanityPost[]>(postsQuery, { tagName: tagName, lowercaseTagName: tagName.toLowerCase() });
+  const posts = allBlogPosts.filter(post => 
+    post.tags?.some(tag => tag.toLowerCase() === tagName.toLowerCase())
+  );
   return posts;
 }
 
@@ -49,9 +43,6 @@ export default async function TagPage({ params }: TagPageProps) {
   const postsWithTag = await getPostsByTag(tagSlug);
   const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
-
-  // Consider if a tag page should 404 if no posts are found or if the tag is not in a global list
-  // For now, if postsWithTag is empty, it will show a message.
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },

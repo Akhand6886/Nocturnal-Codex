@@ -1,18 +1,19 @@
 
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { FileText } from "lucide-react";
-import { client, type SanityPost, urlFor } from '@/lib/sanity'; // Import Sanity client, Post type, and urlFor
 import type { Metadata } from 'next';
+import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
+import { compareDesc } from "date-fns";
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60; 
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-const defaultLogoUrl = `${siteUrl}/images/logo.png`; // Define a default logo URL
+const defaultLogoUrl = `${siteUrl}/images/logo.png`;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Blog | Nocturnal Codex",
-    description: "Read the latest articles, insights, and musings from the custodians of the Nocturnal Codex, powered by Sanity CMS.",
+    description: "Read the latest articles, insights, and musings from the custodians of the Nocturnal Codex.",
     alternates: {
       canonical: "/blog",
     },
@@ -25,22 +26,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function getBlogPosts(): Promise<SanityPost[]> {
-  const query = `*[_type == "post"] | order(publishedAt desc) [0...10] {
-    _id,
-    title,
-    slug,
-    publishedAt,
-    author,
-    excerpt,
-    mainImage {
-      ..., // Include all fields from mainImage
-      asset-> // Resolve the asset reference
-    },
-    tags,
-    category
-  }`;
-  const posts = await client.fetch<SanityPost[]>(query);
+async function getBlogPosts(): Promise<BlogPost[]> {
+  const posts = allBlogPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
   return posts;
 }
 
@@ -62,13 +49,13 @@ export default async function BlogPage() {
         }
     },
     "blogPost": posts.map(post => {
-      const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : undefined;
+      const imageUrl = post.imageUrl ? `${siteUrl}${post.imageUrl}` : undefined;
       return {
         "@type": "BlogPosting",
-        "mainEntityOfPage": `${siteUrl}/blog/${post.slug?.current}`,
+        "mainEntityOfPage": `${siteUrl}${post.url}`,
         "headline": post.title,
-        "image": imageUrl, // Use urlFor for image
-        "datePublished": new Date(post.publishedAt).toISOString(),
+        "image": imageUrl,
+        "datePublished": new Date(post.date).toISOString(),
         "author": {
             "@type": "Person",
             "name": post.author || "The Nocturnist"
@@ -90,7 +77,7 @@ export default async function BlogPage() {
             Blog
           </h1>
           <p className="mt-3 text-lg text-muted-foreground">
-            Insights, articles, and musings from the custodians of the Nocturnal Codex. Now powered by Sanity.
+            Insights, articles, and musings from the custodians of the Nocturnal Codex.
           </p>
         </header>
         

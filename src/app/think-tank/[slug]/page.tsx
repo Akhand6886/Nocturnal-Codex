@@ -4,16 +4,16 @@ import type { ThinkTankArticle } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import Image from "next/image";
-import { Users, CalendarDays, Tag as TagIcon, FileText, Sigma, Link as LinkIconLucide } from "lucide-react"; // Renamed Tag and Link
+import { Users, CalendarDays, Tag as TagIcon, FileText, Sigma, Link as LinkIconLucide } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
-import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client
+import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return MOCK_THINK_TANK_ARTICLES.map((article) => ({
@@ -48,26 +48,21 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
 
   const relatedArticles: RelatedArticle[] = [];
   if (article.tags && article.tags.length > 0) {
-    // Related Think Tank articles (mock data)
     MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
       if (otherArticle.id !== article.id && otherArticle.tags && otherArticle.tags.some(tag => article.tags!.includes(tag))) {
-        if (relatedArticles.length < 2 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) { // Limit to 2 from mock
+        if (relatedArticles.length < 2 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
           relatedArticles.push({ title: otherArticle.title, slug: otherArticle.slug, type: 'think-tank', excerpt: otherArticle.abstract });
         }
       }
     });
 
-    // Related Blog posts (from Sanity)
-    const sanityBlogQuery = `*[_type == "post" && count(tags[@ in $articleTags]) > 0 && _id != $currentArticleId] | order(publishedAt desc) [0...3] {
-      title, "slug": slug.current, excerpt
-    }`;
-    const relatedSanityPosts = await client.fetch<Array<Pick<SanityPost, 'title' | 'slug' | 'excerpt'>>>(
-      sanityBlogQuery, 
-      { articleTags: article.tags, currentArticleId: "" } // currentArticleId isn't relevant for blog posts, but Sanity needs defined params
-    );
+    const relatedBlogPosts = allBlogPosts.filter(post => 
+        post.tags?.some(tag => article.tags?.includes(tag))
+    ).slice(0, 3);
 
-    relatedSanityPosts.forEach(otherPost => {
-      if (relatedArticles.length < 5 && otherPost.slug) { // Ensure slug exists
+
+    relatedBlogPosts.forEach(otherPost => {
+      if (relatedArticles.length < 5 && otherPost.slug) {
          relatedArticles.push({ 
             title: otherPost.title, 
             slug: otherPost.slug, 

@@ -8,13 +8,10 @@
     "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit",
-    "sanity:dev": "cd sanity && sanity dev",
-    "sanity:deploy": "cd sanity && sanity deploy"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
-    "@portabletext/react": "^3.1.0",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-avatar": "^1.1.3",
@@ -35,8 +32,6 @@
     "@radix-ui/react-tabs": "^1.1.3",
     "@radix-ui/react-toast": "^1.2.6",
     "@radix-ui/react-tooltip": "^1.1.8",
-    "@sanity/image-url": "^1.1.0",
-    "@sanity/vision": "^3.57.0",
     "@tailwindcss/typography": "^0.5.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -47,7 +42,6 @@
     "lucide-react": "^0.475.0",
     "next": "15.2.3",
     "next-contentlayer": "^0.3.4",
-    "next-sanity": "^9.4.2",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
@@ -56,7 +50,6 @@
     "recharts": "^2.15.1",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "sanity": "^3.57.0",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
@@ -79,9 +72,6 @@
     "@babel/types": "^7.24.7",
     "@inquirer/core": "^4.0.0",
     "@inquirer/prompts": "^5.1.2",
-    "@inquirer/type": "^2.0.0",
-    "@sanity/visual-editing": {
-      "@sanity/client": "^6.15.0"
-    }
+    "@inquirer/type": "^2.0.0"
   }
 }
