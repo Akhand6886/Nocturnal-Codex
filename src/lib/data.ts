@@ -1,7 +1,6 @@
 
 import type { NavItem as NavItemType } from '@/components/layout/navbar';
 import type { CodeLanguage } from '@/components/content/code-snippet';
-// The BlogPost type will now be imported from 'contentlayer/generated' in files that need it.
 
 export interface Topic {
   id: string;
@@ -38,13 +37,6 @@ export interface CodeSnippetItem {
   title: string;
   language: CodeLanguage;
   code: string;
-  description?: string;
-}
-
-export interface BlogSeries {
-  id: string;
-  slug: string;
-  title: string;
   description?: string;
 }
 
@@ -611,22 +603,6 @@ HTML (HyperText Markup Language) is the standard markup language for documents d
 ## CSS: Styling the Web
 Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.
 `
-  }
-];
-
-
-export const MOCK_BLOG_SERIES: BlogSeries[] = [
-  {
-    id: "quantum-intro",
-    slug: "introduction-to-quantum-concepts",
-    title: "Introduction to Quantum Concepts",
-    description: "A beginner-friendly series exploring the fundamental ideas of quantum mechanics and computing."
-  },
-  {
-    id: "getting-started",
-    slug: "getting-started-series",
-    title: "Getting Started Series",
-    description: "General posts to help you get started on your journey with Nocturnal Codex."
   }
 ];
 
