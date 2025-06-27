@@ -43,7 +43,7 @@ export default async function HomePage() {
       {/* Hero Section */}
       <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-primary/10 to-accent/15 rounded-xl shadow-2xl overflow-hidden">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary/70 animate-text-gradient-flow-alt">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary/70 animate-text-gradient-flow">
             For Hackers, Theorists, Builders, Learners.
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">

@@ -59,8 +59,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { posts: postsInCategory, actualCategoryName } = await getPostsByCategory(categorySlug);
 
   if (postsInCategory.length === 0) {
-    const allSanityCategories = Array.from(new Set(allBlogPosts.map(p => p.category)));
-    const isValidCategory = allSanityCategories.some(cat => slugifyCategory(cat) === categorySlug);
+    const allContentlayerCategories = Array.from(new Set(allBlogPosts.map(p => p.category)));
+    const isValidCategory = allContentlayerCategories.some(cat => slugifyCategory(cat) === categorySlug);
     if (!isValidCategory) {
         notFound();
     }
