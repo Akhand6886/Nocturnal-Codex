@@ -1,22 +1,23 @@
 
-import { MOCK_THINK_TANK_ARTICLES } from "@/lib/data";
-import type { ThinkTankArticle } from "@/lib/data";
-import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
-import { MarkdownRenderer } from "@/components/content/markdown-renderer";
+import Link from "next/link";
 import Image from "next/image";
-import { Users, CalendarDays, Tag as TagIcon, FileText, Sigma, Link as LinkIconLucide } from "lucide-react"; // Renamed Tag and Link
+import { notFound } from "next/navigation";
+import type { Metadata } from 'next';
+import { format } from 'date-fns';
+import { Users, CalendarDays, Tag as TagIcon, FileText, Sigma, Link as LinkIconLucide } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {format} from 'date-fns';
-import Link from "next/link";
+import { Breadcrumbs, type BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
-import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client
-import type { Metadata } from 'next';
+import { fetchThinkTankArticles, fetchThinkTankArticleBySlug, fetchBlogPosts } from "@/lib/contentful";
+import { ContentfulRichTextRenderer } from "@/components/contentful/rich-text-renderer";
+import type { BlogPost, ThinkTankArticle } from "@/types";
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60;
 
 export async function generateStaticParams() {
-  return MOCK_THINK_TANK_ARTICLES.map((article) => ({
+  const articles = await fetchThinkTankArticles({ limit: 50 });
+  return articles.map((article) => ({
     slug: article.slug,
   }));
 }
@@ -26,18 +27,10 @@ interface ThinkTankArticlePageProps {
 }
 
 export default async function ThinkTankArticlePage({ params }: ThinkTankArticlePageProps) {
-  const article = MOCK_THINK_TANK_ARTICLES.find((a) => a.slug === params.slug);
+  const article = await fetchThinkTankArticleBySlug(params.slug);
 
   if (!article) {
-    return (
-      <div className="text-center py-10">
-        <h1 className="text-2xl font-bold">Article Not Found</h1>
-        <p className="text-muted-foreground">The requested Think Tank article could not be found.</p>
-        <Link href="/think-tank" className="text-primary hover:underline mt-4 inline-block">
-          Back to Think Tank
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   const breadcrumbItems: BreadcrumbItem[] = [
@@ -46,28 +39,25 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
     { label: article.title },
   ];
 
+  // Fetch related content
   const relatedArticles: RelatedArticle[] = [];
   if (article.tags && article.tags.length > 0) {
-    // Related Think Tank articles (mock data)
-    MOCK_THINK_TANK_ARTICLES.forEach(otherArticle => {
-      if (otherArticle.id !== article.id && otherArticle.tags && otherArticle.tags.some(tag => article.tags!.includes(tag))) {
-        if (relatedArticles.length < 2 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) { // Limit to 2 from mock
+    const allThinkTank = await fetchThinkTankArticles();
+    allThinkTank.forEach(otherArticle => {
+      if (otherArticle.id !== article.id && otherArticle.tags?.some(tag => article.tags!.includes(tag))) {
+        if (relatedArticles.length < 2 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
           relatedArticles.push({ title: otherArticle.title, slug: otherArticle.slug, type: 'think-tank', excerpt: otherArticle.abstract });
         }
       }
     });
 
-    // Related Blog posts (from Sanity)
-    const sanityBlogQuery = `*[_type == "post" && count(tags[@ in $articleTags]) > 0 && _id != $currentArticleId] | order(publishedAt desc) [0...3] {
-      title, "slug": slug.current, excerpt
-    }`;
-    const relatedSanityPosts = await client.fetch<Array<Pick<SanityPost, 'title' | 'slug' | 'excerpt'>>>(
-      sanityBlogQuery, 
-      { articleTags: article.tags, currentArticleId: "" } // currentArticleId isn't relevant for blog posts, but Sanity needs defined params
-    );
+    const allBlogPosts = await fetchBlogPosts();
+    const relatedBlogPosts = allBlogPosts.filter(post => 
+        post.tags?.some(tag => article.tags?.includes(tag))
+    ).slice(0, 3);
 
-    relatedSanityPosts.forEach(otherPost => {
-      if (relatedArticles.length < 5 && otherPost.slug) { // Ensure slug exists
+    relatedBlogPosts.forEach(otherPost => {
+      if (relatedArticles.length < 5 && otherPost.slug) {
          relatedArticles.push({ 
             title: otherPost.title, 
             slug: otherPost.slug, 
@@ -77,7 +67,6 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
       }
     });
   }
-
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
@@ -106,15 +95,16 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
           )}
         </header>
 
-        {article.imageUrl && (
+        {article.featuredImage && (
           <div className="relative w-full aspect-[16/7] rounded-lg overflow-hidden shadow-lg my-8">
             <Image 
-              src={article.imageUrl} 
-              alt={article.title} 
-              fill 
-              style={{objectFit: "cover"}} 
+              src={article.featuredImage.url} 
+              alt={article.featuredImage.alt} 
+              width={article.featuredImage.width}
+              height={article.featuredImage.height}
+              className="object-cover w-full h-full"
               priority 
-              data-ai-hint={article.dataAiHint || "research concept"}
+              data-ai-hint={article.featuredImage.dataAiHint || "research concept"}
             />
           </div>
         )}
@@ -128,20 +118,8 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
           </CardContent>
         </Card>
 
-        <div className="prose dark:prose-invert max-w-none">
-          <MarkdownRenderer content={article.content} />
-          {article.content.includes("$$") && ( 
-              <div className="my-6 p-4 border border-dashed border-accent rounded-md bg-accent/10">
-                  <div className="flex items-center text-sm text-accent-foreground mb-2">
-                      <Sigma className="h-5 w-5 mr-2"/> 
-                      <span>Mathematical expressions rendered via LaTeX (conceptual).</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                      In a full implementation, LaTeX content would be processed by a library like KaTeX or MathJax for proper display.
-                  </p>
-              </div>
-          )}
-        </div>
+        <ContentfulRichTextRenderer content={article.content} />
+
       </article>
 
       {relatedArticles.length > 0 && (
@@ -162,12 +140,23 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
 }
 
 export async function generateMetadata({ params }: ThinkTankArticlePageProps): Promise<Metadata> {
-  const article = MOCK_THINK_TANK_ARTICLES.find((a) => a.slug === params.slug);
+  const article = await fetchThinkTankArticleBySlug(params.slug);
   if (!article) {
     return { title: "Article Not Found | Nocturnal Codex" };
   }
   return {
     title: `${article.title} | Think Tank | Nocturnal Codex`,
     description: article.abstract,
+    openGraph: {
+      title: article.title,
+      description: article.abstract,
+      images: article.featuredImage ? [article.featuredImage.url] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.abstract,
+      images: article.featuredImage ? [article.featuredImage.url] : [],
+    }
   };
 }

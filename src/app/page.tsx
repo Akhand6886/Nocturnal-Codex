@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -10,29 +11,18 @@ import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-st
 import { TopicTile } from "@/components/content/topic-tile";
 import { LanguageTile } from "@/components/content/language-tile";
 import type { Metadata } from 'next';
-import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client and Post type
+import { fetchBlogPosts } from "@/lib/contentful";
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60; 
 
 export const metadata: Metadata = {
   title: 'Nocturnal Codex - For Hackers, Theorists, Builders, Learners',
   description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
 };
 
-async function getHomepageBlogPosts(): Promise<{ recentPosts: SanityPost[], featuredPosts: SanityPost[] }> {
-  const query = `*[_type == "post"] | order(publishedAt desc) {
-    _id, title, slug, publishedAt, author, excerpt, mainImage{asset, alt, dataAiHint}, tags, featured
-  }`;
-  const allPosts = await client.fetch<SanityPost[]>(query);
-  
-  const recentPosts = allPosts.slice(0, 2);
-  const featuredPosts = allPosts.filter(post => post.featured).slice(0, 2);
-  
-  return { recentPosts, featuredPosts };
-}
-
 export default async function HomePage() {
-  const { recentPosts: recentBlogPosts, featuredPosts: featuredBlogPosts } = await getHomepageBlogPosts();
+  const recentBlogPosts = await fetchBlogPosts({ limit: 2 });
+  const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true });
   
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
   const featuredTopics = MOCK_TOPICS.slice(0, 6); 
@@ -44,7 +34,7 @@ export default async function HomePage() {
       {/* Hero Section */}
       <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-primary/10 to-accent/15 rounded-xl shadow-2xl overflow-hidden">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary/70 animate-text-gradient-flow-alt">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary/70 animate-text-gradient-flow">
             For Hackers, Theorists, Builders, Learners.
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
@@ -112,7 +102,7 @@ export default async function HomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredBlogPosts.map((post) => (
-              <BlogPostCard key={post._id} post={post} />
+              <BlogPostCard key={post.id} post={post} />
             ))}
           </div>
         </section>
@@ -128,9 +118,9 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-10">
             {recentBlogPosts.map((post) => (
-              <BlogPostCard key={post._id} post={post} />
+              <BlogPostCard key={post.id} post={post} />
             ))}
-            {recentBlogPosts.length >= 2 && ( // Show "View All" if there are 2 or more, implying there might be more than 2 total
+            {recentBlogPosts.length >= 2 && ( 
                <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> 
                 <Link href="/blog">View All Blog Posts <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>

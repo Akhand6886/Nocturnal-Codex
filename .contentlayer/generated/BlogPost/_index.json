@@ -27,6 +27,7 @@
       "flattenedPath": "blog/hello-world"
     },
     "type": "BlogPost",
+    "url": "/blog/hello-world",
     "slug": "hello-world",
     "id": "hello-world"
   }

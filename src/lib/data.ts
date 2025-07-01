@@ -1,7 +1,6 @@
 
 import type { NavItem as NavItemType } from '@/components/layout/navbar';
 import type { CodeLanguage } from '@/components/content/code-snippet';
-// The BlogPost type will now be imported from 'contentlayer/generated' in files that need it.
 
 export interface Topic {
   id: string;
@@ -41,13 +40,6 @@ export interface CodeSnippetItem {
   description?: string;
 }
 
-export interface BlogSeries {
-  id: string;
-  slug: string;
-  title: string;
-  description?: string;
-}
-
 export interface WikiArticleStub {
   id: string;
   title: string;
@@ -63,15 +55,6 @@ export interface ThinkTankArticleStub {
   id: string;
   title: string;
   slug: string;
-}
-export interface ThinkTankArticle extends ThinkTankArticleStub {
-  date: string;
-  authors: string[];
-  abstract: string;
-  content: string; // Markdown content
-  tags?: string[];
-  imageUrl?: string;
-  dataAiHint?: string;
 }
 
 export interface LanguageSection { // Represents Core Concepts or detailed aspects
@@ -614,22 +597,6 @@ Cascading Style Sheets (CSS) is a style sheet language used for describing the p
   }
 ];
 
-
-export const MOCK_BLOG_SERIES: BlogSeries[] = [
-  {
-    id: "quantum-intro",
-    slug: "introduction-to-quantum-concepts",
-    title: "Introduction to Quantum Concepts",
-    description: "A beginner-friendly series exploring the fundamental ideas of quantum mechanics and computing."
-  },
-  {
-    id: "getting-started",
-    slug: "getting-started-series",
-    title: "Getting Started Series",
-    description: "General posts to help you get started on your journey with Nocturnal Codex."
-  }
-];
-
 export const MOCK_TOPICS: Topic[] = [
   {
     id: "algorithms",
@@ -883,62 +850,6 @@ Garbage Collection (GC) in Java is the process of automatically managing memory.
 Java provides different garbage collection algorithms (e.g., Serial GC, Parallel GC, CMS GC, G1 GC, ZGC, Shenandoah) that offer different trade-offs in terms of pause times and throughput.
     `
   }
-];
-
-export const MOCK_THINK_TANK_ARTICLES: ThinkTankArticle[] = [
-  {
-    id: "1",
-    slug: "on-the-nature-of-p-vs-np",
-    title: "On the Nature of P vs NP",
-    date: "2024-05-10T00:00:00Z",
-    authors: ["Dr. E. Coddsworth"],
-    tags: ["Complexity Theory", "Unsolved Problems"],
-    abstract: "A speculative exploration into the P versus NP problem, considering novel approaches from information theory and thermodynamics.",
-    content: `
-# On the Nature of P vs NP
-
-The P versus NP problem is a major unsolved problem in computer science. It asks whether every problem whose solution can be quickly verified can also be quickly solved.
-
-This paper explores...
-
-## Mathematical Formalism
-Let $P$ be the set of decision problems solvable in polynomial time by a deterministic Turing machine. 
-Let $NP$ be the set of decision problems solvable in polynomial time by a non-deterministic Turing machine.
-
-The question is whether $P = NP$.
-
-$$ \\sum_{i=1}^n i = \\frac{n(n+1)}{2} $$ 
-
-We hypothesize that...
-    `,
-    imageUrl: "https://placehold.co/800x450.png",
-    dataAiHint: "complex graph"
-  },
-  {
-    id: "2",
-    slug: "entropy-in-information-systems",
-    title: "Entropy in Information Systems: A Unified Theory",
-    date: "2024-03-22T00:00:00Z",
-    authors: ["Ada Bitwise", "Claude Shannonesque"],
-    tags: ["Information Theory", "Systems Theory"],
-    abstract: "This article proposes a unified framework for understanding entropy across various information systems, from communication channels to software architecture.",
-    content: `
-# Entropy in Information Systems: A Unified Theory
-
-Entropy, a concept originating from thermodynamics, has found profound applications in information theory, largely due to Claude Shannon's work. This paper extends the notion of entropy to broader information systems, including software architecture and data structures.
-
-## Shannon Entropy
-For a discrete random variable $X$ with possible values \\{x_1, ..., x_n\\} and probability mass function $P(X)$, the entropy $H(X)$ is defined as:
-
-$$ H(X) = - \\sum_{i=1}^n P(x_i) \\log_b P(x_i) $$ 
-
-Where $b$ is the base of the logarithm used. Common values for $b$ are 2, Euler's number $e$, or 10.
-
-This framework can be used to analyze system complexity, information flow, and potential for degradation or 'code rot'.
-    `,
-    imageUrl: "https://placehold.co/800x450.png",
-    dataAiHint: "data flow"
-  },
 ];
 
 export const NAV_ITEMS: NavItemType[] = [

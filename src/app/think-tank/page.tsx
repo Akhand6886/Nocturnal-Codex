@@ -1,12 +1,18 @@
 
-import { MOCK_THINK_TANK_ARTICLES } from "@/lib/data";
 import { ThinkTankArticleCard } from "@/components/content/think-tank-article-card";
 import { BrainCircuit } from "lucide-react";
+import { fetchThinkTankArticles } from "@/lib/contentful";
+import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
-export default function ThinkTankPage() {
-  const sortedArticles = MOCK_THINK_TANK_ARTICLES.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export const metadata: Metadata = {
+  title: "Think Tank | Nocturnal Codex",
+  description: "In-depth research articles and theoretical explorations.",
+};
+
+export default async function ThinkTankPage() {
+  const articles = await fetchThinkTankArticles();
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-10">
@@ -20,9 +26,9 @@ export default function ThinkTankPage() {
         </p>
       </header>
       
-      {sortedArticles.length > 0 ? (
+      {articles.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-          {sortedArticles.map((article) => (
+          {articles.map((article) => (
             <ThinkTankArticleCard key={article.id} article={article} />
           ))}
         </div>
@@ -32,8 +38,3 @@ export default function ThinkTankPage() {
     </div>
   );
 }
-
-export const metadata = {
-  title: "Think Tank | Nocturnal Codex",
-  description: "In-depth research articles and theoretical explorations.",
-};

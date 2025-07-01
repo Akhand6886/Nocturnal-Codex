@@ -1,9 +1,9 @@
 
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Tag as TagIcon } from "lucide-react"; // Renamed to avoid conflict
-import { client } from '@/lib/sanity';
+import { Tag as TagIcon } from "lucide-react";
 import type { Metadata } from 'next';
+import { fetchBlogPosts } from "@/lib/contentful";
 
 export const revalidate = 60;
 
@@ -13,9 +13,10 @@ export const metadata: Metadata = {
 };
 
 async function getAllTags(): Promise<string[]> {
-  const query = `array::unique(*[_type == "post" && defined(tags) && count(tags) > 0].tags[])`;
-  const tags = await client.fetch<string[]>(query);
-  return tags.filter(Boolean).sort((a, b) => a.localeCompare(b));
+  const posts = await fetchBlogPosts();
+  const tags = posts.flatMap(post => post.tags || []);
+  const uniqueTags = Array.from(new Set(tags));
+  return uniqueTags.filter(Boolean).sort((a, b) => a.localeCompare(b));
 }
 
 export default async function TagsPage() {

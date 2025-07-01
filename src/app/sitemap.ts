@@ -1,7 +1,8 @@
 
 import { MetadataRoute } from 'next';
-import { MOCK_THINK_TANK_ARTICLES, MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from '@/lib/data';
-import { client, type SanityPost } from '@/lib/sanity'; // Import Sanity client
+import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from '@/lib/data';
+import { allPythonTutorials } from 'contentlayer/generated';
+import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -16,6 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/think-tank',
     '/topics',
     '/wiki',
+    '/tutorial/python'
   ].map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: new Date().toISOString(),
@@ -23,20 +25,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '/' ? 1 : 0.8,
   }));
 
-  // Fetch blog posts from Sanity
-  const sanityPostsQuery = `*[_type == "post" && defined(slug.current) && defined(publishedAt)]{ "slug": slug.current, "publishedAt": publishedAt, "updatedDate": _updatedAt }`;
-  const sanityBlogPosts = await client.fetch<Array<{ slug: string; publishedAt: string; updatedDate: string }>>(sanityPostsQuery);
-  
-  const blogPosts = sanityBlogPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedDate || post.publishedAt).toISOString(),
+  const blogPostsData = await fetchBlogPosts();
+  const blogPosts = blogPostsData.map((post) => ({
+    url: `${BASE_URL}${post.url}`,
+    lastModified: new Date(post.date).toISOString(),
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
-  const thinkTankArticles = MOCK_THINK_TANK_ARTICLES.map((article) => ({
-    url: `${BASE_URL}/think-tank/${article.slug}`,
+  const thinkTankArticlesData = await fetchThinkTankArticles();
+  const thinkTankArticles = thinkTankArticlesData.map((article) => ({
+    url: `${BASE_URL}${article.url}`,
     lastModified: new Date(article.date).toISOString(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  const pythonTutorials = allPythonTutorials.map((tutorial) => ({
+    url: `${BASE_URL}${tutorial.url}`,
+    lastModified: new Date().toISOString(),
     changeFrequency: 'monthly',
     priority: 0.6,
   }));
@@ -62,20 +69,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Fetch unique tags from Sanity
-  const tagsQuery = `array::unique(*[_type == "post" && defined(tags) && count(tags) > 0].tags[])`;
-  const uniqueTagsFromSanity = await client.fetch<string[]>(tagsQuery);
-  const tagDetailPages = uniqueTagsFromSanity.filter(Boolean).map((tag) => ({
+  const uniqueTags = Array.from(new Set(blogPostsData.flatMap(post => post.tags || [])));
+  const tagDetailPages = uniqueTags.map((tag) => ({
     url: `${BASE_URL}/tags/${encodeURIComponent(tag.toLowerCase())}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
     priority: 0.5,
   }));
 
-  // Fetch unique categories from Sanity
-  const categoriesQuery = `array::unique(*[_type == "post" && defined(category)].category)`;
-  const uniqueCategoriesFromSanity = await client.fetch<string[]>(categoriesQuery);
-  const categoryDetailPages = uniqueCategoriesFromSanity.filter(Boolean).map((category) => ({
+  const uniqueCategories = Array.from(new Set(blogPostsData.map(post => post.category)));
+  const categoryDetailPages = uniqueCategories.map((category) => ({
     url: `${BASE_URL}/categories/${encodeURIComponent(category.toLowerCase().replace(/\s+/g, '-'))}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly',
@@ -85,6 +88,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages,
     ...blogPosts,
+    ...pythonTutorials,
     ...thinkTankArticles,
     ...wikiArticles,
     ...topicPages,

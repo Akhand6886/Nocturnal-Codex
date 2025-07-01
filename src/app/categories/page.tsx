@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { FolderArchive } from "lucide-react";
-import { client } from '@/lib/sanity';
 import type { Metadata } from 'next';
+import { fetchBlogPosts } from "@/lib/contentful";
 
 export const revalidate = 60;
 
@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   description: "Browse blog posts by category on Nocturnal Codex.",
 };
 
-// Function to slugify category names consistently
 const slugifyCategory = (categoryName: string) => encodeURIComponent(categoryName.toLowerCase().replace(/\s+/g, '-'));
 
 async function getAllCategories(): Promise<string[]> {
-  const query = `array::unique(*[_type == "post" && defined(category)].category)`;
-  const categories = await client.fetch<string[]>(query);
-  return categories.filter(Boolean).sort((a, b) => a.localeCompare(b));
+  const posts = await fetchBlogPosts();
+  const categories = posts.map(post => post.category);
+  const uniqueCategories = Array.from(new Set(categories));
+  return uniqueCategories.filter(Boolean).sort((a, b) => a.localeCompare(b));
 }
 
 export default async function CategoriesPage() {
