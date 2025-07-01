@@ -1,39 +1,6 @@
 
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
-export const BlogPost = defineDocumentType(() => ({
-  name: 'BlogPost',
-  filePathPattern: `blog/**/*.md`,
-  contentType: 'markdown',
-  fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    author: { type: 'string', required: true },
-    tags: { type: 'list', of: { type: 'string' } },
-    category: { type: 'string', required: true },
-    excerpt: { type: 'string', required: true },
-    imageUrl: { type: 'string', required: true },
-    dataAiHint: { type: 'string' },
-    seriesId: { type: 'string' },
-    seriesOrder: { type: 'number' },
-    featured: { type: 'boolean', default: false },
-  },
-  computedFields: {
-    url: {
-      type: 'string',
-      resolve: (doc) => `/blog/${doc._raw.flattenedPath.replace(/^blog\/?/, '')}`,
-    },
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/^blog\/?/, ''),
-    },
-    id: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/^blog\/?/, ''),
-    }
-  },
-}))
-
 export const PythonTutorial = defineDocumentType(() => ({
   name: "PythonTutorial",
   filePathPattern: `tutorials/python/*.md`, 
@@ -54,5 +21,5 @@ export const PythonTutorial = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, PythonTutorial],
+  documentTypes: [PythonTutorial],
 })

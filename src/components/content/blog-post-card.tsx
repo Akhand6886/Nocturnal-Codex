@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CalendarDays, UserCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { format } from 'date-fns';
-import type { BlogPost } from 'contentlayer/generated';
+import type { BlogPost } from '@/types';
 
 interface BlogPostCardProps {
   post: BlogPost;
@@ -14,9 +14,9 @@ interface BlogPostCardProps {
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
   const postSlug = post.slug;
-  const imageUrl = post.imageUrl || "https://placehold.co/400x300.png";
-  const imageAlt = post.title;
-  const dataAiHint = post.dataAiHint || "blog image";
+  const imageUrl = post.featuredImage?.url || "https://placehold.co/400x300.png";
+  const imageAlt = post.featuredImage?.alt || post.title;
+  const dataAiHint = post.featuredImage?.dataAiHint || "blog image";
 
   if (!postSlug) {
     return (
@@ -37,9 +37,9 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         <Image
           src={imageUrl}
           alt={imageAlt}
-          fill
-          style={{objectFit: "cover"}}
-          className="group-hover:scale-105 transition-transform duration-300 ease-in-out"
+          width={400}
+          height={300}
+          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
           data-ai-hint={dataAiHint}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent group-hover:from-black/10 transition-colors duration-300"></div>

@@ -4,12 +4,14 @@ import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Tag as TagIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
-import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
+import { fetchBlogPosts } from "@/lib/contentful";
+import type { BlogPost } from "@/types";
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const tags = allBlogPosts.flatMap(post => post.tags || []);
+  const posts = await fetchBlogPosts();
+  const tags = posts.flatMap(post => post.tags || []);
   const uniqueTags = Array.from(new Set(tags.filter(Boolean)));
   
   return uniqueTags.map((tag) => ({
@@ -32,7 +34,8 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
 
 async function getPostsByTag(tagSlug: string): Promise<BlogPost[]> {
   const tagName = decodeURIComponent(tagSlug);
-  const posts = allBlogPosts.filter(post => 
+  const allPosts = await fetchBlogPosts();
+  const posts = allPosts.filter(post => 
     post.tags?.some(tag => tag.toLowerCase() === tagName.toLowerCase())
   );
   return posts;
@@ -43,6 +46,10 @@ export default async function TagPage({ params }: TagPageProps) {
   const postsWithTag = await getPostsByTag(tagSlug);
   const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
+
+  if (postsWithTag.length === 0) {
+    notFound();
+  }
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
@@ -63,7 +70,7 @@ export default async function TagPage({ params }: TagPageProps) {
       {postsWithTag.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {postsWithTag.map((post) => (
-            <BlogPostCard key={post._id} post={post} />
+            <BlogPostCard key={post.id} post={post} />
           ))}
         </div>
       ) : (

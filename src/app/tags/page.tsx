@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Tag as TagIcon } from "lucide-react";
 import type { Metadata } from 'next';
-import { allBlogPosts } from "contentlayer/generated";
+import { fetchBlogPosts } from "@/lib/contentful";
 
 export const revalidate = 60;
 
@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 };
 
 async function getAllTags(): Promise<string[]> {
-  const tags = allBlogPosts.flatMap(post => post.tags || []);
+  const posts = await fetchBlogPosts();
+  const tags = posts.flatMap(post => post.tags || []);
   const uniqueTags = Array.from(new Set(tags));
   return uniqueTags.filter(Boolean).sort((a, b) => a.localeCompare(b));
 }

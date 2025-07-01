@@ -2,8 +2,8 @@
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { FileText } from "lucide-react";
 import type { Metadata } from 'next';
-import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
-import { compareDesc } from "date-fns";
+import { fetchBlogPosts } from "@/lib/contentful";
+import type { BlogPost } from "@/types";
 
 export const revalidate = 60; 
 
@@ -26,13 +26,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function getBlogPosts(): Promise<BlogPost[]> {
-  const posts = allBlogPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-  return posts;
-}
-
 export default async function BlogPage() {
-  const posts = await getBlogPosts();
+  const posts: BlogPost[] = await fetchBlogPosts();
 
   const blogPageJsonLd = {
     "@context": "https://schema.org",
@@ -49,7 +44,7 @@ export default async function BlogPage() {
         }
     },
     "blogPost": posts.map(post => {
-      const imageUrl = post.imageUrl ? `${siteUrl}${post.imageUrl}` : undefined;
+      const imageUrl = post.featuredImage?.url;
       return {
         "@type": "BlogPosting",
         "mainEntityOfPage": `${siteUrl}${post.url}`,
@@ -84,7 +79,7 @@ export default async function BlogPage() {
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
-              <BlogPostCard key={post._id} post={post} /> 
+              <BlogPostCard key={post.id} post={post} /> 
             ))}
           </div>
         ) : (

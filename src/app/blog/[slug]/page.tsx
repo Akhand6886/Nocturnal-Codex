@@ -1,9 +1,10 @@
 
-import { allBlogPosts, type BlogPost } from "contentlayer/generated";
 import Link from "next/link";
 import type { Metadata } from 'next';
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { fetchBlogPosts, fetchBlogPostBySlug } from "@/lib/contentful";
+import { ContentfulRichTextRenderer } from "@/components/contentful/rich-text-renderer";
 
 export const revalidate = 60; 
 
@@ -11,14 +12,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
 export async function generateStaticParams() {
-  return allBlogPosts.map((post) => ({
+  const posts = await fetchBlogPosts({ limit: 50 }); // Fetch a reasonable number for static generation
+  return posts.map((post) => ({
     slug: post.slug,
   }));
-}
-
-async function getPost(slug: string): Promise<BlogPost | undefined> {
-  const post = allBlogPosts.find((p) => p.slug === slug);
-  return post;
 }
 
 export default async function PostPage({
@@ -26,7 +23,7 @@ export default async function PostPage({
 }: {
   params: { slug: string }; 
 }) {
-  const post = await getPost(params.slug);
+  const post = await fetchBlogPostBySlug(params.slug);
   
   if (!post) {
     notFound();
@@ -37,30 +34,28 @@ export default async function PostPage({
       <Link href="/blog" className="hover:underline text-primary"> 
         ← Back to posts
       </Link>
-      {post.imageUrl && (
+      {post.featuredImage && (
         <div className="relative aspect-video w-full overflow-hidden rounded-xl">
             <Image
-            src={post.imageUrl}
-            alt={post.title}
-            fill
+            src={post.featuredImage.url}
+            alt={post.featuredImage.alt}
+            width={post.featuredImage.width}
+            height={post.featuredImage.height}
             className="object-cover"
-            data-ai-hint={post.dataAiHint || "blog banner"}
+            data-ai-hint={post.featuredImage.dataAiHint || "blog banner"}
             priority
             />
         </div>
       )}
       <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
       <p className="text-sm text-muted-foreground mb-4">Published: {new Date(post.date).toLocaleDateString()}</p>
-      <div
-          className="prose dark:prose-invert max-w-none markdown-content"
-          dangerouslySetInnerHTML={{ __html: post.body.html }}
-        />
+      <ContentfulRichTextRenderer content={post.content} />
     </main>
   );
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  const post = await fetchBlogPostBySlug(params.slug);
 
   if (!post) {
     return { 
@@ -69,7 +64,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
   
-  const postImageUrlForMeta = post.imageUrl ? `${siteUrl}${post.imageUrl}` : defaultOgImage;
+  const postImageUrlForMeta = post.featuredImage?.url || defaultOgImage;
   const publishedDate = new Date(post.date);
 
   return {

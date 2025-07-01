@@ -4,7 +4,8 @@ import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { FolderArchive } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
-import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
+import { fetchBlogPosts } from "@/lib/contentful";
+import type { BlogPost } from "@/types";
 
 export const revalidate = 60;
 
@@ -15,7 +16,8 @@ const deslugifyCategory = (slug: string) => {
 };
 
 export async function generateStaticParams() {
-  const categories = allBlogPosts.map(post => post.category);
+  const posts = await fetchBlogPosts();
+  const categories = posts.map(post => post.category);
   const uniqueCategories = Array.from(new Set(categories.filter(Boolean)));
   
   return uniqueCategories.map((category) => ({
@@ -36,20 +38,21 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 }
 
 async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPost[], actualCategoryName: string }> {
-  const allCategories = Array.from(new Set(allBlogPosts.map(p => p.category)));
+  const allPosts = await fetchBlogPosts();
+  let actualCategoryName = '';
   
-  let actualCategoryName = deslugifyCategory(categorySlug);
-  let foundCategoryForQuery = actualCategoryName;
+  const posts = allPosts.filter(post => {
+      const postCategorySlug = slugifyCategory(post.category);
+      if (postCategorySlug === categorySlug) {
+          actualCategoryName = post.category;
+          return true;
+      }
+      return false;
+  });
 
-  for (const cat of allCategories) {
-    if (slugifyCategory(cat) === categorySlug) {
-      actualCategoryName = cat;
-      foundCategoryForQuery = cat;
-      break;
-    }
+  if (!actualCategoryName) {
+      actualCategoryName = deslugifyCategory(categorySlug);
   }
-
-  const posts = allBlogPosts.filter(post => post.category === foundCategoryForQuery);
   
   return { posts, actualCategoryName };
 }
@@ -59,11 +62,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { posts: postsInCategory, actualCategoryName } = await getPostsByCategory(categorySlug);
 
   if (postsInCategory.length === 0) {
-    const allContentlayerCategories = Array.from(new Set(allBlogPosts.map(p => p.category)));
-    const isValidCategory = allContentlayerCategories.some(cat => slugifyCategory(cat) === categorySlug);
-    if (!isValidCategory) {
-        notFound();
-    }
+    // You might want to check if the category slug is valid at all
+    // by fetching all categories first, but this check also works.
+    notFound();
   }
 
   const breadcrumbItems: BreadcrumbItem[] = [
@@ -85,7 +86,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       {postsInCategory.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {postsInCategory.map((post) => (
-            <BlogPostCard key={post._id} post={post} />
+            <BlogPostCard key={post.id} post={post} />
           ))}
         </div>
       ) : (

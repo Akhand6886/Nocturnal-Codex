@@ -11,8 +11,7 @@ import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-st
 import { TopicTile } from "@/components/content/topic-tile";
 import { LanguageTile } from "@/components/content/language-tile";
 import type { Metadata } from 'next';
-import { allBlogPosts, type BlogPost } from 'contentlayer/generated';
-import { compareDesc } from "date-fns";
+import { fetchBlogPosts } from "@/lib/contentful";
 
 export const revalidate = 60; 
 
@@ -21,17 +20,9 @@ export const metadata: Metadata = {
   description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
 };
 
-async function getHomepageBlogPosts(): Promise<{ recentPosts: BlogPost[], featuredPosts: BlogPost[] }> {
-  const allPosts = allBlogPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-  
-  const recentPosts = allPosts.slice(0, 2);
-  const featuredPosts = allPosts.filter(post => post.featured).slice(0, 2);
-  
-  return { recentPosts, featuredPosts };
-}
-
 export default async function HomePage() {
-  const { recentPosts: recentBlogPosts, featuredPosts: featuredBlogPosts } = await getHomepageBlogPosts();
+  const recentBlogPosts = await fetchBlogPosts({ limit: 2 });
+  const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true });
   
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
   const featuredTopics = MOCK_TOPICS.slice(0, 6); 
@@ -111,7 +102,7 @@ export default async function HomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredBlogPosts.map((post) => (
-              <BlogPostCard key={post._id} post={post} />
+              <BlogPostCard key={post.id} post={post} />
             ))}
           </div>
         </section>
@@ -127,7 +118,7 @@ export default async function HomePage() {
           </h2>
           <div className="space-y-10">
             {recentBlogPosts.map((post) => (
-              <BlogPostCard key={post._id} post={post} />
+              <BlogPostCard key={post.id} post={post} />
             ))}
             {recentBlogPosts.length >= 2 && ( 
                <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { FolderArchive } from "lucide-react";
 import type { Metadata } from 'next';
-import { allBlogPosts } from "contentlayer/generated";
+import { fetchBlogPosts } from "@/lib/contentful";
 
 export const revalidate = 60;
 
@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 const slugifyCategory = (categoryName: string) => encodeURIComponent(categoryName.toLowerCase().replace(/\s+/g, '-'));
 
 async function getAllCategories(): Promise<string[]> {
-  const categories = allBlogPosts.map(post => post.category);
+  const posts = await fetchBlogPosts();
+  const categories = posts.map(post => post.category);
   const uniqueCategories = Array.from(new Set(categories));
   return uniqueCategories.filter(Boolean).sort((a, b) => a.localeCompare(b));
 }
