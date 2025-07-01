@@ -152,3 +152,4 @@ export async function fetchThinkTankArticleBySlug(slug: string): Promise<ThinkTa
     }
     return parseThinkTankArticle(collection.items[0]);
 }
+
