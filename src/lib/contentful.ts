@@ -1,3 +1,4 @@
+
 import { createClient, type Asset, type Entry, type EntryCollection } from 'contentful';
 import type { BlogPost, ThinkTankArticle, ContentfulImage } from '@/types';
 import type { Document } from '@contentful/rich-text-types';
