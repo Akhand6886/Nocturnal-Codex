@@ -14,7 +14,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   date: string; // ISO date string
-  excerpt: string;
+  shortDescription: string;
   content: Document; // Rich text content
   featuredImage: ContentfulImage | null;
   author: string;

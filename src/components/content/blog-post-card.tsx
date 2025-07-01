@@ -64,7 +64,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         </div>
       </CardHeader>
       <CardContent className="flex-grow py-3">
-        {post.excerpt && <CardDescription className="text-foreground/80">{post.excerpt}</CardDescription>}
+        {post.shortDescription && <CardDescription className="text-foreground/80">{post.shortDescription}</CardDescription>}
         {post.tags && post.tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
