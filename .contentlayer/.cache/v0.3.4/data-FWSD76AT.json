@@ -1,0 +1,154 @@
+{
+  "cacheItemsMap": {
+    "tutorials/python/datatypes.md": {
+      "document": {
+        "title": "Data Types in Python",
+        "slug": "datatypes",
+        "order": 3,
+        "description": "Explore the fundamental data types available in Python.",
+        "body": {
+          "raw": "\n## Python Data Types\n\nPython has various built-in data types. Here are some fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\n### Example of Data Types\n\n```python\nmy_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n```\n\nThis tutorial explores fundamental Python data types.\n",
+          "html": "<h2>Python Data Types</h2>\n<p>Python has various built-in data types. Here are some fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<h3>Example of Data Types</h3>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n</code></pre>\n<p>This tutorial explores fundamental Python data types.</p>"
+        },
+        "_id": "tutorials/python/datatypes.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/datatypes.md",
+          "sourceFileName": "datatypes.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/datatypes"
+        },
+        "type": "PythonTutorial",
+        "url": "/tutorial/python/datatypes"
+      },
+      "documentHash": "1749303348511",
+      "hasWarnings": false,
+      "documentTypeName": "PythonTutorial"
+    },
+    "tutorials/python/functions.md": {
+      "document": {
+        "title": "Functions in Python",
+        "slug": "functions",
+        "order": 5,
+        "description": "Understand how to define and use functions in Python for reusable code.",
+        "body": {
+          "raw": "\n## Defining and Using Functions\n\nA function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.\n\n### Creating a Function\n\nIn Python a function is defined using the `def` keyword:\n\n```python\ndef my_function():\n  print(\"Hello from a function\")\n\nmy_function() # Calling the function\n```\n\n### Parameters and Arguments\n\nInformation can be passed into functions as arguments.\n\n```python\ndef greet(name):\n  print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")\n```\n\nThis tutorial explains Python functions in detail.\n",
+          "html": "<h2>Defining and Using Functions</h2>\n<p>A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.</p>\n<h3>Creating a Function</h3>\n<p>In Python a function is defined using the <code>def</code> keyword:</p>\n<pre><code class=\"language-python\">def my_function():\n  print(\"Hello from a function\")\n\nmy_function() # Calling the function\n</code></pre>\n<h3>Parameters and Arguments</h3>\n<p>Information can be passed into functions as arguments.</p>\n<pre><code class=\"language-python\">def greet(name):\n  print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")\n</code></pre>\n<p>This tutorial explains Python functions in detail.</p>"
+        },
+        "_id": "tutorials/python/functions.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/functions.md",
+          "sourceFileName": "functions.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/functions"
+        },
+        "type": "PythonTutorial",
+        "url": "/tutorial/python/functions"
+      },
+      "documentHash": "1749303348511",
+      "hasWarnings": false,
+      "documentTypeName": "PythonTutorial"
+    },
+    "tutorials/python/introduction.md": {
+      "document": {
+        "title": "Introduction to Python",
+        "slug": "introduction-to-python",
+        "order": 1,
+        "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
+        "body": {
+          "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions.\n- **Dynamically Typed**: Variable types are checked at runtime.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming.\n",
+          "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions.</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming.</p>"
+        },
+        "_id": "tutorials/python/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/introduction"
+        },
+        "type": "PythonTutorial",
+        "url": "/tutorial/python/introduction-to-python"
+      },
+      "documentHash": "1750438092015",
+      "hasWarnings": false,
+      "documentTypeName": "PythonTutorial"
+    },
+    "tutorials/python/loops.md": {
+      "document": {
+        "title": "Loops in Python",
+        "slug": "loops",
+        "order": 4,
+        "description": "Learn how to use for and while loops for iteration in Python.",
+        "body": {
+          "raw": "\n## Iterating with Loops in Python\n\nLoops are used in programming to repeat a specific block of code.\n\n### For Loops\n\nA for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).\n\n```python\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n  print(fruit)\n```\n\n### While Loops\n\nWith the while loop we can execute a set of statements as long as a condition is true.\n\n```python\ni = 1\nwhile i < 6:\n  print(i)\n  i += 1\n```\n\nThis tutorial covers for and while loops.\n",
+          "html": "<h2>Iterating with Loops in Python</h2>\n<p>Loops are used in programming to repeat a specific block of code.</p>\n<h3>For Loops</h3>\n<p>A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).</p>\n<pre><code class=\"language-python\">fruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n  print(fruit)\n</code></pre>\n<h3>While Loops</h3>\n<p>With the while loop we can execute a set of statements as long as a condition is true.</p>\n<pre><code class=\"language-python\">i = 1\nwhile i &#x3C; 6:\n  print(i)\n  i += 1\n</code></pre>\n<p>This tutorial covers for and while loops.</p>"
+        },
+        "_id": "tutorials/python/loops.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/loops.md",
+          "sourceFileName": "loops.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/loops"
+        },
+        "type": "PythonTutorial",
+        "url": "/tutorial/python/loops"
+      },
+      "documentHash": "1749303348516",
+      "hasWarnings": false,
+      "documentTypeName": "PythonTutorial"
+    },
+    "tutorials/python/python-decorators.md": {
+      "document": {
+        "title": "learn Understanding Python Decorators",
+        "slug": "level-python-decorators",
+        "order": 6,
+        "description": "A practical guide to understanding and using decorators in Python.",
+        "body": {
+          "raw": "\n## What are Decorators?\n\nIn Python, a decorator is a design pattern that allows you to add new functionality to an existing object (like a function or method) without modifying its structure. Decorators are a form of metaprogramming, where a part of the program tries to modify another part of the program at compile time. They are often used for logging, access control, instrumentation, and more.\n\n## Basic Decorator Syntax\n\nA decorator is typically a function that takes another function as an argument (the decorated function), adds some functionality, and then returns another function.\n\n```python\ndef my_decorator(func):\n    def wrapper(*args, **kwargs):\n        print(\"Something is happening before the function is called.\")\n        result = func(*args, **kwargs)\n        print(\"Something is happening after the function is called.\")\n        return result\n    return wrapper\n\n@my_decorator\ndef say_hello(name):\n    print(f\"Hello, {name}!\")\n\nsay_hello(\"World\")\n```\n\nThis will output:\n```\nSomething is happening before the function is called.\nHello, World!\nSomething is happening after the function is called.\n```\n\n## Using `functools.wraps`\n\nWhen you use decorators, you are essentially replacing the original function with the wrapper function. This can obscure the original function's metadata (like its name, docstring, etc.). The `functools.wraps` decorator can be used to preserve this metadata.\n\n```python\nimport functools\n\ndef my_better_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"Wrapper executing pre-call actions.\")\n        value = func(*args, **kwargs)\n        print(\"Wrapper executing post-call actions.\")\n        return value\n    return wrapper\n\n@my_better_decorator\ndef greet(name):\n    \"\"\"Greets a person.\"\"\"\n    return f\"Greetings, {name}!\"\n\nprint(greet(\"Pythonista\"))\nprint(greet.__name__) # Output: greet (thanks to @functools.wraps)\nprint(greet.__doc__)  # Output: Greets a person. (thanks to @functools.wraps)\n```\n\nDecorators are a very useful tool in Python for writing cleaner and more modular code.\n",
+          "html": "<h2>What are Decorators?</h2>\n<p>In Python, a decorator is a design pattern that allows you to add new functionality to an existing object (like a function or method) without modifying its structure. Decorators are a form of metaprogramming, where a part of the program tries to modify another part of the program at compile time. They are often used for logging, access control, instrumentation, and more.</p>\n<h2>Basic Decorator Syntax</h2>\n<p>A decorator is typically a function that takes another function as an argument (the decorated function), adds some functionality, and then returns another function.</p>\n<pre><code class=\"language-python\">def my_decorator(func):\n    def wrapper(*args, **kwargs):\n        print(\"Something is happening before the function is called.\")\n        result = func(*args, **kwargs)\n        print(\"Something is happening after the function is called.\")\n        return result\n    return wrapper\n\n@my_decorator\ndef say_hello(name):\n    print(f\"Hello, {name}!\")\n\nsay_hello(\"World\")\n</code></pre>\n<p>This will output:</p>\n<pre><code>Something is happening before the function is called.\nHello, World!\nSomething is happening after the function is called.\n</code></pre>\n<h2>Using <code>functools.wraps</code></h2>\n<p>When you use decorators, you are essentially replacing the original function with the wrapper function. This can obscure the original function's metadata (like its name, docstring, etc.). The <code>functools.wraps</code> decorator can be used to preserve this metadata.</p>\n<pre><code class=\"language-python\">import functools\n\ndef my_better_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"Wrapper executing pre-call actions.\")\n        value = func(*args, **kwargs)\n        print(\"Wrapper executing post-call actions.\")\n        return value\n    return wrapper\n\n@my_better_decorator\ndef greet(name):\n    \"\"\"Greets a person.\"\"\"\n    return f\"Greetings, {name}!\"\n\nprint(greet(\"Pythonista\"))\nprint(greet.__name__) # Output: greet (thanks to @functools.wraps)\nprint(greet.__doc__)  # Output: Greets a person. (thanks to @functools.wraps)\n</code></pre>\n<p>Decorators are a very useful tool in Python for writing cleaner and more modular code.</p>"
+        },
+        "_id": "tutorials/python/python-decorators.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/python-decorators.md",
+          "sourceFileName": "python-decorators.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/python-decorators"
+        },
+        "type": "PythonTutorial",
+        "url": "/tutorial/python/level-python-decorators"
+      },
+      "documentHash": "1750992295735",
+      "hasWarnings": false,
+      "documentTypeName": "PythonTutorial"
+    },
+    "tutorials/python/variables.md": {
+      "document": {
+        "title": "Variables in Python",
+        "slug": "variables",
+        "order": 2,
+        "description": "Learn about variables, naming conventions, and assignment in Python.",
+        "body": {
+          "raw": "\n## Understanding Variables in Python\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\nThis tutorial covers Python variables in more detail.\n",
+          "html": "<h2>Understanding Variables in Python</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<p>This tutorial covers Python variables in more detail.</p>"
+        },
+        "_id": "tutorials/python/variables.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/variables.md",
+          "sourceFileName": "variables.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/variables"
+        },
+        "type": "PythonTutorial",
+        "url": "/tutorial/python/variables"
+      },
+      "documentHash": "1749303348516",
+      "hasWarnings": false,
+      "documentTypeName": "PythonTutorial"
+    }
+  }
+}

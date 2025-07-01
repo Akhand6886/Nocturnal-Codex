@@ -3,10 +3,16 @@ import { createClient, type Asset, type Entry, type EntryCollection } from 'cont
 import type { BlogPost, ThinkTankArticle, ContentfulImage } from '@/types';
 import type { Document } from '@contentful/rich-text-types';
 
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID || '',
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
-});
+const space = process.env.CONTENTFUL_SPACE_ID;
+const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+
+const client =
+  space && accessToken
+    ? createClient({
+        space,
+        accessToken,
+      })
+    : null;
 
 // Helper to parse a Contentful asset into our smaller ContentfulImage type
 function parseContentfulImage(asset?: Asset<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'>): ContentfulImage | null {
@@ -45,6 +51,11 @@ function parseBlogPost(entry: Entry<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'>): Blo
 }
 
 export async function fetchBlogPosts(options?: { limit?: number; featured?: boolean }): Promise<BlogPost[]> {
+  if (!client) {
+    console.warn("Contentful client not configured. Missing CONTENTFUL_SPACE_ID or CONTENTFUL_ACCESS_TOKEN. Returning empty array.");
+    return [];
+  }
+  
   const query: any = {
     content_type: 'blogPost',
     order: ['-fields.date'],
@@ -62,6 +73,11 @@ export async function fetchBlogPosts(options?: { limit?: number; featured?: bool
 }
 
 export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  if (!client) {
+    console.warn("Contentful client not configured. Missing CONTENTFUL_SPACE_ID or CONTENTFUL_ACCESS_TOKEN. Returning null.");
+    return null;
+  }
+
   const collection: EntryCollection<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'> = await client.getEntries({
     content_type: 'blogPost',
     'fields.slug': slug,
@@ -94,6 +110,11 @@ function parseThinkTankArticle(entry: Entry<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US
 }
 
 export async function fetchThinkTankArticles(options?: { limit?: number }): Promise<ThinkTankArticle[]> {
+  if (!client) {
+    console.warn("Contentful client not configured. Missing CONTENTFUL_SPACE_ID or CONTENTFUL_ACCESS_TOKEN. Returning empty array.");
+    return [];
+  }
+
   const query: any = {
     content_type: 'thinkTankArticle',
     order: ['-fields.date'],
@@ -109,6 +130,11 @@ export async function fetchThinkTankArticles(options?: { limit?: number }): Prom
 
 
 export async function fetchThinkTankArticleBySlug(slug: string): Promise<ThinkTankArticle | null> {
+    if (!client) {
+      console.warn("Contentful client not configured. Missing CONTENTFUL_SPACE_ID or CONTENTFUL_ACCESS_TOKEN. Returning null.");
+      return null;
+    }
+
     const collection: EntryCollection<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'> = await client.getEntries({
       content_type: 'thinkTankArticle',
       'fields.slug': slug,
