@@ -5,97 +5,97 @@
 
 @layer base {
   :root {
-    /* Daybreak - Light Mode */
-    --background: 220 20% 98%; /* Soft off-white */
-    --foreground: 220 20% 20%; /* Dark Slate */
+    /* Cosmic Light - Light Mode */
+    --background: 200 60% 98%; /* Very light, cool cyan-white */
+    --foreground: 195 30% 20%; /* Dark, desaturated teal */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 220 20% 20%;
+    --card-foreground: 195 30% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 20%;
+    --popover-foreground: 195 30% 20%;
 
-    --primary: 240 50% 55%; /* Muted Indigo */
+    --primary: 180 50% 45%; /* Vibrant Teal */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 92%; /* Light cool grey */
-    --secondary-foreground: 220 20% 30%;
+    --secondary: 195 40% 92%; /* Light cool teal-grey */
+    --secondary-foreground: 195 30% 30%;
 
-    --muted: 220 20% 92%;
-    --muted-foreground: 220 15% 50%;
+    --muted: 195 40% 92%;
+    --muted-foreground: 195 25% 50%;
 
-    --accent: 35 90% 55%; /* Vibrant Amber/Gold */
-    --accent-foreground: 220 20% 10%;
+    --accent: 45 85% 55%; /* Rich Gold */
+    --accent-foreground: 45 90% 15%;
 
     --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 88%;
-    --input: 220 20% 88%;
-    --ring: 240 50% 55%; /* Primary Indigo */
+    --border: 195 30% 88%;
+    --input: 195 30% 88%;
+    --ring: 180 50% 45%; /* Primary Teal */
 
     --radius: 0.65rem;
 
-    --chart-1: 240 50% 55%;   /* Primary Indigo */
-    --chart-2: 35 90% 55%;  /* Accent Amber */
-    --chart-3: 180 40% 50%; /* A complementary Teal */
-    --chart-4: 220 20% 60%;  /* A complementary Grey */
+    --chart-1: 180 50% 45%;   /* Primary Teal */
+    --chart-2: 45 85% 55%;  /* Accent Gold */
+    --chart-3: 210 50% 55%; /* A complementary Blue */
+    --chart-4: 195 30% 60%;  /* A complementary Grey-Teal */
     --chart-5: 280 40% 65%; /* A complementary Purple */
 
-    --sidebar-background: 220 20% 95%;
-    --sidebar-foreground: 220 20% 20%;
-    --sidebar-primary: 240 50% 55%;
+    --sidebar-background: 200 50% 95%;
+    --sidebar-foreground: 195 30% 20%;
+    --sidebar-primary: 180 50% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 20% 90%;
-    --sidebar-accent-foreground: 240 50% 55%;
-    --sidebar-border: 220 20% 88%;
-    --sidebar-ring: 240 50% 55%;
+    --sidebar-accent: 195 40% 90%;
+    --sidebar-accent-foreground: 180 50% 45%;
+    --sidebar-border: 195 30% 88%;
+    --sidebar-ring: 180 50% 45%;
   }
 
   .dark {
-    /* Celestial Night - Dark Mode */
-    --background: 220 30% 10%; /* Deep Navy */
-    --foreground: 210 20% 90%; /* Pale Cyan/Off-white */
+    /* Cosmic Dark - Dark Mode */
+    --background: 195 50% 10%; /* Deep space teal */
+    --foreground: 195 20% 90%; /* Pale starlight */
 
-    --card: 220 30% 13%;
-    --card-foreground: 210 20% 90%;
+    --card: 195 45% 13%;
+    --card-foreground: 195 20% 90%;
 
-    --popover: 220 30% 10%;
-    --popover-foreground: 210 20% 90%;
+    --popover: 195 50% 10%;
+    --popover-foreground: 195 20% 90%;
 
-    --primary: 240 50% 65%; /* Muted Indigo */
-    --primary-foreground: 210 20% 95%;
+    --primary: 180 45% 55%; /* Brighter Teal */
+    --primary-foreground: 180 50% 10%;
 
-    --secondary: 180 40% 40%; /* Deep Teal */
-    --secondary-foreground: 180 30% 90%;
+    --secondary: 180 30% 30%; /* Muted Teal */
+    --secondary-foreground: 180 20% 90%;
 
-    --muted: 220 25% 20%;
-    --muted-foreground: 210 15% 60%;
+    --muted: 195 40% 20%;
+    --muted-foreground: 195 15% 60%;
 
-    --accent: 35 90% 60%; /* Vibrant Amber/Gold */
-    --accent-foreground: 220 30% 10%;
+    --accent: 45 80% 60%; /* Glowing Gold */
+    --accent-foreground: 45 90% 10%;
 
     --destructive: 0 65% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 25% 18%;
-    --input: 220 25% 18%;
-    --ring: 240 50% 65%; /* Primary Indigo */
+    --border: 195 40% 18%;
+    --input: 195 40% 18%;
+    --ring: 180 45% 55%; /* Primary Teal */
     
-    --chart-1: 240 50% 65%; /* Primary Indigo */
-    --chart-2: 35 90% 60%;  /* Accent Amber */
-    --chart-3: 180 40% 40%; /* Secondary Teal */
+    --chart-1: 180 45% 55%; /* Primary Teal */
+    --chart-2: 45 80% 60%;  /* Accent Gold */
+    --chart-3: 180 30% 30%; /* Secondary Muted Teal */
     --chart-4: 210 40% 50%; /* A lighter blue */
     --chart-5: 280 40% 60%; /* A purple */
 
-    --sidebar-background: 220 30% 8%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 240 50% 65%;
-    --sidebar-primary-foreground: 210 20% 95%;
-    --sidebar-accent: 220 30% 15%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 220 25% 15%;
-    --sidebar-ring: 240 50% 65%;
+    --sidebar-background: 195 50% 8%;
+    --sidebar-foreground: 195 20% 90%;
+    --sidebar-primary: 180 45% 55%;
+    --sidebar-primary-foreground: 180 50% 10%;
+    --sidebar-accent: 195 45% 15%;
+    --sidebar-accent-foreground: 195 20% 95%;
+    --sidebar-border: 195 40% 15%;
+    --sidebar-ring: 180 45% 55%;
   }
 }
 
