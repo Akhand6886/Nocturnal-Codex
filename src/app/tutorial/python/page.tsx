@@ -1,5 +1,5 @@
 
-import { allPythonTutorials, type PythonTutorial } from "contentlayer/generated";
+import { allTutorialPosts } from "contentlayer/generated";
 import Link from "next/link";
 import { ListOrdered, ChevronRight, GraduationCap } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,11 +24,13 @@ export const metadata: Metadata = {
 };
 
 export default async function PythonTutorialsIndexPage() {
-  const sortedTutorials = allPythonTutorials.sort((a, b) => a.order - b.order);
+  const sortedTutorials = allTutorialPosts
+    .filter(p => p.language === 'python')
+    .sort((a, b) => a.order - b.order);
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
-    { label: "Languages", href: "/languages/python" }, // Assuming Python language page exists
+    { label: "Languages", href: "/languages/python" }, 
     { label: "Python Tutorials" },
   ];
 

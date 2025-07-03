@@ -3,7 +3,6 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { allPythonTutorials } from 'contentlayer/generated';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { ListOrdered, PanelLeft } from 'lucide-react';
@@ -11,23 +10,28 @@ import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
+import type { TutorialPost } from 'contentlayer/generated';
 
-export function TutorialLayout({ children }: PropsWithChildren) {
+interface TutorialLayoutProps extends PropsWithChildren {
+    title: string;
+    tutorials: TutorialPost[];
+}
+
+export function TutorialLayout({ children, title, tutorials }: TutorialLayoutProps) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const sortedTutorials = [...allPythonTutorials].sort((a, b) => a.order - b.order);
 
   const SidebarContent = () => (
     <nav className="flex flex-col h-full">
       <div className="p-4 border-b border-border">
         <h3 className="text-lg font-semibold flex items-center text-primary">
           <ListOrdered className="mr-2 h-5 w-5" />
-          Python Tutorials
+          {title}
         </h3>
       </div>
       <ScrollArea className="flex-grow p-4">
         <ul className="space-y-1">
-          {sortedTutorials.map((tutorial) => {
+          {tutorials.map((tutorial) => {
             const isActive = pathname === tutorial.url;
             return (
               <li key={tutorial.slug}>

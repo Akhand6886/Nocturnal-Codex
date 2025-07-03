@@ -1,12 +1,11 @@
 
-import { allPythonTutorials, type PythonTutorial } from "contentlayer/generated";
+import { allTutorialPosts, type TutorialPost } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, BookOpen, CalendarDays } from "lucide-react";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { format } from 'date-fns'; // Though 'date' is not in PythonTutorial, keeping for potential future use or consistency
 import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -14,9 +13,11 @@ export const revalidate = 60; // Revalidate every 60 seconds
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 export async function generateStaticParams() {
-  return allPythonTutorials.map((tutorial) => ({
-    slug: tutorial.slug,
-  }));
+  return allTutorialPosts
+    .filter(p => p.language === 'python')
+    .map((tutorial) => ({
+      slug: tutorial.slug,
+    }));
 }
 
 interface PythonTutorialPageProps {
@@ -24,7 +25,7 @@ interface PythonTutorialPageProps {
 }
 
 export async function generateMetadata({ params }: PythonTutorialPageProps): Promise<Metadata> {
-  const tutorial = allPythonTutorials.find((p) => p.slug === params.slug);
+  const tutorial = allTutorialPosts.find((p) => p.language === 'python' && p.slug === params.slug);
 
   if (!tutorial) {
     return {
@@ -44,13 +45,15 @@ export async function generateMetadata({ params }: PythonTutorialPageProps): Pro
       description: tutorial.description || `Learn ${tutorial.title} in Python.`,
       url: `${siteUrl}/tutorial/python/${tutorial.slug}`,
       type: 'article',
-      // publishedTime: tutorial.date ? new Date(tutorial.date).toISOString() : undefined, // If you add date to PythonTutorial
     },
   };
 }
 
 export default async function PythonTutorialPage({ params }: PythonTutorialPageProps) {
-  const sortedTutorials = allPythonTutorials.sort((a, b) => a.order - b.order);
+  const sortedTutorials = allTutorialPosts
+    .filter(p => p.language === 'python')
+    .sort((a, b) => a.order - b.order);
+    
   const tutorialIndex = sortedTutorials.findIndex((p) => p.slug === params.slug);
 
   if (tutorialIndex === -1) {
@@ -80,12 +83,6 @@ export default async function PythonTutorialPage({ params }: PythonTutorialPageP
           {tutorial.description && (
             <p className="text-lg text-muted-foreground">{tutorial.description}</p>
           )}
-          {/* If you add a date field to PythonTutorial, you can display it here
-          <div className="flex items-center space-x-1.5 text-sm text-muted-foreground">
-            <CalendarDays className="h-4 w-4" />
-            <span>Last updated: {format(new Date(tutorial.lastUpdated || tutorial.date), "MMMM d, yyyy")}</span>
-          </div>
-          */}
         </header>
 
         <div

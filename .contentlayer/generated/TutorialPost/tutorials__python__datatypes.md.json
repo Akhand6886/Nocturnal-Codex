@@ -16,7 +16,6 @@
     "flattenedPath": "tutorials/python/datatypes"
   },
   "type": "TutorialPost",
-  "path": "tutorials/python/datatypes",
-  "language": "python",
-  "id": "tutorials/python/datatypes"
+  "url": "/tutorial/python/datatypes",
+  "language": "python"
 }

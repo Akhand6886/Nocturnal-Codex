@@ -16,7 +16,6 @@
     "flattenedPath": "tutorials/python/functions"
   },
   "type": "TutorialPost",
-  "path": "tutorials/python/functions",
-  "language": "python",
-  "id": "tutorials/python/functions"
+  "url": "/tutorial/python/functions",
+  "language": "python"
 }

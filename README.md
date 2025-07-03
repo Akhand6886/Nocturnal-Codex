@@ -63,8 +63,8 @@ The application's routing is file-system based, managed by the Next.js App Route
 -   `/languages/[languageSlug]`: `src/app/languages/[languageSlug]/page.tsx` (Details for a programming language)
 -   `/wiki`: `src/app/wiki/page.tsx` (The main wiki page)
 -   `/wiki/[slug]`: `src/app/wiki/[slug]/page.tsx` (A specific wiki article)
--   `/tutorial/python`: `src/app/tutorial/python/page.tsx` (Index of all Python tutorials)
--   `/tutorial/python/[slug]`: `src/app/tutorial/python/[slug]/page.tsx` (A specific Python tutorial)
+-   `/tutorial/[language]`: `src/app/tutorial/[language]/page.tsx` (Index of tutorials for a language)
+-   `/tutorial/[language]/[slug]`: `src/app/tutorial/[language]/[slug]/page.tsx` (A specific language tutorial)
 
 ## 4. Data Fetching & Content Management
 
@@ -75,23 +75,23 @@ The site uses a hybrid approach for content, sourcing it from a Headless CMS, lo
 -   **Purpose**: Manages dynamic, long-form content that may be updated frequently by content editors.
 -   **Implementation**: The `src/lib/contentful.ts` file contains the logic to connect to the Contentful Delivery API.
     -   `createClient()`: Initializes the Contentful client using environment variables for the Space ID and Access Token.
-    -   `fetchBlogPosts()`, `fetchThinkTankArticles()`: These functions query the Contentful API for collections of entries based on their Content Type ID (`blog` and `thinkTankArticle`, respectively). They fetch multiple entries, sort them by date, and parse them into a structured format defined in `src/types/index.ts`.
+    -   `fetchBlogPosts()`, `fetchThinkTankArticles()`: These functions query the Contentful API for collections of entries based on their Content Type ID (`blogPost` and `thinkTankArticle`, respectively). They fetch multiple entries, sort them by date, and parse them into a structured format defined in `src/types/index.ts`.
     -   `fetchBlogPostBySlug()`, `fetchThinkTankArticleBySlug()`: These functions fetch a single entry by its unique slug.
     -   `parseBlogPost()`, `parseThinkTankArticle()`: Helper functions that transform the raw API response from Contentful into the application's specific `BlogPost` and `ThinkTankArticle` types, ensuring data consistency.
 
-### Contentlayer (Python Tutorials from Markdown)
+### Contentlayer (Language Tutorials from Markdown)
 
 -   **Purpose**: Manages content that is version-controlled with the codebase, ideal for technical documentation like programming tutorials. This allows developers to write content in Markdown and leverage Git for history and collaboration.
 -   **How it Works**:
-    1.  **Schema Definition**: The `contentlayer.config.ts` file defines a schema for each type of content. For example, a `PythonTutorial` schema specifies the expected fields in the frontmatter of the Markdown files (like `title`, `slug`, `order`).
-    2.  **Content Creation**: Markdown files are created in the `content/tutorials/python/` directory. Each file's YAML frontmatter must match the schema defined in the config.
-    3.  **Build Process**: During the build (`next build`), Contentlayer reads all Markdown files, validates them against the schema, converts the Markdown body to HTML, and generates type-safe JSON data in the `.contentlayer/generated` directory.
-    4.  **Usage in App**: This generated data can be directly and safely imported into React components. For example: `import { allPythonTutorials } from 'contentlayer/generated'`.
+    1.  **Schema Definition**: The `contentlayer.config.ts` file defines a schema for a `TutorialPost`. This schema specifies the expected fields in the frontmatter of the Markdown files (like `title`, `slug`, `order`). It also includes a `computedField` to automatically determine the programming language from the file's directory path.
+    2.  **Content Creation**: Markdown files are created in subdirectories within `content/tutorials/`. For example, a Python tutorial would go in `content/tutorials/python/`, and a Java tutorial in `content/tutorials/java/`. Each file's YAML frontmatter must match the `TutorialPost` schema.
+    3.  **Build Process**: During the build (`next build`), Contentlayer reads all Markdown files under `content/tutorials/`, validates them against the schema, converts the Markdown body to HTML, and generates type-safe JSON data in the `.contentlayer/generated` directory.
+    4.  **Usage in App**: This generated data can be directly and safely imported into React components. For example: `import { allTutorialPosts } from 'contentlayer/generated'`. Pages can then filter this array to display tutorials for a specific language.
 
 ### Mock Data (Topics, Languages & Wiki)
 
--   **Purpose**: For foundational site content that is relatively static and integral to the site's structure. This includes the main topics, programming language overviews, and wiki articles.
--   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_TOPICS`, `MOCK_PROGRAMMING_LANGUAGES`). This approach is extremely fast and provides full type-safety, but it requires a developer to update the content directly in the code. This is suitable for content that doesn't change often.
+-   **Purpose**: For foundational site content that is relatively static and integral to the site's structure. This includes the main topics, programming language overviews, and wiki articles. This content could also be migrated to Contentlayer in the future for easier management.
+-   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_TOPICS`, `MOCK_PROGRAMMING_LANGUAGES`, `MOCK_WIKI_ARTICLES`). This approach is extremely fast and provides full type-safety, but it requires a developer to update the content directly in the code. This is suitable for content that doesn't change often.
 
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 

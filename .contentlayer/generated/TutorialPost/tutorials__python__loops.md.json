@@ -16,7 +16,6 @@
     "flattenedPath": "tutorials/python/loops"
   },
   "type": "TutorialPost",
-  "path": "tutorials/python/loops",
-  "language": "python",
-  "id": "tutorials/python/loops"
+  "url": "/tutorial/python/loops",
+  "language": "python"
 }

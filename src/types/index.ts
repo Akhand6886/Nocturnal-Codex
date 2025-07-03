@@ -29,7 +29,7 @@ export interface ThinkTankArticle {
   slug: string;
   title: string;
   date: string; // ISO date string
-  abstract: string;
+  abstract: Document;
   content: Document;
   featuredImage: ContentfulImage | null;
   authors: string[];

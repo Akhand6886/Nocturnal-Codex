@@ -1,7 +1,7 @@
 
 import { MetadataRoute } from 'next';
 import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from '@/lib/data';
-import { allPythonTutorials } from 'contentlayer/generated';
+import { allTutorialPosts } from 'contentlayer/generated';
 import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
@@ -41,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const pythonTutorials = allPythonTutorials.map((tutorial) => ({
+  const tutorials = allTutorialPosts.map((tutorial) => ({
     url: `${BASE_URL}${tutorial.url}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'monthly',
@@ -88,7 +88,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages,
     ...blogPosts,
-    ...pythonTutorials,
+    ...tutorials,
     ...thinkTankArticles,
     ...wikiArticles,
     ...topicPages,

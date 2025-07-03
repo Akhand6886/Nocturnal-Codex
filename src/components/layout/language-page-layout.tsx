@@ -14,9 +14,10 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface LanguagePageLayoutProps extends PropsWithChildren {
   language: ProgrammingLanguage;
+  hasTutorialSeries?: boolean;
 }
 
-export function LanguagePageLayout({ children, language }: LanguagePageLayoutProps) {
+export function LanguagePageLayout({ children, language, hasTutorialSeries = false }: LanguagePageLayoutProps) {
     const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
@@ -33,8 +34,8 @@ export function LanguagePageLayout({ children, language }: LanguagePageLayoutPro
     ...(language.relatedWikiArticles && language.relatedWikiArticles.length > 0 ? [{ id: 'related-content', title: 'Related Content', href: `${baseLanguagePath}#related-content`, icon: Lightbulb }] : []),
   ];
 
-  const fullTutorialSeriesLink = language.slug === 'python'
-    ? { title: 'Full Python Tutorial Series', href: '/tutorial/python', icon: GraduationCap, id: 'full-python-tutorials' }
+  const fullTutorialSeriesLink = hasTutorialSeries
+    ? { title: `Full ${language.name} Tutorial Series`, href: `/tutorial/${language.slug}`, icon: GraduationCap, id: 'full-tutorial-series' }
     : null;
 
   const SidebarContent = () => (
