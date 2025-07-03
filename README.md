@@ -79,18 +79,19 @@ The site uses a hybrid approach for content, sourcing it from a Headless CMS, lo
     -   `fetchBlogPostBySlug()`, `fetchThinkTankArticleBySlug()`: These functions fetch a single entry by its unique slug.
     -   `parseBlogPost()`, `parseThinkTankArticle()`: Helper functions that transform the raw API response from Contentful into the application's specific `BlogPost` and `ThinkTankArticle` types, ensuring data consistency.
 
-### Contentlayer (Python Tutorials)
+### Contentlayer (Python Tutorials from Markdown)
 
--   **Purpose**: Manages content that is closely tied to the application's code, such as programming tutorials. This allows for version control (via Git) and a code-first workflow.
--   **Implementation**:
-    -   `contentlayer.config.ts`: This file defines the "document types." For this project, a `PythonTutorial` type is defined. It specifies the expected fields in the frontmatter of the Markdown files (like `title`, `slug`, `order`), and it computes a `url` field for easy linking.
-    -   `content/tutorials/python/`: This directory holds the raw Markdown files. Each file starts with YAML frontmatter that matches the fields defined in the config.
-    -   When the application is built (`next build`), Contentlayer reads these Markdown files, validates them against the schema, processes the Markdown into HTML, and generates type-safe JSON files in the `.contentlayer/generated` directory. These can then be directly imported into React components (e.g., `import { allPythonTutorials } from 'contentlayer/generated'`).
+-   **Purpose**: Manages content that is version-controlled with the codebase, ideal for technical documentation like programming tutorials. This allows developers to write content in Markdown and leverage Git for history and collaboration.
+-   **How it Works**:
+    1.  **Schema Definition**: The `contentlayer.config.ts` file defines a schema for each type of content. For example, a `PythonTutorial` schema specifies the expected fields in the frontmatter of the Markdown files (like `title`, `slug`, `order`).
+    2.  **Content Creation**: Markdown files are created in the `content/tutorials/python/` directory. Each file's YAML frontmatter must match the schema defined in the config.
+    3.  **Build Process**: During the build (`next build`), Contentlayer reads all Markdown files, validates them against the schema, converts the Markdown body to HTML, and generates type-safe JSON data in the `.contentlayer/generated` directory.
+    4.  **Usage in App**: This generated data can be directly and safely imported into React components. For example: `import { allPythonTutorials } from 'contentlayer/generated'`.
 
-### Mock Data (Topics, Wiki, Languages)
+### Mock Data (Topics, Languages & Wiki)
 
--   **Purpose**: For content that is foundational to the site's structure but doesn't require a full CMS. This data is static and defined directly in the code.
--   **Implementation**: The file `src/lib/data.ts` contains exported arrays of objects for Topics (`MOCK_TOPICS`), Wiki Articles (`MOCK_WIKI_ARTICLES`), and Programming Languages (`MOCK_PROGRAMMING_LANGUAGES`). This approach is simple, fast, and type-safe, but requires a developer to make changes.
+-   **Purpose**: For foundational site content that is relatively static and integral to the site's structure. This includes the main topics, programming language overviews, and wiki articles.
+-   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_TOPICS`, `MOCK_PROGRAMMING_LANGUAGES`). This approach is extremely fast and provides full type-safety, but it requires a developer to update the content directly in the code. This is suitable for content that doesn't change often.
 
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 
