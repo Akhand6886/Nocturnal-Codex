@@ -30,13 +30,6 @@ export default async function PythonTutorialsIndexPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold text-foreground">Python Tutorial</h1>
-        <div className="flex flex-wrap gap-2 mb-6 border-b pb-4 border-border">
-            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Job Search</Button>
-            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">PDF Version</Button>
-            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Quick Guide</Button>
-            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Resources</Button>
-            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Discussion</Button>
-        </div>
       <p className="text-lg text-muted-foreground">
         This Python tutorial has been designed for beginners to help them understand the basic to advanced concepts of Python Programming Language.
       </p>
