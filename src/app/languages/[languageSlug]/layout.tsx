@@ -4,6 +4,7 @@ import { MOCK_PROGRAMMING_LANGUAGES, type ProgrammingLanguage } from "@/lib/data
 import { LanguagePageLayout } from '@/components/layout/language-page-layout';
 import { notFound } from 'next/navigation';
 import { allTutorialPosts } from 'contentlayer/generated';
+import type { TutorialPost } from 'contentlayer/generated';
 
 interface LanguageSlugLayoutProps extends PropsWithChildren {
   params: { languageSlug: string };
@@ -11,6 +12,12 @@ interface LanguageSlugLayoutProps extends PropsWithChildren {
 
 async function getLanguage(slug: string): Promise<ProgrammingLanguage | undefined> {
   return MOCK_PROGRAMMING_LANGUAGES.find((lang) => lang.slug === slug);
+}
+
+async function getTutorialsForLanguage(languageSlug: string): Promise<TutorialPost[]> {
+    return allTutorialPosts
+        .filter(p => p.language === languageSlug)
+        .sort((a,b) => a.order - b.order);
 }
 
 export async function generateStaticParams() {
@@ -25,8 +32,15 @@ export default async function LanguageDetailLayout({ children, params }: Languag
   if (!language) {
     notFound();
   }
+  
+  const tutorials = await getTutorialsForLanguage(params.languageSlug);
 
-  const hasTutorialSeries = allTutorialPosts.some(p => p.language === language.slug);
-
-  return <LanguagePageLayout language={language} hasTutorialSeries={hasTutorialSeries}>{children}</LanguagePageLayout>;
+  return (
+    <LanguagePageLayout 
+        language={language} 
+        tutorials={tutorials}
+    >
+        {children}
+    </LanguagePageLayout>
+  );
 }
