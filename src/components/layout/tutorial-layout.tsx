@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -8,7 +7,7 @@ import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import type { TutorialPost } from 'contentlayer/generated';
@@ -24,7 +23,7 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const SidebarContent = () => (
-    <div className="flex flex-col h-full bg-card border-r border-border">
+    <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-900 border-r border-border">
       <header className="p-4 border-b border-border">
         <Link href={`/languages/${language.slug}`} className="flex items-center gap-3 group">
           <Image src={language.iconUrl} alt={language.name} width={40} height={40} data-ai-hint={language.dataAiHint} />
@@ -37,19 +36,20 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
       <ScrollArea className="flex-grow">
         <nav className="p-2">
           <ul>
-            <li>
-              <Link
-                href={`/tutorial/${language.slug}`}
-                className={cn(
-                    "block p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
-                    pathname === `/tutorial/${language.slug}`
-                     ? "bg-primary/10 text-primary"
-                     : "text-foreground/80 hover:bg-muted"
-                )}
-                onClick={() => isSheetOpen && setIsSheetOpen(false)}
-              >
-                {language.name} Tutorial Home
-              </Link>
+             <li>
+                <Link
+                    href={`/tutorial/${language.slug}`}
+                    className={cn(
+                        "flex items-center p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
+                        pathname === `/tutorial/${language.slug}`
+                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                        : "text-foreground/80 hover:bg-muted"
+                    )}
+                    onClick={() => isSheetOpen && setIsSheetOpen(false)}
+                >
+                   {pathname === `/tutorial/${language.slug}` && <span className="text-green-500 mr-2">→</span>}
+                    {language.name} - Home
+                </Link>
             </li>
             {tutorials.map((tutorial) => {
               const isActive = pathname === tutorial.url;
@@ -59,12 +59,13 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
                     href={tutorial.url}
                     onClick={() => isSheetOpen && setIsSheetOpen(false)}
                     className={cn(
-                      "block p-2 text-sm rounded-md transition-colors w-full text-left",
+                      "flex items-center p-2 text-sm rounded-md transition-colors w-full text-left",
                       isActive
-                        ? "text-primary bg-primary/10 font-medium"
+                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 font-medium"
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"
                     )}
                   >
+                     {isActive && <span className="text-green-500 mr-2">→</span>}
                     {tutorial.title}
                   </Link>
                 </li>
@@ -79,12 +80,13 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
   return (
     <div className="w-full bg-background">
       <div className="container mx-auto px-0 md:px-4">
-        <div className="lg:grid lg:grid-cols-[280px_1fr] lg:gap-8">
+        <div className="lg:grid lg:grid-cols-[250px_1fr] xl:grid-cols-[250px_1fr_180px] lg:gap-8">
+          
           <aside className="hidden lg:block h-[calc(100vh-4rem)] sticky top-16">
             <SidebarContent />
           </aside>
           
-          <div className="flex-grow flex flex-col min-w-0">
+          <div className="flex-grow flex flex-col min-w-0 bg-card md:shadow-md md:rounded-lg md:border md:my-4">
              <header className="lg:hidden p-4 border-b border-border sticky top-16 bg-background/95 backdrop-blur-sm z-10 flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
@@ -102,6 +104,15 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
               {children}
             </main>
           </div>
+
+          <aside className="hidden xl:block h-fit sticky top-20 space-y-4">
+             <div className="bg-gray-200 dark:bg-gray-800 h-60 rounded-md flex items-center justify-center">
+                <p className="text-muted-foreground text-sm">Ad Space</p>
+             </div>
+             <div className="bg-gray-200 dark:bg-gray-800 h-60 rounded-md flex items-center justify-center">
+                <p className="text-muted-foreground text-sm">Ad Space</p>
+             </div>
+          </aside>
 
         </div>
       </div>
