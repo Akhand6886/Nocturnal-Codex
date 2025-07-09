@@ -1,12 +1,8 @@
 
-import { allTutorialPosts, type TutorialPost } from "contentlayer/generated";
+import { allTutorialPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight, BookOpen, CalendarDays } from "lucide-react";
-import { Breadcrumbs, type BreadcrumbItem } from "@/components/layout/breadcrumbs";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Metadata } from 'next';
+import { Button } from "@/components/ui/button";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -50,72 +46,39 @@ export async function generateMetadata({ params }: PythonTutorialPageProps): Pro
 }
 
 export default async function PythonTutorialPage({ params }: PythonTutorialPageProps) {
-  const sortedTutorials = allTutorialPosts
-    .filter(p => p.language === 'python')
-    .sort((a, b) => a.order - b.order);
-    
-  const tutorialIndex = sortedTutorials.findIndex((p) => p.slug === params.slug);
+  const tutorial = allTutorialPosts.find((p) => p.slug === params.slug && p.language === 'python');
 
-  if (tutorialIndex === -1) {
+  if (!tutorial) {
     notFound();
   }
 
-  const tutorial = sortedTutorials[tutorialIndex];
-  const prevTutorial = tutorialIndex > 0 ? sortedTutorials[tutorialIndex - 1] : null;
-  const nextTutorial = tutorialIndex < sortedTutorials.length - 1 ? sortedTutorials[tutorialIndex + 1] : null;
-
-  const breadcrumbItems: BreadcrumbItem[] = [
-    { label: "Home", href: "/" },
-    { label: "Languages", href: "/languages/python" }, 
-    { label: "Python Tutorials", href: "/tutorial/python" },
-    { label: tutorial.title },
-  ];
-
   return (
-    <div className="max-w-3xl mx-auto py-8">
-      <Breadcrumbs items={breadcrumbItems} />
-      <article className="space-y-8">
-        <header className="space-y-3 border-b border-border pb-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground flex items-start">
-            <BookOpen className="mr-3 mt-1 h-8 w-8 text-primary flex-shrink-0" />
-            <span>{tutorial.title}</span>
-          </h1>
-          {tutorial.description && (
-            <p className="text-lg text-muted-foreground">{tutorial.description}</p>
-          )}
-        </header>
+    <div>
+        <h1 className="text-3xl font-bold text-foreground mb-4">{tutorial.title}</h1>
+        <div className="flex flex-wrap gap-2 mb-6 border-b pb-4 border-border">
+            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Job Search</Button>
+            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">PDF Version</Button>
+            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Quick Guide</Button>
+            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Resources</Button>
+            <Button variant="outline" size="sm" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Discussion</Button>
+        </div>
 
-        <div
-          className="prose dark:prose-invert max-w-none markdown-content"
-          dangerouslySetInnerHTML={{ __html: tutorial.body.html }}
-        />
-      </article>
+        <article className="prose dark:prose-invert max-w-none">
+            <p className="lead">
+                Today, Python is one of the most popular programming languages. Although it is a general-purpose language, it is used in various areas of applications such as Machine Learning, Artificial Intelligence, web development, IoT, and more.
+            </p>
+            <p>
+                This Python tutorial has been written for the beginners to help them understand the basic to advanced concepts of Python Programming Language. After completing this tutorial, you will find yourself at a great level of expertise in Python, from where you can take yourself to the next levels to become a world class Software Engineer.
+            </p>
+            
+            <div className="my-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 dark:bg-yellow-900/30 dark:border-yellow-600 dark:text-yellow-200 rounded-r-md not-prose">
+                <p className="font-semibold m-0">This Python tutorial is based on the latest Python 3.13 version.</p>
+            </div>
 
-      {(prevTutorial || nextTutorial) && (
-        <Card className="mt-12 shadow-md">
-          <CardHeader>
-            <CardTitle className="text-lg">Continue Learning</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col sm:flex-row justify-between gap-4">
-            {prevTutorial ? (
-              <Button asChild variant="outline" className="w-full sm:w-auto justify-start sm:justify-center">
-                <Link href={prevTutorial.url}>
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  {prevTutorial.title}
-                </Link>
-              </Button>
-            ) : <div className="w-full sm:w-auto"></div> /* Placeholder for alignment */}
-            {nextTutorial ? (
-              <Button asChild variant="outline" className="w-full sm:w-auto justify-end sm:justify-center">
-                <Link href={nextTutorial.url}>
-                  {nextTutorial.title}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            ) : <div className="w-full sm:w-auto"></div> /* Placeholder for alignment */}
-          </CardContent>
-        </Card>
-      )}
+            <div
+              dangerouslySetInnerHTML={{ __html: tutorial.body.html }}
+            />
+        </article>
     </div>
   );
 }
