@@ -18,7 +18,7 @@ interface LanguagePageLayoutProps extends PropsWithChildren {
 }
 
 export function LanguagePageLayout({ children, language, hasTutorialSeries = false }: LanguagePageLayoutProps) {
-    const pathname = usePathname();
+  const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const baseLanguagePath = `/languages/${language.slug}`;
@@ -38,7 +38,7 @@ export function LanguagePageLayout({ children, language, hasTutorialSeries = fal
     ? { title: `Full ${language.name} Tutorial Series`, href: `/tutorial/${language.slug}`, icon: GraduationCap, id: 'full-tutorial-series' }
     : null;
 
-  const SidebarContent = () => (
+  const sidebarNavigation = (
     <nav className="flex flex-col h-full">
       <div className="p-4 border-b border-border">
         <h3 className="text-lg font-semibold flex items-center text-primary">
@@ -48,22 +48,18 @@ export function LanguagePageLayout({ children, language, hasTutorialSeries = fal
       </div>
       <ScrollArea className="h-full p-4">
         <ul className="space-y-1">
-          {navItems.map((item) => {
-            return (
-              <li key={item.id}>
-                <Link
-                  href={item.href}
-                  onClick={() => isSheetOpen && setIsSheetOpen(false)}
-                  className={cn(
-                    "flex items-center p-2 text-sm font-medium rounded-md transition-colors text-foreground/80 hover:bg-muted"
-                  )}
-                >
-                  {item.icon && <item.icon className="mr-3 h-4 w-4 flex-shrink-0" />}
-                  <span className="truncate">{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <Link
+                href={item.href}
+                onClick={() => isSheetOpen && setIsSheetOpen(false)}
+                className="flex items-center p-2 text-sm font-medium rounded-md transition-colors text-foreground/80 hover:bg-muted"
+              >
+                {item.icon && <item.icon className="mr-3 h-4 w-4 flex-shrink-0" />}
+                <span className="truncate">{item.title}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
         {fullTutorialSeriesLink && (
           <>
@@ -92,7 +88,7 @@ export function LanguagePageLayout({ children, language, hasTutorialSeries = fal
   return (
     <div className="flex-1 md:grid md:grid-cols-[280px_1fr]">
       <aside className="h-full hidden md:flex md:flex-col sticky top-0 border-r border-border bg-card">
-        <SidebarContent />
+        {sidebarNavigation}
       </aside>
 
       <div className="flex-grow flex flex-col min-w-0">
@@ -105,7 +101,7 @@ export function LanguagePageLayout({ children, language, hasTutorialSeries = fal
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-[300px] p-0 bg-card">
-              <SidebarContent />
+              {sidebarNavigation}
             </SheetContent>
           </Sheet>
         </header>
