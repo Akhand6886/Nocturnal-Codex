@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../contentlayer.config.ts"],
+  "sourcesContent": ["\nimport { defineDocumentType, makeSource } from 'contentlayer/source-files'\n\n// No document types are defined as the content is now fully remote or static.\n// If you add local markdown files back, you'll need to define their schemas here.\n\nexport default makeSource({\n  contentDirPath: 'content',\n  documentTypes: [], // Empty array since there are no local content types\n})\n"],
+  "mappings": ";AACA,SAA6B,kBAAkB;AAK/C,IAAO,8BAAQ,WAAW;AAAA,EACxB,gBAAgB;AAAA,EAChB,eAAe,CAAC;AAAA;AAClB,CAAC;",
+  "names": []
+}
