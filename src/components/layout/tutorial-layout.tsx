@@ -39,17 +39,17 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
           <ul>
              <li>
                 <Link
-                    href={`/tutorial/${language.slug}`}
+                    href={`/languages/${language.slug}`}
                     className={cn(
                         "flex items-center justify-between p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
-                        pathname === `/tutorial/${language.slug}`
+                        pathname === `/languages/${language.slug}`
                         ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
                         : "text-foreground/80 hover:bg-muted"
                     )}
                     onClick={() => isSheetOpen && setIsSheetOpen(false)}
                 >
                    {language.name} - Home
-                   {pathname === `/tutorial/${language.slug}` && <ArrowRight className="h-4 w-4 text-green-500"/>}
+                   {pathname === `/languages/${language.slug}` && <ArrowRight className="h-4 w-4 text-green-500"/>}
                 </Link>
             </li>
             {tutorials.map((tutorial) => {

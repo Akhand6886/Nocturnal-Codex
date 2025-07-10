@@ -2,7 +2,6 @@
 import { allTutorialPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
-import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import { MOCK_PROGRAMMING_LANGUAGES } from "@/lib/data";
 
 export const revalidate = 60;

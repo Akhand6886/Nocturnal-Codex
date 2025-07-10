@@ -44,3 +44,4 @@ export default async function LanguageDetailLayout({ children, params }: Languag
     </TutorialLayout>
   );
 }
+
