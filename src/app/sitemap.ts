@@ -17,7 +17,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/think-tank',
     '/topics',
     '/wiki',
-    '/tutorial/python'
   ].map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: new Date().toISOString(),
@@ -62,6 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
   
+  // The main language pages are now tutorial indexes
   const languagePages = MOCK_PROGRAMMING_LANGUAGES.map((lang) => ({
     url: `${BASE_URL}/languages/${lang.slug}`,
     lastModified: new Date().toISOString(), 

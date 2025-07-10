@@ -10,28 +10,21 @@ export const revalidate = 60;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 export async function generateStaticParams() {
-  return allTutorialPosts.map((post) => ({
-    languageSlug: post.language,
-    slug: post.slug,
-  }));
+    return allTutorialPosts.map((post) => ({
+      languageSlug: post.language,
+      slug: post.slug,
+    }));
 }
 
 interface LanguageTutorialPageProps {
   params: { 
     languageSlug: string;
-    slug?: string; // slug can be optional for the main language page
+    slug: string;
   };
 }
 
-// This function will fetch either the specific tutorial or the intro page
 async function getTutorial(params: LanguageTutorialPageProps['params']) {
-  if (params.slug) {
-    // A specific tutorial page
     return allTutorialPosts.find(p => p.language === params.languageSlug && p.slug === params.slug);
-  } else {
-    // The main tutorial index page (Introduction)
-    return allTutorialPosts.find(p => p.language === params.languageSlug && p.order === 1);
-  }
 }
 
 export async function generateMetadata({ params }: LanguageTutorialPageProps): Promise<Metadata> {
@@ -45,9 +38,9 @@ export async function generateMetadata({ params }: LanguageTutorialPageProps): P
     };
   }
   
-  const pageTitle = params.slug ? tutorial.title : `${language.name} Tutorial`;
+  const pageTitle = tutorial.title;
   const description = tutorial.description || `An interactive tutorial on ${language.name}. Learn about ${tutorial.title}.`;
-  const url = `${siteUrl}/languages/${params.languageSlug}${params.slug ? `/${params.slug}` : ''}`;
+  const url = `${siteUrl}/languages/${params.languageSlug}/${params.slug}`;
   
   return {
     title: `${pageTitle} | ${language.name} Tutorial`,
@@ -65,14 +58,7 @@ export async function generateMetadata({ params }: LanguageTutorialPageProps): P
 }
 
 export default async function LanguageTutorialPage({ params }: LanguageTutorialPageProps) {
-  // If no slug is provided, we're on the main language page, which should show the first tutorial.
-  const effectiveSlug = params.slug || allTutorialPosts.find(p => p.language === params.languageSlug && p.order === 1)?.slug;
-  
-  if (!effectiveSlug) {
-      notFound();
-  }
-
-  const tutorial = allTutorialPosts.find((p) => p.slug === effectiveSlug && p.language === params.languageSlug);
+  const tutorial = await getTutorial(params);
 
   if (!tutorial) {
     notFound();

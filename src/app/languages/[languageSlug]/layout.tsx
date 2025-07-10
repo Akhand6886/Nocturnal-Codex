@@ -1,7 +1,7 @@
 
 import type { PropsWithChildren } from 'react';
 import { MOCK_PROGRAMMING_LANGUAGES, type ProgrammingLanguage } from "@/lib/data";
-import { LanguagePageLayout } from '@/components/layout/language-page-layout';
+import { TutorialLayout } from '@/components/layout/tutorial-layout';
 import { notFound } from 'next/navigation';
 import { allTutorialPosts } from 'contentlayer/generated';
 import type { TutorialPost } from 'contentlayer/generated';
@@ -36,11 +36,11 @@ export default async function LanguageDetailLayout({ children, params }: Languag
   const tutorials = await getTutorialsForLanguage(params.languageSlug);
 
   return (
-    <LanguagePageLayout 
+    <TutorialLayout 
         language={language} 
         tutorials={tutorials}
     >
         {children}
-    </LanguagePageLayout>
+    </TutorialLayout>
   );
 }
