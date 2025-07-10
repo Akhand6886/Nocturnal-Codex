@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -7,7 +8,7 @@ import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import type { TutorialPost } from 'contentlayer/generated';
@@ -40,15 +41,15 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
                 <Link
                     href={`/tutorial/${language.slug}`}
                     className={cn(
-                        "flex items-center p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
+                        "flex items-center justify-between p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
                         pathname === `/tutorial/${language.slug}`
                         ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
                         : "text-foreground/80 hover:bg-muted"
                     )}
                     onClick={() => isSheetOpen && setIsSheetOpen(false)}
                 >
-                   {pathname === `/tutorial/${language.slug}` && <span className="text-green-500 mr-2">→</span>}
-                    {language.name} - Home
+                   {language.name} - Home
+                   {pathname === `/tutorial/${language.slug}` && <ArrowRight className="h-4 w-4 text-green-500"/>}
                 </Link>
             </li>
             {tutorials.map((tutorial) => {
@@ -59,13 +60,12 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
                     href={tutorial.url}
                     onClick={() => isSheetOpen && setIsSheetOpen(false)}
                     className={cn(
-                      "flex items-center p-2 text-sm rounded-md transition-colors w-full text-left",
+                      "block p-2 text-sm rounded-md transition-colors w-full text-left",
                       isActive
                         ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 font-medium"
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"
                     )}
                   >
-                     {isActive && <span className="text-green-500 mr-2">→</span>}
                     {tutorial.title}
                   </Link>
                 </li>
