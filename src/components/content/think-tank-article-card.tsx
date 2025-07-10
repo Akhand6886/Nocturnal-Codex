@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, CalendarDays, Tag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {format} from 'date-fns';
+import { richTextToPlainText } from "@/lib/utils";
 
 interface ThinkTankArticleCardProps {
   article: ThinkTankArticle;
@@ -48,7 +49,7 @@ export function ThinkTankArticleCard({ article }: ThinkTankArticleCardProps) {
         </div>
       </CardHeader>
       <CardContent className="flex-grow py-3">
-        <CardDescription className="italic text-foreground/80">{article.abstract}</CardDescription>
+        <CardDescription className="italic text-foreground/80">{richTextToPlainText(article.abstract)}</CardDescription>
         {article.tags && article.tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             <Tag className="h-4 w-4 text-muted-foreground inline-block mr-0.5" />

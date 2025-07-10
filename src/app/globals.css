@@ -5,97 +5,97 @@
 
 @layer base {
   :root {
-    /* Sea Green & Blood Red - Light Mode */
-    --background: 0 0% 100%; /* Pure White */
-    --foreground: 222 47% 11%; /* Dark Blue/Black for strong contrast */
+    /* Cosmic Light - Light Mode */
+    --background: 200 60% 98%; /* Very light, cool cyan-white */
+    --foreground: 195 30% 20%; /* Dark, desaturated teal */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 195 30% 20%;
 
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 195 30% 20%;
 
-    --primary: 0 65% 50%; /* Blood Red */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 180 50% 45%; /* Vibrant Teal */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 95%; /* Very light cool grey */
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 195 40% 92%; /* Light cool teal-grey */
+    --secondary-foreground: 195 30% 30%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 10% 45%; /* Muted grey */
+    --muted: 195 40% 92%;
+    --muted-foreground: 195 25% 50%;
 
-    --accent: 160 60% 40%; /* Sea Green */
-    --accent-foreground: 0 0% 100%; /* White */
+    --accent: 45 85% 55%; /* Rich Gold */
+    --accent-foreground: 45 90% 15%;
 
-    --destructive: 0 65% 50%; /* Blood Red */
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%; /* Light cool grey border */
-    --input: 220 15% 88%;
-    --ring: 0 65% 50%; /* Blood Red for ring */
+    --border: 195 30% 88%;
+    --input: 195 30% 88%;
+    --ring: 180 50% 45%; /* Primary Teal */
 
     --radius: 0.65rem;
 
-    --chart-1: 0 65% 50%;   /* Blood Red */
-    --chart-2: 160 60% 40%; /* Sea Green */
-    --chart-3: 210 60% 55%; /* A complementary blue */
-    --chart-4: 40 70% 50%;  /* A complementary yellow/gold */
-    --chart-5: 280 50% 60%; /* A complementary purple */
+    --chart-1: 180 50% 45%;   /* Primary Teal */
+    --chart-2: 45 85% 55%;  /* Accent Gold */
+    --chart-3: 210 50% 55%; /* A complementary Blue */
+    --chart-4: 195 30% 60%;  /* A complementary Grey-Teal */
+    --chart-5: 280 40% 65%; /* A complementary Purple */
 
-    --sidebar-background: 220 15% 97%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 0 65% 45%; /* Darker Blood Red */
+    --sidebar-background: 200 50% 95%;
+    --sidebar-foreground: 195 30% 20%;
+    --sidebar-primary: 180 50% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 80% 95%; /* Light Blood Red/Pink */
-    --sidebar-accent-foreground: 0 65% 45%;
-    --sidebar-border: 220 15% 88%;
-    --sidebar-ring: 0 65% 50%;
+    --sidebar-accent: 195 40% 90%;
+    --sidebar-accent-foreground: 180 50% 45%;
+    --sidebar-border: 195 30% 88%;
+    --sidebar-ring: 180 50% 45%;
   }
 
   .dark {
-    /* Night Owl - Dark Mode */
-    --background: 222 47% 11%; /* Very dark desaturated blue/purple - #011627 */
-    --foreground: 210 16% 85%; /* Light, slightly off-white - #d6deeb */
+    /* Black & White - Dark Mode */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 222 45% 14%; /* Slightly lighter than bg - #0a1f33 */
-    --card-foreground: 210 16% 85%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222 45% 12%; /* Similar to card, slightly darker for depth */
-    --popover-foreground: 210 16% 85%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 175 70% 45%; /* Vibrant Cyan/Teal - #23D1C0 */
-    --primary-foreground: 222 47% 11%; /* Dark, for contrast on vibrant primary */
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
 
-    --secondary: 260 50% 55%; /* Muted Purple - #7358D4 */
-    --secondary-foreground: 210 16% 90%; /* Lighter */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 222 30% 25%; /* Darker muted blue - #2C3A58 */
-    --muted-foreground: 220 15% 65%; /* Greyish - #989fB0 */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 0 70% 55%; /* Blood Red */
-    --accent-foreground: 0 0% 100%; /* White for contrast on red */
+    --accent: 0 0% 25%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 70% 55%; /* Clear Red - #D94444 */
-    --destructive-foreground: 0 0% 100%; /* White */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 222 40% 20%; /* Subtle border - #1F2D4D */
-    --input: 222 40% 18%; /* Slightly darker input bg - #1A2742 */
-    --ring: 175 70% 45%; /* Primary color for ring */
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 83%;
     
-    --chart-1: 175 70% 50%; 
-    --chart-2: 0 70% 55%; /* Blood Red */
-    --chart-3: 260 60% 65%; 
-    --chart-4: 45 80% 60%; /* Yellow/Orange */
-    --chart-5: 200 70% 60%; /* Another Blue/Cyan */
+    --chart-1: 0 0% 80%;
+    --chart-2: 0 0% 65%;
+    --chart-3: 0 0% 50%;
+    --chart-4: 0 0% 35%;
+    --chart-5: 0 0% 20%;
 
-    --sidebar-background: 222 47% 9%;
-    --sidebar-foreground: 210 16% 80%;
-    --sidebar-primary: 175 70% 50%;
-    --sidebar-primary-foreground: 222 47% 10%;
-    --sidebar-accent: 222 40% 18%;
-    --sidebar-accent-foreground: 210 16% 85%;
-    --sidebar-border: 222 40% 15%;
-    --sidebar-ring: 175 70% 50%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 83%;
   }
 }
 

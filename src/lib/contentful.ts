@@ -34,17 +34,23 @@ function parseContentfulImage(asset?: Asset<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US
 // Helper to parse a Contentful blog post entry
 function parseBlogPost(entry: Entry<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'>): BlogPost {
   const fields = entry.fields;
+  
+  // The 'category' field from Contentful is an array of linked entries.
+  // We'll use the whole array for tags and the first item for the primary category.
+  const categories: Entry[] = (fields.category as Entry[]) || [];
+  const categoryNames: string[] = categories.map(cat => (cat.fields.name as string) || '').filter(Boolean);
+
   return {
     id: entry.sys.id,
     title: fields.title as string || '',
     slug: fields.slug as string || '',
     date: fields.date as string || new Date().toISOString(),
-    excerpt: fields.excerpt as string || '',
+    shortDescription: fields.shortDescription as string || '',
     content: fields.content as Document || null,
     featuredImage: parseContentfulImage(fields.featuredImage as Asset<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'>),
-    author: fields.author as string || 'The Nocturnist',
-    tags: (fields.tags as string[]) || [],
-    category: fields.category as string || 'Uncategorized',
+    author: (fields.author as Entry)?.fields?.name as string || 'The Nocturnist',
+    tags: categoryNames, // Use all category names as tags
+    category: categoryNames[0] || 'Uncategorized', // Use the first category name as the main category
     featured: fields.featured as boolean || false,
     url: `/blog/${fields.slug as string || ''}`,
   };
@@ -57,7 +63,7 @@ export async function fetchBlogPosts(options?: { limit?: number; featured?: bool
   }
   
   const query: any = {
-    content_type: 'blogPost',
+    content_type: 'blog',
     order: ['-fields.date'],
   };
 
@@ -79,7 +85,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null
   }
 
   const collection: EntryCollection<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'> = await client.getEntries({
-    content_type: 'blogPost',
+    content_type: 'blog',
     'fields.slug': slug,
     limit: 1,
   });
@@ -146,3 +152,4 @@ export async function fetchThinkTankArticleBySlug(slug: string): Promise<ThinkTa
     }
     return parseThinkTankArticle(collection.items[0]);
 }
+

@@ -16,7 +16,6 @@
     "flattenedPath": "tutorials/python/introduction"
   },
   "type": "TutorialPost",
-  "path": "tutorials/python/introduction",
-  "language": "python",
-  "id": "tutorials/python/introduction"
+  "url": "/tutorial/python/introduction-to-python",
+  "language": "python"
 }

@@ -16,7 +16,6 @@
     "flattenedPath": "tutorials/python/variables"
   },
   "type": "TutorialPost",
-  "path": "tutorials/python/variables",
-  "language": "python",
-  "id": "tutorials/python/variables"
+  "url": "/tutorial/python/variables",
+  "language": "python"
 }

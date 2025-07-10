@@ -69,13 +69,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: post.shortDescription,
     alternates: {
       canonical: post.url,
     },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.shortDescription,
       url: `${siteUrl}${post.url}`,
       type: 'article',
       publishedTime: publishedDate.toISOString(),
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.excerpt,
+      description: post.shortDescription,
       images: [postImageUrlForMeta],
     },
   };

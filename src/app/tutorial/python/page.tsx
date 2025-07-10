@@ -1,10 +1,12 @@
 
-import { allPythonTutorials, type PythonTutorial } from "contentlayer/generated";
+import { allTutorialPosts } from "contentlayer/generated";
 import Link from "next/link";
-import { ListOrdered, ChevronRight, GraduationCap } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Breadcrumbs, type BreadcrumbItem } from "@/components/layout/breadcrumbs";
+import { ChevronRight } from "lucide-react";
 import type { Metadata } from 'next';
+import { Button } from "@/components/ui/button";
+import { MOCK_PROGRAMMING_LANGUAGES } from "@/lib/data";
+import { MarkdownRenderer } from "@/components/content/markdown-renderer";
+import { notFound } from "next/navigation";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -24,68 +26,21 @@ export const metadata: Metadata = {
 };
 
 export default async function PythonTutorialsIndexPage() {
-  const sortedTutorials = allPythonTutorials.sort((a, b) => a.order - b.order);
+    const pythonLanguage = MOCK_PROGRAMMING_LANGUAGES.find(lang => lang.slug === 'python');
 
-  const breadcrumbItems: BreadcrumbItem[] = [
-    { label: "Home", href: "/" },
-    { label: "Languages", href: "/languages/python" }, // Assuming Python language page exists
-    { label: "Python Tutorials" },
-  ];
+    if (!pythonLanguage || !pythonLanguage.mainContent) {
+        notFound();
+    }
 
   return (
-    <div className="space-y-10">
-      <Breadcrumbs items={breadcrumbItems} />
-      <header className="pb-6 border-b border-border">
-        <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
-          <GraduationCap className="mr-4 h-10 w-10 text-primary" />
-          Python Tutorials
-        </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
-          A curated list of Python tutorials, from basic concepts to more advanced topics.
-        </p>
-      </header>
-
-      {sortedTutorials.length > 0 ? (
-        <Card className="shadow-lg border-border/50">
-          <CardHeader>
-            <CardTitle className="flex items-center text-xl">
-              <ListOrdered className="mr-3 h-6 w-6 text-primary" />
-              Available Tutorials
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3">
-              {sortedTutorials.map((tutorial) => (
-                <li key={tutorial.slug}>
-                  <Link
-                    href={tutorial.url}
-                    className="group flex items-center justify-between p-4 rounded-lg hover:bg-accent/10 transition-all duration-200 ease-in-out border border-border/30 hover:border-primary/50"
-                  >
-                    <div className="flex items-center">
-                      <span className="mr-3 text-sm font-medium text-primary group-hover:text-accent-foreground">
-                        {tutorial.order}.
-                      </span>
-                      <span className="text-lg font-semibold text-foreground/90 group-hover:text-primary transition-colors">
-                        {tutorial.title}
-                      </span>
-                    </div>
-                    <ChevronRight className="h-5 w-5 text-muted-foreground opacity-50 group-hover:opacity-100 group-hover:text-primary transition-all duration-200 ease-in-out transform group-hover:translate-x-1" />
-                  </Link>
-                  {tutorial.description && (
-                    <p className="mt-1 ml-8 text-sm text-muted-foreground">
-                      {tutorial.description}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      ) : (
-        <p className="text-muted-foreground text-center py-10">
-          No Python tutorials available yet. Please check back soon!
-        </p>
-      )}
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold text-foreground">Python Tutorial</h1>
+        <div className="my-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 dark:bg-yellow-900/30 dark:border-yellow-600 dark:text-yellow-200 rounded-r-md">
+            <p className="font-semibold m-0 italic">This Python tutorial is based on the latest Python 3.13 version.</p>
+        </div>
+        <article className="prose dark:prose-invert max-w-none">
+            <MarkdownRenderer content={pythonLanguage.mainContent} />
+        </article>
     </div>
   );
 }

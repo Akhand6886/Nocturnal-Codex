@@ -14,7 +14,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   date: string; // ISO date string
-  excerpt: string;
+  shortDescription: string;
   content: Document; // Rich text content
   featuredImage: ContentfulImage | null;
   author: string;
@@ -29,7 +29,7 @@ export interface ThinkTankArticle {
   slug: string;
   title: string;
   date: string; // ISO date string
-  abstract: string;
+  abstract: Document;
   content: Document;
   featuredImage: ContentfulImage | null;
   authors: string[];

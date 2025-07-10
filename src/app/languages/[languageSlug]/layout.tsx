@@ -3,6 +3,8 @@ import type { PropsWithChildren } from 'react';
 import { MOCK_PROGRAMMING_LANGUAGES, type ProgrammingLanguage } from "@/lib/data";
 import { LanguagePageLayout } from '@/components/layout/language-page-layout';
 import { notFound } from 'next/navigation';
+import { allTutorialPosts } from 'contentlayer/generated';
+import type { TutorialPost } from 'contentlayer/generated';
 
 interface LanguageSlugLayoutProps extends PropsWithChildren {
   params: { languageSlug: string };
@@ -10,6 +12,12 @@ interface LanguageSlugLayoutProps extends PropsWithChildren {
 
 async function getLanguage(slug: string): Promise<ProgrammingLanguage | undefined> {
   return MOCK_PROGRAMMING_LANGUAGES.find((lang) => lang.slug === slug);
+}
+
+async function getTutorialsForLanguage(languageSlug: string): Promise<TutorialPost[]> {
+    return allTutorialPosts
+        .filter(p => p.language === languageSlug)
+        .sort((a,b) => a.order - b.order);
 }
 
 export async function generateStaticParams() {
@@ -24,16 +32,15 @@ export default async function LanguageDetailLayout({ children, params }: Languag
   if (!language) {
     notFound();
   }
+  
+  const tutorials = await getTutorialsForLanguage(params.languageSlug);
 
-  return <LanguagePageLayout language={language}>{children}</LanguagePageLayout>;
+  return (
+    <LanguagePageLayout 
+        language={language} 
+        tutorials={tutorials}
+    >
+        {children}
+    </LanguagePageLayout>
+  );
 }
-
-// Optional: Add generateMetadata here if you want layout-level metadata
-// export async function generateMetadata({ params }: { params: { languageSlug: string }}) {
-//   const language = await getLanguage(params.languageSlug);
-//   if (!language) return { title: "Language Not Found" };
-//   return {
-//     title: `${language.name} Overview`,
-//     description: `Learn about ${language.name}, its features, and resources.`,
-//   };
-// }
