@@ -27,14 +27,9 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
     <div className="flex h-full flex-col bg-[#f5f5f5] dark:bg-slate-900/50">
       <header className="p-4 bg-white dark:bg-card">
         <Link href={`/languages/${language.slug}`} className="group">
-            <Image 
-                src="https://placehold.co/220x80.png" 
-                width={220} 
-                height={80} 
-                alt={`${language.name} Programming Language`} 
-                data-ai-hint="python logo"
-                className="w-full h-auto"
-            />
+            <div className="flex items-center justify-center h-20 bg-slate-200 dark:bg-slate-800 rounded-md">
+                <span className="text-xl font-bold text-slate-700 dark:text-slate-300">Python</span>
+            </div>
         </Link>
       </header>
       <ScrollArea className="flex-grow">
