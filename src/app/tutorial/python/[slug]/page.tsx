@@ -1,7 +1,10 @@
+
 import { allTutorialPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
 import { MOCK_PROGRAMMING_LANGUAGES } from "@/lib/data";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const revalidate = 60;
 
@@ -62,8 +65,20 @@ export default async function PythonTutorialPage({ params }: LanguageTutorialPag
 
   return (
     <div className="space-y-6">
-        <h1 className="text-4xl font-extrabold tracking-tight text-foreground">{tutorial.title}</h1>
-        {tutorial.description && <p className="text-lg text-muted-foreground">{tutorial.description}</p>}
+        <div className="flex justify-between items-center border-b pb-4">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">Python Tutorial</h1>
+            <Button variant="ghost" size="icon" className="lg:hidden"><Menu className="h-6 w-6"/></Button>
+        </div>
+        <div className="flex space-x-2 overflow-x-auto py-2">
+            <Button variant="outline" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Job Search</Button>
+            <Button variant="outline" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">PDF Version</Button>
+            <Button variant="outline" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Quick Guide</Button>
+            <Button variant="outline" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Resources</Button>
+            <Button variant="outline" className="bg-slate-800 text-white hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-800 dark:hover:bg-slate-300">Discussion</Button>
+        </div>
+        <div className="my-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 dark:bg-yellow-900/30 dark:border-yellow-600 dark:text-yellow-200 rounded-r-md">
+            <p className="font-semibold m-0 italic">This Python tutorial is based on the latest Python 3.13 version.</p>
+        </div>
         
         <article className="prose dark:prose-invert max-w-none markdown-content">
             <div
