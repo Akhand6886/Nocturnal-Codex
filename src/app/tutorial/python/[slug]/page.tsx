@@ -1,7 +1,6 @@
 import { allTutorialPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
-import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import { MOCK_PROGRAMMING_LANGUAGES } from "@/lib/data";
 
 export const revalidate = 60;
@@ -10,25 +9,23 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 export async function generateStaticParams() {
     return allTutorialPosts.map((post) => ({
-      languageSlug: post.language,
       slug: post.slug,
     }));
 }
 
 interface LanguageTutorialPageProps {
   params: { 
-    languageSlug: string;
     slug: string;
   };
 }
 
-async function getTutorial(params: LanguageTutorialPageProps['params']) {
-    return allTutorialPosts.find(p => p.language === params.languageSlug && p.slug === params.slug);
+async function getTutorial(slug: string) {
+    return allTutorialPosts.find(p => p.language === 'python' && p.slug === slug);
 }
 
 export async function generateMetadata({ params }: LanguageTutorialPageProps): Promise<Metadata> {
-  const tutorial = await getTutorial(params);
-  const language = MOCK_PROGRAMMING_LANGUAGES.find(lang => lang.slug === params.languageSlug);
+  const tutorial = await getTutorial(params.slug);
+  const language = MOCK_PROGRAMMING_LANGUAGES.find(lang => lang.slug === 'python');
 
   if (!tutorial || !language) {
     return {
@@ -39,7 +36,7 @@ export async function generateMetadata({ params }: LanguageTutorialPageProps): P
   
   const pageTitle = tutorial.title;
   const description = tutorial.description || `An interactive tutorial on ${language.name}. Learn about ${tutorial.title}.`;
-  const url = `${siteUrl}/languages/${params.languageSlug}/${params.slug}`;
+  const url = `${siteUrl}/tutorial/python/${params.slug}`;
   
   return {
     title: `${pageTitle} | ${language.name} Tutorial`,
@@ -56,8 +53,8 @@ export async function generateMetadata({ params }: LanguageTutorialPageProps): P
   };
 }
 
-export default async function LanguageTutorialPage({ params }: LanguageTutorialPageProps) {
-  const tutorial = await getTutorial(params);
+export default async function PythonTutorialPage({ params }: LanguageTutorialPageProps) {
+  const tutorial = await getTutorial(params.slug);
 
   if (!tutorial) {
     notFound();
@@ -68,11 +65,7 @@ export default async function LanguageTutorialPage({ params }: LanguageTutorialP
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground">{tutorial.title}</h1>
         {tutorial.description && <p className="text-lg text-muted-foreground">{tutorial.description}</p>}
         
-        <div className="my-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 dark:bg-yellow-900/30 dark:border-yellow-600 dark:text-yellow-200 rounded-r-md">
-            <p className="font-semibold m-0 italic">This Python tutorial is based on the latest Python 3.13 version.</p>
-        </div>
-
-        <article className="prose dark:prose-invert max-w-none">
+        <article className="prose dark:prose-invert max-w-none markdown-content">
             <div
               dangerouslySetInnerHTML={{ __html: tutorial.body.html }}
             />

@@ -8,11 +8,12 @@ import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, ArrowRight } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import type { TutorialPost } from 'contentlayer/generated';
 import type { ProgrammingLanguage } from '@/lib/data';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface TutorialLayoutProps extends PropsWithChildren {
     language: ProgrammingLanguage;
@@ -22,6 +23,8 @@ interface TutorialLayoutProps extends PropsWithChildren {
 export function TutorialLayout({ children, language, tutorials }: TutorialLayoutProps) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const introductionPost = tutorials.find(t => t.order === 1);
+  const basicTutorials = tutorials.filter(t => t.order > 1);
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-900 border-r border-border">
@@ -37,41 +40,70 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
       <ScrollArea className="flex-grow">
         <nav className="p-2">
           <ul>
-             <li>
-                <Link
-                    href={`/languages/${language.slug}`}
-                    className={cn(
-                        "flex items-center justify-between p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
-                        pathname === `/languages/${language.slug}`
-                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
-                        : "text-foreground/80 hover:bg-muted"
-                    )}
-                    onClick={() => isSheetOpen && setIsSheetOpen(false)}
-                >
-                   {language.name} - Home
-                   {pathname === `/languages/${language.slug}` && <ArrowRight className="h-4 w-4 text-green-500"/>}
-                </Link>
+            <li>
+              <Link
+                  href="/tutorial/python"
+                  className={cn(
+                      "flex items-center justify-between p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
+                      pathname === `/tutorial/python`
+                      ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                      : "text-foreground/80 hover:bg-muted"
+                  )}
+                  onClick={() => isSheetOpen && setIsSheetOpen(false)}
+              >
+                  Python - Home
+                  {pathname === `/tutorial/python` && <ArrowRight className="h-4 w-4 text-green-500"/>}
+              </Link>
             </li>
-            {tutorials.map((tutorial) => {
-              const isActive = pathname === tutorial.url;
-              return (
-                <li key={tutorial.slug}>
-                  <Link
-                    href={tutorial.url}
-                    onClick={() => isSheetOpen && setIsSheetOpen(false)}
-                    className={cn(
-                      "block p-2 text-sm rounded-md transition-colors w-full text-left",
-                      isActive
-                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 font-medium"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    )}
-                  >
-                    {tutorial.title}
-                  </Link>
+            {introductionPost && (
+                 <li>
+                    <Link
+                        href={introductionPost.url}
+                        className={cn(
+                            "flex items-center justify-between p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
+                            pathname === introductionPost.url
+                            ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                            : "text-foreground/80 hover:bg-muted"
+                        )}
+                        onClick={() => isSheetOpen && setIsSheetOpen(false)}
+                    >
+                        {introductionPost.title}
+                        {pathname === introductionPost.url && <ArrowRight className="h-4 w-4 text-green-500"/>}
+                    </Link>
                 </li>
-              );
-            })}
+            )}
           </ul>
+          <Accordion type="single" collapsible defaultValue="item-1" className="w-full">
+            <AccordionItem value="item-1" className="border-b-0">
+              <AccordionTrigger className="text-sm font-semibold text-foreground/80 hover:no-underline hover:text-primary p-2">
+                Python Basics
+              </AccordionTrigger>
+              <AccordionContent className="pl-4">
+                <ul>
+                  {basicTutorials.map((tutorial) => {
+                    const isActive = pathname === tutorial.url;
+                    return (
+                      <li key={tutorial.slug}>
+                        <Link
+                          href={tutorial.url}
+                          onClick={() => isSheetOpen && setIsSheetOpen(false)}
+                          className={cn(
+                            "flex items-center justify-between p-2 text-sm rounded-md transition-colors w-full text-left",
+                            isActive
+                              ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 font-medium"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                          )}
+                        >
+                          {tutorial.title}
+                          {isActive && <ArrowRight className="h-4 w-4 text-green-500"/>}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </nav>
       </ScrollArea>
     </div>
@@ -80,7 +112,7 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
   return (
     <div className="w-full bg-background">
       <div className="container mx-auto px-0 md:px-4">
-        <div className="lg:grid lg:grid-cols-[250px_1fr] xl:grid-cols-[250px_1fr_180px] lg:gap-8">
+        <div className="lg:grid lg:grid-cols-[250px_1fr] lg:gap-8">
           
           <aside className="hidden lg:block h-[calc(100vh-4rem)] sticky top-16">
             <SidebarContent />
@@ -104,15 +136,6 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
               {children}
             </main>
           </div>
-
-          <aside className="hidden xl:block h-fit sticky top-20 space-y-4">
-             <div className="bg-gray-200 dark:bg-gray-800 h-60 rounded-md flex items-center justify-center">
-                <p className="text-muted-foreground text-sm">Ad Space</p>
-             </div>
-             <div className="bg-gray-200 dark:bg-gray-800 h-60 rounded-md flex items-center justify-center">
-                <p className="text-muted-foreground text-sm">Ad Space</p>
-             </div>
-          </aside>
 
         </div>
       </div>
