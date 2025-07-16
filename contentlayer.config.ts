@@ -14,7 +14,7 @@ export const TutorialPost = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/languages/${doc._raw.sourceFileDir.split('/')[1]}/${doc.slug}`,
+      resolve: (doc) => `/tutorial/${doc._raw.sourceFileDir.split('/')[1]}/${doc.slug}`,
     },
     language: {
       type: "string",

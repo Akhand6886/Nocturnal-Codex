@@ -13,7 +13,7 @@ var TutorialPost = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/languages/${doc._raw.sourceFileDir.split("/")[1]}/${doc.slug}`
+      resolve: (doc) => `/tutorial/${doc._raw.sourceFileDir.split("/")[1]}/${doc.slug}`
     },
     language: {
       type: "string",
@@ -29,4 +29,4 @@ export {
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-LNOOS3P4.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-NOUJSJJL.mjs.map

@@ -17,7 +17,7 @@
       "flattenedPath": "tutorials/python/f-strings"
     },
     "type": "TutorialPost",
-    "url": "/languages/python/python-f-strings",
+    "url": "/tutorial/python/python-f-strings",
     "language": "python"
   },
   {
@@ -38,7 +38,7 @@
       "flattenedPath": "tutorials/python/functions"
     },
     "type": "TutorialPost",
-    "url": "/languages/python/functions",
+    "url": "/tutorial/python/functions",
     "language": "python"
   },
   {
@@ -59,7 +59,7 @@
       "flattenedPath": "tutorials/python/introduction"
     },
     "type": "TutorialPost",
-    "url": "/languages/python/introduction-to-python",
+    "url": "/tutorial/python/introduction-to-python",
     "language": "python"
   },
   {
@@ -80,7 +80,7 @@
       "flattenedPath": "tutorials/python/loops"
     },
     "type": "TutorialPost",
-    "url": "/languages/python/loops",
+    "url": "/tutorial/python/loops",
     "language": "python"
   },
   {
@@ -101,7 +101,7 @@
       "flattenedPath": "tutorials/python/python-decorators"
     },
     "type": "TutorialPost",
-    "url": "/languages/python/level-python-decorators",
+    "url": "/tutorial/python/level-python-decorators",
     "language": "python"
   },
   {
@@ -122,7 +122,7 @@
       "flattenedPath": "tutorials/python/variables-and-data-types"
     },
     "type": "TutorialPost",
-    "url": "/languages/python/python-variables-data-types",
+    "url": "/tutorial/python/python-variables-data-types",
     "language": "python"
   }
 ]

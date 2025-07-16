@@ -24,34 +24,22 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const sidebarContent = (
-    <div className="flex h-full flex-col bg-[#f0f0f0] dark:bg-slate-900 border-r border-border">
-      <header className="p-4 border-b border-border bg-white dark:bg-slate-800">
-        <Link href={`/languages/${language.slug}`} className="flex items-center gap-3 group">
-          <Image src={language.iconUrl} alt={language.name} width={40} height={40} data-ai-hint={language.dataAiHint} />
-          <div>
-            <h2 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">{language.name}</h2>
-            <p className="text-xs text-muted-foreground">Programming Language</p>
-          </div>
+    <div className="flex h-full flex-col bg-[#f5f5f5] dark:bg-slate-900/50">
+      <header className="p-4 bg-white dark:bg-card">
+        <Link href={`/languages/${language.slug}`} className="group">
+            <Image 
+                src="https://placehold.co/220x80.png" 
+                width={220} 
+                height={80} 
+                alt={`${language.name} Programming Language`} 
+                data-ai-hint="python logo"
+                className="w-full h-auto"
+            />
         </Link>
       </header>
       <ScrollArea className="flex-grow">
         <nav className="p-2">
           <ul>
-            <li>
-              <Link
-                  href="/tutorial/python"
-                  className={cn(
-                      "flex items-center justify-between p-2 text-sm rounded-md transition-colors w-full text-left font-semibold mb-1",
-                      pathname === `/tutorial/python`
-                      ? "bg-green-200 dark:bg-green-900/40 text-green-800 dark:text-green-300"
-                      : "text-foreground/80 hover:bg-muted"
-                  )}
-                  onClick={() => isSheetOpen && setIsSheetOpen(false)}
-              >
-                  Python - Home
-                  {pathname === `/tutorial/python` && <ArrowRight className="h-4 w-4 text-green-600 dark:text-green-400"/>}
-              </Link>
-            </li>
             {tutorials.map((tutorial) => {
                 const isActive = pathname === tutorial.url;
                 return (
@@ -60,13 +48,14 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
                             href={tutorial.url}
                             onClick={() => isSheetOpen && setIsSheetOpen(false)}
                             className={cn(
-                                "block p-2 text-sm rounded-md transition-colors w-full text-left",
+                                "flex items-center justify-between p-2 pl-3 text-sm rounded-md transition-colors w-full text-left",
                                 isActive
-                                ? "text-primary bg-primary/10 font-medium"
+                                ? "text-green-700 bg-green-100 dark:text-green-300 dark:bg-green-900/40 font-semibold"
                                 : "text-muted-foreground hover:bg-muted hover:text-foreground"
                             )}
                         >
-                            {tutorial.title}
+                            <span>{tutorial.title}</span>
+                            {isActive && <ArrowRight className="h-4 w-4 text-green-600 dark:text-green-400"/>}
                         </Link>
                     </li>
                 )
@@ -80,9 +69,9 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
   return (
     <div className="w-full bg-background">
       <div className="container mx-auto px-0 md:px-4">
-        <div className="lg:grid lg:grid-cols-[250px_1fr_180px] lg:gap-8">
+        <div className="lg:grid lg:grid-cols-[250px_1fr] lg:gap-8">
           
-          <aside className="hidden lg:block h-screen sticky top-0 pt-16">
+          <aside className="hidden lg:block h-[calc(100vh-8rem)] sticky top-28">
             {sidebarContent}
           </aside>
           
@@ -104,21 +93,6 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
               {children}
             </main>
           </div>
-
-          <aside className="hidden lg:block h-screen sticky top-0 pt-16">
-            <div className="flex flex-col space-y-4 p-2">
-                <div className="bg-slate-200 dark:bg-slate-700 p-4 rounded-md text-center">
-                    <Image src="https://placehold.co/160x200.png" width={160} height={200} alt="DevOps Ad" data-ai-hint="advertisement banner"/>
-                </div>
-                <div className="bg-slate-200 dark:bg-slate-700 p-4 rounded-md text-center">
-                    <Image src="https://placehold.co/160x200.png" width={160} height={200} alt="DevOps Ad 2" data-ai-hint="advertisement banner"/>
-                </div>
-                <div className="bg-slate-200 dark:bg-slate-700 p-4 rounded-md text-center">
-                    <Image src="https://placehold.co/160x200.png" width={160} height={200} alt="TutorialsPoint Ad" data-ai-hint="advertisement banner"/>
-                </div>
-            </div>
-          </aside>
-
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import type { PropsWithChildren } from 'react';
 import { allTutorialPosts } from 'contentlayer/generated';
 import { MOCK_PROGRAMMING_LANGUAGES } from '@/lib/data';
 import { notFound } from 'next/navigation';
+import { LanguageScroller } from '@/components/layout/language-scroller';
 
 export default function PythonTutorialsPageLayout({ children }: PropsWithChildren) {
   const pythonTutorials = allTutorialPosts
@@ -17,8 +18,11 @@ export default function PythonTutorialsPageLayout({ children }: PropsWithChildre
   }
 
   return (
-    <TutorialLayout language={pythonLanguage} tutorials={pythonTutorials}>
-      {children}
-    </TutorialLayout>
+    <div>
+        <LanguageScroller languages={MOCK_PROGRAMMING_LANGUAGES} activeLanguage="python" />
+        <TutorialLayout language={pythonLanguage} tutorials={pythonTutorials}>
+            {children}
+        </TutorialLayout>
+    </div>
   );
 }
