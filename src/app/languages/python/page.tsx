@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { allTutorialPosts } from 'contentlayer/generated';
+import { allPythonTutorials } from 'contentlayer/generated';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function PythonLanguagePage() {
-  const pythonTutorials = allTutorialPosts
+  const pythonTutorials = allPythonTutorials
     .filter((post) => post.language === 'python')
     .sort((a, b) => a.order - b.order);
 
