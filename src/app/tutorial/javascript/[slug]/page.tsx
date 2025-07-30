@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 export const revalidate = 60;
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
 export async function generateStaticParams() {
     return allTutorialPosts
@@ -56,7 +57,8 @@ export async function generateMetadata({ params }: LanguageTutorialPageProps): P
   const pageTitle = tutorial.title;
   const description = tutorial.description || `An interactive tutorial on ${language.name}. Learn about ${tutorial.title}.`;
   const url = `${siteUrl}${tutorial.url}`;
-  
+  const publishedDate = new Date(); // Using current date as placeholder
+
   return {
     title: `${pageTitle} | ${language.name} Tutorial`,
     description: description,
@@ -68,6 +70,22 @@ export async function generateMetadata({ params }: LanguageTutorialPageProps): P
       description: description,
       url: url,
       type: 'article',
+      publishedTime: publishedDate.toISOString(),
+      authors: ['The Nocturnist'],
+      images: [
+        {
+          url: defaultOgImage,
+          width: 1200,
+          height: 630,
+          alt: pageTitle,
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageTitle,
+      description: description,
+      images: [defaultOgImage],
     },
   };
 }
@@ -78,9 +96,42 @@ export default async function JavascriptTutorialPage({ params }: LanguageTutoria
   if (!tutorial) {
     notFound();
   }
+  
+  const publishedDate = new Date(); // Placeholder date
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${siteUrl}${tutorial.url}`
+    },
+    "headline": tutorial.title,
+    "description": tutorial.description,
+    "image": defaultOgImage,
+    "datePublished": publishedDate.toISOString(),
+    "dateModified": publishedDate.toISOString(),
+    "author": {
+      "@type": "Organization",
+      "name": "Nocturnal Codex"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Nocturnal Codex",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/logo.png`
+      }
+    }
+  };
+
 
   return (
     <div className="space-y-6">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
         <h1 className="text-3xl font-bold tracking-tight text-foreground pb-2">{tutorial.title}</h1>
         <p className="text-sm text-muted-foreground">{format(new Date(), "dd MMM yyyy")} | 4 min read</p>
         
