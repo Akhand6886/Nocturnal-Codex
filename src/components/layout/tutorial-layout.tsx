@@ -1,5 +1,4 @@
-
-"use client";
+"use client"
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -35,6 +34,9 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
 
   const sidebarContent = (
     <div className="flex h-full flex-col bg-muted/20 dark:bg-card/40">
+      <div className="p-4 border-b">
+        <h2 className="text-lg font-semibold">{language.name}</h2>
+      </div>
       <ScrollArea className="flex-grow">
         <nav className="p-2">
             <Accordion type="multiple" defaultValue={Object.keys(groupedTutorials)} className="w-full">
