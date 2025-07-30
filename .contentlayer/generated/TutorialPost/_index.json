@@ -1,5 +1,71 @@
 [
   {
+    "title": "Hello World Program",
+    "slug": "hello-world-in-javascript",
+    "order": 2,
+    "description": "Learn how to write your first 'Hello, World!' program in JavaScript.",
+    "category": "JavaScript Basics",
+    "body": {
+      "raw": "\n## Hello World in JavaScript\n\nThe \"Hello, World!\" program is a classic first step in learning any new programming language. It's a simple program that outputs `Hello, World!` to the screen.\n\n### Using `console.log()`\n\nThe most common way to display output for debugging or learning purposes in JavaScript is using the `console.log()` method. This will print the output to the web console in your browser's developer tools.\n\n```javascript\n// This line prints \"Hello, World!\" to the console.\nconsole.log(\"Hello, World!\");\n```\n\n### Displaying in an Alert Box\n\nYou can also use the `alert()` function to display the message in a pop-up alert box in the browser.\n\n```javascript\n// This will create a pop-up with the message.\nalert(\"Hello, World!\");\n```\n\n### Writing Directly to the HTML Document\n\nAnother method, though less common for modern applications, is to write directly into the HTML document using `document.write()`.\n\n```javascript\n// This will write \"Hello, World!\" directly into the HTML body.\ndocument.write(\"Hello, World!\");\n```\n\nThis is the foundational step to start your journey with JavaScript development.\n",
+      "html": "<h2>Hello World in JavaScript</h2>\n<p>The \"Hello, World!\" program is a classic first step in learning any new programming language. It's a simple program that outputs <code>Hello, World!</code> to the screen.</p>\n<h3>Using <code>console.log()</code></h3>\n<p>The most common way to display output for debugging or learning purposes in JavaScript is using the <code>console.log()</code> method. This will print the output to the web console in your browser's developer tools.</p>\n<pre><code class=\"language-javascript\">// This line prints \"Hello, World!\" to the console.\nconsole.log(\"Hello, World!\");\n</code></pre>\n<h3>Displaying in an Alert Box</h3>\n<p>You can also use the <code>alert()</code> function to display the message in a pop-up alert box in the browser.</p>\n<pre><code class=\"language-javascript\">// This will create a pop-up with the message.\nalert(\"Hello, World!\");\n</code></pre>\n<h3>Writing Directly to the HTML Document</h3>\n<p>Another method, though less common for modern applications, is to write directly into the HTML document using <code>document.write()</code>.</p>\n<pre><code class=\"language-javascript\">// This will write \"Hello, World!\" directly into the HTML body.\ndocument.write(\"Hello, World!\");\n</code></pre>\n<p>This is the foundational step to start your journey with JavaScript development.</p>"
+    },
+    "_id": "tutorials/javascript/hello-world.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/hello-world.md",
+      "sourceFileName": "hello-world.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/hello-world"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/hello-world-in-javascript",
+    "language": "javascript"
+  },
+  {
+    "title": "Features of JavaScript",
+    "slug": "features-of-javascript",
+    "order": 1,
+    "description": "An overview of the core features that make JavaScript a powerful and popular language for web development.",
+    "category": "JavaScript Basics",
+    "body": {
+      "raw": "\n## Features of JavaScript\n\nJavaScript is a programming language that lets developers create interactive web pages. JavaScript is a high-level, interpreted programming language that is primarily used for building interactive and dynamic websites.\n\nJavaScript is one of the most popular programming languages, which includes several features when it comes to web development. Some of the features are lightweight, dynamic, functional, and interpreted.\n\nLet's discuss some important features of JavaScript:\n\n1.  **Lightweight Scripting Language**: JavaScript is lightweight because it is designed for client-side execution in the browser. This makes it fast and efficient for enhancing user interfaces.\n2.  **Dynamic Typing**: Variables in JavaScript are not tied to a specific type. You can reassign variables to different types at any time.\n3.  **Functional Style**: JavaScript supports functional programming paradigms, treating functions as first-class citizens. You can pass functions as arguments, return them from other functions, and assign them to variables.\n4.  **Platform Independent**: JavaScript can run on any platform with a web browser, be it Windows, macOS, or Linux.\n5.  **Prototype-based Language**: JavaScript uses prototypes for inheritance instead of classes (though ES6 introduced class syntax as syntactic sugar over prototypes).\n6.  **Interpreted Language**: JavaScript code is interpreted line-by-line by the browser's engine, which means you don't need a compilation step.\n7.  **Single-Threaded**: JavaScript has a single-threaded execution model, which means it processes one task at a time. Asynchronous operations are handled by the event loop.\n8.  **Async Processing**: With features like Promises and async/await, JavaScript can handle asynchronous operations like API calls without blocking the main thread.\n9.  **Web Workers**: Allows for running scripts in background threads, enabling long-running tasks without freezing the UI.\n10. **Client-side Validation**: JavaScript is widely used to validate user input on the client-side before sending data to the server.\n11. **Backend Development**: With Node.js, JavaScript can be used to build full-stack applications.\n12. **More Control in Browser**: JavaScript gives developers extensive control over the browser and its Document Object Model (DOM).\n",
+      "html": "<h2>Features of JavaScript</h2>\n<p>JavaScript is a programming language that lets developers create interactive web pages. JavaScript is a high-level, interpreted programming language that is primarily used for building interactive and dynamic websites.</p>\n<p>JavaScript is one of the most popular programming languages, which includes several features when it comes to web development. Some of the features are lightweight, dynamic, functional, and interpreted.</p>\n<p>Let's discuss some important features of JavaScript:</p>\n<ol>\n<li><strong>Lightweight Scripting Language</strong>: JavaScript is lightweight because it is designed for client-side execution in the browser. This makes it fast and efficient for enhancing user interfaces.</li>\n<li><strong>Dynamic Typing</strong>: Variables in JavaScript are not tied to a specific type. You can reassign variables to different types at any time.</li>\n<li><strong>Functional Style</strong>: JavaScript supports functional programming paradigms, treating functions as first-class citizens. You can pass functions as arguments, return them from other functions, and assign them to variables.</li>\n<li><strong>Platform Independent</strong>: JavaScript can run on any platform with a web browser, be it Windows, macOS, or Linux.</li>\n<li><strong>Prototype-based Language</strong>: JavaScript uses prototypes for inheritance instead of classes (though ES6 introduced class syntax as syntactic sugar over prototypes).</li>\n<li><strong>Interpreted Language</strong>: JavaScript code is interpreted line-by-line by the browser's engine, which means you don't need a compilation step.</li>\n<li><strong>Single-Threaded</strong>: JavaScript has a single-threaded execution model, which means it processes one task at a time. Asynchronous operations are handled by the event loop.</li>\n<li><strong>Async Processing</strong>: With features like Promises and async/await, JavaScript can handle asynchronous operations like API calls without blocking the main thread.</li>\n<li><strong>Web Workers</strong>: Allows for running scripts in background threads, enabling long-running tasks without freezing the UI.</li>\n<li><strong>Client-side Validation</strong>: JavaScript is widely used to validate user input on the client-side before sending data to the server.</li>\n<li><strong>Backend Development</strong>: With Node.js, JavaScript can be used to build full-stack applications.</li>\n<li><strong>More Control in Browser</strong>: JavaScript gives developers extensive control over the browser and its Document Object Model (DOM).</li>\n</ol>"
+    },
+    "_id": "tutorials/javascript/introduction.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/introduction.md",
+      "sourceFileName": "introduction.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/introduction"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/features-of-javascript",
+    "language": "javascript"
+  },
+  {
+    "title": "JavaScript Variables",
+    "slug": "javascript-variables",
+    "order": 3,
+    "description": "Understand how to declare and use variables in JavaScript using var, let, and const.",
+    "category": "JS Variables and Data Types",
+    "body": {
+      "raw": "\n## JavaScript Variables\n\nIn JavaScript, variables are containers for storing data values. You can declare variables using the keywords `var`, `let`, or `const`.\n\n### `var`\nThe `var` keyword was the original way to declare variables in JavaScript. Variables declared with `var` are function-scoped or globally-scoped.\n\n```javascript\nvar name = \"Alice\";\nvar age = 30;\n\nfunction sayHello() {\n  var message = \"Hello from the function\";\n  console.log(message); // \"Hello from the function\"\n}\n\n// console.log(message); // This would cause an error because message is function-scoped.\n```\n\n### `let`\nIntroduced in ES6 (ECMAScript 2015), `let` provides block-scoping. A block is any code enclosed in curly braces `{}`, like in an `if` statement or a `for` loop. It's generally recommended to use `let` over `var`.\n\n```javascript\nlet count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable\n  console.log(count); // 20\n}\nconsole.log(count); // 10\n```\n\n### `const`\nAlso introduced in ES6, `const` is used to declare constants. Like `let`, it is block-scoped. A `const` variable cannot be reassigned.\n\n```javascript\nconst PI = 3.14159;\n// PI = 3.14; // This would throw an error.\n\n// For objects and arrays, the reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw an error.\n```\n\n### Naming Variables\n- Variable names can contain letters, digits, underscores, and dollar signs.\n- Names must begin with a letter, `$`, or `_`.\n- Names are case-sensitive (`y` and `Y` are different variables).\n- Reserved words (like JavaScript keywords) cannot be used as names.\n",
+      "html": "<h2>JavaScript Variables</h2>\n<p>In JavaScript, variables are containers for storing data values. You can declare variables using the keywords <code>var</code>, <code>let</code>, or <code>const</code>.</p>\n<h3><code>var</code></h3>\n<p>The <code>var</code> keyword was the original way to declare variables in JavaScript. Variables declared with <code>var</code> are function-scoped or globally-scoped.</p>\n<pre><code class=\"language-javascript\">var name = \"Alice\";\nvar age = 30;\n\nfunction sayHello() {\n  var message = \"Hello from the function\";\n  console.log(message); // \"Hello from the function\"\n}\n\n// console.log(message); // This would cause an error because message is function-scoped.\n</code></pre>\n<h3><code>let</code></h3>\n<p>Introduced in ES6 (ECMAScript 2015), <code>let</code> provides block-scoping. A block is any code enclosed in curly braces <code>{}</code>, like in an <code>if</code> statement or a <code>for</code> loop. It's generally recommended to use <code>let</code> over <code>var</code>.</p>\n<pre><code class=\"language-javascript\">let count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable\n  console.log(count); // 20\n}\nconsole.log(count); // 10\n</code></pre>\n<h3><code>const</code></h3>\n<p>Also introduced in ES6, <code>const</code> is used to declare constants. Like <code>let</code>, it is block-scoped. A <code>const</code> variable cannot be reassigned.</p>\n<pre><code class=\"language-javascript\">const PI = 3.14159;\n// PI = 3.14; // This would throw an error.\n\n// For objects and arrays, the reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw an error.\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>Variable names can contain letters, digits, underscores, and dollar signs.</li>\n<li>Names must begin with a letter, <code>$</code>, or <code>_</code>.</li>\n<li>Names are case-sensitive (<code>y</code> and <code>Y</code> are different variables).</li>\n<li>Reserved words (like JavaScript keywords) cannot be used as names.</li>\n</ul>"
+    },
+    "_id": "tutorials/javascript/variables.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/variables.md",
+      "sourceFileName": "variables.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/variables"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-variables",
+    "language": "javascript"
+  },
+  {
     "title": "Mastering F-Strings in Python",
     "slug": "python-f-strings",
     "order": 3,

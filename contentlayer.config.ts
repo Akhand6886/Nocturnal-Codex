@@ -10,6 +10,7 @@ export const TutorialPost = defineDocumentType(() => ({
     slug: { type: "string", required: true }, 
     order: { type: "number", required: true }, 
     description: { type: "string", required: false }, 
+    category: { type: "string", required: false }, // Added for grouping
   },
   computedFields: {
     url: {

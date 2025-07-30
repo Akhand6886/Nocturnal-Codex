@@ -8,7 +8,9 @@ var TutorialPost = defineDocumentType(() => ({
     title: { type: "string", required: true },
     slug: { type: "string", required: true },
     order: { type: "number", required: true },
-    description: { type: "string", required: false }
+    description: { type: "string", required: false },
+    category: { type: "string", required: false }
+    // Added for grouping
   },
   computedFields: {
     url: {
@@ -29,4 +31,4 @@ export {
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-NOUJSJJL.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-VFTSLN4M.mjs.map

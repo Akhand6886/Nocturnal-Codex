@@ -17,6 +17,7 @@ export type TutorialPost = {
   slug: string
   order: number
   description?: string | undefined
+  category?: string | undefined
   /** Markdown file body */
   body: Markdown
   url: string

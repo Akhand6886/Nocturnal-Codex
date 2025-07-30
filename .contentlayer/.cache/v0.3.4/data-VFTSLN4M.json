@@ -1,0 +1,241 @@
+{
+  "cacheItemsMap": {
+    "tutorials/javascript/hello-world.md": {
+      "document": {
+        "title": "Hello World Program",
+        "slug": "hello-world-in-javascript",
+        "order": 2,
+        "description": "Learn how to write your first 'Hello, World!' program in JavaScript.",
+        "category": "JavaScript Basics",
+        "body": {
+          "raw": "\n## Hello World in JavaScript\n\nThe \"Hello, World!\" program is a classic first step in learning any new programming language. It's a simple program that outputs `Hello, World!` to the screen.\n\n### Using `console.log()`\n\nThe most common way to display output for debugging or learning purposes in JavaScript is using the `console.log()` method. This will print the output to the web console in your browser's developer tools.\n\n```javascript\n// This line prints \"Hello, World!\" to the console.\nconsole.log(\"Hello, World!\");\n```\n\n### Displaying in an Alert Box\n\nYou can also use the `alert()` function to display the message in a pop-up alert box in the browser.\n\n```javascript\n// This will create a pop-up with the message.\nalert(\"Hello, World!\");\n```\n\n### Writing Directly to the HTML Document\n\nAnother method, though less common for modern applications, is to write directly into the HTML document using `document.write()`.\n\n```javascript\n// This will write \"Hello, World!\" directly into the HTML body.\ndocument.write(\"Hello, World!\");\n```\n\nThis is the foundational step to start your journey with JavaScript development.\n",
+          "html": "<h2>Hello World in JavaScript</h2>\n<p>The \"Hello, World!\" program is a classic first step in learning any new programming language. It's a simple program that outputs <code>Hello, World!</code> to the screen.</p>\n<h3>Using <code>console.log()</code></h3>\n<p>The most common way to display output for debugging or learning purposes in JavaScript is using the <code>console.log()</code> method. This will print the output to the web console in your browser's developer tools.</p>\n<pre><code class=\"language-javascript\">// This line prints \"Hello, World!\" to the console.\nconsole.log(\"Hello, World!\");\n</code></pre>\n<h3>Displaying in an Alert Box</h3>\n<p>You can also use the <code>alert()</code> function to display the message in a pop-up alert box in the browser.</p>\n<pre><code class=\"language-javascript\">// This will create a pop-up with the message.\nalert(\"Hello, World!\");\n</code></pre>\n<h3>Writing Directly to the HTML Document</h3>\n<p>Another method, though less common for modern applications, is to write directly into the HTML document using <code>document.write()</code>.</p>\n<pre><code class=\"language-javascript\">// This will write \"Hello, World!\" directly into the HTML body.\ndocument.write(\"Hello, World!\");\n</code></pre>\n<p>This is the foundational step to start your journey with JavaScript development.</p>"
+        },
+        "_id": "tutorials/javascript/hello-world.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/hello-world.md",
+          "sourceFileName": "hello-world.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/hello-world"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/hello-world-in-javascript",
+        "language": "javascript"
+      },
+      "documentHash": "1753880805571",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/introduction.md": {
+      "document": {
+        "title": "Features of JavaScript",
+        "slug": "features-of-javascript",
+        "order": 1,
+        "description": "An overview of the core features that make JavaScript a powerful and popular language for web development.",
+        "category": "JavaScript Basics",
+        "body": {
+          "raw": "\n## Features of JavaScript\n\nJavaScript is a programming language that lets developers create interactive web pages. JavaScript is a high-level, interpreted programming language that is primarily used for building interactive and dynamic websites.\n\nJavaScript is one of the most popular programming languages, which includes several features when it comes to web development. Some of the features are lightweight, dynamic, functional, and interpreted.\n\nLet's discuss some important features of JavaScript:\n\n1.  **Lightweight Scripting Language**: JavaScript is lightweight because it is designed for client-side execution in the browser. This makes it fast and efficient for enhancing user interfaces.\n2.  **Dynamic Typing**: Variables in JavaScript are not tied to a specific type. You can reassign variables to different types at any time.\n3.  **Functional Style**: JavaScript supports functional programming paradigms, treating functions as first-class citizens. You can pass functions as arguments, return them from other functions, and assign them to variables.\n4.  **Platform Independent**: JavaScript can run on any platform with a web browser, be it Windows, macOS, or Linux.\n5.  **Prototype-based Language**: JavaScript uses prototypes for inheritance instead of classes (though ES6 introduced class syntax as syntactic sugar over prototypes).\n6.  **Interpreted Language**: JavaScript code is interpreted line-by-line by the browser's engine, which means you don't need a compilation step.\n7.  **Single-Threaded**: JavaScript has a single-threaded execution model, which means it processes one task at a time. Asynchronous operations are handled by the event loop.\n8.  **Async Processing**: With features like Promises and async/await, JavaScript can handle asynchronous operations like API calls without blocking the main thread.\n9.  **Web Workers**: Allows for running scripts in background threads, enabling long-running tasks without freezing the UI.\n10. **Client-side Validation**: JavaScript is widely used to validate user input on the client-side before sending data to the server.\n11. **Backend Development**: With Node.js, JavaScript can be used to build full-stack applications.\n12. **More Control in Browser**: JavaScript gives developers extensive control over the browser and its Document Object Model (DOM).\n",
+          "html": "<h2>Features of JavaScript</h2>\n<p>JavaScript is a programming language that lets developers create interactive web pages. JavaScript is a high-level, interpreted programming language that is primarily used for building interactive and dynamic websites.</p>\n<p>JavaScript is one of the most popular programming languages, which includes several features when it comes to web development. Some of the features are lightweight, dynamic, functional, and interpreted.</p>\n<p>Let's discuss some important features of JavaScript:</p>\n<ol>\n<li><strong>Lightweight Scripting Language</strong>: JavaScript is lightweight because it is designed for client-side execution in the browser. This makes it fast and efficient for enhancing user interfaces.</li>\n<li><strong>Dynamic Typing</strong>: Variables in JavaScript are not tied to a specific type. You can reassign variables to different types at any time.</li>\n<li><strong>Functional Style</strong>: JavaScript supports functional programming paradigms, treating functions as first-class citizens. You can pass functions as arguments, return them from other functions, and assign them to variables.</li>\n<li><strong>Platform Independent</strong>: JavaScript can run on any platform with a web browser, be it Windows, macOS, or Linux.</li>\n<li><strong>Prototype-based Language</strong>: JavaScript uses prototypes for inheritance instead of classes (though ES6 introduced class syntax as syntactic sugar over prototypes).</li>\n<li><strong>Interpreted Language</strong>: JavaScript code is interpreted line-by-line by the browser's engine, which means you don't need a compilation step.</li>\n<li><strong>Single-Threaded</strong>: JavaScript has a single-threaded execution model, which means it processes one task at a time. Asynchronous operations are handled by the event loop.</li>\n<li><strong>Async Processing</strong>: With features like Promises and async/await, JavaScript can handle asynchronous operations like API calls without blocking the main thread.</li>\n<li><strong>Web Workers</strong>: Allows for running scripts in background threads, enabling long-running tasks without freezing the UI.</li>\n<li><strong>Client-side Validation</strong>: JavaScript is widely used to validate user input on the client-side before sending data to the server.</li>\n<li><strong>Backend Development</strong>: With Node.js, JavaScript can be used to build full-stack applications.</li>\n<li><strong>More Control in Browser</strong>: JavaScript gives developers extensive control over the browser and its Document Object Model (DOM).</li>\n</ol>"
+        },
+        "_id": "tutorials/javascript/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/features-of-javascript",
+        "language": "javascript"
+      },
+      "documentHash": "1753880805569",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/variables.md": {
+      "document": {
+        "title": "JavaScript Variables",
+        "slug": "javascript-variables",
+        "order": 3,
+        "description": "Understand how to declare and use variables in JavaScript using var, let, and const.",
+        "category": "JS Variables and Data Types",
+        "body": {
+          "raw": "\n## JavaScript Variables\n\nIn JavaScript, variables are containers for storing data values. You can declare variables using the keywords `var`, `let`, or `const`.\n\n### `var`\nThe `var` keyword was the original way to declare variables in JavaScript. Variables declared with `var` are function-scoped or globally-scoped.\n\n```javascript\nvar name = \"Alice\";\nvar age = 30;\n\nfunction sayHello() {\n  var message = \"Hello from the function\";\n  console.log(message); // \"Hello from the function\"\n}\n\n// console.log(message); // This would cause an error because message is function-scoped.\n```\n\n### `let`\nIntroduced in ES6 (ECMAScript 2015), `let` provides block-scoping. A block is any code enclosed in curly braces `{}`, like in an `if` statement or a `for` loop. It's generally recommended to use `let` over `var`.\n\n```javascript\nlet count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable\n  console.log(count); // 20\n}\nconsole.log(count); // 10\n```\n\n### `const`\nAlso introduced in ES6, `const` is used to declare constants. Like `let`, it is block-scoped. A `const` variable cannot be reassigned.\n\n```javascript\nconst PI = 3.14159;\n// PI = 3.14; // This would throw an error.\n\n// For objects and arrays, the reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw an error.\n```\n\n### Naming Variables\n- Variable names can contain letters, digits, underscores, and dollar signs.\n- Names must begin with a letter, `$`, or `_`.\n- Names are case-sensitive (`y` and `Y` are different variables).\n- Reserved words (like JavaScript keywords) cannot be used as names.\n",
+          "html": "<h2>JavaScript Variables</h2>\n<p>In JavaScript, variables are containers for storing data values. You can declare variables using the keywords <code>var</code>, <code>let</code>, or <code>const</code>.</p>\n<h3><code>var</code></h3>\n<p>The <code>var</code> keyword was the original way to declare variables in JavaScript. Variables declared with <code>var</code> are function-scoped or globally-scoped.</p>\n<pre><code class=\"language-javascript\">var name = \"Alice\";\nvar age = 30;\n\nfunction sayHello() {\n  var message = \"Hello from the function\";\n  console.log(message); // \"Hello from the function\"\n}\n\n// console.log(message); // This would cause an error because message is function-scoped.\n</code></pre>\n<h3><code>let</code></h3>\n<p>Introduced in ES6 (ECMAScript 2015), <code>let</code> provides block-scoping. A block is any code enclosed in curly braces <code>{}</code>, like in an <code>if</code> statement or a <code>for</code> loop. It's generally recommended to use <code>let</code> over <code>var</code>.</p>\n<pre><code class=\"language-javascript\">let count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable\n  console.log(count); // 20\n}\nconsole.log(count); // 10\n</code></pre>\n<h3><code>const</code></h3>\n<p>Also introduced in ES6, <code>const</code> is used to declare constants. Like <code>let</code>, it is block-scoped. A <code>const</code> variable cannot be reassigned.</p>\n<pre><code class=\"language-javascript\">const PI = 3.14159;\n// PI = 3.14; // This would throw an error.\n\n// For objects and arrays, the reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw an error.\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>Variable names can contain letters, digits, underscores, and dollar signs.</li>\n<li>Names must begin with a letter, <code>$</code>, or <code>_</code>.</li>\n<li>Names are case-sensitive (<code>y</code> and <code>Y</code> are different variables).</li>\n<li>Reserved words (like JavaScript keywords) cannot be used as names.</li>\n</ul>"
+        },
+        "_id": "tutorials/javascript/variables.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/variables.md",
+          "sourceFileName": "variables.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/variables"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-variables",
+        "language": "javascript"
+      },
+      "documentHash": "1753880805573",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/f-strings.md": {
+      "document": {
+        "title": "Mastering F-Strings in Python",
+        "slug": "python-f-strings",
+        "order": 3,
+        "description": "Learn how to use f-strings for powerful and readable string formatting in Python.",
+        "body": {
+          "raw": "\n## What are F-Strings?\n\nIntroduced in Python 3.6, f-strings (formatted string literals) provide a concise and convenient way to embed expressions inside string literals for formatting. They are prefixed with an 'f' or 'F' and allow you to embed Python expressions directly inside `{}` braces.\n\n## Basic Usage\n\nThe syntax is simple. Just place an `f` before the opening quote of your string, and then you can place any valid Python expression inside curly braces `{}`.\n\n```python\nname = \"Alice\"\nage = 30\ngreeting = f\"Hello, my name is {name} and I am {age} years old.\"\nprint(greeting)\n# Output: Hello, my name is Alice and I am 30 years old.\n```\n\n## Expressions Inside F-Strings\n\nYou can put any valid Python expression inside the braces, including function calls, arithmetic operations, and more.\n\n```python\n# Arithmetic operation\nprint(f\"Five plus ten is {5 + 10}.\")\n# Output: Five plus ten is 15.\n\n# Function call\ndef get_name():\n    return \"Bob\"\n\nprint(f\"His name is {get_name()}.\")\n# Output: His name is Bob.\n\n# Accessing dictionary values\nperson = {\"name\": \"Charlie\", \"age\": 25}\nprint(f\"{person['name']} is {person['age']} years old.\")\n# Output: Charlie is 25 years old.\n```\n\n## Formatting Specifiers\n\nF-strings also support format specifiers, which follow a colon `:` inside the braces. This allows for fine-grained control over the output.\n\n### Formatting Numbers\nYou can control decimal precision, padding, and alignment.\n\n```python\npi = 3.14159265\n\n# Format to 2 decimal places\nprint(f\"The value of pi is approximately {pi:.2f}.\")\n# Output: The value of pi is approximately 3.14.\n\n# Add padding\nnumber = 42\nprint(f\"The number is {number:05}.\") # Pad with leading zeros to a width of 5\n# Output: The number is 00042.\n```\n\n### Formatting Dates\n\nYou can format `datetime` objects easily.\n\n```python\nimport datetime\ntoday = datetime.datetime.now()\n\nprint(f\"Today is {today:%Y-%m-%d}.\")\n# Output: Today is 2024-07-10. (Will vary based on current date)\n```\n\nF-strings are the modern, preferred way to format strings in Python due to their readability and performance.\n",
+          "html": "<h2>What are F-Strings?</h2>\n<p>Introduced in Python 3.6, f-strings (formatted string literals) provide a concise and convenient way to embed expressions inside string literals for formatting. They are prefixed with an 'f' or 'F' and allow you to embed Python expressions directly inside <code>{}</code> braces.</p>\n<h2>Basic Usage</h2>\n<p>The syntax is simple. Just place an <code>f</code> before the opening quote of your string, and then you can place any valid Python expression inside curly braces <code>{}</code>.</p>\n<pre><code class=\"language-python\">name = \"Alice\"\nage = 30\ngreeting = f\"Hello, my name is {name} and I am {age} years old.\"\nprint(greeting)\n# Output: Hello, my name is Alice and I am 30 years old.\n</code></pre>\n<h2>Expressions Inside F-Strings</h2>\n<p>You can put any valid Python expression inside the braces, including function calls, arithmetic operations, and more.</p>\n<pre><code class=\"language-python\"># Arithmetic operation\nprint(f\"Five plus ten is {5 + 10}.\")\n# Output: Five plus ten is 15.\n\n# Function call\ndef get_name():\n    return \"Bob\"\n\nprint(f\"His name is {get_name()}.\")\n# Output: His name is Bob.\n\n# Accessing dictionary values\nperson = {\"name\": \"Charlie\", \"age\": 25}\nprint(f\"{person['name']} is {person['age']} years old.\")\n# Output: Charlie is 25 years old.\n</code></pre>\n<h2>Formatting Specifiers</h2>\n<p>F-strings also support format specifiers, which follow a colon <code>:</code> inside the braces. This allows for fine-grained control over the output.</p>\n<h3>Formatting Numbers</h3>\n<p>You can control decimal precision, padding, and alignment.</p>\n<pre><code class=\"language-python\">pi = 3.14159265\n\n# Format to 2 decimal places\nprint(f\"The value of pi is approximately {pi:.2f}.\")\n# Output: The value of pi is approximately 3.14.\n\n# Add padding\nnumber = 42\nprint(f\"The number is {number:05}.\") # Pad with leading zeros to a width of 5\n# Output: The number is 00042.\n</code></pre>\n<h3>Formatting Dates</h3>\n<p>You can format <code>datetime</code> objects easily.</p>\n<pre><code class=\"language-python\">import datetime\ntoday = datetime.datetime.now()\n\nprint(f\"Today is {today:%Y-%m-%d}.\")\n# Output: Today is 2024-07-10. (Will vary based on current date)\n</code></pre>\n<p>F-strings are the modern, preferred way to format strings in Python due to their readability and performance.</p>"
+        },
+        "_id": "tutorials/python/f-strings.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/f-strings.md",
+          "sourceFileName": "f-strings.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/f-strings"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/python-f-strings",
+        "language": "python"
+      },
+      "documentHash": "1752167446761",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/functions.md": {
+      "document": {
+        "title": "Functions in Python",
+        "slug": "functions",
+        "order": 5,
+        "description": "Understand how to define and use functions in Python for reusable code.",
+        "body": {
+          "raw": "\n## Defining and Using Functions\n\nA function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.\n\n### Creating a Function\n\nIn Python a function is defined using the `def` keyword:\n\n```python\ndef my_function():\n  print(\"Hello from a function\")\n\nmy_function() # Calling the function\n```\n\n### Parameters and Arguments\n\nInformation can be passed into functions as arguments.\n\n```python\ndef greet(name):\n  print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")\n```\n\nThis tutorial explains Python functions in detail.\n",
+          "html": "<h2>Defining and Using Functions</h2>\n<p>A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result.</p>\n<h3>Creating a Function</h3>\n<p>In Python a function is defined using the <code>def</code> keyword:</p>\n<pre><code class=\"language-python\">def my_function():\n  print(\"Hello from a function\")\n\nmy_function() # Calling the function\n</code></pre>\n<h3>Parameters and Arguments</h3>\n<p>Information can be passed into functions as arguments.</p>\n<pre><code class=\"language-python\">def greet(name):\n  print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")\n</code></pre>\n<p>This tutorial explains Python functions in detail.</p>"
+        },
+        "_id": "tutorials/python/functions.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/functions.md",
+          "sourceFileName": "functions.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/functions"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/functions",
+        "language": "python"
+      },
+      "documentHash": "1752167446772",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/introduction.md": {
+      "document": {
+        "title": "Introduction to Python",
+        "slug": "introduction-to-python",
+        "order": 1,
+        "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
+        "body": {
+          "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. This focus on clarity makes it an excellent language for both beginners and seasoned developers.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions for many tasks, often called \"batteries included\".\n- **Dynamically Typed**: Variable types are checked at runtime, offering flexibility during development.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming, from fundamental concepts to more advanced topics. Let's get started!\n",
+          "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. This focus on clarity makes it an excellent language for both beginners and seasoned developers.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions for many tasks, often called \"batteries included\".</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime, offering flexibility during development.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming, from fundamental concepts to more advanced topics. Let's get started!</p>"
+        },
+        "_id": "tutorials/python/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/introduction-to-python",
+        "language": "python"
+      },
+      "documentHash": "1752167446755",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/loops.md": {
+      "document": {
+        "title": "Loops in Python",
+        "slug": "loops",
+        "order": 4,
+        "description": "Learn how to use for and while loops for iteration in Python.",
+        "body": {
+          "raw": "\n## Iterating with Loops in Python\n\nLoops are used in programming to repeat a specific block of code.\n\n### For Loops\n\nA for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).\n\n```python\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n  print(fruit)\n```\n\n### While Loops\n\nWith the while loop we can execute a set of statements as long as a condition is true.\n\n```python\ni = 1\nwhile i < 6:\n  print(i)\n  i += 1\n```\n\nThis tutorial covers for and while loops.\n",
+          "html": "<h2>Iterating with Loops in Python</h2>\n<p>Loops are used in programming to repeat a specific block of code.</p>\n<h3>For Loops</h3>\n<p>A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).</p>\n<pre><code class=\"language-python\">fruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n  print(fruit)\n</code></pre>\n<h3>While Loops</h3>\n<p>With the while loop we can execute a set of statements as long as a condition is true.</p>\n<pre><code class=\"language-python\">i = 1\nwhile i &#x3C; 6:\n  print(i)\n  i += 1\n</code></pre>\n<p>This tutorial covers for and while loops.</p>"
+        },
+        "_id": "tutorials/python/loops.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/loops.md",
+          "sourceFileName": "loops.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/loops"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/loops",
+        "language": "python"
+      },
+      "documentHash": "1752167446764",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/python-decorators.md": {
+      "document": {
+        "title": "learn Understanding Python Decorators",
+        "slug": "level-python-decorators",
+        "order": 6,
+        "description": "A practical guide to understanding and using decorators in Python.",
+        "body": {
+          "raw": "\n## What are Decorators?\n\nIn Python, a decorator is a design pattern that allows you to add new functionality to an existing object (like a function or method) without modifying its structure. Decorators are a form of metaprogramming, where a part of the program tries to modify another part of the program at compile time. They are often used for logging, access control, instrumentation, and more.\n\n## Basic Decorator Syntax\n\nA decorator is typically a function that takes another function as an argument (the decorated function), adds some functionality, and then returns another function.\n\n```python\ndef my_decorator(func):\n    def wrapper(*args, **kwargs):\n        print(\"Something is happening before the function is called.\")\n        result = func(*args, **kwargs)\n        print(\"Something is happening after the function is called.\")\n        return result\n    return wrapper\n\n@my_decorator\ndef say_hello(name):\n    print(f\"Hello, {name}!\")\n\nsay_hello(\"World\")\n```\n\nThis will output:\n```\nSomething is happening before the function is called.\nHello, World!\nSomething is happening after the function is called.\n```\n\n## Using `functools.wraps`\n\nWhen you use decorators, you are essentially replacing the original function with the wrapper function. This can obscure the original function's metadata (like its name, docstring, etc.). The `functools.wraps` decorator can be used to preserve this metadata.\n\n```python\nimport functools\n\ndef my_better_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"Wrapper executing pre-call actions.\")\n        value = func(*args, **kwargs)\n        print(\"Wrapper executing post-call actions.\")\n        return value\n    return wrapper\n\n@my_better_decorator\ndef greet(name):\n    \"\"\"Greets a person.\"\"\"\n    return f\"Greetings, {name}!\"\n\nprint(greet(\"Pythonista\"))\nprint(greet.__name__) # Output: greet (thanks to @functools.wraps)\nprint(greet.__doc__)  # Output: Greets a person. (thanks to @functools.wraps)\n```\n\nDecorators are a very useful tool in Python for writing cleaner and more modular code.\n",
+          "html": "<h2>What are Decorators?</h2>\n<p>In Python, a decorator is a design pattern that allows you to add new functionality to an existing object (like a function or method) without modifying its structure. Decorators are a form of metaprogramming, where a part of the program tries to modify another part of the program at compile time. They are often used for logging, access control, instrumentation, and more.</p>\n<h2>Basic Decorator Syntax</h2>\n<p>A decorator is typically a function that takes another function as an argument (the decorated function), adds some functionality, and then returns another function.</p>\n<pre><code class=\"language-python\">def my_decorator(func):\n    def wrapper(*args, **kwargs):\n        print(\"Something is happening before the function is called.\")\n        result = func(*args, **kwargs)\n        print(\"Something is happening after the function is called.\")\n        return result\n    return wrapper\n\n@my_decorator\ndef say_hello(name):\n    print(f\"Hello, {name}!\")\n\nsay_hello(\"World\")\n</code></pre>\n<p>This will output:</p>\n<pre><code>Something is happening before the function is called.\nHello, World!\nSomething is happening after the function is called.\n</code></pre>\n<h2>Using <code>functools.wraps</code></h2>\n<p>When you use decorators, you are essentially replacing the original function with the wrapper function. This can obscure the original function's metadata (like its name, docstring, etc.). The <code>functools.wraps</code> decorator can be used to preserve this metadata.</p>\n<pre><code class=\"language-python\">import functools\n\ndef my_better_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"Wrapper executing pre-call actions.\")\n        value = func(*args, **kwargs)\n        print(\"Wrapper executing post-call actions.\")\n        return value\n    return wrapper\n\n@my_better_decorator\ndef greet(name):\n    \"\"\"Greets a person.\"\"\"\n    return f\"Greetings, {name}!\"\n\nprint(greet(\"Pythonista\"))\nprint(greet.__name__) # Output: greet (thanks to @functools.wraps)\nprint(greet.__doc__)  # Output: Greets a person. (thanks to @functools.wraps)\n</code></pre>\n<p>Decorators are a very useful tool in Python for writing cleaner and more modular code.</p>"
+        },
+        "_id": "tutorials/python/python-decorators.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/python-decorators.md",
+          "sourceFileName": "python-decorators.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/python-decorators"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/level-python-decorators",
+        "language": "python"
+      },
+      "documentHash": "1752167446780",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/variables-and-data-types.md": {
+      "document": {
+        "title": "Python Variables and Data Types",
+        "slug": "python-variables-data-types",
+        "order": 2,
+        "description": "Learn about variables, naming conventions, and fundamental data types in Python.",
+        "body": {
+          "raw": "\n## Variables\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\n## Data Types\n\nPython has various built-in data types. Here are some fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\n### Example of Data Types\n\n```python\nmy_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n```\n\nUnderstanding variables and data types is crucial for writing any Python program.\n",
+          "html": "<h2>Variables</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<h2>Data Types</h2>\n<p>Python has various built-in data types. Here are some fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<h3>Example of Data Types</h3>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n</code></pre>\n<p>Understanding variables and data types is crucial for writing any Python program.</p>"
+        },
+        "_id": "tutorials/python/variables-and-data-types.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/variables-and-data-types.md",
+          "sourceFileName": "variables-and-data-types.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/variables-and-data-types"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/python-variables-data-types",
+        "language": "python"
+      },
+      "documentHash": "1752167446759",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    }
+  }
+}
