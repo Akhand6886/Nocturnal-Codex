@@ -304,6 +304,15 @@ export const NAV_ITEMS: NavItemType[] = [
     label: "Topics",
     href: "/topics",
   },
+  {
+    label: "Languages",
+    href: "/languages",
+    children: [
+        { label: "Python", href: "/languages/python" },
+        { label: "JavaScript", href: "/languages/javascript" },
+        { label: "Java", href: "/languages/java" },
+    ],
+  },
   { label: "Blog", href: "/blog" },
   { label: "Wiki", href: "/wiki" },
   { label: "Think Tank", href: "/think-tank" },
@@ -312,4 +321,5 @@ export const NAV_ITEMS: NavItemType[] = [
     
 
     
+
 
