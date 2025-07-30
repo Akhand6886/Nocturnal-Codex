@@ -1,0 +1,22 @@
+{
+  "title": "JS Overview",
+  "slug": "javascript-overview",
+  "order": 2,
+  "description": "A high-level overview of JavaScript, its history, and its role in modern web development.",
+  "category": "JavaScript Basics",
+  "body": {
+    "raw": "\n## What is JavaScript?\n\nJavaScript is a high-level, interpreted programming language that is a cornerstone technology of the World Wide Web, alongside HTML and CSS. While it was initially created to make web pages interactive, it has since evolved into a versatile language used for both front-end (client-side) and back-end (server-side) development.\n\n### The \"Big Three\" of Web Development\n-   **HTML (HyperText Markup Language)**: Provides the basic structure and content of web pages. Think of it as the skeleton.\n-   **CSS (Cascading Style Sheets)**: Used to control the presentation, formatting, and layout of the content. Think of it as the clothing and appearance.\n-   **JavaScript**: Used to control the behavior of the web page, creating dynamic and interactive experiences. Think of it as the brain and nervous system.\n\n### How JavaScript Works\nJavaScript code is embedded in or included from HTML pages and is executed by the JavaScript engine in the user's web browser. This client-side execution allows for immediate feedback and manipulation of the page content without needing to communicate with a server for every action.\n\n### Beyond the Browser: Node.js\nIn 2009, the creation of **Node.js** allowed JavaScript to be run outside of the browser, on servers. This opened the door for full-stack development using a single language, greatly expanding JavaScript's use cases to include:\n-   Building web servers and APIs.\n-   Creating command-line tools.\n-   Developing desktop applications.\n-   Powering IoT devices.\n\nJavaScript is an essential skill for any modern web developer and serves as the foundation for countless frameworks, libraries, and tools that power the web today.\n",
+    "html": "<h2>What is JavaScript?</h2>\n<p>JavaScript is a high-level, interpreted programming language that is a cornerstone technology of the World Wide Web, alongside HTML and CSS. While it was initially created to make web pages interactive, it has since evolved into a versatile language used for both front-end (client-side) and back-end (server-side) development.</p>\n<h3>The \"Big Three\" of Web Development</h3>\n<ul>\n<li><strong>HTML (HyperText Markup Language)</strong>: Provides the basic structure and content of web pages. Think of it as the skeleton.</li>\n<li><strong>CSS (Cascading Style Sheets)</strong>: Used to control the presentation, formatting, and layout of the content. Think of it as the clothing and appearance.</li>\n<li><strong>JavaScript</strong>: Used to control the behavior of the web page, creating dynamic and interactive experiences. Think of it as the brain and nervous system.</li>\n</ul>\n<h3>How JavaScript Works</h3>\n<p>JavaScript code is embedded in or included from HTML pages and is executed by the JavaScript engine in the user's web browser. This client-side execution allows for immediate feedback and manipulation of the page content without needing to communicate with a server for every action.</p>\n<h3>Beyond the Browser: Node.js</h3>\n<p>In 2009, the creation of <strong>Node.js</strong> allowed JavaScript to be run outside of the browser, on servers. This opened the door for full-stack development using a single language, greatly expanding JavaScript's use cases to include:</p>\n<ul>\n<li>Building web servers and APIs.</li>\n<li>Creating command-line tools.</li>\n<li>Developing desktop applications.</li>\n<li>Powering IoT devices.</li>\n</ul>\n<p>JavaScript is an essential skill for any modern web developer and serves as the foundation for countless frameworks, libraries, and tools that power the web today.</p>"
+  },
+  "_id": "tutorials/javascript/javascript-overview.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/javascript-overview.md",
+    "sourceFileName": "javascript-overview.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/javascript-overview"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/javascript-overview",
+  "language": "javascript"
+}
