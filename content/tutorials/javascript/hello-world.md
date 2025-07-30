@@ -1,5 +1,5 @@
 ---
-title: "Hello World Program"
+title: "JS Hello World"
 slug: "hello-world-in-javascript"
 order: 2
 description: "Learn how to write your first 'Hello, World!' program in JavaScript."

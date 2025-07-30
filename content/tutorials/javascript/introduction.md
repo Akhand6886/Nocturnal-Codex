@@ -1,14 +1,14 @@
 ---
-title: "Features of JavaScript"
+title: "JS Introduction"
 slug: "features-of-javascript"
 order: 1
 description: "An overview of the core features that make JavaScript a powerful and popular language for web development."
 category: "JavaScript Basics"
 ---
 
-## Features of JavaScript
+## What is JavaScript?
 
-JavaScript is a programming language that lets developers create interactive web pages. JavaScript is a high-level, interpreted programming language that is primarily used for building interactive and dynamic websites.
+JavaScript is a programming language that lets developers create interactive web pages. It's a high-level, interpreted language that is a cornerstone technology of the World Wide Web, alongside HTML and CSS.
 
 JavaScript is one of the most popular programming languages, which includes several features when it comes to web development. Some of the features are lightweight, dynamic, functional, and interpreted.
 

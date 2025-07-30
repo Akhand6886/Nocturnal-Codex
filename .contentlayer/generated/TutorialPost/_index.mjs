@@ -9,5 +9,9 @@ import tutorials__python__introductionMd from './tutorials__python__introduction
 import tutorials__python__loopsMd from './tutorials__python__loops.md.json' assert { type: 'json' }
 import tutorials__python__pythonDecoratorsMd from './tutorials__python__python-decorators.md.json' assert { type: 'json' }
 import tutorials__python__variablesAndDataTypesMd from './tutorials__python__variables-and-data-types.md.json' assert { type: 'json' }
+import tutorials__javascript__dataTypesMd from './tutorials__javascript__data-types.md.json' assert { type: 'json' }
+import tutorials__javascript__functionsMd from './tutorials__javascript__functions.md.json' assert { type: 'json' }
+import tutorials__javascript__loopsMd from './tutorials__javascript__loops.md.json' assert { type: 'json' }
+import tutorials__javascript__operatorsMd from './tutorials__javascript__operators.md.json' assert { type: 'json' }
 
-export const allTutorialPosts = [tutorials__javascript__helloWorldMd, tutorials__javascript__introductionMd, tutorials__javascript__variablesMd, tutorials__python__fStringsMd, tutorials__python__functionsMd, tutorials__python__introductionMd, tutorials__python__loopsMd, tutorials__python__pythonDecoratorsMd, tutorials__python__variablesAndDataTypesMd]
+export const allTutorialPosts = [tutorials__javascript__helloWorldMd, tutorials__javascript__introductionMd, tutorials__javascript__variablesMd, tutorials__python__fStringsMd, tutorials__python__functionsMd, tutorials__python__introductionMd, tutorials__python__loopsMd, tutorials__python__pythonDecoratorsMd, tutorials__python__variablesAndDataTypesMd, tutorials__javascript__dataTypesMd, tutorials__javascript__functionsMd, tutorials__javascript__loopsMd, tutorials__javascript__operatorsMd]
