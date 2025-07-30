@@ -133,7 +133,6 @@ export default async function JavascriptTutorialPage({ params }: LanguageTutoria
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
         />
         <h1 className="text-3xl font-bold tracking-tight text-foreground pb-2">{tutorial.title}</h1>
-        <p className="text-sm text-muted-foreground">{format(new Date(), "dd MMM yyyy")} | 4 min read</p>
         
         <TutorialPagination prev={prev} next={next} />
         

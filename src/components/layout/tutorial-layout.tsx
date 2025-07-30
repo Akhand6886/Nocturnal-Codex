@@ -7,7 +7,7 @@ import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Menu, ChevronUp } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import type { TutorialPost } from 'contentlayer/generated';
@@ -36,7 +36,7 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
   const sidebarContent = (
     <div className="flex h-full flex-col bg-muted/20 dark:bg-card/40">
       <div className="p-4 border-b">
-        <h2 className="text-lg font-semibold">{language.name}</h2>
+        <h2 className="text-lg font-semibold">{language.name} Tutorial</h2>
       </div>
       <ScrollArea className="flex-grow">
         <nav className="p-2">
@@ -46,7 +46,7 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
                     <AccordionTrigger className="py-2 px-2 text-sm font-semibold text-foreground/80 hover:no-underline hover:bg-muted rounded-md [&[data-state=open]>svg]:text-primary">
                         <span className="flex-1 text-left">{category}</span>
                     </AccordionTrigger>
-                    <AccordionContent className="pb-1 pl-2">
+                    <AccordionContent className="pb-1 pl-1">
                         <ul className="space-y-1">
                         {posts.map((tutorial) => {
                             const isActive = pathname === tutorial.url;
@@ -58,7 +58,7 @@ export function TutorialLayout({ children, language, tutorials }: TutorialLayout
                                         className={cn(
                                             "block p-2 text-sm rounded-md transition-colors w-full text-left",
                                             isActive
-                                            ? "text-primary-foreground bg-primary font-semibold"
+                                            ? "text-green-700 bg-green-100 dark:text-green-200 dark:bg-green-900/40 font-semibold"
                                             : "text-muted-foreground hover:bg-muted hover:text-foreground"
                                         )}
                                     >
