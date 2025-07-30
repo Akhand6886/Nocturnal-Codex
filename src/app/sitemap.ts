@@ -1,7 +1,6 @@
 
 import { MetadataRoute } from 'next';
-import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from '@/lib/data';
-import { allTutorialPosts } from 'contentlayer/generated';
+import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from '@/lib/data';
 import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
@@ -40,13 +39,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const tutorials = allTutorialPosts.map((tutorial) => ({
-    url: `${BASE_URL}${tutorial.url}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }));
-
   const wikiArticles = MOCK_WIKI_ARTICLES.map((article) => ({
     url: `${BASE_URL}/wiki/${article.slug}`,
     lastModified: new Date(article.lastUpdated).toISOString(),
@@ -61,14 +53,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
   
-  // The main language pages are now tutorial indexes
-  const languagePages = MOCK_PROGRAMMING_LANGUAGES.map((lang) => ({
-    url: `${BASE_URL}/languages/${lang.slug}`,
-    lastModified: new Date().toISOString(), 
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
-
   const uniqueTags = Array.from(new Set(blogPostsData.flatMap(post => post.tags || [])));
   const tagDetailPages = uniqueTags.map((tag) => ({
     url: `${BASE_URL}/tags/${encodeURIComponent(tag.toLowerCase())}`,
@@ -88,11 +72,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages,
     ...blogPosts,
-    ...tutorials,
     ...thinkTankArticles,
     ...wikiArticles,
     ...topicPages,
-    ...languagePages,
     ...tagDetailPages,
     ...categoryDetailPages,
   ];

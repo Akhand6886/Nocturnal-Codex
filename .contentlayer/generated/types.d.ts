@@ -8,21 +8,7 @@ export { isType } from 'contentlayer/client'
 export type { Markdown, MDX, ImageFieldData, IsoDateTimeString }
 
 /** Document types */
-export type TutorialPost = {
-  /** File path relative to `contentDirPath` */
-  _id: string
-  _raw: Local.RawDocumentData
-  type: 'TutorialPost'
-  title: string
-  slug: string
-  order: number
-  description?: string | undefined
-  category?: string | undefined
-  /** Markdown file body */
-  body: Markdown
-  url: string
-  language: string
-}  
+  
 
 /** Nested types */
   
@@ -32,15 +18,15 @@ export type TutorialPost = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = TutorialPost
-export type DocumentTypeNames = 'TutorialPost'
+export type DocumentTypes = 
+export type DocumentTypeNames = 
 
 export type NestedTypes = never
 export type NestedTypeNames = never
 
 export type DataExports = {
   allDocuments: DocumentTypes[]
-  allTutorialPosts: TutorialPost[]
+
 }
 
 
@@ -60,7 +46,7 @@ declare global {
 }
 
 export type DocumentTypeMap = {
-  TutorialPost: TutorialPost
+
 }
 
 export type NestedTypeMap = {

@@ -4,12 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2, Star } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_PROGRAMMING_LANGUAGES } from "@/lib/data";
+import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from "@/lib/data";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import { TopicTile } from "@/components/content/topic-tile";
-import { LanguageTile } from "@/components/content/language-tile";
 import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
 
@@ -26,7 +25,6 @@ export default async function HomePage() {
   
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
   const featuredTopics = MOCK_TOPICS.slice(0, 6); 
-  const featuredLanguages = MOCK_PROGRAMMING_LANGUAGES.slice(0, 8);
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
@@ -68,26 +66,6 @@ export default async function HomePage() {
             <div className="mt-10 text-center">
                 <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
                     <Link href="/topics">View All Topics <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-            </div>
-        )}
-      </section>
-
-      {/* Explore Programming Languages Section */}
-      <section>
-        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-accent/70 flex items-center text-foreground/90">
-          <Code2 className="mr-3 h-7 w-7 text-accent" />
-          Featured Programming Languages
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredLanguages.map((lang) => (
-            <LanguageTile key={lang.id} language={lang} />
-          ))}
-        </div>
-        {MOCK_PROGRAMMING_LANGUAGES.length > 8 && (
-            <div className="mt-10 text-center">
-                <Button asChild variant="outline" size="lg" className="hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent">
-                    <Link href="/topics">View All Languages <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
             </div>
         )}
