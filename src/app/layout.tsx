@@ -114,10 +114,10 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${robotoMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-grow">
+          <div className="flex-grow">
+            <Navbar />
             {children}
-          </main>
+          </div>
           <Footer />
           <Toaster />
         </ThemeProvider>

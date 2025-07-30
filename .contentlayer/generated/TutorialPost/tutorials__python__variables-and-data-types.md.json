@@ -16,7 +16,6 @@
     "flattenedPath": "tutorials/python/variables-and-data-types"
   },
   "type": "TutorialPost",
-  "path": "tutorials/python/variables-and-data-types",
-  "language": "python",
-  "id": "tutorials/python/variables-and-data-types"
+  "url": "/tutorial/python/python-variables-data-types",
+  "language": "python"
 }

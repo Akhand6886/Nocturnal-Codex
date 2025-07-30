@@ -19,7 +19,7 @@
           "flattenedPath": "tutorials/python/f-strings"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/python/python-f-strings",
+        "url": "/languages/python/python-f-strings",
         "language": "python"
       },
       "documentHash": "1752167446761",
@@ -45,7 +45,7 @@
           "flattenedPath": "tutorials/python/functions"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/python/functions",
+        "url": "/languages/python/functions",
         "language": "python"
       },
       "documentHash": "1752167446772",
@@ -71,7 +71,7 @@
           "flattenedPath": "tutorials/python/introduction"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/python/introduction-to-python",
+        "url": "/languages/python/introduction-to-python",
         "language": "python"
       },
       "documentHash": "1752167446755",
@@ -97,7 +97,7 @@
           "flattenedPath": "tutorials/python/loops"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/python/loops",
+        "url": "/languages/python/loops",
         "language": "python"
       },
       "documentHash": "1752167446764",
@@ -123,7 +123,7 @@
           "flattenedPath": "tutorials/python/python-decorators"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/python/level-python-decorators",
+        "url": "/languages/python/level-python-decorators",
         "language": "python"
       },
       "documentHash": "1752167446780",
@@ -149,7 +149,7 @@
           "flattenedPath": "tutorials/python/variables-and-data-types"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/python/python-variables-data-types",
+        "url": "/languages/python/python-variables-data-types",
         "language": "python"
       },
       "documentHash": "1752167446759",

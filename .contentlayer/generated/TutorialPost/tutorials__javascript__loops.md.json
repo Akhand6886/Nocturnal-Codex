@@ -1,0 +1,22 @@
+{
+  "title": "JS Loops",
+  "slug": "javascript-loops",
+  "order": 5,
+  "description": "Learn how to repeat actions using different types of loops in JavaScript.",
+  "category": "JS Control Flow",
+  "body": {
+    "raw": "\n## JavaScript Loops\n\nLoops are handy if you want to run the same code over and over again, each time with a different value.\n\n### The `for` Loop\nThe `for` loop is often the tool you'll use when you want to iterate over a block of code a certain number of times.\n\n```javascript\nfor (let i = 0; i < 5; i++) {\n  console.log(\"The number is \" + i);\n}\n// This will print numbers 0 through 4.\n```\n\n### The `for...in` Loop\nThe `for...in` statement iterates over the properties of an object.\n\n```javascript\nconst person = {fname:\"John\", lname:\"Doe\", age:25};\n\nfor (let key in person) {\n  console.log(key + \": \" + person[key]);\n}\n// Prints:\n// fname: John\n// lname: Doe\n// age: 25\n```\n\n### The `for...of` Loop\nThe `for...of` statement iterates over the values of an iterable object (like an Array, String, Map, etc.).\n\n```javascript\nconst colors = [\"red\", \"green\", \"blue\"];\n\nfor (let color of colors) {\n  console.log(color);\n}\n// Prints:\n// red\n// green\n// blue\n```\n\n### The `while` Loop\nThe `while` loop loops through a block of code as long as a specified condition is true.\n\n```javascript\nlet i = 0;\nwhile (i < 5) {\n  console.log(\"The number is \" + i);\n  i++;\n}\n```\n\n### The `do...while` Loop\nThe `do...while` loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.\n\n```javascript\nlet i = 0;\ndo {\n  console.log(\"The number is \" + i);\n  i++;\n}\nwhile (i < 5);\n```\n",
+    "html": "<h2>JavaScript Loops</h2>\n<p>Loops are handy if you want to run the same code over and over again, each time with a different value.</p>\n<h3>The <code>for</code> Loop</h3>\n<p>The <code>for</code> loop is often the tool you'll use when you want to iterate over a block of code a certain number of times.</p>\n<pre><code class=\"language-javascript\">for (let i = 0; i &#x3C; 5; i++) {\n  console.log(\"The number is \" + i);\n}\n// This will print numbers 0 through 4.\n</code></pre>\n<h3>The <code>for...in</code> Loop</h3>\n<p>The <code>for...in</code> statement iterates over the properties of an object.</p>\n<pre><code class=\"language-javascript\">const person = {fname:\"John\", lname:\"Doe\", age:25};\n\nfor (let key in person) {\n  console.log(key + \": \" + person[key]);\n}\n// Prints:\n// fname: John\n// lname: Doe\n// age: 25\n</code></pre>\n<h3>The <code>for...of</code> Loop</h3>\n<p>The <code>for...of</code> statement iterates over the values of an iterable object (like an Array, String, Map, etc.).</p>\n<pre><code class=\"language-javascript\">const colors = [\"red\", \"green\", \"blue\"];\n\nfor (let color of colors) {\n  console.log(color);\n}\n// Prints:\n// red\n// green\n// blue\n</code></pre>\n<h3>The <code>while</code> Loop</h3>\n<p>The <code>while</code> loop loops through a block of code as long as a specified condition is true.</p>\n<pre><code class=\"language-javascript\">let i = 0;\nwhile (i &#x3C; 5) {\n  console.log(\"The number is \" + i);\n  i++;\n}\n</code></pre>\n<h3>The <code>do...while</code> Loop</h3>\n<p>The <code>do...while</code> loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.</p>\n<pre><code class=\"language-javascript\">let i = 0;\ndo {\n  console.log(\"The number is \" + i);\n  i++;\n}\nwhile (i &#x3C; 5);\n</code></pre>"
+  },
+  "_id": "tutorials/javascript/loops.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/loops.md",
+    "sourceFileName": "loops.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/loops"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/javascript-loops",
+  "language": "javascript"
+}

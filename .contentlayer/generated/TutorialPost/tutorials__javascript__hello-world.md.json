@@ -1,0 +1,22 @@
+{
+  "title": "JS Hello World",
+  "slug": "hello-world-in-javascript",
+  "order": 2,
+  "description": "Learn how to write your first 'Hello, World!' program in JavaScript.",
+  "category": "JavaScript Basics",
+  "body": {
+    "raw": "\n## Hello World in JavaScript\n\nThe \"Hello, World!\" program is a classic first step in learning any new programming language. It's a simple program that outputs `Hello, World!` to the screen.\n\n### Using `console.log()`\n\nThe most common way to display output for debugging or learning purposes in JavaScript is using the `console.log()` method. This will print the output to the web console in your browser's developer tools.\n\n```javascript\n// This line prints \"Hello, World!\" to the console.\nconsole.log(\"Hello, World!\");\n```\n\n### Displaying in an Alert Box\n\nYou can also use the `alert()` function to display the message in a pop-up alert box in the browser.\n\n```javascript\n// This will create a pop-up with the message.\nalert(\"Hello, World!\");\n```\n\n### Writing Directly to the HTML Document\n\nAnother method, though less common for modern applications, is to write directly into the HTML document using `document.write()`.\n\n```javascript\n// This will write \"Hello, World!\" directly into the HTML body.\ndocument.write(\"Hello, World!\");\n```\n\nThis is the foundational step to start your journey with JavaScript development.\n",
+    "html": "<h2>Hello World in JavaScript</h2>\n<p>The \"Hello, World!\" program is a classic first step in learning any new programming language. It's a simple program that outputs <code>Hello, World!</code> to the screen.</p>\n<h3>Using <code>console.log()</code></h3>\n<p>The most common way to display output for debugging or learning purposes in JavaScript is using the <code>console.log()</code> method. This will print the output to the web console in your browser's developer tools.</p>\n<pre><code class=\"language-javascript\">// This line prints \"Hello, World!\" to the console.\nconsole.log(\"Hello, World!\");\n</code></pre>\n<h3>Displaying in an Alert Box</h3>\n<p>You can also use the <code>alert()</code> function to display the message in a pop-up alert box in the browser.</p>\n<pre><code class=\"language-javascript\">// This will create a pop-up with the message.\nalert(\"Hello, World!\");\n</code></pre>\n<h3>Writing Directly to the HTML Document</h3>\n<p>Another method, though less common for modern applications, is to write directly into the HTML document using <code>document.write()</code>.</p>\n<pre><code class=\"language-javascript\">// This will write \"Hello, World!\" directly into the HTML body.\ndocument.write(\"Hello, World!\");\n</code></pre>\n<p>This is the foundational step to start your journey with JavaScript development.</p>"
+  },
+  "_id": "tutorials/javascript/hello-world.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/hello-world.md",
+    "sourceFileName": "hello-world.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/hello-world"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/hello-world-in-javascript",
+  "language": "javascript"
+}

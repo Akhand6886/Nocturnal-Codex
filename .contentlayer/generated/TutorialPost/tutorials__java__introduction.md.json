@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Java",
+  "slug": "introduction-to-java",
+  "order": 1,
+  "description": "Get an overview of the Java programming language, its history, features, and why it remains one of the most popular languages in the world.",
+  "category": "Java Basics",
+  "body": {
+    "raw": "\n## What is Java?\n\nJava is a high-level, class-based, object-oriented programming language developed by Sun Microsystems (now owned by Oracle) and first released in 1995. It is designed to have as few implementation dependencies as possible, allowing developers to \"write once, run anywhere\" (WORA). This means that compiled Java code can run on all platforms that support Java without the need for recompilation.\n\n## Key Features of Java\n\n-   **Platform Independent**: Thanks to the Java Virtual Machine (JVM), Java bytecode can run on any device, making it highly portable.\n-   **Object-Oriented**: Java is fundamentally object-oriented, which helps in building modular and reusable code.\n-   **Robust and Secure**: It emphasizes early checking for possible errors and has built-in security features, including a Security Manager.\n-   **Automatic Memory Management**: Java automatically manages memory through a process called garbage collection.\n-   **Multithreaded**: Java has built-in support for multithreading, which allows for the concurrent execution of multiple parts of a program.\n-   **Rich Standard Library**: Java provides a large standard library with classes and methods for common tasks like I/O, networking, and data structures.\n\nThis tutorial series will guide you through the fundamentals of Java programming.\n",
+    "html": "<h2>What is Java?</h2>\n<p>Java is a high-level, class-based, object-oriented programming language developed by Sun Microsystems (now owned by Oracle) and first released in 1995. It is designed to have as few implementation dependencies as possible, allowing developers to \"write once, run anywhere\" (WORA). This means that compiled Java code can run on all platforms that support Java without the need for recompilation.</p>\n<h2>Key Features of Java</h2>\n<ul>\n<li><strong>Platform Independent</strong>: Thanks to the Java Virtual Machine (JVM), Java bytecode can run on any device, making it highly portable.</li>\n<li><strong>Object-Oriented</strong>: Java is fundamentally object-oriented, which helps in building modular and reusable code.</li>\n<li><strong>Robust and Secure</strong>: It emphasizes early checking for possible errors and has built-in security features, including a Security Manager.</li>\n<li><strong>Automatic Memory Management</strong>: Java automatically manages memory through a process called garbage collection.</li>\n<li><strong>Multithreaded</strong>: Java has built-in support for multithreading, which allows for the concurrent execution of multiple parts of a program.</li>\n<li><strong>Rich Standard Library</strong>: Java provides a large standard library with classes and methods for common tasks like I/O, networking, and data structures.</li>\n</ul>\n<p>This tutorial series will guide you through the fundamentals of Java programming.</p>"
+  },
+  "_id": "tutorials/java/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/introduction-to-java",
+  "language": "java"
+}

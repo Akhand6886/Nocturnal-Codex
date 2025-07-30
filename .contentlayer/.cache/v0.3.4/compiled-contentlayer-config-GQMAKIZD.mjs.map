@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../contentlayer.config.ts"],
+  "sourcesContent": ["\nimport { defineDocumentType, makeSource } from 'contentlayer/source-files'\n\nexport default makeSource({\n  contentDirPath: 'content',\n  documentTypes: [],\n})\n"],
+  "mappings": ";AACA,SAA6B,kBAAkB;AAE/C,IAAO,8BAAQ,WAAW;AAAA,EACxB,gBAAgB;AAAA,EAChB,eAAe,CAAC;AAClB,CAAC;",
+  "names": []
+}
