@@ -1,5 +1,159 @@
 [
   {
+    "title": "Java Control Flow",
+    "slug": "java-control-flow",
+    "order": 5,
+    "description": "Learn how to control the flow of execution in Java using conditional statements and loops.",
+    "category": "Java Fundamentals",
+    "body": {
+      "raw": "\n## Control Flow in Java\n\nControl flow statements are what allow a program to make decisions and repeat actions.\n\n### Conditional Statements (`if`, `else if`, `else`)\n\nThese statements allow your program to execute certain blocks of code based on a boolean condition.\n\n```java\nint score = 85;\n\nif (score >= 90) {\n    System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n    System.out.println(\"Grade: B\"); // This will be printed\n} else if (score >= 70) {\n    System.out.println(\"Grade: C\");\n} else {\n    System.out.println(\"Grade: F\");\n}\n```\n\n### The `switch` Statement\n\nA `switch` statement can be a cleaner alternative to a long chain of `if-else if` statements when you are checking a single variable against multiple values.\n\n```java\nint day = 4;\nString dayString;\nswitch (day) {\n    case 1:  dayString = \"Monday\";\n             break;\n    case 2:  dayString = \"Tuesday\";\n             break;\n    case 3:  dayString = \"Wednesday\";\n             break;\n    case 4:  dayString = \"Thursday\";\n             break;\n    // ... other cases\n    default: dayString = \"Invalid day\";\n             break;\n}\nSystem.out.println(dayString); // Output: Thursday\n```\n\n### Loops\n\nLoops are used to execute a block of code repeatedly.\n\n#### The `for` Loop\n\nA `for` loop is ideal when you know how many times you want to iterate.\n\n```java\n// Prints numbers from 0 to 4\nfor (int i = 0; i < 5; i++) {\n    System.out.println(\"Iteration: \" + i);\n}\n```\n\n#### The `while` Loop\n\nA `while` loop continues as long as a condition is true.\n\n```java\nint count = 0;\nwhile (count < 3) {\n    System.out.println(\"Count is \" + count);\n    count++;\n}\n```\n\n#### The `do-while` Loop\n\nA `do-while` loop is similar to a `while` loop, but it guarantees that the block of code is executed at least once.\n\n```java\nint i = 5;\ndo {\n    System.out.println(\"This will print once, even though i is not less than 5.\");\n    i++;\n} while (i < 5);\n```\n",
+      "html": "<h2>Control Flow in Java</h2>\n<p>Control flow statements are what allow a program to make decisions and repeat actions.</p>\n<h3>Conditional Statements (<code>if</code>, <code>else if</code>, <code>else</code>)</h3>\n<p>These statements allow your program to execute certain blocks of code based on a boolean condition.</p>\n<pre><code class=\"language-java\">int score = 85;\n\nif (score >= 90) {\n    System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n    System.out.println(\"Grade: B\"); // This will be printed\n} else if (score >= 70) {\n    System.out.println(\"Grade: C\");\n} else {\n    System.out.println(\"Grade: F\");\n}\n</code></pre>\n<h3>The <code>switch</code> Statement</h3>\n<p>A <code>switch</code> statement can be a cleaner alternative to a long chain of <code>if-else if</code> statements when you are checking a single variable against multiple values.</p>\n<pre><code class=\"language-java\">int day = 4;\nString dayString;\nswitch (day) {\n    case 1:  dayString = \"Monday\";\n             break;\n    case 2:  dayString = \"Tuesday\";\n             break;\n    case 3:  dayString = \"Wednesday\";\n             break;\n    case 4:  dayString = \"Thursday\";\n             break;\n    // ... other cases\n    default: dayString = \"Invalid day\";\n             break;\n}\nSystem.out.println(dayString); // Output: Thursday\n</code></pre>\n<h3>Loops</h3>\n<p>Loops are used to execute a block of code repeatedly.</p>\n<h4>The <code>for</code> Loop</h4>\n<p>A <code>for</code> loop is ideal when you know how many times you want to iterate.</p>\n<pre><code class=\"language-java\">// Prints numbers from 0 to 4\nfor (int i = 0; i &#x3C; 5; i++) {\n    System.out.println(\"Iteration: \" + i);\n}\n</code></pre>\n<h4>The <code>while</code> Loop</h4>\n<p>A <code>while</code> loop continues as long as a condition is true.</p>\n<pre><code class=\"language-java\">int count = 0;\nwhile (count &#x3C; 3) {\n    System.out.println(\"Count is \" + count);\n    count++;\n}\n</code></pre>\n<h4>The <code>do-while</code> Loop</h4>\n<p>A <code>do-while</code> loop is similar to a <code>while</code> loop, but it guarantees that the block of code is executed at least once.</p>\n<pre><code class=\"language-java\">int i = 5;\ndo {\n    System.out.println(\"This will print once, even though i is not less than 5.\");\n    i++;\n} while (i &#x3C; 5);\n</code></pre>"
+    },
+    "_id": "tutorials/java/control-flow.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/java/control-flow.md",
+      "sourceFileName": "control-flow.md",
+      "sourceFileDir": "tutorials/java",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/java/control-flow"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/java/java-control-flow",
+    "language": "java"
+  },
+  {
+    "title": "Java Hello World",
+    "slug": "hello-world-in-java",
+    "order": 2,
+    "description": "Learn to write, compile, and run your first 'Hello, World!' program in Java.",
+    "category": "Java Basics",
+    "body": {
+      "raw": "\n## Your First Java Program\n\nThe \"Hello, World!\" program is the traditional first step for learning a new language. It's a simple program that outputs `Hello, World!` to the console.\n\n### The Code\n\nIn Java, all code must reside inside a class. Here is the basic structure:\n\n```java\n// The file must be named HelloWorld.java\npublic class HelloWorld {\n    // This is the main method, the entry point of any Java application.\n    public static void main(String[] args) {\n        // This line prints the text to the console.\n        System.out.println(\"Hello, World!\");\n    }\n}\n```\n\n### Breaking Down the Code\n\n- **`public class HelloWorld`**: This declares a class named `HelloWorld`, which is `public`, meaning it's accessible by any other class. The class name **must** match the filename (`HelloWorld.java`).\n- **`public static void main(String[] args)`**: This is the main method.\n    - `public`: It can be called from anywhere.\n    - `static`: It can be run without creating an instance of the `HelloWorld` class.\n    - `void`: It does not return any value.\n    - `main`: This is the name of the method. The JVM looks for this specific method to start the program.\n    - `(String[] args)`: This accepts command-line arguments as an array of strings.\n- **`System.out.println(\"Hello, World!\");`**: This is the statement that does the printing.\n    - `System`: A final class from the `java.lang` package.\n    - `out`: A static member of the `System` class, which is an instance of `PrintStream`.\n    - `println()`: A method of the `PrintStream` class that prints the argument passed to it, followed by a new line.\n\n### How to Compile and Run\n\n1.  Save the code in a file named `HelloWorld.java`.\n2.  Open a terminal or command prompt.\n3.  Navigate to the directory where you saved the file.\n4.  **Compile the code**: Use the Java compiler (`javac`).\n    ```bash\n    javac HelloWorld.java\n    ```\n    This will create a `HelloWorld.class` file containing the Java bytecode.\n5.  **Run the program**: Use the Java Virtual Machine (`java`).\n    ```bash\n    java HelloWorld\n    ```\n    You should see the output: `Hello, World!`\n",
+      "html": "<h2>Your First Java Program</h2>\n<p>The \"Hello, World!\" program is the traditional first step for learning a new language. It's a simple program that outputs <code>Hello, World!</code> to the console.</p>\n<h3>The Code</h3>\n<p>In Java, all code must reside inside a class. Here is the basic structure:</p>\n<pre><code class=\"language-java\">// The file must be named HelloWorld.java\npublic class HelloWorld {\n    // This is the main method, the entry point of any Java application.\n    public static void main(String[] args) {\n        // This line prints the text to the console.\n        System.out.println(\"Hello, World!\");\n    }\n}\n</code></pre>\n<h3>Breaking Down the Code</h3>\n<ul>\n<li><strong><code>public class HelloWorld</code></strong>: This declares a class named <code>HelloWorld</code>, which is <code>public</code>, meaning it's accessible by any other class. The class name <strong>must</strong> match the filename (<code>HelloWorld.java</code>).</li>\n<li><strong><code>public static void main(String[] args)</code></strong>: This is the main method.\n<ul>\n<li><code>public</code>: It can be called from anywhere.</li>\n<li><code>static</code>: It can be run without creating an instance of the <code>HelloWorld</code> class.</li>\n<li><code>void</code>: It does not return any value.</li>\n<li><code>main</code>: This is the name of the method. The JVM looks for this specific method to start the program.</li>\n<li><code>(String[] args)</code>: This accepts command-line arguments as an array of strings.</li>\n</ul>\n</li>\n<li><strong><code>System.out.println(\"Hello, World!\");</code></strong>: This is the statement that does the printing.\n<ul>\n<li><code>System</code>: A final class from the <code>java.lang</code> package.</li>\n<li><code>out</code>: A static member of the <code>System</code> class, which is an instance of <code>PrintStream</code>.</li>\n<li><code>println()</code>: A method of the <code>PrintStream</code> class that prints the argument passed to it, followed by a new line.</li>\n</ul>\n</li>\n</ul>\n<h3>How to Compile and Run</h3>\n<ol>\n<li>Save the code in a file named <code>HelloWorld.java</code>.</li>\n<li>Open a terminal or command prompt.</li>\n<li>Navigate to the directory where you saved the file.</li>\n<li><strong>Compile the code</strong>: Use the Java compiler (<code>javac</code>).\n<pre><code class=\"language-bash\">javac HelloWorld.java\n</code></pre>\nThis will create a <code>HelloWorld.class</code> file containing the Java bytecode.</li>\n<li><strong>Run the program</strong>: Use the Java Virtual Machine (<code>java</code>).\n<pre><code class=\"language-bash\">java HelloWorld\n</code></pre>\nYou should see the output: <code>Hello, World!</code></li>\n</ol>"
+    },
+    "_id": "tutorials/java/hello-world.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/java/hello-world.md",
+      "sourceFileName": "hello-world.md",
+      "sourceFileDir": "tutorials/java",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/java/hello-world"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/java/hello-world-in-java",
+    "language": "java"
+  },
+  {
+    "title": "Introduction to Java",
+    "slug": "introduction-to-java",
+    "order": 1,
+    "description": "Get an overview of the Java programming language, its history, features, and why it remains one of the most popular languages in the world.",
+    "category": "Java Basics",
+    "body": {
+      "raw": "\n## What is Java?\n\nJava is a high-level, class-based, object-oriented programming language developed by Sun Microsystems (now owned by Oracle) and first released in 1995. It is designed to have as few implementation dependencies as possible, allowing developers to \"write once, run anywhere\" (WORA). This means that compiled Java code can run on all platforms that support Java without the need for recompilation.\n\n## Key Features of Java\n\n-   **Platform Independent**: Thanks to the Java Virtual Machine (JVM), Java bytecode can run on any device, making it highly portable.\n-   **Object-Oriented**: Java is fundamentally object-oriented, which helps in building modular and reusable code.\n-   **Robust and Secure**: It emphasizes early checking for possible errors and has built-in security features, including a Security Manager.\n-   **Automatic Memory Management**: Java automatically manages memory through a process called garbage collection.\n-   **Multithreaded**: Java has built-in support for multithreading, which allows for the concurrent execution of multiple parts of a program.\n-   **Rich Standard Library**: Java provides a large standard library with classes and methods for common tasks like I/O, networking, and data structures.\n\nThis tutorial series will guide you through the fundamentals of Java programming.\n",
+      "html": "<h2>What is Java?</h2>\n<p>Java is a high-level, class-based, object-oriented programming language developed by Sun Microsystems (now owned by Oracle) and first released in 1995. It is designed to have as few implementation dependencies as possible, allowing developers to \"write once, run anywhere\" (WORA). This means that compiled Java code can run on all platforms that support Java without the need for recompilation.</p>\n<h2>Key Features of Java</h2>\n<ul>\n<li><strong>Platform Independent</strong>: Thanks to the Java Virtual Machine (JVM), Java bytecode can run on any device, making it highly portable.</li>\n<li><strong>Object-Oriented</strong>: Java is fundamentally object-oriented, which helps in building modular and reusable code.</li>\n<li><strong>Robust and Secure</strong>: It emphasizes early checking for possible errors and has built-in security features, including a Security Manager.</li>\n<li><strong>Automatic Memory Management</strong>: Java automatically manages memory through a process called garbage collection.</li>\n<li><strong>Multithreaded</strong>: Java has built-in support for multithreading, which allows for the concurrent execution of multiple parts of a program.</li>\n<li><strong>Rich Standard Library</strong>: Java provides a large standard library with classes and methods for common tasks like I/O, networking, and data structures.</li>\n</ul>\n<p>This tutorial series will guide you through the fundamentals of Java programming.</p>"
+    },
+    "_id": "tutorials/java/introduction.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/java/introduction.md",
+      "sourceFileName": "introduction.md",
+      "sourceFileDir": "tutorials/java",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/java/introduction"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/java/introduction-to-java",
+    "language": "java"
+  },
+  {
+    "title": "Java Operators",
+    "slug": "java-operators",
+    "order": 4,
+    "description": "Understand the various operators in Java for performing arithmetic, assignment, comparison, and logical operations.",
+    "category": "Java Fundamentals",
+    "body": {
+      "raw": "\n## Operators in Java\n\nOperators are special symbols that perform specific operations on one, two, or three operands, and then return a result.\n\n### 1. Arithmetic Operators\nUsed to perform common mathematical operations.\n- `+` Addition\n- `-` Subtraction\n- `*` Multiplication\n- `/` Division\n- `%` Modulus (returns the remainder of a division)\n- `++` Increment (increases a value by 1)\n- `--` Decrement (decreases a value by 1)\n\n```java\nint x = 10;\nint y = 3;\nSystem.out.println(x + y); // 13\nSystem.out.println(x % y); // 1\nx++; // x is now 11\n```\n\n### 2. Assignment Operators\nUsed to assign values to variables.\n- `=` Assign\n- `+=` (e.g., `x += 3` is same as `x = x + 3`)\n- `-=`\n- `*=`\n- `/=`\n- `%=`\n\n### 3. Comparison Operators\nUsed to compare two values. The result is a boolean (`true` or `false`).\n- `==` Equal to\n- `!=` Not equal to\n- `>` Greater than\n- `<` Less than\n- `>=` Greater than or equal to\n- `<=` Less than or equal to\n\n```java\nint a = 5;\nint b = 7;\nSystem.out.println(a == b); // false\nSystem.out.println(a < b);  // true\n```\n\n### 4. Logical Operators\nUsed to determine the logic between variables or values.\n- `&&` Logical AND (returns `true` if both statements are true)\n- `||` Logical OR (returns `true` if one of the statements is true)\n- `!` Logical NOT (reverses the result, returns `false` if the result is true)\n\n```java\nint age = 25;\nboolean hasLicense = true;\nif (age >= 18 && hasLicense) {\n    System.out.println(\"Can drive.\");\n}\n```\n",
+      "html": "<h2>Operators in Java</h2>\n<p>Operators are special symbols that perform specific operations on one, two, or three operands, and then return a result.</p>\n<h3>1. Arithmetic Operators</h3>\n<p>Used to perform common mathematical operations.</p>\n<ul>\n<li><code>+</code> Addition</li>\n<li><code>-</code> Subtraction</li>\n<li><code>*</code> Multiplication</li>\n<li><code>/</code> Division</li>\n<li><code>%</code> Modulus (returns the remainder of a division)</li>\n<li><code>++</code> Increment (increases a value by 1)</li>\n<li><code>--</code> Decrement (decreases a value by 1)</li>\n</ul>\n<pre><code class=\"language-java\">int x = 10;\nint y = 3;\nSystem.out.println(x + y); // 13\nSystem.out.println(x % y); // 1\nx++; // x is now 11\n</code></pre>\n<h3>2. Assignment Operators</h3>\n<p>Used to assign values to variables.</p>\n<ul>\n<li><code>=</code> Assign</li>\n<li><code>+=</code> (e.g., <code>x += 3</code> is same as <code>x = x + 3</code>)</li>\n<li><code>-=</code></li>\n<li><code>*=</code></li>\n<li><code>/=</code></li>\n<li><code>%=</code></li>\n</ul>\n<h3>3. Comparison Operators</h3>\n<p>Used to compare two values. The result is a boolean (<code>true</code> or <code>false</code>).</p>\n<ul>\n<li><code>==</code> Equal to</li>\n<li><code>!=</code> Not equal to</li>\n<li><code>></code> Greater than</li>\n<li><code>&#x3C;</code> Less than</li>\n<li><code>>=</code> Greater than or equal to</li>\n<li><code>&#x3C;=</code> Less than or equal to</li>\n</ul>\n<pre><code class=\"language-java\">int a = 5;\nint b = 7;\nSystem.out.println(a == b); // false\nSystem.out.println(a &#x3C; b);  // true\n</code></pre>\n<h3>4. Logical Operators</h3>\n<p>Used to determine the logic between variables or values.</p>\n<ul>\n<li><code>&#x26;&#x26;</code> Logical AND (returns <code>true</code> if both statements are true)</li>\n<li><code>||</code> Logical OR (returns <code>true</code> if one of the statements is true)</li>\n<li><code>!</code> Logical NOT (reverses the result, returns <code>false</code> if the result is true)</li>\n</ul>\n<pre><code class=\"language-java\">int age = 25;\nboolean hasLicense = true;\nif (age >= 18 &#x26;&#x26; hasLicense) {\n    System.out.println(\"Can drive.\");\n}\n</code></pre>"
+    },
+    "_id": "tutorials/java/operators.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/java/operators.md",
+      "sourceFileName": "operators.md",
+      "sourceFileDir": "tutorials/java",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/java/operators"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/java/java-operators",
+    "language": "java"
+  },
+  {
+    "title": "Java Variables and Data Types",
+    "slug": "java-variables-data-types",
+    "order": 3,
+    "description": "Learn about declaring variables and the fundamental data types in Java.",
+    "category": "Java Fundamentals",
+    "body": {
+      "raw": "\n## Variables in Java\n\nA variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type.\n\nIn Java, all variables must be declared before they can be used.\n\n```java\n// SYNTAX: type variableName = value;\nint myNumber = 5;\nString greeting = \"Hello\";\nboolean isActive = true;\n```\n\n## Data Types\n\nData types specify the different sizes and values that can be stored in the variable. There are two types of data types in Java:\n\n### 1. Primitive Data Types\n\nPrimitive data types are predefined by the language and named by a keyword. There are 8 primitive types:\n\n- **`byte`**: 1 byte, stores whole numbers from -128 to 127\n- **`short`**: 2 bytes, stores whole numbers from -32,768 to 32,767\n- **`int`**: 4 bytes, stores whole numbers from -2,147,483,648 to 2,147,483,647 (most common for integers)\n- **`long`**: 8 bytes, stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807\n- **`float`**: 4 bytes, stores fractional numbers. Sufficient for storing 6 to 7 decimal digits\n- **`double`**: 8 bytes, stores fractional numbers. Sufficient for storing 15 decimal digits (most common for floating-point numbers)\n- **`boolean`**: 1 bit, stores `true` or `false` values\n- **`char`**: 2 bytes, stores a single character/letter or ASCII values.\n\n```java\nint myInt = 10000;\nfloat myFloat = 5.75f; // Note the 'f' suffix\nchar myLetter = 'D';\nboolean myBool = true;\n```\n\n### 2. Non-Primitive Data Types (Reference Types)\n\nNon-primitive types are created by the programmer and are not defined by Java (except for `String`). They are also known as reference types because they refer to objects.\n\n- **Classes**, **Interfaces**, **Arrays**, and **Strings** are examples of non-primitive types.\n\nThe main difference between primitive and non-primitive types is that primitive types are stored directly in memory where the variable is allocated, whereas non-primitive types store a reference (or address) to the memory location where the object is actually stored.\n",
+      "html": "<h2>Variables in Java</h2>\n<p>A variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type.</p>\n<p>In Java, all variables must be declared before they can be used.</p>\n<pre><code class=\"language-java\">// SYNTAX: type variableName = value;\nint myNumber = 5;\nString greeting = \"Hello\";\nboolean isActive = true;\n</code></pre>\n<h2>Data Types</h2>\n<p>Data types specify the different sizes and values that can be stored in the variable. There are two types of data types in Java:</p>\n<h3>1. Primitive Data Types</h3>\n<p>Primitive data types are predefined by the language and named by a keyword. There are 8 primitive types:</p>\n<ul>\n<li><strong><code>byte</code></strong>: 1 byte, stores whole numbers from -128 to 127</li>\n<li><strong><code>short</code></strong>: 2 bytes, stores whole numbers from -32,768 to 32,767</li>\n<li><strong><code>int</code></strong>: 4 bytes, stores whole numbers from -2,147,483,648 to 2,147,483,647 (most common for integers)</li>\n<li><strong><code>long</code></strong>: 8 bytes, stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</li>\n<li><strong><code>float</code></strong>: 4 bytes, stores fractional numbers. Sufficient for storing 6 to 7 decimal digits</li>\n<li><strong><code>double</code></strong>: 8 bytes, stores fractional numbers. Sufficient for storing 15 decimal digits (most common for floating-point numbers)</li>\n<li><strong><code>boolean</code></strong>: 1 bit, stores <code>true</code> or <code>false</code> values</li>\n<li><strong><code>char</code></strong>: 2 bytes, stores a single character/letter or ASCII values.</li>\n</ul>\n<pre><code class=\"language-java\">int myInt = 10000;\nfloat myFloat = 5.75f; // Note the 'f' suffix\nchar myLetter = 'D';\nboolean myBool = true;\n</code></pre>\n<h3>2. Non-Primitive Data Types (Reference Types)</h3>\n<p>Non-primitive types are created by the programmer and are not defined by Java (except for <code>String</code>). They are also known as reference types because they refer to objects.</p>\n<ul>\n<li><strong>Classes</strong>, <strong>Interfaces</strong>, <strong>Arrays</strong>, and <strong>Strings</strong> are examples of non-primitive types.</li>\n</ul>\n<p>The main difference between primitive and non-primitive types is that primitive types are stored directly in memory where the variable is allocated, whereas non-primitive types store a reference (or address) to the memory location where the object is actually stored.</p>"
+    },
+    "_id": "tutorials/java/variables-and-data-types.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/java/variables-and-data-types.md",
+      "sourceFileName": "variables-and-data-types.md",
+      "sourceFileDir": "tutorials/java",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/java/variables-and-data-types"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/java/java-variables-data-types",
+    "language": "java"
+  },
+  {
+    "title": "JS Data Types",
+    "slug": "javascript-data-types",
+    "order": 4,
+    "description": "Explore the different data types available in JavaScript, both primitive and non-primitive.",
+    "category": "JS Variables and Data Types",
+    "body": {
+      "raw": "\n## JavaScript Data Types\n\nJavaScript variables can hold different data types. JavaScript is a dynamically typed language, which means you don't need to specify the type of a variable when you declare it.\n\n### Primitive Data Types\nPrimitive data types are immutable (they cannot be changed).\n\n1.  **String**: Represents textual data.\n    ```javascript\n    let name = \"Alice\";\n    ```\n2.  **Number**: Represents numeric values, including integers and floating-point numbers.\n    ```javascript\n    let age = 30;\n    let price = 19.99;\n    ```\n3.  **BigInt**: Represents integers with arbitrary precision.\n    ```javascript\n    const veryLargeNumber = 9007199254740991n;\n    ```\n4.  **Boolean**: Represents `true` or `false`.\n    ```javascript\n    let isActive = true;\n    ```\n5.  **Undefined**: A variable that has been declared but not assigned a value has the value `undefined`.\n    ```javascript\n    let status; // status is undefined\n    ```\n6.  **Null**: Represents the intentional absence of any object value.\n    ```javascript\n    let user = null;\n    ```\n7.  **Symbol**: A unique and immutable primitive value, often used as object property keys.\n    ```javascript\n    const id = Symbol('id');\n    ```\n\n### Non-Primitive Data Type (Object)\nThe `object` data type can store collections of data.\n\n- **Object**: A collection of key-value pairs.\n  ```javascript\n  const person = {\n    firstName: \"John\",\n    lastName: \"Doe\",\n    age: 50\n  };\n  ```\n- **Array**: A special type of object for storing ordered collections.\n  ```javascript\n  const colors = [\"red\", \"green\", \"blue\"];\n  ```\n- **Function**: A block of code designed to perform a particular task.\n  ```javascript\n  function greet() {\n    return \"Hello!\";\n  }\n  ```",
+      "html": "<h2>JavaScript Data Types</h2>\n<p>JavaScript variables can hold different data types. JavaScript is a dynamically typed language, which means you don't need to specify the type of a variable when you declare it.</p>\n<h3>Primitive Data Types</h3>\n<p>Primitive data types are immutable (they cannot be changed).</p>\n<ol>\n<li><strong>String</strong>: Represents textual data.\n<pre><code class=\"language-javascript\">let name = \"Alice\";\n</code></pre>\n</li>\n<li><strong>Number</strong>: Represents numeric values, including integers and floating-point numbers.\n<pre><code class=\"language-javascript\">let age = 30;\nlet price = 19.99;\n</code></pre>\n</li>\n<li><strong>BigInt</strong>: Represents integers with arbitrary precision.\n<pre><code class=\"language-javascript\">const veryLargeNumber = 9007199254740991n;\n</code></pre>\n</li>\n<li><strong>Boolean</strong>: Represents <code>true</code> or <code>false</code>.\n<pre><code class=\"language-javascript\">let isActive = true;\n</code></pre>\n</li>\n<li><strong>Undefined</strong>: A variable that has been declared but not assigned a value has the value <code>undefined</code>.\n<pre><code class=\"language-javascript\">let status; // status is undefined\n</code></pre>\n</li>\n<li><strong>Null</strong>: Represents the intentional absence of any object value.\n<pre><code class=\"language-javascript\">let user = null;\n</code></pre>\n</li>\n<li><strong>Symbol</strong>: A unique and immutable primitive value, often used as object property keys.\n<pre><code class=\"language-javascript\">const id = Symbol('id');\n</code></pre>\n</li>\n</ol>\n<h3>Non-Primitive Data Type (Object)</h3>\n<p>The <code>object</code> data type can store collections of data.</p>\n<ul>\n<li><strong>Object</strong>: A collection of key-value pairs.\n<pre><code class=\"language-javascript\">const person = {\n  firstName: \"John\",\n  lastName: \"Doe\",\n  age: 50\n};\n</code></pre>\n</li>\n<li><strong>Array</strong>: A special type of object for storing ordered collections.\n<pre><code class=\"language-javascript\">const colors = [\"red\", \"green\", \"blue\"];\n</code></pre>\n</li>\n<li><strong>Function</strong>: A block of code designed to perform a particular task.\n<pre><code class=\"language-javascript\">function greet() {\n  return \"Hello!\";\n}\n</code></pre>\n</li>\n</ul>"
+    },
+    "_id": "tutorials/javascript/data-types.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/data-types.md",
+      "sourceFileName": "data-types.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/data-types"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-data-types",
+    "language": "javascript"
+  },
+  {
+    "title": "JS Functions",
+    "slug": "javascript-functions",
+    "order": 6,
+    "description": "Learn how to define and use functions to create reusable blocks of code in JavaScript.",
+    "category": "JS Functions",
+    "body": {
+      "raw": "\n## JavaScript Functions\n\nA JavaScript function is a block of code designed to perform a particular task. A function is executed when \"something\" invokes it (calls it).\n\n### Function Declarations\nThis is the most common way to define a function.\n\n```javascript\nfunction greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\n\nconsole.log(greet(\"World\")); // Output: Hello, World!\n```\n\n### Function Expressions\nA function can also be defined as an expression, which can be stored in a variable.\n\n```javascript\nconst farewell = function(name) {\n  return \"Goodbye, \" + name + \"!\";\n};\n\nconsole.log(farewell(\"World\")); // Output: Goodbye, World!\n```\n\n### Arrow Functions (ES6)\nArrow functions provide a more concise syntax for writing function expressions.\n\n```javascript\nconst add = (a, b) => {\n  return a + b;\n};\n\n// For single-expression functions, you can omit the braces and return keyword\nconst subtract = (a, b) => a - b;\n\nconsole.log(add(5, 3));       // Output: 8\nconsole.log(subtract(10, 4)); // Output: 6\n```\n\n### Parameters and Arguments\n- **Parameters** are the names listed in the function definition.\n- **Arguments** are the real values passed to the function when it is invoked.\n\n### Return Value\nThe `return` statement stops the execution of a function and returns a value. If `return` is omitted, the function returns `undefined`.",
+      "html": "<h2>JavaScript Functions</h2>\n<p>A JavaScript function is a block of code designed to perform a particular task. A function is executed when \"something\" invokes it (calls it).</p>\n<h3>Function Declarations</h3>\n<p>This is the most common way to define a function.</p>\n<pre><code class=\"language-javascript\">function greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\n\nconsole.log(greet(\"World\")); // Output: Hello, World!\n</code></pre>\n<h3>Function Expressions</h3>\n<p>A function can also be defined as an expression, which can be stored in a variable.</p>\n<pre><code class=\"language-javascript\">const farewell = function(name) {\n  return \"Goodbye, \" + name + \"!\";\n};\n\nconsole.log(farewell(\"World\")); // Output: Goodbye, World!\n</code></pre>\n<h3>Arrow Functions (ES6)</h3>\n<p>Arrow functions provide a more concise syntax for writing function expressions.</p>\n<pre><code class=\"language-javascript\">const add = (a, b) => {\n  return a + b;\n};\n\n// For single-expression functions, you can omit the braces and return keyword\nconst subtract = (a, b) => a - b;\n\nconsole.log(add(5, 3));       // Output: 8\nconsole.log(subtract(10, 4)); // Output: 6\n</code></pre>\n<h3>Parameters and Arguments</h3>\n<ul>\n<li><strong>Parameters</strong> are the names listed in the function definition.</li>\n<li><strong>Arguments</strong> are the real values passed to the function when it is invoked.</li>\n</ul>\n<h3>Return Value</h3>\n<p>The <code>return</code> statement stops the execution of a function and returns a value. If <code>return</code> is omitted, the function returns <code>undefined</code>.</p>"
+    },
+    "_id": "tutorials/javascript/functions.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/functions.md",
+      "sourceFileName": "functions.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/functions"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-functions",
+    "language": "javascript"
+  },
+  {
     "title": "JS Hello World",
     "slug": "hello-world-in-javascript",
     "order": 2,
@@ -41,6 +195,50 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/javascript/features-of-javascript",
+    "language": "javascript"
+  },
+  {
+    "title": "JS Loops",
+    "slug": "javascript-loops",
+    "order": 5,
+    "description": "Learn how to repeat actions using different types of loops in JavaScript.",
+    "category": "JS Control Flow",
+    "body": {
+      "raw": "\n## JavaScript Loops\n\nLoops are handy if you want to run the same code over and over again, each time with a different value.\n\n### The `for` Loop\nThe `for` loop is often the tool you'll use when you want to iterate over a block of code a certain number of times.\n\n```javascript\nfor (let i = 0; i < 5; i++) {\n  console.log(\"The number is \" + i);\n}\n// This will print numbers 0 through 4.\n```\n\n### The `for...in` Loop\nThe `for...in` statement iterates over the properties of an object.\n\n```javascript\nconst person = {fname:\"John\", lname:\"Doe\", age:25};\n\nfor (let key in person) {\n  console.log(key + \": \" + person[key]);\n}\n// Prints:\n// fname: John\n// lname: Doe\n// age: 25\n```\n\n### The `for...of` Loop\nThe `for...of` statement iterates over the values of an iterable object (like an Array, String, Map, etc.).\n\n```javascript\nconst colors = [\"red\", \"green\", \"blue\"];\n\nfor (let color of colors) {\n  console.log(color);\n}\n// Prints:\n// red\n// green\n// blue\n```\n\n### The `while` Loop\nThe `while` loop loops through a block of code as long as a specified condition is true.\n\n```javascript\nlet i = 0;\nwhile (i < 5) {\n  console.log(\"The number is \" + i);\n  i++;\n}\n```\n\n### The `do...while` Loop\nThe `do...while` loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.\n\n```javascript\nlet i = 0;\ndo {\n  console.log(\"The number is \" + i);\n  i++;\n}\nwhile (i < 5);\n```",
+      "html": "<h2>JavaScript Loops</h2>\n<p>Loops are handy if you want to run the same code over and over again, each time with a different value.</p>\n<h3>The <code>for</code> Loop</h3>\n<p>The <code>for</code> loop is often the tool you'll use when you want to iterate over a block of code a certain number of times.</p>\n<pre><code class=\"language-javascript\">for (let i = 0; i &#x3C; 5; i++) {\n  console.log(\"The number is \" + i);\n}\n// This will print numbers 0 through 4.\n</code></pre>\n<h3>The <code>for...in</code> Loop</h3>\n<p>The <code>for...in</code> statement iterates over the properties of an object.</p>\n<pre><code class=\"language-javascript\">const person = {fname:\"John\", lname:\"Doe\", age:25};\n\nfor (let key in person) {\n  console.log(key + \": \" + person[key]);\n}\n// Prints:\n// fname: John\n// lname: Doe\n// age: 25\n</code></pre>\n<h3>The <code>for...of</code> Loop</h3>\n<p>The <code>for...of</code> statement iterates over the values of an iterable object (like an Array, String, Map, etc.).</p>\n<pre><code class=\"language-javascript\">const colors = [\"red\", \"green\", \"blue\"];\n\nfor (let color of colors) {\n  console.log(color);\n}\n// Prints:\n// red\n// green\n// blue\n</code></pre>\n<h3>The <code>while</code> Loop</h3>\n<p>The <code>while</code> loop loops through a block of code as long as a specified condition is true.</p>\n<pre><code class=\"language-javascript\">let i = 0;\nwhile (i &#x3C; 5) {\n  console.log(\"The number is \" + i);\n  i++;\n}\n</code></pre>\n<h3>The <code>do...while</code> Loop</h3>\n<p>The <code>do...while</code> loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.</p>\n<pre><code class=\"language-javascript\">let i = 0;\ndo {\n  console.log(\"The number is \" + i);\n  i++;\n}\nwhile (i &#x3C; 5);\n</code></pre>"
+    },
+    "_id": "tutorials/javascript/loops.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/loops.md",
+      "sourceFileName": "loops.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/loops"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-loops",
+    "language": "javascript"
+  },
+  {
+    "title": "JS Operators",
+    "slug": "javascript-operators",
+    "order": 5,
+    "description": "Understand the different operators in JavaScript for performing arithmetic, assignment, comparison, and logical operations.",
+    "category": "JS Fundamentals",
+    "body": {
+      "raw": "\n## JavaScript Operators\n\nJavaScript uses operators to perform operations on values and variables.\n\n### Arithmetic Operators\nUsed to perform arithmetic between numeric values.\n- `+` Addition\n- `-` Subtraction\n- `*` Multiplication\n- `/` Division\n- `**` Exponentiation (ES2016)\n- `%` Modulus (Division Remainder)\n- `++` Increment\n- `--` Decrement\n\n```javascript\nlet x = 10;\nlet y = 4;\nconsole.log(x + y); // 14\nconsole.log(x % y); // 2\n```\n\n### Assignment Operators\nUsed to assign values to JavaScript variables.\n- `=` Assign\n- `+=` Add and assign\n- `-=` Subtract and assign\n- `*=` Multiply and assign\n- `/=` Divide and assign\n\n```javascript\nlet a = 10;\na += 5; // a is now 15\n```\n\n### Comparison Operators\nUsed in logical statements to determine equality or difference between variables or values.\n- `==` Equal to (value)\n- `===` Equal value and equal type (strict equality)\n- `!=` Not equal to (value)\n- `!==` Not equal value or not equal type\n- `>` Greater than\n- `<` Less than\n- `>=` Greater than or equal to\n- `<=` Less than or equal to\n- `?` Ternary operator\n\n```javascript\nlet age = 18;\nlet canVote = (age < 18) ? \"Too young\" : \"Old enough\";\nconsole.log(canVote); // \"Old enough\"\n```\n\n### Logical Operators\nUsed to determine the logic between variables or values.\n- `&&` Logical AND\n- `||` Logical OR\n- `!` Logical NOT\n\n```javascript\nlet isAdult = true;\nlet hasLicense = false;\n\nif (isAdult && hasLicense) {\n  console.log(\"Can drive.\");\n} else {\n  console.log(\"Cannot drive.\");\n}\n```\n\n### Type Operators\n- `typeof` Returns the type of a variable\n- `instanceof` Returns `true` if an object is an instance of an object type\n\n```javascript\nconsole.log(typeof \"John\"); // \"string\"\nconsole.log([1, 2] instanceof Array); // true\n```",
+      "html": "<h2>JavaScript Operators</h2>\n<p>JavaScript uses operators to perform operations on values and variables.</p>\n<h3>Arithmetic Operators</h3>\n<p>Used to perform arithmetic between numeric values.</p>\n<ul>\n<li><code>+</code> Addition</li>\n<li><code>-</code> Subtraction</li>\n<li><code>*</code> Multiplication</li>\n<li><code>/</code> Division</li>\n<li><code>**</code> Exponentiation (ES2016)</li>\n<li><code>%</code> Modulus (Division Remainder)</li>\n<li><code>++</code> Increment</li>\n<li><code>--</code> Decrement</li>\n</ul>\n<pre><code class=\"language-javascript\">let x = 10;\nlet y = 4;\nconsole.log(x + y); // 14\nconsole.log(x % y); // 2\n</code></pre>\n<h3>Assignment Operators</h3>\n<p>Used to assign values to JavaScript variables.</p>\n<ul>\n<li><code>=</code> Assign</li>\n<li><code>+=</code> Add and assign</li>\n<li><code>-=</code> Subtract and assign</li>\n<li><code>*=</code> Multiply and assign</li>\n<li><code>/=</code> Divide and assign</li>\n</ul>\n<pre><code class=\"language-javascript\">let a = 10;\na += 5; // a is now 15\n</code></pre>\n<h3>Comparison Operators</h3>\n<p>Used in logical statements to determine equality or difference between variables or values.</p>\n<ul>\n<li><code>==</code> Equal to (value)</li>\n<li><code>===</code> Equal value and equal type (strict equality)</li>\n<li><code>!=</code> Not equal to (value)</li>\n<li><code>!==</code> Not equal value or not equal type</li>\n<li><code>></code> Greater than</li>\n<li><code>&#x3C;</code> Less than</li>\n<li><code>>=</code> Greater than or equal to</li>\n<li><code>&#x3C;=</code> Less than or equal to</li>\n<li><code>?</code> Ternary operator</li>\n</ul>\n<pre><code class=\"language-javascript\">let age = 18;\nlet canVote = (age &#x3C; 18) ? \"Too young\" : \"Old enough\";\nconsole.log(canVote); // \"Old enough\"\n</code></pre>\n<h3>Logical Operators</h3>\n<p>Used to determine the logic between variables or values.</p>\n<ul>\n<li><code>&#x26;&#x26;</code> Logical AND</li>\n<li><code>||</code> Logical OR</li>\n<li><code>!</code> Logical NOT</li>\n</ul>\n<pre><code class=\"language-javascript\">let isAdult = true;\nlet hasLicense = false;\n\nif (isAdult &#x26;&#x26; hasLicense) {\n  console.log(\"Can drive.\");\n} else {\n  console.log(\"Cannot drive.\");\n}\n</code></pre>\n<h3>Type Operators</h3>\n<ul>\n<li><code>typeof</code> Returns the type of a variable</li>\n<li><code>instanceof</code> Returns <code>true</code> if an object is an instance of an object type</li>\n</ul>\n<pre><code class=\"language-javascript\">console.log(typeof \"John\"); // \"string\"\nconsole.log([1, 2] instanceof Array); // true\n</code></pre>"
+    },
+    "_id": "tutorials/javascript/operators.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/operators.md",
+      "sourceFileName": "operators.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/operators"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-operators",
     "language": "javascript"
   },
   {
@@ -190,93 +388,5 @@
     "type": "TutorialPost",
     "url": "/tutorial/python/python-variables-data-types",
     "language": "python"
-  },
-  {
-    "title": "JS Data Types",
-    "slug": "javascript-data-types",
-    "order": 4,
-    "description": "Explore the different data types available in JavaScript, both primitive and non-primitive.",
-    "category": "JS Variables and Data Types",
-    "body": {
-      "raw": "\n## JavaScript Data Types\n\nJavaScript variables can hold different data types. JavaScript is a dynamically typed language, which means you don't need to specify the type of a variable when you declare it.\n\n### Primitive Data Types\nPrimitive data types are immutable (they cannot be changed).\n\n1.  **String**: Represents textual data.\n    ```javascript\n    let name = \"Alice\";\n    ```\n2.  **Number**: Represents numeric values, including integers and floating-point numbers.\n    ```javascript\n    let age = 30;\n    let price = 19.99;\n    ```\n3.  **BigInt**: Represents integers with arbitrary precision.\n    ```javascript\n    const veryLargeNumber = 9007199254740991n;\n    ```\n4.  **Boolean**: Represents `true` or `false`.\n    ```javascript\n    let isActive = true;\n    ```\n5.  **Undefined**: A variable that has been declared but not assigned a value has the value `undefined`.\n    ```javascript\n    let status; // status is undefined\n    ```\n6.  **Null**: Represents the intentional absence of any object value.\n    ```javascript\n    let user = null;\n    ```\n7.  **Symbol**: A unique and immutable primitive value, often used as object property keys.\n    ```javascript\n    const id = Symbol('id');\n    ```\n\n### Non-Primitive Data Type (Object)\nThe `object` data type can store collections of data.\n\n- **Object**: A collection of key-value pairs.\n  ```javascript\n  const person = {\n    firstName: \"John\",\n    lastName: \"Doe\",\n    age: 50\n  };\n  ```\n- **Array**: A special type of object for storing ordered collections.\n  ```javascript\n  const colors = [\"red\", \"green\", \"blue\"];\n  ```\n- **Function**: A block of code designed to perform a particular task.\n  ```javascript\n  function greet() {\n    return \"Hello!\";\n  }\n  ```",
-      "html": "<h2>JavaScript Data Types</h2>\n<p>JavaScript variables can hold different data types. JavaScript is a dynamically typed language, which means you don't need to specify the type of a variable when you declare it.</p>\n<h3>Primitive Data Types</h3>\n<p>Primitive data types are immutable (they cannot be changed).</p>\n<ol>\n<li><strong>String</strong>: Represents textual data.\n<pre><code class=\"language-javascript\">let name = \"Alice\";\n</code></pre>\n</li>\n<li><strong>Number</strong>: Represents numeric values, including integers and floating-point numbers.\n<pre><code class=\"language-javascript\">let age = 30;\nlet price = 19.99;\n</code></pre>\n</li>\n<li><strong>BigInt</strong>: Represents integers with arbitrary precision.\n<pre><code class=\"language-javascript\">const veryLargeNumber = 9007199254740991n;\n</code></pre>\n</li>\n<li><strong>Boolean</strong>: Represents <code>true</code> or <code>false</code>.\n<pre><code class=\"language-javascript\">let isActive = true;\n</code></pre>\n</li>\n<li><strong>Undefined</strong>: A variable that has been declared but not assigned a value has the value <code>undefined</code>.\n<pre><code class=\"language-javascript\">let status; // status is undefined\n</code></pre>\n</li>\n<li><strong>Null</strong>: Represents the intentional absence of any object value.\n<pre><code class=\"language-javascript\">let user = null;\n</code></pre>\n</li>\n<li><strong>Symbol</strong>: A unique and immutable primitive value, often used as object property keys.\n<pre><code class=\"language-javascript\">const id = Symbol('id');\n</code></pre>\n</li>\n</ol>\n<h3>Non-Primitive Data Type (Object)</h3>\n<p>The <code>object</code> data type can store collections of data.</p>\n<ul>\n<li><strong>Object</strong>: A collection of key-value pairs.\n<pre><code class=\"language-javascript\">const person = {\n  firstName: \"John\",\n  lastName: \"Doe\",\n  age: 50\n};\n</code></pre>\n</li>\n<li><strong>Array</strong>: A special type of object for storing ordered collections.\n<pre><code class=\"language-javascript\">const colors = [\"red\", \"green\", \"blue\"];\n</code></pre>\n</li>\n<li><strong>Function</strong>: A block of code designed to perform a particular task.\n<pre><code class=\"language-javascript\">function greet() {\n  return \"Hello!\";\n}\n</code></pre>\n</li>\n</ul>"
-    },
-    "_id": "tutorials/javascript/data-types.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/data-types.md",
-      "sourceFileName": "data-types.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/data-types"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-data-types",
-    "language": "javascript"
-  },
-  {
-    "title": "JS Functions",
-    "slug": "javascript-functions",
-    "order": 6,
-    "description": "Learn how to define and use functions to create reusable blocks of code in JavaScript.",
-    "category": "JS Functions",
-    "body": {
-      "raw": "\n## JavaScript Functions\n\nA JavaScript function is a block of code designed to perform a particular task. A function is executed when \"something\" invokes it (calls it).\n\n### Function Declarations\nThis is the most common way to define a function.\n\n```javascript\nfunction greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\n\nconsole.log(greet(\"World\")); // Output: Hello, World!\n```\n\n### Function Expressions\nA function can also be defined as an expression, which can be stored in a variable.\n\n```javascript\nconst farewell = function(name) {\n  return \"Goodbye, \" + name + \"!\";\n};\n\nconsole.log(farewell(\"World\")); // Output: Goodbye, World!\n```\n\n### Arrow Functions (ES6)\nArrow functions provide a more concise syntax for writing function expressions.\n\n```javascript\nconst add = (a, b) => {\n  return a + b;\n};\n\n// For single-expression functions, you can omit the braces and return keyword\nconst subtract = (a, b) => a - b;\n\nconsole.log(add(5, 3));       // Output: 8\nconsole.log(subtract(10, 4)); // Output: 6\n```\n\n### Parameters and Arguments\n- **Parameters** are the names listed in the function definition.\n- **Arguments** are the real values passed to the function when it is invoked.\n\n### Return Value\nThe `return` statement stops the execution of a function and returns a value. If `return` is omitted, the function returns `undefined`.",
-      "html": "<h2>JavaScript Functions</h2>\n<p>A JavaScript function is a block of code designed to perform a particular task. A function is executed when \"something\" invokes it (calls it).</p>\n<h3>Function Declarations</h3>\n<p>This is the most common way to define a function.</p>\n<pre><code class=\"language-javascript\">function greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\n\nconsole.log(greet(\"World\")); // Output: Hello, World!\n</code></pre>\n<h3>Function Expressions</h3>\n<p>A function can also be defined as an expression, which can be stored in a variable.</p>\n<pre><code class=\"language-javascript\">const farewell = function(name) {\n  return \"Goodbye, \" + name + \"!\";\n};\n\nconsole.log(farewell(\"World\")); // Output: Goodbye, World!\n</code></pre>\n<h3>Arrow Functions (ES6)</h3>\n<p>Arrow functions provide a more concise syntax for writing function expressions.</p>\n<pre><code class=\"language-javascript\">const add = (a, b) => {\n  return a + b;\n};\n\n// For single-expression functions, you can omit the braces and return keyword\nconst subtract = (a, b) => a - b;\n\nconsole.log(add(5, 3));       // Output: 8\nconsole.log(subtract(10, 4)); // Output: 6\n</code></pre>\n<h3>Parameters and Arguments</h3>\n<ul>\n<li><strong>Parameters</strong> are the names listed in the function definition.</li>\n<li><strong>Arguments</strong> are the real values passed to the function when it is invoked.</li>\n</ul>\n<h3>Return Value</h3>\n<p>The <code>return</code> statement stops the execution of a function and returns a value. If <code>return</code> is omitted, the function returns <code>undefined</code>.</p>"
-    },
-    "_id": "tutorials/javascript/functions.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/functions.md",
-      "sourceFileName": "functions.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/functions"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-functions",
-    "language": "javascript"
-  },
-  {
-    "title": "JS Loops",
-    "slug": "javascript-loops",
-    "order": 5,
-    "description": "Learn how to repeat actions using different types of loops in JavaScript.",
-    "category": "JS Control Flow",
-    "body": {
-      "raw": "\n## JavaScript Loops\n\nLoops are handy if you want to run the same code over and over again, each time with a different value.\n\n### The `for` Loop\nThe `for` loop is often the tool you'll use when you want to iterate over a block of code a certain number of times.\n\n```javascript\nfor (let i = 0; i < 5; i++) {\n  console.log(\"The number is \" + i);\n}\n// This will print numbers 0 through 4.\n```\n\n### The `for...in` Loop\nThe `for...in` statement iterates over the properties of an object.\n\n```javascript\nconst person = {fname:\"John\", lname:\"Doe\", age:25};\n\nfor (let key in person) {\n  console.log(key + \": \" + person[key]);\n}\n// Prints:\n// fname: John\n// lname: Doe\n// age: 25\n```\n\n### The `for...of` Loop\nThe `for...of` statement iterates over the values of an iterable object (like an Array, String, Map, etc.).\n\n```javascript\nconst colors = [\"red\", \"green\", \"blue\"];\n\nfor (let color of colors) {\n  console.log(color);\n}\n// Prints:\n// red\n// green\n// blue\n```\n\n### The `while` Loop\nThe `while` loop loops through a block of code as long as a specified condition is true.\n\n```javascript\nlet i = 0;\nwhile (i < 5) {\n  console.log(\"The number is \" + i);\n  i++;\n}\n```\n\n### The `do...while` Loop\nThe `do...while` loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.\n\n```javascript\nlet i = 0;\ndo {\n  console.log(\"The number is \" + i);\n  i++;\n}\nwhile (i < 5);\n```",
-      "html": "<h2>JavaScript Loops</h2>\n<p>Loops are handy if you want to run the same code over and over again, each time with a different value.</p>\n<h3>The <code>for</code> Loop</h3>\n<p>The <code>for</code> loop is often the tool you'll use when you want to iterate over a block of code a certain number of times.</p>\n<pre><code class=\"language-javascript\">for (let i = 0; i &#x3C; 5; i++) {\n  console.log(\"The number is \" + i);\n}\n// This will print numbers 0 through 4.\n</code></pre>\n<h3>The <code>for...in</code> Loop</h3>\n<p>The <code>for...in</code> statement iterates over the properties of an object.</p>\n<pre><code class=\"language-javascript\">const person = {fname:\"John\", lname:\"Doe\", age:25};\n\nfor (let key in person) {\n  console.log(key + \": \" + person[key]);\n}\n// Prints:\n// fname: John\n// lname: Doe\n// age: 25\n</code></pre>\n<h3>The <code>for...of</code> Loop</h3>\n<p>The <code>for...of</code> statement iterates over the values of an iterable object (like an Array, String, Map, etc.).</p>\n<pre><code class=\"language-javascript\">const colors = [\"red\", \"green\", \"blue\"];\n\nfor (let color of colors) {\n  console.log(color);\n}\n// Prints:\n// red\n// green\n// blue\n</code></pre>\n<h3>The <code>while</code> Loop</h3>\n<p>The <code>while</code> loop loops through a block of code as long as a specified condition is true.</p>\n<pre><code class=\"language-javascript\">let i = 0;\nwhile (i &#x3C; 5) {\n  console.log(\"The number is \" + i);\n  i++;\n}\n</code></pre>\n<h3>The <code>do...while</code> Loop</h3>\n<p>The <code>do...while</code> loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.</p>\n<pre><code class=\"language-javascript\">let i = 0;\ndo {\n  console.log(\"The number is \" + i);\n  i++;\n}\nwhile (i &#x3C; 5);\n</code></pre>"
-    },
-    "_id": "tutorials/javascript/loops.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/loops.md",
-      "sourceFileName": "loops.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/loops"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-loops",
-    "language": "javascript"
-  },
-  {
-    "title": "JS Operators",
-    "slug": "javascript-operators",
-    "order": 5,
-    "description": "Understand the different operators in JavaScript for performing arithmetic, assignment, comparison, and logical operations.",
-    "category": "JS Fundamentals",
-    "body": {
-      "raw": "\n## JavaScript Operators\n\nJavaScript uses operators to perform operations on values and variables.\n\n### Arithmetic Operators\nUsed to perform arithmetic between numeric values.\n- `+` Addition\n- `-` Subtraction\n- `*` Multiplication\n- `/` Division\n- `**` Exponentiation (ES2016)\n- `%` Modulus (Division Remainder)\n- `++` Increment\n- `--` Decrement\n\n```javascript\nlet x = 10;\nlet y = 4;\nconsole.log(x + y); // 14\nconsole.log(x % y); // 2\n```\n\n### Assignment Operators\nUsed to assign values to JavaScript variables.\n- `=` Assign\n- `+=` Add and assign\n- `-=` Subtract and assign\n- `*=` Multiply and assign\n- `/=` Divide and assign\n\n```javascript\nlet a = 10;\na += 5; // a is now 15\n```\n\n### Comparison Operators\nUsed in logical statements to determine equality or difference between variables or values.\n- `==` Equal to (value)\n- `===` Equal value and equal type (strict equality)\n- `!=` Not equal to (value)\n- `!==` Not equal value or not equal type\n- `>` Greater than\n- `<` Less than\n- `>=` Greater than or equal to\n- `<=` Less than or equal to\n- `?` Ternary operator\n\n```javascript\nlet age = 18;\nlet canVote = (age < 18) ? \"Too young\" : \"Old enough\";\nconsole.log(canVote); // \"Old enough\"\n```\n\n### Logical Operators\nUsed to determine the logic between variables or values.\n- `&&` Logical AND\n- `||` Logical OR\n- `!` Logical NOT\n\n```javascript\nlet isAdult = true;\nlet hasLicense = false;\n\nif (isAdult && hasLicense) {\n  console.log(\"Can drive.\");\n} else {\n  console.log(\"Cannot drive.\");\n}\n```\n\n### Type Operators\n- `typeof` Returns the type of a variable\n- `instanceof` Returns `true` if an object is an instance of an object type\n\n```javascript\nconsole.log(typeof \"John\"); // \"string\"\nconsole.log([1, 2] instanceof Array); // true\n```",
-      "html": "<h2>JavaScript Operators</h2>\n<p>JavaScript uses operators to perform operations on values and variables.</p>\n<h3>Arithmetic Operators</h3>\n<p>Used to perform arithmetic between numeric values.</p>\n<ul>\n<li><code>+</code> Addition</li>\n<li><code>-</code> Subtraction</li>\n<li><code>*</code> Multiplication</li>\n<li><code>/</code> Division</li>\n<li><code>**</code> Exponentiation (ES2016)</li>\n<li><code>%</code> Modulus (Division Remainder)</li>\n<li><code>++</code> Increment</li>\n<li><code>--</code> Decrement</li>\n</ul>\n<pre><code class=\"language-javascript\">let x = 10;\nlet y = 4;\nconsole.log(x + y); // 14\nconsole.log(x % y); // 2\n</code></pre>\n<h3>Assignment Operators</h3>\n<p>Used to assign values to JavaScript variables.</p>\n<ul>\n<li><code>=</code> Assign</li>\n<li><code>+=</code> Add and assign</li>\n<li><code>-=</code> Subtract and assign</li>\n<li><code>*=</code> Multiply and assign</li>\n<li><code>/=</code> Divide and assign</li>\n</ul>\n<pre><code class=\"language-javascript\">let a = 10;\na += 5; // a is now 15\n</code></pre>\n<h3>Comparison Operators</h3>\n<p>Used in logical statements to determine equality or difference between variables or values.</p>\n<ul>\n<li><code>==</code> Equal to (value)</li>\n<li><code>===</code> Equal value and equal type (strict equality)</li>\n<li><code>!=</code> Not equal to (value)</li>\n<li><code>!==</code> Not equal value or not equal type</li>\n<li><code>></code> Greater than</li>\n<li><code>&#x3C;</code> Less than</li>\n<li><code>>=</code> Greater than or equal to</li>\n<li><code>&#x3C;=</code> Less than or equal to</li>\n<li><code>?</code> Ternary operator</li>\n</ul>\n<pre><code class=\"language-javascript\">let age = 18;\nlet canVote = (age &#x3C; 18) ? \"Too young\" : \"Old enough\";\nconsole.log(canVote); // \"Old enough\"\n</code></pre>\n<h3>Logical Operators</h3>\n<p>Used to determine the logic between variables or values.</p>\n<ul>\n<li><code>&#x26;&#x26;</code> Logical AND</li>\n<li><code>||</code> Logical OR</li>\n<li><code>!</code> Logical NOT</li>\n</ul>\n<pre><code class=\"language-javascript\">let isAdult = true;\nlet hasLicense = false;\n\nif (isAdult &#x26;&#x26; hasLicense) {\n  console.log(\"Can drive.\");\n} else {\n  console.log(\"Cannot drive.\");\n}\n</code></pre>\n<h3>Type Operators</h3>\n<ul>\n<li><code>typeof</code> Returns the type of a variable</li>\n<li><code>instanceof</code> Returns <code>true</code> if an object is an instance of an object type</li>\n</ul>\n<pre><code class=\"language-javascript\">console.log(typeof \"John\"); // \"string\"\nconsole.log([1, 2] instanceof Array); // true\n</code></pre>"
-    },
-    "_id": "tutorials/javascript/operators.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/operators.md",
-      "sourceFileName": "operators.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/operators"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-operators",
-    "language": "javascript"
   }
 ]

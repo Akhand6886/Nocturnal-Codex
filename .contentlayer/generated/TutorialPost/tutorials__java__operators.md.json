@@ -1,0 +1,22 @@
+{
+  "title": "Java Operators",
+  "slug": "java-operators",
+  "order": 4,
+  "description": "Understand the various operators in Java for performing arithmetic, assignment, comparison, and logical operations.",
+  "category": "Java Fundamentals",
+  "body": {
+    "raw": "\n## Operators in Java\n\nOperators are special symbols that perform specific operations on one, two, or three operands, and then return a result.\n\n### 1. Arithmetic Operators\nUsed to perform common mathematical operations.\n- `+` Addition\n- `-` Subtraction\n- `*` Multiplication\n- `/` Division\n- `%` Modulus (returns the remainder of a division)\n- `++` Increment (increases a value by 1)\n- `--` Decrement (decreases a value by 1)\n\n```java\nint x = 10;\nint y = 3;\nSystem.out.println(x + y); // 13\nSystem.out.println(x % y); // 1\nx++; // x is now 11\n```\n\n### 2. Assignment Operators\nUsed to assign values to variables.\n- `=` Assign\n- `+=` (e.g., `x += 3` is same as `x = x + 3`)\n- `-=`\n- `*=`\n- `/=`\n- `%=`\n\n### 3. Comparison Operators\nUsed to compare two values. The result is a boolean (`true` or `false`).\n- `==` Equal to\n- `!=` Not equal to\n- `>` Greater than\n- `<` Less than\n- `>=` Greater than or equal to\n- `<=` Less than or equal to\n\n```java\nint a = 5;\nint b = 7;\nSystem.out.println(a == b); // false\nSystem.out.println(a < b);  // true\n```\n\n### 4. Logical Operators\nUsed to determine the logic between variables or values.\n- `&&` Logical AND (returns `true` if both statements are true)\n- `||` Logical OR (returns `true` if one of the statements is true)\n- `!` Logical NOT (reverses the result, returns `false` if the result is true)\n\n```java\nint age = 25;\nboolean hasLicense = true;\nif (age >= 18 && hasLicense) {\n    System.out.println(\"Can drive.\");\n}\n```\n",
+    "html": "<h2>Operators in Java</h2>\n<p>Operators are special symbols that perform specific operations on one, two, or three operands, and then return a result.</p>\n<h3>1. Arithmetic Operators</h3>\n<p>Used to perform common mathematical operations.</p>\n<ul>\n<li><code>+</code> Addition</li>\n<li><code>-</code> Subtraction</li>\n<li><code>*</code> Multiplication</li>\n<li><code>/</code> Division</li>\n<li><code>%</code> Modulus (returns the remainder of a division)</li>\n<li><code>++</code> Increment (increases a value by 1)</li>\n<li><code>--</code> Decrement (decreases a value by 1)</li>\n</ul>\n<pre><code class=\"language-java\">int x = 10;\nint y = 3;\nSystem.out.println(x + y); // 13\nSystem.out.println(x % y); // 1\nx++; // x is now 11\n</code></pre>\n<h3>2. Assignment Operators</h3>\n<p>Used to assign values to variables.</p>\n<ul>\n<li><code>=</code> Assign</li>\n<li><code>+=</code> (e.g., <code>x += 3</code> is same as <code>x = x + 3</code>)</li>\n<li><code>-=</code></li>\n<li><code>*=</code></li>\n<li><code>/=</code></li>\n<li><code>%=</code></li>\n</ul>\n<h3>3. Comparison Operators</h3>\n<p>Used to compare two values. The result is a boolean (<code>true</code> or <code>false</code>).</p>\n<ul>\n<li><code>==</code> Equal to</li>\n<li><code>!=</code> Not equal to</li>\n<li><code>></code> Greater than</li>\n<li><code>&#x3C;</code> Less than</li>\n<li><code>>=</code> Greater than or equal to</li>\n<li><code>&#x3C;=</code> Less than or equal to</li>\n</ul>\n<pre><code class=\"language-java\">int a = 5;\nint b = 7;\nSystem.out.println(a == b); // false\nSystem.out.println(a &#x3C; b);  // true\n</code></pre>\n<h3>4. Logical Operators</h3>\n<p>Used to determine the logic between variables or values.</p>\n<ul>\n<li><code>&#x26;&#x26;</code> Logical AND (returns <code>true</code> if both statements are true)</li>\n<li><code>||</code> Logical OR (returns <code>true</code> if one of the statements is true)</li>\n<li><code>!</code> Logical NOT (reverses the result, returns <code>false</code> if the result is true)</li>\n</ul>\n<pre><code class=\"language-java\">int age = 25;\nboolean hasLicense = true;\nif (age >= 18 &#x26;&#x26; hasLicense) {\n    System.out.println(\"Can drive.\");\n}\n</code></pre>"
+  },
+  "_id": "tutorials/java/operators.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/operators.md",
+    "sourceFileName": "operators.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/operators"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/java-operators",
+  "language": "java"
+}

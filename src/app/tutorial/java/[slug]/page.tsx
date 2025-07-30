@@ -13,7 +13,7 @@ const defaultOgImage = `${siteUrl}/images/og-default.png`;
 
 export async function generateStaticParams() {
     return allTutorialPosts
-        .filter(p => p.language === 'javascript')
+        .filter(p => p.language === 'java')
         .map((post) => ({
             slug: post.slug,
         }));
@@ -27,7 +27,7 @@ interface LanguageTutorialPageProps {
 
 async function getTutorialAndNeighbors(slug: string) {
     const sortedTutorials = allTutorialPosts
-        .filter(p => p.language === 'javascript')
+        .filter(p => p.language === 'java')
         .sort((a, b) => a.order - b.order);
 
     const tutorialIndex = sortedTutorials.findIndex(p => p.slug === slug);
@@ -45,7 +45,7 @@ async function getTutorialAndNeighbors(slug: string) {
 
 export async function generateMetadata({ params }: LanguageTutorialPageProps): Promise<Metadata> {
   const { tutorial } = await getTutorialAndNeighbors(params.slug);
-  const language = MOCK_PROGRAMMING_LANGUAGES.find(lang => lang.slug === 'javascript');
+  const language = MOCK_PROGRAMMING_LANGUAGES.find(lang => lang.slug === 'java');
 
   if (!tutorial || !language) {
     return {
@@ -133,10 +133,10 @@ export default async function JavascriptTutorialPage({ params }: LanguageTutoria
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
         />
         <h1 className="text-3xl font-bold tracking-tight text-foreground pb-2">{tutorial.title}</h1>
-        <p className="text-sm text-muted-foreground">{format(new Date(), "dd MMM yyyy")} | 4 min read</p>
+        <p className="text-sm text-muted-foreground">{format(new Date(), "dd MMM yyyy")} | 3 min read</p>
         
         <TutorialPagination prev={prev} next={next} />
-        
+
         <article className="prose dark:prose-invert max-w-none markdown-content">
             <div
               dangerouslySetInnerHTML={{ __html: tutorial.body.html }}
