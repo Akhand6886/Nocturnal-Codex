@@ -24,30 +24,30 @@ export const BlogPost = defineDocumentType(() => ({
   },
 }));
 
-export const PythonTutorial = defineDocumentType(() => ({
-  name: 'PythonTutorial',
-  filePathPattern: `tutorials/python/**/*.md`,
+export const TutorialPost = defineDocumentType(() => ({
+  name: 'TutorialPost',
+  filePathPattern: `tutorials/**/*.md`, 
+  contentType: 'markdown',
   fields: {
     title: { type: 'string', required: true },
     slug: { type: 'string', required: true },
     order: { type: 'number', required: true },
     description: { type: 'string', required: true },
-    category: { type: 'string', required: false },
+    category: { type: 'string', required: true },
   },
   computedFields: {
     url: {
       type: 'string',
-      resolve: (doc) => `/tutorial/python/${doc.slug}`,
+      resolve: (doc) => `/tutorial/${doc._raw.sourceFileDir.split('/')[1]}/${doc.slug}`,
     },
     language: {
-      type: "string",
-      resolve: (doc) => 'python',
-    }
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFileDir.split('/')[1],
+    },
   },
 }));
 
-
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, PythonTutorial],
+  documentTypes: [BlogPost, TutorialPost],
 })

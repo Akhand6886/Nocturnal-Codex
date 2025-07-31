@@ -1,7 +1,7 @@
 {
-  "title": "JS Hello World",
+  "title": "Hello World Program in JavaScript",
   "slug": "hello-world-in-javascript",
-  "order": 2,
+  "order": 3,
   "description": "Learn how to write your first 'Hello, World!' program in JavaScript.",
   "category": "JavaScript Basics",
   "body": {
