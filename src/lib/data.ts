@@ -306,11 +306,11 @@ export const NAV_ITEMS: NavItemType[] = [
   },
   {
     label: "Languages",
-    href: "/languages",
+    href: "#",
     children: [
-        { label: "Python", href: "/languages/python" },
-        { label: "JavaScript", href: "/languages/javascript" },
-        { label: "Java", href: "/languages/java" },
+        { label: "Python", href: "/tutorial/python/introduction-to-python" },
+        { label: "JavaScript", href: "/tutorial/javascript/features-of-javascript" },
+        // { label: "Java", href: "/languages/java" },
     ],
   },
   { label: "Blog", href: "/blog" },
@@ -321,5 +321,6 @@ export const NAV_ITEMS: NavItemType[] = [
     
 
     
+
 
 

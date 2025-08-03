@@ -53,10 +53,10 @@ export default function TutorialPage({ params }: TutorialPageProps) {
 
   return (
     <article className="py-8 prose dark:prose-invert max-w-none">
+       <TutorialPagination prev={prevPost} next={nextPost} />
       <header className="mb-8">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground">{post.title}</h1>
         <p className="text-sm text-muted-foreground mt-2">
-            {/* Placeholder date and read time */}
             4 Apr 2025 | {readTimeMinutes} min read
         </p>
       </header>
