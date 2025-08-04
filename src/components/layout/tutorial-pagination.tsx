@@ -21,8 +21,6 @@ export function TutorialPagination({ prev, next }: TutorialPaginationProps) {
         </Button>
       ) : <div />}
       
-      <Button variant="outline">Quiz</Button>
-
       {next ? (
         <Button asChild variant="outline">
           <Link href={next.url}>
