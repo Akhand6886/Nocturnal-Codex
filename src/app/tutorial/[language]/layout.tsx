@@ -24,14 +24,14 @@ export default function TutorialLayout({
 
 
   return (
-    <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="w-full">
       <div className="flex flex-col md:flex-row gap-8">
-        <aside className="w-full md:w-64 lg:w-72 flex-shrink-0 py-8">
-          <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto">
+        <aside className="w-full md:w-64 lg:w-80 flex-shrink-0 p-4 md:p-8">
+          <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
             <TutorialSidebar groupedTutorials={groupedTutorials} />
           </div>
         </aside>
-        <main className="flex-grow min-w-0 md:border-l md:pl-8">
+        <main className="flex-grow min-w-0 md:border-l md:pl-8 pt-8 pr-4">
           {children}
         </main>
       </div>
