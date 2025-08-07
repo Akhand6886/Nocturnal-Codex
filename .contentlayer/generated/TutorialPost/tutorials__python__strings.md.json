@@ -1,0 +1,22 @@
+{
+  "title": "Python String",
+  "slug": "strings",
+  "order": 11,
+  "description": "A deep dive into creating, manipulating, and formatting strings in Python.",
+  "category": "Python Data Structures",
+  "body": {
+    "raw": "\n## Python String\n\nThis tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.\n",
+    "html": "<h2>Python String</h2>\n<p>This tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.</p>"
+  },
+  "_id": "tutorials/python/strings.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/strings.md",
+    "sourceFileName": "strings.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/strings"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/strings",
+  "language": "python"
+}

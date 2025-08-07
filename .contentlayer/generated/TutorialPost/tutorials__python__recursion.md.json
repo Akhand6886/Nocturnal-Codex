@@ -1,0 +1,22 @@
+{
+  "title": "Recursion in Python",
+  "slug": "recursion",
+  "order": 9,
+  "description": "Understand the concept of recursion and how to write recursive functions in Python.",
+  "category": "Python Fundamentals",
+  "body": {
+    "raw": "\n## Recursion in Python\n\nThis tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.\n",
+    "html": "<h2>Recursion in Python</h2>\n<p>This tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.</p>"
+  },
+  "_id": "tutorials/python/recursion.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/recursion.md",
+    "sourceFileName": "recursion.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/recursion"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/recursion",
+  "language": "python"
+}

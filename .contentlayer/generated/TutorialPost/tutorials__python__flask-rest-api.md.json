@@ -1,0 +1,22 @@
+{
+  "title": "Python | Build a REST API using Flask",
+  "slug": "flask-rest-api",
+  "order": 38,
+  "description": "A guide to building a simple RESTful API using the Flask framework.",
+  "category": "Web Development with Python",
+  "body": {
+    "raw": "\n## Build a REST API using Flask\n\nThis tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.\n",
+    "html": "<h2>Build a REST API using Flask</h2>\n<p>This tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.</p>"
+  },
+  "_id": "tutorials/python/flask-rest-api.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/flask-rest-api.md",
+    "sourceFileName": "flask-rest-api.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/flask-rest-api"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/flask-rest-api",
+  "language": "python"
+}

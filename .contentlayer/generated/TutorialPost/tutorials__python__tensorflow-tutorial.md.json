@@ -1,0 +1,22 @@
+{
+  "title": "TensorFlow Tutorial",
+  "slug": "tensorflow-tutorial",
+  "order": 31,
+  "description": "A beginner's guide to building and training models with TensorFlow.",
+  "category": "Data Science with Python",
+  "body": {
+    "raw": "\n## TensorFlow Tutorial\n\nThis tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.\n",
+    "html": "<h2>TensorFlow Tutorial</h2>\n<p>This tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.</p>"
+  },
+  "_id": "tutorials/python/tensorflow-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/tensorflow-tutorial.md",
+    "sourceFileName": "tensorflow-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/tensorflow-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/tensorflow-tutorial",
+  "language": "python"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Django Tutorial | Learn Django Framework",
+  "slug": "django-tutorial",
+  "order": 34,
+  "description": "A comprehensive guide to building web applications with the Django framework.",
+  "category": "Web Development with Python",
+  "body": {
+    "raw": "\n## Django Tutorial\n\nThis tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.\n",
+    "html": "<h2>Django Tutorial</h2>\n<p>This tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.</p>"
+  },
+  "_id": "tutorials/python/django-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/django-tutorial.md",
+    "sourceFileName": "django-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/django-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/django-tutorial",
+  "language": "python"
+}

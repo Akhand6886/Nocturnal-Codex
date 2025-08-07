@@ -1,0 +1,22 @@
+{
+  "title": "Python MongoDB Tutorial",
+  "slug": "mongodb-tutorial",
+  "order": 21,
+  "description": "Learn how to connect to and interact with a MongoDB database using Python.",
+  "category": "Python Database Tutorial",
+  "body": {
+    "raw": "\n## Python MongoDB Tutorial\n\nThis tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the `pymongo` library.\n",
+    "html": "<h2>Python MongoDB Tutorial</h2>\n<p>This tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the <code>pymongo</code> library.</p>"
+  },
+  "_id": "tutorials/python/mongodb-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/mongodb-tutorial.md",
+    "sourceFileName": "mongodb-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/mongodb-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/mongodb-tutorial",
+  "language": "python"
+}

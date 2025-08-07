@@ -1,0 +1,22 @@
+{
+  "title": "Python Keywords",
+  "slug": "keywords",
+  "order": 5,
+  "description": "A reference for all the reserved keywords in the Python language.",
+  "category": "Python Fundamentals",
+  "body": {
+    "raw": "\n## Python Keywords\n\nThis tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.\n",
+    "html": "<h2>Python Keywords</h2>\n<p>This tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.</p>"
+  },
+  "_id": "tutorials/python/keywords.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/keywords.md",
+    "sourceFileName": "keywords.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/keywords"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/keywords",
+  "language": "python"
+}

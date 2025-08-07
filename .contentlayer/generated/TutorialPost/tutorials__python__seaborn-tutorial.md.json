@@ -1,0 +1,22 @@
+{
+  "title": "Python Seaborn Tutorial",
+  "slug": "seaborn-tutorial",
+  "order": 28,
+  "description": "Learn to create beautiful and informative statistical graphics with Seaborn.",
+  "category": "Data Science with Python",
+  "body": {
+    "raw": "\n## Python Seaborn Tutorial\n\nThis tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.\n",
+    "html": "<h2>Python Seaborn Tutorial</h2>\n<p>This tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.</p>"
+  },
+  "_id": "tutorials/python/seaborn-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/seaborn-tutorial.md",
+    "sourceFileName": "seaborn-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/seaborn-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/seaborn-tutorial",
+  "language": "python"
+}

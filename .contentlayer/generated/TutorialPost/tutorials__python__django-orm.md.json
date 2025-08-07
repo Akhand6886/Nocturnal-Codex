@@ -1,0 +1,22 @@
+{
+  "title": "Django ORM - Inserting, Updating & Deleting Data",
+  "slug": "django-orm",
+  "order": 35,
+  "description": "Learn how to interact with your database using the Django Object-Relational Mapper (ORM).",
+  "category": "Web Development with Python",
+  "body": {
+    "raw": "\n## Django ORM\n\nThis tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.\n",
+    "html": "<h2>Django ORM</h2>\n<p>This tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.</p>"
+  },
+  "_id": "tutorials/python/django-orm.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/django-orm.md",
+    "sourceFileName": "django-orm.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/django-orm"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/django-orm",
+  "language": "python"
+}

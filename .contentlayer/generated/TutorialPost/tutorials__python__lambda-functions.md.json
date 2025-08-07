@@ -1,0 +1,22 @@
+{
+  "title": "Python Lambda Functions",
+  "slug": "lambda-functions",
+  "order": 10,
+  "description": "Learn how to use anonymous (lambda) functions for short, one-line operations.",
+  "category": "Python Fundamentals",
+  "body": {
+    "raw": "\n## Python Lambda Functions\n\nThis tutorial introduces lambda functions, which are small, anonymous functions defined with the `lambda` keyword. They are useful for short-term operations where a full function definition is not necessary.\n",
+    "html": "<h2>Python Lambda Functions</h2>\n<p>This tutorial introduces lambda functions, which are small, anonymous functions defined with the <code>lambda</code> keyword. They are useful for short-term operations where a full function definition is not necessary.</p>"
+  },
+  "_id": "tutorials/python/lambda-functions.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/lambda-functions.md",
+    "sourceFileName": "lambda-functions.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/lambda-functions"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/lambda-functions",
+  "language": "python"
+}

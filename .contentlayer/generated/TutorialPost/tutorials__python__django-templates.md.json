@@ -1,0 +1,22 @@
+{
+  "title": "Django Templates",
+  "slug": "django-templates",
+  "order": 37,
+  "description": "Understand the Django template language for creating dynamic web pages.",
+  "category": "Web Development with Python",
+  "body": {
+    "raw": "\n## Django Templates\n\nThis tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.\n",
+    "html": "<h2>Django Templates</h2>\n<p>This tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.</p>"
+  },
+  "_id": "tutorials/python/django-templates.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/django-templates.md",
+    "sourceFileName": "django-templates.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/django-templates"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/django-templates",
+  "language": "python"
+}

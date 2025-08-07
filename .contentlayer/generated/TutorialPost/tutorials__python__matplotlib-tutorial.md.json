@@ -1,0 +1,22 @@
+{
+  "title": "Matplotlib Tutorial",
+  "slug": "matplotlib-tutorial",
+  "order": 27,
+  "description": "Create static, animated, and interactive visualizations in Python with Matplotlib.",
+  "category": "Data Science with Python",
+  "body": {
+    "raw": "\n## Matplotlib Tutorial\n\nThis tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.\n",
+    "html": "<h2>Matplotlib Tutorial</h2>\n<p>This tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.</p>"
+  },
+  "_id": "tutorials/python/matplotlib-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/matplotlib-tutorial.md",
+    "sourceFileName": "matplotlib-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/matplotlib-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/matplotlib-tutorial",
+  "language": "python"
+}

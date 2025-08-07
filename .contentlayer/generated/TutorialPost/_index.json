@@ -644,8 +644,8 @@
     "description": "A brief overview of Python, its history, and why it's a popular choice for developers.",
     "category": "Getting Started",
     "body": {
-      "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. This focus on clarity makes it an excellent language for both beginners and seasoned developers.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple syntax that is easy to pick up.\n- **Interpreted Language**: Code is executed line by line, making debugging easier.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions for many tasks, often called \"batteries included\".\n- **Dynamically Typed**: Variable types are checked at runtime, offering flexibility during development.\n\n## Common Uses\n\n- Web Development (Django, Flask)\n- Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)\n- Automation and Scripting\n- Software Testing\n- Game Development (Pygame)\n\nThis tutorial series will guide you through the basics of Python programming, from fundamental concepts to more advanced topics. Let's get started!\n",
-      "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. This focus on clarity makes it an excellent language for both beginners and seasoned developers.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple syntax that is easy to pick up.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, making debugging easier.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions for many tasks, often called \"batteries included\".</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime, offering flexibility during development.</li>\n</ul>\n<h2>Common Uses</h2>\n<ul>\n<li>Web Development (Django, Flask)</li>\n<li>Data Science and Machine Learning (NumPy, Pandas, Scikit-learn)</li>\n<li>Automation and Scripting</li>\n<li>Software Testing</li>\n<li>Game Development (Pygame)</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming, from fundamental concepts to more advanced topics. Let's get started!</p>"
+      "raw": "\n## What is Python?\n\nPython is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. This focus on clarity makes it an excellent language for both beginners and seasoned developers.\n\nIts name is a tribute to the British comedy group Monty Python.\n\n## Key Features\n\n- **Easy to Learn and Use**: Python has a simple, clean syntax that is easy to pick up, making it ideal for newcomers to programming.\n- **Interpreted Language**: Code is executed line by line, which simplifies debugging and allows for rapid prototyping.\n- **Cross-Platform**: Python runs on various operating systems like Windows, macOS, and Linux without requiring code changes.\n- **Extensive Standard Library**: Comes with a large collection of modules and functions for many tasks, often called \"batteries included\". This means you can accomplish a lot without needing to install third-party libraries.\n- **Dynamically Typed**: Variable types are checked at runtime, offering flexibility during development. You don't need to declare the type of a variable.\n- **Object-Oriented**: Python supports object-oriented programming, allowing you to model real-world problems using classes and objects.\n- **Strong Community Support**: A massive and active global community means you can find help, tutorials, and libraries for almost any problem.\n\n## Common Uses\n\nPython is a \"general-purpose\" language, meaning it's used in many different fields:\n\n- **Web Development**: Frameworks like Django and Flask are used to build powerful backend services for web applications.\n- **Data Science and Machine Learning**: With libraries like NumPy, Pandas, Scikit-learn, and TensorFlow, Python is the leading language for data analysis, visualization, and building AI models.\n- **Automation and Scripting**: Python is excellent for automating repetitive tasks, such as organizing files, sending emails, or scraping websites.\n- **Software Testing**: It's often used to write automated tests to ensure software quality.\n- **Game Development**: Libraries like Pygame provide a framework for creating simple 2D games.\n- **Desktop Applications**: You can build cross-platform desktop GUIs with toolkits like Tkinter or PyQt.\n\nThis tutorial series will guide you through the basics of Python programming, from fundamental concepts to more advanced topics. Let's get started!\n",
+      "html": "<h2>What is Python?</h2>\n<p>Python is a high-level, interpreted programming language known for its readability and versatility. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace. This focus on clarity makes it an excellent language for both beginners and seasoned developers.</p>\n<p>Its name is a tribute to the British comedy group Monty Python.</p>\n<h2>Key Features</h2>\n<ul>\n<li><strong>Easy to Learn and Use</strong>: Python has a simple, clean syntax that is easy to pick up, making it ideal for newcomers to programming.</li>\n<li><strong>Interpreted Language</strong>: Code is executed line by line, which simplifies debugging and allows for rapid prototyping.</li>\n<li><strong>Cross-Platform</strong>: Python runs on various operating systems like Windows, macOS, and Linux without requiring code changes.</li>\n<li><strong>Extensive Standard Library</strong>: Comes with a large collection of modules and functions for many tasks, often called \"batteries included\". This means you can accomplish a lot without needing to install third-party libraries.</li>\n<li><strong>Dynamically Typed</strong>: Variable types are checked at runtime, offering flexibility during development. You don't need to declare the type of a variable.</li>\n<li><strong>Object-Oriented</strong>: Python supports object-oriented programming, allowing you to model real-world problems using classes and objects.</li>\n<li><strong>Strong Community Support</strong>: A massive and active global community means you can find help, tutorials, and libraries for almost any problem.</li>\n</ul>\n<h2>Common Uses</h2>\n<p>Python is a \"general-purpose\" language, meaning it's used in many different fields:</p>\n<ul>\n<li><strong>Web Development</strong>: Frameworks like Django and Flask are used to build powerful backend services for web applications.</li>\n<li><strong>Data Science and Machine Learning</strong>: With libraries like NumPy, Pandas, Scikit-learn, and TensorFlow, Python is the leading language for data analysis, visualization, and building AI models.</li>\n<li><strong>Automation and Scripting</strong>: Python is excellent for automating repetitive tasks, such as organizing files, sending emails, or scraping websites.</li>\n<li><strong>Software Testing</strong>: It's often used to write automated tests to ensure software quality.</li>\n<li><strong>Game Development</strong>: Libraries like Pygame provide a framework for creating simple 2D games.</li>\n<li><strong>Desktop Applications</strong>: You can build cross-platform desktop GUIs with toolkits like Tkinter or PyQt.</li>\n</ul>\n<p>This tutorial series will guide you through the basics of Python programming, from fundamental concepts to more advanced topics. Let's get started!</p>"
     },
     "_id": "tutorials/python/introduction.md",
     "_raw": {
@@ -1031,6 +1031,776 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/python/datatypes",
+    "language": "python"
+  },
+  {
+    "title": "Input and Output in Python",
+    "slug": "input-output",
+    "order": 2,
+    "description": "Learn how to handle user input and display output in Python.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Input and Output in Python\n\nThis tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.\n",
+      "html": "<h2>Input and Output in Python</h2>\n<p>This tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.</p>"
+    },
+    "_id": "tutorials/python/input-output.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/input-output.md",
+      "sourceFileName": "input-output.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/input-output"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/input-output",
+    "language": "python"
+  },
+  {
+    "title": "Python Keywords",
+    "slug": "keywords",
+    "order": 5,
+    "description": "A reference for all the reserved keywords in the Python language.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Python Keywords\n\nThis tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.\n",
+      "html": "<h2>Python Keywords</h2>\n<p>This tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.</p>"
+    },
+    "_id": "tutorials/python/keywords.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/keywords.md",
+      "sourceFileName": "keywords.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/keywords"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/keywords",
+    "language": "python"
+  },
+  {
+    "title": "Python Operators",
+    "slug": "operators",
+    "order": 4,
+    "description": "Understand the various operators in Python for arithmetic, comparison, and logical operations.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Python Operators\n\nThis tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.\n",
+      "html": "<h2>Python Operators</h2>\n<p>This tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.</p>"
+    },
+    "_id": "tutorials/python/operators.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/operators.md",
+      "sourceFileName": "operators.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/operators"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/operators",
+    "language": "python"
+  },
+  {
+    "title": "Conditional Statements in Python",
+    "slug": "conditional-statements",
+    "order": 7,
+    "description": "Learn how to use if, elif, and else to control the flow of your program based on conditions.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Conditional Statements in Python\n\nThis tutorial covers how to use conditional statements (if, else, elif) to control the flow of execution in your Python programs based on certain conditions.\n",
+      "html": "<h2>Conditional Statements in Python</h2>\n<p>This tutorial covers how to use conditional statements (if, else, elif) to control the flow of execution in your Python programs based on certain conditions.</p>"
+    },
+    "_id": "tutorials/python/conditional-statements.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/conditional-statements.md",
+      "sourceFileName": "conditional-statements.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/conditional-statements"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/conditional-statements",
+    "language": "python"
+  },
+  {
+    "title": "Dictionaries in Python",
+    "slug": "dictionaries",
+    "order": 14,
+    "description": "Master the use of dictionaries for key-value pair data storage in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Dictionaries in Python\n\nThis tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.\n",
+      "html": "<h2>Dictionaries in Python</h2>\n<p>This tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.</p>"
+    },
+    "_id": "tutorials/python/dictionaries.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/dictionaries.md",
+      "sourceFileName": "dictionaries.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/dictionaries"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/dictionaries",
+    "language": "python"
+  },
+  {
+    "title": "Python Lambda Functions",
+    "slug": "lambda-functions",
+    "order": 10,
+    "description": "Learn how to use anonymous (lambda) functions for short, one-line operations.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Python Lambda Functions\n\nThis tutorial introduces lambda functions, which are small, anonymous functions defined with the `lambda` keyword. They are useful for short-term operations where a full function definition is not necessary.\n",
+      "html": "<h2>Python Lambda Functions</h2>\n<p>This tutorial introduces lambda functions, which are small, anonymous functions defined with the <code>lambda</code> keyword. They are useful for short-term operations where a full function definition is not necessary.</p>"
+    },
+    "_id": "tutorials/python/lambda-functions.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/lambda-functions.md",
+      "sourceFileName": "lambda-functions.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/lambda-functions"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/lambda-functions",
+    "language": "python"
+  },
+  {
+    "title": "Python Lists",
+    "slug": "lists",
+    "order": 12,
+    "description": "Learn how to use lists, one of the most versatile data structures in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Lists\n\nThis tutorial provides a comprehensive guide to Python lists, covering creation, indexing, slicing, and methods for adding, removing, and modifying elements.\n",
+      "html": "<h2>Python Lists</h2>\n<p>This tutorial provides a comprehensive guide to Python lists, covering creation, indexing, slicing, and methods for adding, removing, and modifying elements.</p>"
+    },
+    "_id": "tutorials/python/lists.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/lists.md",
+      "sourceFileName": "lists.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/lists"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/lists",
+    "language": "python"
+  },
+  {
+    "title": "Recursion in Python",
+    "slug": "recursion",
+    "order": 9,
+    "description": "Understand the concept of recursion and how to write recursive functions in Python.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Recursion in Python\n\nThis tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.\n",
+      "html": "<h2>Recursion in Python</h2>\n<p>This tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.</p>"
+    },
+    "_id": "tutorials/python/recursion.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/recursion.md",
+      "sourceFileName": "recursion.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/recursion"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/recursion",
+    "language": "python"
+  },
+  {
+    "title": "Python String",
+    "slug": "strings",
+    "order": 11,
+    "description": "A deep dive into creating, manipulating, and formatting strings in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python String\n\nThis tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.\n",
+      "html": "<h2>Python String</h2>\n<p>This tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.</p>"
+    },
+    "_id": "tutorials/python/strings.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/strings.md",
+      "sourceFileName": "strings.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/strings"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/strings",
+    "language": "python"
+  },
+  {
+    "title": "Python Tuples",
+    "slug": "tuples",
+    "order": 13,
+    "description": "Understand immutable sequences using tuples in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Tuples\n\nThis tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.\n",
+      "html": "<h2>Python Tuples</h2>\n<p>This tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.</p>"
+    },
+    "_id": "tutorials/python/tuples.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/tuples.md",
+      "sourceFileName": "tuples.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/tuples"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/tuples",
+    "language": "python"
+  },
+  {
+    "title": "Python Arrays",
+    "slug": "arrays",
+    "order": 16,
+    "description": "Understand how to use the array module for type-constrained, efficient arrays.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Arrays\n\nThis tutorial covers the `array` module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.\n",
+      "html": "<h2>Python Arrays</h2>\n<p>This tutorial covers the <code>array</code> module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.</p>"
+    },
+    "_id": "tutorials/python/arrays.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/arrays.md",
+      "sourceFileName": "arrays.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/arrays"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/arrays",
+    "language": "python"
+  },
+  {
+    "title": "Python Exception Handling",
+    "slug": "exception-handling",
+    "order": 19,
+    "description": "Learn how to handle errors and exceptions gracefully using try, except, else, and finally.",
+    "category": "Advanced Python",
+    "body": {
+      "raw": "\n## Python Exception Handling\n\nThis tutorial explains how to manage errors and exceptions in Python using `try...except` blocks, ensuring your programs are robust and can handle unexpected situations.\n",
+      "html": "<h2>Python Exception Handling</h2>\n<p>This tutorial explains how to manage errors and exceptions in Python using <code>try...except</code> blocks, ensuring your programs are robust and can handle unexpected situations.</p>"
+    },
+    "_id": "tutorials/python/exception-handling.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/exception-handling.md",
+      "sourceFileName": "exception-handling.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/exception-handling"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/exception-handling",
+    "language": "python"
+  },
+  {
+    "title": "File Handling in Python",
+    "slug": "file-handling",
+    "order": 20,
+    "description": "Learn how to read from and write to files using Python.",
+    "category": "Advanced Python",
+    "body": {
+      "raw": "\n## File Handling in Python\n\nThis tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.\n",
+      "html": "<h2>File Handling in Python</h2>\n<p>This tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.</p>"
+    },
+    "_id": "tutorials/python/file-handling.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/file-handling.md",
+      "sourceFileName": "file-handling.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/file-handling"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/file-handling",
+    "language": "python"
+  },
+  {
+    "title": "List Comprehension in Python",
+    "slug": "list-comprehension",
+    "order": 17,
+    "description": "A concise and elegant way to create lists in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## List Comprehension in Python\n\nThis tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using `for` loops.\n",
+      "html": "<h2>List Comprehension in Python</h2>\n<p>This tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using <code>for</code> loops.</p>"
+    },
+    "_id": "tutorials/python/list-comprehension.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/list-comprehension.md",
+      "sourceFileName": "list-comprehension.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/list-comprehension"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/list-comprehension",
+    "language": "python"
+  },
+  {
+    "title": "Python MongoDB Tutorial",
+    "slug": "mongodb-tutorial",
+    "order": 21,
+    "description": "Learn how to connect to and interact with a MongoDB database using Python.",
+    "category": "Python Database Tutorial",
+    "body": {
+      "raw": "\n## Python MongoDB Tutorial\n\nThis tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the `pymongo` library.\n",
+      "html": "<h2>Python MongoDB Tutorial</h2>\n<p>This tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the <code>pymongo</code> library.</p>"
+    },
+    "_id": "tutorials/python/mongodb-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/mongodb-tutorial.md",
+      "sourceFileName": "mongodb-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/mongodb-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/mongodb-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python MySQL",
+    "slug": "mysql-tutorial",
+    "order": 22,
+    "description": "Learn to connect Python applications to a MySQL database.",
+    "category": "Python Database Tutorial",
+    "body": {
+      "raw": "\n## Python MySQL\n\nThis tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like `mysql-connector-python`.\n",
+      "html": "<h2>Python MySQL</h2>\n<p>This tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like <code>mysql-connector-python</code>.</p>"
+    },
+    "_id": "tutorials/python/mysql-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/mysql-tutorial.md",
+      "sourceFileName": "mysql-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/mysql-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/mysql-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python OOPs Concepts",
+    "slug": "oop-concepts",
+    "order": 18,
+    "description": "An introduction to Object-Oriented Programming (OOP) in Python.",
+    "category": "Advanced Python",
+    "body": {
+      "raw": "\n## Python OOPs Concepts\n\nThis tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.\n",
+      "html": "<h2>Python OOPs Concepts</h2>\n<p>This tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.</p>"
+    },
+    "_id": "tutorials/python/oop-concepts.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/oop-concepts.md",
+      "sourceFileName": "oop-concepts.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/oop-concepts"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/oop-concepts",
+    "language": "python"
+  },
+  {
+    "title": "Python Sets",
+    "slug": "sets",
+    "order": 15,
+    "description": "Learn about sets for storing unique, unordered elements and performing mathematical set operations.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Sets\n\nThis tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.\n",
+      "html": "<h2>Python Sets</h2>\n<p>This tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.</p>"
+    },
+    "_id": "tutorials/python/sets.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/sets.md",
+      "sourceFileName": "sets.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/sets"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/sets",
+    "language": "python"
+  },
+  {
+    "title": "List of Python GUI Library and Packages",
+    "slug": "gui-libraries",
+    "order": 24,
+    "description": "An overview of popular libraries for creating Graphical User Interfaces (GUIs) in Python.",
+    "category": "Python DSA Libraries",
+    "body": {
+      "raw": "\n## Python GUI Libraries\n\nThis tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.\n",
+      "html": "<h2>Python GUI Libraries</h2>\n<p>This tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.</p>"
+    },
+    "_id": "tutorials/python/gui-libraries.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/gui-libraries.md",
+      "sourceFileName": "gui-libraries.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/gui-libraries"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/gui-libraries",
+    "language": "python"
+  },
+  {
+    "title": "Python Modules",
+    "slug": "modules",
+    "order": 23,
+    "description": "Understand how to create and use modules to organize your Python code.",
+    "category": "Python Packages",
+    "body": {
+      "raw": "\n## Python Modules\n\nThis tutorial explains what Python modules are, how to create your own, and how to use the `import` statement to bring functionality from one module into another.\n",
+      "html": "<h2>Python Modules</h2>\n<p>This tutorial explains what Python modules are, how to create your own, and how to use the <code>import</code> statement to bring functionality from one module into another.</p>"
+    },
+    "_id": "tutorials/python/modules.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/modules.md",
+      "sourceFileName": "modules.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/modules"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/modules",
+    "language": "python"
+  },
+  {
+    "title": "NumPy Tutorial - Python Library",
+    "slug": "numpy-tutorial",
+    "order": 25,
+    "description": "A beginner's guide to NumPy for numerical computing in Python.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## NumPy Tutorial\n\nThis tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.\n",
+      "html": "<h2>NumPy Tutorial</h2>\n<p>This tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.</p>"
+    },
+    "_id": "tutorials/python/numpy-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/numpy-tutorial.md",
+      "sourceFileName": "numpy-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/numpy-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/numpy-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Pandas Tutorial",
+    "slug": "pandas-tutorial",
+    "order": 26,
+    "description": "Learn the basics of data analysis and manipulation with the Pandas library.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Pandas Tutorial\n\nThis tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.\n",
+      "html": "<h2>Pandas Tutorial</h2>\n<p>This tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.</p>"
+    },
+    "_id": "tutorials/python/pandas-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/pandas-tutorial.md",
+      "sourceFileName": "pandas-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/pandas-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/pandas-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Flask Tutorial",
+    "slug": "flask-tutorial",
+    "order": 33,
+    "description": "Learn to build web applications with Flask, a lightweight Python web framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Flask Tutorial\n\nThis tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.\n",
+      "html": "<h2>Flask Tutorial</h2>\n<p>This tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.</p>"
+    },
+    "_id": "tutorials/python/flask-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/flask-tutorial.md",
+      "sourceFileName": "flask-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/flask-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/flask-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Templating With Jinja2 in Flask",
+    "slug": "jinja2-templating-flask",
+    "order": 36,
+    "description": "Learn how to use the Jinja2 template engine to create dynamic HTML pages in Flask.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Templating With Jinja2 in Flask\n\nThis tutorial covers the Jinja2 template engine, which is used by Flask to render dynamic HTML templates with variables, loops, and conditional statements.\n",
+      "html": "<h2>Templating With Jinja2 in Flask</h2>\n<p>This tutorial covers the Jinja2 template engine, which is used by Flask to render dynamic HTML templates with variables, loops, and conditional statements.</p>"
+    },
+    "_id": "tutorials/python/jinja2-templating-flask.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/jinja2-templating-flask.md",
+      "sourceFileName": "jinja2-templating-flask.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/jinja2-templating-flask"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/jinja2-templating-flask",
+    "language": "python"
+  },
+  {
+    "title": "Matplotlib Tutorial",
+    "slug": "matplotlib-tutorial",
+    "order": 27,
+    "description": "Create static, animated, and interactive visualizations in Python with Matplotlib.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Matplotlib Tutorial\n\nThis tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.\n",
+      "html": "<h2>Matplotlib Tutorial</h2>\n<p>This tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.</p>"
+    },
+    "_id": "tutorials/python/matplotlib-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/matplotlib-tutorial.md",
+      "sourceFileName": "matplotlib-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/matplotlib-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/matplotlib-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "PyTorch Tutorial",
+    "slug": "pytorch-tutorial",
+    "order": 32,
+    "description": "Learn the fundamentals of deep learning with PyTorch.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## PyTorch Tutorial\n\nThis tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.\n",
+      "html": "<h2>PyTorch Tutorial</h2>\n<p>This tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.</p>"
+    },
+    "_id": "tutorials/python/pytorch-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/pytorch-tutorial.md",
+      "sourceFileName": "pytorch-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/pytorch-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/pytorch-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Learning Model Building in Scikit-learn",
+    "slug": "scikit-learn-tutorial",
+    "order": 30,
+    "description": "An introduction to building machine learning models with Scikit-learn.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Scikit-learn Tutorial\n\nThis tutorial introduces Scikit-learn, one of the most popular machine learning libraries in Python. Learn how to implement common ML algorithms for classification, regression, and clustering.\n",
+      "html": "<h2>Scikit-learn Tutorial</h2>\n<p>This tutorial introduces Scikit-learn, one of the most popular machine learning libraries in Python. Learn how to implement common ML algorithms for classification, regression, and clustering.</p>"
+    },
+    "_id": "tutorials/python/scikit-learn-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/scikit-learn-tutorial.md",
+      "sourceFileName": "scikit-learn-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/scikit-learn-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/scikit-learn-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python Seaborn Tutorial",
+    "slug": "seaborn-tutorial",
+    "order": 28,
+    "description": "Learn to create beautiful and informative statistical graphics with Seaborn.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Python Seaborn Tutorial\n\nThis tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.\n",
+      "html": "<h2>Python Seaborn Tutorial</h2>\n<p>This tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.</p>"
+    },
+    "_id": "tutorials/python/seaborn-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/seaborn-tutorial.md",
+      "sourceFileName": "seaborn-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/seaborn-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/seaborn-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "StatsModel Library - Tutorial",
+    "slug": "statsmodel-tutorial",
+    "order": 29,
+    "description": "A guide to statistical modeling and testing using the StatsModel library.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## StatsModel Library Tutorial\n\nThis tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.\n",
+      "html": "<h2>StatsModel Library Tutorial</h2>\n<p>This tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.</p>"
+    },
+    "_id": "tutorials/python/statsmodel-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/statsmodel-tutorial.md",
+      "sourceFileName": "statsmodel-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/statsmodel-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/statsmodel-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "TensorFlow Tutorial",
+    "slug": "tensorflow-tutorial",
+    "order": 31,
+    "description": "A beginner's guide to building and training models with TensorFlow.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## TensorFlow Tutorial\n\nThis tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.\n",
+      "html": "<h2>TensorFlow Tutorial</h2>\n<p>This tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.</p>"
+    },
+    "_id": "tutorials/python/tensorflow-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/tensorflow-tutorial.md",
+      "sourceFileName": "tensorflow-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/tensorflow-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/tensorflow-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Django ORM - Inserting, Updating & Deleting Data",
+    "slug": "django-orm",
+    "order": 35,
+    "description": "Learn how to interact with your database using the Django Object-Relational Mapper (ORM).",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Django ORM\n\nThis tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.\n",
+      "html": "<h2>Django ORM</h2>\n<p>This tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.</p>"
+    },
+    "_id": "tutorials/python/django-orm.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-orm.md",
+      "sourceFileName": "django-orm.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-orm"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-orm",
+    "language": "python"
+  },
+  {
+    "title": "How to Create a basic API using Django Rest Framework ?",
+    "slug": "django-rest-api",
+    "order": 39,
+    "description": "Learn the fundamentals of building powerful APIs with Django Rest Framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Create a basic API using Django Rest Framework\n\nThis tutorial shows you how to quickly build a REST API in a Django project using the Django Rest Framework, covering serializers, viewsets, and routers.\n",
+      "html": "<h2>Create a basic API using Django Rest Framework</h2>\n<p>This tutorial shows you how to quickly build a REST API in a Django project using the Django Rest Framework, covering serializers, viewsets, and routers.</p>"
+    },
+    "_id": "tutorials/python/django-rest-api.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-rest-api.md",
+      "sourceFileName": "django-rest-api.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-rest-api"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-rest-api",
+    "language": "python"
+  },
+  {
+    "title": "Django Templates",
+    "slug": "django-templates",
+    "order": 37,
+    "description": "Understand the Django template language for creating dynamic web pages.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Django Templates\n\nThis tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.\n",
+      "html": "<h2>Django Templates</h2>\n<p>This tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.</p>"
+    },
+    "_id": "tutorials/python/django-templates.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-templates.md",
+      "sourceFileName": "django-templates.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-templates"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-templates",
+    "language": "python"
+  },
+  {
+    "title": "Django Tutorial | Learn Django Framework",
+    "slug": "django-tutorial",
+    "order": 34,
+    "description": "A comprehensive guide to building web applications with the Django framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Django Tutorial\n\nThis tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.\n",
+      "html": "<h2>Django Tutorial</h2>\n<p>This tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.</p>"
+    },
+    "_id": "tutorials/python/django-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-tutorial.md",
+      "sourceFileName": "django-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python | Build a REST API using Flask",
+    "slug": "flask-rest-api",
+    "order": 38,
+    "description": "A guide to building a simple RESTful API using the Flask framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Build a REST API using Flask\n\nThis tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.\n",
+      "html": "<h2>Build a REST API using Flask</h2>\n<p>This tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.</p>"
+    },
+    "_id": "tutorials/python/flask-rest-api.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/flask-rest-api.md",
+      "sourceFileName": "flask-rest-api.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/flask-rest-api"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/flask-rest-api",
     "language": "python"
   }
 ]

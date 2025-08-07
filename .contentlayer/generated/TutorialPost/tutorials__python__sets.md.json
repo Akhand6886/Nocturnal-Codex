@@ -1,0 +1,22 @@
+{
+  "title": "Python Sets",
+  "slug": "sets",
+  "order": 15,
+  "description": "Learn about sets for storing unique, unordered elements and performing mathematical set operations.",
+  "category": "Python Data Structures",
+  "body": {
+    "raw": "\n## Python Sets\n\nThis tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.\n",
+    "html": "<h2>Python Sets</h2>\n<p>This tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.</p>"
+  },
+  "_id": "tutorials/python/sets.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/sets.md",
+    "sourceFileName": "sets.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/sets"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/sets",
+  "language": "python"
+}

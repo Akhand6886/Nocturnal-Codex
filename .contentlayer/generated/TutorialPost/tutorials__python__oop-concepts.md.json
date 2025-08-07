@@ -1,0 +1,22 @@
+{
+  "title": "Python OOPs Concepts",
+  "slug": "oop-concepts",
+  "order": 18,
+  "description": "An introduction to Object-Oriented Programming (OOP) in Python.",
+  "category": "Advanced Python",
+  "body": {
+    "raw": "\n## Python OOPs Concepts\n\nThis tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.\n",
+    "html": "<h2>Python OOPs Concepts</h2>\n<p>This tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.</p>"
+  },
+  "_id": "tutorials/python/oop-concepts.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/oop-concepts.md",
+    "sourceFileName": "oop-concepts.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/oop-concepts"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/oop-concepts",
+  "language": "python"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "File Handling in Python",
+  "slug": "file-handling",
+  "order": 20,
+  "description": "Learn how to read from and write to files using Python.",
+  "category": "Advanced Python",
+  "body": {
+    "raw": "\n## File Handling in Python\n\nThis tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.\n",
+    "html": "<h2>File Handling in Python</h2>\n<p>This tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.</p>"
+  },
+  "_id": "tutorials/python/file-handling.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/file-handling.md",
+    "sourceFileName": "file-handling.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/file-handling"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/file-handling",
+  "language": "python"
+}

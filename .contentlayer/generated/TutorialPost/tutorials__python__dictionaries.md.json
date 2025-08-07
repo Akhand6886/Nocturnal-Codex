@@ -1,0 +1,22 @@
+{
+  "title": "Dictionaries in Python",
+  "slug": "dictionaries",
+  "order": 14,
+  "description": "Master the use of dictionaries for key-value pair data storage in Python.",
+  "category": "Python Data Structures",
+  "body": {
+    "raw": "\n## Dictionaries in Python\n\nThis tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.\n",
+    "html": "<h2>Dictionaries in Python</h2>\n<p>This tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.</p>"
+  },
+  "_id": "tutorials/python/dictionaries.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/dictionaries.md",
+    "sourceFileName": "dictionaries.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/dictionaries"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/dictionaries",
+  "language": "python"
+}
