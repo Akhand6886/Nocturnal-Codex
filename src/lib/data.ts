@@ -307,10 +307,13 @@ export const NAV_ITEMS: NavItemType[] = [
         { label: "Python", href: "/tutorial/python/introduction-to-python" },
         { label: "JavaScript", href: "/tutorial/javascript/features-of-javascript" },
         { label: "Java", href: "/tutorial/java/introduction-to-java" },
-        { label: "C", href: "/tutorial/c/introduction-to-c" },
+        { label: "TypeScript", href: "/tutorial/typescript/introduction-to-typescript" },
+        { label: "Go", href: "/tutorial/go/introduction" },
+        { label: "Rust", href: "/tutorial/rust/introduction" },
+        { label: "Swift", href: "/tutorial/swift/introduction" },
+        { label: "Kotlin", href: "/tutorial/kotlin/introduction" },
         { label: "C++", href: "/tutorial/cplusplus/introduction-to-cplusplus" },
         { label: "C#", href: "/tutorial/csharp/introduction-to-csharp" },
-        { label: "TypeScript", href: "/tutorial/typescript/introduction-to-typescript" },
     ],
   },
   { label: "Blog", href: "/blog" },
@@ -318,11 +321,3 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
-    
-
-    
-
-
-
-
-

@@ -108,6 +108,60 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/dart/introduction.md": {
+      "document": {
+        "title": "Introduction to Dart",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Dart, a client-optimized language for fast apps on any platform.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Dart?\n\nDart is a programming language designed by Google and is used to build mobile, desktop, server, and web applications. Dart is an object-oriented, class-based, garbage-collected language with C-style syntax. It can compile to either native code or JavaScript. It is the language used by the Flutter framework.\n",
+          "html": "<h2>What is Dart?</h2>\n<p>Dart is a programming language designed by Google and is used to build mobile, desktop, server, and web applications. Dart is an object-oriented, class-based, garbage-collected language with C-style syntax. It can compile to either native code or JavaScript. It is the language used by the Flutter framework.</p>"
+        },
+        "_id": "tutorials/dart/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/dart/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/dart",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/dart/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/dart/introduction",
+        "language": "dart"
+      },
+      "documentHash": "1754561237498",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/go/introduction.md": {
+      "document": {
+        "title": "Introduction to Go",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Go, an open-source programming language that makes it easy to build simple, reliable, and efficient software.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Go?\n\nGo (often referred to as Golang) is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.\n",
+          "html": "<h2>What is Go?</h2>\n<p>Go (often referred to as Golang) is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.</p>"
+        },
+        "_id": "tutorials/go/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/go/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/go",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/go/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/go/introduction",
+        "language": "go"
+      },
+      "documentHash": "1754561237493",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/html/introduction.md": {
       "document": {
         "title": "Introduction to HTML",
@@ -567,6 +621,87 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/kotlin/introduction.md": {
+      "document": {
+        "title": "Introduction to Kotlin",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Kotlin, a modern, concise, and safe programming language.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Kotlin?\n\nKotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.\n",
+          "html": "<h2>What is Kotlin?</h2>\n<p>Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.</p>"
+        },
+        "_id": "tutorials/kotlin/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/kotlin/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/kotlin",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/kotlin/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/kotlin/introduction",
+        "language": "kotlin"
+      },
+      "documentHash": "1754561237491",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/matlab/introduction.md": {
+      "document": {
+        "title": "Introduction to MATLAB",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of MATLAB, a high-level language and interactive environment for numerical computation, visualization, and programming.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is MATLAB?\n\nMATLAB (matrix laboratory) is a proprietary multi-paradigm programming language and numerical computing environment developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages.\n",
+          "html": "<h2>What is MATLAB?</h2>\n<p>MATLAB (matrix laboratory) is a proprietary multi-paradigm programming language and numerical computing environment developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages.</p>"
+        },
+        "_id": "tutorials/matlab/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/matlab/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/matlab",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/matlab/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/matlab/introduction",
+        "language": "matlab"
+      },
+      "documentHash": "1754561237501",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/perl/introduction.md": {
+      "document": {
+        "title": "Introduction to Perl",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Perl, a family of two high-level, general-purpose, interpreted, dynamic programming languages.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Perl?\n\nPerl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing and system administration tasks.\n",
+          "html": "<h2>What is Perl?</h2>\n<p>Perl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing and system administration tasks.</p>"
+        },
+        "_id": "tutorials/perl/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/perl/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/perl",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/perl/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/perl/introduction",
+        "language": "perl"
+      },
+      "documentHash": "1754561237501",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/php/introduction.md": {
       "document": {
         "title": "Introduction to PHP",
@@ -756,6 +891,141 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/r/introduction.md": {
+      "document": {
+        "title": "Introduction to R",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of R, a language and environment for statistical computing and graphics.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is R?\n\nR is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis.\n",
+          "html": "<h2>What is R?</h2>\n<p>R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis.</p>"
+        },
+        "_id": "tutorials/r/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/r/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/r",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/r/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/r/introduction",
+        "language": "r"
+      },
+      "documentHash": "1754561237488",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/ruby/introduction.md": {
+      "document": {
+        "title": "Introduction to Ruby",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Ruby, a dynamic, open-source programming language with a focus on simplicity and productivity.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Ruby?\n\nRuby is an interpreted, high-level, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro \"Matz\" Matsumoto in Japan. Ruby is dynamically typed and uses garbage collection and just-in-time compilation. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.\n",
+          "html": "<h2>What is Ruby?</h2>\n<p>Ruby is an interpreted, high-level, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro \"Matz\" Matsumoto in Japan. Ruby is dynamically typed and uses garbage collection and just-in-time compilation. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.</p>"
+        },
+        "_id": "tutorials/ruby/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/ruby/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/ruby",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/ruby/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/ruby/introduction",
+        "language": "ruby"
+      },
+      "documentHash": "1754561237477",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/rust/introduction.md": {
+      "document": {
+        "title": "Introduction to Rust",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Rust, a language empowering everyone to build reliable and efficient software.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Rust?\n\nRust is a multi-paradigm, high-level, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety—meaning that all references point to valid memory—without needing a garbage collector or reference counting present in other memory-safe languages.\n",
+          "html": "<h2>What is Rust?</h2>\n<p>Rust is a multi-paradigm, high-level, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety—meaning that all references point to valid memory—without needing a garbage collector or reference counting present in other memory-safe languages.</p>"
+        },
+        "_id": "tutorials/rust/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/rust/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/rust",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/rust/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/rust/introduction",
+        "language": "rust"
+      },
+      "documentHash": "1754561237494",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/scala/introduction.md": {
+      "document": {
+        "title": "Introduction to Scala",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Scala, a strong statically typed general-purpose programming language that supports both object-oriented and functional programming.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Scala?\n\nScala is a high-level language that combines object-oriented and functional programming in one concise language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.\n",
+          "html": "<h2>What is Scala?</h2>\n<p>Scala is a high-level language that combines object-oriented and functional programming in one concise language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>"
+        },
+        "_id": "tutorials/scala/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/scala/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/scala",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/scala/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/scala/introduction",
+        "language": "scala"
+      },
+      "documentHash": "1754561237496",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/shell/introduction.md": {
+      "document": {
+        "title": "Introduction to Shell Scripting",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Shell Scripting for automating command-line tasks on Unix-like operating systems.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Shell Scripting?\n\nA shell script is a computer program designed to be run by a Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts include file manipulation, program execution, and printing text. A script which sets up the environment, runs the program, and does any necessary cleanup, logging, etc. is called a wrapper.\n",
+          "html": "<h2>What is Shell Scripting?</h2>\n<p>A shell script is a computer program designed to be run by a Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts include file manipulation, program execution, and printing text. A script which sets up the environment, runs the program, and does any necessary cleanup, logging, etc. is called a wrapper.</p>"
+        },
+        "_id": "tutorials/shell/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/shell/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/shell",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/shell/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/shell/introduction",
+        "language": "shell"
+      },
+      "documentHash": "1754561237504",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/sql/introduction.md": {
       "document": {
         "title": "Introduction to SQL",
@@ -783,6 +1053,33 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/swift/introduction.md": {
+      "document": {
+        "title": "Introduction to Swift",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of Swift, the powerful and intuitive programming language for macOS, iOS, watchOS, and tvOS.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is Swift?\n\nSwift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C, as Objective-C had been largely unchanged since the early 1980s and lacked modern language features.\n",
+          "html": "<h2>What is Swift?</h2>\n<p>Swift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C, as Objective-C had been largely unchanged since the early 1980s and lacked modern language features.</p>"
+        },
+        "_id": "tutorials/swift/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/swift/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/swift",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/swift/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/swift/introduction",
+        "language": "swift"
+      },
+      "documentHash": "1754561237484",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/typescript/introduction.md": {
       "document": {
         "title": "Introduction to TypeScript",
@@ -807,6 +1104,33 @@
         "language": "typescript"
       },
       "documentHash": "1754560973502",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/vba/introduction.md": {
+      "document": {
+        "title": "Introduction to VBA",
+        "slug": "introduction",
+        "order": 1,
+        "description": "An overview of VBA (Visual Basic for Applications), a programming language to automate tasks in Microsoft Office applications.",
+        "category": "Getting Started",
+        "body": {
+          "raw": "\n## What is VBA?\n\nVisual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6, which was discontinued in 2008, and its associated integrated development environment (IDE). VBA is built into most Microsoft Office applications and is used to automate repetitive tasks, create custom forms, and add new functionality.\n",
+          "html": "<h2>What is VBA?</h2>\n<p>Visual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6, which was discontinued in 2008, and its associated integrated development environment (IDE). VBA is built into most Microsoft Office applications and is used to automate repetitive tasks, create custom forms, and add new functionality.</p>"
+        },
+        "_id": "tutorials/vba/introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/vba/introduction.md",
+          "sourceFileName": "introduction.md",
+          "sourceFileDir": "tutorials/vba",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/vba/introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/vba/introduction",
+        "language": "vba"
+      },
+      "documentHash": "1754561237502",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }

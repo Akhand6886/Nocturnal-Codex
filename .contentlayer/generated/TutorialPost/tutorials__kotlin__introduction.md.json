@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Kotlin",
+  "slug": "introduction",
+  "order": 1,
+  "description": "An overview of Kotlin, a modern, concise, and safe programming language.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is Kotlin?\n\nKotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.\n",
+    "html": "<h2>What is Kotlin?</h2>\n<p>Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.</p>"
+  },
+  "_id": "tutorials/kotlin/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/kotlin/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/kotlin",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/kotlin/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/kotlin/introduction",
+  "language": "kotlin"
+}
