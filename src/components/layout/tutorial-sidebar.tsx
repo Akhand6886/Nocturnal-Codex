@@ -15,15 +15,10 @@ export function TutorialSidebar({ groupedTutorials }: TutorialSidebarProps) {
   const pathname = usePathname();
 
   const sortedCategories = Object.keys(groupedTutorials).sort((a, b) => {
-    // You can implement custom category sorting logic here if needed
-    const firstOrder = groupedTutorials[a][0]?.order || 0;
-    const secondOrder = groupedTutorials[b][0]?.order || 0;
-    // This is a proxy for category order. Assumes first item in category reflects its general order.
-    // A more robust system would have explicit category ordering.
-    if(a.includes("Basics")) return -1;
-    if(b.includes("Basics")) return 1;
-    
-    return a.localeCompare(b);
+    // Find the minimum order number in each category to determine its position
+    const minOrderA = Math.min(...groupedTutorials[a].map(p => p.order));
+    const minOrderB = Math.min(...groupedTutorials[b].map(p => p.order));
+    return minOrderA - minOrderB;
   });
   
   const defaultValues = sortedCategories.filter(category => {
