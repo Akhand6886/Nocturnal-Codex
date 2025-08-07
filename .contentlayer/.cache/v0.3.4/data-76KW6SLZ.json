@@ -864,33 +864,6 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
-    "tutorials/python/variables-and-data-types.md": {
-      "document": {
-        "title": "Python Variables and Data Types",
-        "slug": "python-variables-data-types",
-        "order": 2,
-        "description": "Learn about variables, naming conventions, and fundamental data types in Python.",
-        "category": "Fundamentals",
-        "body": {
-          "raw": "\n## Variables\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\n## Data Types\n\nPython has various built-in data types. Here are some fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\n### Example of Data Types\n\n```python\nmy_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n```\n\nUnderstanding variables and data types is crucial for writing any Python program.\n",
-          "html": "<h2>Variables</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<h2>Data Types</h2>\n<p>Python has various built-in data types. Here are some fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<h3>Example of Data Types</h3>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n</code></pre>\n<p>Understanding variables and data types is crucial for writing any Python program.</p>"
-        },
-        "_id": "tutorials/python/variables-and-data-types.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/python/variables-and-data-types.md",
-          "sourceFileName": "variables-and-data-types.md",
-          "sourceFileDir": "tutorials/python",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/python/variables-and-data-types"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/python/python-variables-data-types",
-        "language": "python"
-      },
-      "documentHash": "1753978179938",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
     "tutorials/r/introduction.md": {
       "document": {
         "title": "Introduction to R",
@@ -1239,6 +1212,60 @@
         "language": "javascript"
       },
       "documentHash": "1754563339816",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/variables.md": {
+      "document": {
+        "title": "Variables in Python",
+        "slug": "variables",
+        "order": 2,
+        "description": "Learn about variables, naming conventions, and assignment in Python.",
+        "category": "Fundamentals",
+        "body": {
+          "raw": "\n## Understanding Variables in Python\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\nThis tutorial covers Python variables in more detail.\n",
+          "html": "<h2>Understanding Variables in Python</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<p>This tutorial covers Python variables in more detail.</p>"
+        },
+        "_id": "tutorials/python/variables.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/variables.md",
+          "sourceFileName": "variables.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/variables"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/variables",
+        "language": "python"
+      },
+      "documentHash": "1754564102120",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/datatypes.md": {
+      "document": {
+        "title": "Data Types in Python",
+        "slug": "datatypes",
+        "order": 3,
+        "description": "Explore the fundamental data types available in Python.",
+        "category": "Fundamentals",
+        "body": {
+          "raw": "\n## Python Data Types\n\nPython has various built-in data types. Here are some fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\n### Example of Data Types\n\n```python\nmy_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n```\n\nThis tutorial explores fundamental Python data types.\n",
+          "html": "<h2>Python Data Types</h2>\n<p>Python has various built-in data types. Here are some fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<h3>Example of Data Types</h3>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n</code></pre>\n<p>This tutorial explores fundamental Python data types.</p>"
+        },
+        "_id": "tutorials/python/datatypes.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/datatypes.md",
+          "sourceFileName": "datatypes.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/datatypes"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/datatypes",
+        "language": "python"
+      },
+      "documentHash": "1754564102140",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }
