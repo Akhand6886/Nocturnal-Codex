@@ -131,7 +131,7 @@
         "url": "/tutorial/dart/introduction",
         "language": "dart"
       },
-      "documentHash": "1754561237498",
+      "documentHash": "1754562111352",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -158,7 +158,7 @@
         "url": "/tutorial/go/introduction",
         "language": "go"
       },
-      "documentHash": "1754561237493",
+      "documentHash": "1754562111331",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -644,7 +644,7 @@
         "url": "/tutorial/kotlin/introduction",
         "language": "kotlin"
       },
-      "documentHash": "1754561237491",
+      "documentHash": "1754562111330",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -671,7 +671,7 @@
         "url": "/tutorial/matlab/introduction",
         "language": "matlab"
       },
-      "documentHash": "1754561237501",
+      "documentHash": "1754562111356",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -698,7 +698,7 @@
         "url": "/tutorial/perl/introduction",
         "language": "perl"
       },
-      "documentHash": "1754561237501",
+      "documentHash": "1754562111353",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -914,7 +914,7 @@
         "url": "/tutorial/r/introduction",
         "language": "r"
       },
-      "documentHash": "1754561237488",
+      "documentHash": "1754562111329",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -968,7 +968,7 @@
         "url": "/tutorial/rust/introduction",
         "language": "rust"
       },
-      "documentHash": "1754561237494",
+      "documentHash": "1754562111337",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -995,7 +995,7 @@
         "url": "/tutorial/scala/introduction",
         "language": "scala"
       },
-      "documentHash": "1754561237496",
+      "documentHash": "1754562111342",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -1022,7 +1022,7 @@
         "url": "/tutorial/shell/introduction",
         "language": "shell"
       },
-      "documentHash": "1754561237504",
+      "documentHash": "1754562111361",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -1076,7 +1076,7 @@
         "url": "/tutorial/swift/introduction",
         "language": "swift"
       },
-      "documentHash": "1754561237484",
+      "documentHash": "1754562111327",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -1130,7 +1130,7 @@
         "url": "/tutorial/vba/introduction",
         "language": "vba"
       },
-      "documentHash": "1754561237502",
+      "documentHash": "1754562111357",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }

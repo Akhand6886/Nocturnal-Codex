@@ -1,6 +1,7 @@
 // src/app/tutorial/[language]/layout.tsx
 import { allTutorialPosts } from 'contentlayer/generated';
 import { TutorialSidebar } from '@/components/layout/tutorial-sidebar';
+import { LanguageScroller } from '@/components/layout/language-scroller';
 
 export default function TutorialLayout({
   children,
@@ -24,17 +25,20 @@ export default function TutorialLayout({
 
 
   return (
-    <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row gap-8">
-            <aside className="w-full md:w-64 lg:w-72 flex-shrink-0 md:py-6 md:pl-2">
-                <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto">
-                    <TutorialSidebar groupedTutorials={groupedTutorials} />
-                </div>
-            </aside>
-            <main className="flex-grow min-w-0 md:pr-8">
-                {children}
-            </main>
-        </div>
+    <div className="container px-4 sm:px-6">
+      <div className="py-6">
+        <LanguageScroller activeLanguage={params.language} />
+      </div>
+      <div className="flex flex-col md:flex-row gap-8">
+        <aside className="w-full md:w-64 lg:w-72 flex-shrink-0 md:py-6 md:pl-2">
+            <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto">
+                <TutorialSidebar groupedTutorials={groupedTutorials} />
+            </div>
+        </aside>
+        <main className="flex-grow min-w-0 md:pr-8">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
