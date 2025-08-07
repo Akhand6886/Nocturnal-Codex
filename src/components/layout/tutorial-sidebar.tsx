@@ -1,3 +1,4 @@
+
 // src/components/layout/tutorial-sidebar.tsx
 'use client';
 
@@ -21,13 +22,12 @@ export function TutorialSidebar({ groupedTutorials }: TutorialSidebarProps) {
     return minOrderA - minOrderB;
   });
   
-  const defaultValues = sortedCategories.filter(category => {
-    return groupedTutorials[category].some(tutorial => pathname === tutorial.url);
-  });
+  // To expand all categories by default, we pass all sorted category names to defaultValue.
+  const defaultExpandedCategories = sortedCategories;
 
   return (
     <nav className="w-full">
-      <Accordion type="multiple" defaultValue={defaultValues} className="w-full">
+      <Accordion type="multiple" defaultValue={defaultExpandedCategories} className="w-full">
           {sortedCategories.map((category) => (
               <AccordionItem value={category} key={category} className="border-b-0 mb-1">
                   <AccordionTrigger className="py-2 px-3 text-sm font-semibold text-foreground/80 hover:no-underline hover:bg-muted/50 rounded-md data-[state=open]:bg-muted/60">
