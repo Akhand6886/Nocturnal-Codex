@@ -7,6 +7,14 @@ const languages = [
   { name: 'Python', href: '/languages/python', description: 'A versatile and beginner-friendly language.' },
   { name: 'JavaScript', href: '/languages/javascript', description: 'The language of the web.' },
   { name: 'Java', href: '/languages/java', description: 'A robust, object-oriented language.' },
+  { name: 'C', href: '/languages/c', description: 'The foundational language for system programming.' },
+  { name: 'C++', href: '/languages/cplusplus', description: 'High-performance object-oriented programming.' },
+  { name: 'C#', href: '/languages/csharp', description: 'A modern language for Windows and web apps.' },
+  { name: 'TypeScript', href: '/languages/typescript', description: 'JavaScript with static types for safer code.' },
+  { name: 'SQL', href: '/languages/sql', description: 'The standard for managing relational databases.' },
+  { name: 'PHP', href: '/languages/php', description: 'A popular server-side scripting language.' },
+  { name: 'HTML', href: '/languages/html', description: 'The markup language for creating web pages.' },
+  { name: 'CSS', href: '/languages/css', description: 'The stylesheet language for designing web pages.' },
 ];
 
 export default function LanguagesPage() {

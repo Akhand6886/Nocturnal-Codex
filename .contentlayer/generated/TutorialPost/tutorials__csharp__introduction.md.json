@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to C#",
+  "slug": "introduction-to-csharp",
+  "order": 1,
+  "description": "A brief overview of the C# programming language, its features, and its use in the .NET ecosystem.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is C#?\n\nC# (pronounced \"C sharp\") is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem. C# has its roots in the C family of languages and will be immediately familiar to C, C++, Java, and JavaScript programmers.\n",
+    "html": "<h2>What is C#?</h2>\n<p>C# (pronounced \"C sharp\") is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in the .NET ecosystem. C# has its roots in the C family of languages and will be immediately familiar to C, C++, Java, and JavaScript programmers.</p>"
+  },
+  "_id": "tutorials/csharp/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/csharp/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/csharp",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/csharp/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/csharp/introduction-to-csharp",
+  "language": "csharp"
+}

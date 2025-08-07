@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to C++",
+  "slug": "introduction-to-cplusplus",
+  "order": 1,
+  "description": "A brief overview of the C++ programming language, its features, and its applications.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is C++?\n\nC++ is a high-level, general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation.\n",
+    "html": "<h2>What is C++?</h2>\n<p>C++ is a high-level, general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation.</p>"
+  },
+  "_id": "tutorials/cplusplus/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cplusplus/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/cplusplus",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cplusplus/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cplusplus/introduction-to-cplusplus",
+  "language": "cplusplus"
+}

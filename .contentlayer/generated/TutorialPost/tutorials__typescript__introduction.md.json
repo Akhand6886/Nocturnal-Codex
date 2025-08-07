@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to TypeScript",
+  "slug": "introduction-to-typescript",
+  "order": 1,
+  "description": "An introduction to TypeScript and its relationship with JavaScript.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is TypeScript?\n\nTypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript.\n",
+    "html": "<h2>What is TypeScript?</h2>\n<p>TypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript.</p>"
+  },
+  "_id": "tutorials/typescript/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/typescript/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/typescript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/typescript/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/typescript/introduction-to-typescript",
+  "language": "typescript"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to PHP",
+  "slug": "introduction-to-php",
+  "order": 1,
+  "description": "An overview of PHP, a popular server-side scripting language.",
+  "category": "Web Development",
+  "body": {
+    "raw": "\n## What is PHP?\n\nPHP (Hypertext Preprocessor) is a general-purpose scripting language especially suited to web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994. The PHP reference implementation is now produced by The PHP Group.\n",
+    "html": "<h2>What is PHP?</h2>\n<p>PHP (Hypertext Preprocessor) is a general-purpose scripting language especially suited to web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994. The PHP reference implementation is now produced by The PHP Group.</p>"
+  },
+  "_id": "tutorials/php/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/php/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/php",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/php/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/php/introduction-to-php",
+  "language": "php"
+}

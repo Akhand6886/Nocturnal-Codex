@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to CSS",
+  "slug": "introduction-to-css",
+  "order": 1,
+  "description": "An overview of Cascading Style Sheets (CSS) and its role in styling web pages.",
+  "category": "Web Development",
+  "body": {
+    "raw": "\n## What is CSS?\n\nCascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.\n",
+    "html": "<h2>What is CSS?</h2>\n<p>Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.</p>"
+  },
+  "_id": "tutorials/css/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/css/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/css",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/css/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/css/introduction-to-css",
+  "language": "css"
+}

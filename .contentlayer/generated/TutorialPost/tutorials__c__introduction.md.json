@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to C",
+  "slug": "introduction-to-c",
+  "order": 1,
+  "description": "A brief overview of the C programming language, its history, and its significance.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is C?\n\nC is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions. It has found lasting use in applications previously coded in assembly language.\n",
+    "html": "<h2>What is C?</h2>\n<p>C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions. It has found lasting use in applications previously coded in assembly language.</p>"
+  },
+  "_id": "tutorials/c/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/c/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/c",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/c/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/c/introduction-to-c",
+  "language": "c"
+}
