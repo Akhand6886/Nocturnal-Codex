@@ -264,6 +264,28 @@
     "language": "java"
   },
   {
+    "title": "JavaScript Arrays",
+    "slug": "javascript-arrays",
+    "order": 8,
+    "description": "Learn how to work with arrays in JavaScript to store and manipulate collections of data.",
+    "category": "JS Fundamentals",
+    "body": {
+      "raw": "\n## Understanding JavaScript Arrays\n\nAn array is a special variable that can hold more than one value at a time. It's a fundamental data structure for storing ordered collections of items.\n\n### Creating an Array\n\nYou can create an array using an array literal, which is the most common way:\n\n```javascript\n// An array of strings\nconst fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\n// An array of numbers\nconst numbers = [1, 1, 2, 3, 5, 8];\n\n// An array with mixed data types\nconst mixed = [42, \"hello\", true, null];\n```\n\n### Accessing Elements\n\nArray elements are accessed using zero-based indexes.\n\n```javascript\nconst fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\nconsole.log(fruits[0]); // Output: \"Apple\"\nconsole.log(fruits[1]); // Output: \"Banana\"\n\n// You can also change an element\nfruits[1] = \"Blueberry\";\nconsole.log(fruits); // Output: [\"Apple\", \"Blueberry\", \"Cherry\"]\n```\n\n### Common Array Properties and Methods\n\n-   **`.length`**: Returns the number of elements in the array.\n    ```javascript\n    console.log(fruits.length); // 3\n    ```\n\n-   **`.push()`**: Adds a new element to the end of an array.\n    ```javascript\n    fruits.push(\"Date\");\n    console.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\", \"Date\"]\n    ```\n\n-   **`.pop()`**: Removes the last element from an array.\n    ```javascript\n    fruits.pop();\n    console.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\"]\n    ```\n\n-   **`.forEach()`**: Executes a provided function once for each array element.\n    ```javascript\n    fruits.forEach(function(fruit) {\n      console.log(\"I love \" + fruit);\n    });\n    ```\n\n-   **`.map()`**: Creates a new array populated with the results of calling a provided function on every element.\n    ```javascript\n    const numbers = [1, 4, 9, 16];\n    const roots = numbers.map(Math.sqrt);\n    console.log(roots); // [1, 2, 3, 4]\n    ```\n\nArrays are one of the most useful and versatile parts of JavaScript.",
+      "html": "<h2>Understanding JavaScript Arrays</h2>\n<p>An array is a special variable that can hold more than one value at a time. It's a fundamental data structure for storing ordered collections of items.</p>\n<h3>Creating an Array</h3>\n<p>You can create an array using an array literal, which is the most common way:</p>\n<pre><code class=\"language-javascript\">// An array of strings\nconst fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\n// An array of numbers\nconst numbers = [1, 1, 2, 3, 5, 8];\n\n// An array with mixed data types\nconst mixed = [42, \"hello\", true, null];\n</code></pre>\n<h3>Accessing Elements</h3>\n<p>Array elements are accessed using zero-based indexes.</p>\n<pre><code class=\"language-javascript\">const fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\nconsole.log(fruits[0]); // Output: \"Apple\"\nconsole.log(fruits[1]); // Output: \"Banana\"\n\n// You can also change an element\nfruits[1] = \"Blueberry\";\nconsole.log(fruits); // Output: [\"Apple\", \"Blueberry\", \"Cherry\"]\n</code></pre>\n<h3>Common Array Properties and Methods</h3>\n<ul>\n<li>\n<p><strong><code>.length</code></strong>: Returns the number of elements in the array.</p>\n<pre><code class=\"language-javascript\">console.log(fruits.length); // 3\n</code></pre>\n</li>\n<li>\n<p><strong><code>.push()</code></strong>: Adds a new element to the end of an array.</p>\n<pre><code class=\"language-javascript\">fruits.push(\"Date\");\nconsole.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\", \"Date\"]\n</code></pre>\n</li>\n<li>\n<p><strong><code>.pop()</code></strong>: Removes the last element from an array.</p>\n<pre><code class=\"language-javascript\">fruits.pop();\nconsole.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\"]\n</code></pre>\n</li>\n<li>\n<p><strong><code>.forEach()</code></strong>: Executes a provided function once for each array element.</p>\n<pre><code class=\"language-javascript\">fruits.forEach(function(fruit) {\n  console.log(\"I love \" + fruit);\n});\n</code></pre>\n</li>\n<li>\n<p><strong><code>.map()</code></strong>: Creates a new array populated with the results of calling a provided function on every element.</p>\n<pre><code class=\"language-javascript\">const numbers = [1, 4, 9, 16];\nconst roots = numbers.map(Math.sqrt);\nconsole.log(roots); // [1, 2, 3, 4]\n</code></pre>\n</li>\n</ul>\n<p>Arrays are one of the most useful and versatile parts of JavaScript.</p>"
+    },
+    "_id": "tutorials/javascript/arrays.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/arrays.md",
+      "sourceFileName": "arrays.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/arrays"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-arrays",
+    "language": "javascript"
+  },
+  {
     "title": "JavaScript Data Types",
     "slug": "javascript-data-types",
     "order": 4,
@@ -283,6 +305,28 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/javascript/javascript-data-types",
+    "language": "javascript"
+  },
+  {
+    "title": "JavaScript Events",
+    "slug": "javascript-events",
+    "order": 10,
+    "description": "Understand how to handle user actions and other events on a web page with JavaScript.",
+    "category": "JS DOM & Events",
+    "body": {
+      "raw": "\n## JavaScript Events\n\nEvents are actions or occurrences that happen in the system you are programming — the system will fire a signal of some kind when an event takes place, and you can write code that listens for and reacts to those events.\n\n### Common HTML Events\n\n-   **`onclick`**: The user clicks an HTML element.\n-   **`onmouseover`**: The user moves the mouse over an HTML element.\n-   **`onkeydown`**: The user presses a keyboard key.\n-   **`onload`**: The browser has finished loading the page.\n-   **`onsubmit`**: A form is submitted.\n\n### Event Handlers\n\nYou can add event handlers directly in your HTML, but the modern and recommended approach is to use JavaScript to add \"event listeners\".\n\n#### 1. Inline Event Handlers (Older, not recommended)\n\n```html\n<button onclick=\"alert('You clicked me!')\">Click Me</button>\n```\n\n#### 2. Using `addEventListener()` (Modern, recommended)\n\nThis is the preferred way to handle events. It allows you to add multiple event listeners for the same event to a single element.\n\nFirst, you need to select the element in your JavaScript:\n\n```javascript\nconst myButton = document.getElementById(\"my-button\");\n```\n\nThen, you add the event listener:\n\n```javascript\nmyButton.addEventListener(\"click\", function() {\n  console.log(\"Button was clicked!\");\n  // You can run any code here\n});\n\nmyButton.addEventListener(\"mouseover\", function() {\n  myButton.style.backgroundColor = \"lightgray\";\n});\n\nmyButton.addEventListener(\"mouseout\", function() {\n    myButton.style.backgroundColor = \"\"; // Revert to original style\n});\n```\n\nThis separates your HTML structure from your JavaScript logic, making your code cleaner and easier to maintain. Event handling is the key to creating interactive and dynamic web pages.",
+      "html": "<h2>JavaScript Events</h2>\n<p>Events are actions or occurrences that happen in the system you are programming — the system will fire a signal of some kind when an event takes place, and you can write code that listens for and reacts to those events.</p>\n<h3>Common HTML Events</h3>\n<ul>\n<li><strong><code>onclick</code></strong>: The user clicks an HTML element.</li>\n<li><strong><code>onmouseover</code></strong>: The user moves the mouse over an HTML element.</li>\n<li><strong><code>onkeydown</code></strong>: The user presses a keyboard key.</li>\n<li><strong><code>onload</code></strong>: The browser has finished loading the page.</li>\n<li><strong><code>onsubmit</code></strong>: A form is submitted.</li>\n</ul>\n<h3>Event Handlers</h3>\n<p>You can add event handlers directly in your HTML, but the modern and recommended approach is to use JavaScript to add \"event listeners\".</p>\n<h4>1. Inline Event Handlers (Older, not recommended)</h4>\n<pre><code class=\"language-html\">&#x3C;button onclick=\"alert('You clicked me!')\">Click Me&#x3C;/button>\n</code></pre>\n<h4>2. Using <code>addEventListener()</code> (Modern, recommended)</h4>\n<p>This is the preferred way to handle events. It allows you to add multiple event listeners for the same event to a single element.</p>\n<p>First, you need to select the element in your JavaScript:</p>\n<pre><code class=\"language-javascript\">const myButton = document.getElementById(\"my-button\");\n</code></pre>\n<p>Then, you add the event listener:</p>\n<pre><code class=\"language-javascript\">myButton.addEventListener(\"click\", function() {\n  console.log(\"Button was clicked!\");\n  // You can run any code here\n});\n\nmyButton.addEventListener(\"mouseover\", function() {\n  myButton.style.backgroundColor = \"lightgray\";\n});\n\nmyButton.addEventListener(\"mouseout\", function() {\n    myButton.style.backgroundColor = \"\"; // Revert to original style\n});\n</code></pre>\n<p>This separates your HTML structure from your JavaScript logic, making your code cleaner and easier to maintain. Event handling is the key to creating interactive and dynamic web pages.</p>"
+    },
+    "_id": "tutorials/javascript/events.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/events.md",
+      "sourceFileName": "events.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/events"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-events",
     "language": "javascript"
   },
   {
@@ -484,6 +528,28 @@
     "language": "javascript"
   },
   {
+    "title": "JavaScript Objects",
+    "slug": "javascript-objects",
+    "order": 9,
+    "description": "Learn how to use objects to store collections of key-value data in JavaScript.",
+    "category": "JS Fundamentals",
+    "body": {
+      "raw": "\n## Understanding JavaScript Objects\n\nIn JavaScript, an object is a standalone entity, with properties and type. Think of an object as a collection of key-value pairs. This is a very common way to group related data and functionality.\n\n### Creating an Object\n\nThe most common way to create an object is with an object literal `{}`.\n\n```javascript\nconst person = {\n  firstName: \"Ada\",\n  lastName: \"Lovelace\",\n  age: 36,\n  isProgrammer: true,\n  greet: function() {\n    console.log(\"Hello, my name is \" + this.firstName);\n  }\n};\n```\n\nThis `person` object has properties (`firstName`, `age`) and a method (`greet`).\n\n### Accessing Properties\n\nYou can access object properties in two ways:\n\n1.  **Dot Notation**: `objectName.propertyName`\n    ```javascript\n    console.log(person.firstName); // Output: \"Ada\"\n    ```\n\n2.  **Bracket Notation**: `objectName[\"propertyName\"]`\n    ```javascript\n    console.log(person[\"lastName\"]); // Output: \"Lovelace\"\n    ```\n\nBracket notation is useful when the property name is stored in a variable.\n\n### Modifying Objects\n\nYou can add, change, or delete object properties.\n\n```javascript\n// Adding a new property\nperson.nationality = \"British\";\n\n// Changing an existing property\nperson.age = 37;\n\n// Deleting a property\ndelete person.isProgrammer;\n```\n\n### Methods\n\nA method is a function stored as a property.\n\n```javascript\nperson.greet(); // Calls the greet method, output: \"Hello, my name is Ada\"\n```\nThe `this` keyword refers to the object the method is part of.\n\nObjects are fundamental to understanding almost every aspect of JavaScript, from simple data storage to complex application architecture.",
+      "html": "<h2>Understanding JavaScript Objects</h2>\n<p>In JavaScript, an object is a standalone entity, with properties and type. Think of an object as a collection of key-value pairs. This is a very common way to group related data and functionality.</p>\n<h3>Creating an Object</h3>\n<p>The most common way to create an object is with an object literal <code>{}</code>.</p>\n<pre><code class=\"language-javascript\">const person = {\n  firstName: \"Ada\",\n  lastName: \"Lovelace\",\n  age: 36,\n  isProgrammer: true,\n  greet: function() {\n    console.log(\"Hello, my name is \" + this.firstName);\n  }\n};\n</code></pre>\n<p>This <code>person</code> object has properties (<code>firstName</code>, <code>age</code>) and a method (<code>greet</code>).</p>\n<h3>Accessing Properties</h3>\n<p>You can access object properties in two ways:</p>\n<ol>\n<li>\n<p><strong>Dot Notation</strong>: <code>objectName.propertyName</code></p>\n<pre><code class=\"language-javascript\">console.log(person.firstName); // Output: \"Ada\"\n</code></pre>\n</li>\n<li>\n<p><strong>Bracket Notation</strong>: <code>objectName[\"propertyName\"]</code></p>\n<pre><code class=\"language-javascript\">console.log(person[\"lastName\"]); // Output: \"Lovelace\"\n</code></pre>\n</li>\n</ol>\n<p>Bracket notation is useful when the property name is stored in a variable.</p>\n<h3>Modifying Objects</h3>\n<p>You can add, change, or delete object properties.</p>\n<pre><code class=\"language-javascript\">// Adding a new property\nperson.nationality = \"British\";\n\n// Changing an existing property\nperson.age = 37;\n\n// Deleting a property\ndelete person.isProgrammer;\n</code></pre>\n<h3>Methods</h3>\n<p>A method is a function stored as a property.</p>\n<pre><code class=\"language-javascript\">person.greet(); // Calls the greet method, output: \"Hello, my name is Ada\"\n</code></pre>\n<p>The <code>this</code> keyword refers to the object the method is part of.</p>\n<p>Objects are fundamental to understanding almost every aspect of JavaScript, from simple data storage to complex application architecture.</p>"
+    },
+    "_id": "tutorials/javascript/objects.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/objects.md",
+      "sourceFileName": "objects.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/objects"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-objects",
+    "language": "javascript"
+  },
+  {
     "title": "JavaScript Operators",
     "slug": "javascript-operators",
     "order": 5,
@@ -503,6 +569,28 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/javascript/javascript-operators",
+    "language": "javascript"
+  },
+  {
+    "title": "JavaScript Variables",
+    "slug": "javascript-variables",
+    "order": 3,
+    "description": "Understand how to declare and use variables in JavaScript using var, let, and const, including scope and hoisting.",
+    "category": "JS Variables and Data Types",
+    "body": {
+      "raw": "\n## Understanding JavaScript Variables\n\nIn JavaScript, variables are containers for storing data values. They are fundamental to any program, allowing you to store, retrieve, and manipulate data throughout your code. JavaScript provides three keywords to declare variables: `var`, `let`, and `const`.\n\n### `var`: The Original Variable Keyword\n\nThe `var` statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value.\n\n- **Scope**: A variable declared with `var` is scoped to the nearest function block. If declared outside of any function, it is scoped globally.\n- **Hoisting**: `var` declarations are \"hoisted\" to the top of their scope. This means you can use a variable before it is declared, but its value will be `undefined`.\n\n```javascript\nconsole.log(myVar); // Output: undefined\nvar myVar = \"Hello\";\nconsole.log(myVar); // Output: \"Hello\"\n\nfunction myFunction() {\n  var functionScoped = \"I am inside the function\";\n  console.log(functionScoped);\n}\nmyFunction();\n// console.log(functionScoped); // This would cause a ReferenceError\n```\n\nBecause of its sometimes confusing behavior with hoisting and scope, `var` is generally not recommended in modern JavaScript.\n\n### `let`: Block-Scoped Variables\n\nIntroduced in ES6 (ECMAScript 2015), `let` provides block-scoping. A block is any code enclosed in curly braces `{}`, like in an `if` statement or a `for` loop.\n\n- **Scope**: A variable declared with `let` is only available within the block, statement, or expression in which it was declared.\n- **Hoisting**: `let` declarations are also hoisted, but they are not initialized. Accessing them before the declaration results in a `ReferenceError`. This is known as the \"Temporal Dead Zone\" (TDZ).\n\n```javascript\nlet count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable, scoped to this block\n  console.log(count); // Output: 20\n}\nconsole.log(count); // Output: 10\n\n// console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization\nlet myLet = \"This is a let variable\";\n```\n\n### `const`: Block-Scoped Constants\n\nAlso introduced in ES6, `const` is used to declare constants. Like `let`, it is block-scoped.\n\n- **Scope**: `const` variables are block-scoped, just like `let`.\n- **Hoisting**: `const` variables are also hoisted and are in the TDZ until declaration.\n- **Immutability**: A `const` variable **cannot be reassigned** a new value. It must be initialized at the time of declaration.\n\n```javascript\nconst PI = 3.14159;\n// PI = 3.14; // This would throw a TypeError.\n\n// For objects and arrays, the variable reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw a TypeError.\n```\n\n## Comparison: `var` vs. `let` vs. `const`\n\n| Feature           | `var`                         | `let`                         | `const`                              |\n| ----------------- | ----------------------------- | ----------------------------- | ------------------------------------ |\n| **Scope**         | Function / Global             | Block                         | Block                                |\n| **Reassignable**  | Yes                           | Yes                           | No                                   |\n| **Redeclarable**  | Yes (in the same scope)       | No (in the same scope)        | No (in the same scope)               |\n| **Hoisting**      | Hoisted & initialized to `undefined` | Hoisted, but not initialized (TDZ) | Hoisted, but not initialized (TDZ) |\n| **Must Initialize**| No                           | No                            | Yes                                  |\n\n## Best Practices\n\n- Prefer `const` by default for all variables. This makes your code more predictable and prevents accidental reassignments.\n- Use `let` only when you know a variable's value needs to change.\n- Avoid using `var` in modern JavaScript to prevent issues with scope and hoisting.\n",
+      "html": "<h2>Understanding JavaScript Variables</h2>\n<p>In JavaScript, variables are containers for storing data values. They are fundamental to any program, allowing you to store, retrieve, and manipulate data throughout your code. JavaScript provides three keywords to declare variables: <code>var</code>, <code>let</code>, and <code>const</code>.</p>\n<h3><code>var</code>: The Original Variable Keyword</h3>\n<p>The <code>var</code> statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value.</p>\n<ul>\n<li><strong>Scope</strong>: A variable declared with <code>var</code> is scoped to the nearest function block. If declared outside of any function, it is scoped globally.</li>\n<li><strong>Hoisting</strong>: <code>var</code> declarations are \"hoisted\" to the top of their scope. This means you can use a variable before it is declared, but its value will be <code>undefined</code>.</li>\n</ul>\n<pre><code class=\"language-javascript\">console.log(myVar); // Output: undefined\nvar myVar = \"Hello\";\nconsole.log(myVar); // Output: \"Hello\"\n\nfunction myFunction() {\n  var functionScoped = \"I am inside the function\";\n  console.log(functionScoped);\n}\nmyFunction();\n// console.log(functionScoped); // This would cause a ReferenceError\n</code></pre>\n<p>Because of its sometimes confusing behavior with hoisting and scope, <code>var</code> is generally not recommended in modern JavaScript.</p>\n<h3><code>let</code>: Block-Scoped Variables</h3>\n<p>Introduced in ES6 (ECMAScript 2015), <code>let</code> provides block-scoping. A block is any code enclosed in curly braces <code>{}</code>, like in an <code>if</code> statement or a <code>for</code> loop.</p>\n<ul>\n<li><strong>Scope</strong>: A variable declared with <code>let</code> is only available within the block, statement, or expression in which it was declared.</li>\n<li><strong>Hoisting</strong>: <code>let</code> declarations are also hoisted, but they are not initialized. Accessing them before the declaration results in a <code>ReferenceError</code>. This is known as the \"Temporal Dead Zone\" (TDZ).</li>\n</ul>\n<pre><code class=\"language-javascript\">let count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable, scoped to this block\n  console.log(count); // Output: 20\n}\nconsole.log(count); // Output: 10\n\n// console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization\nlet myLet = \"This is a let variable\";\n</code></pre>\n<h3><code>const</code>: Block-Scoped Constants</h3>\n<p>Also introduced in ES6, <code>const</code> is used to declare constants. Like <code>let</code>, it is block-scoped.</p>\n<ul>\n<li><strong>Scope</strong>: <code>const</code> variables are block-scoped, just like <code>let</code>.</li>\n<li><strong>Hoisting</strong>: <code>const</code> variables are also hoisted and are in the TDZ until declaration.</li>\n<li><strong>Immutability</strong>: A <code>const</code> variable <strong>cannot be reassigned</strong> a new value. It must be initialized at the time of declaration.</li>\n</ul>\n<pre><code class=\"language-javascript\">const PI = 3.14159;\n// PI = 3.14; // This would throw a TypeError.\n\n// For objects and arrays, the variable reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw a TypeError.\n</code></pre>\n<h2>Comparison: <code>var</code> vs. <code>let</code> vs. <code>const</code></h2>\n<p>| Feature           | <code>var</code>                         | <code>let</code>                         | <code>const</code>                              |\n| ----------------- | ----------------------------- | ----------------------------- | ------------------------------------ |\n| <strong>Scope</strong>         | Function / Global             | Block                         | Block                                |\n| <strong>Reassignable</strong>  | Yes                           | Yes                           | No                                   |\n| <strong>Redeclarable</strong>  | Yes (in the same scope)       | No (in the same scope)        | No (in the same scope)               |\n| <strong>Hoisting</strong>      | Hoisted &#x26; initialized to <code>undefined</code> | Hoisted, but not initialized (TDZ) | Hoisted, but not initialized (TDZ) |\n| <strong>Must Initialize</strong>| No                           | No                            | Yes                                  |</p>\n<h2>Best Practices</h2>\n<ul>\n<li>Prefer <code>const</code> by default for all variables. This makes your code more predictable and prevents accidental reassignments.</li>\n<li>Use <code>let</code> only when you know a variable's value needs to change.</li>\n<li>Avoid using <code>var</code> in modern JavaScript to prevent issues with scope and hoisting.</li>\n</ul>"
+    },
+    "_id": "tutorials/javascript/variables.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/variables.md",
+      "sourceFileName": "variables.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/variables"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/javascript-variables",
     "language": "javascript"
   },
   {
@@ -594,6 +682,204 @@
     "language": "php"
   },
   {
+    "title": "Python Arrays",
+    "slug": "arrays",
+    "order": 16,
+    "description": "Understand how to use the array module for type-constrained, efficient arrays.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Arrays\n\nThis tutorial covers the `array` module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.\n",
+      "html": "<h2>Python Arrays</h2>\n<p>This tutorial covers the <code>array</code> module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.</p>"
+    },
+    "_id": "tutorials/python/arrays.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/arrays.md",
+      "sourceFileName": "arrays.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/arrays"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/arrays",
+    "language": "python"
+  },
+  {
+    "title": "Conditional Statements in Python",
+    "slug": "conditional-statements",
+    "order": 7,
+    "description": "Learn how to use if, elif, and else to control the flow of your program based on conditions.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Conditional Statements in Python\n\nThis tutorial covers how to use conditional statements (if, else, elif) to control the flow of execution in your Python programs based on certain conditions.\n",
+      "html": "<h2>Conditional Statements in Python</h2>\n<p>This tutorial covers how to use conditional statements (if, else, elif) to control the flow of execution in your Python programs based on certain conditions.</p>"
+    },
+    "_id": "tutorials/python/conditional-statements.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/conditional-statements.md",
+      "sourceFileName": "conditional-statements.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/conditional-statements"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/conditional-statements",
+    "language": "python"
+  },
+  {
+    "title": "Data Types in Python",
+    "slug": "datatypes",
+    "order": 3,
+    "description": "Explore the fundamental data types available in Python.",
+    "category": "Fundamentals",
+    "body": {
+      "raw": "\n## Python Data Types\n\nPython has various built-in data types. Here are some fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\n### Example of Data Types\n\n```python\nmy_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n```\n\nThis tutorial explores fundamental Python data types.\n",
+      "html": "<h2>Python Data Types</h2>\n<p>Python has various built-in data types. Here are some fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<h3>Example of Data Types</h3>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n</code></pre>\n<p>This tutorial explores fundamental Python data types.</p>"
+    },
+    "_id": "tutorials/python/datatypes.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/datatypes.md",
+      "sourceFileName": "datatypes.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/datatypes"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/datatypes",
+    "language": "python"
+  },
+  {
+    "title": "Dictionaries in Python",
+    "slug": "dictionaries",
+    "order": 14,
+    "description": "Master the use of dictionaries for key-value pair data storage in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Dictionaries in Python\n\nThis tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.\n",
+      "html": "<h2>Dictionaries in Python</h2>\n<p>This tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.</p>"
+    },
+    "_id": "tutorials/python/dictionaries.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/dictionaries.md",
+      "sourceFileName": "dictionaries.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/dictionaries"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/dictionaries",
+    "language": "python"
+  },
+  {
+    "title": "Django ORM - Inserting, Updating & Deleting Data",
+    "slug": "django-orm",
+    "order": 35,
+    "description": "Learn how to interact with your database using the Django Object-Relational Mapper (ORM).",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Django ORM\n\nThis tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.\n",
+      "html": "<h2>Django ORM</h2>\n<p>This tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.</p>"
+    },
+    "_id": "tutorials/python/django-orm.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-orm.md",
+      "sourceFileName": "django-orm.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-orm"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-orm",
+    "language": "python"
+  },
+  {
+    "title": "How to Create a basic API using Django Rest Framework ?",
+    "slug": "django-rest-api",
+    "order": 39,
+    "description": "Learn the fundamentals of building powerful APIs with Django Rest Framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Create a basic API using Django Rest Framework\n\nThis tutorial shows you how to quickly build a REST API in a Django project using the Django Rest Framework, covering serializers, viewsets, and routers.\n",
+      "html": "<h2>Create a basic API using Django Rest Framework</h2>\n<p>This tutorial shows you how to quickly build a REST API in a Django project using the Django Rest Framework, covering serializers, viewsets, and routers.</p>"
+    },
+    "_id": "tutorials/python/django-rest-api.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-rest-api.md",
+      "sourceFileName": "django-rest-api.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-rest-api"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-rest-api",
+    "language": "python"
+  },
+  {
+    "title": "Django Templates",
+    "slug": "django-templates",
+    "order": 37,
+    "description": "Understand the Django template language for creating dynamic web pages.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Django Templates\n\nThis tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.\n",
+      "html": "<h2>Django Templates</h2>\n<p>This tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.</p>"
+    },
+    "_id": "tutorials/python/django-templates.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-templates.md",
+      "sourceFileName": "django-templates.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-templates"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-templates",
+    "language": "python"
+  },
+  {
+    "title": "Django Tutorial | Learn Django Framework",
+    "slug": "django-tutorial",
+    "order": 34,
+    "description": "A comprehensive guide to building web applications with the Django framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Django Tutorial\n\nThis tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.\n",
+      "html": "<h2>Django Tutorial</h2>\n<p>This tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.</p>"
+    },
+    "_id": "tutorials/python/django-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/django-tutorial.md",
+      "sourceFileName": "django-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/django-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/django-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python Exception Handling",
+    "slug": "exception-handling",
+    "order": 19,
+    "description": "Learn how to handle errors and exceptions gracefully using try, except, else, and finally.",
+    "category": "Advanced Python",
+    "body": {
+      "raw": "\n## Python Exception Handling\n\nThis tutorial explains how to manage errors and exceptions in Python using `try...except` blocks, ensuring your programs are robust and can handle unexpected situations.\n",
+      "html": "<h2>Python Exception Handling</h2>\n<p>This tutorial explains how to manage errors and exceptions in Python using <code>try...except</code> blocks, ensuring your programs are robust and can handle unexpected situations.</p>"
+    },
+    "_id": "tutorials/python/exception-handling.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/exception-handling.md",
+      "sourceFileName": "exception-handling.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/exception-handling"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/exception-handling",
+    "language": "python"
+  },
+  {
     "title": "Mastering F-Strings in Python",
     "slug": "python-f-strings",
     "order": 3,
@@ -613,6 +899,72 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/python/python-f-strings",
+    "language": "python"
+  },
+  {
+    "title": "File Handling in Python",
+    "slug": "file-handling",
+    "order": 20,
+    "description": "Learn how to read from and write to files using Python.",
+    "category": "Advanced Python",
+    "body": {
+      "raw": "\n## File Handling in Python\n\nThis tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.\n",
+      "html": "<h2>File Handling in Python</h2>\n<p>This tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.</p>"
+    },
+    "_id": "tutorials/python/file-handling.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/file-handling.md",
+      "sourceFileName": "file-handling.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/file-handling"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/file-handling",
+    "language": "python"
+  },
+  {
+    "title": "Python | Build a REST API using Flask",
+    "slug": "flask-rest-api",
+    "order": 38,
+    "description": "A guide to building a simple RESTful API using the Flask framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Build a REST API using Flask\n\nThis tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.\n",
+      "html": "<h2>Build a REST API using Flask</h2>\n<p>This tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.</p>"
+    },
+    "_id": "tutorials/python/flask-rest-api.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/flask-rest-api.md",
+      "sourceFileName": "flask-rest-api.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/flask-rest-api"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/flask-rest-api",
+    "language": "python"
+  },
+  {
+    "title": "Flask Tutorial",
+    "slug": "flask-tutorial",
+    "order": 33,
+    "description": "Learn to build web applications with Flask, a lightweight Python web framework.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Flask Tutorial\n\nThis tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.\n",
+      "html": "<h2>Flask Tutorial</h2>\n<p>This tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.</p>"
+    },
+    "_id": "tutorials/python/flask-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/flask-tutorial.md",
+      "sourceFileName": "flask-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/flask-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/flask-tutorial",
     "language": "python"
   },
   {
@@ -638,6 +990,50 @@
     "language": "python"
   },
   {
+    "title": "List of Python GUI Library and Packages",
+    "slug": "gui-libraries",
+    "order": 24,
+    "description": "An overview of popular libraries for creating Graphical User Interfaces (GUIs) in Python.",
+    "category": "Python DSA Libraries",
+    "body": {
+      "raw": "\n## Python GUI Libraries\n\nThis tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.\n",
+      "html": "<h2>Python GUI Libraries</h2>\n<p>This tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.</p>"
+    },
+    "_id": "tutorials/python/gui-libraries.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/gui-libraries.md",
+      "sourceFileName": "gui-libraries.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/gui-libraries"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/gui-libraries",
+    "language": "python"
+  },
+  {
+    "title": "Input and Output in Python",
+    "slug": "input-output",
+    "order": 2,
+    "description": "Learn how to handle user input and display output in Python.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Input and Output in Python\n\nThis tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.\n",
+      "html": "<h2>Input and Output in Python</h2>\n<p>This tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.</p>"
+    },
+    "_id": "tutorials/python/input-output.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/input-output.md",
+      "sourceFileName": "input-output.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/input-output"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/input-output",
+    "language": "python"
+  },
+  {
     "title": "Introduction to Python",
     "slug": "introduction-to-python",
     "order": 1,
@@ -657,6 +1053,116 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/python/introduction-to-python",
+    "language": "python"
+  },
+  {
+    "title": "Templating With Jinja2 in Flask",
+    "slug": "jinja2-templating-flask",
+    "order": 36,
+    "description": "Learn how to use the Jinja2 template engine to create dynamic HTML pages in Flask.",
+    "category": "Web Development with Python",
+    "body": {
+      "raw": "\n## Templating With Jinja2 in Flask\n\nThis tutorial covers the Jinja2 template engine, which is used by Flask to render dynamic HTML templates with variables, loops, and conditional statements.\n",
+      "html": "<h2>Templating With Jinja2 in Flask</h2>\n<p>This tutorial covers the Jinja2 template engine, which is used by Flask to render dynamic HTML templates with variables, loops, and conditional statements.</p>"
+    },
+    "_id": "tutorials/python/jinja2-templating-flask.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/jinja2-templating-flask.md",
+      "sourceFileName": "jinja2-templating-flask.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/jinja2-templating-flask"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/jinja2-templating-flask",
+    "language": "python"
+  },
+  {
+    "title": "Python Keywords",
+    "slug": "keywords",
+    "order": 5,
+    "description": "A reference for all the reserved keywords in the Python language.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Python Keywords\n\nThis tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.\n",
+      "html": "<h2>Python Keywords</h2>\n<p>This tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.</p>"
+    },
+    "_id": "tutorials/python/keywords.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/keywords.md",
+      "sourceFileName": "keywords.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/keywords"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/keywords",
+    "language": "python"
+  },
+  {
+    "title": "Python Lambda Functions",
+    "slug": "lambda-functions",
+    "order": 10,
+    "description": "Learn how to use anonymous (lambda) functions for short, one-line operations.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Python Lambda Functions\n\nThis tutorial introduces lambda functions, which are small, anonymous functions defined with the `lambda` keyword. They are useful for short-term operations where a full function definition is not necessary.\n",
+      "html": "<h2>Python Lambda Functions</h2>\n<p>This tutorial introduces lambda functions, which are small, anonymous functions defined with the <code>lambda</code> keyword. They are useful for short-term operations where a full function definition is not necessary.</p>"
+    },
+    "_id": "tutorials/python/lambda-functions.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/lambda-functions.md",
+      "sourceFileName": "lambda-functions.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/lambda-functions"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/lambda-functions",
+    "language": "python"
+  },
+  {
+    "title": "List Comprehension in Python",
+    "slug": "list-comprehension",
+    "order": 17,
+    "description": "A concise and elegant way to create lists in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## List Comprehension in Python\n\nThis tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using `for` loops.\n",
+      "html": "<h2>List Comprehension in Python</h2>\n<p>This tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using <code>for</code> loops.</p>"
+    },
+    "_id": "tutorials/python/list-comprehension.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/list-comprehension.md",
+      "sourceFileName": "list-comprehension.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/list-comprehension"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/list-comprehension",
+    "language": "python"
+  },
+  {
+    "title": "Python Lists",
+    "slug": "lists",
+    "order": 12,
+    "description": "Learn how to use lists, one of the most versatile data structures in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Lists\n\nThis tutorial provides a comprehensive guide to Python lists, covering creation, indexing, slicing, and methods for adding, removing, and modifying elements.\n",
+      "html": "<h2>Python Lists</h2>\n<p>This tutorial provides a comprehensive guide to Python lists, covering creation, indexing, slicing, and methods for adding, removing, and modifying elements.</p>"
+    },
+    "_id": "tutorials/python/lists.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/lists.md",
+      "sourceFileName": "lists.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/lists"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/lists",
     "language": "python"
   },
   {
@@ -682,6 +1188,182 @@
     "language": "python"
   },
   {
+    "title": "Matplotlib Tutorial",
+    "slug": "matplotlib-tutorial",
+    "order": 27,
+    "description": "Create static, animated, and interactive visualizations in Python with Matplotlib.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Matplotlib Tutorial\n\nThis tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.\n",
+      "html": "<h2>Matplotlib Tutorial</h2>\n<p>This tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.</p>"
+    },
+    "_id": "tutorials/python/matplotlib-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/matplotlib-tutorial.md",
+      "sourceFileName": "matplotlib-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/matplotlib-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/matplotlib-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python Modules",
+    "slug": "modules",
+    "order": 23,
+    "description": "Understand how to create and use modules to organize your Python code.",
+    "category": "Python Packages",
+    "body": {
+      "raw": "\n## Python Modules\n\nThis tutorial explains what Python modules are, how to create your own, and how to use the `import` statement to bring functionality from one module into another.\n",
+      "html": "<h2>Python Modules</h2>\n<p>This tutorial explains what Python modules are, how to create your own, and how to use the <code>import</code> statement to bring functionality from one module into another.</p>"
+    },
+    "_id": "tutorials/python/modules.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/modules.md",
+      "sourceFileName": "modules.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/modules"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/modules",
+    "language": "python"
+  },
+  {
+    "title": "Python MongoDB Tutorial",
+    "slug": "mongodb-tutorial",
+    "order": 21,
+    "description": "Learn how to connect to and interact with a MongoDB database using Python.",
+    "category": "Python Database Tutorial",
+    "body": {
+      "raw": "\n## Python MongoDB Tutorial\n\nThis tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the `pymongo` library.\n",
+      "html": "<h2>Python MongoDB Tutorial</h2>\n<p>This tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the <code>pymongo</code> library.</p>"
+    },
+    "_id": "tutorials/python/mongodb-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/mongodb-tutorial.md",
+      "sourceFileName": "mongodb-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/mongodb-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/mongodb-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python MySQL",
+    "slug": "mysql-tutorial",
+    "order": 22,
+    "description": "Learn to connect Python applications to a MySQL database.",
+    "category": "Python Database Tutorial",
+    "body": {
+      "raw": "\n## Python MySQL\n\nThis tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like `mysql-connector-python`.\n",
+      "html": "<h2>Python MySQL</h2>\n<p>This tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like <code>mysql-connector-python</code>.</p>"
+    },
+    "_id": "tutorials/python/mysql-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/mysql-tutorial.md",
+      "sourceFileName": "mysql-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/mysql-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/mysql-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "NumPy Tutorial - Python Library",
+    "slug": "numpy-tutorial",
+    "order": 25,
+    "description": "A beginner's guide to NumPy for numerical computing in Python.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## NumPy Tutorial\n\nThis tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.\n",
+      "html": "<h2>NumPy Tutorial</h2>\n<p>This tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.</p>"
+    },
+    "_id": "tutorials/python/numpy-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/numpy-tutorial.md",
+      "sourceFileName": "numpy-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/numpy-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/numpy-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python OOPs Concepts",
+    "slug": "oop-concepts",
+    "order": 18,
+    "description": "An introduction to Object-Oriented Programming (OOP) in Python.",
+    "category": "Advanced Python",
+    "body": {
+      "raw": "\n## Python OOPs Concepts\n\nThis tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.\n",
+      "html": "<h2>Python OOPs Concepts</h2>\n<p>This tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.</p>"
+    },
+    "_id": "tutorials/python/oop-concepts.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/oop-concepts.md",
+      "sourceFileName": "oop-concepts.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/oop-concepts"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/oop-concepts",
+    "language": "python"
+  },
+  {
+    "title": "Python Operators",
+    "slug": "operators",
+    "order": 4,
+    "description": "Understand the various operators in Python for arithmetic, comparison, and logical operations.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Python Operators\n\nThis tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.\n",
+      "html": "<h2>Python Operators</h2>\n<p>This tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.</p>"
+    },
+    "_id": "tutorials/python/operators.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/operators.md",
+      "sourceFileName": "operators.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/operators"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/operators",
+    "language": "python"
+  },
+  {
+    "title": "Pandas Tutorial",
+    "slug": "pandas-tutorial",
+    "order": 26,
+    "description": "Learn the basics of data analysis and manipulation with the Pandas library.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Pandas Tutorial\n\nThis tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.\n",
+      "html": "<h2>Pandas Tutorial</h2>\n<p>This tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.</p>"
+    },
+    "_id": "tutorials/python/pandas-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/pandas-tutorial.md",
+      "sourceFileName": "pandas-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/pandas-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/pandas-tutorial",
+    "language": "python"
+  },
+  {
     "title": "Understanding Python Decorators",
     "slug": "python-decorators",
     "order": 6,
@@ -701,6 +1383,226 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/python/python-decorators",
+    "language": "python"
+  },
+  {
+    "title": "PyTorch Tutorial",
+    "slug": "pytorch-tutorial",
+    "order": 32,
+    "description": "Learn the fundamentals of deep learning with PyTorch.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## PyTorch Tutorial\n\nThis tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.\n",
+      "html": "<h2>PyTorch Tutorial</h2>\n<p>This tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.</p>"
+    },
+    "_id": "tutorials/python/pytorch-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/pytorch-tutorial.md",
+      "sourceFileName": "pytorch-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/pytorch-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/pytorch-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Recursion in Python",
+    "slug": "recursion",
+    "order": 9,
+    "description": "Understand the concept of recursion and how to write recursive functions in Python.",
+    "category": "Python Fundamentals",
+    "body": {
+      "raw": "\n## Recursion in Python\n\nThis tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.\n",
+      "html": "<h2>Recursion in Python</h2>\n<p>This tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.</p>"
+    },
+    "_id": "tutorials/python/recursion.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/recursion.md",
+      "sourceFileName": "recursion.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/recursion"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/recursion",
+    "language": "python"
+  },
+  {
+    "title": "Learning Model Building in Scikit-learn",
+    "slug": "scikit-learn-tutorial",
+    "order": 30,
+    "description": "An introduction to building machine learning models with Scikit-learn.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Scikit-learn Tutorial\n\nThis tutorial introduces Scikit-learn, one of the most popular machine learning libraries in Python. Learn how to implement common ML algorithms for classification, regression, and clustering.\n",
+      "html": "<h2>Scikit-learn Tutorial</h2>\n<p>This tutorial introduces Scikit-learn, one of the most popular machine learning libraries in Python. Learn how to implement common ML algorithms for classification, regression, and clustering.</p>"
+    },
+    "_id": "tutorials/python/scikit-learn-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/scikit-learn-tutorial.md",
+      "sourceFileName": "scikit-learn-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/scikit-learn-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/scikit-learn-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python Seaborn Tutorial",
+    "slug": "seaborn-tutorial",
+    "order": 28,
+    "description": "Learn to create beautiful and informative statistical graphics with Seaborn.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## Python Seaborn Tutorial\n\nThis tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.\n",
+      "html": "<h2>Python Seaborn Tutorial</h2>\n<p>This tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.</p>"
+    },
+    "_id": "tutorials/python/seaborn-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/seaborn-tutorial.md",
+      "sourceFileName": "seaborn-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/seaborn-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/seaborn-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python Sets",
+    "slug": "sets",
+    "order": 15,
+    "description": "Learn about sets for storing unique, unordered elements and performing mathematical set operations.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Sets\n\nThis tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.\n",
+      "html": "<h2>Python Sets</h2>\n<p>This tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.</p>"
+    },
+    "_id": "tutorials/python/sets.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/sets.md",
+      "sourceFileName": "sets.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/sets"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/sets",
+    "language": "python"
+  },
+  {
+    "title": "StatsModel Library - Tutorial",
+    "slug": "statsmodel-tutorial",
+    "order": 29,
+    "description": "A guide to statistical modeling and testing using the StatsModel library.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## StatsModel Library Tutorial\n\nThis tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.\n",
+      "html": "<h2>StatsModel Library Tutorial</h2>\n<p>This tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.</p>"
+    },
+    "_id": "tutorials/python/statsmodel-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/statsmodel-tutorial.md",
+      "sourceFileName": "statsmodel-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/statsmodel-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/statsmodel-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python String",
+    "slug": "strings",
+    "order": 11,
+    "description": "A deep dive into creating, manipulating, and formatting strings in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python String\n\nThis tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.\n",
+      "html": "<h2>Python String</h2>\n<p>This tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.</p>"
+    },
+    "_id": "tutorials/python/strings.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/strings.md",
+      "sourceFileName": "strings.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/strings"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/strings",
+    "language": "python"
+  },
+  {
+    "title": "TensorFlow Tutorial",
+    "slug": "tensorflow-tutorial",
+    "order": 31,
+    "description": "A beginner's guide to building and training models with TensorFlow.",
+    "category": "Data Science with Python",
+    "body": {
+      "raw": "\n## TensorFlow Tutorial\n\nThis tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.\n",
+      "html": "<h2>TensorFlow Tutorial</h2>\n<p>This tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.</p>"
+    },
+    "_id": "tutorials/python/tensorflow-tutorial.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/tensorflow-tutorial.md",
+      "sourceFileName": "tensorflow-tutorial.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/tensorflow-tutorial"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/tensorflow-tutorial",
+    "language": "python"
+  },
+  {
+    "title": "Python Tuples",
+    "slug": "tuples",
+    "order": 13,
+    "description": "Understand immutable sequences using tuples in Python.",
+    "category": "Python Data Structures",
+    "body": {
+      "raw": "\n## Python Tuples\n\nThis tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.\n",
+      "html": "<h2>Python Tuples</h2>\n<p>This tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.</p>"
+    },
+    "_id": "tutorials/python/tuples.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/tuples.md",
+      "sourceFileName": "tuples.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/tuples"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/tuples",
+    "language": "python"
+  },
+  {
+    "title": "Variables in Python",
+    "slug": "variables",
+    "order": 2,
+    "description": "Learn about variables, naming conventions, and assignment in Python.",
+    "category": "Fundamentals",
+    "body": {
+      "raw": "\n## Understanding Variables in Python\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\nThis tutorial covers Python variables in more detail.\n",
+      "html": "<h2>Understanding Variables in Python</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<p>This tutorial covers Python variables in more detail.</p>"
+    },
+    "_id": "tutorials/python/variables.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/variables.md",
+      "sourceFileName": "variables.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/variables"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/variables",
     "language": "python"
   },
   {
@@ -900,907 +1802,5 @@
     "type": "TutorialPost",
     "url": "/tutorial/vba/introduction",
     "language": "vba"
-  },
-  {
-    "title": "JavaScript Variables",
-    "slug": "javascript-variables",
-    "order": 3,
-    "description": "Understand how to declare and use variables in JavaScript using var, let, and const, including scope and hoisting.",
-    "category": "JS Variables and Data Types",
-    "body": {
-      "raw": "\n## Understanding JavaScript Variables\n\nIn JavaScript, variables are containers for storing data values. They are fundamental to any program, allowing you to store, retrieve, and manipulate data throughout your code. JavaScript provides three keywords to declare variables: `var`, `let`, and `const`.\n\n### `var`: The Original Variable Keyword\n\nThe `var` statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value.\n\n- **Scope**: A variable declared with `var` is scoped to the nearest function block. If declared outside of any function, it is scoped globally.\n- **Hoisting**: `var` declarations are \"hoisted\" to the top of their scope. This means you can use a variable before it is declared, but its value will be `undefined`.\n\n```javascript\nconsole.log(myVar); // Output: undefined\nvar myVar = \"Hello\";\nconsole.log(myVar); // Output: \"Hello\"\n\nfunction myFunction() {\n  var functionScoped = \"I am inside the function\";\n  console.log(functionScoped);\n}\nmyFunction();\n// console.log(functionScoped); // This would cause a ReferenceError\n```\n\nBecause of its sometimes confusing behavior with hoisting and scope, `var` is generally not recommended in modern JavaScript.\n\n### `let`: Block-Scoped Variables\n\nIntroduced in ES6 (ECMAScript 2015), `let` provides block-scoping. A block is any code enclosed in curly braces `{}`, like in an `if` statement or a `for` loop.\n\n- **Scope**: A variable declared with `let` is only available within the block, statement, or expression in which it was declared.\n- **Hoisting**: `let` declarations are also hoisted, but they are not initialized. Accessing them before the declaration results in a `ReferenceError`. This is known as the \"Temporal Dead Zone\" (TDZ).\n\n```javascript\nlet count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable, scoped to this block\n  console.log(count); // Output: 20\n}\nconsole.log(count); // Output: 10\n\n// console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization\nlet myLet = \"This is a let variable\";\n```\n\n### `const`: Block-Scoped Constants\n\nAlso introduced in ES6, `const` is used to declare constants. Like `let`, it is block-scoped.\n\n- **Scope**: `const` variables are block-scoped, just like `let`.\n- **Hoisting**: `const` variables are also hoisted and are in the TDZ until declaration.\n- **Immutability**: A `const` variable **cannot be reassigned** a new value. It must be initialized at the time of declaration.\n\n```javascript\nconst PI = 3.14159;\n// PI = 3.14; // This would throw a TypeError.\n\n// For objects and arrays, the variable reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw a TypeError.\n```\n\n## Comparison: `var` vs. `let` vs. `const`\n\n| Feature           | `var`                         | `let`                         | `const`                              |\n| ----------------- | ----------------------------- | ----------------------------- | ------------------------------------ |\n| **Scope**         | Function / Global             | Block                         | Block                                |\n| **Reassignable**  | Yes                           | Yes                           | No                                   |\n| **Redeclarable**  | Yes (in the same scope)       | No (in the same scope)        | No (in the same scope)               |\n| **Hoisting**      | Hoisted & initialized to `undefined` | Hoisted, but not initialized (TDZ) | Hoisted, but not initialized (TDZ) |\n| **Must Initialize**| No                           | No                            | Yes                                  |\n\n## Best Practices\n\n- Prefer `const` by default for all variables. This makes your code more predictable and prevents accidental reassignments.\n- Use `let` only when you know a variable's value needs to change.\n- Avoid using `var` in modern JavaScript to prevent issues with scope and hoisting.\n",
-      "html": "<h2>Understanding JavaScript Variables</h2>\n<p>In JavaScript, variables are containers for storing data values. They are fundamental to any program, allowing you to store, retrieve, and manipulate data throughout your code. JavaScript provides three keywords to declare variables: <code>var</code>, <code>let</code>, and <code>const</code>.</p>\n<h3><code>var</code>: The Original Variable Keyword</h3>\n<p>The <code>var</code> statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value.</p>\n<ul>\n<li><strong>Scope</strong>: A variable declared with <code>var</code> is scoped to the nearest function block. If declared outside of any function, it is scoped globally.</li>\n<li><strong>Hoisting</strong>: <code>var</code> declarations are \"hoisted\" to the top of their scope. This means you can use a variable before it is declared, but its value will be <code>undefined</code>.</li>\n</ul>\n<pre><code class=\"language-javascript\">console.log(myVar); // Output: undefined\nvar myVar = \"Hello\";\nconsole.log(myVar); // Output: \"Hello\"\n\nfunction myFunction() {\n  var functionScoped = \"I am inside the function\";\n  console.log(functionScoped);\n}\nmyFunction();\n// console.log(functionScoped); // This would cause a ReferenceError\n</code></pre>\n<p>Because of its sometimes confusing behavior with hoisting and scope, <code>var</code> is generally not recommended in modern JavaScript.</p>\n<h3><code>let</code>: Block-Scoped Variables</h3>\n<p>Introduced in ES6 (ECMAScript 2015), <code>let</code> provides block-scoping. A block is any code enclosed in curly braces <code>{}</code>, like in an <code>if</code> statement or a <code>for</code> loop.</p>\n<ul>\n<li><strong>Scope</strong>: A variable declared with <code>let</code> is only available within the block, statement, or expression in which it was declared.</li>\n<li><strong>Hoisting</strong>: <code>let</code> declarations are also hoisted, but they are not initialized. Accessing them before the declaration results in a <code>ReferenceError</code>. This is known as the \"Temporal Dead Zone\" (TDZ).</li>\n</ul>\n<pre><code class=\"language-javascript\">let count = 10;\nif (true) {\n  let count = 20; // This is a different 'count' variable, scoped to this block\n  console.log(count); // Output: 20\n}\nconsole.log(count); // Output: 10\n\n// console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization\nlet myLet = \"This is a let variable\";\n</code></pre>\n<h3><code>const</code>: Block-Scoped Constants</h3>\n<p>Also introduced in ES6, <code>const</code> is used to declare constants. Like <code>let</code>, it is block-scoped.</p>\n<ul>\n<li><strong>Scope</strong>: <code>const</code> variables are block-scoped, just like <code>let</code>.</li>\n<li><strong>Hoisting</strong>: <code>const</code> variables are also hoisted and are in the TDZ until declaration.</li>\n<li><strong>Immutability</strong>: A <code>const</code> variable <strong>cannot be reassigned</strong> a new value. It must be initialized at the time of declaration.</li>\n</ul>\n<pre><code class=\"language-javascript\">const PI = 3.14159;\n// PI = 3.14; // This would throw a TypeError.\n\n// For objects and arrays, the variable reference is constant, but the contents can be changed.\nconst person = { name: \"Bob\" };\nperson.name = \"Charlie\"; // This is allowed.\n// person = { name: \"David\" }; // This would throw a TypeError.\n</code></pre>\n<h2>Comparison: <code>var</code> vs. <code>let</code> vs. <code>const</code></h2>\n<p>| Feature           | <code>var</code>                         | <code>let</code>                         | <code>const</code>                              |\n| ----------------- | ----------------------------- | ----------------------------- | ------------------------------------ |\n| <strong>Scope</strong>         | Function / Global             | Block                         | Block                                |\n| <strong>Reassignable</strong>  | Yes                           | Yes                           | No                                   |\n| <strong>Redeclarable</strong>  | Yes (in the same scope)       | No (in the same scope)        | No (in the same scope)               |\n| <strong>Hoisting</strong>      | Hoisted &#x26; initialized to <code>undefined</code> | Hoisted, but not initialized (TDZ) | Hoisted, but not initialized (TDZ) |\n| <strong>Must Initialize</strong>| No                           | No                            | Yes                                  |</p>\n<h2>Best Practices</h2>\n<ul>\n<li>Prefer <code>const</code> by default for all variables. This makes your code more predictable and prevents accidental reassignments.</li>\n<li>Use <code>let</code> only when you know a variable's value needs to change.</li>\n<li>Avoid using <code>var</code> in modern JavaScript to prevent issues with scope and hoisting.</li>\n</ul>"
-    },
-    "_id": "tutorials/javascript/variables.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/variables.md",
-      "sourceFileName": "variables.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/variables"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-variables",
-    "language": "javascript"
-  },
-  {
-    "title": "JavaScript Arrays",
-    "slug": "javascript-arrays",
-    "order": 8,
-    "description": "Learn how to work with arrays in JavaScript to store and manipulate collections of data.",
-    "category": "JS Fundamentals",
-    "body": {
-      "raw": "\n## Understanding JavaScript Arrays\n\nAn array is a special variable that can hold more than one value at a time. It's a fundamental data structure for storing ordered collections of items.\n\n### Creating an Array\n\nYou can create an array using an array literal, which is the most common way:\n\n```javascript\n// An array of strings\nconst fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\n// An array of numbers\nconst numbers = [1, 1, 2, 3, 5, 8];\n\n// An array with mixed data types\nconst mixed = [42, \"hello\", true, null];\n```\n\n### Accessing Elements\n\nArray elements are accessed using zero-based indexes.\n\n```javascript\nconst fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\nconsole.log(fruits[0]); // Output: \"Apple\"\nconsole.log(fruits[1]); // Output: \"Banana\"\n\n// You can also change an element\nfruits[1] = \"Blueberry\";\nconsole.log(fruits); // Output: [\"Apple\", \"Blueberry\", \"Cherry\"]\n```\n\n### Common Array Properties and Methods\n\n-   **`.length`**: Returns the number of elements in the array.\n    ```javascript\n    console.log(fruits.length); // 3\n    ```\n\n-   **`.push()`**: Adds a new element to the end of an array.\n    ```javascript\n    fruits.push(\"Date\");\n    console.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\", \"Date\"]\n    ```\n\n-   **`.pop()`**: Removes the last element from an array.\n    ```javascript\n    fruits.pop();\n    console.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\"]\n    ```\n\n-   **`.forEach()`**: Executes a provided function once for each array element.\n    ```javascript\n    fruits.forEach(function(fruit) {\n      console.log(\"I love \" + fruit);\n    });\n    ```\n\n-   **`.map()`**: Creates a new array populated with the results of calling a provided function on every element.\n    ```javascript\n    const numbers = [1, 4, 9, 16];\n    const roots = numbers.map(Math.sqrt);\n    console.log(roots); // [1, 2, 3, 4]\n    ```\n\nArrays are one of the most useful and versatile parts of JavaScript.",
-      "html": "<h2>Understanding JavaScript Arrays</h2>\n<p>An array is a special variable that can hold more than one value at a time. It's a fundamental data structure for storing ordered collections of items.</p>\n<h3>Creating an Array</h3>\n<p>You can create an array using an array literal, which is the most common way:</p>\n<pre><code class=\"language-javascript\">// An array of strings\nconst fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\n// An array of numbers\nconst numbers = [1, 1, 2, 3, 5, 8];\n\n// An array with mixed data types\nconst mixed = [42, \"hello\", true, null];\n</code></pre>\n<h3>Accessing Elements</h3>\n<p>Array elements are accessed using zero-based indexes.</p>\n<pre><code class=\"language-javascript\">const fruits = [\"Apple\", \"Banana\", \"Cherry\"];\n\nconsole.log(fruits[0]); // Output: \"Apple\"\nconsole.log(fruits[1]); // Output: \"Banana\"\n\n// You can also change an element\nfruits[1] = \"Blueberry\";\nconsole.log(fruits); // Output: [\"Apple\", \"Blueberry\", \"Cherry\"]\n</code></pre>\n<h3>Common Array Properties and Methods</h3>\n<ul>\n<li>\n<p><strong><code>.length</code></strong>: Returns the number of elements in the array.</p>\n<pre><code class=\"language-javascript\">console.log(fruits.length); // 3\n</code></pre>\n</li>\n<li>\n<p><strong><code>.push()</code></strong>: Adds a new element to the end of an array.</p>\n<pre><code class=\"language-javascript\">fruits.push(\"Date\");\nconsole.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\", \"Date\"]\n</code></pre>\n</li>\n<li>\n<p><strong><code>.pop()</code></strong>: Removes the last element from an array.</p>\n<pre><code class=\"language-javascript\">fruits.pop();\nconsole.log(fruits); // [\"Apple\", \"Blueberry\", \"Cherry\"]\n</code></pre>\n</li>\n<li>\n<p><strong><code>.forEach()</code></strong>: Executes a provided function once for each array element.</p>\n<pre><code class=\"language-javascript\">fruits.forEach(function(fruit) {\n  console.log(\"I love \" + fruit);\n});\n</code></pre>\n</li>\n<li>\n<p><strong><code>.map()</code></strong>: Creates a new array populated with the results of calling a provided function on every element.</p>\n<pre><code class=\"language-javascript\">const numbers = [1, 4, 9, 16];\nconst roots = numbers.map(Math.sqrt);\nconsole.log(roots); // [1, 2, 3, 4]\n</code></pre>\n</li>\n</ul>\n<p>Arrays are one of the most useful and versatile parts of JavaScript.</p>"
-    },
-    "_id": "tutorials/javascript/arrays.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/arrays.md",
-      "sourceFileName": "arrays.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/arrays"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-arrays",
-    "language": "javascript"
-  },
-  {
-    "title": "JavaScript Objects",
-    "slug": "javascript-objects",
-    "order": 9,
-    "description": "Learn how to use objects to store collections of key-value data in JavaScript.",
-    "category": "JS Fundamentals",
-    "body": {
-      "raw": "\n## Understanding JavaScript Objects\n\nIn JavaScript, an object is a standalone entity, with properties and type. Think of an object as a collection of key-value pairs. This is a very common way to group related data and functionality.\n\n### Creating an Object\n\nThe most common way to create an object is with an object literal `{}`.\n\n```javascript\nconst person = {\n  firstName: \"Ada\",\n  lastName: \"Lovelace\",\n  age: 36,\n  isProgrammer: true,\n  greet: function() {\n    console.log(\"Hello, my name is \" + this.firstName);\n  }\n};\n```\n\nThis `person` object has properties (`firstName`, `age`) and a method (`greet`).\n\n### Accessing Properties\n\nYou can access object properties in two ways:\n\n1.  **Dot Notation**: `objectName.propertyName`\n    ```javascript\n    console.log(person.firstName); // Output: \"Ada\"\n    ```\n\n2.  **Bracket Notation**: `objectName[\"propertyName\"]`\n    ```javascript\n    console.log(person[\"lastName\"]); // Output: \"Lovelace\"\n    ```\n\nBracket notation is useful when the property name is stored in a variable.\n\n### Modifying Objects\n\nYou can add, change, or delete object properties.\n\n```javascript\n// Adding a new property\nperson.nationality = \"British\";\n\n// Changing an existing property\nperson.age = 37;\n\n// Deleting a property\ndelete person.isProgrammer;\n```\n\n### Methods\n\nA method is a function stored as a property.\n\n```javascript\nperson.greet(); // Calls the greet method, output: \"Hello, my name is Ada\"\n```\nThe `this` keyword refers to the object the method is part of.\n\nObjects are fundamental to understanding almost every aspect of JavaScript, from simple data storage to complex application architecture.",
-      "html": "<h2>Understanding JavaScript Objects</h2>\n<p>In JavaScript, an object is a standalone entity, with properties and type. Think of an object as a collection of key-value pairs. This is a very common way to group related data and functionality.</p>\n<h3>Creating an Object</h3>\n<p>The most common way to create an object is with an object literal <code>{}</code>.</p>\n<pre><code class=\"language-javascript\">const person = {\n  firstName: \"Ada\",\n  lastName: \"Lovelace\",\n  age: 36,\n  isProgrammer: true,\n  greet: function() {\n    console.log(\"Hello, my name is \" + this.firstName);\n  }\n};\n</code></pre>\n<p>This <code>person</code> object has properties (<code>firstName</code>, <code>age</code>) and a method (<code>greet</code>).</p>\n<h3>Accessing Properties</h3>\n<p>You can access object properties in two ways:</p>\n<ol>\n<li>\n<p><strong>Dot Notation</strong>: <code>objectName.propertyName</code></p>\n<pre><code class=\"language-javascript\">console.log(person.firstName); // Output: \"Ada\"\n</code></pre>\n</li>\n<li>\n<p><strong>Bracket Notation</strong>: <code>objectName[\"propertyName\"]</code></p>\n<pre><code class=\"language-javascript\">console.log(person[\"lastName\"]); // Output: \"Lovelace\"\n</code></pre>\n</li>\n</ol>\n<p>Bracket notation is useful when the property name is stored in a variable.</p>\n<h3>Modifying Objects</h3>\n<p>You can add, change, or delete object properties.</p>\n<pre><code class=\"language-javascript\">// Adding a new property\nperson.nationality = \"British\";\n\n// Changing an existing property\nperson.age = 37;\n\n// Deleting a property\ndelete person.isProgrammer;\n</code></pre>\n<h3>Methods</h3>\n<p>A method is a function stored as a property.</p>\n<pre><code class=\"language-javascript\">person.greet(); // Calls the greet method, output: \"Hello, my name is Ada\"\n</code></pre>\n<p>The <code>this</code> keyword refers to the object the method is part of.</p>\n<p>Objects are fundamental to understanding almost every aspect of JavaScript, from simple data storage to complex application architecture.</p>"
-    },
-    "_id": "tutorials/javascript/objects.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/objects.md",
-      "sourceFileName": "objects.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/objects"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-objects",
-    "language": "javascript"
-  },
-  {
-    "title": "JavaScript Events",
-    "slug": "javascript-events",
-    "order": 10,
-    "description": "Understand how to handle user actions and other events on a web page with JavaScript.",
-    "category": "JS DOM & Events",
-    "body": {
-      "raw": "\n## JavaScript Events\n\nEvents are actions or occurrences that happen in the system you are programming — the system will fire a signal of some kind when an event takes place, and you can write code that listens for and reacts to those events.\n\n### Common HTML Events\n\n-   **`onclick`**: The user clicks an HTML element.\n-   **`onmouseover`**: The user moves the mouse over an HTML element.\n-   **`onkeydown`**: The user presses a keyboard key.\n-   **`onload`**: The browser has finished loading the page.\n-   **`onsubmit`**: A form is submitted.\n\n### Event Handlers\n\nYou can add event handlers directly in your HTML, but the modern and recommended approach is to use JavaScript to add \"event listeners\".\n\n#### 1. Inline Event Handlers (Older, not recommended)\n\n```html\n<button onclick=\"alert('You clicked me!')\">Click Me</button>\n```\n\n#### 2. Using `addEventListener()` (Modern, recommended)\n\nThis is the preferred way to handle events. It allows you to add multiple event listeners for the same event to a single element.\n\nFirst, you need to select the element in your JavaScript:\n\n```javascript\nconst myButton = document.getElementById(\"my-button\");\n```\n\nThen, you add the event listener:\n\n```javascript\nmyButton.addEventListener(\"click\", function() {\n  console.log(\"Button was clicked!\");\n  // You can run any code here\n});\n\nmyButton.addEventListener(\"mouseover\", function() {\n  myButton.style.backgroundColor = \"lightgray\";\n});\n\nmyButton.addEventListener(\"mouseout\", function() {\n    myButton.style.backgroundColor = \"\"; // Revert to original style\n});\n```\n\nThis separates your HTML structure from your JavaScript logic, making your code cleaner and easier to maintain. Event handling is the key to creating interactive and dynamic web pages.",
-      "html": "<h2>JavaScript Events</h2>\n<p>Events are actions or occurrences that happen in the system you are programming — the system will fire a signal of some kind when an event takes place, and you can write code that listens for and reacts to those events.</p>\n<h3>Common HTML Events</h3>\n<ul>\n<li><strong><code>onclick</code></strong>: The user clicks an HTML element.</li>\n<li><strong><code>onmouseover</code></strong>: The user moves the mouse over an HTML element.</li>\n<li><strong><code>onkeydown</code></strong>: The user presses a keyboard key.</li>\n<li><strong><code>onload</code></strong>: The browser has finished loading the page.</li>\n<li><strong><code>onsubmit</code></strong>: A form is submitted.</li>\n</ul>\n<h3>Event Handlers</h3>\n<p>You can add event handlers directly in your HTML, but the modern and recommended approach is to use JavaScript to add \"event listeners\".</p>\n<h4>1. Inline Event Handlers (Older, not recommended)</h4>\n<pre><code class=\"language-html\">&#x3C;button onclick=\"alert('You clicked me!')\">Click Me&#x3C;/button>\n</code></pre>\n<h4>2. Using <code>addEventListener()</code> (Modern, recommended)</h4>\n<p>This is the preferred way to handle events. It allows you to add multiple event listeners for the same event to a single element.</p>\n<p>First, you need to select the element in your JavaScript:</p>\n<pre><code class=\"language-javascript\">const myButton = document.getElementById(\"my-button\");\n</code></pre>\n<p>Then, you add the event listener:</p>\n<pre><code class=\"language-javascript\">myButton.addEventListener(\"click\", function() {\n  console.log(\"Button was clicked!\");\n  // You can run any code here\n});\n\nmyButton.addEventListener(\"mouseover\", function() {\n  myButton.style.backgroundColor = \"lightgray\";\n});\n\nmyButton.addEventListener(\"mouseout\", function() {\n    myButton.style.backgroundColor = \"\"; // Revert to original style\n});\n</code></pre>\n<p>This separates your HTML structure from your JavaScript logic, making your code cleaner and easier to maintain. Event handling is the key to creating interactive and dynamic web pages.</p>"
-    },
-    "_id": "tutorials/javascript/events.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/events.md",
-      "sourceFileName": "events.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/events"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/javascript-events",
-    "language": "javascript"
-  },
-  {
-    "title": "Variables in Python",
-    "slug": "variables",
-    "order": 2,
-    "description": "Learn about variables, naming conventions, and assignment in Python.",
-    "category": "Fundamentals",
-    "body": {
-      "raw": "\n## Understanding Variables in Python\n\nIn Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.\n\n```python\nx = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n```\n\n### Naming Variables\n\n- A variable name must start with a letter or the underscore character.\n- A variable name cannot start with a number.\n- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).\n- Variable names are case-sensitive (age, Age and AGE are three different variables).\n\nThis tutorial covers Python variables in more detail.\n",
-      "html": "<h2>Understanding Variables in Python</h2>\n<p>In Python, variables are used to store data values. Python has no command for declaring a variable; a variable is created the moment you first assign a value to it.</p>\n<pre><code class=\"language-python\">x = 5       # x is of type int\ny = \"Hello\" # y is of type str\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables</h3>\n<ul>\n<li>A variable name must start with a letter or the underscore character.</li>\n<li>A variable name cannot start with a number.</li>\n<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>\n<li>Variable names are case-sensitive (age, Age and AGE are three different variables).</li>\n</ul>\n<p>This tutorial covers Python variables in more detail.</p>"
-    },
-    "_id": "tutorials/python/variables.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/variables.md",
-      "sourceFileName": "variables.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/variables"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/variables",
-    "language": "python"
-  },
-  {
-    "title": "Data Types in Python",
-    "slug": "datatypes",
-    "order": 3,
-    "description": "Explore the fundamental data types available in Python.",
-    "category": "Fundamentals",
-    "body": {
-      "raw": "\n## Python Data Types\n\nPython has various built-in data types. Here are some fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\n### Example of Data Types\n\n```python\nmy_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n```\n\nThis tutorial explores fundamental Python data types.\n",
-      "html": "<h2>Python Data Types</h2>\n<p>Python has various built-in data types. Here are some fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<h3>Example of Data Types</h3>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"      # str\nmy_integer = 100                 # int\nmy_float = 3.14                  # float\nmy_list = [\"apple\", \"banana\"]    # list\nmy_dict = {\"name\": \"Alice\", \"age\": 30} # dict\nmy_boolean = True                # bool\n\nprint(type(my_string))\nprint(type(my_integer))\nprint(type(my_float))\n</code></pre>\n<p>This tutorial explores fundamental Python data types.</p>"
-    },
-    "_id": "tutorials/python/datatypes.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/datatypes.md",
-      "sourceFileName": "datatypes.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/datatypes"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/datatypes",
-    "language": "python"
-  },
-  {
-    "title": "Input and Output in Python",
-    "slug": "input-output",
-    "order": 2,
-    "description": "Learn how to handle user input and display output in Python.",
-    "category": "Python Fundamentals",
-    "body": {
-      "raw": "\n## Input and Output in Python\n\nThis tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.\n",
-      "html": "<h2>Input and Output in Python</h2>\n<p>This tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.</p>"
-    },
-    "_id": "tutorials/python/input-output.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/input-output.md",
-      "sourceFileName": "input-output.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/input-output"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/input-output",
-    "language": "python"
-  },
-  {
-    "title": "Python Keywords",
-    "slug": "keywords",
-    "order": 5,
-    "description": "A reference for all the reserved keywords in the Python language.",
-    "category": "Python Fundamentals",
-    "body": {
-      "raw": "\n## Python Keywords\n\nThis tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.\n",
-      "html": "<h2>Python Keywords</h2>\n<p>This tutorial provides a list and explanation of the reserved keywords in Python that have special meanings and cannot be used as variable or function names.</p>"
-    },
-    "_id": "tutorials/python/keywords.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/keywords.md",
-      "sourceFileName": "keywords.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/keywords"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/keywords",
-    "language": "python"
-  },
-  {
-    "title": "Python Operators",
-    "slug": "operators",
-    "order": 4,
-    "description": "Understand the various operators in Python for arithmetic, comparison, and logical operations.",
-    "category": "Python Fundamentals",
-    "body": {
-      "raw": "\n## Python Operators\n\nThis tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.\n",
-      "html": "<h2>Python Operators</h2>\n<p>This tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.</p>"
-    },
-    "_id": "tutorials/python/operators.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/operators.md",
-      "sourceFileName": "operators.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/operators"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/operators",
-    "language": "python"
-  },
-  {
-    "title": "Conditional Statements in Python",
-    "slug": "conditional-statements",
-    "order": 7,
-    "description": "Learn how to use if, elif, and else to control the flow of your program based on conditions.",
-    "category": "Python Fundamentals",
-    "body": {
-      "raw": "\n## Conditional Statements in Python\n\nThis tutorial covers how to use conditional statements (if, else, elif) to control the flow of execution in your Python programs based on certain conditions.\n",
-      "html": "<h2>Conditional Statements in Python</h2>\n<p>This tutorial covers how to use conditional statements (if, else, elif) to control the flow of execution in your Python programs based on certain conditions.</p>"
-    },
-    "_id": "tutorials/python/conditional-statements.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/conditional-statements.md",
-      "sourceFileName": "conditional-statements.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/conditional-statements"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/conditional-statements",
-    "language": "python"
-  },
-  {
-    "title": "Dictionaries in Python",
-    "slug": "dictionaries",
-    "order": 14,
-    "description": "Master the use of dictionaries for key-value pair data storage in Python.",
-    "category": "Python Data Structures",
-    "body": {
-      "raw": "\n## Dictionaries in Python\n\nThis tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.\n",
-      "html": "<h2>Dictionaries in Python</h2>\n<p>This tutorial covers Python dictionaries, a powerful data structure for storing data in key-value pairs. Learn how to create, access, modify, and loop through dictionaries.</p>"
-    },
-    "_id": "tutorials/python/dictionaries.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/dictionaries.md",
-      "sourceFileName": "dictionaries.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/dictionaries"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/dictionaries",
-    "language": "python"
-  },
-  {
-    "title": "Python Lambda Functions",
-    "slug": "lambda-functions",
-    "order": 10,
-    "description": "Learn how to use anonymous (lambda) functions for short, one-line operations.",
-    "category": "Python Fundamentals",
-    "body": {
-      "raw": "\n## Python Lambda Functions\n\nThis tutorial introduces lambda functions, which are small, anonymous functions defined with the `lambda` keyword. They are useful for short-term operations where a full function definition is not necessary.\n",
-      "html": "<h2>Python Lambda Functions</h2>\n<p>This tutorial introduces lambda functions, which are small, anonymous functions defined with the <code>lambda</code> keyword. They are useful for short-term operations where a full function definition is not necessary.</p>"
-    },
-    "_id": "tutorials/python/lambda-functions.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/lambda-functions.md",
-      "sourceFileName": "lambda-functions.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/lambda-functions"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/lambda-functions",
-    "language": "python"
-  },
-  {
-    "title": "Python Lists",
-    "slug": "lists",
-    "order": 12,
-    "description": "Learn how to use lists, one of the most versatile data structures in Python.",
-    "category": "Python Data Structures",
-    "body": {
-      "raw": "\n## Python Lists\n\nThis tutorial provides a comprehensive guide to Python lists, covering creation, indexing, slicing, and methods for adding, removing, and modifying elements.\n",
-      "html": "<h2>Python Lists</h2>\n<p>This tutorial provides a comprehensive guide to Python lists, covering creation, indexing, slicing, and methods for adding, removing, and modifying elements.</p>"
-    },
-    "_id": "tutorials/python/lists.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/lists.md",
-      "sourceFileName": "lists.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/lists"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/lists",
-    "language": "python"
-  },
-  {
-    "title": "Recursion in Python",
-    "slug": "recursion",
-    "order": 9,
-    "description": "Understand the concept of recursion and how to write recursive functions in Python.",
-    "category": "Python Fundamentals",
-    "body": {
-      "raw": "\n## Recursion in Python\n\nThis tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.\n",
-      "html": "<h2>Recursion in Python</h2>\n<p>This tutorial explains recursion, a programming technique where a function calls itself to solve a problem. We will cover the base case, the recursive step, and provide examples.</p>"
-    },
-    "_id": "tutorials/python/recursion.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/recursion.md",
-      "sourceFileName": "recursion.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/recursion"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/recursion",
-    "language": "python"
-  },
-  {
-    "title": "Python String",
-    "slug": "strings",
-    "order": 11,
-    "description": "A deep dive into creating, manipulating, and formatting strings in Python.",
-    "category": "Python Data Structures",
-    "body": {
-      "raw": "\n## Python String\n\nThis tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.\n",
-      "html": "<h2>Python String</h2>\n<p>This tutorial covers everything you need to know about working with strings in Python, including slicing, methods, formatting, and common operations.</p>"
-    },
-    "_id": "tutorials/python/strings.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/strings.md",
-      "sourceFileName": "strings.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/strings"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/strings",
-    "language": "python"
-  },
-  {
-    "title": "Python Tuples",
-    "slug": "tuples",
-    "order": 13,
-    "description": "Understand immutable sequences using tuples in Python.",
-    "category": "Python Data Structures",
-    "body": {
-      "raw": "\n## Python Tuples\n\nThis tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.\n",
-      "html": "<h2>Python Tuples</h2>\n<p>This tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.</p>"
-    },
-    "_id": "tutorials/python/tuples.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/tuples.md",
-      "sourceFileName": "tuples.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/tuples"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/tuples",
-    "language": "python"
-  },
-  {
-    "title": "Python Arrays",
-    "slug": "arrays",
-    "order": 16,
-    "description": "Understand how to use the array module for type-constrained, efficient arrays.",
-    "category": "Python Data Structures",
-    "body": {
-      "raw": "\n## Python Arrays\n\nThis tutorial covers the `array` module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.\n",
-      "html": "<h2>Python Arrays</h2>\n<p>This tutorial covers the <code>array</code> module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.</p>"
-    },
-    "_id": "tutorials/python/arrays.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/arrays.md",
-      "sourceFileName": "arrays.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/arrays"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/arrays",
-    "language": "python"
-  },
-  {
-    "title": "Python Exception Handling",
-    "slug": "exception-handling",
-    "order": 19,
-    "description": "Learn how to handle errors and exceptions gracefully using try, except, else, and finally.",
-    "category": "Advanced Python",
-    "body": {
-      "raw": "\n## Python Exception Handling\n\nThis tutorial explains how to manage errors and exceptions in Python using `try...except` blocks, ensuring your programs are robust and can handle unexpected situations.\n",
-      "html": "<h2>Python Exception Handling</h2>\n<p>This tutorial explains how to manage errors and exceptions in Python using <code>try...except</code> blocks, ensuring your programs are robust and can handle unexpected situations.</p>"
-    },
-    "_id": "tutorials/python/exception-handling.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/exception-handling.md",
-      "sourceFileName": "exception-handling.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/exception-handling"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/exception-handling",
-    "language": "python"
-  },
-  {
-    "title": "File Handling in Python",
-    "slug": "file-handling",
-    "order": 20,
-    "description": "Learn how to read from and write to files using Python.",
-    "category": "Advanced Python",
-    "body": {
-      "raw": "\n## File Handling in Python\n\nThis tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.\n",
-      "html": "<h2>File Handling in Python</h2>\n<p>This tutorial covers the essentials of file handling in Python, including opening files in different modes, reading content, writing data, and using context managers.</p>"
-    },
-    "_id": "tutorials/python/file-handling.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/file-handling.md",
-      "sourceFileName": "file-handling.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/file-handling"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/file-handling",
-    "language": "python"
-  },
-  {
-    "title": "List Comprehension in Python",
-    "slug": "list-comprehension",
-    "order": 17,
-    "description": "A concise and elegant way to create lists in Python.",
-    "category": "Python Data Structures",
-    "body": {
-      "raw": "\n## List Comprehension in Python\n\nThis tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using `for` loops.\n",
-      "html": "<h2>List Comprehension in Python</h2>\n<p>This tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using <code>for</code> loops.</p>"
-    },
-    "_id": "tutorials/python/list-comprehension.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/list-comprehension.md",
-      "sourceFileName": "list-comprehension.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/list-comprehension"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/list-comprehension",
-    "language": "python"
-  },
-  {
-    "title": "Python MongoDB Tutorial",
-    "slug": "mongodb-tutorial",
-    "order": 21,
-    "description": "Learn how to connect to and interact with a MongoDB database using Python.",
-    "category": "Python Database Tutorial",
-    "body": {
-      "raw": "\n## Python MongoDB Tutorial\n\nThis tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the `pymongo` library.\n",
-      "html": "<h2>Python MongoDB Tutorial</h2>\n<p>This tutorial provides a guide on using Python with MongoDB, covering how to perform CRUD (Create, Read, Update, Delete) operations with the <code>pymongo</code> library.</p>"
-    },
-    "_id": "tutorials/python/mongodb-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/mongodb-tutorial.md",
-      "sourceFileName": "mongodb-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/mongodb-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/mongodb-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Python MySQL",
-    "slug": "mysql-tutorial",
-    "order": 22,
-    "description": "Learn to connect Python applications to a MySQL database.",
-    "category": "Python Database Tutorial",
-    "body": {
-      "raw": "\n## Python MySQL\n\nThis tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like `mysql-connector-python`.\n",
-      "html": "<h2>Python MySQL</h2>\n<p>This tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like <code>mysql-connector-python</code>.</p>"
-    },
-    "_id": "tutorials/python/mysql-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/mysql-tutorial.md",
-      "sourceFileName": "mysql-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/mysql-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/mysql-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Python OOPs Concepts",
-    "slug": "oop-concepts",
-    "order": 18,
-    "description": "An introduction to Object-Oriented Programming (OOP) in Python.",
-    "category": "Advanced Python",
-    "body": {
-      "raw": "\n## Python OOPs Concepts\n\nThis tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.\n",
-      "html": "<h2>Python OOPs Concepts</h2>\n<p>This tutorial introduces the core concepts of Object-Oriented Programming (OOP) in Python, including classes, objects, inheritance, encapsulation, and polymorphism.</p>"
-    },
-    "_id": "tutorials/python/oop-concepts.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/oop-concepts.md",
-      "sourceFileName": "oop-concepts.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/oop-concepts"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/oop-concepts",
-    "language": "python"
-  },
-  {
-    "title": "Python Sets",
-    "slug": "sets",
-    "order": 15,
-    "description": "Learn about sets for storing unique, unordered elements and performing mathematical set operations.",
-    "category": "Python Data Structures",
-    "body": {
-      "raw": "\n## Python Sets\n\nThis tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.\n",
-      "html": "<h2>Python Sets</h2>\n<p>This tutorial explores Python sets, an unordered collection of unique items. Learn how to create sets and perform operations like union, intersection, and difference.</p>"
-    },
-    "_id": "tutorials/python/sets.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/sets.md",
-      "sourceFileName": "sets.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/sets"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/sets",
-    "language": "python"
-  },
-  {
-    "title": "List of Python GUI Library and Packages",
-    "slug": "gui-libraries",
-    "order": 24,
-    "description": "An overview of popular libraries for creating Graphical User Interfaces (GUIs) in Python.",
-    "category": "Python DSA Libraries",
-    "body": {
-      "raw": "\n## Python GUI Libraries\n\nThis tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.\n",
-      "html": "<h2>Python GUI Libraries</h2>\n<p>This tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.</p>"
-    },
-    "_id": "tutorials/python/gui-libraries.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/gui-libraries.md",
-      "sourceFileName": "gui-libraries.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/gui-libraries"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/gui-libraries",
-    "language": "python"
-  },
-  {
-    "title": "Python Modules",
-    "slug": "modules",
-    "order": 23,
-    "description": "Understand how to create and use modules to organize your Python code.",
-    "category": "Python Packages",
-    "body": {
-      "raw": "\n## Python Modules\n\nThis tutorial explains what Python modules are, how to create your own, and how to use the `import` statement to bring functionality from one module into another.\n",
-      "html": "<h2>Python Modules</h2>\n<p>This tutorial explains what Python modules are, how to create your own, and how to use the <code>import</code> statement to bring functionality from one module into another.</p>"
-    },
-    "_id": "tutorials/python/modules.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/modules.md",
-      "sourceFileName": "modules.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/modules"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/modules",
-    "language": "python"
-  },
-  {
-    "title": "NumPy Tutorial - Python Library",
-    "slug": "numpy-tutorial",
-    "order": 25,
-    "description": "A beginner's guide to NumPy for numerical computing in Python.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## NumPy Tutorial\n\nThis tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.\n",
-      "html": "<h2>NumPy Tutorial</h2>\n<p>This tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.</p>"
-    },
-    "_id": "tutorials/python/numpy-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/numpy-tutorial.md",
-      "sourceFileName": "numpy-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/numpy-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/numpy-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Pandas Tutorial",
-    "slug": "pandas-tutorial",
-    "order": 26,
-    "description": "Learn the basics of data analysis and manipulation with the Pandas library.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## Pandas Tutorial\n\nThis tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.\n",
-      "html": "<h2>Pandas Tutorial</h2>\n<p>This tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.</p>"
-    },
-    "_id": "tutorials/python/pandas-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/pandas-tutorial.md",
-      "sourceFileName": "pandas-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/pandas-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/pandas-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Flask Tutorial",
-    "slug": "flask-tutorial",
-    "order": 33,
-    "description": "Learn to build web applications with Flask, a lightweight Python web framework.",
-    "category": "Web Development with Python",
-    "body": {
-      "raw": "\n## Flask Tutorial\n\nThis tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.\n",
-      "html": "<h2>Flask Tutorial</h2>\n<p>This tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.</p>"
-    },
-    "_id": "tutorials/python/flask-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/flask-tutorial.md",
-      "sourceFileName": "flask-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/flask-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/flask-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Templating With Jinja2 in Flask",
-    "slug": "jinja2-templating-flask",
-    "order": 36,
-    "description": "Learn how to use the Jinja2 template engine to create dynamic HTML pages in Flask.",
-    "category": "Web Development with Python",
-    "body": {
-      "raw": "\n## Templating With Jinja2 in Flask\n\nThis tutorial covers the Jinja2 template engine, which is used by Flask to render dynamic HTML templates with variables, loops, and conditional statements.\n",
-      "html": "<h2>Templating With Jinja2 in Flask</h2>\n<p>This tutorial covers the Jinja2 template engine, which is used by Flask to render dynamic HTML templates with variables, loops, and conditional statements.</p>"
-    },
-    "_id": "tutorials/python/jinja2-templating-flask.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/jinja2-templating-flask.md",
-      "sourceFileName": "jinja2-templating-flask.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/jinja2-templating-flask"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/jinja2-templating-flask",
-    "language": "python"
-  },
-  {
-    "title": "Matplotlib Tutorial",
-    "slug": "matplotlib-tutorial",
-    "order": 27,
-    "description": "Create static, animated, and interactive visualizations in Python with Matplotlib.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## Matplotlib Tutorial\n\nThis tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.\n",
-      "html": "<h2>Matplotlib Tutorial</h2>\n<p>This tutorial introduces Matplotlib, a comprehensive library for creating a wide variety of static, animated, and interactive plots and visualizations in Python.</p>"
-    },
-    "_id": "tutorials/python/matplotlib-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/matplotlib-tutorial.md",
-      "sourceFileName": "matplotlib-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/matplotlib-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/matplotlib-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "PyTorch Tutorial",
-    "slug": "pytorch-tutorial",
-    "order": 32,
-    "description": "Learn the fundamentals of deep learning with PyTorch.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## PyTorch Tutorial\n\nThis tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.\n",
-      "html": "<h2>PyTorch Tutorial</h2>\n<p>This tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.</p>"
-    },
-    "_id": "tutorials/python/pytorch-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/pytorch-tutorial.md",
-      "sourceFileName": "pytorch-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/pytorch-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/pytorch-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Learning Model Building in Scikit-learn",
-    "slug": "scikit-learn-tutorial",
-    "order": 30,
-    "description": "An introduction to building machine learning models with Scikit-learn.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## Scikit-learn Tutorial\n\nThis tutorial introduces Scikit-learn, one of the most popular machine learning libraries in Python. Learn how to implement common ML algorithms for classification, regression, and clustering.\n",
-      "html": "<h2>Scikit-learn Tutorial</h2>\n<p>This tutorial introduces Scikit-learn, one of the most popular machine learning libraries in Python. Learn how to implement common ML algorithms for classification, regression, and clustering.</p>"
-    },
-    "_id": "tutorials/python/scikit-learn-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/scikit-learn-tutorial.md",
-      "sourceFileName": "scikit-learn-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/scikit-learn-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/scikit-learn-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Python Seaborn Tutorial",
-    "slug": "seaborn-tutorial",
-    "order": 28,
-    "description": "Learn to create beautiful and informative statistical graphics with Seaborn.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## Python Seaborn Tutorial\n\nThis tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.\n",
-      "html": "<h2>Python Seaborn Tutorial</h2>\n<p>This tutorial explores Seaborn, a Python data visualization library based on Matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.</p>"
-    },
-    "_id": "tutorials/python/seaborn-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/seaborn-tutorial.md",
-      "sourceFileName": "seaborn-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/seaborn-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/seaborn-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "StatsModel Library - Tutorial",
-    "slug": "statsmodel-tutorial",
-    "order": 29,
-    "description": "A guide to statistical modeling and testing using the StatsModel library.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## StatsModel Library Tutorial\n\nThis tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.\n",
-      "html": "<h2>StatsModel Library Tutorial</h2>\n<p>This tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.</p>"
-    },
-    "_id": "tutorials/python/statsmodel-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/statsmodel-tutorial.md",
-      "sourceFileName": "statsmodel-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/statsmodel-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/statsmodel-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "TensorFlow Tutorial",
-    "slug": "tensorflow-tutorial",
-    "order": 31,
-    "description": "A beginner's guide to building and training models with TensorFlow.",
-    "category": "Data Science with Python",
-    "body": {
-      "raw": "\n## TensorFlow Tutorial\n\nThis tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.\n",
-      "html": "<h2>TensorFlow Tutorial</h2>\n<p>This tutorial provides an introduction to TensorFlow, an end-to-end open-source platform for machine learning, focusing on building and training neural networks.</p>"
-    },
-    "_id": "tutorials/python/tensorflow-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/tensorflow-tutorial.md",
-      "sourceFileName": "tensorflow-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/tensorflow-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/tensorflow-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Django ORM - Inserting, Updating & Deleting Data",
-    "slug": "django-orm",
-    "order": 35,
-    "description": "Learn how to interact with your database using the Django Object-Relational Mapper (ORM).",
-    "category": "Web Development with Python",
-    "body": {
-      "raw": "\n## Django ORM\n\nThis tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.\n",
-      "html": "<h2>Django ORM</h2>\n<p>This tutorial focuses on the Django ORM, showing you how to create, retrieve, update, and delete database records using Python objects instead of writing raw SQL.</p>"
-    },
-    "_id": "tutorials/python/django-orm.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/django-orm.md",
-      "sourceFileName": "django-orm.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/django-orm"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/django-orm",
-    "language": "python"
-  },
-  {
-    "title": "How to Create a basic API using Django Rest Framework ?",
-    "slug": "django-rest-api",
-    "order": 39,
-    "description": "Learn the fundamentals of building powerful APIs with Django Rest Framework.",
-    "category": "Web Development with Python",
-    "body": {
-      "raw": "\n## Create a basic API using Django Rest Framework\n\nThis tutorial shows you how to quickly build a REST API in a Django project using the Django Rest Framework, covering serializers, viewsets, and routers.\n",
-      "html": "<h2>Create a basic API using Django Rest Framework</h2>\n<p>This tutorial shows you how to quickly build a REST API in a Django project using the Django Rest Framework, covering serializers, viewsets, and routers.</p>"
-    },
-    "_id": "tutorials/python/django-rest-api.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/django-rest-api.md",
-      "sourceFileName": "django-rest-api.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/django-rest-api"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/django-rest-api",
-    "language": "python"
-  },
-  {
-    "title": "Django Templates",
-    "slug": "django-templates",
-    "order": 37,
-    "description": "Understand the Django template language for creating dynamic web pages.",
-    "category": "Web Development with Python",
-    "body": {
-      "raw": "\n## Django Templates\n\nThis tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.\n",
-      "html": "<h2>Django Templates</h2>\n<p>This tutorial explores the Django template system, teaching you how to use template tags and filters to display dynamic data and create reusable HTML components.</p>"
-    },
-    "_id": "tutorials/python/django-templates.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/django-templates.md",
-      "sourceFileName": "django-templates.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/django-templates"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/django-templates",
-    "language": "python"
-  },
-  {
-    "title": "Django Tutorial | Learn Django Framework",
-    "slug": "django-tutorial",
-    "order": 34,
-    "description": "A comprehensive guide to building web applications with the Django framework.",
-    "category": "Web Development with Python",
-    "body": {
-      "raw": "\n## Django Tutorial\n\nThis tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.\n",
-      "html": "<h2>Django Tutorial</h2>\n<p>This tutorial introduces the Django framework, a high-level Python web framework that encourages rapid development and clean, pragmatic design.</p>"
-    },
-    "_id": "tutorials/python/django-tutorial.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/django-tutorial.md",
-      "sourceFileName": "django-tutorial.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/django-tutorial"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/django-tutorial",
-    "language": "python"
-  },
-  {
-    "title": "Python | Build a REST API using Flask",
-    "slug": "flask-rest-api",
-    "order": 38,
-    "description": "A guide to building a simple RESTful API using the Flask framework.",
-    "category": "Web Development with Python",
-    "body": {
-      "raw": "\n## Build a REST API using Flask\n\nThis tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.\n",
-      "html": "<h2>Build a REST API using Flask</h2>\n<p>This tutorial walks you through the process of creating a REST API with Python and Flask, covering how to define endpoints and handle JSON data.</p>"
-    },
-    "_id": "tutorials/python/flask-rest-api.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/flask-rest-api.md",
-      "sourceFileName": "flask-rest-api.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/flask-rest-api"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/flask-rest-api",
-    "language": "python"
   }
 ]
