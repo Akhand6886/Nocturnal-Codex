@@ -1012,28 +1012,6 @@
     "language": "python"
   },
   {
-    "title": "Input and Output in Python",
-    "slug": "input-output",
-    "order": 2,
-    "description": "Learn how to handle user input and display output in Python.",
-    "category": "Python Fundamentals",
-    "body": {
-      "raw": "\n## Input and Output in Python\n\nThis tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.\n",
-      "html": "<h2>Input and Output in Python</h2>\n<p>This tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.</p>"
-    },
-    "_id": "tutorials/python/input-output.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/input-output.md",
-      "sourceFileName": "input-output.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/input-output"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/input-output",
-    "language": "python"
-  },
-  {
     "title": "Introduction to Python",
     "slug": "introduction-to-python",
     "order": 1,
@@ -1584,6 +1562,28 @@
     "language": "python"
   },
   {
+    "title": "Python Variables and Data Types",
+    "slug": "python-variables-data-types",
+    "order": 2,
+    "description": "Learn about variables, naming conventions, and fundamental data types in Python.",
+    "category": "Fundamentals",
+    "body": {
+      "raw": "\n## Variables\n\nIn Python, variables are used to store data values. A variable is created the moment you first assign a value to it. Python has no command for declaring a variable in the way languages like C++ or Java do.\n\n```python\nx = 5       # x is an integer\ny = \"Hello\" # y is a string\nprint(x)\nprint(y)\n```\n\n### Naming Variables (Identifiers)\n\n- A variable name must start with a letter (a-z, A-Z) or an underscore character (`_`).\n- It cannot start with a number.\n- It can only contain alpha-numeric characters and underscores (A-z, 0-9, and `_`).\n- Variable names are case-sensitive (`age`, `Age` and `AGE` are three different variables).\n\n## Data Types\n\nPython has various built-in data types. Here are some of the most fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\nYou can get the data type of any object by using the `type()` function:\n\n```python\nmy_string = \"Python is fun\"\nprint(type(my_string))  # <class 'str'>\n```\n\n### Numeric Types\n\n- **`int`**: Integer, for whole numbers. e.g., `100`, `-5`\n- **`float`**: Floating Point Number, for numbers with a decimal point. e.g., `3.14`, `-0.01`\n- **`complex`**: For complex numbers. e.g., `1 + 2j`\n\n### Text Type\n\n- **`str`**: String, for textual data. Enclosed in single (`'`) or double (`\"`) quotes.\n\n### Sequence Types\n\n- **`list`**: An ordered and changeable collection. Allows duplicate members. e.g., `[\"apple\", \"banana\"]`\n- **`tuple`**: An ordered and unchangeable collection. Allows duplicate members. e.g., `(\"apple\", \"banana\")`\n- **`range`**: A sequence of numbers, often used for looping.\n\n### Mapping Type\n\n- **`dict`**: A collection of key-value pairs. Unordered, changeable, and indexed. No duplicate keys. e.g., `{\"name\": \"Alice\", \"age\": 30}`\n\n### Set Types\n\n- **`set`**: An unordered, unchangeable*, and unindexed collection. No duplicate members. e.g., `{\"apple\", \"banana\"}`\n- **`frozenset`**: An immutable version of a set.\n\n*\\*Set items are unchangeable, but you can add or remove items.*\n\n### Boolean Type\n\n- **`bool`**: Represents one of two values: `True` or `False`.\n\nUnderstanding variables and data types is the first crucial step in writing any Python program.\n",
+      "html": "<h2>Variables</h2>\n<p>In Python, variables are used to store data values. A variable is created the moment you first assign a value to it. Python has no command for declaring a variable in the way languages like C++ or Java do.</p>\n<pre><code class=\"language-python\">x = 5       # x is an integer\ny = \"Hello\" # y is a string\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables (Identifiers)</h3>\n<ul>\n<li>A variable name must start with a letter (a-z, A-Z) or an underscore character (<code>_</code>).</li>\n<li>It cannot start with a number.</li>\n<li>It can only contain alpha-numeric characters and underscores (A-z, 0-9, and <code>_</code>).</li>\n<li>Variable names are case-sensitive (<code>age</code>, <code>Age</code> and <code>AGE</code> are three different variables).</li>\n</ul>\n<h2>Data Types</h2>\n<p>Python has various built-in data types. Here are some of the most fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<p>You can get the data type of any object by using the <code>type()</code> function:</p>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"\nprint(type(my_string))  # &#x3C;class 'str'>\n</code></pre>\n<h3>Numeric Types</h3>\n<ul>\n<li><strong><code>int</code></strong>: Integer, for whole numbers. e.g., <code>100</code>, <code>-5</code></li>\n<li><strong><code>float</code></strong>: Floating Point Number, for numbers with a decimal point. e.g., <code>3.14</code>, <code>-0.01</code></li>\n<li><strong><code>complex</code></strong>: For complex numbers. e.g., <code>1 + 2j</code></li>\n</ul>\n<h3>Text Type</h3>\n<ul>\n<li><strong><code>str</code></strong>: String, for textual data. Enclosed in single (<code>'</code>) or double (<code>\"</code>) quotes.</li>\n</ul>\n<h3>Sequence Types</h3>\n<ul>\n<li><strong><code>list</code></strong>: An ordered and changeable collection. Allows duplicate members. e.g., <code>[\"apple\", \"banana\"]</code></li>\n<li><strong><code>tuple</code></strong>: An ordered and unchangeable collection. Allows duplicate members. e.g., <code>(\"apple\", \"banana\")</code></li>\n<li><strong><code>range</code></strong>: A sequence of numbers, often used for looping.</li>\n</ul>\n<h3>Mapping Type</h3>\n<ul>\n<li><strong><code>dict</code></strong>: A collection of key-value pairs. Unordered, changeable, and indexed. No duplicate keys. e.g., <code>{\"name\": \"Alice\", \"age\": 30}</code></li>\n</ul>\n<h3>Set Types</h3>\n<ul>\n<li><strong><code>set</code></strong>: An unordered, unchangeable*, and unindexed collection. No duplicate members. e.g., <code>{\"apple\", \"banana\"}</code></li>\n<li><strong><code>frozenset</code></strong>: An immutable version of a set.</li>\n</ul>\n<p><em>*Set items are unchangeable, but you can add or remove items.</em></p>\n<h3>Boolean Type</h3>\n<ul>\n<li><strong><code>bool</code></strong>: Represents one of two values: <code>True</code> or <code>False</code>.</li>\n</ul>\n<p>Understanding variables and data types is the first crucial step in writing any Python program.</p>"
+    },
+    "_id": "tutorials/python/variables-and-data-types.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/python/variables-and-data-types.md",
+      "sourceFileName": "variables-and-data-types.md",
+      "sourceFileDir": "tutorials/python",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/python/variables-and-data-types"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/python/python-variables-data-types",
+    "language": "python"
+  },
+  {
     "title": "Variables in Python",
     "slug": "variables",
     "order": 2,
@@ -1802,27 +1802,5 @@
     "type": "TutorialPost",
     "url": "/tutorial/vba/introduction",
     "language": "vba"
-  },
-  {
-    "title": "Python Variables and Data Types",
-    "slug": "python-variables-data-types",
-    "order": 2,
-    "description": "Learn about variables, naming conventions, and fundamental data types in Python.",
-    "category": "Fundamentals",
-    "body": {
-      "raw": "\n## Variables\n\nIn Python, variables are used to store data values. A variable is created the moment you first assign a value to it. Python has no command for declaring a variable in the way languages like C++ or Java do.\n\n```python\nx = 5       # x is an integer\ny = \"Hello\" # y is a string\nprint(x)\nprint(y)\n```\n\n### Naming Variables (Identifiers)\n\n- A variable name must start with a letter (a-z, A-Z) or an underscore character (`_`).\n- It cannot start with a number.\n- It can only contain alpha-numeric characters and underscores (A-z, 0-9, and `_`).\n- Variable names are case-sensitive (`age`, `Age` and `AGE` are three different variables).\n\n## Data Types\n\nPython has various built-in data types. Here are some of the most fundamental ones:\n\n- **Text Type**: `str`\n- **Numeric Types**: `int`, `float`, `complex`\n- **Sequence Types**: `list`, `tuple`, `range`\n- **Mapping Type**: `dict`\n- **Set Types**: `set`, `frozenset`\n- **Boolean Type**: `bool`\n- **Binary Types**: `bytes`, `bytearray`, `memoryview`\n\nYou can get the data type of any object by using the `type()` function:\n\n```python\nmy_string = \"Python is fun\"\nprint(type(my_string))  # <class 'str'>\n```\n\n### Numeric Types\n\n- **`int`**: Integer, for whole numbers. e.g., `100`, `-5`\n- **`float`**: Floating Point Number, for numbers with a decimal point. e.g., `3.14`, `-0.01`\n- **`complex`**: For complex numbers. e.g., `1 + 2j`\n\n### Text Type\n\n- **`str`**: String, for textual data. Enclosed in single (`'`) or double (`\"`) quotes.\n\n### Sequence Types\n\n- **`list`**: An ordered and changeable collection. Allows duplicate members. e.g., `[\"apple\", \"banana\"]`\n- **`tuple`**: An ordered and unchangeable collection. Allows duplicate members. e.g., `(\"apple\", \"banana\")`\n- **`range`**: A sequence of numbers, often used for looping.\n\n### Mapping Type\n\n- **`dict`**: A collection of key-value pairs. Unordered, changeable, and indexed. No duplicate keys. e.g., `{\"name\": \"Alice\", \"age\": 30}`\n\n### Set Types\n\n- **`set`**: An unordered, unchangeable*, and unindexed collection. No duplicate members. e.g., `{\"apple\", \"banana\"}`\n- **`frozenset`**: An immutable version of a set.\n\n*\\*Set items are unchangeable, but you can add or remove items.*\n\n### Boolean Type\n\n- **`bool`**: Represents one of two values: `True` or `False`.\n\nUnderstanding variables and data types is the first crucial step in writing any Python program.\n",
-      "html": "<h2>Variables</h2>\n<p>In Python, variables are used to store data values. A variable is created the moment you first assign a value to it. Python has no command for declaring a variable in the way languages like C++ or Java do.</p>\n<pre><code class=\"language-python\">x = 5       # x is an integer\ny = \"Hello\" # y is a string\nprint(x)\nprint(y)\n</code></pre>\n<h3>Naming Variables (Identifiers)</h3>\n<ul>\n<li>A variable name must start with a letter (a-z, A-Z) or an underscore character (<code>_</code>).</li>\n<li>It cannot start with a number.</li>\n<li>It can only contain alpha-numeric characters and underscores (A-z, 0-9, and <code>_</code>).</li>\n<li>Variable names are case-sensitive (<code>age</code>, <code>Age</code> and <code>AGE</code> are three different variables).</li>\n</ul>\n<h2>Data Types</h2>\n<p>Python has various built-in data types. Here are some of the most fundamental ones:</p>\n<ul>\n<li><strong>Text Type</strong>: <code>str</code></li>\n<li><strong>Numeric Types</strong>: <code>int</code>, <code>float</code>, <code>complex</code></li>\n<li><strong>Sequence Types</strong>: <code>list</code>, <code>tuple</code>, <code>range</code></li>\n<li><strong>Mapping Type</strong>: <code>dict</code></li>\n<li><strong>Set Types</strong>: <code>set</code>, <code>frozenset</code></li>\n<li><strong>Boolean Type</strong>: <code>bool</code></li>\n<li><strong>Binary Types</strong>: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>\n</ul>\n<p>You can get the data type of any object by using the <code>type()</code> function:</p>\n<pre><code class=\"language-python\">my_string = \"Python is fun\"\nprint(type(my_string))  # &#x3C;class 'str'>\n</code></pre>\n<h3>Numeric Types</h3>\n<ul>\n<li><strong><code>int</code></strong>: Integer, for whole numbers. e.g., <code>100</code>, <code>-5</code></li>\n<li><strong><code>float</code></strong>: Floating Point Number, for numbers with a decimal point. e.g., <code>3.14</code>, <code>-0.01</code></li>\n<li><strong><code>complex</code></strong>: For complex numbers. e.g., <code>1 + 2j</code></li>\n</ul>\n<h3>Text Type</h3>\n<ul>\n<li><strong><code>str</code></strong>: String, for textual data. Enclosed in single (<code>'</code>) or double (<code>\"</code>) quotes.</li>\n</ul>\n<h3>Sequence Types</h3>\n<ul>\n<li><strong><code>list</code></strong>: An ordered and changeable collection. Allows duplicate members. e.g., <code>[\"apple\", \"banana\"]</code></li>\n<li><strong><code>tuple</code></strong>: An ordered and unchangeable collection. Allows duplicate members. e.g., <code>(\"apple\", \"banana\")</code></li>\n<li><strong><code>range</code></strong>: A sequence of numbers, often used for looping.</li>\n</ul>\n<h3>Mapping Type</h3>\n<ul>\n<li><strong><code>dict</code></strong>: A collection of key-value pairs. Unordered, changeable, and indexed. No duplicate keys. e.g., <code>{\"name\": \"Alice\", \"age\": 30}</code></li>\n</ul>\n<h3>Set Types</h3>\n<ul>\n<li><strong><code>set</code></strong>: An unordered, unchangeable*, and unindexed collection. No duplicate members. e.g., <code>{\"apple\", \"banana\"}</code></li>\n<li><strong><code>frozenset</code></strong>: An immutable version of a set.</li>\n</ul>\n<p><em>*Set items are unchangeable, but you can add or remove items.</em></p>\n<h3>Boolean Type</h3>\n<ul>\n<li><strong><code>bool</code></strong>: Represents one of two values: <code>True</code> or <code>False</code>.</li>\n</ul>\n<p>Understanding variables and data types is the first crucial step in writing any Python program.</p>"
-    },
-    "_id": "tutorials/python/variables-and-data-types.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/python/variables-and-data-types.md",
-      "sourceFileName": "variables-and-data-types.md",
-      "sourceFileDir": "tutorials/python",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/python/variables-and-data-types"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/python/python-variables-data-types",
-    "language": "python"
   }
 ]
