@@ -12,7 +12,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
 export async function generateStaticParams() {
-  const posts = await fetchBlogPosts({ limit: 50 }); // Fetch a reasonable number for static generation
+  if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+    console.warn("Contentful env-vars missing at build-time – ISR paths for blog posts will not be generated.");
+    return [];
+  }
+  const posts = await fetchBlogPosts({ limit: 50 }); 
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -49,7 +53,7 @@ export default async function PostPage({
       )}
       <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
       <p className="text-sm text-muted-foreground mb-4">Published: {new Date(post.date).toLocaleDateString()}</p>
-      <ContentfulRichTextRenderer content={post.content} />
+      {post.content && <ContentfulRichTextRenderer content={post.content} />}
     </main>
   );
 }
