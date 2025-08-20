@@ -1,0 +1,22 @@
+{
+  "title": "List Comprehension in Python",
+  "slug": "list-comprehension",
+  "order": 17,
+  "description": "A concise and elegant way to create lists in Python.",
+  "category": "Python Data Structures",
+  "body": {
+    "raw": "\n## List Comprehension in Python\n\nThis tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using `for` loops.\n",
+    "html": "<h2>List Comprehension in Python</h2>\n<p>This tutorial teaches you how to use list comprehensions to create lists in a more readable and Pythonic way, providing a compact alternative to using <code>for</code> loops.</p>"
+  },
+  "_id": "tutorials/python/list-comprehension.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/list-comprehension.md",
+    "sourceFileName": "list-comprehension.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/list-comprehension"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/list-comprehension",
+  "language": "python"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Python MySQL",
+  "slug": "mysql-tutorial",
+  "order": 22,
+  "description": "Learn to connect Python applications to a MySQL database.",
+  "category": "Python Database Tutorial",
+  "body": {
+    "raw": "\n## Python MySQL\n\nThis tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like `mysql-connector-python`.\n",
+    "html": "<h2>Python MySQL</h2>\n<p>This tutorial walks you through connecting to a MySQL database with Python, executing SQL queries, and fetching results using popular libraries like <code>mysql-connector-python</code>.</p>"
+  },
+  "_id": "tutorials/python/mysql-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/mysql-tutorial.md",
+    "sourceFileName": "mysql-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/mysql-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/mysql-tutorial",
+  "language": "python"
+}

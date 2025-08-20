@@ -1,0 +1,22 @@
+{
+  "title": "Python Tuples",
+  "slug": "tuples",
+  "order": 13,
+  "description": "Understand immutable sequences using tuples in Python.",
+  "category": "Python Data Structures",
+  "body": {
+    "raw": "\n## Python Tuples\n\nThis tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.\n",
+    "html": "<h2>Python Tuples</h2>\n<p>This tutorial explains tuples, an immutable data structure in Python. Learn when and why to use tuples over lists, and how to perform common operations.</p>"
+  },
+  "_id": "tutorials/python/tuples.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/tuples.md",
+    "sourceFileName": "tuples.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/tuples"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/tuples",
+  "language": "python"
+}

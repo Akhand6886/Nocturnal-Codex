@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to PHP",
+  "slug": "introduction-to-php",
+  "order": 1,
+  "description": "An overview of PHP, a popular server-side scripting language.",
+  "category": "Web Development",
+  "body": {
+    "raw": "\n## What is PHP?\n\nPHP (a recursive acronym for \"PHP: Hypertext Preprocessor\") is a widely-used, open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994.\n\n### Key Characteristics:\n\n- **Server-Side**: PHP code is executed on the server, generating HTML which is then sent to the client. The client receives the results of the script, but does not know the underlying code.\n- **Database Integration**: PHP has excellent support for a wide range of databases, most notably MySQL.\n- **Simplicity**: It has a relatively easy learning curve, especially for those with a background in C-style syntax.\n- **Community**: PHP has a large and active community, meaning there is a wealth of tutorials, libraries, and frameworks available.\n- **Frameworks**: Powerful frameworks like Laravel and Symfony have made PHP a modern and robust choice for building complex web applications.\n\nA simple PHP script looks like this:\n\n```php\n<!DOCTYPE html>\n<html>\n<body>\n\n    <h1>My first PHP page</h1>\n\n    <?php\n    echo \"Hello World!\";\n    ?>\n\n</body>\n</html>\n```\n\nPHP powers a significant portion of the web, including famous platforms like WordPress and Facebook.",
+    "html": "<h2>What is PHP?</h2>\n<p>PHP (a recursive acronym for \"PHP: Hypertext Preprocessor\") is a widely-used, open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994.</p>\n<h3>Key Characteristics:</h3>\n<ul>\n<li><strong>Server-Side</strong>: PHP code is executed on the server, generating HTML which is then sent to the client. The client receives the results of the script, but does not know the underlying code.</li>\n<li><strong>Database Integration</strong>: PHP has excellent support for a wide range of databases, most notably MySQL.</li>\n<li><strong>Simplicity</strong>: It has a relatively easy learning curve, especially for those with a background in C-style syntax.</li>\n<li><strong>Community</strong>: PHP has a large and active community, meaning there is a wealth of tutorials, libraries, and frameworks available.</li>\n<li><strong>Frameworks</strong>: Powerful frameworks like Laravel and Symfony have made PHP a modern and robust choice for building complex web applications.</li>\n</ul>\n<p>A simple PHP script looks like this:</p>\n<pre><code class=\"language-php\">&#x3C;!DOCTYPE html>\n&#x3C;html>\n&#x3C;body>\n\n    &#x3C;h1>My first PHP page&#x3C;/h1>\n\n    &#x3C;?php\n    echo \"Hello World!\";\n    ?>\n\n&#x3C;/body>\n&#x3C;/html>\n</code></pre>\n<p>PHP powers a significant portion of the web, including famous platforms like WordPress and Facebook.</p>"
+  },
+  "_id": "tutorials/php/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/php/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/php",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/php/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/php/introduction-to-php",
+  "language": "php"
+}

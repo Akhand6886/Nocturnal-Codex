@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Swift",
+  "slug": "introduction",
+  "order": 1,
+  "description": "An overview of Swift, the powerful and intuitive programming language for macOS, iOS, watchOS, and tvOS.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is Swift?\n\nSwift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C, as Objective-C had been largely unchanged since the early 1980s and lacked modern language features.\n",
+    "html": "<h2>What is Swift?</h2>\n<p>Swift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C, as Objective-C had been largely unchanged since the early 1980s and lacked modern language features.</p>"
+  },
+  "_id": "tutorials/swift/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/swift/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/swift",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/swift/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/swift/introduction",
+  "language": "swift"
+}

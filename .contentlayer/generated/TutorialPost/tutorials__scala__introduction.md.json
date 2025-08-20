@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Scala",
+  "slug": "introduction",
+  "order": 1,
+  "description": "An overview of Scala, a strong statically typed general-purpose programming language that supports both object-oriented and functional programming.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is Scala?\n\nScala is a high-level language that combines object-oriented and functional programming in one concise language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.\n",
+    "html": "<h2>What is Scala?</h2>\n<p>Scala is a high-level language that combines object-oriented and functional programming in one concise language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>"
+  },
+  "_id": "tutorials/scala/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/scala/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/scala",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/scala/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/scala/introduction",
+  "language": "scala"
+}

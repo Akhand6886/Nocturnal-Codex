@@ -3,6 +3,7 @@
   "slug": "loops",
   "order": 4,
   "description": "Learn how to use for and while loops for iteration in Python.",
+  "category": "Control Flow",
   "body": {
     "raw": "\n## Iterating with Loops in Python\n\nLoops are used in programming to repeat a specific block of code.\n\n### For Loops\n\nA for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).\n\n```python\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n  print(fruit)\n```\n\n### While Loops\n\nWith the while loop we can execute a set of statements as long as a condition is true.\n\n```python\ni = 1\nwhile i < 6:\n  print(i)\n  i += 1\n```\n\nThis tutorial covers for and while loops.\n",
     "html": "<h2>Iterating with Loops in Python</h2>\n<p>Loops are used in programming to repeat a specific block of code.</p>\n<h3>For Loops</h3>\n<p>A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).</p>\n<pre><code class=\"language-python\">fruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n  print(fruit)\n</code></pre>\n<h3>While Loops</h3>\n<p>With the while loop we can execute a set of statements as long as a condition is true.</p>\n<pre><code class=\"language-python\">i = 1\nwhile i &#x3C; 6:\n  print(i)\n  i += 1\n</code></pre>\n<p>This tutorial covers for and while loops.</p>"
@@ -16,5 +17,6 @@
     "flattenedPath": "tutorials/python/loops"
   },
   "type": "PythonTutorial",
-  "url": "/tutorial/python/loops"
+  "url": "/tutorial/python/loops",
+  "language": "python"
 }

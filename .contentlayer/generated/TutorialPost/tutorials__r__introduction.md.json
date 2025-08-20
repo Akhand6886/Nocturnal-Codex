@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to R",
+  "slug": "introduction",
+  "order": 1,
+  "description": "An overview of R, a language and environment for statistical computing and graphics.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is R?\n\nR is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis.\n",
+    "html": "<h2>What is R?</h2>\n<p>R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis.</p>"
+  },
+  "_id": "tutorials/r/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/r/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/r",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/r/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/r/introduction",
+  "language": "r"
+}

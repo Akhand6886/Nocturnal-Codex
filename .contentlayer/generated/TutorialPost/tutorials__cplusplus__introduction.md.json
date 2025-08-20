@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to C++",
+  "slug": "introduction-to-cplusplus",
+  "order": 1,
+  "description": "A brief overview of the C++ programming language, its features, and its applications.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is C++?\n\nC++ is a high-level, general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation.\n\n### Core Features:\n- **Object-Oriented**: C++ introduces classes and objects, allowing for encapsulation, inheritance, and polymorphism.\n- **Performance**: Like C, it allows for low-level memory manipulation, making it extremely fast and efficient. This is why it's a popular choice for game engines, high-frequency trading, and embedded systems.\n- **Standard Template Library (STL)**: A set of C++ template classes to provide common programming data structures and functions such as lists, stacks, arrays, etc.\n- **Scalability**: C++ can be used to create large-scale applications with complex requirements.\n- **Compatibility with C**: C++ is highly compatible with C, allowing C code to be easily included in C++ programs.\n\nC++ is a versatile language used in a wide range of applications, from operating systems and browsers to graphical user interfaces and game development.",
+    "html": "<h2>What is C++?</h2>\n<p>C++ is a high-level, general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation.</p>\n<h3>Core Features:</h3>\n<ul>\n<li><strong>Object-Oriented</strong>: C++ introduces classes and objects, allowing for encapsulation, inheritance, and polymorphism.</li>\n<li><strong>Performance</strong>: Like C, it allows for low-level memory manipulation, making it extremely fast and efficient. This is why it's a popular choice for game engines, high-frequency trading, and embedded systems.</li>\n<li><strong>Standard Template Library (STL)</strong>: A set of C++ template classes to provide common programming data structures and functions such as lists, stacks, arrays, etc.</li>\n<li><strong>Scalability</strong>: C++ can be used to create large-scale applications with complex requirements.</li>\n<li><strong>Compatibility with C</strong>: C++ is highly compatible with C, allowing C code to be easily included in C++ programs.</li>\n</ul>\n<p>C++ is a versatile language used in a wide range of applications, from operating systems and browsers to graphical user interfaces and game development.</p>"
+  },
+  "_id": "tutorials/cplusplus/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cplusplus/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/cplusplus",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cplusplus/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cplusplus/introduction-to-cplusplus",
+  "language": "cplusplus"
+}

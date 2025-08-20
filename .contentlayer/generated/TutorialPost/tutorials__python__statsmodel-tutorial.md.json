@@ -1,0 +1,22 @@
+{
+  "title": "StatsModel Library - Tutorial",
+  "slug": "statsmodel-tutorial",
+  "order": 29,
+  "description": "A guide to statistical modeling and testing using the StatsModel library.",
+  "category": "Data Science with Python",
+  "body": {
+    "raw": "\n## StatsModel Library Tutorial\n\nThis tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.\n",
+    "html": "<h2>StatsModel Library Tutorial</h2>\n<p>This tutorial covers the StatsModel library, which provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests and data exploration.</p>"
+  },
+  "_id": "tutorials/python/statsmodel-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/statsmodel-tutorial.md",
+    "sourceFileName": "statsmodel-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/statsmodel-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/statsmodel-tutorial",
+  "language": "python"
+}

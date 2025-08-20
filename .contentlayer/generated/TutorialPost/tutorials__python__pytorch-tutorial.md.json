@@ -1,0 +1,22 @@
+{
+  "title": "PyTorch Tutorial",
+  "slug": "pytorch-tutorial",
+  "order": 32,
+  "description": "Learn the fundamentals of deep learning with PyTorch.",
+  "category": "Data Science with Python",
+  "body": {
+    "raw": "\n## PyTorch Tutorial\n\nThis tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.\n",
+    "html": "<h2>PyTorch Tutorial</h2>\n<p>This tutorial introduces PyTorch, an open-source machine learning library known for its flexibility and ease of use in building deep learning models.</p>"
+  },
+  "_id": "tutorials/python/pytorch-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/pytorch-tutorial.md",
+    "sourceFileName": "pytorch-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/pytorch-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/pytorch-tutorial",
+  "language": "python"
+}

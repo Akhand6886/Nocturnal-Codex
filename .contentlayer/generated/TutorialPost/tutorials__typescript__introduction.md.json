@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to TypeScript",
+  "slug": "introduction-to-typescript",
+  "order": 1,
+  "description": "An introduction to TypeScript and its relationship with JavaScript.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is TypeScript?\n\nTypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript.\n\n### Why use TypeScript?\n\nJavaScript is a dynamically typed language. This means you don't have to specify the type of a variable, which offers flexibility but can lead to bugs in large-scale applications. TypeScript solves this problem by adding types to JavaScript.\n\n- **Static Typing**: Catch errors during development, before the code is run. This leads to more robust code.\n- **Better Tooling**: Types allow for better autocompletion, navigation, and refactoring in code editors like VS Code.\n- **Readability**: Explicit types can make the code easier to read and understand.\n- **Modern JavaScript Features**: TypeScript lets you use the latest features of JavaScript, even if they aren't supported by all browsers yet, by compiling them down to an older version.\n\n### TypeScript Example\n\nHere is a simple example in TypeScript:\n\n```typescript\nfunction greet(person: string, date: Date) {\n  console.log(`Hello ${person}, today is ${date.toDateString()}!`);\n}\n\ngreet(\"Brendan\", new Date());\n```\n\nIf you were to call `greet(\"Brendan\", \"2024-07-10\")`, TypeScript would give you an error because you are passing a string instead of a `Date` object. Plain JavaScript would only fail at runtime.\n\nBecause TypeScript is a superset of JavaScript, any valid JavaScript code is also valid TypeScript code. This makes it easy to adopt TypeScript in existing JavaScript projects.",
+    "html": "<h2>What is TypeScript?</h2>\n<p>TypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript.</p>\n<h3>Why use TypeScript?</h3>\n<p>JavaScript is a dynamically typed language. This means you don't have to specify the type of a variable, which offers flexibility but can lead to bugs in large-scale applications. TypeScript solves this problem by adding types to JavaScript.</p>\n<ul>\n<li><strong>Static Typing</strong>: Catch errors during development, before the code is run. This leads to more robust code.</li>\n<li><strong>Better Tooling</strong>: Types allow for better autocompletion, navigation, and refactoring in code editors like VS Code.</li>\n<li><strong>Readability</strong>: Explicit types can make the code easier to read and understand.</li>\n<li><strong>Modern JavaScript Features</strong>: TypeScript lets you use the latest features of JavaScript, even if they aren't supported by all browsers yet, by compiling them down to an older version.</li>\n</ul>\n<h3>TypeScript Example</h3>\n<p>Here is a simple example in TypeScript:</p>\n<pre><code class=\"language-typescript\">function greet(person: string, date: Date) {\n  console.log(`Hello ${person}, today is ${date.toDateString()}!`);\n}\n\ngreet(\"Brendan\", new Date());\n</code></pre>\n<p>If you were to call <code>greet(\"Brendan\", \"2024-07-10\")</code>, TypeScript would give you an error because you are passing a string instead of a <code>Date</code> object. Plain JavaScript would only fail at runtime.</p>\n<p>Because TypeScript is a superset of JavaScript, any valid JavaScript code is also valid TypeScript code. This makes it easy to adopt TypeScript in existing JavaScript projects.</p>"
+  },
+  "_id": "tutorials/typescript/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/typescript/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/typescript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/typescript/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/typescript/introduction-to-typescript",
+  "language": "typescript"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Python Exception Handling",
+  "slug": "exception-handling",
+  "order": 19,
+  "description": "Learn how to handle errors and exceptions gracefully using try, except, else, and finally.",
+  "category": "Advanced Python",
+  "body": {
+    "raw": "\n## Python Exception Handling\n\nThis tutorial explains how to manage errors and exceptions in Python using `try...except` blocks, ensuring your programs are robust and can handle unexpected situations.\n",
+    "html": "<h2>Python Exception Handling</h2>\n<p>This tutorial explains how to manage errors and exceptions in Python using <code>try...except</code> blocks, ensuring your programs are robust and can handle unexpected situations.</p>"
+  },
+  "_id": "tutorials/python/exception-handling.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/exception-handling.md",
+    "sourceFileName": "exception-handling.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/exception-handling"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/exception-handling",
+  "language": "python"
+}

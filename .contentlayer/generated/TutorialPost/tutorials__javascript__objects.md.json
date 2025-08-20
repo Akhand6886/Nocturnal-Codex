@@ -1,0 +1,22 @@
+{
+  "title": "JavaScript Objects",
+  "slug": "javascript-objects",
+  "order": 9,
+  "description": "Learn how to use objects to store collections of key-value data in JavaScript.",
+  "category": "JS Fundamentals",
+  "body": {
+    "raw": "\n## Understanding JavaScript Objects\n\nIn JavaScript, an object is a standalone entity, with properties and type. Think of an object as a collection of key-value pairs. This is a very common way to group related data and functionality.\n\n### Creating an Object\n\nThe most common way to create an object is with an object literal `{}`.\n\n```javascript\nconst person = {\n  firstName: \"Ada\",\n  lastName: \"Lovelace\",\n  age: 36,\n  isProgrammer: true,\n  greet: function() {\n    console.log(\"Hello, my name is \" + this.firstName);\n  }\n};\n```\n\nThis `person` object has properties (`firstName`, `age`) and a method (`greet`).\n\n### Accessing Properties\n\nYou can access object properties in two ways:\n\n1.  **Dot Notation**: `objectName.propertyName`\n    ```javascript\n    console.log(person.firstName); // Output: \"Ada\"\n    ```\n\n2.  **Bracket Notation**: `objectName[\"propertyName\"]`\n    ```javascript\n    console.log(person[\"lastName\"]); // Output: \"Lovelace\"\n    ```\n\nBracket notation is useful when the property name is stored in a variable.\n\n### Modifying Objects\n\nYou can add, change, or delete object properties.\n\n```javascript\n// Adding a new property\nperson.nationality = \"British\";\n\n// Changing an existing property\nperson.age = 37;\n\n// Deleting a property\ndelete person.isProgrammer;\n```\n\n### Methods\n\nA method is a function stored as a property.\n\n```javascript\nperson.greet(); // Calls the greet method, output: \"Hello, my name is Ada\"\n```\nThe `this` keyword refers to the object the method is part of.\n\nObjects are fundamental to understanding almost every aspect of JavaScript, from simple data storage to complex application architecture.",
+    "html": "<h2>Understanding JavaScript Objects</h2>\n<p>In JavaScript, an object is a standalone entity, with properties and type. Think of an object as a collection of key-value pairs. This is a very common way to group related data and functionality.</p>\n<h3>Creating an Object</h3>\n<p>The most common way to create an object is with an object literal <code>{}</code>.</p>\n<pre><code class=\"language-javascript\">const person = {\n  firstName: \"Ada\",\n  lastName: \"Lovelace\",\n  age: 36,\n  isProgrammer: true,\n  greet: function() {\n    console.log(\"Hello, my name is \" + this.firstName);\n  }\n};\n</code></pre>\n<p>This <code>person</code> object has properties (<code>firstName</code>, <code>age</code>) and a method (<code>greet</code>).</p>\n<h3>Accessing Properties</h3>\n<p>You can access object properties in two ways:</p>\n<ol>\n<li>\n<p><strong>Dot Notation</strong>: <code>objectName.propertyName</code></p>\n<pre><code class=\"language-javascript\">console.log(person.firstName); // Output: \"Ada\"\n</code></pre>\n</li>\n<li>\n<p><strong>Bracket Notation</strong>: <code>objectName[\"propertyName\"]</code></p>\n<pre><code class=\"language-javascript\">console.log(person[\"lastName\"]); // Output: \"Lovelace\"\n</code></pre>\n</li>\n</ol>\n<p>Bracket notation is useful when the property name is stored in a variable.</p>\n<h3>Modifying Objects</h3>\n<p>You can add, change, or delete object properties.</p>\n<pre><code class=\"language-javascript\">// Adding a new property\nperson.nationality = \"British\";\n\n// Changing an existing property\nperson.age = 37;\n\n// Deleting a property\ndelete person.isProgrammer;\n</code></pre>\n<h3>Methods</h3>\n<p>A method is a function stored as a property.</p>\n<pre><code class=\"language-javascript\">person.greet(); // Calls the greet method, output: \"Hello, my name is Ada\"\n</code></pre>\n<p>The <code>this</code> keyword refers to the object the method is part of.</p>\n<p>Objects are fundamental to understanding almost every aspect of JavaScript, from simple data storage to complex application architecture.</p>"
+  },
+  "_id": "tutorials/javascript/objects.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/objects.md",
+    "sourceFileName": "objects.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/objects"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/javascript-objects",
+  "language": "javascript"
+}

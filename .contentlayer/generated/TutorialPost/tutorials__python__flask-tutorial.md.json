@@ -1,0 +1,22 @@
+{
+  "title": "Flask Tutorial",
+  "slug": "flask-tutorial",
+  "order": 33,
+  "description": "Learn to build web applications with Flask, a lightweight Python web framework.",
+  "category": "Web Development with Python",
+  "body": {
+    "raw": "\n## Flask Tutorial\n\nThis tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.\n",
+    "html": "<h2>Flask Tutorial</h2>\n<p>This tutorial provides a step-by-step guide to getting started with Flask, a micro web framework for Python, covering routing, templates, and request handling.</p>"
+  },
+  "_id": "tutorials/python/flask-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/flask-tutorial.md",
+    "sourceFileName": "flask-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/flask-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/flask-tutorial",
+  "language": "python"
+}

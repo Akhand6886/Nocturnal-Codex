@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Go",
+  "slug": "introduction",
+  "order": 1,
+  "description": "An overview of Go, an open-source programming language that makes it easy to build simple, reliable, and efficient software.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is Go?\n\nGo (often referred to as Golang) is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.\n",
+    "html": "<h2>What is Go?</h2>\n<p>Go (often referred to as Golang) is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.</p>"
+  },
+  "_id": "tutorials/go/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/go/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/go",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/go/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/go/introduction",
+  "language": "go"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Pandas Tutorial",
+  "slug": "pandas-tutorial",
+  "order": 26,
+  "description": "Learn the basics of data analysis and manipulation with the Pandas library.",
+  "category": "Data Science with Python",
+  "body": {
+    "raw": "\n## Pandas Tutorial\n\nThis tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.\n",
+    "html": "<h2>Pandas Tutorial</h2>\n<p>This tutorial covers Pandas, a powerful library for data analysis in Python. Learn how to work with DataFrames and Series to clean, transform, and analyze data.</p>"
+  },
+  "_id": "tutorials/python/pandas-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/pandas-tutorial.md",
+    "sourceFileName": "pandas-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/pandas-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/pandas-tutorial",
+  "language": "python"
+}

@@ -63,10 +63,6 @@ export const MOCK_TOPICS: Topic[] = [
       {id: "dp", slug: "dynamic-programming", name: "Dynamic Programming", description: "Optimization technique by breaking down problems."},
       {id: "complexity-analysis", slug: "complexity-analysis", name: "Complexity Analysis", description: "Understanding how algorithms scale with input size, using notations like Big O."}
     ],
-    references: [
-      {id: "wiki-clrs", slug: "clrs-summary", title: "CLRS Summary Notes"},
-      {id: "wiki-big-o", slug: "big-o-notation", title: "Big O Notation"}
-    ],
     codeSnippets: [
       {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: `
 def merge_sort(arr):
@@ -304,12 +300,12 @@ export const NAV_ITEMS: NavItemType[] = [
     label: "Topics",
     href: "/topics",
   },
+  {
+    label: "Languages",
+    href: "/languages",
+  },
   { label: "Blog", href: "/blog" },
   { label: "Wiki", href: "/wiki" },
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
-    
-
-    
-

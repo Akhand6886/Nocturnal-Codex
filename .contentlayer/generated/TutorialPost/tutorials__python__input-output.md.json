@@ -1,0 +1,22 @@
+{
+  "title": "Input and Output in Python",
+  "slug": "input-output",
+  "order": 2,
+  "description": "Learn how to handle user input and display output in Python.",
+  "category": "Python Fundamentals",
+  "body": {
+    "raw": "\n## Input and Output in Python\n\nThis tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.\n",
+    "html": "<h2>Input and Output in Python</h2>\n<p>This tutorial covers how to take input from a user and how to display output to the console, which are fundamental operations for any interactive program.</p>"
+  },
+  "_id": "tutorials/python/input-output.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/input-output.md",
+    "sourceFileName": "input-output.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/input-output"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/input-output",
+  "language": "python"
+}

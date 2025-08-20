@@ -1,0 +1,22 @@
+{
+  "title": "List of Python GUI Library and Packages",
+  "slug": "gui-libraries",
+  "order": 24,
+  "description": "An overview of popular libraries for creating Graphical User Interfaces (GUIs) in Python.",
+  "category": "Python DSA Libraries",
+  "body": {
+    "raw": "\n## Python GUI Libraries\n\nThis tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.\n",
+    "html": "<h2>Python GUI Libraries</h2>\n<p>This tutorial provides an overview of various libraries and packages available for building desktop applications with Graphical User Interfaces (GUIs) in Python, such as Tkinter, PyQt, and Kivy.</p>"
+  },
+  "_id": "tutorials/python/gui-libraries.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/gui-libraries.md",
+    "sourceFileName": "gui-libraries.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/gui-libraries"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/gui-libraries",
+  "language": "python"
+}

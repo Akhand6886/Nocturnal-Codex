@@ -1,0 +1,22 @@
+{
+  "title": "Python Operators",
+  "slug": "operators",
+  "order": 4,
+  "description": "Understand the various operators in Python for arithmetic, comparison, and logical operations.",
+  "category": "Python Fundamentals",
+  "body": {
+    "raw": "\n## Python Operators\n\nThis tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.\n",
+    "html": "<h2>Python Operators</h2>\n<p>This tutorial explains the different types of operators in Python, including arithmetic, assignment, comparison, and logical operators, which are used to perform operations on variables and values.</p>"
+  },
+  "_id": "tutorials/python/operators.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/operators.md",
+    "sourceFileName": "operators.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/operators"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/operators",
+  "language": "python"
+}

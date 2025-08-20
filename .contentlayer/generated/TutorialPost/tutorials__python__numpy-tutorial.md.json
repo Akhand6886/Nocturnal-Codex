@@ -1,0 +1,22 @@
+{
+  "title": "NumPy Tutorial - Python Library",
+  "slug": "numpy-tutorial",
+  "order": 25,
+  "description": "A beginner's guide to NumPy for numerical computing in Python.",
+  "category": "Data Science with Python",
+  "body": {
+    "raw": "\n## NumPy Tutorial\n\nThis tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.\n",
+    "html": "<h2>NumPy Tutorial</h2>\n<p>This tutorial introduces NumPy, the fundamental package for numerical computation in Python. Learn about NumPy arrays, vectorization, and powerful mathematical functions.</p>"
+  },
+  "_id": "tutorials/python/numpy-tutorial.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/numpy-tutorial.md",
+    "sourceFileName": "numpy-tutorial.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/numpy-tutorial"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/numpy-tutorial",
+  "language": "python"
+}

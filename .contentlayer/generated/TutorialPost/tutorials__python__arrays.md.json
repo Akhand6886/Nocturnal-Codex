@@ -1,0 +1,22 @@
+{
+  "title": "Python Arrays",
+  "slug": "arrays",
+  "order": 16,
+  "description": "Understand how to use the array module for type-constrained, efficient arrays.",
+  "category": "Python Data Structures",
+  "body": {
+    "raw": "\n## Python Arrays\n\nThis tutorial covers the `array` module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.\n",
+    "html": "<h2>Python Arrays</h2>\n<p>This tutorial covers the <code>array</code> module in Python, which provides a more memory-efficient way to store arrays of a single data type compared to lists.</p>"
+  },
+  "_id": "tutorials/python/arrays.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/arrays.md",
+    "sourceFileName": "arrays.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/arrays"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/arrays",
+  "language": "python"
+}

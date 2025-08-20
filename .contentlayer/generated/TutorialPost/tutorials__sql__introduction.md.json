@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to SQL",
+  "slug": "introduction-to-sql",
+  "order": 1,
+  "description": "A brief overview of SQL and its role in managing relational databases.",
+  "category": "Databases",
+  "body": {
+    "raw": "\n## What is SQL?\n\nSQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS). It is a standard language for accessing and manipulating databases.\n\n### What can SQL do?\n\n- SQL can execute queries against a database\n- SQL can retrieve data from a database\n- SQL can insert records in a database\n- SQL can update records in a database\n- SQL can delete records from a database\n- SQL can create new databases\n- SQL can create new tables in a database\n- SQL can create stored procedures in a database\n- SQL can create views in a database\n- SQL can set permissions on tables, procedures, and views\n\n### Example Query\n\nHere is an example of a simple SQL query to select all records from a \"Customers\" table:\n\n```sql\nSELECT * FROM Customers;\n```\n\nTo select only customers from a specific country, you could use a `WHERE` clause:\n\n```sql\nSELECT * FROM Customers\nWHERE Country = 'Germany';\n```\n\nSQL is an essential skill for data analysts, backend developers, and anyone involved in managing large-scale data. Different database systems have their own dialect of SQL (e.g., T-SQL for Microsoft SQL Server, PL/SQL for Oracle), but the core commands are largely standardized.",
+    "html": "<h2>What is SQL?</h2>\n<p>SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS). It is a standard language for accessing and manipulating databases.</p>\n<h3>What can SQL do?</h3>\n<ul>\n<li>SQL can execute queries against a database</li>\n<li>SQL can retrieve data from a database</li>\n<li>SQL can insert records in a database</li>\n<li>SQL can update records in a database</li>\n<li>SQL can delete records from a database</li>\n<li>SQL can create new databases</li>\n<li>SQL can create new tables in a database</li>\n<li>SQL can create stored procedures in a database</li>\n<li>SQL can create views in a database</li>\n<li>SQL can set permissions on tables, procedures, and views</li>\n</ul>\n<h3>Example Query</h3>\n<p>Here is an example of a simple SQL query to select all records from a \"Customers\" table:</p>\n<pre><code class=\"language-sql\">SELECT * FROM Customers;\n</code></pre>\n<p>To select only customers from a specific country, you could use a <code>WHERE</code> clause:</p>\n<pre><code class=\"language-sql\">SELECT * FROM Customers\nWHERE Country = 'Germany';\n</code></pre>\n<p>SQL is an essential skill for data analysts, backend developers, and anyone involved in managing large-scale data. Different database systems have their own dialect of SQL (e.g., T-SQL for Microsoft SQL Server, PL/SQL for Oracle), but the core commands are largely standardized.</p>"
+  },
+  "_id": "tutorials/sql/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/sql/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/sql",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/sql/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/sql/introduction-to-sql",
+  "language": "sql"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Perl",
+  "slug": "introduction",
+  "order": 1,
+  "description": "An overview of Perl, a family of two high-level, general-purpose, interpreted, dynamic programming languages.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is Perl?\n\nPerl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing and system administration tasks.\n",
+    "html": "<h2>What is Perl?</h2>\n<p>Perl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing and system administration tasks.</p>"
+  },
+  "_id": "tutorials/perl/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/perl/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/perl",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/perl/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/perl/introduction",
+  "language": "perl"
+}

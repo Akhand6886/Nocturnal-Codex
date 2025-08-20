@@ -1,0 +1,22 @@
+{
+  "title": "Python Modules",
+  "slug": "modules",
+  "order": 23,
+  "description": "Understand how to create and use modules to organize your Python code.",
+  "category": "Python Packages",
+  "body": {
+    "raw": "\n## Python Modules\n\nThis tutorial explains what Python modules are, how to create your own, and how to use the `import` statement to bring functionality from one module into another.\n",
+    "html": "<h2>Python Modules</h2>\n<p>This tutorial explains what Python modules are, how to create your own, and how to use the <code>import</code> statement to bring functionality from one module into another.</p>"
+  },
+  "_id": "tutorials/python/modules.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/python/modules.md",
+    "sourceFileName": "modules.md",
+    "sourceFileDir": "tutorials/python",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/python/modules"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/python/modules",
+  "language": "python"
+}

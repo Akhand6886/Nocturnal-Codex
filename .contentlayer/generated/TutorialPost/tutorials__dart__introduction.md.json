@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Dart",
+  "slug": "introduction",
+  "order": 1,
+  "description": "An overview of Dart, a client-optimized language for fast apps on any platform.",
+  "category": "Getting Started",
+  "body": {
+    "raw": "\n## What is Dart?\n\nDart is a programming language designed by Google and is used to build mobile, desktop, server, and web applications. Dart is an object-oriented, class-based, garbage-collected language with C-style syntax. It can compile to either native code or JavaScript. It is the language used by the Flutter framework.\n",
+    "html": "<h2>What is Dart?</h2>\n<p>Dart is a programming language designed by Google and is used to build mobile, desktop, server, and web applications. Dart is an object-oriented, class-based, garbage-collected language with C-style syntax. It can compile to either native code or JavaScript. It is the language used by the Flutter framework.</p>"
+  },
+  "_id": "tutorials/dart/introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/dart/introduction.md",
+    "sourceFileName": "introduction.md",
+    "sourceFileDir": "tutorials/dart",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/dart/introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/dart/introduction",
+  "language": "dart"
+}
