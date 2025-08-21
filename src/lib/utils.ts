@@ -1,9 +1,13 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import type { Document, Node } from '@contentful/rich-text-types';
+import type { Document, Node, Text } from '@contentful/rich-text-types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+function isTextNode(node: Node): node is Text {
+    return node.nodeType === 'text' && typeof (node as Text).value === 'string';
 }
 
 export function richTextToPlainText(richText: Document | null | undefined): string {
@@ -15,13 +19,13 @@ export function richTextToPlainText(richText: Document | null | undefined): stri
 
   const traverse = (nodes: Node[]) => {
     for (const node of nodes) {
-      if (node.nodeType === 'text' && 'value' in node) {
+      if (isTextNode(node)) {
         text += node.value;
       }
 
       if ('content' in node && Array.isArray(node.content)) {
         if (node.nodeType === 'paragraph' && text.length > 0 && !text.endsWith(' ')) {
-          text += ' ';
+          text += ' '; // Add a space between paragraphs
         }
         traverse(node.content as Node[]);
       }
@@ -29,5 +33,5 @@ export function richTextToPlainText(richText: Document | null | undefined): stri
   };
 
   traverse(richText.content);
-  return text.trim();
+  return text.trim().replace(/\s+/g, ' '); // Consolidate whitespace
 }

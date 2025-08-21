@@ -4,18 +4,22 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
 import { format } from 'date-fns';
-import { Users, CalendarDays, Tag as TagIcon, FileText, Sigma, Link as LinkIconLucide } from "lucide-react";
+import { Users, CalendarDays, Tag as TagIcon, FileText, Link as LinkIconLucide } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
 import { fetchThinkTankArticles, fetchThinkTankArticleBySlug, fetchBlogPosts } from "@/lib/contentful";
 import { ContentfulRichTextRenderer } from "@/components/contentful/rich-text-renderer";
-import type { BlogPost, ThinkTankArticle } from "@/types";
+import { richTextToPlainText } from "@/lib/utils";
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
+  if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+    console.warn("Contentful env-vars missing at build-time – ISR paths for think tank articles will not be generated.");
+    return [];
+  }
   const articles = await fetchThinkTankArticles({ limit: 50 });
   return articles.map((article) => ({
     slug: article.slug,
@@ -39,19 +43,18 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
     { label: article.title },
   ];
 
-  // Fetch related content
   const relatedArticles: RelatedArticle[] = [];
   if (article.tags && article.tags.length > 0) {
-    const allThinkTank = await fetchThinkTankArticles();
+    const allThinkTank = (await fetchThinkTankArticles()) || [];
     allThinkTank.forEach(otherArticle => {
       if (otherArticle.id !== article.id && otherArticle.tags?.some(tag => article.tags!.includes(tag))) {
         if (relatedArticles.length < 2 && !relatedArticles.find(ra => ra.slug === otherArticle.slug && ra.type === 'think-tank')) {
-          relatedArticles.push({ title: otherArticle.title, slug: otherArticle.slug, type: 'think-tank', excerpt: otherArticle.abstract });
+          relatedArticles.push({ title: otherArticle.title, slug: otherArticle.slug, type: 'think-tank', excerpt: richTextToPlainText(otherArticle.abstract) });
         }
       }
     });
 
-    const allBlogPosts = await fetchBlogPosts();
+    const allBlogPosts = (await fetchBlogPosts()) || [];
     const relatedBlogPosts = allBlogPosts.filter(post => 
         post.tags?.some(tag => article.tags?.includes(tag))
     ).slice(0, 3);
@@ -62,7 +65,7 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
             title: otherPost.title, 
             slug: otherPost.slug, 
             type: 'blog', 
-            excerpt: otherPost.excerpt 
+            excerpt: otherPost.shortDescription 
         });
       }
     });
@@ -114,11 +117,11 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
             <CardTitle className="flex items-center text-xl"><FileText className="mr-2 h-5 w-5 text-primary"/>Abstract</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="italic text-muted-foreground">{article.abstract}</p>
+            {article.abstract && <ContentfulRichTextRenderer content={article.abstract} />}
           </CardContent>
         </Card>
 
-        <ContentfulRichTextRenderer content={article.content} />
+        {article.content && <ContentfulRichTextRenderer content={article.content} />}
 
       </article>
 
@@ -146,16 +149,16 @@ export async function generateMetadata({ params }: ThinkTankArticlePageProps): P
   }
   return {
     title: `${article.title} | Think Tank | Nocturnal Codex`,
-    description: article.abstract,
+    description: richTextToPlainText(article.abstract),
     openGraph: {
       title: article.title,
-      description: article.abstract,
+      description: richTextToPlainText(article.abstract),
       images: article.featuredImage ? [article.featuredImage.url] : [],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
-      description: article.abstract,
+      description: richTextToPlainText(article.abstract),
       images: article.featuredImage ? [article.featuredImage.url] : [],
     }
   };
