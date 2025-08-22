@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '/' ? 1 : 0.8,
   }));
 
-  const blogPostsData = await fetchBlogPosts();
+  const blogPostsData = await fetchBlogPosts() || [];
   const blogPosts = blogPostsData.map((post) => ({
     url: `${BASE_URL}${post.url}`,
     lastModified: new Date(post.date).toISOString(),
@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const thinkTankArticlesData = await fetchThinkTankArticles();
+  const thinkTankArticlesData = (await fetchThinkTankArticles()) || [];
   const thinkTankArticles = thinkTankArticlesData.map((article) => ({
     url: `${BASE_URL}${article.url}`,
     lastModified: new Date(article.date).toISOString(),
@@ -61,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  const uniqueCategories = Array.from(new Set(blogPostsData.map(post => post.category)));
+  const uniqueCategories = Array.from(new Set(blogPostsData.map(post => post.category).filter(Boolean)));
   const categoryDetailPages = uniqueCategories.map((category) => ({
     url: `${BASE_URL}/categories/${encodeURIComponent(category.toLowerCase().replace(/\s+/g, '-'))}`,
     lastModified: new Date().toISOString(),
