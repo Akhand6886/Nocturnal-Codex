@@ -1,7 +1,7 @@
 ---
 title: "Input and Output in Python"
 slug: "input-output"
-order": 2
+order: 2
 description: "Learn how to handle user input and display output in Python."
 category: "Python Fundamentals"
 ---

@@ -2,76 +2,347 @@
 title: "Python Variables and Data Types"
 slug: "python-variables-data-types"
 order: 2
-description: "Learn about variables, naming conventions, and fundamental data types in Python."
+description: "Master Python variables and data types including numbers, strings, booleans, and collections with comprehensive examples."
 category: "Fundamentals"
 ---
 
-## Variables
+## Python Variables and Data Types
 
-In Python, variables are used to store data values. A variable is created the moment you first assign a value to it. Python has no command for declaring a variable in the way languages like C++ or Java do.
+Variables and data types are fundamental concepts in Python programming. A variable is a container that stores data values, while data types define what kind of data can be stored and manipulated in a program. Python's dynamic typing system makes working with variables intuitive and flexible.
 
-```python
-x = 5       # x is an integer
-y = "Hello" # y is a string
-print(x)
-print(y)
-```
+## Understanding Variables
 
-### Naming Variables (Identifiers)
+A variable in Python is like a label attached to a value. You can think of it as a named storage location in computer memory that holds data.
 
-- A variable name must start with a letter (a-z, A-Z) or an underscore character (`_`).
-- It cannot start with a number.
-- It can only contain alpha-numeric characters and underscores (A-z, 0-9, and `_`).
-- Variable names are case-sensitive (`age`, `Age` and `AGE` are three different variables).
-
-## Data Types
-
-Python has various built-in data types. Here are some of the most fundamental ones:
-
-- **Text Type**: `str`
-- **Numeric Types**: `int`, `float`, `complex`
-- **Sequence Types**: `list`, `tuple`, `range`
-- **Mapping Type**: `dict`
-- **Set Types**: `set`, `frozenset`
-- **Boolean Type**: `bool`
-- **Binary Types**: `bytes`, `bytearray`, `memoryview`
-
-You can get the data type of any object by using the `type()` function:
+### **Creating Variables**
 
 ```python
-my_string = "Python is fun"
-print(type(my_string))  # <class 'str'>
+# Simple variable assignment
+name = "Alice"
+age = 25
+height = 5.6
+is_student = True
+
+print(name)
+print(age)
+print(height)
+print(is_student)
 ```
 
-### Numeric Types
+### **Multiple Assignment**
 
-- **`int`**: Integer, for whole numbers. e.g., `100`, `-5`
-- **`float`**: Floating Point Number, for numbers with a decimal point. e.g., `3.14`, `-0.01`
-- **`complex`**: For complex numbers. e.g., `1 + 2j`
+```python
+# Assign same value to multiple variables
+x = y = z = 10
 
-### Text Type
+# Assign different values to multiple variables
+a, b, c = 1, 2, 3
+name, age, city = "John", 30, "New York"
 
-- **`str`**: String, for textual data. Enclosed in single (`'`) or double (`"`) quotes.
+print(f"x={x}, y={y}, z={z}")
+print(f"a={a}, b={b}, c={c}")
+```
 
-### Sequence Types
+### **Variable Naming Rules**
+- Must start with a letter (a-z, A-Z) or underscore (_)
+- Can contain letters, numbers, and underscores
+- Case-sensitive (age and Age are different)
+- Cannot use Python keywords
 
-- **`list`**: An ordered and changeable collection. Allows duplicate members. e.g., `["apple", "banana"]`
-- **`tuple`**: An ordered and unchangeable collection. Allows duplicate members. e.g., `("apple", "banana")`
-- **`range`**: A sequence of numbers, often used for looping.
+```python
+# Valid variable names
+first_name = "John"
+user_age = 25
+_private_var = "secret"
+var2 = "valid"
 
-### Mapping Type
+# Invalid variable names (will cause errors)
+# 2name = "Invalid"      # Starts with number
+# first-name = "Invalid" # Contains hyphen
+# class = "Invalid"      # Uses Python keyword
+```
 
-- **`dict`**: A collection of key-value pairs. Unordered, changeable, and indexed. No duplicate keys. e.g., `{"name": "Alice", "age": 30}`
+## Python Data Types Overview
 
-### Set Types
+Python has several built-in data types organized into categories:
 
-- **`set`**: An unordered, unchangeable*, and unindexed collection. No duplicate members. e.g., `{"apple", "banana"}`
-- **`frozenset`**: An immutable version of a set.
+### **1. Numeric Types**
+- `int`: Integer numbers
+- `float`: Floating-point numbers  
+- `complex`: Complex numbers
 
-*\*Set items are unchangeable, but you can add or remove items.*
+### **2. Text Type**
+- `str`: String (text data)
 
-### Boolean Type
+### **3. Boolean Type**
+- `bool`: True/False values
 
-- **`bool`**: Represents one of two values: `True` or `False`.
+### **4. Sequence Types**
+- `list`: Ordered, mutable collection
+- `tuple`: Ordered, immutable collection
+- `range`: Sequence of numbers
 
-Understanding variables and data types is the first crucial step in writing any Python program.
+### **5. Mapping Type**
+- `dict`: Key-value pairs
+
+### **6. Set Types**
+- `set`: Unordered collection of unique items
+- `frozenset`: Immutable set
+
+## Numeric Data Types
+
+### **Integers (int)**
+Whole numbers without decimal points:
+```python
+positive_int = 42
+negative_int = -17
+zero = 0
+large_number = 123456789012345
+
+print(type(positive_int))
+
+# Integer operations
+result = 10 + 5
+result = 20 - 8
+result = 6 * 7
+result = 15 // 4 # floor division
+result = 2 ** 3 # exponentiation
+```
+
+### **Floating Point Numbers (float)**
+Numbers with decimal points:
+```python
+pi = 3.14159
+temperature = -2.5
+scientific = 1.5e-4 # Scientific notation (0.00015)
+infinity = float('inf')
+
+print(type(pi))
+
+# Float operations
+result = 10.5 + 2.3
+result = 15.0 / 4
+result = round(3.14159, 2)
+```
+
+### **Complex Numbers (complex)**
+Numbers with real and imaginary parts:
+```python
+complex_num1 = 3 + 4j
+complex_num2 = complex(2, 5) # 2 + 5j
+
+print(complex_num1.real)
+print(complex_num1.imag)
+
+# Complex operations
+result = (3 + 4j) + (1 + 2j)
+```
+
+## String Data Type
+
+Strings represent text data and are enclosed in quotes:
+```python
+# Different ways to create strings
+single_quote = 'Hello'
+double_quote = "World"
+triple_quote = """This is a
+multiline string"""
+
+# String concatenation
+full_name = "John" + " " + "Doe"
+greeting = "Hello, " + full_name
+
+# String repetition
+repeated = "Python " * 3
+
+# String indexing and slicing
+text = "Python"
+print(text[0])
+print(text[-1])
+print(text[0:3])
+```
+
+### **String Methods**
+```python
+message = " Hello, Python! "
+
+print(message.upper())
+print(message.lower())
+print(message.strip())
+print(message.replace("Python", "World"))
+print(len(message))
+```
+
+## Boolean Data Type
+
+Boolean values represent True or False:
+```python
+is_python_fun = True
+is_difficult = False
+
+# Boolean from comparisons
+age = 25
+is_adult = age >= 18
+is_teenager = 13 <= age <= 19
+
+# Boolean operations
+result = True and False
+result = True or False
+result = not True
+```
+
+## Collection Data Types
+
+### **Lists**
+Ordered, mutable collections:
+```python
+# Creating lists
+fruits = ["apple", "banana", "orange"]
+numbers = [1, 2, 3]
+mixed = ["text", 42, True, 3.14]
+
+# Accessing elements
+print(fruits[0])
+print(fruits[-1])
+
+# Modifying lists
+fruits.append("grape")
+fruits[0] = "blueberry"
+del fruits[1]
+
+print(fruits)
+```
+
+### **Tuples**
+Ordered, immutable collections:
+```python
+# Creating tuples
+coordinates = (10, 20)
+colors = ("red", "green", "blue")
+single_item = (42,) # Note the comma for single item
+
+# Accessing elements
+print(coordinates[0])
+
+# Tuples are immutable
+# coordinates[0] = 15 # This would cause an error
+```
+
+### **Dictionaries**
+Key-value pairs:
+```python
+# Creating dictionaries
+person = {
+    "name": "Alice",
+    "age": 25,
+    "city": "New York"
+}
+
+# Accessing values
+print(person["name"])
+print(person.get("age"))
+
+# Modifying dictionaries
+person["email"] = "alice@email.com"
+person["age"] = 26
+
+print(person.keys())
+print(person.values())
+```
+
+### **Sets**
+Unordered collections of unique elements:
+```python
+# Creating sets
+unique_numbers = {1, 2, 3, 4, 5, 5} # The duplicate 5 is ignored
+fruits_set = {"apple", "banana", "orange"}
+
+# Set operations
+numbers1 = {1, 2, 3, 4}
+numbers2 = {3, 4, 5, 6}
+
+union = numbers1 | numbers2
+intersection = numbers1 & numbers2
+difference = numbers1 - numbers2
+```
+
+## Type Checking and Conversion
+
+### **Checking Types**
+```python
+value = 42
+print(type(value))
+print(isinstance(value, int))
+print(isinstance(value, str))
+```
+
+### **Type Conversion**
+```python
+# Converting between types
+number_str = "123"
+number_int = int(number_str)
+number_float = float(number_str)
+
+# Converting numbers to strings
+age = 25
+age_str = str(age)
+
+# Converting to boolean
+print(bool(1))
+print(bool(0))
+print(bool(""))
+print(bool("text"))
+```
+
+## Dynamic Typing in Action
+
+Python determines variable types automatically:
+```python
+# Variable can hold different types
+var = 42
+print(type(var))
+
+var = "Hello"
+print(type(var))
+
+var = [1, 2, 3]
+print(type(var))
+```
+
+## Best Practices
+
+1. **Use descriptive variable names**
+```python
+# Good
+user_age = 25
+total_price = 99.99
+
+# Avoid
+x = 25
+p = 99.99
+```
+
+2. **Follow naming conventions**
+```python
+# Variables and functions: snake_case
+first_name = "John"
+def calculate_total(x, y): return x + y
+
+# Constants: UPPER_CASE
+MAX_USERS = 100
+PI = 3.14159
+```
+
+3. **Choose appropriate data types**
+```python
+# Use tuple for coordinates (immutable)
+point = (10, 20)
+
+# Use list for shopping cart (mutable)
+cart_items = ["apple", "banana", "milk"]
+
+# Use dictionary for structured data
+user_profile = {"name": "Alice", "age": 25}
+```
+
+Understanding variables and data types is crucial for Python programming. These concepts form the foundation for more complex operations and data structures you'll learn in upcoming tutorials.
