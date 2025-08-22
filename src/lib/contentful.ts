@@ -1,3 +1,4 @@
+
 import type { Entry, EntryCollection } from 'contentful';
 import type { BlogPost, ThinkTankArticle, ContentfulImage } from '@/types';
 import type { Document } from '@contentful/rich-text-types';
@@ -78,7 +79,7 @@ function parseBlogPost(item: any, linkedAssets: Record<string, ContentfulImage>)
     const authorName = "The Nocturnist"; // Placeholder
 
     const categories: any[] = (fields.category as any[]) || [];
-    const categoryNames: string[] = categories.map(cat => cat.fields.name as string || '').filter(Boolean);
+    const categoryNames: string[] = categories.map(cat => cat?.fields?.name as string || '').filter(Boolean);
 
     return {
         id: item.sys.id,
