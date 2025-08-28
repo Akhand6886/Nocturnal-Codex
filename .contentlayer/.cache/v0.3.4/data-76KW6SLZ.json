@@ -458,6 +458,33 @@
       "documentHash": "1756391156324",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/python-list-comprehensions.md": {
+      "document": {
+        "title": "Python List Comprehensions",
+        "slug": "python-list-comprehensions",
+        "order": 18,
+        "description": "Learn the elegant and efficient 'Pythonic' way to create lists using list comprehensions, a concise alternative to traditional for loops.",
+        "category": "Intermediate Concepts",
+        "body": {
+          "raw": "\n## What is a List Comprehension?\n\nList comprehension offers a shorter, more readable syntax for creating a new list based on the values of an existing list or another iterable. It's considered a more \"Pythonic\" way to create lists compared to using a standard `for` loop.\n\n### **The Traditional Way**\n\nLet's say we want to create a new list containing the squares of the numbers in an existing list. Using a standard `for` loop, the code would look like this:\n\n```python\nnumbers = [1, 2, 3, 4, 5]\nsquares = []\nfor n in numbers:\n  squares.append(n * n)\n\nprint(squares)\n```\n\n**Output:**\n\n```text\n[1, 4, 9, 16, 25]\n```\n\nThis works perfectly fine, but list comprehension allows us to achieve the same result in a single, elegant line of code.\n\n### **The List Comprehension Way**\n\nHere is the same task accomplished with a list comprehension:\n\n```python\nnumbers = [1, 2, 3, 4, 5]\nsquares = [n * n for n in numbers]\n\nprint(squares)\n```\n\n**Output:**\n\n```text\n[1, 4, 9, 16, 25]\n```\n\n-----\n\n## The Syntax\n\nA list comprehension consists of brackets containing an expression followed by a `for` clause.\n\n`new_list = [expression for item in iterable]`\n\nThe `expression` is the current item in the iteration, but it's also the outcome, which you can manipulate before it ends up in the new list.\n\n-----\n\n## Adding a Condition\n\nList comprehensions can also contain an `if` condition to filter the items from the original iterable.\n\n### **Example: Get Only Even Numbers**\n\nLet's create a new list that contains only the even numbers from our original list.\n\n**The Traditional Way:**\n\n```python\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = []\nfor n in numbers:\n  if n % 2 == 0:\n    evens.append(n)\n\nprint(evens)\n```\n\n**The List Comprehension Way:**\n\n```python\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = [n for n in numbers if n % 2 == 0]\n\nprint(evens)\n```\n\nIn both cases, the output is:\n\n```text\n[2, 4, 6, 8, 10]\n```\n\nThe syntax for a list comprehension with a condition is:\n\n`new_list = [expression for item in iterable if condition]`\n\nList comprehensions are a powerful feature of Python that can make your code more concise and easier to read once you get used to the syntax.",
+          "html": "<h2>What is a List Comprehension?</h2>\n<p>List comprehension offers a shorter, more readable syntax for creating a new list based on the values of an existing list or another iterable. It's considered a more \"Pythonic\" way to create lists compared to using a standard <code>for</code> loop.</p>\n<h3><strong>The Traditional Way</strong></h3>\n<p>Let's say we want to create a new list containing the squares of the numbers in an existing list. Using a standard <code>for</code> loop, the code would look like this:</p>\n<pre><code class=\"language-python\">numbers = [1, 2, 3, 4, 5]\nsquares = []\nfor n in numbers:\n  squares.append(n * n)\n\nprint(squares)\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">[1, 4, 9, 16, 25]\n</code></pre>\n<p>This works perfectly fine, but list comprehension allows us to achieve the same result in a single, elegant line of code.</p>\n<h3><strong>The List Comprehension Way</strong></h3>\n<p>Here is the same task accomplished with a list comprehension:</p>\n<pre><code class=\"language-python\">numbers = [1, 2, 3, 4, 5]\nsquares = [n * n for n in numbers]\n\nprint(squares)\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">[1, 4, 9, 16, 25]\n</code></pre>\n<hr>\n<h2>The Syntax</h2>\n<p>A list comprehension consists of brackets containing an expression followed by a <code>for</code> clause.</p>\n<p><code>new_list = [expression for item in iterable]</code></p>\n<p>The <code>expression</code> is the current item in the iteration, but it's also the outcome, which you can manipulate before it ends up in the new list.</p>\n<hr>\n<h2>Adding a Condition</h2>\n<p>List comprehensions can also contain an <code>if</code> condition to filter the items from the original iterable.</p>\n<h3><strong>Example: Get Only Even Numbers</strong></h3>\n<p>Let's create a new list that contains only the even numbers from our original list.</p>\n<p><strong>The Traditional Way:</strong></p>\n<pre><code class=\"language-python\">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = []\nfor n in numbers:\n  if n % 2 == 0:\n    evens.append(n)\n\nprint(evens)\n</code></pre>\n<p><strong>The List Comprehension Way:</strong></p>\n<pre><code class=\"language-python\">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = [n for n in numbers if n % 2 == 0]\n\nprint(evens)\n</code></pre>\n<p>In both cases, the output is:</p>\n<pre><code class=\"language-text\">[2, 4, 6, 8, 10]\n</code></pre>\n<p>The syntax for a list comprehension with a condition is:</p>\n<p><code>new_list = [expression for item in iterable if condition]</code></p>\n<p>List comprehensions are a powerful feature of Python that can make your code more concise and easier to read once you get used to the syntax.</p>"
+        },
+        "_id": "tutorials/python/python-list-comprehensions.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/python-list-comprehensions.md",
+          "sourceFileName": "python-list-comprehensions.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/python-list-comprehensions"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/python-list-comprehensions",
+        "language": "python"
+      },
+      "documentHash": "1756391199051",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
     }
   }
 }
