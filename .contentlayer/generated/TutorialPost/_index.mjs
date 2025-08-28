@@ -9,5 +9,6 @@ import tutorials__python__workingWithStringsMd from './tutorials__python__workin
 import tutorials__python__listsMd from './tutorials__python__lists.md.json' assert { type: 'json' }
 import tutorials__python__pythonTuplesMd from './tutorials__python__python-tuples.md.json' assert { type: 'json' }
 import tutorials__python__pythonDictionariesMd from './tutorials__python__python-dictionaries.md.json' assert { type: 'json' }
+import tutorials__python__pythonSetsMd from './tutorials__python__python-sets.md.json' assert { type: 'json' }
 
-export const allTutorialPosts = [tutorials__python__introductionToPythonMd, tutorials__python__keywordsAndIdentifiersMd, tutorials__python__variablesAndDataTypesMd, tutorials__python__userInputAndOutputMd, tutorials__python__pythonOperatorsMd, tutorials__python__workingWithStringsMd, tutorials__python__listsMd, tutorials__python__pythonTuplesMd, tutorials__python__pythonDictionariesMd]
+export const allTutorialPosts = [tutorials__python__introductionToPythonMd, tutorials__python__keywordsAndIdentifiersMd, tutorials__python__variablesAndDataTypesMd, tutorials__python__userInputAndOutputMd, tutorials__python__pythonOperatorsMd, tutorials__python__workingWithStringsMd, tutorials__python__listsMd, tutorials__python__pythonTuplesMd, tutorials__python__pythonDictionariesMd, tutorials__python__pythonSetsMd]
