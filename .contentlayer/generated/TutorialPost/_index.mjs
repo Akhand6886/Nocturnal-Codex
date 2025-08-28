@@ -5,5 +5,6 @@ import tutorials__python__keywordsAndIdentifiersMd from './tutorials__python__ke
 import tutorials__python__variablesAndDataTypesMd from './tutorials__python__variables-and-data-types.md.json' assert { type: 'json' }
 import tutorials__python__userInputAndOutputMd from './tutorials__python__user-input-and-output.md.json' assert { type: 'json' }
 import tutorials__python__pythonOperatorsMd from './tutorials__python__python-operators.md.json' assert { type: 'json' }
+import tutorials__python__workingWithStringsMd from './tutorials__python__working-with-strings.md.json' assert { type: 'json' }
 
-export const allTutorialPosts = [tutorials__python__introductionToPythonMd, tutorials__python__keywordsAndIdentifiersMd, tutorials__python__variablesAndDataTypesMd, tutorials__python__userInputAndOutputMd, tutorials__python__pythonOperatorsMd]
+export const allTutorialPosts = [tutorials__python__introductionToPythonMd, tutorials__python__keywordsAndIdentifiersMd, tutorials__python__variablesAndDataTypesMd, tutorials__python__userInputAndOutputMd, tutorials__python__pythonOperatorsMd, tutorials__python__workingWithStringsMd]
