@@ -188,6 +188,33 @@
       "documentHash": "1756390673529",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
+    },
+    "tutorials/python/python-tuples.md": {
+      "document": {
+        "title": "Python Tuples",
+        "slug": "python-tuples",
+        "order": 8,
+        "description": "Explore tuples in Python, an immutable data structure. Learn how to create tuples, access their elements, and understand when to use them over lists.",
+        "category": "Core Data Structures",
+        "body": {
+          "raw": "\n## What is a Tuple?\n\nA tuple is a collection of ordered and **immutable** elements. \"Immutable\" means that once a tuple is created, you cannot change its values—you cannot add, remove, or change items. Tuples are created by placing a comma-separated sequence of items inside parentheses `()`.\n\n```python\n# A tuple of integers\nnumbers = (1, 2, 3, 4, 5)\n\n# A tuple of strings\nfruits = (\"apple\", \"banana\", \"cherry\")\n\n# A tuple with mixed data types\nmixed_tuple = (\"hello\", 3.14, True, 40)\n\nprint(fruits)\n```\n\n**Output:**\n\n```text\n('apple', 'banana', 'cherry')\n```\n\n### **Tuple with One Item**\n\nTo create a tuple with only one item, you have to add a comma after the item, otherwise Python will not recognize it as a tuple.\n\n```python\nsingle_item_tuple = (\"apple\",)\nnot_a_tuple = (\"apple\")\n\nprint(type(single_item_tuple)) # Output: <class 'tuple'>\nprint(type(not_a_tuple))     # Output: <class 'str'>\n```\n\n-----\n\n## Accessing Tuple Items\n\nAccessing items in a tuple is exactly the same as with a list. You use the index number in square brackets `[]`. Remember that indexing starts at `0`.\n\n```python\nfruits = (\"apple\", \"banana\", \"cherry\")\n\n# Access the first item\nprint(fruits[0]) # Output: 'apple'\n\n# Access the last item using negative indexing\nprint(fruits[-1]) # Output: 'cherry'\n```\n\n-----\n\n## The Immutability of Tuples\n\nThe key difference between a list and a tuple is that tuples cannot be changed after they are created.\n\n```python\nnumbers = (1, 2, 3)\n\n# This will cause an error!\n# numbers[0] = 10 \n# TypeError: 'tuple' object does not support item assignment\n```\n\nBecause of this immutability, tuples are faster and more memory-efficient than lists.\n\n-----\n\n## When to Use a Tuple?\n\n  * **For Data That Shouldn't Change**: If you have a collection of items that you want to remain constant throughout your program, a tuple is the perfect choice. Examples include days of the week, months of the year, or geographic coordinates.\n\n  * **As Dictionary Keys**: Since tuples are immutable, they can be used as keys in a dictionary, whereas lists cannot.\n\n```python\n# Using a tuple as a dictionary key\nlocations = {\n    (35.6895, 139.6917): \"Tokyo\",\n    (40.7128, -74.0060): \"New York\"\n}\n```\n\nWhile lists are more common for general-purpose collections, tuples provide a safe and efficient way to handle data that you intend to be permanent.",
+          "html": "<h2>What is a Tuple?</h2>\n<p>A tuple is a collection of ordered and <strong>immutable</strong> elements. \"Immutable\" means that once a tuple is created, you cannot change its values—you cannot add, remove, or change items. Tuples are created by placing a comma-separated sequence of items inside parentheses <code>()</code>.</p>\n<pre><code class=\"language-python\"># A tuple of integers\nnumbers = (1, 2, 3, 4, 5)\n\n# A tuple of strings\nfruits = (\"apple\", \"banana\", \"cherry\")\n\n# A tuple with mixed data types\nmixed_tuple = (\"hello\", 3.14, True, 40)\n\nprint(fruits)\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">('apple', 'banana', 'cherry')\n</code></pre>\n<h3><strong>Tuple with One Item</strong></h3>\n<p>To create a tuple with only one item, you have to add a comma after the item, otherwise Python will not recognize it as a tuple.</p>\n<pre><code class=\"language-python\">single_item_tuple = (\"apple\",)\nnot_a_tuple = (\"apple\")\n\nprint(type(single_item_tuple)) # Output: &#x3C;class 'tuple'>\nprint(type(not_a_tuple))     # Output: &#x3C;class 'str'>\n</code></pre>\n<hr>\n<h2>Accessing Tuple Items</h2>\n<p>Accessing items in a tuple is exactly the same as with a list. You use the index number in square brackets <code>[]</code>. Remember that indexing starts at <code>0</code>.</p>\n<pre><code class=\"language-python\">fruits = (\"apple\", \"banana\", \"cherry\")\n\n# Access the first item\nprint(fruits[0]) # Output: 'apple'\n\n# Access the last item using negative indexing\nprint(fruits[-1]) # Output: 'cherry'\n</code></pre>\n<hr>\n<h2>The Immutability of Tuples</h2>\n<p>The key difference between a list and a tuple is that tuples cannot be changed after they are created.</p>\n<pre><code class=\"language-python\">numbers = (1, 2, 3)\n\n# This will cause an error!\n# numbers[0] = 10 \n# TypeError: 'tuple' object does not support item assignment\n</code></pre>\n<p>Because of this immutability, tuples are faster and more memory-efficient than lists.</p>\n<hr>\n<h2>When to Use a Tuple?</h2>\n<ul>\n<li>\n<p><strong>For Data That Shouldn't Change</strong>: If you have a collection of items that you want to remain constant throughout your program, a tuple is the perfect choice. Examples include days of the week, months of the year, or geographic coordinates.</p>\n</li>\n<li>\n<p><strong>As Dictionary Keys</strong>: Since tuples are immutable, they can be used as keys in a dictionary, whereas lists cannot.</p>\n</li>\n</ul>\n<pre><code class=\"language-python\"># Using a tuple as a dictionary key\nlocations = {\n    (35.6895, 139.6917): \"Tokyo\",\n    (40.7128, -74.0060): \"New York\"\n}\n</code></pre>\n<p>While lists are more common for general-purpose collections, tuples provide a safe and efficient way to handle data that you intend to be permanent.</p>"
+        },
+        "_id": "tutorials/python/python-tuples.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/python/python-tuples.md",
+          "sourceFileName": "python-tuples.md",
+          "sourceFileDir": "tutorials/python",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/python/python-tuples"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/python/python-tuples",
+        "language": "python"
+      },
+      "documentHash": "1756390715304",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
     }
   }
 }
