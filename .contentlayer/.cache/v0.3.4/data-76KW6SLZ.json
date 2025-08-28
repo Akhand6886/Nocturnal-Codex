@@ -1,272 +1,29 @@
 {
   "cacheItemsMap": {
-    "tutorials/python/variables-and-data-types.md": {
+    "tutorials/python/introduction-to-python.md": {
       "document": {
-        "title": "Python Variables and Data Types",
-        "slug": "python-variables-data-types",
-        "order": 2,
-        "description": "Master Python variables and data types including numbers, strings, booleans, and collections with comprehensive examples.",
-        "category": "Fundamentals",
+        "title": "Introduction to Python",
+        "slug": "introduction-to-python",
+        "order": 1,
+        "description": "Learn Python basics, its features, applications, and why it's the perfect programming language for beginners and professionals.",
+        "category": "Getting Started",
         "body": {
-          "raw": "\n## Python Variables and Data Types\n\nVariables and data types are fundamental concepts in Python programming. A variable is a container that stores data values, while data types define what kind of data can be stored and manipulated in a program. Python's dynamic typing system makes working with variables intuitive and flexible.\n\n## Understanding Variables\n\nA variable in Python is like a label attached to a value. You can think of it as a named storage location in computer memory that holds data.\n\n### **Creating Variables**\n\n```python\n# Simple variable assignment\nname = \"Alice\"\nage = 25\nheight = 5.6\nis_student = True\n\nprint(name)\nprint(age)\nprint(height)\nprint(is_student)\n```\n\n### **Multiple Assignment**\n\n```python\n# Assign same value to multiple variables\nx = y = z = 10\n\n# Assign different values to multiple variables\na, b, c = 1, 2, 3\nname, age, city = \"John\", 30, \"New York\"\n\nprint(f\"x={x}, y={y}, z={z}\")\nprint(f\"a={a}, b={b}, c={c}\")\n```\n\n### **Variable Naming Rules**\n- Must start with a letter (a-z, A-Z) or underscore (_)\n- Can contain letters, numbers, and underscores\n- Case-sensitive (age and Age are different)\n- Cannot use Python keywords\n\n```python\n# Valid variable names\nfirst_name = \"John\"\nuser_age = 25\n_private_var = \"secret\"\nvar2 = \"valid\"\n\n# Invalid variable names (will cause errors)\n# 2name = \"Invalid\"      # Starts with number\n# first-name = \"Invalid\" # Contains hyphen\n# class = \"Invalid\"      # Uses Python keyword\n```\n\n## Python Data Types Overview\n\nPython has several built-in data types organized into categories:\n\n### **1. Numeric Types**\n- `int`: Integer numbers\n- `float`: Floating-point numbers  \n- `complex`: Complex numbers\n\n### **2. Text Type**\n- `str`: String (text data)\n\n### **3. Boolean Type**\n- `bool`: True/False values\n\n### **4. Sequence Types**\n- `list`: Ordered, mutable collection\n- `tuple`: Ordered, immutable collection\n- `range`: Sequence of numbers\n\n### **5. Mapping Type**\n- `dict`: Key-value pairs\n\n### **6. Set Types**\n- `set`: Unordered collection of unique items\n- `frozenset`: Immutable set\n\n## Numeric Data Types\n\n### **Integers (int)**\nWhole numbers without decimal points:\n```python\npositive_int = 42\nnegative_int = -17\nzero = 0\nlarge_number = 123456789012345\n\nprint(type(positive_int))\n\n# Integer operations\nresult = 10 + 5\nresult = 20 - 8\nresult = 6 * 7\nresult = 15 // 4 # floor division\nresult = 2 ** 3 # exponentiation\n```\n\n### **Floating Point Numbers (float)**\nNumbers with decimal points:\n```python\npi = 3.14159\ntemperature = -2.5\nscientific = 1.5e-4 # Scientific notation (0.00015)\ninfinity = float('inf')\n\nprint(type(pi))\n\n# Float operations\nresult = 10.5 + 2.3\nresult = 15.0 / 4\nresult = round(3.14159, 2)\n```\n\n### **Complex Numbers (complex)**\nNumbers with real and imaginary parts:\n```python\ncomplex_num1 = 3 + 4j\ncomplex_num2 = complex(2, 5) # 2 + 5j\n\nprint(complex_num1.real)\nprint(complex_num1.imag)\n\n# Complex operations\nresult = (3 + 4j) + (1 + 2j)\n```\n\n## String Data Type\n\nStrings represent text data and are enclosed in quotes:\n```python\n# Different ways to create strings\nsingle_quote = 'Hello'\ndouble_quote = \"World\"\ntriple_quote = \"\"\"This is a\nmultiline string\"\"\"\n\n# String concatenation\nfull_name = \"John\" + \" \" + \"Doe\"\ngreeting = \"Hello, \" + full_name\n\n# String repetition\nrepeated = \"Python \" * 3\n\n# String indexing and slicing\ntext = \"Python\"\nprint(text[0])\nprint(text[-1])\nprint(text[0:3])\n```\n\n### **String Methods**\n```python\nmessage = \" Hello, Python! \"\n\nprint(message.upper())\nprint(message.lower())\nprint(message.strip())\nprint(message.replace(\"Python\", \"World\"))\nprint(len(message))\n```\n\n## Boolean Data Type\n\nBoolean values represent True or False:\n```python\nis_python_fun = True\nis_difficult = False\n\n# Boolean from comparisons\nage = 25\nis_adult = age >= 18\nis_teenager = 13 <= age <= 19\n\n# Boolean operations\nresult = True and False\nresult = True or False\nresult = not True\n```\n\n## Collection Data Types\n\n### **Lists**\nOrdered, mutable collections:\n```python\n# Creating lists\nfruits = [\"apple\", \"banana\", \"orange\"]\nnumbers = [1, 2, 3]\nmixed = [\"text\", 42, True, 3.14]\n\n# Accessing elements\nprint(fruits[0])\nprint(fruits[-1])\n\n# Modifying lists\nfruits.append(\"grape\")\nfruits[0] = \"blueberry\"\ndel fruits[1]\n\nprint(fruits)\n```\n\n### **Tuples**\nOrdered, immutable collections:\n```python\n# Creating tuples\ncoordinates = (10, 20)\ncolors = (\"red\", \"green\", \"blue\")\nsingle_item = (42,) # Note the comma for single item\n\n# Accessing elements\nprint(coordinates[0])\n\n# Tuples are immutable\n# coordinates[0] = 15 # This would cause an error\n```\n\n### **Dictionaries**\nKey-value pairs:\n```python\n# Creating dictionaries\nperson = {\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"New York\"\n}\n\n# Accessing values\nprint(person[\"name\"])\nprint(person.get(\"age\"))\n\n# Modifying dictionaries\nperson[\"email\"] = \"alice@email.com\"\nperson[\"age\"] = 26\n\nprint(person.keys())\nprint(person.values())\n```\n\n### **Sets**\nUnordered collections of unique elements:\n```python\n# Creating sets\nunique_numbers = {1, 2, 3, 4, 5, 5} # The duplicate 5 is ignored\nfruits_set = {\"apple\", \"banana\", \"orange\"}\n\n# Set operations\nnumbers1 = {1, 2, 3, 4}\nnumbers2 = {3, 4, 5, 6}\n\nunion = numbers1 | numbers2\nintersection = numbers1 & numbers2\ndifference = numbers1 - numbers2\n```\n\n## Type Checking and Conversion\n\n### **Checking Types**\n```python\nvalue = 42\nprint(type(value))\nprint(isinstance(value, int))\nprint(isinstance(value, str))\n```\n\n### **Type Conversion**\n```python\n# Converting between types\nnumber_str = \"123\"\nnumber_int = int(number_str)\nnumber_float = float(number_str)\n\n# Converting numbers to strings\nage = 25\nage_str = str(age)\n\n# Converting to boolean\nprint(bool(1))\nprint(bool(0))\nprint(bool(\"\"))\nprint(bool(\"text\"))\n```\n\n## Dynamic Typing in Action\n\nPython determines variable types automatically:\n```python\n# Variable can hold different types\nvar = 42\nprint(type(var))\n\nvar = \"Hello\"\nprint(type(var))\n\nvar = [1, 2, 3]\nprint(type(var))\n```\n\n## Best Practices\n\n1. **Use descriptive variable names**\n```python\n# Good\nuser_age = 25\ntotal_price = 99.99\n\n# Avoid\nx = 25\np = 99.99\n```\n\n2. **Follow naming conventions**\n```python\n# Variables and functions: snake_case\nfirst_name = \"John\"\ndef calculate_total(x, y): return x + y\n\n# Constants: UPPER_CASE\nMAX_USERS = 100\nPI = 3.14159\n```\n\n3. **Choose appropriate data types**\n```python\n# Use tuple for coordinates (immutable)\npoint = (10, 20)\n\n# Use list for shopping cart (mutable)\ncart_items = [\"apple\", \"banana\", \"milk\"]\n\n# Use dictionary for structured data\nuser_profile = {\"name\": \"Alice\", \"age\": 25}\n```\n\nUnderstanding variables and data types is crucial for Python programming. These concepts form the foundation for more complex operations and data structures you'll learn in upcoming tutorials.\n",
-          "html": "<h2>Python Variables and Data Types</h2>\n<p>Variables and data types are fundamental concepts in Python programming. A variable is a container that stores data values, while data types define what kind of data can be stored and manipulated in a program. Python's dynamic typing system makes working with variables intuitive and flexible.</p>\n<h2>Understanding Variables</h2>\n<p>A variable in Python is like a label attached to a value. You can think of it as a named storage location in computer memory that holds data.</p>\n<h3><strong>Creating Variables</strong></h3>\n<pre><code class=\"language-python\"># Simple variable assignment\nname = \"Alice\"\nage = 25\nheight = 5.6\nis_student = True\n\nprint(name)\nprint(age)\nprint(height)\nprint(is_student)\n</code></pre>\n<h3><strong>Multiple Assignment</strong></h3>\n<pre><code class=\"language-python\"># Assign same value to multiple variables\nx = y = z = 10\n\n# Assign different values to multiple variables\na, b, c = 1, 2, 3\nname, age, city = \"John\", 30, \"New York\"\n\nprint(f\"x={x}, y={y}, z={z}\")\nprint(f\"a={a}, b={b}, c={c}\")\n</code></pre>\n<h3><strong>Variable Naming Rules</strong></h3>\n<ul>\n<li>Must start with a letter (a-z, A-Z) or underscore (_)</li>\n<li>Can contain letters, numbers, and underscores</li>\n<li>Case-sensitive (age and Age are different)</li>\n<li>Cannot use Python keywords</li>\n</ul>\n<pre><code class=\"language-python\"># Valid variable names\nfirst_name = \"John\"\nuser_age = 25\n_private_var = \"secret\"\nvar2 = \"valid\"\n\n# Invalid variable names (will cause errors)\n# 2name = \"Invalid\"      # Starts with number\n# first-name = \"Invalid\" # Contains hyphen\n# class = \"Invalid\"      # Uses Python keyword\n</code></pre>\n<h2>Python Data Types Overview</h2>\n<p>Python has several built-in data types organized into categories:</p>\n<h3><strong>1. Numeric Types</strong></h3>\n<ul>\n<li><code>int</code>: Integer numbers</li>\n<li><code>float</code>: Floating-point numbers</li>\n<li><code>complex</code>: Complex numbers</li>\n</ul>\n<h3><strong>2. Text Type</strong></h3>\n<ul>\n<li><code>str</code>: String (text data)</li>\n</ul>\n<h3><strong>3. Boolean Type</strong></h3>\n<ul>\n<li><code>bool</code>: True/False values</li>\n</ul>\n<h3><strong>4. Sequence Types</strong></h3>\n<ul>\n<li><code>list</code>: Ordered, mutable collection</li>\n<li><code>tuple</code>: Ordered, immutable collection</li>\n<li><code>range</code>: Sequence of numbers</li>\n</ul>\n<h3><strong>5. Mapping Type</strong></h3>\n<ul>\n<li><code>dict</code>: Key-value pairs</li>\n</ul>\n<h3><strong>6. Set Types</strong></h3>\n<ul>\n<li><code>set</code>: Unordered collection of unique items</li>\n<li><code>frozenset</code>: Immutable set</li>\n</ul>\n<h2>Numeric Data Types</h2>\n<h3><strong>Integers (int)</strong></h3>\n<p>Whole numbers without decimal points:</p>\n<pre><code class=\"language-python\">positive_int = 42\nnegative_int = -17\nzero = 0\nlarge_number = 123456789012345\n\nprint(type(positive_int))\n\n# Integer operations\nresult = 10 + 5\nresult = 20 - 8\nresult = 6 * 7\nresult = 15 // 4 # floor division\nresult = 2 ** 3 # exponentiation\n</code></pre>\n<h3><strong>Floating Point Numbers (float)</strong></h3>\n<p>Numbers with decimal points:</p>\n<pre><code class=\"language-python\">pi = 3.14159\ntemperature = -2.5\nscientific = 1.5e-4 # Scientific notation (0.00015)\ninfinity = float('inf')\n\nprint(type(pi))\n\n# Float operations\nresult = 10.5 + 2.3\nresult = 15.0 / 4\nresult = round(3.14159, 2)\n</code></pre>\n<h3><strong>Complex Numbers (complex)</strong></h3>\n<p>Numbers with real and imaginary parts:</p>\n<pre><code class=\"language-python\">complex_num1 = 3 + 4j\ncomplex_num2 = complex(2, 5) # 2 + 5j\n\nprint(complex_num1.real)\nprint(complex_num1.imag)\n\n# Complex operations\nresult = (3 + 4j) + (1 + 2j)\n</code></pre>\n<h2>String Data Type</h2>\n<p>Strings represent text data and are enclosed in quotes:</p>\n<pre><code class=\"language-python\"># Different ways to create strings\nsingle_quote = 'Hello'\ndouble_quote = \"World\"\ntriple_quote = \"\"\"This is a\nmultiline string\"\"\"\n\n# String concatenation\nfull_name = \"John\" + \" \" + \"Doe\"\ngreeting = \"Hello, \" + full_name\n\n# String repetition\nrepeated = \"Python \" * 3\n\n# String indexing and slicing\ntext = \"Python\"\nprint(text[0])\nprint(text[-1])\nprint(text[0:3])\n</code></pre>\n<h3><strong>String Methods</strong></h3>\n<pre><code class=\"language-python\">message = \" Hello, Python! \"\n\nprint(message.upper())\nprint(message.lower())\nprint(message.strip())\nprint(message.replace(\"Python\", \"World\"))\nprint(len(message))\n</code></pre>\n<h2>Boolean Data Type</h2>\n<p>Boolean values represent True or False:</p>\n<pre><code class=\"language-python\">is_python_fun = True\nis_difficult = False\n\n# Boolean from comparisons\nage = 25\nis_adult = age >= 18\nis_teenager = 13 &#x3C;= age &#x3C;= 19\n\n# Boolean operations\nresult = True and False\nresult = True or False\nresult = not True\n</code></pre>\n<h2>Collection Data Types</h2>\n<h3><strong>Lists</strong></h3>\n<p>Ordered, mutable collections:</p>\n<pre><code class=\"language-python\"># Creating lists\nfruits = [\"apple\", \"banana\", \"orange\"]\nnumbers = [1, 2, 3]\nmixed = [\"text\", 42, True, 3.14]\n\n# Accessing elements\nprint(fruits[0])\nprint(fruits[-1])\n\n# Modifying lists\nfruits.append(\"grape\")\nfruits[0] = \"blueberry\"\ndel fruits[1]\n\nprint(fruits)\n</code></pre>\n<h3><strong>Tuples</strong></h3>\n<p>Ordered, immutable collections:</p>\n<pre><code class=\"language-python\"># Creating tuples\ncoordinates = (10, 20)\ncolors = (\"red\", \"green\", \"blue\")\nsingle_item = (42,) # Note the comma for single item\n\n# Accessing elements\nprint(coordinates[0])\n\n# Tuples are immutable\n# coordinates[0] = 15 # This would cause an error\n</code></pre>\n<h3><strong>Dictionaries</strong></h3>\n<p>Key-value pairs:</p>\n<pre><code class=\"language-python\"># Creating dictionaries\nperson = {\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"New York\"\n}\n\n# Accessing values\nprint(person[\"name\"])\nprint(person.get(\"age\"))\n\n# Modifying dictionaries\nperson[\"email\"] = \"alice@email.com\"\nperson[\"age\"] = 26\n\nprint(person.keys())\nprint(person.values())\n</code></pre>\n<h3><strong>Sets</strong></h3>\n<p>Unordered collections of unique elements:</p>\n<pre><code class=\"language-python\"># Creating sets\nunique_numbers = {1, 2, 3, 4, 5, 5} # The duplicate 5 is ignored\nfruits_set = {\"apple\", \"banana\", \"orange\"}\n\n# Set operations\nnumbers1 = {1, 2, 3, 4}\nnumbers2 = {3, 4, 5, 6}\n\nunion = numbers1 | numbers2\nintersection = numbers1 &#x26; numbers2\ndifference = numbers1 - numbers2\n</code></pre>\n<h2>Type Checking and Conversion</h2>\n<h3><strong>Checking Types</strong></h3>\n<pre><code class=\"language-python\">value = 42\nprint(type(value))\nprint(isinstance(value, int))\nprint(isinstance(value, str))\n</code></pre>\n<h3><strong>Type Conversion</strong></h3>\n<pre><code class=\"language-python\"># Converting between types\nnumber_str = \"123\"\nnumber_int = int(number_str)\nnumber_float = float(number_str)\n\n# Converting numbers to strings\nage = 25\nage_str = str(age)\n\n# Converting to boolean\nprint(bool(1))\nprint(bool(0))\nprint(bool(\"\"))\nprint(bool(\"text\"))\n</code></pre>\n<h2>Dynamic Typing in Action</h2>\n<p>Python determines variable types automatically:</p>\n<pre><code class=\"language-python\"># Variable can hold different types\nvar = 42\nprint(type(var))\n\nvar = \"Hello\"\nprint(type(var))\n\nvar = [1, 2, 3]\nprint(type(var))\n</code></pre>\n<h2>Best Practices</h2>\n<ol>\n<li><strong>Use descriptive variable names</strong></li>\n</ol>\n<pre><code class=\"language-python\"># Good\nuser_age = 25\ntotal_price = 99.99\n\n# Avoid\nx = 25\np = 99.99\n</code></pre>\n<ol start=\"2\">\n<li><strong>Follow naming conventions</strong></li>\n</ol>\n<pre><code class=\"language-python\"># Variables and functions: snake_case\nfirst_name = \"John\"\ndef calculate_total(x, y): return x + y\n\n# Constants: UPPER_CASE\nMAX_USERS = 100\nPI = 3.14159\n</code></pre>\n<ol start=\"3\">\n<li><strong>Choose appropriate data types</strong></li>\n</ol>\n<pre><code class=\"language-python\"># Use tuple for coordinates (immutable)\npoint = (10, 20)\n\n# Use list for shopping cart (mutable)\ncart_items = [\"apple\", \"banana\", \"milk\"]\n\n# Use dictionary for structured data\nuser_profile = {\"name\": \"Alice\", \"age\": 25}\n</code></pre>\n<p>Understanding variables and data types is crucial for Python programming. These concepts form the foundation for more complex operations and data structures you'll learn in upcoming tutorials.</p>"
+          "raw": "\n## Introduction to Python\n\nPython is a general-purpose, dynamically typed, high-level, interpreted programming language that supports procedural, object-oriented, and functional programming paradigms. Created by Guido van Rossum and first released in 1991, Python has become one of the most popular programming languages worldwide due to its simplicity, readability, and versatility.\n\n## What is Python?\n\nPython is a powerful programming language that emphasizes code readability and simplicity. Unlike other programming languages such as C, C++, or Java, Python uses clean and intuitive syntax that makes it accessible to both beginners and experienced developers.\n\n### **Key Characteristics**\n- **High-level language**: Abstracts complex programming details\n- **Interpreted**: Executes code line by line without compilation\n- **Dynamically typed**: Variables don't need explicit type declarations\n- **Object-oriented**: Supports classes, objects, and inheritance\n- **Cross-platform**: Runs on Windows, macOS, and Linux\n- **Open source**: Free to use and modify\n\n## Your First Python Program\n\nGetting started with Python is incredibly simple. Here's the classic \"Hello World\" program:\n\n```python\nprint(\"Hello, World!\")\n```\n\n**Output:**\n\n```text\nHello, World!\n```\n\nThis single line demonstrates Python's straightforward syntax - no complex boilerplate code required!\n\n## Why Learn Python?\n\n### **Simple and Readable Syntax**\nPython's syntax closely resembles natural language, making it easy to read and understand:\n\n```python\nif age >= 18:\n    print(\"You are eligible to vote\")\nelse:\n    print(\"You are not eligible to vote\")\n```\n\n### **Versatile Applications**\nPython excels in numerous domains:\n- **Web Development**: Django, Flask, FastAPI\n- **Data Science**: NumPy, Pandas, Matplotlib\n- **Machine Learning**: TensorFlow, PyTorch, Scikit-learn\n- **Automation**: Web scraping, task automation\n- **Desktop Applications**: Tkinter, PyQt\n- **Game Development**: Pygame\n- **Scientific Computing**: SciPy, SymPy\n\n### **Large Community and Libraries**\n- Extensive standard library\n- Over 400,000 packages on PyPI (Python Package Index)\n- Active community support\n- Comprehensive documentation\n\n### **Career Opportunities**\nPython consistently ranks among the most in-demand programming languages, offering excellent career prospects in various industries.\n\n## Python Installation\n\n### **Installing Python**\n1. Visit [python.org](https://python.org)\n2. Download the latest version (Python 3.x)\n3. Run the installer and follow instructions\n4. **Important**: Check \"Add Python to PATH\" during installation\n\n### **Verify Installation**\nOpen command prompt/terminal and type:\n```bash\npython --version\n```\nor\n```bash\npython3 --version\n```\n\n## What's Next?\n\nNow that you understand what Python is and have it installed, you're ready to dive into Python fundamentals. In the next tutorials, we'll explore variables and data types.",
+          "html": "<h2>Introduction to Python</h2>\n<p>Python is a general-purpose, dynamically typed, high-level, interpreted programming language that supports procedural, object-oriented, and functional programming paradigms. Created by Guido van Rossum and first released in 1991, Python has become one of the most popular programming languages worldwide due to its simplicity, readability, and versatility.</p>\n<h2>What is Python?</h2>\n<p>Python is a powerful programming language that emphasizes code readability and simplicity. Unlike other programming languages such as C, C++, or Java, Python uses clean and intuitive syntax that makes it accessible to both beginners and experienced developers.</p>\n<h3><strong>Key Characteristics</strong></h3>\n<ul>\n<li><strong>High-level language</strong>: Abstracts complex programming details</li>\n<li><strong>Interpreted</strong>: Executes code line by line without compilation</li>\n<li><strong>Dynamically typed</strong>: Variables don't need explicit type declarations</li>\n<li><strong>Object-oriented</strong>: Supports classes, objects, and inheritance</li>\n<li><strong>Cross-platform</strong>: Runs on Windows, macOS, and Linux</li>\n<li><strong>Open source</strong>: Free to use and modify</li>\n</ul>\n<h2>Your First Python Program</h2>\n<p>Getting started with Python is incredibly simple. Here's the classic \"Hello World\" program:</p>\n<pre><code class=\"language-python\">print(\"Hello, World!\")\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Hello, World!\n</code></pre>\n<p>This single line demonstrates Python's straightforward syntax - no complex boilerplate code required!</p>\n<h2>Why Learn Python?</h2>\n<h3><strong>Simple and Readable Syntax</strong></h3>\n<p>Python's syntax closely resembles natural language, making it easy to read and understand:</p>\n<pre><code class=\"language-python\">if age >= 18:\n    print(\"You are eligible to vote\")\nelse:\n    print(\"You are not eligible to vote\")\n</code></pre>\n<h3><strong>Versatile Applications</strong></h3>\n<p>Python excels in numerous domains:</p>\n<ul>\n<li><strong>Web Development</strong>: Django, Flask, FastAPI</li>\n<li><strong>Data Science</strong>: NumPy, Pandas, Matplotlib</li>\n<li><strong>Machine Learning</strong>: TensorFlow, PyTorch, Scikit-learn</li>\n<li><strong>Automation</strong>: Web scraping, task automation</li>\n<li><strong>Desktop Applications</strong>: Tkinter, PyQt</li>\n<li><strong>Game Development</strong>: Pygame</li>\n<li><strong>Scientific Computing</strong>: SciPy, SymPy</li>\n</ul>\n<h3><strong>Large Community and Libraries</strong></h3>\n<ul>\n<li>Extensive standard library</li>\n<li>Over 400,000 packages on PyPI (Python Package Index)</li>\n<li>Active community support</li>\n<li>Comprehensive documentation</li>\n</ul>\n<h3><strong>Career Opportunities</strong></h3>\n<p>Python consistently ranks among the most in-demand programming languages, offering excellent career prospects in various industries.</p>\n<h2>Python Installation</h2>\n<h3><strong>Installing Python</strong></h3>\n<ol>\n<li>Visit <a href=\"https://python.org\">python.org</a></li>\n<li>Download the latest version (Python 3.x)</li>\n<li>Run the installer and follow instructions</li>\n<li><strong>Important</strong>: Check \"Add Python to PATH\" during installation</li>\n</ol>\n<h3><strong>Verify Installation</strong></h3>\n<p>Open command prompt/terminal and type:</p>\n<pre><code class=\"language-bash\">python --version\n</code></pre>\n<p>or</p>\n<pre><code class=\"language-bash\">python3 --version\n</code></pre>\n<h2>What's Next?</h2>\n<p>Now that you understand what Python is and have it installed, you're ready to dive into Python fundamentals. In the next tutorials, we'll explore variables and data types.</p>"
         },
-        "_id": "tutorials/python/variables-and-data-types.md",
+        "_id": "tutorials/python/introduction-to-python.md",
         "_raw": {
-          "sourceFilePath": "tutorials/python/variables-and-data-types.md",
-          "sourceFileName": "variables-and-data-types.md",
+          "sourceFilePath": "tutorials/python/introduction-to-python.md",
+          "sourceFileName": "introduction-to-python.md",
           "sourceFileDir": "tutorials/python",
           "contentType": "markdown",
-          "flattenedPath": "tutorials/python/variables-and-data-types"
+          "flattenedPath": "tutorials/python/introduction-to-python"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/python/python-variables-data-types",
+        "url": "/tutorial/python/introduction-to-python",
         "language": "python"
       },
-      "documentHash": "1755768069436",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/r/introduction.md": {
-      "document": {
-        "title": "Introduction to R",
-        "slug": "introduction",
-        "order": 1,
-        "description": "An overview of R, a language and environment for statistical computing and graphics.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is R?\n\nR is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis.\n",
-          "html": "<h2>What is R?</h2>\n<p>R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis.</p>"
-        },
-        "_id": "tutorials/r/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/r/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/r",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/r/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/r/introduction",
-        "language": "r"
-      },
-      "documentHash": "1754562111329",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/ruby/introduction.md": {
-      "document": {
-        "title": "Introduction to Ruby",
-        "slug": "introduction",
-        "order": 1,
-        "description": "An overview of Ruby, a dynamic, open-source programming language with a focus on simplicity and productivity.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is Ruby?\n\nRuby is an interpreted, high-level, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro \"Matz\" Matsumoto in Japan. Ruby is dynamically typed and uses garbage collection and just-in-time compilation. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.\n",
-          "html": "<h2>What is Ruby?</h2>\n<p>Ruby is an interpreted, high-level, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro \"Matz\" Matsumoto in Japan. Ruby is dynamically typed and uses garbage collection and just-in-time compilation. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.</p>"
-        },
-        "_id": "tutorials/ruby/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/ruby/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/ruby",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/ruby/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/ruby/introduction",
-        "language": "ruby"
-      },
-      "documentHash": "1754561237477",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/rust/introduction.md": {
-      "document": {
-        "title": "Introduction to Rust",
-        "slug": "introduction",
-        "order": 1,
-        "description": "An overview of Rust, a language empowering everyone to build reliable and efficient software.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is Rust?\n\nRust is a multi-paradigm, high-level, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety—meaning that all references point to valid memory—without needing a garbage collector or reference counting present in other memory-safe languages.\n",
-          "html": "<h2>What is Rust?</h2>\n<p>Rust is a multi-paradigm, high-level, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety—meaning that all references point to valid memory—without needing a garbage collector or reference counting present in other memory-safe languages.</p>"
-        },
-        "_id": "tutorials/rust/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/rust/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/rust",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/rust/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/rust/introduction",
-        "language": "rust"
-      },
-      "documentHash": "1754562111337",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/scala/introduction.md": {
-      "document": {
-        "title": "Introduction to Scala",
-        "slug": "introduction",
-        "order": 1,
-        "description": "An overview of Scala, a strong statically typed general-purpose programming language that supports both object-oriented and functional programming.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is Scala?\n\nScala is a high-level language that combines object-oriented and functional programming in one concise language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.\n",
-          "html": "<h2>What is Scala?</h2>\n<p>Scala is a high-level language that combines object-oriented and functional programming in one concise language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>"
-        },
-        "_id": "tutorials/scala/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/scala/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/scala",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/scala/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/scala/introduction",
-        "language": "scala"
-      },
-      "documentHash": "1754562111342",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/shell/introduction.md": {
-      "document": {
-        "title": "Introduction to Shell Scripting",
-        "slug": "introduction",
-        "order": 1,
-        "description": "An overview of Shell Scripting for automating command-line tasks on Unix-like operating systems.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is Shell Scripting?\n\nA shell script is a computer program designed to be run by a Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts include file manipulation, program execution, and printing text. A script which sets up the environment, runs the program, and does any necessary cleanup, logging, etc. is called a wrapper.\n",
-          "html": "<h2>What is Shell Scripting?</h2>\n<p>A shell script is a computer program designed to be run by a Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts include file manipulation, program execution, and printing text. A script which sets up the environment, runs the program, and does any necessary cleanup, logging, etc. is called a wrapper.</p>"
-        },
-        "_id": "tutorials/shell/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/shell/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/shell",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/shell/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/shell/introduction",
-        "language": "shell"
-      },
-      "documentHash": "1754562111361",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/sql/introduction.md": {
-      "document": {
-        "title": "Introduction to SQL",
-        "slug": "introduction-to-sql",
-        "order": 1,
-        "description": "A brief overview of SQL and its role in managing relational databases.",
-        "category": "Databases",
-        "body": {
-          "raw": "\n## What is SQL?\n\nSQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS). It is a standard language for accessing and manipulating databases.\n\n### What can SQL do?\n\n- SQL can execute queries against a database\n- SQL can retrieve data from a database\n- SQL can insert records in a database\n- SQL can update records in a database\n- SQL can delete records from a database\n- SQL can create new databases\n- SQL can create new tables in a database\n- SQL can create stored procedures in a database\n- SQL can create views in a database\n- SQL can set permissions on tables, procedures, and views\n\n### Example Query\n\nHere is an example of a simple SQL query to select all records from a \"Customers\" table:\n\n```sql\nSELECT * FROM Customers;\n```\n\nTo select only customers from a specific country, you could use a `WHERE` clause:\n\n```sql\nSELECT * FROM Customers\nWHERE Country = 'Germany';\n```\n\nSQL is an essential skill for data analysts, backend developers, and anyone involved in managing large-scale data. Different database systems have their own dialect of SQL (e.g., T-SQL for Microsoft SQL Server, PL/SQL for Oracle), but the core commands are largely standardized.",
-          "html": "<h2>What is SQL?</h2>\n<p>SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS). It is a standard language for accessing and manipulating databases.</p>\n<h3>What can SQL do?</h3>\n<ul>\n<li>SQL can execute queries against a database</li>\n<li>SQL can retrieve data from a database</li>\n<li>SQL can insert records in a database</li>\n<li>SQL can update records in a database</li>\n<li>SQL can delete records from a database</li>\n<li>SQL can create new databases</li>\n<li>SQL can create new tables in a database</li>\n<li>SQL can create stored procedures in a database</li>\n<li>SQL can create views in a database</li>\n<li>SQL can set permissions on tables, procedures, and views</li>\n</ul>\n<h3>Example Query</h3>\n<p>Here is an example of a simple SQL query to select all records from a \"Customers\" table:</p>\n<pre><code class=\"language-sql\">SELECT * FROM Customers;\n</code></pre>\n<p>To select only customers from a specific country, you could use a <code>WHERE</code> clause:</p>\n<pre><code class=\"language-sql\">SELECT * FROM Customers\nWHERE Country = 'Germany';\n</code></pre>\n<p>SQL is an essential skill for data analysts, backend developers, and anyone involved in managing large-scale data. Different database systems have their own dialect of SQL (e.g., T-SQL for Microsoft SQL Server, PL/SQL for Oracle), but the core commands are largely standardized.</p>"
-        },
-        "_id": "tutorials/sql/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/sql/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/sql",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/sql/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/sql/introduction-to-sql",
-        "language": "sql"
-      },
-      "documentHash": "1754563588964",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/swift/introduction.md": {
-      "document": {
-        "title": "Introduction to Swift",
-        "slug": "introduction",
-        "order": 1,
-        "description": "An overview of Swift, the powerful and intuitive programming language for macOS, iOS, watchOS, and tvOS.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is Swift?\n\nSwift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C, as Objective-C had been largely unchanged since the early 1980s and lacked modern language features.\n",
-          "html": "<h2>What is Swift?</h2>\n<p>Swift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C, as Objective-C had been largely unchanged since the early 1980s and lacked modern language features.</p>"
-        },
-        "_id": "tutorials/swift/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/swift/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/swift",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/swift/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/swift/introduction",
-        "language": "swift"
-      },
-      "documentHash": "1754562111327",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/typescript/introduction.md": {
-      "document": {
-        "title": "Introduction to TypeScript",
-        "slug": "introduction-to-typescript",
-        "order": 1,
-        "description": "An introduction to TypeScript and its relationship with JavaScript.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is TypeScript?\n\nTypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript.\n\n### Why use TypeScript?\n\nJavaScript is a dynamically typed language. This means you don't have to specify the type of a variable, which offers flexibility but can lead to bugs in large-scale applications. TypeScript solves this problem by adding types to JavaScript.\n\n- **Static Typing**: Catch errors during development, before the code is run. This leads to more robust code.\n- **Better Tooling**: Types allow for better autocompletion, navigation, and refactoring in code editors like VS Code.\n- **Readability**: Explicit types can make the code easier to read and understand.\n- **Modern JavaScript Features**: TypeScript lets you use the latest features of JavaScript, even if they aren't supported by all browsers yet, by compiling them down to an older version.\n\n### TypeScript Example\n\nHere is a simple example in TypeScript:\n\n```typescript\nfunction greet(person: string, date: Date) {\n  console.log(`Hello ${person}, today is ${date.toDateString()}!`);\n}\n\ngreet(\"Brendan\", new Date());\n```\n\nIf you were to call `greet(\"Brendan\", \"2024-07-10\")`, TypeScript would give you an error because you are passing a string instead of a `Date` object. Plain JavaScript would only fail at runtime.\n\nBecause TypeScript is a superset of JavaScript, any valid JavaScript code is also valid TypeScript code. This makes it easy to adopt TypeScript in existing JavaScript projects.",
-          "html": "<h2>What is TypeScript?</h2>\n<p>TypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript.</p>\n<h3>Why use TypeScript?</h3>\n<p>JavaScript is a dynamically typed language. This means you don't have to specify the type of a variable, which offers flexibility but can lead to bugs in large-scale applications. TypeScript solves this problem by adding types to JavaScript.</p>\n<ul>\n<li><strong>Static Typing</strong>: Catch errors during development, before the code is run. This leads to more robust code.</li>\n<li><strong>Better Tooling</strong>: Types allow for better autocompletion, navigation, and refactoring in code editors like VS Code.</li>\n<li><strong>Readability</strong>: Explicit types can make the code easier to read and understand.</li>\n<li><strong>Modern JavaScript Features</strong>: TypeScript lets you use the latest features of JavaScript, even if they aren't supported by all browsers yet, by compiling them down to an older version.</li>\n</ul>\n<h3>TypeScript Example</h3>\n<p>Here is a simple example in TypeScript:</p>\n<pre><code class=\"language-typescript\">function greet(person: string, date: Date) {\n  console.log(`Hello ${person}, today is ${date.toDateString()}!`);\n}\n\ngreet(\"Brendan\", new Date());\n</code></pre>\n<p>If you were to call <code>greet(\"Brendan\", \"2024-07-10\")</code>, TypeScript would give you an error because you are passing a string instead of a <code>Date</code> object. Plain JavaScript would only fail at runtime.</p>\n<p>Because TypeScript is a superset of JavaScript, any valid JavaScript code is also valid TypeScript code. This makes it easy to adopt TypeScript in existing JavaScript projects.</p>"
-        },
-        "_id": "tutorials/typescript/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/typescript/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/typescript",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/typescript/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/typescript/introduction-to-typescript",
-        "language": "typescript"
-      },
-      "documentHash": "1754563588970",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/vba/introduction.md": {
-      "document": {
-        "title": "Introduction to VBA",
-        "slug": "introduction",
-        "order": 1,
-        "description": "An overview of VBA (Visual Basic for Applications), a programming language to automate tasks in Microsoft Office applications.",
-        "category": "Getting Started",
-        "body": {
-          "raw": "\n## What is VBA?\n\nVisual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6, which was discontinued in 2008, and its associated integrated development environment (IDE). VBA is built into most Microsoft Office applications and is used to automate repetitive tasks, create custom forms, and add new functionality.\n",
-          "html": "<h2>What is VBA?</h2>\n<p>Visual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6, which was discontinued in 2008, and its associated integrated development environment (IDE). VBA is built into most Microsoft Office applications and is used to automate repetitive tasks, create custom forms, and add new functionality.</p>"
-        },
-        "_id": "tutorials/vba/introduction.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/vba/introduction.md",
-          "sourceFileName": "introduction.md",
-          "sourceFileDir": "tutorials/vba",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/vba/introduction"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/vba/introduction",
-        "language": "vba"
-      },
-      "documentHash": "1754562111357",
+      "documentHash": "1756390276441",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }
