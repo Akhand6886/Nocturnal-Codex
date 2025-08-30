@@ -1,4 +1,3 @@
-
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
 export const BlogPost = defineDocumentType(() => ({

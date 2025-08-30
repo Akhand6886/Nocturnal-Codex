@@ -13,6 +13,9 @@ export interface Topic {
   category?: string;
   subtopics?: SubTopic[];
   codeSnippets?: CodeSnippetItem[];
+  tutorials?: Tutorial[];
+  references?: WikiArticleStub[];
+  thinkTankArticles?: ThinkTankArticleStub[];
 }
 
 export interface SubTopic {
@@ -20,6 +23,13 @@ export interface SubTopic {
   slug: string;
   name: string;
   description?: string;
+}
+
+export interface Tutorial {
+    id: string;
+    title: string;
+    url: string;
+    sourceName: string;
 }
 
 export interface CodeSnippetItem {

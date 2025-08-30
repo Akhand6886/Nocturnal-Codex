@@ -6,17 +6,16 @@ import { notFound } from 'next/navigation';
 
 export default function JavascriptTutorialLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { language: string };
 }) {
   const tutorialsForLanguage = allTutorialPosts
     .filter((post) => post.language === 'javascript')
     .sort((a, b) => a.order - b.order);
 
   if (tutorialsForLanguage.length === 0) {
-    notFound();
+    // Even if there are no tutorials, we might want to show the layout with a message.
+    // Or we could redirect from the parent page. For now, we'll allow the layout to render.
   }
 
   const groupedTutorials = tutorialsForLanguage.reduce((acc, tutorial) => {
