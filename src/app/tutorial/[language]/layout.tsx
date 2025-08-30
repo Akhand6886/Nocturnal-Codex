@@ -2,6 +2,7 @@
 import { allTutorialPosts } from 'contentlayer/generated';
 import { TutorialSidebar } from '@/components/layout/tutorial-sidebar';
 import { LanguageScroller } from '@/components/layout/language-scroller';
+import { notFound } from 'next/navigation';
 
 export default function TutorialLayout({
   children,
@@ -13,6 +14,10 @@ export default function TutorialLayout({
   const tutorialsForLanguage = allTutorialPosts
     .filter((post) => post.language === params.language)
     .sort((a, b) => a.order - b.order);
+
+  if (tutorialsForLanguage.length === 0) {
+    notFound();
+  }
 
   const groupedTutorials = tutorialsForLanguage.reduce((acc, tutorial) => {
     const category = tutorial.category || 'General';
