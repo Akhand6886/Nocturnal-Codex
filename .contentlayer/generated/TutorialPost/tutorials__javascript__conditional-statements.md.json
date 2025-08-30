@@ -1,0 +1,22 @@
+{
+  "title": "JavaScript Conditional Statements (if/else)",
+  "slug": "conditional-statements",
+  "order": 9,
+  "description": "Learn about conditional statements in JavaScript.",
+  "category": "Program Flow and Functions",
+  "body": {
+    "raw": "\n## JavaScript Conditional Statements (if/else)\n\nThis tutorial will cover conditional statements in JavaScript. Content to be added.\n",
+    "html": "<h2>JavaScript Conditional Statements (if/else)</h2>\n<p>This tutorial will cover conditional statements in JavaScript. Content to be added.</p>"
+  },
+  "_id": "tutorials/javascript/conditional-statements.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/conditional-statements.md",
+    "sourceFileName": "conditional-statements.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/conditional-statements"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/conditional-statements",
+  "language": "javascript"
+}

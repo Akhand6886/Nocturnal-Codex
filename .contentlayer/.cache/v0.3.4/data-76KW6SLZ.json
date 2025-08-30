@@ -8,8 +8,8 @@
         "description": "Learn how to declare and use variables in JavaScript. Understand the key differences between var, let, and const and when to use each.",
         "category": "JavaScript Fundamentals",
         "body": {
-          "raw": "\n## What is a Variable?\n\nA variable is a container for storing data values. Think of it as a named storage location for information that your program can manipulate. In JavaScript, we use variables to hold everything from numbers and text to more complex objects.\n\n-----\n\n## Declaring Variables\n\nBefore you use a variable, you must declare it. In modern JavaScript, there are two main keywords for declaring variables that can be changed: `let` and `var`. The modern standard is to use `let`.\n\n### **Using `let`**\n\nThe `let` keyword was introduced in ES6 (2015) and is the recommended way to declare a variable whose value can change. `let` is **block-scoped**, meaning it's only available within the block (e.g., inside an `if` statement or `for` loop) where it's defined.\n\n```javascript\n// Declare a variable named 'message'\nlet message;\n\n// Assign a value to the variable\nmessage = \"Hello, JavaScript!\";\n\n// You can also declare and assign in one line\nlet userAge = 25;\n\n// The value can be changed\nuserAge = 26;\n\nconsole.log(userAge); // Output: 26\n```\n\n### **Using `var` (The Old Way)**\n\nBefore 2015, `var` was the only way to declare variables. `var` is **function-scoped**, which can sometimes lead to unexpected behavior. While you will still see it in older codebases, it's generally recommended to use `let` and `const` in new projects.\n\n```javascript\nvar greeting = \"Hello from var!\";\n```\n\n-----\n\n## Declaring Constants\n\nSometimes, you'll want to define a variable whose value should not be changed throughout your program. For this, we use the `const` keyword.\n\n### **Using `const`**\n\nA constant is a variable that, once assigned a value, cannot be reassigned. Like `let`, `const` is also **block-scoped**. You must assign a value to a constant when you declare it.\n\n```javascript\n// Declare a constant named 'PI'\nconst PI = 3.14159;\n\nconsole.log(PI); // Output: 3.14159\n\n// This would cause an error!\n// PI = 3.14;\n// TypeError: Assignment to constant variable.\n```\n\n-----\n\n## Which One Should You Use?\n\nHere’s a simple rule of thumb for modern JavaScript development:\n\n1.  **Use `const` by default**: This makes your code safer and easier to reason about, as you know the value won't change.\n2.  **Use `let` only when you know you'll need to reassign the variable's value** (e.g., a counter in a loop).\n3.  **Avoid using `var`** in modern code to prevent issues with scope.",
-          "html": "<h2>What is a Variable?</h2>\n<p>A variable is a container for storing data values. Think of it as a named storage location for information that your program can manipulate. In JavaScript, we use variables to hold everything from numbers and text to more complex objects.</p>\n<hr>\n<h2>Declaring Variables</h2>\n<p>Before you use a variable, you must declare it. In modern JavaScript, there are two main keywords for declaring variables that can be changed: <code>let</code> and <code>var</code>. The modern standard is to use <code>let</code>.</p>\n<h3><strong>Using <code>let</code></strong></h3>\n<p>The <code>let</code> keyword was introduced in ES6 (2015) and is the recommended way to declare a variable whose value can change. <code>let</code> is <strong>block-scoped</strong>, meaning it's only available within the block (e.g., inside an <code>if</code> statement or <code>for</code> loop) where it's defined.</p>\n<pre><code class=\"language-javascript\">// Declare a variable named 'message'\nlet message;\n\n// Assign a value to the variable\nmessage = \"Hello, JavaScript!\";\n\n// You can also declare and assign in one line\nlet userAge = 25;\n\n// The value can be changed\nuserAge = 26;\n\nconsole.log(userAge); // Output: 26\n</code></pre>\n<h3><strong>Using <code>var</code> (The Old Way)</strong></h3>\n<p>Before 2015, <code>var</code> was the only way to declare variables. <code>var</code> is <strong>function-scoped</strong>, which can sometimes lead to unexpected behavior. While you will still see it in older codebases, it's generally recommended to use <code>let</code> and <code>const</code> in new projects.</p>\n<pre><code class=\"language-javascript\">var greeting = \"Hello from var!\";\n</code></pre>\n<hr>\n<h2>Declaring Constants</h2>\n<p>Sometimes, you'll want to define a variable whose value should not be changed throughout your program. For this, we use the <code>const</code> keyword.</p>\n<h3><strong>Using <code>const</code></strong></h3>\n<p>A constant is a variable that, once assigned a value, cannot be reassigned. Like <code>let</code>, <code>const</code> is also <strong>block-scoped</strong>. You must assign a value to a constant when you declare it.</p>\n<pre><code class=\"language-javascript\">// Declare a constant named 'PI'\nconst PI = 3.14159;\n\nconsole.log(PI); // Output: 3.14159\n\n// This would cause an error!\n// PI = 3.14;\n// TypeError: Assignment to constant variable.\n</code></pre>\n<hr>\n<h2>Which One Should You Use?</h2>\n<p>Here’s a simple rule of thumb for modern JavaScript development:</p>\n<ol>\n<li><strong>Use <code>const</code> by default</strong>: This makes your code safer and easier to reason about, as you know the value won't change.</li>\n<li><strong>Use <code>let</code> only when you know you'll need to reassign the variable's value</strong> (e.g., a counter in a loop).</li>\n<li><strong>Avoid using <code>var</code></strong> in modern code to prevent issues with scope.</li>\n</ol>"
+          "raw": "\n## JavaScript Variables and Constants\n\nThis tutorial will cover JavaScript variables and constants. Content to be added.\n",
+          "html": "<h2>JavaScript Variables and Constants</h2>\n<p>This tutorial will cover JavaScript variables and constants. Content to be added.</p>"
         },
         "_id": "tutorials/javascript/javascript-variables-and-constants.md",
         "_raw": {
@@ -23,7 +23,7 @@
         "url": "/tutorial/javascript/javascript-variables-and-constants",
         "language": "javascript"
       },
-      "documentHash": "1756556732537",
+      "documentHash": "1756574067351",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -618,6 +618,411 @@
         "language": "python"
       },
       "documentHash": "1756390599828",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/introduction-to-javascript.md": {
+      "document": {
+        "title": "Introduction to JavaScript",
+        "slug": "introduction-to-javascript",
+        "order": 1,
+        "description": "Discover what JavaScript is, its crucial role in making websites interactive, and how to run your very first line of JavaScript code.",
+        "category": "JavaScript Fundamentals",
+        "body": {
+          "raw": "\n## Introduction to JavaScript\n\nThis tutorial will cover the basics of JavaScript. Content to be added.\n",
+          "html": "<h2>Introduction to JavaScript</h2>\n<p>This tutorial will cover the basics of JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/introduction-to-javascript.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/introduction-to-javascript.md",
+          "sourceFileName": "introduction-to-javascript.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/introduction-to-javascript"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/introduction-to-javascript",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067343",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/arrays.md": {
+      "document": {
+        "title": "JavaScript Arrays",
+        "slug": "javascript-arrays",
+        "order": 7,
+        "description": "Learn about arrays in JavaScript.",
+        "category": "Core Data Structures",
+        "body": {
+          "raw": "\n## JavaScript Arrays\n\nThis tutorial will cover JavaScript arrays. Content to be added.\n",
+          "html": "<h2>JavaScript Arrays</h2>\n<p>This tutorial will cover JavaScript arrays. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/arrays.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/arrays.md",
+          "sourceFileName": "arrays.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/arrays"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-arrays",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067363",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/conditional-statements.md": {
+      "document": {
+        "title": "JavaScript Conditional Statements (if/else)",
+        "slug": "conditional-statements",
+        "order": 9,
+        "description": "Learn about conditional statements in JavaScript.",
+        "category": "Program Flow and Functions",
+        "body": {
+          "raw": "\n## JavaScript Conditional Statements (if/else)\n\nThis tutorial will cover conditional statements in JavaScript. Content to be added.\n",
+          "html": "<h2>JavaScript Conditional Statements (if/else)</h2>\n<p>This tutorial will cover conditional statements in JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/conditional-statements.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/conditional-statements.md",
+          "sourceFileName": "conditional-statements.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/conditional-statements"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/conditional-statements",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067365",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/functions.md": {
+      "document": {
+        "title": "JavaScript Functions",
+        "slug": "javascript-functions",
+        "order": 11,
+        "description": "Learn about functions in JavaScript.",
+        "category": "Program Flow and Functions",
+        "body": {
+          "raw": "\n## JavaScript Functions\n\nThis tutorial will cover functions in JavaScript. Content to be added.\n",
+          "html": "<h2>JavaScript Functions</h2>\n<p>This tutorial will cover functions in JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/functions.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/functions.md",
+          "sourceFileName": "functions.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/functions"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-functions",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067368",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/loops.md": {
+      "document": {
+        "title": "JavaScript Loops (for and while)",
+        "slug": "javascript-loops",
+        "order": 10,
+        "description": "Learn about loops in JavaScript.",
+        "category": "Program Flow and Functions",
+        "body": {
+          "raw": "\n## JavaScript Loops (for and while)\n\nThis tutorial will cover loops in JavaScript. Content to be added.\n",
+          "html": "<h2>JavaScript Loops (for and while)</h2>\n<p>This tutorial will cover loops in JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/loops.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/loops.md",
+          "sourceFileName": "loops.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/loops"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-loops",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067366",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/objects.md": {
+      "document": {
+        "title": "JavaScript Objects",
+        "slug": "javascript-objects",
+        "order": 8,
+        "description": "Learn about objects in JavaScript.",
+        "category": "Core Data Structures",
+        "body": {
+          "raw": "\n## JavaScript Objects\n\nThis tutorial will cover JavaScript objects. Content to be added.\n",
+          "html": "<h2>JavaScript Objects</h2>\n<p>This tutorial will cover JavaScript objects. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/objects.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/objects.md",
+          "sourceFileName": "objects.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/objects"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-objects",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067364",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/scope.md": {
+      "document": {
+        "title": "JavaScript Scope",
+        "slug": "javascript-scope",
+        "order": 12,
+        "description": "Learn about scope in JavaScript.",
+        "category": "Program Flow and Functions",
+        "body": {
+          "raw": "\n## JavaScript Scope\n\nThis tutorial will cover scope in JavaScript. Content to be added.\n",
+          "html": "<h2>JavaScript Scope</h2>\n<p>This tutorial will cover scope in JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/scope.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/scope.md",
+          "sourceFileName": "scope.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/scope"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-scope",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067371",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/data-types.md": {
+      "document": {
+        "title": "JavaScript Data Types",
+        "slug": "javascript-data-types",
+        "order": 3,
+        "description": "Explore the different data types in JavaScript.",
+        "category": "JavaScript Fundamentals",
+        "body": {
+          "raw": "\n## JavaScript Data Types\n\nThis tutorial will cover JavaScript data types. Content to be added.\n",
+          "html": "<h2>JavaScript Data Types</h2>\n<p>This tutorial will cover JavaScript data types. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/data-types.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/data-types.md",
+          "sourceFileName": "data-types.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/data-types"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-data-types",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067354",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/operators.md": {
+      "document": {
+        "title": "JavaScript Operators",
+        "slug": "javascript-operators",
+        "order": 4,
+        "description": "Understand the different operators in JavaScript.",
+        "category": "JavaScript Fundamentals",
+        "body": {
+          "raw": "\n## JavaScript Operators\n\nThis tutorial will cover JavaScript operators. Content to be added.\n",
+          "html": "<h2>JavaScript Operators</h2>\n<p>This tutorial will cover JavaScript operators. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/operators.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/operators.md",
+          "sourceFileName": "operators.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/operators"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/javascript-operators",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067356",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/user-interaction.md": {
+      "document": {
+        "title": "User Interaction in JavaScript",
+        "slug": "user-interaction",
+        "order": 6,
+        "description": "Learn how to interact with users in JavaScript.",
+        "category": "JavaScript Fundamentals",
+        "body": {
+          "raw": "\n## User Interaction in JavaScript\n\nThis tutorial will cover user interaction in JavaScript. Content to be added.\n",
+          "html": "<h2>User Interaction in JavaScript</h2>\n<p>This tutorial will cover user interaction in JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/user-interaction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/user-interaction.md",
+          "sourceFileName": "user-interaction.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/user-interaction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/user-interaction",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067359",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/working-with-strings.md": {
+      "document": {
+        "title": "Working with Strings in JavaScript",
+        "slug": "working-with-strings",
+        "order": 5,
+        "description": "Learn how to manipulate strings in JavaScript.",
+        "category": "JavaScript Fundamentals",
+        "body": {
+          "raw": "\n## Working with Strings in JavaScript\n\nThis tutorial will cover working with strings in JavaScript. Content to be added.\n",
+          "html": "<h2>Working with Strings in JavaScript</h2>\n<p>This tutorial will cover working with strings in JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/working-with-strings.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/working-with-strings.md",
+          "sourceFileName": "working-with-strings.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/working-with-strings"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/working-with-strings",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067356",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/selecting-dom-elements.md": {
+      "document": {
+        "title": "Selecting DOM Elements",
+        "slug": "selecting-dom-elements",
+        "order": 14,
+        "description": "Learn how to select DOM elements in JavaScript.",
+        "category": "JavaScript in the Browser (The DOM)",
+        "body": {
+          "raw": "\n## Selecting DOM Elements\n\nThis tutorial will cover selecting DOM elements. Content to be added.\n",
+          "html": "<h2>Selecting DOM Elements</h2>\n<p>This tutorial will cover selecting DOM elements. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/selecting-dom-elements.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/selecting-dom-elements.md",
+          "sourceFileName": "selecting-dom-elements.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/selecting-dom-elements"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/selecting-dom-elements",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067373",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/dom-introduction.md": {
+      "document": {
+        "title": "Understanding the DOM",
+        "slug": "dom-introduction",
+        "order": 13,
+        "description": "Learn about the Document Object Model (DOM).",
+        "category": "JavaScript in the Browser (The DOM)",
+        "body": {
+          "raw": "\n## Understanding the DOM\n\nThis tutorial will cover the Document Object Model (DOM). Content to be added.\n",
+          "html": "<h2>Understanding the DOM</h2>\n<p>This tutorial will cover the Document Object Model (DOM). Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/dom-introduction.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/dom-introduction.md",
+          "sourceFileName": "dom-introduction.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/dom-introduction"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/dom-introduction",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067372",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/handling-events.md": {
+      "document": {
+        "title": "Handling Events in JavaScript",
+        "slug": "handling-events",
+        "order": 16,
+        "description": "Learn how to handle events in JavaScript.",
+        "category": "JavaScript in the Browser (The DOM)",
+        "body": {
+          "raw": "\n## Handling Events in JavaScript\n\nThis tutorial will cover handling events in JavaScript. Content to be added.\n",
+          "html": "<h2>Handling Events in JavaScript</h2>\n<p>This tutorial will cover handling events in JavaScript. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/handling-events.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/handling-events.md",
+          "sourceFileName": "handling-events.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/handling-events"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/handling-events",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067382",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/javascript/manipulating-dom-elements.md": {
+      "document": {
+        "title": "Manipulating DOM Elements",
+        "slug": "manipulating-dom-elements",
+        "order": 15,
+        "description": "Learn how to manipulate DOM elements in JavaScript.",
+        "category": "JavaScript in the Browser (The DOM)",
+        "body": {
+          "raw": "\n## Manipulating DOM Elements\n\nThis tutorial will cover manipulating DOM elements. Content to be added.\n",
+          "html": "<h2>Manipulating DOM Elements</h2>\n<p>This tutorial will cover manipulating DOM elements. Content to be added.</p>"
+        },
+        "_id": "tutorials/javascript/manipulating-dom-elements.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/javascript/manipulating-dom-elements.md",
+          "sourceFileName": "manipulating-dom-elements.md",
+          "sourceFileDir": "tutorials/javascript",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/javascript/manipulating-dom-elements"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/javascript/manipulating-dom-elements",
+        "language": "javascript"
+      },
+      "documentHash": "1756574067374",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }

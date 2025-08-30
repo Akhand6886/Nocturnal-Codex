@@ -1,0 +1,22 @@
+{
+  "title": "Selecting DOM Elements",
+  "slug": "selecting-dom-elements",
+  "order": 14,
+  "description": "Learn how to select DOM elements in JavaScript.",
+  "category": "JavaScript in the Browser (The DOM)",
+  "body": {
+    "raw": "\n## Selecting DOM Elements\n\nThis tutorial will cover selecting DOM elements. Content to be added.\n",
+    "html": "<h2>Selecting DOM Elements</h2>\n<p>This tutorial will cover selecting DOM elements. Content to be added.</p>"
+  },
+  "_id": "tutorials/javascript/selecting-dom-elements.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/selecting-dom-elements.md",
+    "sourceFileName": "selecting-dom-elements.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/selecting-dom-elements"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/selecting-dom-elements",
+  "language": "javascript"
+}

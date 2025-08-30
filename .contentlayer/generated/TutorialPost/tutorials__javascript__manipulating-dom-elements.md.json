@@ -1,0 +1,22 @@
+{
+  "title": "Manipulating DOM Elements",
+  "slug": "manipulating-dom-elements",
+  "order": 15,
+  "description": "Learn how to manipulate DOM elements in JavaScript.",
+  "category": "JavaScript in the Browser (The DOM)",
+  "body": {
+    "raw": "\n## Manipulating DOM Elements\n\nThis tutorial will cover manipulating DOM elements. Content to be added.\n",
+    "html": "<h2>Manipulating DOM Elements</h2>\n<p>This tutorial will cover manipulating DOM elements. Content to be added.</p>"
+  },
+  "_id": "tutorials/javascript/manipulating-dom-elements.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/manipulating-dom-elements.md",
+    "sourceFileName": "manipulating-dom-elements.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/manipulating-dom-elements"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/manipulating-dom-elements",
+  "language": "javascript"
+}

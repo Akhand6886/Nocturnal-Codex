@@ -1,0 +1,22 @@
+{
+  "title": "Working with Strings in JavaScript",
+  "slug": "working-with-strings",
+  "order": 5,
+  "description": "Learn how to manipulate strings in JavaScript.",
+  "category": "JavaScript Fundamentals",
+  "body": {
+    "raw": "\n## Working with Strings in JavaScript\n\nThis tutorial will cover working with strings in JavaScript. Content to be added.\n",
+    "html": "<h2>Working with Strings in JavaScript</h2>\n<p>This tutorial will cover working with strings in JavaScript. Content to be added.</p>"
+  },
+  "_id": "tutorials/javascript/working-with-strings.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/working-with-strings.md",
+    "sourceFileName": "working-with-strings.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/working-with-strings"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/working-with-strings",
+  "language": "javascript"
+}

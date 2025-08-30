@@ -1,0 +1,22 @@
+{
+  "title": "Understanding the DOM",
+  "slug": "dom-introduction",
+  "order": 13,
+  "description": "Learn about the Document Object Model (DOM).",
+  "category": "JavaScript in the Browser (The DOM)",
+  "body": {
+    "raw": "\n## Understanding the DOM\n\nThis tutorial will cover the Document Object Model (DOM). Content to be added.\n",
+    "html": "<h2>Understanding the DOM</h2>\n<p>This tutorial will cover the Document Object Model (DOM). Content to be added.</p>"
+  },
+  "_id": "tutorials/javascript/dom-introduction.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/dom-introduction.md",
+    "sourceFileName": "dom-introduction.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/dom-introduction"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/dom-introduction",
+  "language": "javascript"
+}

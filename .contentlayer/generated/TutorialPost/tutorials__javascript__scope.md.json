@@ -1,0 +1,22 @@
+{
+  "title": "JavaScript Scope",
+  "slug": "javascript-scope",
+  "order": 12,
+  "description": "Learn about scope in JavaScript.",
+  "category": "Program Flow and Functions",
+  "body": {
+    "raw": "\n## JavaScript Scope\n\nThis tutorial will cover scope in JavaScript. Content to be added.\n",
+    "html": "<h2>JavaScript Scope</h2>\n<p>This tutorial will cover scope in JavaScript. Content to be added.</p>"
+  },
+  "_id": "tutorials/javascript/scope.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/javascript/scope.md",
+    "sourceFileName": "scope.md",
+    "sourceFileDir": "tutorials/javascript",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/javascript/scope"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/javascript/javascript-scope",
+  "language": "javascript"
+}
