@@ -5,7 +5,6 @@ import { Code2 } from 'lucide-react';
 
 const languages = [
   { name: 'Python', href: '/languages/python', description: 'A versatile and beginner-friendly language for web, data, and more.' },
-  { name: 'JavaScript', href: '/languages/javascript', description: 'The language of the web, powering interactive experiences.' },
   { name: 'Java', href: '/languages/java', description: 'A robust, object-oriented language for enterprise applications.' },
   { name: 'C#', href: '/tutorial/csharp/introduction-to-csharp', description: 'A modern language from Microsoft for Windows and web apps.' },
   { name: 'C++', href: '/tutorial/cplusplus/introduction-to-cplusplus', description: 'High-performance object-oriented programming for systems and games.' },
