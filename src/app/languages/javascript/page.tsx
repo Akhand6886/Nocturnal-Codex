@@ -2,8 +2,14 @@
 import { allTutorialPosts } from 'contentlayer/generated';
 import { TutorialCard } from '@/components/content/tutorial-card';
 import { Code2 } from 'lucide-react';
+import type { Metadata } from 'next';
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "JavaScript Tutorials | Nocturnal Codex",
+  description: "Browse all JavaScript tutorials available on Nocturnal Codex.",
+};
 
 export default function JavascriptLanguagePage() {
   const javascriptTutorials = allTutorialPosts
@@ -29,8 +35,3 @@ export default function JavascriptLanguagePage() {
     </div>
   );
 }
-
-export const metadata = {
-  title: "JavaScript Tutorials | Nocturnal Codex",
-  description: "Browse all JavaScript tutorials available on Nocturnal Codex.",
-};
