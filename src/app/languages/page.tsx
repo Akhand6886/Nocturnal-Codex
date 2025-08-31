@@ -6,6 +6,7 @@ import { Code2 } from 'lucide-react';
 const languages = [
   { name: 'Python', href: '/languages/python', description: 'A versatile and beginner-friendly language for web, data, and more.' },
   { name: 'JavaScript', href: '/tutorial/javascript/introduction-to-javascript', description: 'The language of the web, powering interactive experiences.' },
+  { name: 'Java', href: '/languages/java', description: 'A powerful, object-oriented language for enterprise-level applications.' },
   { name: 'C#', href: '/tutorial/csharp/introduction-to-csharp', description: 'A modern language from Microsoft for Windows and web apps.' },
   { name: 'C++', href: '/tutorial/cplusplus/introduction-to-cplusplus', description: 'High-performance object-oriented programming for systems and games.' },
   { name: 'PHP', href: '/tutorial/php/introduction-to-php', description: 'A popular server-side scripting language for web development.' },
@@ -22,7 +23,6 @@ const languages = [
   { name: 'Perl', href: '/tutorial/perl/introduction', description: 'A mature language known for its powerful text processing.' },
   { name: 'MATLAB', href: '/tutorial/matlab/introduction', description: 'A high-level language for numerical computing and visualization.' },
   { name: 'VBA', href: '/tutorial/vba/introduction', description: 'Automate tasks in Microsoft Office applications.' },
-  { name: 'Shell Scripting', href: '/tutorial/shell/introduction', description: 'Automate command-line tasks on Unix-like systems.' },
 ];
 
 export default function LanguagesPage() {
@@ -52,4 +52,3 @@ export default function LanguagesPage() {
     </div>
   );
 }
-
