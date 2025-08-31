@@ -1,0 +1,22 @@
+{
+  "title": "User Input with the Scanner Class",
+  "slug": "user-input",
+  "order": 6,
+  "description": "Learn how to get input from the user in Java.",
+  "category": "Java Basics",
+  "body": {
+    "raw": "\n## User Input with the Scanner Class\n\nThis tutorial will cover getting user input in Java. Content to be added.\n",
+    "html": "<h2>User Input with the Scanner Class</h2>\n<p>This tutorial will cover getting user input in Java. Content to be added.</p>"
+  },
+  "_id": "tutorials/java/user-input.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/user-input.md",
+    "sourceFileName": "user-input.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/user-input"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/user-input",
+  "language": "java"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Loops (for and while)",
+  "slug": "loops",
+  "order": 9,
+  "description": "Learn about for and while loops in Java.",
+  "category": "Control Flow",
+  "body": {
+    "raw": "\n## Loops (for and while)\n\nThis tutorial will cover loops in Java. Content to be added.\n",
+    "html": "<h2>Loops (for and while)</h2>\n<p>This tutorial will cover loops in Java. Content to be added.</p>"
+  },
+  "_id": "tutorials/java/loops.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/loops.md",
+    "sourceFileName": "loops.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/loops"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/loops",
+  "language": "java"
+}

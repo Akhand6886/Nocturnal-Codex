@@ -1,0 +1,22 @@
+{
+  "title": "The switch Statement",
+  "slug": "switch-statement",
+  "order": 8,
+  "description": "Learn how to use the switch statement in Java.",
+  "category": "Control Flow",
+  "body": {
+    "raw": "\n## The switch Statement\n\nThis tutorial will cover the switch statement in Java. Content to be added.\n",
+    "html": "<h2>The switch Statement</h2>\n<p>This tutorial will cover the switch statement in Java. Content to be added.</p>"
+  },
+  "_id": "tutorials/java/switch-statement.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/switch-statement.md",
+    "sourceFileName": "switch-statement.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/switch-statement"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/switch-statement",
+  "language": "java"
+}

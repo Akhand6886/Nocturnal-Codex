@@ -1163,14 +1163,14 @@
     },
     "tutorials/java/control-flow.md": {
       "document": {
-        "title": "Java Control Flow",
-        "slug": "java-control-flow",
-        "order": 5,
-        "description": "Learn how to control the flow of execution in Java using conditional statements and loops.",
-        "category": "Java Fundamentals",
+        "title": "Conditional Statements (if/else)",
+        "slug": "conditional-statements",
+        "order": 7,
+        "description": "Learn how to control the flow of execution in Java using conditional statements.",
+        "category": "Control Flow",
         "body": {
-          "raw": "\n## Control Flow in Java\n\nControl flow statements are what allow a program to make decisions and repeat actions.\n\n### Conditional Statements (`if`, `else if`, `else`)\n\nThese statements allow your program to execute certain blocks of code based on a boolean condition.\n\n```java\nint score = 85;\n\nif (score >= 90) {\n    System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n    System.out.println(\"Grade: B\"); // This will be printed\n} else if (score >= 70) {\n    System.out.println(\"Grade: C\");\n} else {\n    System.out.println(\"Grade: F\");\n}\n```\n\n### The `switch` Statement\n\nA `switch` statement can be a cleaner alternative to a long chain of `if-else if` statements when you are checking a single variable against multiple values.\n\n```java\nint day = 4;\nString dayString;\nswitch (day) {\n    case 1:  dayString = \"Monday\";\n             break;\n    case 2:  dayString = \"Tuesday\";\n             break;\n    case 3:  dayString = \"Wednesday\";\n             break;\n    case 4:  dayString = \"Thursday\";\n             break;\n    // ... other cases\n    default: dayString = \"Invalid day\";\n             break;\n}\nSystem.out.println(dayString); // Output: Thursday\n```\n\n### Loops\n\nLoops are used to execute a block of code repeatedly.\n\n#### The `for` Loop\n\nA `for` loop is ideal when you know how many times you want to iterate.\n\n```java\n// Prints numbers from 0 to 4\nfor (int i = 0; i < 5; i++) {\n    System.out.println(\"Iteration: \" + i);\n}\n```\n\n#### The `while` Loop\n\nA `while` loop continues as long as a condition is true.\n\n```java\nint count = 0;\nwhile (count < 3) {\n    System.out.println(\"Count is \" + count);\n    count++;\n}\n```\n\n#### The `do-while` Loop\n\nA `do-while` loop is similar to a `while` loop, but it guarantees that the block of code is executed at least once.\n\n```java\nint i = 5;\ndo {\n    System.out.println(\"This will print once, even though i is not less than 5.\");\n    i++;\n} while (i < 5);\n```\n",
-          "html": "<h2>Control Flow in Java</h2>\n<p>Control flow statements are what allow a program to make decisions and repeat actions.</p>\n<h3>Conditional Statements (<code>if</code>, <code>else if</code>, <code>else</code>)</h3>\n<p>These statements allow your program to execute certain blocks of code based on a boolean condition.</p>\n<pre><code class=\"language-java\">int score = 85;\n\nif (score >= 90) {\n    System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n    System.out.println(\"Grade: B\"); // This will be printed\n} else if (score >= 70) {\n    System.out.println(\"Grade: C\");\n} else {\n    System.out.println(\"Grade: F\");\n}\n</code></pre>\n<h3>The <code>switch</code> Statement</h3>\n<p>A <code>switch</code> statement can be a cleaner alternative to a long chain of <code>if-else if</code> statements when you are checking a single variable against multiple values.</p>\n<pre><code class=\"language-java\">int day = 4;\nString dayString;\nswitch (day) {\n    case 1:  dayString = \"Monday\";\n             break;\n    case 2:  dayString = \"Tuesday\";\n             break;\n    case 3:  dayString = \"Wednesday\";\n             break;\n    case 4:  dayString = \"Thursday\";\n             break;\n    // ... other cases\n    default: dayString = \"Invalid day\";\n             break;\n}\nSystem.out.println(dayString); // Output: Thursday\n</code></pre>\n<h3>Loops</h3>\n<p>Loops are used to execute a block of code repeatedly.</p>\n<h4>The <code>for</code> Loop</h4>\n<p>A <code>for</code> loop is ideal when you know how many times you want to iterate.</p>\n<pre><code class=\"language-java\">// Prints numbers from 0 to 4\nfor (int i = 0; i &#x3C; 5; i++) {\n    System.out.println(\"Iteration: \" + i);\n}\n</code></pre>\n<h4>The <code>while</code> Loop</h4>\n<p>A <code>while</code> loop continues as long as a condition is true.</p>\n<pre><code class=\"language-java\">int count = 0;\nwhile (count &#x3C; 3) {\n    System.out.println(\"Count is \" + count);\n    count++;\n}\n</code></pre>\n<h4>The <code>do-while</code> Loop</h4>\n<p>A <code>do-while</code> loop is similar to a <code>while</code> loop, but it guarantees that the block of code is executed at least once.</p>\n<pre><code class=\"language-java\">int i = 5;\ndo {\n    System.out.println(\"This will print once, even though i is not less than 5.\");\n    i++;\n} while (i &#x3C; 5);\n</code></pre>"
+          "raw": "\n## Conditional Statements (if/else)\n\nThis tutorial will cover conditional statements in Java. Content to be added.\n",
+          "html": "<h2>Conditional Statements (if/else)</h2>\n<p>This tutorial will cover conditional statements in Java. Content to be added.</p>"
         },
         "_id": "tutorials/java/control-flow.md",
         "_raw": {
@@ -1181,10 +1181,550 @@
           "flattenedPath": "tutorials/java/control-flow"
         },
         "type": "TutorialPost",
-        "url": "/tutorial/java/java-control-flow",
+        "url": "/tutorial/java/conditional-statements",
         "language": "java"
       },
-      "documentHash": "1756602022177",
+      "documentHash": "1756604312346",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/setting-up-environment.md": {
+      "document": {
+        "title": "Setting Up Your Environment",
+        "slug": "setting-up-environment",
+        "order": 2,
+        "description": "How to set up your Java development environment.",
+        "category": "Java Basics",
+        "body": {
+          "raw": "\n## Setting Up Your Environment\n\nThis tutorial will cover setting up your Java development environment. Content to be added.\n",
+          "html": "<h2>Setting Up Your Environment</h2>\n<p>This tutorial will cover setting up your Java development environment. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/setting-up-environment.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/setting-up-environment.md",
+          "sourceFileName": "setting-up-environment.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/setting-up-environment"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/setting-up-environment",
+        "language": "java"
+      },
+      "documentHash": "1756604312278",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/methods.md": {
+      "document": {
+        "title": "Methods (Functions)",
+        "slug": "methods",
+        "order": 12,
+        "description": "Learn about methods in Java.",
+        "category": "Core Java Concepts",
+        "body": {
+          "raw": "\n## Methods (Functions)\n\nThis tutorial will cover methods in Java. Content to be added.\n",
+          "html": "<h2>Methods (Functions)</h2>\n<p>This tutorial will cover methods in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/methods.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/methods.md",
+          "sourceFileName": "methods.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/methods"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/methods",
+        "language": "java"
+      },
+      "documentHash": "1756604312326",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/switch-statement.md": {
+      "document": {
+        "title": "The switch Statement",
+        "slug": "switch-statement",
+        "order": 8,
+        "description": "Learn how to use the switch statement in Java.",
+        "category": "Control Flow",
+        "body": {
+          "raw": "\n## The switch Statement\n\nThis tutorial will cover the switch statement in Java. Content to be added.\n",
+          "html": "<h2>The switch Statement</h2>\n<p>This tutorial will cover the switch statement in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/switch-statement.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/switch-statement.md",
+          "sourceFileName": "switch-statement.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/switch-statement"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/switch-statement",
+        "language": "java"
+      },
+      "documentHash": "1756604312284",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/arrays.md": {
+      "document": {
+        "title": "Arrays",
+        "slug": "arrays",
+        "order": 11,
+        "description": "Learn about arrays in Java.",
+        "category": "Core Java Concepts",
+        "body": {
+          "raw": "\n## Arrays\n\nThis tutorial will cover arrays in Java. Content to be added.\n",
+          "html": "<h2>Arrays</h2>\n<p>This tutorial will cover arrays in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/arrays.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/arrays.md",
+          "sourceFileName": "arrays.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/arrays"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/arrays",
+        "language": "java"
+      },
+      "documentHash": "1756604312311",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/strings.md": {
+      "document": {
+        "title": "Working with Strings",
+        "slug": "strings",
+        "order": 10,
+        "description": "Learn how to work with strings in Java.",
+        "category": "Core Java Concepts",
+        "body": {
+          "raw": "\n## Working with Strings\n\nThis tutorial will cover working with strings in Java. Content to be added.\n",
+          "html": "<h2>Working with Strings</h2>\n<p>This tutorial will cover working with strings in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/strings.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/strings.md",
+          "sourceFileName": "strings.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/strings"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/strings",
+        "language": "java"
+      },
+      "documentHash": "1756604312297",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/user-input.md": {
+      "document": {
+        "title": "User Input with the Scanner Class",
+        "slug": "user-input",
+        "order": 6,
+        "description": "Learn how to get input from the user in Java.",
+        "category": "Java Basics",
+        "body": {
+          "raw": "\n## User Input with the Scanner Class\n\nThis tutorial will cover getting user input in Java. Content to be added.\n",
+          "html": "<h2>User Input with the Scanner Class</h2>\n<p>This tutorial will cover getting user input in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/user-input.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/user-input.md",
+          "sourceFileName": "user-input.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/user-input"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/user-input",
+        "language": "java"
+      },
+      "documentHash": "1756604312281",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/loops.md": {
+      "document": {
+        "title": "Loops (for and while)",
+        "slug": "loops",
+        "order": 9,
+        "description": "Learn about for and while loops in Java.",
+        "category": "Control Flow",
+        "body": {
+          "raw": "\n## Loops (for and while)\n\nThis tutorial will cover loops in Java. Content to be added.\n",
+          "html": "<h2>Loops (for and while)</h2>\n<p>This tutorial will cover loops in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/loops.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/loops.md",
+          "sourceFileName": "loops.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/loops"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/loops",
+        "language": "java"
+      },
+      "documentHash": "1756604312293",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/collections-framework.md": {
+      "document": {
+        "title": "The Java Collections Framework",
+        "slug": "collections-framework",
+        "order": 20,
+        "description": "Learn about the Java Collections Framework.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## The Java Collections Framework\n\nThis tutorial will cover the Java Collections Framework. Content to be added.\n",
+          "html": "<h2>The Java Collections Framework</h2>\n<p>This tutorial will cover the Java Collections Framework. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/collections-framework.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/collections-framework.md",
+          "sourceFileName": "collections-framework.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/collections-framework"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/collections-framework",
+        "language": "java"
+      },
+      "documentHash": "1756604312338",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/constructors.md": {
+      "document": {
+        "title": "Constructors",
+        "slug": "constructors",
+        "order": 15,
+        "description": "Learn about constructors in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Constructors\n\nThis tutorial will cover constructors in Java. Content to be added.\n",
+          "html": "<h2>Constructors</h2>\n<p>This tutorial will cover constructors in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/constructors.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/constructors.md",
+          "sourceFileName": "constructors.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/constructors"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/constructors",
+        "language": "java"
+      },
+      "documentHash": "1756604312330",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/creating-a-class.md": {
+      "document": {
+        "title": "Creating Your First Class",
+        "slug": "creating-a-class",
+        "order": 14,
+        "description": "Learn how to create a class in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Creating Your First Class\n\nThis tutorial will cover creating a class in Java. Content to be added.\n",
+          "html": "<h2>Creating Your First Class</h2>\n<p>This tutorial will cover creating a class in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/creating-a-class.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/creating-a-class.md",
+          "sourceFileName": "creating-a-class.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/creating-a-class"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/creating-a-class",
+        "language": "java"
+      },
+      "documentHash": "1756604312329",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/exception-handling.md": {
+      "document": {
+        "title": "Exception Handling (try/catch/finally)",
+        "slug": "exception-handling",
+        "order": 19,
+        "description": "Learn about exception handling in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## Exception Handling (try/catch/finally)\n\nThis tutorial will cover exception handling in Java. Content to be added.\n",
+          "html": "<h2>Exception Handling (try/catch/finally)</h2>\n<p>This tutorial will cover exception handling in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/exception-handling.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/exception-handling.md",
+          "sourceFileName": "exception-handling.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/exception-handling"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/exception-handling",
+        "language": "java"
+      },
+      "documentHash": "1756604312337",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/getters-and-setters.md": {
+      "document": {
+        "title": "Getters and Setters (Encapsulation)",
+        "slug": "getters-and-setters",
+        "order": 16,
+        "description": "Learn about getters and setters and encapsulation in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Getters and Setters (Encapsulation)\n\nThis tutorial will cover getters, setters, and encapsulation in Java. Content to be added.\n",
+          "html": "<h2>Getters and Setters (Encapsulation)</h2>\n<p>This tutorial will cover getters, setters, and encapsulation in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/getters-and-setters.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/getters-and-setters.md",
+          "sourceFileName": "getters-and-setters.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/getters-and-setters"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/getters-and-setters",
+        "language": "java"
+      },
+      "documentHash": "1756604312333",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/inheritance.md": {
+      "document": {
+        "title": "Inheritance in Action",
+        "slug": "inheritance",
+        "order": 17,
+        "description": "Learn about inheritance in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Inheritance in Action\n\nThis tutorial will cover inheritance in Java. Content to be added.\n",
+          "html": "<h2>Inheritance in Action</h2>\n<p>This tutorial will cover inheritance in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/inheritance.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/inheritance.md",
+          "sourceFileName": "inheritance.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/inheritance"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/inheritance",
+        "language": "java"
+      },
+      "documentHash": "1756604312333",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/oop-concepts.md": {
+      "document": {
+        "title": "OOP Concepts",
+        "slug": "oop-concepts",
+        "order": 13,
+        "description": "Learn about Object-Oriented Programming concepts in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## OOP Concepts\n\nThis tutorial will cover OOP concepts in Java. Content to be added.\n",
+          "html": "<h2>OOP Concepts</h2>\n<p>This tutorial will cover OOP concepts in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/oop-concepts.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/oop-concepts.md",
+          "sourceFileName": "oop-concepts.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/oop-concepts"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/oop-concepts",
+        "language": "java"
+      },
+      "documentHash": "1756604312328",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/abstract-classes-and-interfaces.md": {
+      "document": {
+        "title": "Abstract Classes and Interfaces",
+        "slug": "abstract-classes-and-interfaces",
+        "order": 18,
+        "description": "Learn about abstract classes and interfaces in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Abstract Classes and Interfaces\n\nThis tutorial will cover abstract classes and interfaces in Java. Content to be added.\n",
+          "html": "<h2>Abstract Classes and Interfaces</h2>\n<p>This tutorial will cover abstract classes and interfaces in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/abstract-classes-and-interfaces.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/abstract-classes-and-interfaces.md",
+          "sourceFileName": "abstract-classes-and-interfaces.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/abstract-classes-and-interfaces"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/abstract-classes-and-interfaces",
+        "language": "java"
+      },
+      "documentHash": "1756604312335",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/arraylist.md": {
+      "document": {
+        "title": "ArrayList",
+        "slug": "arraylist",
+        "order": 21,
+        "description": "Learn about ArrayLists in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## ArrayList\n\nThis tutorial will cover ArrayLists in Java. Content to be added.\n",
+          "html": "<h2>ArrayList</h2>\n<p>This tutorial will cover ArrayLists in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/arraylist.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/arraylist.md",
+          "sourceFileName": "arraylist.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/arraylist"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/arraylist",
+        "language": "java"
+      },
+      "documentHash": "1756604312340",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/enums-and-generics.md": {
+      "document": {
+        "title": "Enums and Generics",
+        "slug": "enums-and-generics",
+        "order": 25,
+        "description": "Learn about enums and generics in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## Enums and Generics\n\nThis tutorial will cover enums and generics in Java. Content to be added.\n",
+          "html": "<h2>Enums and Generics</h2>\n<p>This tutorial will cover enums and generics in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/enums-and-generics.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/enums-and-generics.md",
+          "sourceFileName": "enums-and-generics.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/enums-and-generics"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/enums-and-generics",
+        "language": "java"
+      },
+      "documentHash": "1756604312344",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/file-io.md": {
+      "document": {
+        "title": "Working with Files (File I/O)",
+        "slug": "file-io",
+        "order": 24,
+        "description": "Learn how to work with files in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## Working with Files (File I/O)\n\nThis tutorial will cover file I/O in Java. Content to be added.\n",
+          "html": "<h2>Working with Files (File I/O)</h2>\n<p>This tutorial will cover file I/O in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/file-io.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/file-io.md",
+          "sourceFileName": "file-io.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/file-io"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/file-io",
+        "language": "java"
+      },
+      "documentHash": "1756604312343",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/hashmap.md": {
+      "document": {
+        "title": "HashMap",
+        "slug": "hashmap",
+        "order": 22,
+        "description": "Learn about HashMaps in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## HashMap\n\nThis tutorial will cover HashMaps in Java. Content to be added.\n",
+          "html": "<h2>HashMap</h2>\n<p>This tutorial will cover HashMaps in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/hashmap.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/hashmap.md",
+          "sourceFileName": "hashmap.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/hashmap"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/hashmap",
+        "language": "java"
+      },
+      "documentHash": "1756604312340",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/hashset.md": {
+      "document": {
+        "title": "HashSet",
+        "slug": "hashset",
+        "order": 23,
+        "description": "Learn about HashSets in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## HashSet\n\nThis tutorial will cover HashSets in Java. Content to be added.\n",
+          "html": "<h2>HashSet</h2>\n<p>This tutorial will cover HashSets in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/hashset.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/hashset.md",
+          "sourceFileName": "hashset.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/hashset"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/hashset",
+        "language": "java"
+      },
+      "documentHash": "1756604312343",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }
