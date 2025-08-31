@@ -1,5 +1,27 @@
 [
   {
+    "title": "Introduction to Java",
+    "slug": "introduction-to-java",
+    "order": 1,
+    "description": "Get an overview of the Java programming language, its history, features, and why it remains one of the most popular languages in the world.",
+    "category": "Java Basics",
+    "body": {
+      "raw": "\n## What is Java?\n\nJava is a high-level, class-based, object-oriented programming language developed by Sun Microsystems (now owned by Oracle) and first released in 1995. It is designed to have as few implementation dependencies as possible, allowing developers to \"write once, run anywhere\" (WORA). This means that compiled Java code can run on all platforms that support Java without the need for recompilation.\n\n## Key Features of Java\n\n-   **Platform Independent**: Thanks to the Java Virtual Machine (JVM), Java bytecode can run on any device, making it highly portable.\n-   **Object-Oriented**: Java is fundamentally object-oriented, which helps in building modular and reusable code.\n-   **Robust and Secure**: It emphasizes early checking for possible errors and has built-in security features, including a Security Manager.\n-   **Automatic Memory Management**: Java automatically manages memory through a process called garbage collection.\n-   **Multithreaded**: Java has built-in support for multithreading, which allows for the concurrent execution of multiple parts of a program.\n-   **Rich Standard Library**: Java provides a large standard library with classes and methods for common tasks like I/O, networking, and data structures.\n\nThis tutorial series will guide you through the fundamentals of Java programming.\n",
+      "html": "<h2>What is Java?</h2>\n<p>Java is a high-level, class-based, object-oriented programming language developed by Sun Microsystems (now owned by Oracle) and first released in 1995. It is designed to have as few implementation dependencies as possible, allowing developers to \"write once, run anywhere\" (WORA). This means that compiled Java code can run on all platforms that support Java without the need for recompilation.</p>\n<h2>Key Features of Java</h2>\n<ul>\n<li><strong>Platform Independent</strong>: Thanks to the Java Virtual Machine (JVM), Java bytecode can run on any device, making it highly portable.</li>\n<li><strong>Object-Oriented</strong>: Java is fundamentally object-oriented, which helps in building modular and reusable code.</li>\n<li><strong>Robust and Secure</strong>: It emphasizes early checking for possible errors and has built-in security features, including a Security Manager.</li>\n<li><strong>Automatic Memory Management</strong>: Java automatically manages memory through a process called garbage collection.</li>\n<li><strong>Multithreaded</strong>: Java has built-in support for multithreading, which allows for the concurrent execution of multiple parts of a program.</li>\n<li><strong>Rich Standard Library</strong>: Java provides a large standard library with classes and methods for common tasks like I/O, networking, and data structures.</li>\n</ul>\n<p>This tutorial series will guide you through the fundamentals of Java programming.</p>"
+    },
+    "_id": "tutorials/java/introduction.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/java/introduction.md",
+      "sourceFileName": "introduction.md",
+      "sourceFileDir": "tutorials/java",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/java/introduction"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/java/introduction-to-java",
+    "language": "java"
+  },
+  {
     "title": "JavaScript Arrays",
     "slug": "javascript-arrays",
     "order": 7,
@@ -305,6 +327,28 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/javascript/selecting-dom-elements",
+    "language": "javascript"
+  },
+  {
+    "title": "Understanding the DOM",
+    "slug": "understanding-the-dom",
+    "order": 13,
+    "description": "Learn what the Document Object Model (DOM) is and how it represents an HTML document as a tree of objects that JavaScript can manipulate.",
+    "category": "JavaScript in the Browser (The DOM)",
+    "body": {
+      "raw": "\n## What is the DOM?\n\nWhen a web browser loads an HTML document, it creates a model of that page in memory. This model is called the **Document Object Model**, or **DOM**. The DOM represents the entire HTML document as a tree-like structure of objects.\n\nThink of it as a family tree for your HTML elements. The `<html>` element is the root, the `<head>` and `<body>` are its children, and all other elements are nested within them.\n\n-----\n\nJavaScript can interact with this tree of objects. It can:\n\n  * Read the content of elements.\n  * Change the content and styling of elements.\n  * Add new elements to the page.\n  * Remove existing elements.\n  * React to user events (like clicks or key presses).\n\nEssentially, the DOM is the bridge that connects JavaScript to the content of a web page, allowing you to create dynamic and interactive websites.\n\n-----\n\n## The `document` Object\n\nIn JavaScript, the DOM is accessible through a global object called `document`. This `document` object represents the entire web page and is the main entry point to all of its content.\n\nYou can explore this object by typing `document` into your browser's developer console. You'll see a representation of the entire HTML structure of the current page.\n\n-----\n\n## Example: Accessing an Element's Content\n\nLet's say you have the following HTML:\n\n```html\n<!DOCTYPE html>\n<html>\n<body>\n\n  <h1 id=\"main-heading\">Welcome to the DOM!</h1>\n\n</body>\n</html>\n```\n\nUsing JavaScript, you can access the `document` object to find the `<h1>` element and read its text content.\n\n```javascript\n// This is a preview of what we'll learn next.\n// It finds the element with the id 'main-heading'.\nconst headingElement = document.getElementById(\"main-heading\");\n\n// It then reads the text inside that element.\nconst headingText = headingElement.textContent;\n\nconsole.log(headingText); // Output: \"Welcome to the DOM!\"\n```\n\nThis ability to programmatically read and change the structure, style, and content of a document is the most powerful aspect of client-side JavaScript. In the next tutorials, you will learn exactly how to select and manipulate these elements.",
+      "html": "<h2>What is the DOM?</h2>\n<p>When a web browser loads an HTML document, it creates a model of that page in memory. This model is called the <strong>Document Object Model</strong>, or <strong>DOM</strong>. The DOM represents the entire HTML document as a tree-like structure of objects.</p>\n<p>Think of it as a family tree for your HTML elements. The <code>&#x3C;html></code> element is the root, the <code>&#x3C;head></code> and <code>&#x3C;body></code> are its children, and all other elements are nested within them.</p>\n<hr>\n<p>JavaScript can interact with this tree of objects. It can:</p>\n<ul>\n<li>Read the content of elements.</li>\n<li>Change the content and styling of elements.</li>\n<li>Add new elements to the page.</li>\n<li>Remove existing elements.</li>\n<li>React to user events (like clicks or key presses).</li>\n</ul>\n<p>Essentially, the DOM is the bridge that connects JavaScript to the content of a web page, allowing you to create dynamic and interactive websites.</p>\n<hr>\n<h2>The <code>document</code> Object</h2>\n<p>In JavaScript, the DOM is accessible through a global object called <code>document</code>. This <code>document</code> object represents the entire web page and is the main entry point to all of its content.</p>\n<p>You can explore this object by typing <code>document</code> into your browser's developer console. You'll see a representation of the entire HTML structure of the current page.</p>\n<hr>\n<h2>Example: Accessing an Element's Content</h2>\n<p>Let's say you have the following HTML:</p>\n<pre><code class=\"language-html\">&#x3C;!DOCTYPE html>\n&#x3C;html>\n&#x3C;body>\n\n  &#x3C;h1 id=\"main-heading\">Welcome to the DOM!&#x3C;/h1>\n\n&#x3C;/body>\n&#x3C;/html>\n</code></pre>\n<p>Using JavaScript, you can access the <code>document</code> object to find the <code>&#x3C;h1></code> element and read its text content.</p>\n<pre><code class=\"language-javascript\">// This is a preview of what we'll learn next.\n// It finds the element with the id 'main-heading'.\nconst headingElement = document.getElementById(\"main-heading\");\n\n// It then reads the text inside that element.\nconst headingText = headingElement.textContent;\n\nconsole.log(headingText); // Output: \"Welcome to the DOM!\"\n</code></pre>\n<p>This ability to programmatically read and change the structure, style, and content of a document is the most powerful aspect of client-side JavaScript. In the next tutorials, you will learn exactly how to select and manipulate these elements.</p>"
+    },
+    "_id": "tutorials/javascript/understanding-the-dom.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/javascript/understanding-the-dom.md",
+      "sourceFileName": "understanding-the-dom.md",
+      "sourceFileDir": "tutorials/javascript",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/javascript/understanding-the-dom"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/javascript/understanding-the-dom",
     "language": "javascript"
   },
   {
@@ -834,27 +878,5 @@
     "type": "TutorialPost",
     "url": "/tutorial/python/working-with-strings",
     "language": "python"
-  },
-  {
-    "title": "Understanding the DOM",
-    "slug": "understanding-the-dom",
-    "order": 13,
-    "description": "Learn what the Document Object Model (DOM) is and how it represents an HTML document as a tree of objects that JavaScript can manipulate.",
-    "category": "JavaScript in the Browser (The DOM)",
-    "body": {
-      "raw": "\n## What is the DOM?\n\nWhen a web browser loads an HTML document, it creates a model of that page in memory. This model is called the **Document Object Model**, or **DOM**. The DOM represents the entire HTML document as a tree-like structure of objects.\n\nThink of it as a family tree for your HTML elements. The `<html>` element is the root, the `<head>` and `<body>` are its children, and all other elements are nested within them.\n\n-----\n\nJavaScript can interact with this tree of objects. It can:\n\n  * Read the content of elements.\n  * Change the content and styling of elements.\n  * Add new elements to the page.\n  * Remove existing elements.\n  * React to user events (like clicks or key presses).\n\nEssentially, the DOM is the bridge that connects JavaScript to the content of a web page, allowing you to create dynamic and interactive websites.\n\n-----\n\n## The `document` Object\n\nIn JavaScript, the DOM is accessible through a global object called `document`. This `document` object represents the entire web page and is the main entry point to all of its content.\n\nYou can explore this object by typing `document` into your browser's developer console. You'll see a representation of the entire HTML structure of the current page.\n\n-----\n\n## Example: Accessing an Element's Content\n\nLet's say you have the following HTML:\n\n```html\n<!DOCTYPE html>\n<html>\n<body>\n\n  <h1 id=\"main-heading\">Welcome to the DOM!</h1>\n\n</body>\n</html>\n```\n\nUsing JavaScript, you can access the `document` object to find the `<h1>` element and read its text content.\n\n```javascript\n// This is a preview of what we'll learn next.\n// It finds the element with the id 'main-heading'.\nconst headingElement = document.getElementById(\"main-heading\");\n\n// It then reads the text inside that element.\nconst headingText = headingElement.textContent;\n\nconsole.log(headingText); // Output: \"Welcome to the DOM!\"\n```\n\nThis ability to programmatically read and change the structure, style, and content of a document is the most powerful aspect of client-side JavaScript. In the next tutorials, you will learn exactly how to select and manipulate these elements.",
-      "html": "<h2>What is the DOM?</h2>\n<p>When a web browser loads an HTML document, it creates a model of that page in memory. This model is called the <strong>Document Object Model</strong>, or <strong>DOM</strong>. The DOM represents the entire HTML document as a tree-like structure of objects.</p>\n<p>Think of it as a family tree for your HTML elements. The <code>&#x3C;html></code> element is the root, the <code>&#x3C;head></code> and <code>&#x3C;body></code> are its children, and all other elements are nested within them.</p>\n<hr>\n<p>JavaScript can interact with this tree of objects. It can:</p>\n<ul>\n<li>Read the content of elements.</li>\n<li>Change the content and styling of elements.</li>\n<li>Add new elements to the page.</li>\n<li>Remove existing elements.</li>\n<li>React to user events (like clicks or key presses).</li>\n</ul>\n<p>Essentially, the DOM is the bridge that connects JavaScript to the content of a web page, allowing you to create dynamic and interactive websites.</p>\n<hr>\n<h2>The <code>document</code> Object</h2>\n<p>In JavaScript, the DOM is accessible through a global object called <code>document</code>. This <code>document</code> object represents the entire web page and is the main entry point to all of its content.</p>\n<p>You can explore this object by typing <code>document</code> into your browser's developer console. You'll see a representation of the entire HTML structure of the current page.</p>\n<hr>\n<h2>Example: Accessing an Element's Content</h2>\n<p>Let's say you have the following HTML:</p>\n<pre><code class=\"language-html\">&#x3C;!DOCTYPE html>\n&#x3C;html>\n&#x3C;body>\n\n  &#x3C;h1 id=\"main-heading\">Welcome to the DOM!&#x3C;/h1>\n\n&#x3C;/body>\n&#x3C;/html>\n</code></pre>\n<p>Using JavaScript, you can access the <code>document</code> object to find the <code>&#x3C;h1></code> element and read its text content.</p>\n<pre><code class=\"language-javascript\">// This is a preview of what we'll learn next.\n// It finds the element with the id 'main-heading'.\nconst headingElement = document.getElementById(\"main-heading\");\n\n// It then reads the text inside that element.\nconst headingText = headingElement.textContent;\n\nconsole.log(headingText); // Output: \"Welcome to the DOM!\"\n</code></pre>\n<p>This ability to programmatically read and change the structure, style, and content of a document is the most powerful aspect of client-side JavaScript. In the next tutorials, you will learn exactly how to select and manipulate these elements.</p>"
-    },
-    "_id": "tutorials/javascript/understanding-the-dom.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/javascript/understanding-the-dom.md",
-      "sourceFileName": "understanding-the-dom.md",
-      "sourceFileDir": "tutorials/javascript",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/javascript/understanding-the-dom"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/javascript/understanding-the-dom",
-    "language": "javascript"
   }
 ]
