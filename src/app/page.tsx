@@ -1,10 +1,11 @@
 
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2, Star } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from "@/lib/data";
+import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_LANGUAGES } from "@/lib/data";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
@@ -25,6 +26,7 @@ export default async function HomePage() {
   
   const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
   const featuredTopics = MOCK_TOPICS.slice(0, 6); 
+  const featuredLanguages = MOCK_LANGUAGES.slice(0, 4);
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
@@ -66,6 +68,33 @@ export default async function HomePage() {
             <div className="mt-10 text-center">
                 <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
                     <Link href="/topics">View All Topics <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+            </div>
+        )}
+      </section>
+      
+      {/* Featured Languages Section */}
+      <section>
+        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90">
+            <Code2 className="mr-3 h-7 w-7 text-primary" />
+            Featured Languages
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredLanguages.map((lang) => (
+                <Link href={lang.href} key={lang.name} className="group block">
+                    <Card className="h-full overflow-hidden shadow-md hover:shadow-primary/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-lg">
+                        <CardContent className="p-6">
+                            <h3 className="text-lg font-semibold group-hover:text-primary">{lang.name}</h3>
+                            <p className="text-sm text-muted-foreground mt-2">{lang.description}</p>
+                        </CardContent>
+                    </Card>
+                </Link>
+            ))}
+        </div>
+        {MOCK_LANGUAGES.length > 4 && (
+             <div className="mt-10 text-center">
+                <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
+                    <Link href="/languages">View All Languages <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
             </div>
         )}
@@ -135,3 +164,4 @@ export default async function HomePage() {
     </div>
   );
 }
+

@@ -319,3 +319,33 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
 ];
+
+
+export interface Language {
+    name: string;
+    href: string;
+    description: string;
+}
+  
+export const MOCK_LANGUAGES: Language[] = [
+    { name: 'Python', href: '/tutorial/python/introduction-to-python', description: 'A versatile and beginner-friendly language for web, data, and more.' },
+    { name: 'JavaScript', href: '/tutorial/javascript/introduction-to-javascript', description: 'The language of the web, powering interactive experiences.' },
+    { name: 'Java', href: '/tutorial/java/introduction-to-java', description: 'A powerful, object-oriented language for enterprise-level applications.' },
+    { name: 'C#', href: '/tutorial/csharp/introduction-to-csharp', description: 'A modern language from Microsoft for Windows and web apps.' },
+    { name: 'C++', href: '/tutorial/cplusplus/introduction-to-cplusplus', description: 'High-performance object-oriented programming for systems and games.' },
+    { name: 'PHP', href: '/tutorial/php/introduction-to-php', description: 'A popular server-side scripting language for web development.' },
+    { name: 'Ruby', href: '/tutorial/ruby/introduction', description: 'A dynamic, open-source language with a focus on simplicity.' },
+    { name: 'Swift', href: '/tutorial/swift/introduction', description: 'The modern, powerful language for Apple platforms.' },
+    { name: 'R', href: '/tutorial/r/introduction', description: 'The go-to language for statistical computing and graphics.' },
+    { name: 'SQL', href: '/tutorial/sql/introduction-to-sql', description: 'The standard for managing and querying relational databases.' },
+    { name: 'Kotlin', href: '/tutorial/kotlin/introduction', description: 'A modern, concise language for Android and backend development.' },
+    { name: 'TypeScript', href: '/tutorial/typescript/introduction-to-typescript', description: 'JavaScript with static types for safer, larger-scale codebases.' },
+    { name: 'Go', href: '/tutorial/go/introduction', description: 'A fast, statically typed language from Google for backend services.' },
+    { name: 'Rust', href: '/tutorial/rust/introduction', description: 'A systems language focused on safety, speed, and concurrency.' },
+    { name: 'Scala', href: '/tutorial/scala/introduction', description: 'A hybrid functional/OO language that runs on the JVM.' },
+    { name: 'Dart', href: '/tutorial/dart/introduction', description: 'The language for building mobile, desktop, and web apps with Flutter.' },
+    { name: 'Perl', href: '/tutorial/perl/introduction', description: 'A mature language known for its powerful text processing.' },
+    { name: 'MATLAB', href: '/tutorial/matlab/introduction', description: 'A high-level language for numerical computing and visualization.' },
+    { name: 'VBA', href: '/tutorial/vba/introduction', description: 'Automate tasks in Microsoft Office applications.' },
+  ];
+  
