@@ -1,3 +1,4 @@
+
 // src/app/languages/[languageSlug]/page.tsx
 import { allLanguagePosts, allTutorialPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
@@ -16,6 +17,7 @@ export async function generateStaticParams() {
 
 interface LanguagePageProps {
   params: { languageSlug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata({ params }: LanguagePageProps): Promise<Metadata> {
@@ -29,12 +31,14 @@ export async function generateMetadata({ params }: LanguagePageProps): Promise<M
     };
 }
 
-export default function LanguagePage({ params }: LanguagePageProps) {
+export default function LanguagePage({ params, searchParams }: LanguagePageProps) {
   const language = allLanguagePosts.find((p) => p.slug === params.languageSlug);
 
   if (!language) {
     notFound();
   }
+
+  const categoryFilter = typeof searchParams.category === 'string' ? searchParams.category : null;
 
   const tutorials = allTutorialPosts
     .filter((p) => p.language === language.slug)
@@ -49,18 +53,24 @@ export default function LanguagePage({ params }: LanguagePageProps) {
     return acc;
   }, {} as Record<string, typeof tutorials>);
 
-  const sortedCategories = Object.keys(groupedTutorials).sort((a, b) => {
-      const minOrderA = Math.min(...groupedTutorials[a].map(p => p.order));
-      const minOrderB = Math.min(...groupedTutorials[b].map(p => p.order));
-      return minOrderA - minOrderB;
-  });
+  const sortedCategories = Object.keys(groupedTutorials)
+    .filter(category => !categoryFilter || category === categoryFilter)
+    .sort((a, b) => {
+        // A simple numeric sort based on the leading number in the category name (e.g. "0. Prerequisites")
+        const aNum = parseInt(a.split('.')[0], 10);
+        const bNum = parseInt(b.split('.')[0], 10);
 
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+            return aNum - bNum;
+        }
+        return a.localeCompare(b);
+    });
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12">
       <header className="pb-8 border-b border-border mb-12">
         <div className="flex items-center space-x-4">
-            <SimpleIcon iconName={language.iconName} className="w-12 h-12 md:w-16 md:h-16 text-primary" />
+            <SimpleIcon iconName={language.iconName || 'code'} className="w-12 h-12 md:w-16 md:h-16 text-primary" />
             <div>
                  <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
                     {language.name} Tutorials
@@ -86,7 +96,7 @@ export default function LanguagePage({ params }: LanguagePageProps) {
             ))}
         </div>
       ) : (
-        <p className="text-center text-muted-foreground py-10">No tutorials found for {language.name} at the moment. Please check back soon.</p>
+        <p className="text-center text-muted-foreground py-10">No tutorials found for {language.name} in this category. Please check back soon.</p>
       )}
     </div>
   );
