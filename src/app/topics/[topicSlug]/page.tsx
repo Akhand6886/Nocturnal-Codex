@@ -84,7 +84,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {topic.subtopics.map((sub) => {
-                  const href = `/languages/${topic.slug}?category=${encodeURIComponent(sub.name)}`;
+                  const href = `/languages/${topic.slug}?category=${encodeURIComponent(sub.slug)}`;
                   return (
                     <Link href={href} key={sub.id} className="group block h-full">
                       <Card className="h-full flex flex-col justify-between rounded-xl border text-card-foreground shadow-lg bg-card hover:bg-muted/40 transition-colors">
