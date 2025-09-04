@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: TutorialPageProps): Promise<M
     return {
         title: `${post.title} | Nocturnal Codex`,
         description: post.description,
+        alternates: {
+          canonical: post.url
+        }
     };
 }
 
