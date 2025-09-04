@@ -1,7 +1,8 @@
 ---
 title: "Understanding Computer Hardware Components"
 description: "A foundational overview of the essential hardware components that make up a computer, and why they matter for cybersecurity."
-tags: ["prerequisites", "hardware"]
+category: "0. Prerequisites"
+order: 1
 ---
 
 ## Introduction

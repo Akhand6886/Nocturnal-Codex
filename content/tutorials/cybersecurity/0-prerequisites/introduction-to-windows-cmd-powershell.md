@@ -1,7 +1,8 @@
 ---
 title: "Introduction to Windows Cmd & PowerShell"
 description: "A guide to the two primary command line interfaces in Windows: the traditional Command Prompt (Cmd) and the modern, powerful PowerShell."
-tags: ["prerequisites", "windows", "cli", "powershell"]
+category: "0. Prerequisites"
+order: 6
 ---
 
 ## Introduction

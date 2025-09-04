@@ -1,7 +1,8 @@
 ---
 title: "Understanding IP Addresses"
-description: "A clear explanation of IPv4 and IPv6 addresses, the difference between public and private IPs, and their role in computer networking."
-tags: ["prerequisites", "networking", "ip address"]
+description: "A guide to IPv4, IPv6, subnets, and how devices are addressed on a network."
+category: "0. Prerequisites"
+order: 4
 ---
 
 ## Introduction
