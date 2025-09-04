@@ -113,14 +113,32 @@ var TopicPost = defineDocumentType(() => ({
     }
   }
 }));
+var LanguagePost = defineDocumentType(() => ({
+  name: "LanguagePost",
+  filePathPattern: `languages/**/*.md`,
+  fields: {
+    id: { type: "string", required: true },
+    name: { type: "string", required: true },
+    slug: { type: "string", required: true },
+    description: { type: "string", required: true },
+    iconName: { type: "string", required: false }
+  },
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (doc) => `/languages/${doc.slug}`
+    }
+  }
+}));
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
-  documentTypes: [BlogPost, TutorialPost, TopicPost]
+  documentTypes: [BlogPost, TutorialPost, TopicPost, LanguagePost]
 });
 export {
   BlogPost,
+  LanguagePost,
   TopicPost,
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-SAXTIUAZ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-AEIXVLYG.mjs.map

@@ -121,10 +121,28 @@ export const TopicPost = defineDocumentType(() => ({
         resolve: (doc) => `/topics/${doc.slug}`,
       },
     },
-  }))
+  }));
+
+  export const LanguagePost = defineDocumentType(() => ({
+    name: 'LanguagePost',
+    filePathPattern: `languages/**/*.md`,
+    fields: {
+      id: { type: 'string', required: true },
+      name: { type: 'string', required: true },
+      slug: { type: 'string', required: true },
+      description: { type: 'string', required: true },
+      iconName: { type: 'string', required: false },
+    },
+    computedFields: {
+      url: {
+        type: 'string',
+        resolve: (doc) => `/languages/${doc.slug}`,
+      },
+    },
+  }));
 
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, TutorialPost, TopicPost],
+  documentTypes: [BlogPost, TutorialPost, TopicPost, LanguagePost],
 })

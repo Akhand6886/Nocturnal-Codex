@@ -10,7 +10,8 @@ import { SimpleIcon } from '@/components/common/simple-icon';
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  return allLanguagePosts.map((lang) => ({
+  const languages = allLanguagePosts || [];
+  return languages.map((lang) => ({
     languageSlug: lang.slug,
   }));
 }
