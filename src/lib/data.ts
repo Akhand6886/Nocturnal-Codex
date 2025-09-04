@@ -108,7 +108,7 @@ Python's philosophy emphasizes code readability and a syntax that allows program
   {
     id: "wiki-jvm",
     slug: "jvm-overview",
-    title: "Java Virtual Machine (JVM)",
+    title: "Java Virtual Machine (JVM) Overview",
     category: "Programming Languages",
     lastUpdated: "2024-03-10T11:00:00Z",
     content: `
