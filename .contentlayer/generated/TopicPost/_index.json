@@ -215,7 +215,7 @@
       }
     ],
     "body": {
-      "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n\n",
+      "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n",
       "html": "<p>Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.</p>"
     },
     "_id": "topics/cybersecurity.md",

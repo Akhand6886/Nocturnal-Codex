@@ -825,7 +825,7 @@
           }
         ],
         "body": {
-          "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n\n",
+          "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n",
           "html": "<p>Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.</p>"
         },
         "_id": "topics/cybersecurity.md",
@@ -839,8 +839,8 @@
         "type": "TopicPost",
         "url": "/topics/cybersecurity"
       },
-      "documentHash": "1757008333007",
-      "hasWarnings": true,
+      "documentHash": "1757008478576",
+      "hasWarnings": false,
       "documentTypeName": "TopicPost"
     },
     "topics/language-theory.md": {
@@ -4437,6 +4437,32 @@
       "documentHash": "1757002676839",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
+    },
+    "languages/cybersecurity.md": {
+      "document": {
+        "id": "cybersecurity",
+        "name": "Cybersecurity",
+        "slug": "cybersecurity",
+        "description": "An in-depth guide to protecting systems, networks, and data from digital threats.",
+        "iconName": "shield",
+        "body": {
+          "raw": "\nWelcome to the Cybersecurity Hub. This section provides a comprehensive curriculum, guiding you from the foundational principles of digital security to advanced topics in threat detection, cryptography, and more.\n",
+          "html": "<p>Welcome to the Cybersecurity Hub. This section provides a comprehensive curriculum, guiding you from the foundational principles of digital security to advanced topics in threat detection, cryptography, and more.</p>"
+        },
+        "_id": "languages/cybersecurity.md",
+        "_raw": {
+          "sourceFilePath": "languages/cybersecurity.md",
+          "sourceFileName": "cybersecurity.md",
+          "sourceFileDir": "languages",
+          "contentType": "markdown",
+          "flattenedPath": "languages/cybersecurity"
+        },
+        "type": "LanguagePost",
+        "url": "/languages/cybersecurity"
+      },
+      "documentHash": "1757008478528",
+      "hasWarnings": false,
+      "documentTypeName": "LanguagePost"
     }
   }
 }

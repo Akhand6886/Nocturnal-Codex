@@ -4,7 +4,6 @@ slug: "cybersecurity"
 name: "Cybersecurity"
 category: "Security"
 description: "An in-depth guide to protecting systems, networks, and data from digital threats."
-longDescription: "Welcome to the Cybersecurity Hub. This section provides a comprehensive curriculum, guiding you from the foundational principles of digital security to advanced topics in threat detection, cryptography, and more."
 imageUrl: "https://placehold.co/400x300.png"
 dataAiHint: "digital security matrix"
 subtopics:
@@ -59,4 +58,3 @@ subtopics:
 ---
 
 Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.
-

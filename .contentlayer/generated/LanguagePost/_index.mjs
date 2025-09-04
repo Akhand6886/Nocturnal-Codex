@@ -23,5 +23,6 @@ import languages__sqlMd from './languages__sql.md.json' assert { type: 'json' }
 import languages__swiftMd from './languages__swift.md.json' assert { type: 'json' }
 import languages__typescriptMd from './languages__typescript.md.json' assert { type: 'json' }
 import languages__vbaMd from './languages__vba.md.json' assert { type: 'json' }
+import languages__cybersecurityMd from './languages__cybersecurity.md.json' assert { type: 'json' }
 
-export const allLanguagePosts = [languages__cMd, languages__cplusplusMd, languages__csharpMd, languages__cssMd, languages__dartMd, languages__goMd, languages__htmlMd, languages__javaMd, languages__javascriptMd, languages__kotlinMd, languages__matlabMd, languages__perlMd, languages__phpMd, languages__pythonMd, languages__rMd, languages__rubyMd, languages__rustMd, languages__scalaMd, languages__shellMd, languages__sqlMd, languages__swiftMd, languages__typescriptMd, languages__vbaMd]
+export const allLanguagePosts = [languages__cMd, languages__cplusplusMd, languages__csharpMd, languages__cssMd, languages__dartMd, languages__goMd, languages__htmlMd, languages__javaMd, languages__javascriptMd, languages__kotlinMd, languages__matlabMd, languages__perlMd, languages__phpMd, languages__pythonMd, languages__rMd, languages__rubyMd, languages__rustMd, languages__scalaMd, languages__shellMd, languages__sqlMd, languages__swiftMd, languages__typescriptMd, languages__vbaMd, languages__cybersecurityMd]
