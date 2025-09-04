@@ -1,14 +1,14 @@
 
-import { MOCK_TOPICS, type Topic } from "@/lib/data";
 import { TopicTile } from "@/components/content/topic-tile";
 import { BookOpenText } from "lucide-react";
+import { allTopicPosts, TopicPost } from 'contentlayer/generated';
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60; 
 
 export default function TopicsExplorerPage() {
-  const groupedTopics: Record<string, Topic[]> = {};
+  const groupedTopics: Record<string, TopicPost[]> = {};
 
-  MOCK_TOPICS.forEach(topic => {
+  allTopicPosts.forEach(topic => {
     const category = topic.category || "Other Topics";
     if (!groupedTopics[category]) {
       groupedTopics[category] = [];
@@ -17,8 +17,6 @@ export default function TopicsExplorerPage() {
   });
 
   const sortedCategories = Object.keys(groupedTopics).sort((a, b) => {
-    // Optional: Define a custom sort order for categories if needed
-    // For now, simple alphabetical sort
     return a.localeCompare(b);
   });
 

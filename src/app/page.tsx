@@ -5,13 +5,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2, Star } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_WIKI_ARTICLES, MOCK_TOPICS, MOCK_LANGUAGES } from "@/lib/data";
+import { MOCK_WIKI_ARTICLES, MOCK_LANGUAGES } from '@/lib/data';
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import { TopicTile } from "@/components/content/topic-tile";
 import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
+import { allTopicPosts } from "contentlayer/generated";
 
 export const revalidate = 60; 
 
@@ -21,12 +22,12 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const recentBlogPosts = await fetchBlogPosts({ limit: 2 });
-  const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true });
+  const recentBlogPosts = await fetchBlogPosts({ limit: 2 }) || [];
+  const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true }) || [];
   
-  const featuredWikiArticles = MOCK_WIKI_ARTICLES.slice(0, 3);
-  const featuredTopics = MOCK_TOPICS.slice(0, 6); 
-  const featuredLanguages = MOCK_LANGUAGES.slice(0, 4);
+  const featuredWikiArticles = MOCK_WIKI_ARTICLES ? MOCK_WIKI_ARTICLES.slice(0, 3) : [];
+  const featuredTopics = allTopicPosts ? allTopicPosts.slice(0, 6) : [];
+  const featuredLanguages = MOCK_LANGUAGES ? MOCK_LANGUAGES.slice(0, 4) : [];
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
@@ -64,7 +65,7 @@ export default async function HomePage() {
             <TopicTile key={topic.id} topic={topic} />
           ))}
         </div>
-        {MOCK_TOPICS.length > 6 && (
+        {allTopicPosts && allTopicPosts.length > 6 && (
             <div className="mt-10 text-center">
                 <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
                     <Link href="/topics">View All Topics <ArrowRight className="ml-2 h-4 w-4" /></Link>
@@ -91,7 +92,7 @@ export default async function HomePage() {
                 </Link>
             ))}
         </div>
-        {MOCK_LANGUAGES.length > 4 && (
+        {MOCK_LANGUAGES && MOCK_LANGUAGES.length > 4 && (
              <div className="mt-10 text-center">
                 <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
                     <Link href="/languages">View All Languages <ArrowRight className="ml-2 h-4 w-4" /></Link>
@@ -149,7 +150,7 @@ export default async function HomePage() {
               {featuredWikiArticles.map((article) => (
                 <WikiArticleLink key={article.id} article={article} />
               ))}
-               {MOCK_WIKI_ARTICLES.length > 3 && (
+               {MOCK_WIKI_ARTICLES && MOCK_WIKI_ARTICLES.length > 3 && (
                 <Button asChild variant="outline" className="w-full mt-6 hover:border-secondary hover:bg-secondary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-secondary-foreground">
                   <Link href="/wiki">Explore Full Wiki <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>

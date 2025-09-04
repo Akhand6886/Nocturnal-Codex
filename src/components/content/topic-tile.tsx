@@ -1,24 +1,24 @@
 
-import type { Topic } from "@/lib/data";
+import type { TopicPost } from "contentlayer/generated";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
 interface TopicTileProps {
-  topic: Topic;
+  topic: TopicPost;
 }
 
 export function TopicTile({ topic }: TopicTileProps) {
   return (
-    <Link href={`/topics/${topic.slug}`} className="group block">
+    <Link href={topic.url} className="group block">
       <Card className="h-full overflow-hidden shadow-lg hover:shadow-primary/30 transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 bg-card border border-border/50 hover:border-primary/60 rounded-xl">
         {topic.imageUrl && (
           <div className="relative h-44 w-full overflow-hidden rounded-t-xl">
             <Image
               src={topic.imageUrl}
               alt={topic.name}
-              layout="fill"
+              fill
               objectFit="cover"
               className="transition-transform duration-300 group-hover:scale-105 ease-in-out"
               data-ai-hint={topic.dataAiHint || "abstract topic"}

@@ -1,5 +1,4 @@
 
-import { MOCK_TOPICS, type SubTopic, type Tutorial, type WikiArticleStub, type ThinkTankArticleStub, type CodeSnippetItem } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,11 +7,15 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, Link as LinkIcon, Brain } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Image from "next/image";
+import { allTopicPosts, TopicPost } from 'contentlayer/generated';
+import { notFound } from "next/navigation";
+import { MarkdownRenderer } from "@/components/content/markdown-renderer";
+import type { WikiArticleStub, ThinkTankArticleStub } from '@/lib/data'; // Assuming these types are still needed if not defined in contentlayer
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateStaticParams() {
-  return MOCK_TOPICS.map((topic) => ({
+  return allTopicPosts.map((topic) => ({
     topicSlug: topic.slug,
   }));
 }
@@ -22,18 +25,10 @@ interface TopicPageProps {
 }
 
 export default async function TopicPage({ params }: TopicPageProps) {
-  const topic = MOCK_TOPICS.find((t) => t.slug === params.topicSlug);
+  const topic = allTopicPosts.find((t) => t.slug === params.topicSlug);
 
   if (!topic) {
-    return (
-      <div className="text-center py-10">
-        <h1 className="text-2xl font-bold">Topic Not Found</h1>
-        <p className="text-muted-foreground">The requested topic could not be found.</p>
-        <Link href="/topics" className="text-primary hover:underline mt-4 inline-block">
-          Back to Topics
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   const breadcrumbItems: BreadcrumbItem[] = [
@@ -56,7 +51,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
           </div>
         )}
         {!topic.imageUrl && <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">{topic.name}</h1>}
-        <p className="mt-2 text-lg text-muted-foreground">{topic.longDescription || topic.description}</p>
+        <MarkdownRenderer content={topic.body.raw} />
       </header>
 
       <Tabs defaultValue="overview" className="w-full">
@@ -76,7 +71,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
             <CardContent>
               {topic.subtopics && topic.subtopics.length > 0 ? (
                 <ul className="space-y-3">
-                  {topic.subtopics.map((sub: SubTopic) => (
+                  {topic.subtopics.map((sub: any) => ( // Using 'any' for now, should be defined in contentlayer schema
                     <li key={sub.id} className="p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
                       <h3 className="font-semibold text-lg text-foreground/90">{sub.name}</h3>
                       {sub.description && <p className="text-sm text-muted-foreground mt-1">{sub.description}</p>}
@@ -98,7 +93,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {topic.tutorials.map((tut: Tutorial) => (
+                  {topic.tutorials.map((tut: any) => ( // Using 'any' for now
                     <li key={tut.id}>
                       <Link href={tut.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
                         <div>
@@ -123,7 +118,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {topic.references.map((ref: WikiArticleStub) => (
+                  {topic.references.map((ref: any) => ( // Using 'any' for now
                      <li key={ref.id}>
                       <Link href={`/wiki/${ref.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
                         <span className="font-medium text-foreground/90 group-hover:text-accent-foreground">{ref.title}</span>
@@ -145,7 +140,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {topic.thinkTankArticles.map((article: ThinkTankArticleStub) => (
+                  {topic.thinkTankArticles.map((article: any) => ( // Using 'any' for now
                      <li key={article.id}>
                       <Link href={`/think-tank/${article.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
                         <span className="font-medium text-foreground/90 group-hover:text-accent-foreground">{article.title}</span>
@@ -166,7 +161,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 <CardTitle className="flex items-center text-2xl"><Code2 className="mr-2 h-6 w-6 text-primary" /> Code Snippets</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {topic.codeSnippets.map((snippet: CodeSnippetItem) => (
+                {topic.codeSnippets.map((snippet: any) => ( // Using 'any' for now
                   <CodeSnippet 
                     key={snippet.id} 
                     code={snippet.code} 
@@ -179,29 +174,13 @@ export default async function TopicPage({ params }: TopicPageProps) {
             </Card>
           </TabsContent>
         )}
-        {( (topic.tutorials && topic.tutorials.length === 0) &&
-           (topic.references && topic.references.length === 0) &&
-           (topic.thinkTankArticles && topic.thinkTankArticles.length === 0) &&
-           (topic.codeSnippets && topic.codeSnippets.length === 0) &&
-           (!topic.subtopics || topic.subtopics.length === 0)
-        ) && (
-          <TabsContent value="overview">
-             <Alert>
-              <Lightbulb className="h-4 w-4" />
-              <AlertTitle>Content Coming Soon!</AlertTitle>
-              <AlertDescription>
-                This topic is currently under development. Check back soon for more content.
-              </AlertDescription>
-            </Alert>
-          </TabsContent>
-        )}
       </Tabs>
     </div>
   );
 }
 
 export async function generateMetadata({ params }: TopicPageProps) {
-  const topic = MOCK_TOPICS.find((t) => t.slug === params.topicSlug);
+  const topic = allTopicPosts.find((t) => t.slug === params.topicSlug);
   if (!topic) {
     return { title: "Topic Not Found | Nocturnal Codex" };
   }
