@@ -120,7 +120,10 @@ print(find_element(my_list, 6)) # False
 `,
         description: "Illustrates an algorithm with O(n) time complexity."
       }
-    ]
+    ],
+     references: [
+      { id: "1", title: "Big O Notation Explained", slug: "big-o-notation" }
+    ],
   },
   {
     id: "os",
@@ -130,7 +133,14 @@ print(find_element(my_list, 6)) # False
     description: "Software managing computer hardware and resources.",
     longDescription: "Explore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.",
     imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "computer hardware"
+    dataAiHint: "computer hardware",
+    subtopics: [
+        { id: "os-proc-mgmt", slug: "process-management", name: "Process Management", description: "How the OS handles running programs and their resources." },
+        { id: "os-mem-mgmt", slug: "memory-management", name: "Memory Management", description: "Techniques for allocating and deallocating memory space." }
+    ],
+    references: [
+        { id: "wiki-jvm", title: "Java Virtual Machine (JVM) Overview", slug: "jvm-overview" }
+    ]
   },
   {
     id: "ml",
@@ -170,7 +180,10 @@ print(find_element(my_list, 6)) # False
     description: "Formal languages, automata, and computability.",
     longDescription: "Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
     imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "abstract symbols"
+    dataAiHint: "abstract symbols",
+    references: [
+        { id: "2", title: "Introduction to Turing Machines", slug: "turing-machines" }
+    ]
   },
 ];
 

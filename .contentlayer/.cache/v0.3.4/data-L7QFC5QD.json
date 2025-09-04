@@ -1,5 +1,410 @@
 {
   "cacheItemsMap": {
+    "tutorials/java/abstract-classes-and-interfaces.md": {
+      "document": {
+        "title": "Abstract Classes and Interfaces",
+        "slug": "abstract-classes-and-interfaces",
+        "order": 18,
+        "description": "Learn about abstract classes and interfaces in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Abstract Classes and Interfaces\n\nThis tutorial will cover abstract classes and interfaces in Java. Content to be added.\n",
+          "html": "<h2>Abstract Classes and Interfaces</h2>\n<p>This tutorial will cover abstract classes and interfaces in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/abstract-classes-and-interfaces.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/abstract-classes-and-interfaces.md",
+          "sourceFileName": "abstract-classes-and-interfaces.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/abstract-classes-and-interfaces"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/abstract-classes-and-interfaces",
+        "language": "java"
+      },
+      "documentHash": "1756604312335",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/arraylist.md": {
+      "document": {
+        "title": "ArrayList",
+        "slug": "arraylist",
+        "order": 21,
+        "description": "Learn about ArrayLists in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## ArrayList\n\nThis tutorial will cover ArrayLists in Java. Content to be added.\n",
+          "html": "<h2>ArrayList</h2>\n<p>This tutorial will cover ArrayLists in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/arraylist.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/arraylist.md",
+          "sourceFileName": "arraylist.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/arraylist"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/arraylist",
+        "language": "java"
+      },
+      "documentHash": "1756604312340",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/arrays.md": {
+      "document": {
+        "title": "Arrays",
+        "slug": "arrays",
+        "order": 11,
+        "description": "Learn about arrays in Java.",
+        "category": "Core Java Concepts",
+        "body": {
+          "raw": "\n## Arrays\n\nThis tutorial will cover arrays in Java. Content to be added.\n",
+          "html": "<h2>Arrays</h2>\n<p>This tutorial will cover arrays in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/arrays.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/arrays.md",
+          "sourceFileName": "arrays.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/arrays"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/arrays",
+        "language": "java"
+      },
+      "documentHash": "1756604312311",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/collections-framework.md": {
+      "document": {
+        "title": "The Java Collections Framework",
+        "slug": "collections-framework",
+        "order": 20,
+        "description": "Learn about the Java Collections Framework.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## The Java Collections Framework\n\nThis tutorial will cover the Java Collections Framework. Content to be added.\n",
+          "html": "<h2>The Java Collections Framework</h2>\n<p>This tutorial will cover the Java Collections Framework. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/collections-framework.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/collections-framework.md",
+          "sourceFileName": "collections-framework.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/collections-framework"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/collections-framework",
+        "language": "java"
+      },
+      "documentHash": "1756604312338",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/constructors.md": {
+      "document": {
+        "title": "Constructors",
+        "slug": "constructors",
+        "order": 15,
+        "description": "Learn about constructors in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Constructors\n\nThis tutorial will cover constructors in Java. Content to be added.\n",
+          "html": "<h2>Constructors</h2>\n<p>This tutorial will cover constructors in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/constructors.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/constructors.md",
+          "sourceFileName": "constructors.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/constructors"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/constructors",
+        "language": "java"
+      },
+      "documentHash": "1756604312330",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/control-flow.md": {
+      "document": {
+        "title": "Java Conditional Statements (if/else)",
+        "slug": "java-conditional-statements",
+        "order": 7,
+        "description": "Learn how to control the flow of your Java programs with conditional statements. Master the use of if, else if, and else to make decisions in your code.",
+        "category": "Control Flow",
+        "body": {
+          "raw": "\n## Making Decisions in Your Code\n\nConditional statements allow your program to execute a specific block of code only if a certain condition is true. They are the primary way a program can make decisions and behave differently in response to different inputs. The core conditional statements in Java are `if`, `else if`, and `else`.\n\n-----\n\n### **1. The `if` Statement**\n\nThe `if` statement is the most basic control flow statement. It tells your program to execute a certain section of code only if a particular test evaluates to `true`.\n\n```java\nint age = 20;\n\nif (age >= 18) {\n  System.out.println(\"You are an adult.\");\n}\n```\n\n**Output:**\n\n```text\nYou are an adult.\n```\n\nIf the `age` variable was less than 18, the `println` statement would be skipped.\n\n-----\n\n### **2. The `else` Statement**\n\nThe `else` statement is used to provide a secondary path of execution when the `if` clause evaluates to `false`.\n\n```java\nint temperature = 15;\n\nif (temperature > 25) {\n  System.out.println(\"It's a hot day!\");\n} else {\n  System.out.println(\"It's not a hot day.\");\n}\n```\n\n**Output:**\n\n```text\nIt's not a hot day.\n```\n\n-----\n\n### **3. The `else if` Statement**\n\nIf you have more than two possible conditions to check, you can use the `else if` statement. This allows you to chain multiple conditions together.\n\n```java\nint score = 85;\n\nif (score >= 90) {\n  System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n  System.out.println(\"Grade: B\");\n} else if (score >= 70) {\n  System.out.println(\"Grade: C\");\n} else {\n  System.out.println(\"Grade: D\");\n}\n```\n\n**Output:**\n\n```text\nGrade: B\n```\n\nThe program checks each condition in order and executes the code for the first one that is `true`, skipping all the rest.\n\n-----\n\n### **Ternary Operator**\n\nFor simple `if/else` conditions, Java has a shorter alternative called the ternary operator. It's a concise way to assign a value to a variable based on a condition.\n\n**Syntax:** `variable = (condition) ? valueIfTrue : valueIfFalse;`\n\n```java\nint time = 20;\nString result = (time < 18) ? \"Good day.\" : \"Good evening.\";\nSystem.out.println(result);\n```\n\n**Output:**\n\n```text\nGood evening.\n```\n\nBy mastering conditional statements, you gain the ability to write programs that can perform complex logic and respond intelligently to different scenarios.",
+          "html": "<h2>Making Decisions in Your Code</h2>\n<p>Conditional statements allow your program to execute a specific block of code only if a certain condition is true. They are the primary way a program can make decisions and behave differently in response to different inputs. The core conditional statements in Java are <code>if</code>, <code>else if</code>, and <code>else</code>.</p>\n<hr>\n<h3><strong>1. The <code>if</code> Statement</strong></h3>\n<p>The <code>if</code> statement is the most basic control flow statement. It tells your program to execute a certain section of code only if a particular test evaluates to <code>true</code>.</p>\n<pre><code class=\"language-java\">int age = 20;\n\nif (age >= 18) {\n  System.out.println(\"You are an adult.\");\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">You are an adult.\n</code></pre>\n<p>If the <code>age</code> variable was less than 18, the <code>println</code> statement would be skipped.</p>\n<hr>\n<h3><strong>2. The <code>else</code> Statement</strong></h3>\n<p>The <code>else</code> statement is used to provide a secondary path of execution when the <code>if</code> clause evaluates to <code>false</code>.</p>\n<pre><code class=\"language-java\">int temperature = 15;\n\nif (temperature > 25) {\n  System.out.println(\"It's a hot day!\");\n} else {\n  System.out.println(\"It's not a hot day.\");\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">It's not a hot day.\n</code></pre>\n<hr>\n<h3><strong>3. The <code>else if</code> Statement</strong></h3>\n<p>If you have more than two possible conditions to check, you can use the <code>else if</code> statement. This allows you to chain multiple conditions together.</p>\n<pre><code class=\"language-java\">int score = 85;\n\nif (score >= 90) {\n  System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n  System.out.println(\"Grade: B\");\n} else if (score >= 70) {\n  System.out.println(\"Grade: C\");\n} else {\n  System.out.println(\"Grade: D\");\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Grade: B\n</code></pre>\n<p>The program checks each condition in order and executes the code for the first one that is <code>true</code>, skipping all the rest.</p>\n<hr>\n<h3><strong>Ternary Operator</strong></h3>\n<p>For simple <code>if/else</code> conditions, Java has a shorter alternative called the ternary operator. It's a concise way to assign a value to a variable based on a condition.</p>\n<p><strong>Syntax:</strong> <code>variable = (condition) ? valueIfTrue : valueIfFalse;</code></p>\n<pre><code class=\"language-java\">int time = 20;\nString result = (time &#x3C; 18) ? \"Good day.\" : \"Good evening.\";\nSystem.out.println(result);\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Good evening.\n</code></pre>\n<p>By mastering conditional statements, you gain the ability to write programs that can perform complex logic and respond intelligently to different scenarios.</p>"
+        },
+        "_id": "tutorials/java/control-flow.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/control-flow.md",
+          "sourceFileName": "control-flow.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/control-flow"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/java-conditional-statements",
+        "language": "java"
+      },
+      "documentHash": "1756605246321",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/creating-a-class.md": {
+      "document": {
+        "title": "Creating Your First Class",
+        "slug": "creating-a-class",
+        "order": 14,
+        "description": "Learn how to create a class in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Creating Your First Class\n\nThis tutorial will cover creating a class in Java. Content to be added.\n",
+          "html": "<h2>Creating Your First Class</h2>\n<p>This tutorial will cover creating a class in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/creating-a-class.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/creating-a-class.md",
+          "sourceFileName": "creating-a-class.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/creating-a-class"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/creating-a-class",
+        "language": "java"
+      },
+      "documentHash": "1756604312329",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/enums-and-generics.md": {
+      "document": {
+        "title": "Enums and Generics",
+        "slug": "enums-and-generics",
+        "order": 25,
+        "description": "Learn about enums and generics in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## Enums and Generics\n\nThis tutorial will cover enums and generics in Java. Content to be added.\n",
+          "html": "<h2>Enums and Generics</h2>\n<p>This tutorial will cover enums and generics in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/enums-and-generics.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/enums-and-generics.md",
+          "sourceFileName": "enums-and-generics.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/enums-and-generics"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/enums-and-generics",
+        "language": "java"
+      },
+      "documentHash": "1756604312344",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/exception-handling.md": {
+      "document": {
+        "title": "Exception Handling (try/catch/finally)",
+        "slug": "exception-handling",
+        "order": 19,
+        "description": "Learn about exception handling in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## Exception Handling (try/catch/finally)\n\nThis tutorial will cover exception handling in Java. Content to be added.\n",
+          "html": "<h2>Exception Handling (try/catch/finally)</h2>\n<p>This tutorial will cover exception handling in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/exception-handling.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/exception-handling.md",
+          "sourceFileName": "exception-handling.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/exception-handling"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/exception-handling",
+        "language": "java"
+      },
+      "documentHash": "1756604312337",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/file-io.md": {
+      "document": {
+        "title": "Working with Files (File I/O)",
+        "slug": "file-io",
+        "order": 24,
+        "description": "Learn how to work with files in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## Working with Files (File I/O)\n\nThis tutorial will cover file I/O in Java. Content to be added.\n",
+          "html": "<h2>Working with Files (File I/O)</h2>\n<p>This tutorial will cover file I/O in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/file-io.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/file-io.md",
+          "sourceFileName": "file-io.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/file-io"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/file-io",
+        "language": "java"
+      },
+      "documentHash": "1756604312343",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/getters-and-setters.md": {
+      "document": {
+        "title": "Getters and Setters (Encapsulation)",
+        "slug": "getters-and-setters",
+        "order": 16,
+        "description": "Learn about getters and setters and encapsulation in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Getters and Setters (Encapsulation)\n\nThis tutorial will cover getters, setters, and encapsulation in Java. Content to be added.\n",
+          "html": "<h2>Getters and Setters (Encapsulation)</h2>\n<p>This tutorial will cover getters, setters, and encapsulation in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/getters-and-setters.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/getters-and-setters.md",
+          "sourceFileName": "getters-and-setters.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/getters-and-setters"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/getters-and-setters",
+        "language": "java"
+      },
+      "documentHash": "1756604312333",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/hashmap.md": {
+      "document": {
+        "title": "HashMap",
+        "slug": "hashmap",
+        "order": 22,
+        "description": "Learn about HashMaps in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## HashMap\n\nThis tutorial will cover HashMaps in Java. Content to be added.\n",
+          "html": "<h2>HashMap</h2>\n<p>This tutorial will cover HashMaps in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/hashmap.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/hashmap.md",
+          "sourceFileName": "hashmap.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/hashmap"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/hashmap",
+        "language": "java"
+      },
+      "documentHash": "1756604312340",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/hashset.md": {
+      "document": {
+        "title": "HashSet",
+        "slug": "hashset",
+        "order": 23,
+        "description": "Learn about HashSets in Java.",
+        "category": "Intermediate Java",
+        "body": {
+          "raw": "\n## HashSet\n\nThis tutorial will cover HashSets in Java. Content to be added.\n",
+          "html": "<h2>HashSet</h2>\n<p>This tutorial will cover HashSets in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/hashset.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/hashset.md",
+          "sourceFileName": "hashset.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/hashset"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/hashset",
+        "language": "java"
+      },
+      "documentHash": "1756604312343",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/hello-world.md": {
+      "document": {
+        "title": "Java Hello World",
+        "slug": "hello-world-in-java",
+        "order": 2,
+        "description": "Learn to write, compile, and run your first 'Hello, World!' program in Java.",
+        "category": "Java Basics",
+        "body": {
+          "raw": "\n## Your First Java Program\n\nThe \"Hello, World!\" program is the traditional first step for learning a new language. It's a simple program that outputs `Hello, World!` to the console.\n\n### The Code\n\nIn Java, all code must reside inside a class. Here is the basic structure:\n\n```java\n// The file must be named HelloWorld.java\npublic class HelloWorld {\n    // This is the main method, the entry point of any Java application.\n    public static void main(String[] args) {\n        // This line prints the text to the console.\n        System.out.println(\"Hello, World!\");\n    }\n}\n```\n\n### Breaking Down the Code\n\n- **`public class HelloWorld`**: This declares a class named `HelloWorld`, which is `public`, meaning it's accessible by any other class. The class name **must** match the filename (`HelloWorld.java`).\n- **`public static void main(String[] args)`**: This is the main method.\n    - `public`: It can be called from anywhere.\n    - `static`: It can be run without creating an instance of the `HelloWorld` class.\n    - `void`: It does not return any value.\n    - `main`: This is the name of the method. The JVM looks for this specific method to start the program.\n    - `(String[] args)`: This accepts command-line arguments as an array of strings.\n- **`System.out.println(\"Hello, World!\");`**: This is the statement that does the printing.\n    - `System`: A final class from the `java.lang` package.\n    - `out`: A static member of the `System` class, which is an instance of `PrintStream`.\n    - `println()`: A method of the `PrintStream` class that prints the argument passed to it, followed by a new line.\n\n### How to Compile and Run\n\n1.  Save the code in a file named `HelloWorld.java`.\n2.  Open a terminal or command prompt.\n3.  Navigate to the directory where you saved the file.\n4.  **Compile the code**: Use the Java compiler (`javac`).\n    ```bash\n    javac HelloWorld.java\n    ```\n    This will create a `HelloWorld.class` file containing the Java bytecode.\n5.  **Run the program**: Use the Java Virtual Machine (`java`).\n    ```bash\n    java HelloWorld\n    ```\n    You should see the output: `Hello, World!`\n",
+          "html": "<h2>Your First Java Program</h2>\n<p>The \"Hello, World!\" program is the traditional first step for learning a new language. It's a simple program that outputs <code>Hello, World!</code> to the console.</p>\n<h3>The Code</h3>\n<p>In Java, all code must reside inside a class. Here is the basic structure:</p>\n<pre><code class=\"language-java\">// The file must be named HelloWorld.java\npublic class HelloWorld {\n    // This is the main method, the entry point of any Java application.\n    public static void main(String[] args) {\n        // This line prints the text to the console.\n        System.out.println(\"Hello, World!\");\n    }\n}\n</code></pre>\n<h3>Breaking Down the Code</h3>\n<ul>\n<li><strong><code>public class HelloWorld</code></strong>: This declares a class named <code>HelloWorld</code>, which is <code>public</code>, meaning it's accessible by any other class. The class name <strong>must</strong> match the filename (<code>HelloWorld.java</code>).</li>\n<li><strong><code>public static void main(String[] args)</code></strong>: This is the main method.\n<ul>\n<li><code>public</code>: It can be called from anywhere.</li>\n<li><code>static</code>: It can be run without creating an instance of the <code>HelloWorld</code> class.</li>\n<li><code>void</code>: It does not return any value.</li>\n<li><code>main</code>: This is the name of the method. The JVM looks for this specific method to start the program.</li>\n<li><code>(String[] args)</code>: This accepts command-line arguments as an array of strings.</li>\n</ul>\n</li>\n<li><strong><code>System.out.println(\"Hello, World!\");</code></strong>: This is the statement that does the printing.\n<ul>\n<li><code>System</code>: A final class from the <code>java.lang</code> package.</li>\n<li><code>out</code>: A static member of the <code>System</code> class, which is an instance of <code>PrintStream</code>.</li>\n<li><code>println()</code>: A method of the <code>PrintStream</code> class that prints the argument passed to it, followed by a new line.</li>\n</ul>\n</li>\n</ul>\n<h3>How to Compile and Run</h3>\n<ol>\n<li>Save the code in a file named <code>HelloWorld.java</code>.</li>\n<li>Open a terminal or command prompt.</li>\n<li>Navigate to the directory where you saved the file.</li>\n<li><strong>Compile the code</strong>: Use the Java compiler (<code>javac</code>).\n<pre><code class=\"language-bash\">javac HelloWorld.java\n</code></pre>\nThis will create a <code>HelloWorld.class</code> file containing the Java bytecode.</li>\n<li><strong>Run the program</strong>: Use the Java Virtual Machine (<code>java</code>).\n<pre><code class=\"language-bash\">java HelloWorld\n</code></pre>\nYou should see the output: <code>Hello, World!</code></li>\n</ol>"
+        },
+        "_id": "tutorials/java/hello-world.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/hello-world.md",
+          "sourceFileName": "hello-world.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/hello-world"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/hello-world-in-java",
+        "language": "java"
+      },
+      "documentHash": "1756602022107",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/inheritance.md": {
+      "document": {
+        "title": "Inheritance in Action",
+        "slug": "inheritance",
+        "order": 17,
+        "description": "Learn about inheritance in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## Inheritance in Action\n\nThis tutorial will cover inheritance in Java. Content to be added.\n",
+          "html": "<h2>Inheritance in Action</h2>\n<p>This tutorial will cover inheritance in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/inheritance.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/inheritance.md",
+          "sourceFileName": "inheritance.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/inheritance"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/inheritance",
+        "language": "java"
+      },
+      "documentHash": "1756604312333",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/java/introduction.md": {
       "document": {
         "title": "Introduction to Java",
@@ -24,6 +429,249 @@
         "language": "java"
       },
       "documentHash": "1756601885194",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/loops.md": {
+      "document": {
+        "title": "Java Loops (for and while)",
+        "slug": "java-loops",
+        "order": 9,
+        "description": "Learn how to automate repetitive tasks in Java using for and while loops. This guide covers how to iterate a specific number of times and repeat code based on a condition.",
+        "category": "Control Flow",
+        "body": {
+          "raw": "\n## Repeating Code with Loops\n\nIn programming, you often need to execute the same block of code multiple times. Instead of writing the same code over and over, you use loops. Loops are a fundamental control structure that allows you to automate repetitive tasks. Java's two primary loops are the `for` loop and the `while` loop.\n\n-----\n\n### **1. The `for` Loop**\n\nThe `for` loop is ideal when you know exactly how many times you want to execute a block of code.\n\nIt consists of three parts, separated by semicolons:\n\n1.  **Initialization**: A counter variable is declared and initialized. This part is executed once, before the loop starts.\n2.  **Condition**: The loop continues as long as this condition is `true`.\n3.  **Iteration**: An expression that is executed after each iteration, usually to increment or decrement the counter.\n\n<!-- end list -->\n\n```java\npublic class ForLoopExample {\n  public static void main(String[] args) {\n    // This loop will print numbers from 0 to 4\n    for (int i = 0; i < 5; i++) {\n      System.out.println(\"The current number is: \" + i);\n    }\n  }\n}\n```\n\n**Output:**\n\n```text\nThe current number is: 0\nThe current number is: 1\nThe current number is: 2\nThe current number is: 3\nThe current number is: 4\n```\n\n-----\n\n### **2. The `while` Loop**\n\nThe `while` loop is used to repeat a block of code as long as a specified condition is `true`. It's best used when you don't know the exact number of iterations beforehand.\n\n```java\npublic class WhileLoopExample {\n  public static void main(String[] args) {\n    int i = 0;\n    while (i < 5) {\n      System.out.println(\"The current number is: \" + i);\n      i++; // It is crucial to update the variable in the condition\n    }\n  }\n}\n```\n\nThe output for this `while` loop is the same as the `for` loop example. **Warning:** If you forget to update the variable that the condition depends on (in this case, `i++`), the condition will always be `true`, and you will create an infinite loop.\n\n-----\n\n### **Loop Control Statements**\n\nYou can alter the flow of a loop using control statements.\n\n  * **`break`**: Immediately exits the loop.\n\n    ```java\n    for (int i = 0; i < 10; i++) {\n      if (i == 4) {\n        break; // Stop the loop when i equals 4\n      }\n      System.out.println(i);\n    }\n    // This will print 0, 1, 2, 3\n    ```\n\n  * **`continue`**: Skips the current iteration and proceeds to the next one.\n\n    ```java\n    for (int i = 0; i < 5; i++) {\n      if (i == 2) {\n        continue; // Skip the rest of the loop when i is 2\n      }\n      System.out.println(i);\n    }\n    // This will print 0, 1, 3, 4\n    ```",
+          "html": "<h2>Repeating Code with Loops</h2>\n<p>In programming, you often need to execute the same block of code multiple times. Instead of writing the same code over and over, you use loops. Loops are a fundamental control structure that allows you to automate repetitive tasks. Java's two primary loops are the <code>for</code> loop and the <code>while</code> loop.</p>\n<hr>\n<h3><strong>1. The <code>for</code> Loop</strong></h3>\n<p>The <code>for</code> loop is ideal when you know exactly how many times you want to execute a block of code.</p>\n<p>It consists of three parts, separated by semicolons:</p>\n<ol>\n<li><strong>Initialization</strong>: A counter variable is declared and initialized. This part is executed once, before the loop starts.</li>\n<li><strong>Condition</strong>: The loop continues as long as this condition is <code>true</code>.</li>\n<li><strong>Iteration</strong>: An expression that is executed after each iteration, usually to increment or decrement the counter.</li>\n</ol>\n<pre><code class=\"language-java\">public class ForLoopExample {\n  public static void main(String[] args) {\n    // This loop will print numbers from 0 to 4\n    for (int i = 0; i &#x3C; 5; i++) {\n      System.out.println(\"The current number is: \" + i);\n    }\n  }\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">The current number is: 0\nThe current number is: 1\nThe current number is: 2\nThe current number is: 3\nThe current number is: 4\n</code></pre>\n<hr>\n<h3><strong>2. The <code>while</code> Loop</strong></h3>\n<p>The <code>while</code> loop is used to repeat a block of code as long as a specified condition is <code>true</code>. It's best used when you don't know the exact number of iterations beforehand.</p>\n<pre><code class=\"language-java\">public class WhileLoopExample {\n  public static void main(String[] args) {\n    int i = 0;\n    while (i &#x3C; 5) {\n      System.out.println(\"The current number is: \" + i);\n      i++; // It is crucial to update the variable in the condition\n    }\n  }\n}\n</code></pre>\n<p>The output for this <code>while</code> loop is the same as the <code>for</code> loop example. <strong>Warning:</strong> If you forget to update the variable that the condition depends on (in this case, <code>i++</code>), the condition will always be <code>true</code>, and you will create an infinite loop.</p>\n<hr>\n<h3><strong>Loop Control Statements</strong></h3>\n<p>You can alter the flow of a loop using control statements.</p>\n<ul>\n<li>\n<p><strong><code>break</code></strong>: Immediately exits the loop.</p>\n<pre><code class=\"language-java\">for (int i = 0; i &#x3C; 10; i++) {\n  if (i == 4) {\n    break; // Stop the loop when i equals 4\n  }\n  System.out.println(i);\n}\n// This will print 0, 1, 2, 3\n</code></pre>\n</li>\n<li>\n<p><strong><code>continue</code></strong>: Skips the current iteration and proceeds to the next one.</p>\n<pre><code class=\"language-java\">for (int i = 0; i &#x3C; 5; i++) {\n  if (i == 2) {\n    continue; // Skip the rest of the loop when i is 2\n  }\n  System.out.println(i);\n}\n// This will print 0, 1, 3, 4\n</code></pre>\n</li>\n</ul>"
+        },
+        "_id": "tutorials/java/loops.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/loops.md",
+          "sourceFileName": "loops.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/loops"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/java-loops",
+        "language": "java"
+      },
+      "documentHash": "1756605341143",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/methods.md": {
+      "document": {
+        "title": "Methods (Functions)",
+        "slug": "methods",
+        "order": 12,
+        "description": "Learn about methods in Java.",
+        "category": "Core Java Concepts",
+        "body": {
+          "raw": "\n## Methods (Functions)\n\nThis tutorial will cover methods in Java. Content to be added.\n",
+          "html": "<h2>Methods (Functions)</h2>\n<p>This tutorial will cover methods in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/methods.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/methods.md",
+          "sourceFileName": "methods.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/methods"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/methods",
+        "language": "java"
+      },
+      "documentHash": "1756604312326",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/oop-concepts.md": {
+      "document": {
+        "title": "OOP Concepts",
+        "slug": "oop-concepts",
+        "order": 13,
+        "description": "Learn about Object-Oriented Programming concepts in Java.",
+        "category": "Object-Oriented Programming (OOP)",
+        "body": {
+          "raw": "\n## OOP Concepts\n\nThis tutorial will cover OOP concepts in Java. Content to be added.\n",
+          "html": "<h2>OOP Concepts</h2>\n<p>This tutorial will cover OOP concepts in Java. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/oop-concepts.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/oop-concepts.md",
+          "sourceFileName": "oop-concepts.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/oop-concepts"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/oop-concepts",
+        "language": "java"
+      },
+      "documentHash": "1756604312328",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/operators.md": {
+      "document": {
+        "title": "Java Operators",
+        "slug": "java-operators",
+        "order": 4,
+        "description": "Learn about the different types of operators in Java, including arithmetic, assignment, comparison, and logical operators, to perform various operations.",
+        "category": "Java Fundamentals",
+        "body": {
+          "raw": "\n## What are Operators?\n\nOperators are special symbols that perform specific operations on one, two, or three operands, and then return a result. For instance, in `10 + 5`, the `+` is an operator that adds two numbers. Understanding operators is fundamental to performing calculations and logic in Java.\n\n-----\n\n### **1. Arithmetic Operators**\n\nThese are used to perform common mathematical operations.\n\n| Operator | Name | Description |\n| :--- | :--- | :--- |\n| `+` | Addition | Adds together two values |\n| `-` | Subtraction | Subtracts one value from another |\n| `*` | Multiplication | Multiplies two values |\n| `/` | Division | Divides one value by another |\n| `%` | Modulus | Returns the division remainder |\n| `++` | Increment | Increases the value of a variable by 1 |\n| `--` | Decrement | Decreases the value of a variable by 1 |\n\n```java\nint x = 10;\nint y = 3;\n\nSystem.out.println(x / y); // Output: 3 (integer division truncates the decimal)\nSystem.out.println(x % y); // Output: 1\n```\n\n-----\n\n### **2. Assignment Operators**\n\nThese operators are used to assign values to variables.\n\n| Operator | Example | Same As |\n| :--- | :--- | :--- |\n| `=` | `x = 5;` | `x = 5;` |\n| `+=` | `x += 3;` | `x = x + 3;` |\n| `-=` | `x -= 3;` | `x = x - 3;` |\n\n```java\nint value = 10;\nvalue += 5; // value is now 15\nSystem.out.println(value);\n```\n\n-----\n\n### **3. Comparison Operators**\n\nThese are used to compare two values and will always return a `boolean` value (`true` or `false`).\n\n| Operator | Name | Example |\n| :--- | :--- | :--- |\n| `==` | Equal to | `x == y` |\n| `!=` | Not equal | `x != y` |\n| `>` | Greater than | `x > y` |\n| `<` | Less than | `x < y` |\n| `>=` | Greater than or equal to | `x >= y` |\n| `<=` | Less than or equal to | `x <= y` |\n\n```java\nint a = 7;\nint b = 10;\n\nSystem.out.println(a > b); // Output: false\nSystem.out.println(a != b); // Output: true\n```\n\n-----\n\n### **4. Logical Operators**\n\nThese are used to determine the logic between variables or values, often to combine multiple conditions.\n\n| Operator | Name | Description |\n| :--- | :--- | :--- |\n| `&&` | Logical And | Returns `true` if both statements are true |\n| `||` | Logical Or | Returns `true` if one of the statements is true |\n| `!` | Logical Not | Reverses the result, returns `false` if the result is true |\n\n```java\nint age = 25;\nboolean hasLicense = true;\n\nif (age > 18 && hasLicense) {\n  System.out.println(\"You are allowed to drive.\");\n}\n```\n",
+          "html": "<h2>What are Operators?</h2>\n<p>Operators are special symbols that perform specific operations on one, two, or three operands, and then return a result. For instance, in <code>10 + 5</code>, the <code>+</code> is an operator that adds two numbers. Understanding operators is fundamental to performing calculations and logic in Java.</p>\n<hr>\n<h3><strong>1. Arithmetic Operators</strong></h3>\n<p>These are used to perform common mathematical operations.</p>\n<p>| Operator | Name | Description |\n| :--- | :--- | :--- |\n| <code>+</code> | Addition | Adds together two values |\n| <code>-</code> | Subtraction | Subtracts one value from another |\n| <code>*</code> | Multiplication | Multiplies two values |\n| <code>/</code> | Division | Divides one value by another |\n| <code>%</code> | Modulus | Returns the division remainder |\n| <code>++</code> | Increment | Increases the value of a variable by 1 |\n| <code>--</code> | Decrement | Decreases the value of a variable by 1 |</p>\n<pre><code class=\"language-java\">int x = 10;\nint y = 3;\n\nSystem.out.println(x / y); // Output: 3 (integer division truncates the decimal)\nSystem.out.println(x % y); // Output: 1\n</code></pre>\n<hr>\n<h3><strong>2. Assignment Operators</strong></h3>\n<p>These operators are used to assign values to variables.</p>\n<p>| Operator | Example | Same As |\n| :--- | :--- | :--- |\n| <code>=</code> | <code>x = 5;</code> | <code>x = 5;</code> |\n| <code>+=</code> | <code>x += 3;</code> | <code>x = x + 3;</code> |\n| <code>-=</code> | <code>x -= 3;</code> | <code>x = x - 3;</code> |</p>\n<pre><code class=\"language-java\">int value = 10;\nvalue += 5; // value is now 15\nSystem.out.println(value);\n</code></pre>\n<hr>\n<h3><strong>3. Comparison Operators</strong></h3>\n<p>These are used to compare two values and will always return a <code>boolean</code> value (<code>true</code> or <code>false</code>).</p>\n<p>| Operator | Name | Example |\n| :--- | :--- | :--- |\n| <code>==</code> | Equal to | <code>x == y</code> |\n| <code>!=</code> | Not equal | <code>x != y</code> |\n| <code>></code> | Greater than | <code>x > y</code> |\n| <code>&#x3C;</code> | Less than | <code>x &#x3C; y</code> |\n| <code>>=</code> | Greater than or equal to | <code>x >= y</code> |\n| <code>&#x3C;=</code> | Less than or equal to | <code>x &#x3C;= y</code> |</p>\n<pre><code class=\"language-java\">int a = 7;\nint b = 10;\n\nSystem.out.println(a > b); // Output: false\nSystem.out.println(a != b); // Output: true\n</code></pre>\n<hr>\n<h3><strong>4. Logical Operators</strong></h3>\n<p>These are used to determine the logic between variables or values, often to combine multiple conditions.</p>\n<p>| Operator | Name | Description |\n| :--- | :--- | :--- |\n| <code>&#x26;&#x26;</code> | Logical And | Returns <code>true</code> if both statements are true |\n| <code>||</code> | Logical Or | Returns <code>true</code> if one of the statements is true |\n| <code>!</code> | Logical Not | Reverses the result, returns <code>false</code> if the result is true |</p>\n<pre><code class=\"language-java\">int age = 25;\nboolean hasLicense = true;\n\nif (age > 18 &#x26;&#x26; hasLicense) {\n  System.out.println(\"You are allowed to drive.\");\n}\n</code></pre>"
+        },
+        "_id": "tutorials/java/operators.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/operators.md",
+          "sourceFileName": "operators.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/operators"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/java-operators",
+        "language": "java"
+      },
+      "documentHash": "1756604962649",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/setting-up-environment.md": {
+      "document": {
+        "title": "Setting Up Your Environment",
+        "slug": "setting-up-environment",
+        "order": 2,
+        "description": "How to set up your Java development environment.",
+        "category": "Java Basics",
+        "body": {
+          "raw": "\n## Setting Up Your Environment\n\nThis tutorial will cover setting up your Java development environment. Content to be added.\n",
+          "html": "<h2>Setting Up Your Environment</h2>\n<p>This tutorial will cover setting up your Java development environment. Content to be added.</p>"
+        },
+        "_id": "tutorials/java/setting-up-environment.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/setting-up-environment.md",
+          "sourceFileName": "setting-up-environment.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/setting-up-environment"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/setting-up-environment",
+        "language": "java"
+      },
+      "documentHash": "1756604312278",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/strings.md": {
+      "document": {
+        "title": "Working with Strings in Java",
+        "slug": "java-working-with-strings",
+        "order": 10,
+        "description": "Learn how to work with the String class in Java. This guide covers string creation, concatenation, and a variety of essential string methods.",
+        "category": "Core Java Concepts",
+        "body": {
+          "raw": "\n## The `String` Class\n\nIn Java, a string is an object that represents a sequence of characters. It's not a primitive data type but a class from the `java.lang` package. `String` objects are **immutable**, which means once a string is created, its value cannot be changed. Any method that appears to modify a string actually creates and returns a new string.\n\nYou create a string by enclosing text in double quotes `\"\"`.\n\n```java\n// Creating a string\nString greeting = \"Hello, World!\";\n```\n\n## String Concatenation\n\nYou can join strings together using the `+` operator. This is known as concatenation.\n\n```java\nString firstName = \"John\";\nString lastName = \"Doe\";\nString fullName = firstName + \" \" + lastName;\n\nSystem.out.println(fullName); // Output: John Doe\n```\n\nIf you concatenate a string with another data type (like an `int`), Java will automatically convert the other type to a string.\n\n```java\nString message = \"Your score is: \" + 100;\nSystem.out.println(message); // Output: Your score is: 100\n```\n\n-----\n\n## Common String Methods\n\nThe `String` class provides many useful methods for manipulating strings. Here are some of the most common ones:\n\n| Method | Description |\n| :--- | :--- |\n| `length()` | Returns the number of characters in the string. |\n| `toUpperCase()` | Converts the string to uppercase letters. |\n| `toLowerCase()` | Converts the string to lowercase letters. |\n| `trim()` | Removes whitespace from both ends of the string. |\n| `charAt(int index)` | Returns the character at the specified index. |\n| `substring(int beginIndex, int endIndex)` | Extracts a part of the string. |\n| `equals(String anotherString)` | Compares two strings for equality. (Use this instead of `==` for strings). |\n| `contains(CharSequence s)` | Checks whether a string contains a sequence of characters. |\n| `replace(char oldChar, char newChar)` | Replaces a specified character with a new one. |\n\n### **Examples in Action**\n\n```java\npublic class StringMethodsExample {\n  public static void main(String[] args) {\n    String text = \"   Java Programming   \";\n\n    System.out.println(\"Length: \" + text.length()); // Output: 21\n    System.out.println(\"Uppercase: \" + text.toUpperCase()); // Output: \"   JAVA PROGRAMMING   \"\n    System.out.println(\"Trimmed: \" + text.trim()); // Output: \"Java Programming\"\n    System.out.println(\"Substring: \" + text.trim().substring(0, 4)); // Output: \"Java\"\n    System.out.println(\"Contains 'Pro'?: \" + text.contains(\"Pro\")); // Output: true\n  }\n}\n```\n\n### **Comparing Strings: `equals()` vs `==`**\n\nA common mistake for beginners is using the `==` operator to compare strings. The `==` operator checks if two variables refer to the exact same object in memory. The `equals()` method, however, checks if the actual character sequences of the strings are the same.\n\n**Always use `.equals()` to compare the content of strings.**\n\n```java\nString str1 = new String(\"hello\");\nString str2 = new String(\"hello\");\n\nSystem.out.println(str1 == str2);      // Output: false (they are different objects)\nSystem.out.println(str1.equals(str2)); // Output: true (their content is the same)\n```",
+          "html": "<h2>The <code>String</code> Class</h2>\n<p>In Java, a string is an object that represents a sequence of characters. It's not a primitive data type but a class from the <code>java.lang</code> package. <code>String</code> objects are <strong>immutable</strong>, which means once a string is created, its value cannot be changed. Any method that appears to modify a string actually creates and returns a new string.</p>\n<p>You create a string by enclosing text in double quotes <code>\"\"</code>.</p>\n<pre><code class=\"language-java\">// Creating a string\nString greeting = \"Hello, World!\";\n</code></pre>\n<h2>String Concatenation</h2>\n<p>You can join strings together using the <code>+</code> operator. This is known as concatenation.</p>\n<pre><code class=\"language-java\">String firstName = \"John\";\nString lastName = \"Doe\";\nString fullName = firstName + \" \" + lastName;\n\nSystem.out.println(fullName); // Output: John Doe\n</code></pre>\n<p>If you concatenate a string with another data type (like an <code>int</code>), Java will automatically convert the other type to a string.</p>\n<pre><code class=\"language-java\">String message = \"Your score is: \" + 100;\nSystem.out.println(message); // Output: Your score is: 100\n</code></pre>\n<hr>\n<h2>Common String Methods</h2>\n<p>The <code>String</code> class provides many useful methods for manipulating strings. Here are some of the most common ones:</p>\n<p>| Method | Description |\n| :--- | :--- |\n| <code>length()</code> | Returns the number of characters in the string. |\n| <code>toUpperCase()</code> | Converts the string to uppercase letters. |\n| <code>toLowerCase()</code> | Converts the string to lowercase letters. |\n| <code>trim()</code> | Removes whitespace from both ends of the string. |\n| <code>charAt(int index)</code> | Returns the character at the specified index. |\n| <code>substring(int beginIndex, int endIndex)</code> | Extracts a part of the string. |\n| <code>equals(String anotherString)</code> | Compares two strings for equality. (Use this instead of <code>==</code> for strings). |\n| <code>contains(CharSequence s)</code> | Checks whether a string contains a sequence of characters. |\n| <code>replace(char oldChar, char newChar)</code> | Replaces a specified character with a new one. |</p>\n<h3><strong>Examples in Action</strong></h3>\n<pre><code class=\"language-java\">public class StringMethodsExample {\n  public static void main(String[] args) {\n    String text = \"   Java Programming   \";\n\n    System.out.println(\"Length: \" + text.length()); // Output: 21\n    System.out.println(\"Uppercase: \" + text.toUpperCase()); // Output: \"   JAVA PROGRAMMING   \"\n    System.out.println(\"Trimmed: \" + text.trim()); // Output: \"Java Programming\"\n    System.out.println(\"Substring: \" + text.trim().substring(0, 4)); // Output: \"Java\"\n    System.out.println(\"Contains 'Pro'?: \" + text.contains(\"Pro\")); // Output: true\n  }\n}\n</code></pre>\n<h3><strong>Comparing Strings: <code>equals()</code> vs <code>==</code></strong></h3>\n<p>A common mistake for beginners is using the <code>==</code> operator to compare strings. The <code>==</code> operator checks if two variables refer to the exact same object in memory. The <code>equals()</code> method, however, checks if the actual character sequences of the strings are the same.</p>\n<p><strong>Always use <code>.equals()</code> to compare the content of strings.</strong></p>\n<pre><code class=\"language-java\">String str1 = new String(\"hello\");\nString str2 = new String(\"hello\");\n\nSystem.out.println(str1 == str2);      // Output: false (they are different objects)\nSystem.out.println(str1.equals(str2)); // Output: true (their content is the same)\n</code></pre>"
+        },
+        "_id": "tutorials/java/strings.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/strings.md",
+          "sourceFileName": "strings.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/strings"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/java-working-with-strings",
+        "language": "java"
+      },
+      "documentHash": "1756605416275",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/switch-statement.md": {
+      "document": {
+        "title": "The Java switch Statement",
+        "slug": "java-switch-statement",
+        "order": 8,
+        "description": "Learn how to use the switch statement in Java as an efficient alternative to long if-else if chains for multi-way branching.",
+        "category": "Control Flow",
+        "body": {
+          "raw": "\n## An Alternative to `if-else if`\n\nThe `switch` statement is a control flow statement that provides a clean and efficient way to execute different blocks of code based on the value of a variable or an expression. It's often used as an alternative to a long series of `if-else if-else` statements, especially when you are comparing a single variable against multiple possible values.\n\n### **Syntax**\n\nThe basic syntax of a `switch` statement looks like this:\n\n```java\nswitch (expression) {\n  case value1:\n    // Code to be executed if expression matches value1\n    break;\n  case value2:\n    // Code to be executed if expression matches value2\n    break;\n  // ... you can have any number of case statements\n  default:\n    // Code to be executed if expression doesn't match any case\n}\n```\n\n### **How it Works**\n\n1.  The `expression` is evaluated once.\n2.  The value of the expression is compared with the values of each `case`.\n3.  If there is a match, the associated block of code is executed.\n4.  The `break` keyword is crucial. It stops the execution of more code and exits the `switch` block.\n5.  The `default` keyword is optional. It specifies some code to run if there is no case match.\n\n-----\n\n## Example: Day of the Week\n\nLet's use a `switch` statement to print the name of the day of the week based on a number.\n\n```java\npublic class DayOfWeek {\n  public static void main(String[] args) {\n    int day = 4;\n    String dayString;\n\n    switch (day) {\n      case 1:\n        dayString = \"Monday\";\n        break;\n      case 2:\n        dayString = \"Tuesday\";\n        break;\n      case 3:\n        dayString = \"Wednesday\";\n        break;\n      case 4:\n        dayString = \"Thursday\";\n        break;\n      case 5:\n        dayString = \"Friday\";\n        break;\n      case 6:\n        dayString = \"Saturday\";\n        break;\n      case 7:\n        dayString = \"Sunday\";\n        break;\n      default:\n        dayString = \"Invalid day\";\n        break;\n    }\n    System.out.println(dayString);\n  }\n}\n```\n\n**Output:**\n\n```text\nThursday\n```\n\n-----\n\n## The Importance of `break`\n\nIf you forget to add a `break` statement at the end of a case, the execution will \"fall through\" to the next case and execute its code as well, until a `break` or the end of the `switch` block is reached. This is sometimes intentional, but most often it's a bug.\n\n```java\nint number = 2;\nswitch (number) {\n  case 1:\n    System.out.println(\"One\");\n  case 2:\n    System.out.println(\"Two\"); // No break here\n  case 3:\n    System.out.println(\"Three\");\n    break;\n}\n```\n\n**Output:**\n\n```text\nTwo\nThree\n```\n\nBecause there was no `break` in `case 2`, the program continued to execute the code in `case 3`.\n\nThe `switch` statement is a powerful tool for making your code cleaner and more readable when dealing with multiple, distinct choices.\n",
+          "html": "<h2>An Alternative to <code>if-else if</code></h2>\n<p>The <code>switch</code> statement is a control flow statement that provides a clean and efficient way to execute different blocks of code based on the value of a variable or an expression. It's often used as an alternative to a long series of <code>if-else if-else</code> statements, especially when you are comparing a single variable against multiple possible values.</p>\n<h3><strong>Syntax</strong></h3>\n<p>The basic syntax of a <code>switch</code> statement looks like this:</p>\n<pre><code class=\"language-java\">switch (expression) {\n  case value1:\n    // Code to be executed if expression matches value1\n    break;\n  case value2:\n    // Code to be executed if expression matches value2\n    break;\n  // ... you can have any number of case statements\n  default:\n    // Code to be executed if expression doesn't match any case\n}\n</code></pre>\n<h3><strong>How it Works</strong></h3>\n<ol>\n<li>The <code>expression</code> is evaluated once.</li>\n<li>The value of the expression is compared with the values of each <code>case</code>.</li>\n<li>If there is a match, the associated block of code is executed.</li>\n<li>The <code>break</code> keyword is crucial. It stops the execution of more code and exits the <code>switch</code> block.</li>\n<li>The <code>default</code> keyword is optional. It specifies some code to run if there is no case match.</li>\n</ol>\n<hr>\n<h2>Example: Day of the Week</h2>\n<p>Let's use a <code>switch</code> statement to print the name of the day of the week based on a number.</p>\n<pre><code class=\"language-java\">public class DayOfWeek {\n  public static void main(String[] args) {\n    int day = 4;\n    String dayString;\n\n    switch (day) {\n      case 1:\n        dayString = \"Monday\";\n        break;\n      case 2:\n        dayString = \"Tuesday\";\n        break;\n      case 3:\n        dayString = \"Wednesday\";\n        break;\n      case 4:\n        dayString = \"Thursday\";\n        break;\n      case 5:\n        dayString = \"Friday\";\n        break;\n      case 6:\n        dayString = \"Saturday\";\n        break;\n      case 7:\n        dayString = \"Sunday\";\n        break;\n      default:\n        dayString = \"Invalid day\";\n        break;\n    }\n    System.out.println(dayString);\n  }\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Thursday\n</code></pre>\n<hr>\n<h2>The Importance of <code>break</code></h2>\n<p>If you forget to add a <code>break</code> statement at the end of a case, the execution will \"fall through\" to the next case and execute its code as well, until a <code>break</code> or the end of the <code>switch</code> block is reached. This is sometimes intentional, but most often it's a bug.</p>\n<pre><code class=\"language-java\">int number = 2;\nswitch (number) {\n  case 1:\n    System.out.println(\"One\");\n  case 2:\n    System.out.println(\"Two\"); // No break here\n  case 3:\n    System.out.println(\"Three\");\n    break;\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Two\nThree\n</code></pre>\n<p>Because there was no <code>break</code> in <code>case 2</code>, the program continued to execute the code in <code>case 3</code>.</p>\n<p>The <code>switch</code> statement is a powerful tool for making your code cleaner and more readable when dealing with multiple, distinct choices.</p>"
+        },
+        "_id": "tutorials/java/switch-statement.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/switch-statement.md",
+          "sourceFileName": "switch-statement.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/switch-statement"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/java-switch-statement",
+        "language": "java"
+      },
+      "documentHash": "1756605299906",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/user-input.md": {
+      "document": {
+        "title": "Java User Input with the Scanner Class",
+        "slug": "java-user-input",
+        "order": 5,
+        "description": "Learn how to make your Java applications interactive by reading input from the user's keyboard using the powerful and versatile Scanner class.",
+        "category": "Java Fundamentals",
+        "body": {
+          "raw": "\n## Making Programs Interactive\n\nTo create powerful console applications, you need a way to get input from the user. In Java, the most common way to do this is by using the `Scanner` class, which is part of the `java.util` package.\n\nThe `Scanner` class provides various methods for reading different types of data, such as integers, doubles, and strings.\n\n-----\n\n## How to Use the `Scanner` Class\n\nUsing the `Scanner` is a three-step process:\n\n### **1. Import the `Scanner` Class**\n\nFirst, you need to import the `Scanner` class into your program. This is done by adding the following line at the very top of your `.java` file, before the `public class` line.\n\n```java\nimport java.util.Scanner; // Import the Scanner class\n```\n\n### **2. Create a `Scanner` Object**\n\nNext, inside your `main` method, you need to create an instance (an object) of the `Scanner` class. You tell it to read from `System.in`, which is the standard input stream (usually the keyboard).\n\n```java\npublic class UserInputExample {\n  public static void main(String[] args) {\n    Scanner myScanner = new Scanner(System.in); // Create a Scanner object\n  }\n}\n```\n\n### **3. Read User Input**\n\nNow you can use the various methods of the `Scanner` object to read input.\n\n| Method | Description |\n| :--- | :--- |\n| `nextLine()` | Reads a line of text (a `String`) |\n| `nextInt()` | Reads an integer value (an `int`) |\n| `nextDouble()`| Reads a double value (a `double`) |\n| `nextBoolean()`| Reads a boolean value (a `boolean`) |\n\n-----\n\n## Example: A Simple User Profile\n\nLet's create a program that asks for a user's name, age, and salary, and then displays the information back to them.\n\n```java\nimport java.util.Scanner; // Step 1: Import\n\npublic class UserProfile {\n  public static void main(String[] args) {\n    // Step 2: Create a Scanner object\n    Scanner inputReader = new Scanner(System.in);\n    \n    // Step 3: Read input\n    System.out.println(\"Enter your username:\");\n    String userName = inputReader.nextLine(); // Reads a line of text\n    \n    System.out.println(\"Enter your age:\");\n    int age = inputReader.nextInt(); // Reads an integer\n    \n    System.out.println(\"Enter your salary:\");\n    double salary = inputReader.nextDouble(); // Reads a double\n    \n    // Display the collected information\n    System.out.println(\"\\n--- User Profile ---\");\n    System.out.println(\"Username: \" + userName);\n    System.out.println(\"Age: \" + age);\n    System.out.println(\"Salary: \" + salary);\n    \n    // It's good practice to close the scanner when you're done\n    inputReader.close();\n  }\n}\n```\n\nBy using the `Scanner` class, you can easily create interactive console-based applications that respond to user input.",
+          "html": "<h2>Making Programs Interactive</h2>\n<p>To create powerful console applications, you need a way to get input from the user. In Java, the most common way to do this is by using the <code>Scanner</code> class, which is part of the <code>java.util</code> package.</p>\n<p>The <code>Scanner</code> class provides various methods for reading different types of data, such as integers, doubles, and strings.</p>\n<hr>\n<h2>How to Use the <code>Scanner</code> Class</h2>\n<p>Using the <code>Scanner</code> is a three-step process:</p>\n<h3><strong>1. Import the <code>Scanner</code> Class</strong></h3>\n<p>First, you need to import the <code>Scanner</code> class into your program. This is done by adding the following line at the very top of your <code>.java</code> file, before the <code>public class</code> line.</p>\n<pre><code class=\"language-java\">import java.util.Scanner; // Import the Scanner class\n</code></pre>\n<h3><strong>2. Create a <code>Scanner</code> Object</strong></h3>\n<p>Next, inside your <code>main</code> method, you need to create an instance (an object) of the <code>Scanner</code> class. You tell it to read from <code>System.in</code>, which is the standard input stream (usually the keyboard).</p>\n<pre><code class=\"language-java\">public class UserInputExample {\n  public static void main(String[] args) {\n    Scanner myScanner = new Scanner(System.in); // Create a Scanner object\n  }\n}\n</code></pre>\n<h3><strong>3. Read User Input</strong></h3>\n<p>Now you can use the various methods of the <code>Scanner</code> object to read input.</p>\n<p>| Method | Description |\n| :--- | :--- |\n| <code>nextLine()</code> | Reads a line of text (a <code>String</code>) |\n| <code>nextInt()</code> | Reads an integer value (an <code>int</code>) |\n| <code>nextDouble()</code>| Reads a double value (a <code>double</code>) |\n| <code>nextBoolean()</code>| Reads a boolean value (a <code>boolean</code>) |</p>\n<hr>\n<h2>Example: A Simple User Profile</h2>\n<p>Let's create a program that asks for a user's name, age, and salary, and then displays the information back to them.</p>\n<pre><code class=\"language-java\">import java.util.Scanner; // Step 1: Import\n\npublic class UserProfile {\n  public static void main(String[] args) {\n    // Step 2: Create a Scanner object\n    Scanner inputReader = new Scanner(System.in);\n    \n    // Step 3: Read input\n    System.out.println(\"Enter your username:\");\n    String userName = inputReader.nextLine(); // Reads a line of text\n    \n    System.out.println(\"Enter your age:\");\n    int age = inputReader.nextInt(); // Reads an integer\n    \n    System.out.println(\"Enter your salary:\");\n    double salary = inputReader.nextDouble(); // Reads a double\n    \n    // Display the collected information\n    System.out.println(\"\\n--- User Profile ---\");\n    System.out.println(\"Username: \" + userName);\n    System.out.println(\"Age: \" + age);\n    System.out.println(\"Salary: \" + salary);\n    \n    // It's good practice to close the scanner when you're done\n    inputReader.close();\n  }\n}\n</code></pre>\n<p>By using the <code>Scanner</code> class, you can easily create interactive console-based applications that respond to user input.</p>"
+        },
+        "_id": "tutorials/java/user-input.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/user-input.md",
+          "sourceFileName": "user-input.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/user-input"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/java-user-input",
+        "language": "java"
+      },
+      "documentHash": "1756605127397",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/java/variables-and-data-types.md": {
+      "document": {
+        "title": "Java Variables and Data Types",
+        "slug": "java-variables-data-types",
+        "order": 3,
+        "description": "Learn the fundamentals of storing data in Java. This guide covers declaring variables and the essential primitive data types like int, double, char, and boolean.",
+        "category": "Java Fundamentals",
+        "body": {
+          "raw": "\n## What is a Variable?\n\nIn Java, a variable is a container that holds a data value. It has a specific **data type**, which is a classification that tells the compiler how the programmer intends to use the data.\n\nUnlike dynamically typed languages like Python or JavaScript, Java is **statically typed**. This means you must declare the type of a variable before you can use it. Once a variable is declared with a certain data type, it can only hold values of that type.\n\n### **Declaring a Variable**\n\nTo declare a variable, you specify the type, give it a name, and optionally, assign it a value.\n\n**Syntax:** `type variableName = value;`\n\n```java\n// Declaring an integer variable\nint userAge = 25;\n\n// Declaring a string variable\nString userName = \"John Doe\";\n\n// You can also declare first and assign later\nString message;\nmessage = \"Hello, Java!\";\n\nSystem.out.println(userAge);\n```\n\n-----\n\n## Primitive Data Types\n\nJava has eight primitive data types. These are the most basic data types and are not objects.\n\n| Type | Size | Description |\n| :--- | :--- | :--- |\n| `byte` | 1 byte | Stores whole numbers from -128 to 127 |\n| `short` | 2 bytes | Stores whole numbers from -32,768 to 32,767 |\n| `int` | 4 bytes | Stores whole numbers from -2,147,483,648 to 2,147,483,647 |\n| `long` | 8 bytes | Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |\n| `float` | 4 bytes | Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits |\n| `double`| 8 bytes | Stores fractional numbers. Sufficient for storing 15 decimal digits |\n| `boolean`| 1 bit | Stores `true` or `false` values |\n| `char` | 2 bytes | Stores a single character/letter or ASCII values, surrounded by single quotes `'` |\n\n### **Commonly Used Primitives**\n\nWhile there are eight, you will most frequently use these four:\n\n  * **`int`**: The default choice for whole numbers.\n    ```java\n    int score = 100;\n    ```\n  * **`double`**: The default choice for floating-point (decimal) numbers.\n    ```java\n    double price = 19.99;\n    ```\n  * **`boolean`**: For true/false logic.\n    ```java\n    boolean isLoggedIn = true;\n    ```\n  * **`char`**: For single characters.\n    ```java\n    char grade = 'A';\n    ```\n\n-----\n\n## The `String` Class\n\nIt's important to note that **`String` is not a primitive data type** in Java. It's a class. However, it's so commonly used that it's often thought of as a basic data type. A `String` is a sequence of characters, and its value must be enclosed in double quotes `\"\"`.\n\n```java\nString greeting = \"Welcome to the Nocturnal Codex!\";\n```\n\nThis static typing system helps catch many common errors during compilation, before the program even runs, which is a key reason for Java's reputation for being robust and reliable.\n",
+          "html": "<h2>What is a Variable?</h2>\n<p>In Java, a variable is a container that holds a data value. It has a specific <strong>data type</strong>, which is a classification that tells the compiler how the programmer intends to use the data.</p>\n<p>Unlike dynamically typed languages like Python or JavaScript, Java is <strong>statically typed</strong>. This means you must declare the type of a variable before you can use it. Once a variable is declared with a certain data type, it can only hold values of that type.</p>\n<h3><strong>Declaring a Variable</strong></h3>\n<p>To declare a variable, you specify the type, give it a name, and optionally, assign it a value.</p>\n<p><strong>Syntax:</strong> <code>type variableName = value;</code></p>\n<pre><code class=\"language-java\">// Declaring an integer variable\nint userAge = 25;\n\n// Declaring a string variable\nString userName = \"John Doe\";\n\n// You can also declare first and assign later\nString message;\nmessage = \"Hello, Java!\";\n\nSystem.out.println(userAge);\n</code></pre>\n<hr>\n<h2>Primitive Data Types</h2>\n<p>Java has eight primitive data types. These are the most basic data types and are not objects.</p>\n<p>| Type | Size | Description |\n| :--- | :--- | :--- |\n| <code>byte</code> | 1 byte | Stores whole numbers from -128 to 127 |\n| <code>short</code> | 2 bytes | Stores whole numbers from -32,768 to 32,767 |\n| <code>int</code> | 4 bytes | Stores whole numbers from -2,147,483,648 to 2,147,483,647 |\n| <code>long</code> | 8 bytes | Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |\n| <code>float</code> | 4 bytes | Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits |\n| <code>double</code>| 8 bytes | Stores fractional numbers. Sufficient for storing 15 decimal digits |\n| <code>boolean</code>| 1 bit | Stores <code>true</code> or <code>false</code> values |\n| <code>char</code> | 2 bytes | Stores a single character/letter or ASCII values, surrounded by single quotes <code>'</code> |</p>\n<h3><strong>Commonly Used Primitives</strong></h3>\n<p>While there are eight, you will most frequently use these four:</p>\n<ul>\n<li><strong><code>int</code></strong>: The default choice for whole numbers.\n<pre><code class=\"language-java\">int score = 100;\n</code></pre>\n</li>\n<li><strong><code>double</code></strong>: The default choice for floating-point (decimal) numbers.\n<pre><code class=\"language-java\">double price = 19.99;\n</code></pre>\n</li>\n<li><strong><code>boolean</code></strong>: For true/false logic.\n<pre><code class=\"language-java\">boolean isLoggedIn = true;\n</code></pre>\n</li>\n<li><strong><code>char</code></strong>: For single characters.\n<pre><code class=\"language-java\">char grade = 'A';\n</code></pre>\n</li>\n</ul>\n<hr>\n<h2>The <code>String</code> Class</h2>\n<p>It's important to note that <strong><code>String</code> is not a primitive data type</strong> in Java. It's a class. However, it's so commonly used that it's often thought of as a basic data type. A <code>String</code> is a sequence of characters, and its value must be enclosed in double quotes <code>\"\"</code>.</p>\n<pre><code class=\"language-java\">String greeting = \"Welcome to the Nocturnal Codex!\";\n</code></pre>\n<p>This static typing system helps catch many common errors during compilation, before the program even runs, which is a key reason for Java's reputation for being robust and reliable.</p>"
+        },
+        "_id": "tutorials/java/variables-and-data-types.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/java/variables-and-data-types.md",
+          "sourceFileName": "variables-and-data-types.md",
+          "sourceFileDir": "tutorials/java",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/java/variables-and-data-types"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/java/java-variables-data-types",
+        "language": "java"
+      },
+      "documentHash": "1756604541861",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -1077,654 +1725,6 @@
         "language": "python"
       },
       "documentHash": "1756390599828",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/hello-world.md": {
-      "document": {
-        "title": "Java Hello World",
-        "slug": "hello-world-in-java",
-        "order": 2,
-        "description": "Learn to write, compile, and run your first 'Hello, World!' program in Java.",
-        "category": "Java Basics",
-        "body": {
-          "raw": "\n## Your First Java Program\n\nThe \"Hello, World!\" program is the traditional first step for learning a new language. It's a simple program that outputs `Hello, World!` to the console.\n\n### The Code\n\nIn Java, all code must reside inside a class. Here is the basic structure:\n\n```java\n// The file must be named HelloWorld.java\npublic class HelloWorld {\n    // This is the main method, the entry point of any Java application.\n    public static void main(String[] args) {\n        // This line prints the text to the console.\n        System.out.println(\"Hello, World!\");\n    }\n}\n```\n\n### Breaking Down the Code\n\n- **`public class HelloWorld`**: This declares a class named `HelloWorld`, which is `public`, meaning it's accessible by any other class. The class name **must** match the filename (`HelloWorld.java`).\n- **`public static void main(String[] args)`**: This is the main method.\n    - `public`: It can be called from anywhere.\n    - `static`: It can be run without creating an instance of the `HelloWorld` class.\n    - `void`: It does not return any value.\n    - `main`: This is the name of the method. The JVM looks for this specific method to start the program.\n    - `(String[] args)`: This accepts command-line arguments as an array of strings.\n- **`System.out.println(\"Hello, World!\");`**: This is the statement that does the printing.\n    - `System`: A final class from the `java.lang` package.\n    - `out`: A static member of the `System` class, which is an instance of `PrintStream`.\n    - `println()`: A method of the `PrintStream` class that prints the argument passed to it, followed by a new line.\n\n### How to Compile and Run\n\n1.  Save the code in a file named `HelloWorld.java`.\n2.  Open a terminal or command prompt.\n3.  Navigate to the directory where you saved the file.\n4.  **Compile the code**: Use the Java compiler (`javac`).\n    ```bash\n    javac HelloWorld.java\n    ```\n    This will create a `HelloWorld.class` file containing the Java bytecode.\n5.  **Run the program**: Use the Java Virtual Machine (`java`).\n    ```bash\n    java HelloWorld\n    ```\n    You should see the output: `Hello, World!`\n",
-          "html": "<h2>Your First Java Program</h2>\n<p>The \"Hello, World!\" program is the traditional first step for learning a new language. It's a simple program that outputs <code>Hello, World!</code> to the console.</p>\n<h3>The Code</h3>\n<p>In Java, all code must reside inside a class. Here is the basic structure:</p>\n<pre><code class=\"language-java\">// The file must be named HelloWorld.java\npublic class HelloWorld {\n    // This is the main method, the entry point of any Java application.\n    public static void main(String[] args) {\n        // This line prints the text to the console.\n        System.out.println(\"Hello, World!\");\n    }\n}\n</code></pre>\n<h3>Breaking Down the Code</h3>\n<ul>\n<li><strong><code>public class HelloWorld</code></strong>: This declares a class named <code>HelloWorld</code>, which is <code>public</code>, meaning it's accessible by any other class. The class name <strong>must</strong> match the filename (<code>HelloWorld.java</code>).</li>\n<li><strong><code>public static void main(String[] args)</code></strong>: This is the main method.\n<ul>\n<li><code>public</code>: It can be called from anywhere.</li>\n<li><code>static</code>: It can be run without creating an instance of the <code>HelloWorld</code> class.</li>\n<li><code>void</code>: It does not return any value.</li>\n<li><code>main</code>: This is the name of the method. The JVM looks for this specific method to start the program.</li>\n<li><code>(String[] args)</code>: This accepts command-line arguments as an array of strings.</li>\n</ul>\n</li>\n<li><strong><code>System.out.println(\"Hello, World!\");</code></strong>: This is the statement that does the printing.\n<ul>\n<li><code>System</code>: A final class from the <code>java.lang</code> package.</li>\n<li><code>out</code>: A static member of the <code>System</code> class, which is an instance of <code>PrintStream</code>.</li>\n<li><code>println()</code>: A method of the <code>PrintStream</code> class that prints the argument passed to it, followed by a new line.</li>\n</ul>\n</li>\n</ul>\n<h3>How to Compile and Run</h3>\n<ol>\n<li>Save the code in a file named <code>HelloWorld.java</code>.</li>\n<li>Open a terminal or command prompt.</li>\n<li>Navigate to the directory where you saved the file.</li>\n<li><strong>Compile the code</strong>: Use the Java compiler (<code>javac</code>).\n<pre><code class=\"language-bash\">javac HelloWorld.java\n</code></pre>\nThis will create a <code>HelloWorld.class</code> file containing the Java bytecode.</li>\n<li><strong>Run the program</strong>: Use the Java Virtual Machine (<code>java</code>).\n<pre><code class=\"language-bash\">java HelloWorld\n</code></pre>\nYou should see the output: <code>Hello, World!</code></li>\n</ol>"
-        },
-        "_id": "tutorials/java/hello-world.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/hello-world.md",
-          "sourceFileName": "hello-world.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/hello-world"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/hello-world-in-java",
-        "language": "java"
-      },
-      "documentHash": "1756602022107",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/variables-and-data-types.md": {
-      "document": {
-        "title": "Java Variables and Data Types",
-        "slug": "java-variables-data-types",
-        "order": 3,
-        "description": "Learn the fundamentals of storing data in Java. This guide covers declaring variables and the essential primitive data types like int, double, char, and boolean.",
-        "category": "Java Fundamentals",
-        "body": {
-          "raw": "\n## What is a Variable?\n\nIn Java, a variable is a container that holds a data value. It has a specific **data type**, which is a classification that tells the compiler how the programmer intends to use the data.\n\nUnlike dynamically typed languages like Python or JavaScript, Java is **statically typed**. This means you must declare the type of a variable before you can use it. Once a variable is declared with a certain data type, it can only hold values of that type.\n\n### **Declaring a Variable**\n\nTo declare a variable, you specify the type, give it a name, and optionally, assign it a value.\n\n**Syntax:** `type variableName = value;`\n\n```java\n// Declaring an integer variable\nint userAge = 25;\n\n// Declaring a string variable\nString userName = \"John Doe\";\n\n// You can also declare first and assign later\nString message;\nmessage = \"Hello, Java!\";\n\nSystem.out.println(userAge);\n```\n\n-----\n\n## Primitive Data Types\n\nJava has eight primitive data types. These are the most basic data types and are not objects.\n\n| Type | Size | Description |\n| :--- | :--- | :--- |\n| `byte` | 1 byte | Stores whole numbers from -128 to 127 |\n| `short` | 2 bytes | Stores whole numbers from -32,768 to 32,767 |\n| `int` | 4 bytes | Stores whole numbers from -2,147,483,648 to 2,147,483,647 |\n| `long` | 8 bytes | Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |\n| `float` | 4 bytes | Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits |\n| `double`| 8 bytes | Stores fractional numbers. Sufficient for storing 15 decimal digits |\n| `boolean`| 1 bit | Stores `true` or `false` values |\n| `char` | 2 bytes | Stores a single character/letter or ASCII values, surrounded by single quotes `'` |\n\n### **Commonly Used Primitives**\n\nWhile there are eight, you will most frequently use these four:\n\n  * **`int`**: The default choice for whole numbers.\n    ```java\n    int score = 100;\n    ```\n  * **`double`**: The default choice for floating-point (decimal) numbers.\n    ```java\n    double price = 19.99;\n    ```\n  * **`boolean`**: For true/false logic.\n    ```java\n    boolean isLoggedIn = true;\n    ```\n  * **`char`**: For single characters.\n    ```java\n    char grade = 'A';\n    ```\n\n-----\n\n## The `String` Class\n\nIt's important to note that **`String` is not a primitive data type** in Java. It's a class. However, it's so commonly used that it's often thought of as a basic data type. A `String` is a sequence of characters, and its value must be enclosed in double quotes `\"\"`.\n\n```java\nString greeting = \"Welcome to the Nocturnal Codex!\";\n```\n\nThis static typing system helps catch many common errors during compilation, before the program even runs, which is a key reason for Java's reputation for being robust and reliable.\n",
-          "html": "<h2>What is a Variable?</h2>\n<p>In Java, a variable is a container that holds a data value. It has a specific <strong>data type</strong>, which is a classification that tells the compiler how the programmer intends to use the data.</p>\n<p>Unlike dynamically typed languages like Python or JavaScript, Java is <strong>statically typed</strong>. This means you must declare the type of a variable before you can use it. Once a variable is declared with a certain data type, it can only hold values of that type.</p>\n<h3><strong>Declaring a Variable</strong></h3>\n<p>To declare a variable, you specify the type, give it a name, and optionally, assign it a value.</p>\n<p><strong>Syntax:</strong> <code>type variableName = value;</code></p>\n<pre><code class=\"language-java\">// Declaring an integer variable\nint userAge = 25;\n\n// Declaring a string variable\nString userName = \"John Doe\";\n\n// You can also declare first and assign later\nString message;\nmessage = \"Hello, Java!\";\n\nSystem.out.println(userAge);\n</code></pre>\n<hr>\n<h2>Primitive Data Types</h2>\n<p>Java has eight primitive data types. These are the most basic data types and are not objects.</p>\n<p>| Type | Size | Description |\n| :--- | :--- | :--- |\n| <code>byte</code> | 1 byte | Stores whole numbers from -128 to 127 |\n| <code>short</code> | 2 bytes | Stores whole numbers from -32,768 to 32,767 |\n| <code>int</code> | 4 bytes | Stores whole numbers from -2,147,483,648 to 2,147,483,647 |\n| <code>long</code> | 8 bytes | Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |\n| <code>float</code> | 4 bytes | Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits |\n| <code>double</code>| 8 bytes | Stores fractional numbers. Sufficient for storing 15 decimal digits |\n| <code>boolean</code>| 1 bit | Stores <code>true</code> or <code>false</code> values |\n| <code>char</code> | 2 bytes | Stores a single character/letter or ASCII values, surrounded by single quotes <code>'</code> |</p>\n<h3><strong>Commonly Used Primitives</strong></h3>\n<p>While there are eight, you will most frequently use these four:</p>\n<ul>\n<li><strong><code>int</code></strong>: The default choice for whole numbers.\n<pre><code class=\"language-java\">int score = 100;\n</code></pre>\n</li>\n<li><strong><code>double</code></strong>: The default choice for floating-point (decimal) numbers.\n<pre><code class=\"language-java\">double price = 19.99;\n</code></pre>\n</li>\n<li><strong><code>boolean</code></strong>: For true/false logic.\n<pre><code class=\"language-java\">boolean isLoggedIn = true;\n</code></pre>\n</li>\n<li><strong><code>char</code></strong>: For single characters.\n<pre><code class=\"language-java\">char grade = 'A';\n</code></pre>\n</li>\n</ul>\n<hr>\n<h2>The <code>String</code> Class</h2>\n<p>It's important to note that <strong><code>String</code> is not a primitive data type</strong> in Java. It's a class. However, it's so commonly used that it's often thought of as a basic data type. A <code>String</code> is a sequence of characters, and its value must be enclosed in double quotes <code>\"\"</code>.</p>\n<pre><code class=\"language-java\">String greeting = \"Welcome to the Nocturnal Codex!\";\n</code></pre>\n<p>This static typing system helps catch many common errors during compilation, before the program even runs, which is a key reason for Java's reputation for being robust and reliable.</p>"
-        },
-        "_id": "tutorials/java/variables-and-data-types.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/variables-and-data-types.md",
-          "sourceFileName": "variables-and-data-types.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/variables-and-data-types"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/java-variables-data-types",
-        "language": "java"
-      },
-      "documentHash": "1756604541861",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/operators.md": {
-      "document": {
-        "title": "Java Operators",
-        "slug": "java-operators",
-        "order": 4,
-        "description": "Learn about the different types of operators in Java, including arithmetic, assignment, comparison, and logical operators, to perform various operations.",
-        "category": "Java Fundamentals",
-        "body": {
-          "raw": "\n## What are Operators?\n\nOperators are special symbols that perform specific operations on one, two, or three operands, and then return a result. For instance, in `10 + 5`, the `+` is an operator that adds two numbers. Understanding operators is fundamental to performing calculations and logic in Java.\n\n-----\n\n### **1. Arithmetic Operators**\n\nThese are used to perform common mathematical operations.\n\n| Operator | Name | Description |\n| :--- | :--- | :--- |\n| `+` | Addition | Adds together two values |\n| `-` | Subtraction | Subtracts one value from another |\n| `*` | Multiplication | Multiplies two values |\n| `/` | Division | Divides one value by another |\n| `%` | Modulus | Returns the division remainder |\n| `++` | Increment | Increases the value of a variable by 1 |\n| `--` | Decrement | Decreases the value of a variable by 1 |\n\n```java\nint x = 10;\nint y = 3;\n\nSystem.out.println(x / y); // Output: 3 (integer division truncates the decimal)\nSystem.out.println(x % y); // Output: 1\n```\n\n-----\n\n### **2. Assignment Operators**\n\nThese operators are used to assign values to variables.\n\n| Operator | Example | Same As |\n| :--- | :--- | :--- |\n| `=` | `x = 5;` | `x = 5;` |\n| `+=` | `x += 3;` | `x = x + 3;` |\n| `-=` | `x -= 3;` | `x = x - 3;` |\n\n```java\nint value = 10;\nvalue += 5; // value is now 15\nSystem.out.println(value);\n```\n\n-----\n\n### **3. Comparison Operators**\n\nThese are used to compare two values and will always return a `boolean` value (`true` or `false`).\n\n| Operator | Name | Example |\n| :--- | :--- | :--- |\n| `==` | Equal to | `x == y` |\n| `!=` | Not equal | `x != y` |\n| `>` | Greater than | `x > y` |\n| `<` | Less than | `x < y` |\n| `>=` | Greater than or equal to | `x >= y` |\n| `<=` | Less than or equal to | `x <= y` |\n\n```java\nint a = 7;\nint b = 10;\n\nSystem.out.println(a > b); // Output: false\nSystem.out.println(a != b); // Output: true\n```\n\n-----\n\n### **4. Logical Operators**\n\nThese are used to determine the logic between variables or values, often to combine multiple conditions.\n\n| Operator | Name | Description |\n| :--- | :--- | :--- |\n| `&&` | Logical And | Returns `true` if both statements are true |\n| `||` | Logical Or | Returns `true` if one of the statements is true |\n| `!` | Logical Not | Reverses the result, returns `false` if the result is true |\n\n```java\nint age = 25;\nboolean hasLicense = true;\n\nif (age > 18 && hasLicense) {\n  System.out.println(\"You are allowed to drive.\");\n}\n```\n",
-          "html": "<h2>What are Operators?</h2>\n<p>Operators are special symbols that perform specific operations on one, two, or three operands, and then return a result. For instance, in <code>10 + 5</code>, the <code>+</code> is an operator that adds two numbers. Understanding operators is fundamental to performing calculations and logic in Java.</p>\n<hr>\n<h3><strong>1. Arithmetic Operators</strong></h3>\n<p>These are used to perform common mathematical operations.</p>\n<p>| Operator | Name | Description |\n| :--- | :--- | :--- |\n| <code>+</code> | Addition | Adds together two values |\n| <code>-</code> | Subtraction | Subtracts one value from another |\n| <code>*</code> | Multiplication | Multiplies two values |\n| <code>/</code> | Division | Divides one value by another |\n| <code>%</code> | Modulus | Returns the division remainder |\n| <code>++</code> | Increment | Increases the value of a variable by 1 |\n| <code>--</code> | Decrement | Decreases the value of a variable by 1 |</p>\n<pre><code class=\"language-java\">int x = 10;\nint y = 3;\n\nSystem.out.println(x / y); // Output: 3 (integer division truncates the decimal)\nSystem.out.println(x % y); // Output: 1\n</code></pre>\n<hr>\n<h3><strong>2. Assignment Operators</strong></h3>\n<p>These operators are used to assign values to variables.</p>\n<p>| Operator | Example | Same As |\n| :--- | :--- | :--- |\n| <code>=</code> | <code>x = 5;</code> | <code>x = 5;</code> |\n| <code>+=</code> | <code>x += 3;</code> | <code>x = x + 3;</code> |\n| <code>-=</code> | <code>x -= 3;</code> | <code>x = x - 3;</code> |</p>\n<pre><code class=\"language-java\">int value = 10;\nvalue += 5; // value is now 15\nSystem.out.println(value);\n</code></pre>\n<hr>\n<h3><strong>3. Comparison Operators</strong></h3>\n<p>These are used to compare two values and will always return a <code>boolean</code> value (<code>true</code> or <code>false</code>).</p>\n<p>| Operator | Name | Example |\n| :--- | :--- | :--- |\n| <code>==</code> | Equal to | <code>x == y</code> |\n| <code>!=</code> | Not equal | <code>x != y</code> |\n| <code>></code> | Greater than | <code>x > y</code> |\n| <code>&#x3C;</code> | Less than | <code>x &#x3C; y</code> |\n| <code>>=</code> | Greater than or equal to | <code>x >= y</code> |\n| <code>&#x3C;=</code> | Less than or equal to | <code>x &#x3C;= y</code> |</p>\n<pre><code class=\"language-java\">int a = 7;\nint b = 10;\n\nSystem.out.println(a > b); // Output: false\nSystem.out.println(a != b); // Output: true\n</code></pre>\n<hr>\n<h3><strong>4. Logical Operators</strong></h3>\n<p>These are used to determine the logic between variables or values, often to combine multiple conditions.</p>\n<p>| Operator | Name | Description |\n| :--- | :--- | :--- |\n| <code>&#x26;&#x26;</code> | Logical And | Returns <code>true</code> if both statements are true |\n| <code>||</code> | Logical Or | Returns <code>true</code> if one of the statements is true |\n| <code>!</code> | Logical Not | Reverses the result, returns <code>false</code> if the result is true |</p>\n<pre><code class=\"language-java\">int age = 25;\nboolean hasLicense = true;\n\nif (age > 18 &#x26;&#x26; hasLicense) {\n  System.out.println(\"You are allowed to drive.\");\n}\n</code></pre>"
-        },
-        "_id": "tutorials/java/operators.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/operators.md",
-          "sourceFileName": "operators.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/operators"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/java-operators",
-        "language": "java"
-      },
-      "documentHash": "1756604962649",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/control-flow.md": {
-      "document": {
-        "title": "Java Conditional Statements (if/else)",
-        "slug": "java-conditional-statements",
-        "order": 7,
-        "description": "Learn how to control the flow of your Java programs with conditional statements. Master the use of if, else if, and else to make decisions in your code.",
-        "category": "Control Flow",
-        "body": {
-          "raw": "\n## Making Decisions in Your Code\n\nConditional statements allow your program to execute a specific block of code only if a certain condition is true. They are the primary way a program can make decisions and behave differently in response to different inputs. The core conditional statements in Java are `if`, `else if`, and `else`.\n\n-----\n\n### **1. The `if` Statement**\n\nThe `if` statement is the most basic control flow statement. It tells your program to execute a certain section of code only if a particular test evaluates to `true`.\n\n```java\nint age = 20;\n\nif (age >= 18) {\n  System.out.println(\"You are an adult.\");\n}\n```\n\n**Output:**\n\n```text\nYou are an adult.\n```\n\nIf the `age` variable was less than 18, the `println` statement would be skipped.\n\n-----\n\n### **2. The `else` Statement**\n\nThe `else` statement is used to provide a secondary path of execution when the `if` clause evaluates to `false`.\n\n```java\nint temperature = 15;\n\nif (temperature > 25) {\n  System.out.println(\"It's a hot day!\");\n} else {\n  System.out.println(\"It's not a hot day.\");\n}\n```\n\n**Output:**\n\n```text\nIt's not a hot day.\n```\n\n-----\n\n### **3. The `else if` Statement**\n\nIf you have more than two possible conditions to check, you can use the `else if` statement. This allows you to chain multiple conditions together.\n\n```java\nint score = 85;\n\nif (score >= 90) {\n  System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n  System.out.println(\"Grade: B\");\n} else if (score >= 70) {\n  System.out.println(\"Grade: C\");\n} else {\n  System.out.println(\"Grade: D\");\n}\n```\n\n**Output:**\n\n```text\nGrade: B\n```\n\nThe program checks each condition in order and executes the code for the first one that is `true`, skipping all the rest.\n\n-----\n\n### **Ternary Operator**\n\nFor simple `if/else` conditions, Java has a shorter alternative called the ternary operator. It's a concise way to assign a value to a variable based on a condition.\n\n**Syntax:** `variable = (condition) ? valueIfTrue : valueIfFalse;`\n\n```java\nint time = 20;\nString result = (time < 18) ? \"Good day.\" : \"Good evening.\";\nSystem.out.println(result);\n```\n\n**Output:**\n\n```text\nGood evening.\n```\n\nBy mastering conditional statements, you gain the ability to write programs that can perform complex logic and respond intelligently to different scenarios.",
-          "html": "<h2>Making Decisions in Your Code</h2>\n<p>Conditional statements allow your program to execute a specific block of code only if a certain condition is true. They are the primary way a program can make decisions and behave differently in response to different inputs. The core conditional statements in Java are <code>if</code>, <code>else if</code>, and <code>else</code>.</p>\n<hr>\n<h3><strong>1. The <code>if</code> Statement</strong></h3>\n<p>The <code>if</code> statement is the most basic control flow statement. It tells your program to execute a certain section of code only if a particular test evaluates to <code>true</code>.</p>\n<pre><code class=\"language-java\">int age = 20;\n\nif (age >= 18) {\n  System.out.println(\"You are an adult.\");\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">You are an adult.\n</code></pre>\n<p>If the <code>age</code> variable was less than 18, the <code>println</code> statement would be skipped.</p>\n<hr>\n<h3><strong>2. The <code>else</code> Statement</strong></h3>\n<p>The <code>else</code> statement is used to provide a secondary path of execution when the <code>if</code> clause evaluates to <code>false</code>.</p>\n<pre><code class=\"language-java\">int temperature = 15;\n\nif (temperature > 25) {\n  System.out.println(\"It's a hot day!\");\n} else {\n  System.out.println(\"It's not a hot day.\");\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">It's not a hot day.\n</code></pre>\n<hr>\n<h3><strong>3. The <code>else if</code> Statement</strong></h3>\n<p>If you have more than two possible conditions to check, you can use the <code>else if</code> statement. This allows you to chain multiple conditions together.</p>\n<pre><code class=\"language-java\">int score = 85;\n\nif (score >= 90) {\n  System.out.println(\"Grade: A\");\n} else if (score >= 80) {\n  System.out.println(\"Grade: B\");\n} else if (score >= 70) {\n  System.out.println(\"Grade: C\");\n} else {\n  System.out.println(\"Grade: D\");\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Grade: B\n</code></pre>\n<p>The program checks each condition in order and executes the code for the first one that is <code>true</code>, skipping all the rest.</p>\n<hr>\n<h3><strong>Ternary Operator</strong></h3>\n<p>For simple <code>if/else</code> conditions, Java has a shorter alternative called the ternary operator. It's a concise way to assign a value to a variable based on a condition.</p>\n<p><strong>Syntax:</strong> <code>variable = (condition) ? valueIfTrue : valueIfFalse;</code></p>\n<pre><code class=\"language-java\">int time = 20;\nString result = (time &#x3C; 18) ? \"Good day.\" : \"Good evening.\";\nSystem.out.println(result);\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Good evening.\n</code></pre>\n<p>By mastering conditional statements, you gain the ability to write programs that can perform complex logic and respond intelligently to different scenarios.</p>"
-        },
-        "_id": "tutorials/java/control-flow.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/control-flow.md",
-          "sourceFileName": "control-flow.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/control-flow"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/java-conditional-statements",
-        "language": "java"
-      },
-      "documentHash": "1756605246321",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/setting-up-environment.md": {
-      "document": {
-        "title": "Setting Up Your Environment",
-        "slug": "setting-up-environment",
-        "order": 2,
-        "description": "How to set up your Java development environment.",
-        "category": "Java Basics",
-        "body": {
-          "raw": "\n## Setting Up Your Environment\n\nThis tutorial will cover setting up your Java development environment. Content to be added.\n",
-          "html": "<h2>Setting Up Your Environment</h2>\n<p>This tutorial will cover setting up your Java development environment. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/setting-up-environment.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/setting-up-environment.md",
-          "sourceFileName": "setting-up-environment.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/setting-up-environment"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/setting-up-environment",
-        "language": "java"
-      },
-      "documentHash": "1756604312278",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/methods.md": {
-      "document": {
-        "title": "Methods (Functions)",
-        "slug": "methods",
-        "order": 12,
-        "description": "Learn about methods in Java.",
-        "category": "Core Java Concepts",
-        "body": {
-          "raw": "\n## Methods (Functions)\n\nThis tutorial will cover methods in Java. Content to be added.\n",
-          "html": "<h2>Methods (Functions)</h2>\n<p>This tutorial will cover methods in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/methods.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/methods.md",
-          "sourceFileName": "methods.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/methods"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/methods",
-        "language": "java"
-      },
-      "documentHash": "1756604312326",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/switch-statement.md": {
-      "document": {
-        "title": "The Java switch Statement",
-        "slug": "java-switch-statement",
-        "order": 8,
-        "description": "Learn how to use the switch statement in Java as an efficient alternative to long if-else if chains for multi-way branching.",
-        "category": "Control Flow",
-        "body": {
-          "raw": "\n## An Alternative to `if-else if`\n\nThe `switch` statement is a control flow statement that provides a clean and efficient way to execute different blocks of code based on the value of a variable or an expression. It's often used as an alternative to a long series of `if-else if-else` statements, especially when you are comparing a single variable against multiple possible values.\n\n### **Syntax**\n\nThe basic syntax of a `switch` statement looks like this:\n\n```java\nswitch (expression) {\n  case value1:\n    // Code to be executed if expression matches value1\n    break;\n  case value2:\n    // Code to be executed if expression matches value2\n    break;\n  // ... you can have any number of case statements\n  default:\n    // Code to be executed if expression doesn't match any case\n}\n```\n\n### **How it Works**\n\n1.  The `expression` is evaluated once.\n2.  The value of the expression is compared with the values of each `case`.\n3.  If there is a match, the associated block of code is executed.\n4.  The `break` keyword is crucial. It stops the execution of more code and exits the `switch` block.\n5.  The `default` keyword is optional. It specifies some code to run if there is no case match.\n\n-----\n\n## Example: Day of the Week\n\nLet's use a `switch` statement to print the name of the day of the week based on a number.\n\n```java\npublic class DayOfWeek {\n  public static void main(String[] args) {\n    int day = 4;\n    String dayString;\n\n    switch (day) {\n      case 1:\n        dayString = \"Monday\";\n        break;\n      case 2:\n        dayString = \"Tuesday\";\n        break;\n      case 3:\n        dayString = \"Wednesday\";\n        break;\n      case 4:\n        dayString = \"Thursday\";\n        break;\n      case 5:\n        dayString = \"Friday\";\n        break;\n      case 6:\n        dayString = \"Saturday\";\n        break;\n      case 7:\n        dayString = \"Sunday\";\n        break;\n      default:\n        dayString = \"Invalid day\";\n        break;\n    }\n    System.out.println(dayString);\n  }\n}\n```\n\n**Output:**\n\n```text\nThursday\n```\n\n-----\n\n## The Importance of `break`\n\nIf you forget to add a `break` statement at the end of a case, the execution will \"fall through\" to the next case and execute its code as well, until a `break` or the end of the `switch` block is reached. This is sometimes intentional, but most often it's a bug.\n\n```java\nint number = 2;\nswitch (number) {\n  case 1:\n    System.out.println(\"One\");\n  case 2:\n    System.out.println(\"Two\"); // No break here\n  case 3:\n    System.out.println(\"Three\");\n    break;\n}\n```\n\n**Output:**\n\n```text\nTwo\nThree\n```\n\nBecause there was no `break` in `case 2`, the program continued to execute the code in `case 3`.\n\nThe `switch` statement is a powerful tool for making your code cleaner and more readable when dealing with multiple, distinct choices.\n",
-          "html": "<h2>An Alternative to <code>if-else if</code></h2>\n<p>The <code>switch</code> statement is a control flow statement that provides a clean and efficient way to execute different blocks of code based on the value of a variable or an expression. It's often used as an alternative to a long series of <code>if-else if-else</code> statements, especially when you are comparing a single variable against multiple possible values.</p>\n<h3><strong>Syntax</strong></h3>\n<p>The basic syntax of a <code>switch</code> statement looks like this:</p>\n<pre><code class=\"language-java\">switch (expression) {\n  case value1:\n    // Code to be executed if expression matches value1\n    break;\n  case value2:\n    // Code to be executed if expression matches value2\n    break;\n  // ... you can have any number of case statements\n  default:\n    // Code to be executed if expression doesn't match any case\n}\n</code></pre>\n<h3><strong>How it Works</strong></h3>\n<ol>\n<li>The <code>expression</code> is evaluated once.</li>\n<li>The value of the expression is compared with the values of each <code>case</code>.</li>\n<li>If there is a match, the associated block of code is executed.</li>\n<li>The <code>break</code> keyword is crucial. It stops the execution of more code and exits the <code>switch</code> block.</li>\n<li>The <code>default</code> keyword is optional. It specifies some code to run if there is no case match.</li>\n</ol>\n<hr>\n<h2>Example: Day of the Week</h2>\n<p>Let's use a <code>switch</code> statement to print the name of the day of the week based on a number.</p>\n<pre><code class=\"language-java\">public class DayOfWeek {\n  public static void main(String[] args) {\n    int day = 4;\n    String dayString;\n\n    switch (day) {\n      case 1:\n        dayString = \"Monday\";\n        break;\n      case 2:\n        dayString = \"Tuesday\";\n        break;\n      case 3:\n        dayString = \"Wednesday\";\n        break;\n      case 4:\n        dayString = \"Thursday\";\n        break;\n      case 5:\n        dayString = \"Friday\";\n        break;\n      case 6:\n        dayString = \"Saturday\";\n        break;\n      case 7:\n        dayString = \"Sunday\";\n        break;\n      default:\n        dayString = \"Invalid day\";\n        break;\n    }\n    System.out.println(dayString);\n  }\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Thursday\n</code></pre>\n<hr>\n<h2>The Importance of <code>break</code></h2>\n<p>If you forget to add a <code>break</code> statement at the end of a case, the execution will \"fall through\" to the next case and execute its code as well, until a <code>break</code> or the end of the <code>switch</code> block is reached. This is sometimes intentional, but most often it's a bug.</p>\n<pre><code class=\"language-java\">int number = 2;\nswitch (number) {\n  case 1:\n    System.out.println(\"One\");\n  case 2:\n    System.out.println(\"Two\"); // No break here\n  case 3:\n    System.out.println(\"Three\");\n    break;\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">Two\nThree\n</code></pre>\n<p>Because there was no <code>break</code> in <code>case 2</code>, the program continued to execute the code in <code>case 3</code>.</p>\n<p>The <code>switch</code> statement is a powerful tool for making your code cleaner and more readable when dealing with multiple, distinct choices.</p>"
-        },
-        "_id": "tutorials/java/switch-statement.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/switch-statement.md",
-          "sourceFileName": "switch-statement.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/switch-statement"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/java-switch-statement",
-        "language": "java"
-      },
-      "documentHash": "1756605299906",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/arrays.md": {
-      "document": {
-        "title": "Arrays",
-        "slug": "arrays",
-        "order": 11,
-        "description": "Learn about arrays in Java.",
-        "category": "Core Java Concepts",
-        "body": {
-          "raw": "\n## Arrays\n\nThis tutorial will cover arrays in Java. Content to be added.\n",
-          "html": "<h2>Arrays</h2>\n<p>This tutorial will cover arrays in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/arrays.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/arrays.md",
-          "sourceFileName": "arrays.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/arrays"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/arrays",
-        "language": "java"
-      },
-      "documentHash": "1756604312311",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/strings.md": {
-      "document": {
-        "title": "Working with Strings in Java",
-        "slug": "java-working-with-strings",
-        "order": 10,
-        "description": "Learn how to work with the String class in Java. This guide covers string creation, concatenation, and a variety of essential string methods.",
-        "category": "Core Java Concepts",
-        "body": {
-          "raw": "\n## The `String` Class\n\nIn Java, a string is an object that represents a sequence of characters. It's not a primitive data type but a class from the `java.lang` package. `String` objects are **immutable**, which means once a string is created, its value cannot be changed. Any method that appears to modify a string actually creates and returns a new string.\n\nYou create a string by enclosing text in double quotes `\"\"`.\n\n```java\n// Creating a string\nString greeting = \"Hello, World!\";\n```\n\n## String Concatenation\n\nYou can join strings together using the `+` operator. This is known as concatenation.\n\n```java\nString firstName = \"John\";\nString lastName = \"Doe\";\nString fullName = firstName + \" \" + lastName;\n\nSystem.out.println(fullName); // Output: John Doe\n```\n\nIf you concatenate a string with another data type (like an `int`), Java will automatically convert the other type to a string.\n\n```java\nString message = \"Your score is: \" + 100;\nSystem.out.println(message); // Output: Your score is: 100\n```\n\n-----\n\n## Common String Methods\n\nThe `String` class provides many useful methods for manipulating strings. Here are some of the most common ones:\n\n| Method | Description |\n| :--- | :--- |\n| `length()` | Returns the number of characters in the string. |\n| `toUpperCase()` | Converts the string to uppercase letters. |\n| `toLowerCase()` | Converts the string to lowercase letters. |\n| `trim()` | Removes whitespace from both ends of the string. |\n| `charAt(int index)` | Returns the character at the specified index. |\n| `substring(int beginIndex, int endIndex)` | Extracts a part of the string. |\n| `equals(String anotherString)` | Compares two strings for equality. (Use this instead of `==` for strings). |\n| `contains(CharSequence s)` | Checks whether a string contains a sequence of characters. |\n| `replace(char oldChar, char newChar)` | Replaces a specified character with a new one. |\n\n### **Examples in Action**\n\n```java\npublic class StringMethodsExample {\n  public static void main(String[] args) {\n    String text = \"   Java Programming   \";\n\n    System.out.println(\"Length: \" + text.length()); // Output: 21\n    System.out.println(\"Uppercase: \" + text.toUpperCase()); // Output: \"   JAVA PROGRAMMING   \"\n    System.out.println(\"Trimmed: \" + text.trim()); // Output: \"Java Programming\"\n    System.out.println(\"Substring: \" + text.trim().substring(0, 4)); // Output: \"Java\"\n    System.out.println(\"Contains 'Pro'?: \" + text.contains(\"Pro\")); // Output: true\n  }\n}\n```\n\n### **Comparing Strings: `equals()` vs `==`**\n\nA common mistake for beginners is using the `==` operator to compare strings. The `==` operator checks if two variables refer to the exact same object in memory. The `equals()` method, however, checks if the actual character sequences of the strings are the same.\n\n**Always use `.equals()` to compare the content of strings.**\n\n```java\nString str1 = new String(\"hello\");\nString str2 = new String(\"hello\");\n\nSystem.out.println(str1 == str2);      // Output: false (they are different objects)\nSystem.out.println(str1.equals(str2)); // Output: true (their content is the same)\n```",
-          "html": "<h2>The <code>String</code> Class</h2>\n<p>In Java, a string is an object that represents a sequence of characters. It's not a primitive data type but a class from the <code>java.lang</code> package. <code>String</code> objects are <strong>immutable</strong>, which means once a string is created, its value cannot be changed. Any method that appears to modify a string actually creates and returns a new string.</p>\n<p>You create a string by enclosing text in double quotes <code>\"\"</code>.</p>\n<pre><code class=\"language-java\">// Creating a string\nString greeting = \"Hello, World!\";\n</code></pre>\n<h2>String Concatenation</h2>\n<p>You can join strings together using the <code>+</code> operator. This is known as concatenation.</p>\n<pre><code class=\"language-java\">String firstName = \"John\";\nString lastName = \"Doe\";\nString fullName = firstName + \" \" + lastName;\n\nSystem.out.println(fullName); // Output: John Doe\n</code></pre>\n<p>If you concatenate a string with another data type (like an <code>int</code>), Java will automatically convert the other type to a string.</p>\n<pre><code class=\"language-java\">String message = \"Your score is: \" + 100;\nSystem.out.println(message); // Output: Your score is: 100\n</code></pre>\n<hr>\n<h2>Common String Methods</h2>\n<p>The <code>String</code> class provides many useful methods for manipulating strings. Here are some of the most common ones:</p>\n<p>| Method | Description |\n| :--- | :--- |\n| <code>length()</code> | Returns the number of characters in the string. |\n| <code>toUpperCase()</code> | Converts the string to uppercase letters. |\n| <code>toLowerCase()</code> | Converts the string to lowercase letters. |\n| <code>trim()</code> | Removes whitespace from both ends of the string. |\n| <code>charAt(int index)</code> | Returns the character at the specified index. |\n| <code>substring(int beginIndex, int endIndex)</code> | Extracts a part of the string. |\n| <code>equals(String anotherString)</code> | Compares two strings for equality. (Use this instead of <code>==</code> for strings). |\n| <code>contains(CharSequence s)</code> | Checks whether a string contains a sequence of characters. |\n| <code>replace(char oldChar, char newChar)</code> | Replaces a specified character with a new one. |</p>\n<h3><strong>Examples in Action</strong></h3>\n<pre><code class=\"language-java\">public class StringMethodsExample {\n  public static void main(String[] args) {\n    String text = \"   Java Programming   \";\n\n    System.out.println(\"Length: \" + text.length()); // Output: 21\n    System.out.println(\"Uppercase: \" + text.toUpperCase()); // Output: \"   JAVA PROGRAMMING   \"\n    System.out.println(\"Trimmed: \" + text.trim()); // Output: \"Java Programming\"\n    System.out.println(\"Substring: \" + text.trim().substring(0, 4)); // Output: \"Java\"\n    System.out.println(\"Contains 'Pro'?: \" + text.contains(\"Pro\")); // Output: true\n  }\n}\n</code></pre>\n<h3><strong>Comparing Strings: <code>equals()</code> vs <code>==</code></strong></h3>\n<p>A common mistake for beginners is using the <code>==</code> operator to compare strings. The <code>==</code> operator checks if two variables refer to the exact same object in memory. The <code>equals()</code> method, however, checks if the actual character sequences of the strings are the same.</p>\n<p><strong>Always use <code>.equals()</code> to compare the content of strings.</strong></p>\n<pre><code class=\"language-java\">String str1 = new String(\"hello\");\nString str2 = new String(\"hello\");\n\nSystem.out.println(str1 == str2);      // Output: false (they are different objects)\nSystem.out.println(str1.equals(str2)); // Output: true (their content is the same)\n</code></pre>"
-        },
-        "_id": "tutorials/java/strings.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/strings.md",
-          "sourceFileName": "strings.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/strings"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/java-working-with-strings",
-        "language": "java"
-      },
-      "documentHash": "1756605416275",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/user-input.md": {
-      "document": {
-        "title": "Java User Input with the Scanner Class",
-        "slug": "java-user-input",
-        "order": 5,
-        "description": "Learn how to make your Java applications interactive by reading input from the user's keyboard using the powerful and versatile Scanner class.",
-        "category": "Java Fundamentals",
-        "body": {
-          "raw": "\n## Making Programs Interactive\n\nTo create powerful console applications, you need a way to get input from the user. In Java, the most common way to do this is by using the `Scanner` class, which is part of the `java.util` package.\n\nThe `Scanner` class provides various methods for reading different types of data, such as integers, doubles, and strings.\n\n-----\n\n## How to Use the `Scanner` Class\n\nUsing the `Scanner` is a three-step process:\n\n### **1. Import the `Scanner` Class**\n\nFirst, you need to import the `Scanner` class into your program. This is done by adding the following line at the very top of your `.java` file, before the `public class` line.\n\n```java\nimport java.util.Scanner; // Import the Scanner class\n```\n\n### **2. Create a `Scanner` Object**\n\nNext, inside your `main` method, you need to create an instance (an object) of the `Scanner` class. You tell it to read from `System.in`, which is the standard input stream (usually the keyboard).\n\n```java\npublic class UserInputExample {\n  public static void main(String[] args) {\n    Scanner myScanner = new Scanner(System.in); // Create a Scanner object\n  }\n}\n```\n\n### **3. Read User Input**\n\nNow you can use the various methods of the `Scanner` object to read input.\n\n| Method | Description |\n| :--- | :--- |\n| `nextLine()` | Reads a line of text (a `String`) |\n| `nextInt()` | Reads an integer value (an `int`) |\n| `nextDouble()`| Reads a double value (a `double`) |\n| `nextBoolean()`| Reads a boolean value (a `boolean`) |\n\n-----\n\n## Example: A Simple User Profile\n\nLet's create a program that asks for a user's name, age, and salary, and then displays the information back to them.\n\n```java\nimport java.util.Scanner; // Step 1: Import\n\npublic class UserProfile {\n  public static void main(String[] args) {\n    // Step 2: Create a Scanner object\n    Scanner inputReader = new Scanner(System.in);\n    \n    // Step 3: Read input\n    System.out.println(\"Enter your username:\");\n    String userName = inputReader.nextLine(); // Reads a line of text\n    \n    System.out.println(\"Enter your age:\");\n    int age = inputReader.nextInt(); // Reads an integer\n    \n    System.out.println(\"Enter your salary:\");\n    double salary = inputReader.nextDouble(); // Reads a double\n    \n    // Display the collected information\n    System.out.println(\"\\n--- User Profile ---\");\n    System.out.println(\"Username: \" + userName);\n    System.out.println(\"Age: \" + age);\n    System.out.println(\"Salary: \" + salary);\n    \n    // It's good practice to close the scanner when you're done\n    inputReader.close();\n  }\n}\n```\n\nBy using the `Scanner` class, you can easily create interactive console-based applications that respond to user input.",
-          "html": "<h2>Making Programs Interactive</h2>\n<p>To create powerful console applications, you need a way to get input from the user. In Java, the most common way to do this is by using the <code>Scanner</code> class, which is part of the <code>java.util</code> package.</p>\n<p>The <code>Scanner</code> class provides various methods for reading different types of data, such as integers, doubles, and strings.</p>\n<hr>\n<h2>How to Use the <code>Scanner</code> Class</h2>\n<p>Using the <code>Scanner</code> is a three-step process:</p>\n<h3><strong>1. Import the <code>Scanner</code> Class</strong></h3>\n<p>First, you need to import the <code>Scanner</code> class into your program. This is done by adding the following line at the very top of your <code>.java</code> file, before the <code>public class</code> line.</p>\n<pre><code class=\"language-java\">import java.util.Scanner; // Import the Scanner class\n</code></pre>\n<h3><strong>2. Create a <code>Scanner</code> Object</strong></h3>\n<p>Next, inside your <code>main</code> method, you need to create an instance (an object) of the <code>Scanner</code> class. You tell it to read from <code>System.in</code>, which is the standard input stream (usually the keyboard).</p>\n<pre><code class=\"language-java\">public class UserInputExample {\n  public static void main(String[] args) {\n    Scanner myScanner = new Scanner(System.in); // Create a Scanner object\n  }\n}\n</code></pre>\n<h3><strong>3. Read User Input</strong></h3>\n<p>Now you can use the various methods of the <code>Scanner</code> object to read input.</p>\n<p>| Method | Description |\n| :--- | :--- |\n| <code>nextLine()</code> | Reads a line of text (a <code>String</code>) |\n| <code>nextInt()</code> | Reads an integer value (an <code>int</code>) |\n| <code>nextDouble()</code>| Reads a double value (a <code>double</code>) |\n| <code>nextBoolean()</code>| Reads a boolean value (a <code>boolean</code>) |</p>\n<hr>\n<h2>Example: A Simple User Profile</h2>\n<p>Let's create a program that asks for a user's name, age, and salary, and then displays the information back to them.</p>\n<pre><code class=\"language-java\">import java.util.Scanner; // Step 1: Import\n\npublic class UserProfile {\n  public static void main(String[] args) {\n    // Step 2: Create a Scanner object\n    Scanner inputReader = new Scanner(System.in);\n    \n    // Step 3: Read input\n    System.out.println(\"Enter your username:\");\n    String userName = inputReader.nextLine(); // Reads a line of text\n    \n    System.out.println(\"Enter your age:\");\n    int age = inputReader.nextInt(); // Reads an integer\n    \n    System.out.println(\"Enter your salary:\");\n    double salary = inputReader.nextDouble(); // Reads a double\n    \n    // Display the collected information\n    System.out.println(\"\\n--- User Profile ---\");\n    System.out.println(\"Username: \" + userName);\n    System.out.println(\"Age: \" + age);\n    System.out.println(\"Salary: \" + salary);\n    \n    // It's good practice to close the scanner when you're done\n    inputReader.close();\n  }\n}\n</code></pre>\n<p>By using the <code>Scanner</code> class, you can easily create interactive console-based applications that respond to user input.</p>"
-        },
-        "_id": "tutorials/java/user-input.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/user-input.md",
-          "sourceFileName": "user-input.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/user-input"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/java-user-input",
-        "language": "java"
-      },
-      "documentHash": "1756605127397",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/loops.md": {
-      "document": {
-        "title": "Java Loops (for and while)",
-        "slug": "java-loops",
-        "order": 9,
-        "description": "Learn how to automate repetitive tasks in Java using for and while loops. This guide covers how to iterate a specific number of times and repeat code based on a condition.",
-        "category": "Control Flow",
-        "body": {
-          "raw": "\n## Repeating Code with Loops\n\nIn programming, you often need to execute the same block of code multiple times. Instead of writing the same code over and over, you use loops. Loops are a fundamental control structure that allows you to automate repetitive tasks. Java's two primary loops are the `for` loop and the `while` loop.\n\n-----\n\n### **1. The `for` Loop**\n\nThe `for` loop is ideal when you know exactly how many times you want to execute a block of code.\n\nIt consists of three parts, separated by semicolons:\n\n1.  **Initialization**: A counter variable is declared and initialized. This part is executed once, before the loop starts.\n2.  **Condition**: The loop continues as long as this condition is `true`.\n3.  **Iteration**: An expression that is executed after each iteration, usually to increment or decrement the counter.\n\n<!-- end list -->\n\n```java\npublic class ForLoopExample {\n  public static void main(String[] args) {\n    // This loop will print numbers from 0 to 4\n    for (int i = 0; i < 5; i++) {\n      System.out.println(\"The current number is: \" + i);\n    }\n  }\n}\n```\n\n**Output:**\n\n```text\nThe current number is: 0\nThe current number is: 1\nThe current number is: 2\nThe current number is: 3\nThe current number is: 4\n```\n\n-----\n\n### **2. The `while` Loop**\n\nThe `while` loop is used to repeat a block of code as long as a specified condition is `true`. It's best used when you don't know the exact number of iterations beforehand.\n\n```java\npublic class WhileLoopExample {\n  public static void main(String[] args) {\n    int i = 0;\n    while (i < 5) {\n      System.out.println(\"The current number is: \" + i);\n      i++; // It is crucial to update the variable in the condition\n    }\n  }\n}\n```\n\nThe output for this `while` loop is the same as the `for` loop example. **Warning:** If you forget to update the variable that the condition depends on (in this case, `i++`), the condition will always be `true`, and you will create an infinite loop.\n\n-----\n\n### **Loop Control Statements**\n\nYou can alter the flow of a loop using control statements.\n\n  * **`break`**: Immediately exits the loop.\n\n    ```java\n    for (int i = 0; i < 10; i++) {\n      if (i == 4) {\n        break; // Stop the loop when i equals 4\n      }\n      System.out.println(i);\n    }\n    // This will print 0, 1, 2, 3\n    ```\n\n  * **`continue`**: Skips the current iteration and proceeds to the next one.\n\n    ```java\n    for (int i = 0; i < 5; i++) {\n      if (i == 2) {\n        continue; // Skip the rest of the loop when i is 2\n      }\n      System.out.println(i);\n    }\n    // This will print 0, 1, 3, 4\n    ```",
-          "html": "<h2>Repeating Code with Loops</h2>\n<p>In programming, you often need to execute the same block of code multiple times. Instead of writing the same code over and over, you use loops. Loops are a fundamental control structure that allows you to automate repetitive tasks. Java's two primary loops are the <code>for</code> loop and the <code>while</code> loop.</p>\n<hr>\n<h3><strong>1. The <code>for</code> Loop</strong></h3>\n<p>The <code>for</code> loop is ideal when you know exactly how many times you want to execute a block of code.</p>\n<p>It consists of three parts, separated by semicolons:</p>\n<ol>\n<li><strong>Initialization</strong>: A counter variable is declared and initialized. This part is executed once, before the loop starts.</li>\n<li><strong>Condition</strong>: The loop continues as long as this condition is <code>true</code>.</li>\n<li><strong>Iteration</strong>: An expression that is executed after each iteration, usually to increment or decrement the counter.</li>\n</ol>\n<pre><code class=\"language-java\">public class ForLoopExample {\n  public static void main(String[] args) {\n    // This loop will print numbers from 0 to 4\n    for (int i = 0; i &#x3C; 5; i++) {\n      System.out.println(\"The current number is: \" + i);\n    }\n  }\n}\n</code></pre>\n<p><strong>Output:</strong></p>\n<pre><code class=\"language-text\">The current number is: 0\nThe current number is: 1\nThe current number is: 2\nThe current number is: 3\nThe current number is: 4\n</code></pre>\n<hr>\n<h3><strong>2. The <code>while</code> Loop</strong></h3>\n<p>The <code>while</code> loop is used to repeat a block of code as long as a specified condition is <code>true</code>. It's best used when you don't know the exact number of iterations beforehand.</p>\n<pre><code class=\"language-java\">public class WhileLoopExample {\n  public static void main(String[] args) {\n    int i = 0;\n    while (i &#x3C; 5) {\n      System.out.println(\"The current number is: \" + i);\n      i++; // It is crucial to update the variable in the condition\n    }\n  }\n}\n</code></pre>\n<p>The output for this <code>while</code> loop is the same as the <code>for</code> loop example. <strong>Warning:</strong> If you forget to update the variable that the condition depends on (in this case, <code>i++</code>), the condition will always be <code>true</code>, and you will create an infinite loop.</p>\n<hr>\n<h3><strong>Loop Control Statements</strong></h3>\n<p>You can alter the flow of a loop using control statements.</p>\n<ul>\n<li>\n<p><strong><code>break</code></strong>: Immediately exits the loop.</p>\n<pre><code class=\"language-java\">for (int i = 0; i &#x3C; 10; i++) {\n  if (i == 4) {\n    break; // Stop the loop when i equals 4\n  }\n  System.out.println(i);\n}\n// This will print 0, 1, 2, 3\n</code></pre>\n</li>\n<li>\n<p><strong><code>continue</code></strong>: Skips the current iteration and proceeds to the next one.</p>\n<pre><code class=\"language-java\">for (int i = 0; i &#x3C; 5; i++) {\n  if (i == 2) {\n    continue; // Skip the rest of the loop when i is 2\n  }\n  System.out.println(i);\n}\n// This will print 0, 1, 3, 4\n</code></pre>\n</li>\n</ul>"
-        },
-        "_id": "tutorials/java/loops.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/loops.md",
-          "sourceFileName": "loops.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/loops"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/java-loops",
-        "language": "java"
-      },
-      "documentHash": "1756605341143",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/collections-framework.md": {
-      "document": {
-        "title": "The Java Collections Framework",
-        "slug": "collections-framework",
-        "order": 20,
-        "description": "Learn about the Java Collections Framework.",
-        "category": "Intermediate Java",
-        "body": {
-          "raw": "\n## The Java Collections Framework\n\nThis tutorial will cover the Java Collections Framework. Content to be added.\n",
-          "html": "<h2>The Java Collections Framework</h2>\n<p>This tutorial will cover the Java Collections Framework. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/collections-framework.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/collections-framework.md",
-          "sourceFileName": "collections-framework.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/collections-framework"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/collections-framework",
-        "language": "java"
-      },
-      "documentHash": "1756604312338",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/constructors.md": {
-      "document": {
-        "title": "Constructors",
-        "slug": "constructors",
-        "order": 15,
-        "description": "Learn about constructors in Java.",
-        "category": "Object-Oriented Programming (OOP)",
-        "body": {
-          "raw": "\n## Constructors\n\nThis tutorial will cover constructors in Java. Content to be added.\n",
-          "html": "<h2>Constructors</h2>\n<p>This tutorial will cover constructors in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/constructors.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/constructors.md",
-          "sourceFileName": "constructors.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/constructors"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/constructors",
-        "language": "java"
-      },
-      "documentHash": "1756604312330",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/creating-a-class.md": {
-      "document": {
-        "title": "Creating Your First Class",
-        "slug": "creating-a-class",
-        "order": 14,
-        "description": "Learn how to create a class in Java.",
-        "category": "Object-Oriented Programming (OOP)",
-        "body": {
-          "raw": "\n## Creating Your First Class\n\nThis tutorial will cover creating a class in Java. Content to be added.\n",
-          "html": "<h2>Creating Your First Class</h2>\n<p>This tutorial will cover creating a class in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/creating-a-class.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/creating-a-class.md",
-          "sourceFileName": "creating-a-class.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/creating-a-class"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/creating-a-class",
-        "language": "java"
-      },
-      "documentHash": "1756604312329",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/exception-handling.md": {
-      "document": {
-        "title": "Exception Handling (try/catch/finally)",
-        "slug": "exception-handling",
-        "order": 19,
-        "description": "Learn about exception handling in Java.",
-        "category": "Intermediate Java",
-        "body": {
-          "raw": "\n## Exception Handling (try/catch/finally)\n\nThis tutorial will cover exception handling in Java. Content to be added.\n",
-          "html": "<h2>Exception Handling (try/catch/finally)</h2>\n<p>This tutorial will cover exception handling in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/exception-handling.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/exception-handling.md",
-          "sourceFileName": "exception-handling.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/exception-handling"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/exception-handling",
-        "language": "java"
-      },
-      "documentHash": "1756604312337",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/getters-and-setters.md": {
-      "document": {
-        "title": "Getters and Setters (Encapsulation)",
-        "slug": "getters-and-setters",
-        "order": 16,
-        "description": "Learn about getters and setters and encapsulation in Java.",
-        "category": "Object-Oriented Programming (OOP)",
-        "body": {
-          "raw": "\n## Getters and Setters (Encapsulation)\n\nThis tutorial will cover getters, setters, and encapsulation in Java. Content to be added.\n",
-          "html": "<h2>Getters and Setters (Encapsulation)</h2>\n<p>This tutorial will cover getters, setters, and encapsulation in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/getters-and-setters.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/getters-and-setters.md",
-          "sourceFileName": "getters-and-setters.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/getters-and-setters"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/getters-and-setters",
-        "language": "java"
-      },
-      "documentHash": "1756604312333",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/inheritance.md": {
-      "document": {
-        "title": "Inheritance in Action",
-        "slug": "inheritance",
-        "order": 17,
-        "description": "Learn about inheritance in Java.",
-        "category": "Object-Oriented Programming (OOP)",
-        "body": {
-          "raw": "\n## Inheritance in Action\n\nThis tutorial will cover inheritance in Java. Content to be added.\n",
-          "html": "<h2>Inheritance in Action</h2>\n<p>This tutorial will cover inheritance in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/inheritance.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/inheritance.md",
-          "sourceFileName": "inheritance.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/inheritance"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/inheritance",
-        "language": "java"
-      },
-      "documentHash": "1756604312333",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/oop-concepts.md": {
-      "document": {
-        "title": "OOP Concepts",
-        "slug": "oop-concepts",
-        "order": 13,
-        "description": "Learn about Object-Oriented Programming concepts in Java.",
-        "category": "Object-Oriented Programming (OOP)",
-        "body": {
-          "raw": "\n## OOP Concepts\n\nThis tutorial will cover OOP concepts in Java. Content to be added.\n",
-          "html": "<h2>OOP Concepts</h2>\n<p>This tutorial will cover OOP concepts in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/oop-concepts.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/oop-concepts.md",
-          "sourceFileName": "oop-concepts.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/oop-concepts"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/oop-concepts",
-        "language": "java"
-      },
-      "documentHash": "1756604312328",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/abstract-classes-and-interfaces.md": {
-      "document": {
-        "title": "Abstract Classes and Interfaces",
-        "slug": "abstract-classes-and-interfaces",
-        "order": 18,
-        "description": "Learn about abstract classes and interfaces in Java.",
-        "category": "Object-Oriented Programming (OOP)",
-        "body": {
-          "raw": "\n## Abstract Classes and Interfaces\n\nThis tutorial will cover abstract classes and interfaces in Java. Content to be added.\n",
-          "html": "<h2>Abstract Classes and Interfaces</h2>\n<p>This tutorial will cover abstract classes and interfaces in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/abstract-classes-and-interfaces.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/abstract-classes-and-interfaces.md",
-          "sourceFileName": "abstract-classes-and-interfaces.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/abstract-classes-and-interfaces"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/abstract-classes-and-interfaces",
-        "language": "java"
-      },
-      "documentHash": "1756604312335",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/arraylist.md": {
-      "document": {
-        "title": "ArrayList",
-        "slug": "arraylist",
-        "order": 21,
-        "description": "Learn about ArrayLists in Java.",
-        "category": "Intermediate Java",
-        "body": {
-          "raw": "\n## ArrayList\n\nThis tutorial will cover ArrayLists in Java. Content to be added.\n",
-          "html": "<h2>ArrayList</h2>\n<p>This tutorial will cover ArrayLists in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/arraylist.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/arraylist.md",
-          "sourceFileName": "arraylist.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/arraylist"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/arraylist",
-        "language": "java"
-      },
-      "documentHash": "1756604312340",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/enums-and-generics.md": {
-      "document": {
-        "title": "Enums and Generics",
-        "slug": "enums-and-generics",
-        "order": 25,
-        "description": "Learn about enums and generics in Java.",
-        "category": "Intermediate Java",
-        "body": {
-          "raw": "\n## Enums and Generics\n\nThis tutorial will cover enums and generics in Java. Content to be added.\n",
-          "html": "<h2>Enums and Generics</h2>\n<p>This tutorial will cover enums and generics in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/enums-and-generics.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/enums-and-generics.md",
-          "sourceFileName": "enums-and-generics.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/enums-and-generics"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/enums-and-generics",
-        "language": "java"
-      },
-      "documentHash": "1756604312344",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/file-io.md": {
-      "document": {
-        "title": "Working with Files (File I/O)",
-        "slug": "file-io",
-        "order": 24,
-        "description": "Learn how to work with files in Java.",
-        "category": "Intermediate Java",
-        "body": {
-          "raw": "\n## Working with Files (File I/O)\n\nThis tutorial will cover file I/O in Java. Content to be added.\n",
-          "html": "<h2>Working with Files (File I/O)</h2>\n<p>This tutorial will cover file I/O in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/file-io.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/file-io.md",
-          "sourceFileName": "file-io.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/file-io"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/file-io",
-        "language": "java"
-      },
-      "documentHash": "1756604312343",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/hashmap.md": {
-      "document": {
-        "title": "HashMap",
-        "slug": "hashmap",
-        "order": 22,
-        "description": "Learn about HashMaps in Java.",
-        "category": "Intermediate Java",
-        "body": {
-          "raw": "\n## HashMap\n\nThis tutorial will cover HashMaps in Java. Content to be added.\n",
-          "html": "<h2>HashMap</h2>\n<p>This tutorial will cover HashMaps in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/hashmap.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/hashmap.md",
-          "sourceFileName": "hashmap.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/hashmap"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/hashmap",
-        "language": "java"
-      },
-      "documentHash": "1756604312340",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/java/hashset.md": {
-      "document": {
-        "title": "HashSet",
-        "slug": "hashset",
-        "order": 23,
-        "description": "Learn about HashSets in Java.",
-        "category": "Intermediate Java",
-        "body": {
-          "raw": "\n## HashSet\n\nThis tutorial will cover HashSets in Java. Content to be added.\n",
-          "html": "<h2>HashSet</h2>\n<p>This tutorial will cover HashSets in Java. Content to be added.</p>"
-        },
-        "_id": "tutorials/java/hashset.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/java/hashset.md",
-          "sourceFileName": "hashset.md",
-          "sourceFileDir": "tutorials/java",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/java/hashset"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/java/hashset",
-        "language": "java"
-      },
-      "documentHash": "1756604312343",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }
