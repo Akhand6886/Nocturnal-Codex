@@ -11,8 +11,8 @@ interface TopicTileProps {
 
 export function TopicTile({ topic }: TopicTileProps) {
   return (
-    <Link href={topic.url} className="group block">
-      <Card className="h-full overflow-hidden shadow-lg hover:shadow-primary/30 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-xl">
+    <Link href={topic.url} className="group block h-full">
+      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-primary/30 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-xl">
         {topic.imageUrl && (
           <div className="relative h-44 w-full overflow-hidden rounded-t-xl">
             <Image
@@ -25,7 +25,7 @@ export function TopicTile({ topic }: TopicTileProps) {
              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent group-hover:from-black/5 transition-colors duration-300"></div>
           </div>
         )}
-        <CardHeader className="pt-5">
+        <CardHeader className="pt-5 flex-grow">
           <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors duration-200 ease-in-out">
             {topic.name}
           </CardTitle>
