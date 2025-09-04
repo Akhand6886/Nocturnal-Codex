@@ -1,0 +1,22 @@
+{
+  "title": "Networking Fundamentals (OSI & TCP/IP)",
+  "slug": "networking-fundamentals-osi-tcpip",
+  "order": 3,
+  "description": "Learn about the foundational models of computer networking: OSI and TCP/IP.",
+  "category": "0. Prerequisites",
+  "body": {
+    "raw": "\n## Networking Fundamentals (OSI & TCP/IP)\n\nThis tutorial will explain the layers of the OSI and TCP/IP models. Content to be added.\n",
+    "html": "<h2>Networking Fundamentals (OSI &#x26; TCP/IP)</h2>\n<p>This tutorial will explain the layers of the OSI and TCP/IP models. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
+    "sourceFileName": "networking-fundamentals-osi-tcpip.md",
+    "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/networking-fundamentals-osi-tcpip",
+  "language": "cybersecurity"
+}

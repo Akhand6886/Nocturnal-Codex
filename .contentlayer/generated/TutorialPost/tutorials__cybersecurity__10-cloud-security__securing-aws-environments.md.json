@@ -1,0 +1,22 @@
+{
+  "title": "Securing AWS Environments",
+  "slug": "securing-aws-environments",
+  "order": 2,
+  "description": "An overview of key security services and best practices for AWS.",
+  "category": "10. Cloud Security",
+  "body": {
+    "raw": "\n## Securing AWS Environments\n\nThis tutorial will cover fundamental AWS security concepts. Content to be added.\n",
+    "html": "<h2>Securing AWS Environments</h2>\n<p>This tutorial will cover fundamental AWS security concepts. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
+    "sourceFileName": "securing-aws-environments.md",
+    "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/securing-aws-environments",
+  "language": "cybersecurity"
+}

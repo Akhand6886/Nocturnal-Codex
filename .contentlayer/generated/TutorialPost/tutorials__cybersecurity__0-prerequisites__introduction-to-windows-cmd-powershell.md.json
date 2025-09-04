@@ -1,0 +1,22 @@
+{
+  "title": "Introduction to Windows CMD & PowerShell",
+  "slug": "introduction-to-windows-cmd-powershell",
+  "order": 6,
+  "description": "An overview of the command-line interfaces available in Windows.",
+  "category": "0. Prerequisites",
+  "body": {
+    "raw": "\n## Introduction to Windows CMD & PowerShell\n\nThis tutorial will cover the basics of using the Command Prompt and PowerShell. Content to be added.\n",
+    "html": "<h2>Introduction to Windows CMD &#x26; PowerShell</h2>\n<p>This tutorial will cover the basics of using the Command Prompt and PowerShell. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell.md",
+    "sourceFileName": "introduction-to-windows-cmd-powershell.md",
+    "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/introduction-to-windows-cmd-powershell",
+  "language": "cybersecurity"
+}

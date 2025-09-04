@@ -11,8 +11,16 @@ import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
+import { cache } from 'react';
 
 export const revalidate = 60; 
+
+// Use cache to deduplicate data fetching
+const getTopicFromParams = cache(async (topicSlug: string) => {
+  const topic = allTopicPosts.find((t) => t.slug === topicSlug);
+  return topic;
+});
+
 
 export async function generateStaticParams() {
   const topics = allTopicPosts || [];
@@ -26,7 +34,7 @@ interface TopicPageProps {
 }
 
 export async function generateMetadata({ params }: TopicPageProps): Promise<Metadata> {
-  const topic = allTopicPosts.find((p) => p.slug === params.topicSlug);
+  const topic = await getTopicFromParams(params.topicSlug);
   if (!topic) {
     return { title: "Topic Not Found" };
   }
@@ -37,7 +45,7 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
 }
 
 export default async function TopicPage({ params }: TopicPageProps) {
-  const topic = allTopicPosts.find((t) => t.slug === params.topicSlug);
+  const topic = await getTopicFromParams(params.topicSlug);
 
   if (!topic) {
     notFound();
@@ -104,7 +112,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                   <CodeSnippet 
                     key={snippet.id} 
                     code={snippet.code} 
-                    language={snippet.language} 
+                    language={snippet.language as any} 
                     title={snippet.title}
                     description={snippet.description}
                   />
@@ -168,3 +176,4 @@ export default async function TopicPage({ params }: TopicPageProps) {
     </div>
   );
 }
+

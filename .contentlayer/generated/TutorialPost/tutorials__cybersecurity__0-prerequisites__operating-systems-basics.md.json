@@ -1,0 +1,22 @@
+{
+  "title": "Operating Systems Basics",
+  "slug": "operating-systems-basics",
+  "order": 2,
+  "description": "An introduction to the fundamental concepts of operating systems.",
+  "category": "0. Prerequisites",
+  "body": {
+    "raw": "\n## Operating Systems Basics\n\nThis tutorial will cover the role and basic functions of an operating system. Content to be added.\n",
+    "html": "<h2>Operating Systems Basics</h2>\n<p>This tutorial will cover the role and basic functions of an operating system. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
+    "sourceFileName": "operating-systems-basics.md",
+    "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/operating-systems-basics",
+  "language": "cybersecurity"
+}

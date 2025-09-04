@@ -130,74 +130,98 @@
         "dataAiHint": "digital security matrix",
         "subtopics": [
           {
+            "id": "cyber-prerequisites",
+            "slug": "/tutorials/cybersecurity/0-prerequisites",
+            "name": "0. Prerequisites",
+            "description": "Build the foundational IT knowledge needed for a career in cybersecurity.",
+            "type": "SubTopic",
+            "_raw": {}
+          },
+          {
             "id": "cyber-foundations",
-            "slug": "/tutorial/cybersecurity/intro-to-cybersecurity",
-            "name": "1. Cybersecurity Foundations",
-            "description": "Start here to learn the basic principles and terminology of cybersecurity.",
+            "slug": "/tutorials/cybersecurity/1-foundations",
+            "name": "1. Security Foundations",
+            "description": "Learn the core principles, key terms, and threat landscape of cybersecurity.",
+            "type": "SubTopic",
+            "_raw": {}
+          },
+          {
+            "id": "os-security",
+            "slug": "/tutorials/cybersecurity/2-os-security",
+            "name": "2. OS & System Security",
+            "description": "Master the fundamentals of securing operating systems like Linux and Windows.",
             "type": "SubTopic",
             "_raw": {}
           },
           {
             "id": "network-security",
-            "slug": "/tutorial/cybersecurity/firewalls-and-proxies",
-            "name": "2. Network Security",
+            "slug": "/tutorials/cybersecurity/3-network-security",
+            "name": "3. Network Security",
             "description": "Discover how to secure network infrastructure from unauthorized access and threats.",
             "type": "SubTopic",
             "_raw": {}
           },
           {
-            "id": "app-security",
-            "slug": "/tutorial/cybersecurity/owasp-top-ten",
-            "name": "3. Application & Software Security",
-            "description": "Learn to identify and mitigate vulnerabilities in software and applications.",
+            "id": "threats-and-vulnerabilities",
+            "slug": "/tutorials/cybersecurity/4-threats-and-vulnerabilities",
+            "name": "4. Threats & Vulnerabilities",
+            "description": "An in-depth look at malware, social engineering, and vulnerability management.",
             "type": "SubTopic",
             "_raw": {}
           },
           {
-            "id": "cryptography",
-            "slug": "/tutorial/cybersecurity/intro-to-cryptography",
-            "name": "4. Cryptography",
-            "description": "Explore the science of secure communication and data protection.",
+            "id": "app-security",
+            "slug": "/tutorials/cybersecurity/5-application-security",
+            "name": "5. Application Security",
+            "description": "Learn to identify and mitigate vulnerabilities like the OWASP Top 10 in software.",
             "type": "SubTopic",
             "_raw": {}
           },
           {
             "id": "iam",
-            "slug": "/tutorial/cybersecurity/authentication-vs-authorization",
-            "name": "5. Identity & Access Management",
-            "description": "Understand how to manage and control user access to critical systems and data.",
-            "type": "SubTopic",
-            "_raw": {}
-          },
-          {
-            "id": "threats-and-attacks",
-            "slug": "/tutorial/cybersecurity/malware-types",
-            "name": "6. Threats, Attacks, and Vulnerabilities",
-            "description": "An overview of common cyber threats and attack vectors.",
+            "slug": "/tutorials/cybersecurity/6-iam",
+            "name": "6. Identity & Access Management (IAM)",
+            "description": "Understand how to manage user identities and control access to critical systems.",
             "type": "SubTopic",
             "_raw": {}
           },
           {
             "id": "security-operations",
-            "slug": "/tutorial/cybersecurity/intro-to-siem",
+            "slug": "/tutorials/cybersecurity/7-security-operations",
             "name": "7. Security Operations (SecOps)",
-            "description": "Learn about the tools and processes for monitoring and responding to security incidents.",
+            "description": "Explore how to monitor systems, detect threats, and respond to security incidents.",
+            "type": "SubTopic",
+            "_raw": {}
+          },
+          {
+            "id": "cryptography",
+            "slug": "/tutorials/cybersecurity/8-cryptography",
+            "name": "8. Cryptography",
+            "description": "Explore the science of secure communication, hashing, and data protection.",
             "type": "SubTopic",
             "_raw": {}
           },
           {
             "id": "grc",
-            "slug": "/tutorial/cybersecurity/intro-to-grc",
-            "name": "8. Governance, Risk, and Compliance (GRC)",
-            "description": "Understand the frameworks and regulations that govern cybersecurity practices.",
+            "slug": "/tutorials/cybersecurity/9-grc",
+            "name": "9. Governance, Risk & Compliance",
+            "description": "Learn about security frameworks, risk management, and data privacy regulations.",
             "type": "SubTopic",
             "_raw": {}
           },
           {
-            "id": "advanced-topics",
-            "slug": "/tutorial/cybersecurity/cloud-security-basics",
-            "name": "9. Advanced & Specialized Topics",
-            "description": "Dive into specialized areas like cloud security, IoT, and industrial control systems.",
+            "id": "cloud-security",
+            "slug": "/tutorials/cybersecurity/10-cloud-security",
+            "name": "10. Cloud Security",
+            "description": "Understand the unique security challenges and solutions for cloud environments.",
+            "type": "SubTopic",
+            "_raw": {}
+          },
+          {
+            "id": "offensive-security",
+            "slug": "/tutorials/cybersecurity/11-offensive-security",
+            "name": "11. Offensive Security (Red Team)",
+            "description": "Dive into the world of ethical hacking and penetration testing to find vulnerabilities.",
             "type": "SubTopic",
             "_raw": {}
           }
@@ -217,7 +241,7 @@
         "type": "TopicPost",
         "url": "/topics/cybersecurity"
       },
-      "documentHash": "1756981050273",
+      "documentHash": "1757002676600",
       "hasWarnings": true,
       "documentTypeName": "TopicPost"
     },
@@ -2088,6 +2112,195 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python.md": {
+      "document": {
+        "title": "Basic Scripting with Python",
+        "slug": "basic-scripting-with-python",
+        "order": 7,
+        "description": "Learn the fundamentals of Python scripting for automation and cybersecurity tasks.",
+        "category": "0. Prerequisites",
+        "body": {
+          "raw": "\n## Basic Scripting with Python\n\nThis tutorial will provide an introduction to writing simple Python scripts. Content to be added.\n",
+          "html": "<h2>Basic Scripting with Python</h2>\n<p>This tutorial will provide an introduction to writing simple Python scripts. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python.md",
+          "sourceFileName": "basic-scripting-with-python.md",
+          "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/basic-scripting-with-python",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676644",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md": {
+      "document": {
+        "title": "Computer Hardware Components",
+        "slug": "computer-hardware-components",
+        "order": 1,
+        "description": "A look at the essential hardware components that make up a computer system.",
+        "category": "0. Prerequisites",
+        "body": {
+          "raw": "\n## Computer Hardware Components\n\nThis tutorial will cover the basic hardware components of a computer, such as the CPU, RAM, motherboard, and storage devices. Content to be added.\n",
+          "html": "<h2>Computer Hardware Components</h2>\n<p>This tutorial will cover the basic hardware components of a computer, such as the CPU, RAM, motherboard, and storage devices. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
+          "sourceFileName": "computer-hardware-components.md",
+          "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/computer-hardware-components",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676623",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/0-prerequisites/introduction-to-linux-cli.md": {
+      "document": {
+        "title": "Introduction to the Linux Command-Line",
+        "slug": "introduction-to-linux-cli",
+        "order": 5,
+        "description": "Learn basic commands and navigation in the Linux command-line interface (CLI).",
+        "category": "0. Prerequisites",
+        "body": {
+          "raw": "\n## Introduction to the Linux Command-Line\n\nThis tutorial will introduce essential Linux commands for file navigation and manipulation. Content to be added.\n",
+          "html": "<h2>Introduction to the Linux Command-Line</h2>\n<p>This tutorial will introduce essential Linux commands for file navigation and manipulation. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/0-prerequisites/introduction-to-linux-cli.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/introduction-to-linux-cli.md",
+          "sourceFileName": "introduction-to-linux-cli.md",
+          "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/0-prerequisites/introduction-to-linux-cli"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/introduction-to-linux-cli",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676640",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell.md": {
+      "document": {
+        "title": "Introduction to Windows CMD & PowerShell",
+        "slug": "introduction-to-windows-cmd-powershell",
+        "order": 6,
+        "description": "An overview of the command-line interfaces available in Windows.",
+        "category": "0. Prerequisites",
+        "body": {
+          "raw": "\n## Introduction to Windows CMD & PowerShell\n\nThis tutorial will cover the basics of using the Command Prompt and PowerShell. Content to be added.\n",
+          "html": "<h2>Introduction to Windows CMD &#x26; PowerShell</h2>\n<p>This tutorial will cover the basics of using the Command Prompt and PowerShell. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell.md",
+          "sourceFileName": "introduction-to-windows-cmd-powershell.md",
+          "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/introduction-to-windows-cmd-powershell",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676640",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md": {
+      "document": {
+        "title": "Networking Fundamentals (OSI & TCP/IP)",
+        "slug": "networking-fundamentals-osi-tcpip",
+        "order": 3,
+        "description": "Learn about the foundational models of computer networking: OSI and TCP/IP.",
+        "category": "0. Prerequisites",
+        "body": {
+          "raw": "\n## Networking Fundamentals (OSI & TCP/IP)\n\nThis tutorial will explain the layers of the OSI and TCP/IP models. Content to be added.\n",
+          "html": "<h2>Networking Fundamentals (OSI &#x26; TCP/IP)</h2>\n<p>This tutorial will explain the layers of the OSI and TCP/IP models. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
+          "sourceFileName": "networking-fundamentals-osi-tcpip.md",
+          "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/networking-fundamentals-osi-tcpip",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676636",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md": {
+      "document": {
+        "title": "Operating Systems Basics",
+        "slug": "operating-systems-basics",
+        "order": 2,
+        "description": "An introduction to the fundamental concepts of operating systems.",
+        "category": "0. Prerequisites",
+        "body": {
+          "raw": "\n## Operating Systems Basics\n\nThis tutorial will cover the role and basic functions of an operating system. Content to be added.\n",
+          "html": "<h2>Operating Systems Basics</h2>\n<p>This tutorial will cover the role and basic functions of an operating system. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
+          "sourceFileName": "operating-systems-basics.md",
+          "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/operating-systems-basics",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676625",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md": {
+      "document": {
+        "title": "Understanding IP Addresses",
+        "slug": "understanding-ip-addresses",
+        "order": 4,
+        "description": "A guide to IPv4, IPv6, subnets, and how devices are addressed on a network.",
+        "category": "0. Prerequisites",
+        "body": {
+          "raw": "\n## Understanding IP Addresses\n\nThis tutorial will cover the structure and purpose of IP addresses. Content to be added.\n",
+          "html": "<h2>Understanding IP Addresses</h2>\n<p>This tutorial will cover the structure and purpose of IP addresses. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
+          "sourceFileName": "understanding-ip-addresses.md",
+          "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/understanding-ip-addresses",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676640",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/cybersecurity/1-foundations/cia-triad.md": {
       "document": {
         "title": "The CIA Triad",
@@ -2115,6 +2328,33 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/cybersecurity/1-foundations/common-threat-actors.md": {
+      "document": {
+        "title": "Common Threat Actors",
+        "slug": "common-threat-actors",
+        "order": 4,
+        "description": "An overview of different types of attackers, from hacktivists to nation-states.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## Common Threat Actors\n\nThis tutorial will explore the motivations and methods of various threat actors. Content to be added.\n",
+          "html": "<h2>Common Threat Actors</h2>\n<p>This tutorial will explore the motivations and methods of various threat actors. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
+          "sourceFileName": "common-threat-actors.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/common-threat-actors"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/common-threat-actors",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676682",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity.md": {
       "document": {
         "title": "Introduction to Cybersecurity",
@@ -2139,6 +2379,384 @@
         "language": "cybersecurity"
       },
       "documentHash": "1756981050275",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md": {
+      "document": {
+        "title": "Introduction to Security Controls",
+        "slug": "introduction-to-security-controls",
+        "order": 5,
+        "description": "Learn about the different types of security controls (Preventive, Detective, Corrective).",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## Introduction to Security Controls\n\nThis tutorial will explain the purpose and types of security controls. Content to be added.\n",
+          "html": "<h2>Introduction to Security Controls</h2>\n<p>This tutorial will explain the purpose and types of security controls. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md",
+          "sourceFileName": "introduction-to-security-controls.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/introduction-to-security-controls",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676692",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md": {
+      "document": {
+        "title": "Key Security Concepts (Threat, Vulnerability, Risk)",
+        "slug": "key-security-concepts-threat-risk",
+        "order": 3,
+        "description": "Understand the fundamental terminology used in cybersecurity.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## Key Security Concepts\n\nThis tutorial will define and differentiate between threats, vulnerabilities, and risks. Content to be added.\n",
+          "html": "<h2>Key Security Concepts</h2>\n<p>This tutorial will define and differentiate between threats, vulnerabilities, and risks. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md",
+          "sourceFileName": "key-security-concepts-threat-risk.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/key-security-concepts-threat-risk",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676669",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/the-cia-triad.md": {
+      "document": {
+        "title": "The CIA Triad",
+        "slug": "the-cia-triad",
+        "order": 2,
+        "description": "Learn about the core principles of Confidentiality, Integrity, and Availability.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## The CIA Triad\n\nThis tutorial will cover the CIA Triad in detail. Content to be added.\n",
+          "html": "<h2>The CIA Triad</h2>\n<p>This tutorial will cover the CIA Triad in detail. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
+          "sourceFileName": "the-cia-triad.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/the-cia-triad"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/the-cia-triad",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676661",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md": {
+      "document": {
+        "title": "What is Cybersecurity?",
+        "slug": "what-is-cybersecurity",
+        "order": 1,
+        "description": "An introduction to the field of cybersecurity and its importance.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## What is Cybersecurity?\n\nThis tutorial will provide a high-level overview of the cybersecurity discipline. Content to be added.\n",
+          "html": "<h2>What is Cybersecurity?</h2>\n<p>This tutorial will provide a high-level overview of the cybersecurity discipline. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md",
+          "sourceFileName": "what-is-cybersecurity.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/what-is-cybersecurity",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676650",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md": {
+      "document": {
+        "title": "Cloud Deployment Models (IaaS, PaaS, SaaS)",
+        "slug": "cloud-deployment-models-iaas-paas-saas",
+        "order": 1,
+        "description": "Understanding the different models of cloud computing.",
+        "category": "10. Cloud Security",
+        "body": {
+          "raw": "\n## Cloud Deployment Models\n\nThis tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.\n",
+          "html": "<h2>Cloud Deployment Models</h2>\n<p>This tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
+          "sourceFileName": "cloud-deployment-models-iaas-paas-saas.md",
+          "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/cloud-deployment-models-iaas-paas-saas",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676841",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices.md": {
+      "document": {
+        "title": "Cloud Security Best Practices",
+        "slug": "cloud-security-best-practices",
+        "order": 5,
+        "description": "General best practices for securing cloud environments, regardless of provider.",
+        "category": "10. Cloud Security",
+        "body": {
+          "raw": "\n## Cloud Security Best Practices\n\nThis tutorial will discuss provider-agnostic cloud security best practices. Content to be added.\n",
+          "html": "<h2>Cloud Security Best Practices</h2>\n<p>This tutorial will discuss provider-agnostic cloud security best practices. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices.md",
+          "sourceFileName": "cloud-security-best-practices.md",
+          "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/cloud-security-best-practices",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676861",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md": {
+      "document": {
+        "title": "Securing AWS Environments",
+        "slug": "securing-aws-environments",
+        "order": 2,
+        "description": "An overview of key security services and best practices for AWS.",
+        "category": "10. Cloud Security",
+        "body": {
+          "raw": "\n## Securing AWS Environments\n\nThis tutorial will cover fundamental AWS security concepts. Content to be added.\n",
+          "html": "<h2>Securing AWS Environments</h2>\n<p>This tutorial will cover fundamental AWS security concepts. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
+          "sourceFileName": "securing-aws-environments.md",
+          "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/securing-aws-environments",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676848",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/10-cloud-security/securing-azure-environments.md": {
+      "document": {
+        "title": "Securing Azure Environments",
+        "slug": "securing-azure-environments",
+        "order": 3,
+        "description": "An overview of key security services and best practices for Microsoft Azure.",
+        "category": "10. Cloud Security",
+        "body": {
+          "raw": "\n## Securing Azure Environments\n\nThis tutorial will cover fundamental Azure security concepts. Content to be added.\n",
+          "html": "<h2>Securing Azure Environments</h2>\n<p>This tutorial will cover fundamental Azure security concepts. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments.md",
+          "sourceFileName": "securing-azure-environments.md",
+          "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/securing-azure-environments",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676852",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/11-offensive-security/exploitation-basics-metasploit.md": {
+      "document": {
+        "title": "Exploitation Basics (Metasploit)",
+        "slug": "exploitation-basics-metasploit",
+        "order": 4,
+        "description": "An introduction to using exploitation frameworks like Metasploit.",
+        "category": "11. Offensive Security (Red Team)",
+        "body": {
+          "raw": "\n## Exploitation Basics (Metasploit)\n\nThis tutorial will cover the basic concepts of exploiting vulnerabilities. Content to be added.\n",
+          "html": "<h2>Exploitation Basics (Metasploit)</h2>\n<p>This tutorial will cover the basic concepts of exploiting vulnerabilities. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/11-offensive-security/exploitation-basics-metasploit.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/11-offensive-security/exploitation-basics-metasploit.md",
+          "sourceFileName": "exploitation-basics-metasploit.md",
+          "sourceFileDir": "tutorials/cybersecurity/11-offensive-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/11-offensive-security/exploitation-basics-metasploit"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/exploitation-basics-metasploit",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676873",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/11-offensive-security/post-exploitation-techniques.md": {
+      "document": {
+        "title": "Post-Exploitation Techniques",
+        "slug": "post-exploitation-techniques",
+        "order": 5,
+        "description": "What attackers do after gaining initial access to a system.",
+        "category": "11. Offensive Security (Red Team)",
+        "body": {
+          "raw": "\n## Post-Exploitation Techniques\n\nThis tutorial will cover concepts like privilege escalation, lateral movement, and maintaining persistence. Content to be added.\n",
+          "html": "<h2>Post-Exploitation Techniques</h2>\n<p>This tutorial will cover concepts like privilege escalation, lateral movement, and maintaining persistence. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/11-offensive-security/post-exploitation-techniques.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/11-offensive-security/post-exploitation-techniques.md",
+          "sourceFileName": "post-exploitation-techniques.md",
+          "sourceFileDir": "tutorials/cybersecurity/11-offensive-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/11-offensive-security/post-exploitation-techniques"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/post-exploitation-techniques",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676876",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/11-offensive-security/reconnaissance-and-information-gathering.md": {
+      "document": {
+        "title": "Reconnaissance and Information Gathering",
+        "slug": "reconnaissance-and-information-gathering",
+        "order": 2,
+        "description": "Techniques for gathering information about a target before an attack.",
+        "category": "11. Offensive Security (Red Team)",
+        "body": {
+          "raw": "\n## Reconnaissance and Information Gathering\n\nThis tutorial will cover passive and active reconnaissance techniques. Content to be added.\n",
+          "html": "<h2>Reconnaissance and Information Gathering</h2>\n<p>This tutorial will cover passive and active reconnaissance techniques. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/11-offensive-security/reconnaissance-and-information-gathering.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/11-offensive-security/reconnaissance-and-information-gathering.md",
+          "sourceFileName": "reconnaissance-and-information-gathering.md",
+          "sourceFileDir": "tutorials/cybersecurity/11-offensive-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/11-offensive-security/reconnaissance-and-information-gathering"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/reconnaissance-and-information-gathering",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676866",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/11-offensive-security/scanning-and-enumeration-nmap.md": {
+      "document": {
+        "title": "Scanning and Enumeration (Nmap)",
+        "slug": "scanning-and-enumeration-nmap",
+        "order": 3,
+        "description": "Using tools like Nmap to discover hosts and services on a network.",
+        "category": "11. Offensive Security (Red Team)",
+        "body": {
+          "raw": "\n## Scanning and Enumeration (Nmap)\n\nThis tutorial will provide an introduction to network scanning with Nmap. Content to be added.\n",
+          "html": "<h2>Scanning and Enumeration (Nmap)</h2>\n<p>This tutorial will provide an introduction to network scanning with Nmap. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/11-offensive-security/scanning-and-enumeration-nmap.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/11-offensive-security/scanning-and-enumeration-nmap.md",
+          "sourceFileName": "scanning-and-enumeration-nmap.md",
+          "sourceFileDir": "tutorials/cybersecurity/11-offensive-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/11-offensive-security/scanning-and-enumeration-nmap"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/scanning-and-enumeration-nmap",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676872",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/11-offensive-security/the-cyber-kill-chain.md": {
+      "document": {
+        "title": "The Cyber Kill Chain",
+        "slug": "the-cyber-kill-chain",
+        "order": 1,
+        "description": "A model for understanding the stages of a cyberattack.",
+        "category": "11. Offensive Security (Red Team)",
+        "body": {
+          "raw": "\n## The Cyber Kill Chain\n\nThis tutorial will explain the seven stages of the Cyber Kill Chain framework. Content to be added.\n",
+          "html": "<h2>The Cyber Kill Chain</h2>\n<p>This tutorial will explain the seven stages of the Cyber Kill Chain framework. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/11-offensive-security/the-cyber-kill-chain.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/11-offensive-security/the-cyber-kill-chain.md",
+          "sourceFileName": "the-cyber-kill-chain.md",
+          "sourceFileDir": "tutorials/cybersecurity/11-offensive-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/11-offensive-security/the-cyber-kill-chain"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/the-cyber-kill-chain",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676863",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/11-offensive-security/web-application-penetration-testing.md": {
+      "document": {
+        "title": "Web Application Penetration Testing",
+        "slug": "web-application-penetration-testing",
+        "order": 6,
+        "description": "An overview of the process for testing the security of web applications.",
+        "category": "11. Offensive Security (Red Team)",
+        "body": {
+          "raw": "\n## Web Application Penetration Testing\n\nThis tutorial will introduce the methodologies used in web app pen testing. Content to be added.\n",
+          "html": "<h2>Web Application Penetration Testing</h2>\n<p>This tutorial will introduce the methodologies used in web app pen testing. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/11-offensive-security/web-application-penetration-testing.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/11-offensive-security/web-application-penetration-testing.md",
+          "sourceFileName": "web-application-penetration-testing.md",
+          "sourceFileDir": "tutorials/cybersecurity/11-offensive-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/11-offensive-security/web-application-penetration-testing"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/web-application-penetration-testing",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676878",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -2250,6 +2868,87 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/cybersecurity/2-os-security/linux-security-hardening.md": {
+      "document": {
+        "title": "Linux Security Hardening",
+        "slug": "linux-security-hardening",
+        "order": 1,
+        "description": "Best practices for securing Linux systems.",
+        "category": "2. OS & System Security",
+        "body": {
+          "raw": "\n## Linux Security Hardening\n\nThis tutorial will cover techniques for hardening a Linux operating system. Content to be added.\n",
+          "html": "<h2>Linux Security Hardening</h2>\n<p>This tutorial will cover techniques for hardening a Linux operating system. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/2-os-security/linux-security-hardening.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/2-os-security/linux-security-hardening.md",
+          "sourceFileName": "linux-security-hardening.md",
+          "sourceFileDir": "tutorials/cybersecurity/2-os-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/2-os-security/linux-security-hardening"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/linux-security-hardening",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676694",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/2-os-security/macos-security-basics.md": {
+      "document": {
+        "title": "macOS Security Basics",
+        "slug": "macos-security-basics",
+        "order": 3,
+        "description": "An overview of the built-in security features of macOS.",
+        "category": "2. OS & System Security",
+        "body": {
+          "raw": "\n## macOS Security Basics\n\nThis tutorial will cover the fundamental security aspects of macOS. Content to be added.\n",
+          "html": "<h2>macOS Security Basics</h2>\n<p>This tutorial will cover the fundamental security aspects of macOS. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/2-os-security/macos-security-basics.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/2-os-security/macos-security-basics.md",
+          "sourceFileName": "macos-security-basics.md",
+          "sourceFileDir": "tutorials/cybersecurity/2-os-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/2-os-security/macos-security-basics"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/macos-security-basics",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676704",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/2-os-security/virtualization-and-container-security.md": {
+      "document": {
+        "title": "Virtualization and Container Security",
+        "slug": "virtualization-and-container-security",
+        "order": 4,
+        "description": "Learn about the security implications of VMs and containers like Docker.",
+        "category": "2. OS & System Security",
+        "body": {
+          "raw": "\n## Virtualization and Container Security\n\nThis tutorial will cover the security considerations for virtualized environments. Content to be added.\n",
+          "html": "<h2>Virtualization and Container Security</h2>\n<p>This tutorial will cover the security considerations for virtualized environments. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/2-os-security/virtualization-and-container-security.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/2-os-security/virtualization-and-container-security.md",
+          "sourceFileName": "virtualization-and-container-security.md",
+          "sourceFileDir": "tutorials/cybersecurity/2-os-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/2-os-security/virtualization-and-container-security"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/virtualization-and-container-security",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676705",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/cybersecurity/3-application-security/owasp-top-ten.md": {
       "document": {
         "title": "The OWASP Top 10",
@@ -2301,6 +3000,114 @@
         "language": "cybersecurity"
       },
       "documentHash": "1756981050310",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/3-network-security/firewalls-and-network-segmentation.md": {
+      "document": {
+        "title": "Firewalls and Network Segmentation",
+        "slug": "firewalls-and-network-segmentation",
+        "order": 2,
+        "description": "Using firewalls and network segmentation to control traffic and reduce attack surface.",
+        "category": "3. Network Security",
+        "body": {
+          "raw": "\n## Firewalls and Network Segmentation\n\nThis tutorial will cover the roles of firewalls and network segmentation in network defense. Content to be added.\n",
+          "html": "<h2>Firewalls and Network Segmentation</h2>\n<p>This tutorial will cover the roles of firewalls and network segmentation in network defense. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/3-network-security/firewalls-and-network-segmentation.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/3-network-security/firewalls-and-network-segmentation.md",
+          "sourceFileName": "firewalls-and-network-segmentation.md",
+          "sourceFileDir": "tutorials/cybersecurity/3-network-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/3-network-security/firewalls-and-network-segmentation"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/firewalls-and-network-segmentation",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676713",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/3-network-security/network-monitoring-and-analysis-wireshark.md": {
+      "document": {
+        "title": "Network Monitoring and Analysis (Wireshark)",
+        "slug": "network-monitoring-and-analysis-wireshark",
+        "order": 6,
+        "description": "An introduction to capturing and analyzing network traffic with tools like Wireshark.",
+        "category": "3. Network Security",
+        "body": {
+          "raw": "\n## Network Monitoring and Analysis (Wireshark)\n\nThis tutorial will provide a basic guide to using Wireshark for network analysis. Content to be added.\n",
+          "html": "<h2>Network Monitoring and Analysis (Wireshark)</h2>\n<p>This tutorial will provide a basic guide to using Wireshark for network analysis. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/3-network-security/network-monitoring-and-analysis-wireshark.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/3-network-security/network-monitoring-and-analysis-wireshark.md",
+          "sourceFileName": "network-monitoring-and-analysis-wireshark.md",
+          "sourceFileDir": "tutorials/cybersecurity/3-network-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/3-network-security/network-monitoring-and-analysis-wireshark"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/network-monitoring-and-analysis-wireshark",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676732",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/3-network-security/network-protocols-deep-dive-dns-dhcp.md": {
+      "document": {
+        "title": "Network Protocols Deep Dive (DNS, DHCP)",
+        "slug": "network-protocols-deep-dive-dns-dhcp",
+        "order": 1,
+        "description": "A closer look at essential network protocols and their security risks.",
+        "category": "3. Network Security",
+        "body": {
+          "raw": "\n## Network Protocols Deep Dive\n\nThis tutorial will explore DNS, DHCP, and other key network protocols. Content to be added.\n",
+          "html": "<h2>Network Protocols Deep Dive</h2>\n<p>This tutorial will explore DNS, DHCP, and other key network protocols. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/3-network-security/network-protocols-deep-dive-dns-dhcp.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/3-network-security/network-protocols-deep-dive-dns-dhcp.md",
+          "sourceFileName": "network-protocols-deep-dive-dns-dhcp.md",
+          "sourceFileDir": "tutorials/cybersecurity/3-network-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/3-network-security/network-protocols-deep-dive-dns-dhcp"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/network-protocols-deep-dive-dns-dhcp",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676710",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/3-network-security/wireless-security-wpa3.md": {
+      "document": {
+        "title": "Wireless Security (WPA3)",
+        "slug": "wireless-security-wpa3",
+        "order": 5,
+        "description": "Learn about securing Wi-Fi networks with modern protocols like WPA3.",
+        "category": "3. Network Security",
+        "body": {
+          "raw": "\n## Wireless Security (WPA3)\n\nThis tutorial will explore the evolution of wireless security and the features of WPA3. Content to be added.\n",
+          "html": "<h2>Wireless Security (WPA3)</h2>\n<p>This tutorial will explore the evolution of wireless security and the features of WPA3. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/3-network-security/wireless-security-wpa3.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/3-network-security/wireless-security-wpa3.md",
+          "sourceFileName": "wireless-security-wpa3.md",
+          "sourceFileDir": "tutorials/cybersecurity/3-network-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/3-network-security/wireless-security-wpa3"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/wireless-security-wpa3",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676732",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
@@ -2385,6 +3192,330 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/cybersecurity/4-threats-and-vulnerabilities/denial-of-service-attacks-dos-ddos.md": {
+      "document": {
+        "title": "Denial-of-Service Attacks (DoS/DDoS)",
+        "slug": "denial-of-service-attacks-dos-ddos",
+        "order": 3,
+        "description": "Learn how attackers overwhelm systems to make them unavailable.",
+        "category": "4. Threats & Vulnerabilities",
+        "body": {
+          "raw": "\n## Denial-of-Service Attacks\n\nThis tutorial will explain the mechanics of DoS and DDoS attacks. Content to be added.\n",
+          "html": "<h2>Denial-of-Service Attacks</h2>\n<p>This tutorial will explain the mechanics of DoS and DDoS attacks. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/4-threats-and-vulnerabilities/denial-of-service-attacks-dos-ddos.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/denial-of-service-attacks-dos-ddos.md",
+          "sourceFileName": "denial-of-service-attacks-dos-ddos.md",
+          "sourceFileDir": "tutorials/cybersecurity/4-threats-and-vulnerabilities",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/denial-of-service-attacks-dos-ddos"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/denial-of-service-attacks-dos-ddos",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676741",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/4-threats-and-vulnerabilities/malware-types-viruses-worms-ransomware.md": {
+      "document": {
+        "title": "Malware Types (Viruses, Worms, Ransomware)",
+        "slug": "malware-types-viruses-worms-ransomware",
+        "order": 1,
+        "description": "An overview of the different categories of malicious software.",
+        "category": "4. Threats & Vulnerabilities",
+        "body": {
+          "raw": "\n## Malware Types\n\nThis tutorial will define and provide examples of various malware types. Content to be added.\n",
+          "html": "<h2>Malware Types</h2>\n<p>This tutorial will define and provide examples of various malware types. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/4-threats-and-vulnerabilities/malware-types-viruses-worms-ransomware.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/malware-types-viruses-worms-ransomware.md",
+          "sourceFileName": "malware-types-viruses-worms-ransomware.md",
+          "sourceFileDir": "tutorials/cybersecurity/4-threats-and-vulnerabilities",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/malware-types-viruses-worms-ransomware"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/malware-types-viruses-worms-ransomware",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676733",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/4-threats-and-vulnerabilities/social-engineering-and-phishing.md": {
+      "document": {
+        "title": "Social Engineering and Phishing",
+        "slug": "social-engineering-and-phishing",
+        "order": 2,
+        "description": "Understanding the psychological manipulation used to trick users.",
+        "category": "4. Threats & Vulnerabilities",
+        "body": {
+          "raw": "\n## Social Engineering and Phishing\n\nThis tutorial will explore common social engineering tactics like phishing, vishing, and pretexting. Content to be added.\n",
+          "html": "<h2>Social Engineering and Phishing</h2>\n<p>This tutorial will explore common social engineering tactics like phishing, vishing, and pretexting. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/4-threats-and-vulnerabilities/social-engineering-and-phishing.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/social-engineering-and-phishing.md",
+          "sourceFileName": "social-engineering-and-phishing.md",
+          "sourceFileDir": "tutorials/cybersecurity/4-threats-and-vulnerabilities",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/social-engineering-and-phishing"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/social-engineering-and-phishing",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676734",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/4-threats-and-vulnerabilities/vulnerability-assessment-and-management.md": {
+      "document": {
+        "title": "Vulnerability Assessment and Management",
+        "slug": "vulnerability-assessment-and-management",
+        "order": 4,
+        "description": "The process of identifying, classifying, and mitigating vulnerabilities.",
+        "category": "4. Threats & Vulnerabilities",
+        "body": {
+          "raw": "\n## Vulnerability Assessment and Management\n\nThis tutorial will cover the lifecycle of vulnerability management. Content to be added.\n",
+          "html": "<h2>Vulnerability Assessment and Management</h2>\n<p>This tutorial will cover the lifecycle of vulnerability management. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/4-threats-and-vulnerabilities/vulnerability-assessment-and-management.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/vulnerability-assessment-and-management.md",
+          "sourceFileName": "vulnerability-assessment-and-management.md",
+          "sourceFileDir": "tutorials/cybersecurity/4-threats-and-vulnerabilities",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/4-threats-and-vulnerabilities/vulnerability-assessment-and-management"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/vulnerability-assessment-and-management",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676750",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/5-application-security/database-security-best-practices.md": {
+      "document": {
+        "title": "Database Security Best Practices",
+        "slug": "database-security-best-practices",
+        "order": 4,
+        "description": "Essential techniques for securing data stored in databases.",
+        "category": "5. Application Security",
+        "body": {
+          "raw": "\n## Database Security Best Practices\n\nThis tutorial will discuss best practices for securing databases. Content to be added.\n",
+          "html": "<h2>Database Security Best Practices</h2>\n<p>This tutorial will discuss best practices for securing databases. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/5-application-security/database-security-best-practices.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/5-application-security/database-security-best-practices.md",
+          "sourceFileName": "database-security-best-practices.md",
+          "sourceFileDir": "tutorials/cybersecurity/5-application-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/5-application-security/database-security-best-practices"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/database-security-best-practices",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676774",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/5-application-security/owasp-top-10-overview.md": {
+      "document": {
+        "title": "OWASP Top 10 Overview",
+        "slug": "owasp-top-10-overview",
+        "order": 1,
+        "description": "An introduction to the most critical web application security risks.",
+        "category": "5. Application Security",
+        "body": {
+          "raw": "\n## OWASP Top 10 Overview\n\nThis tutorial will provide an overview of the OWASP Top 10 list. Content to be added.\n",
+          "html": "<h2>OWASP Top 10 Overview</h2>\n<p>This tutorial will provide an overview of the OWASP Top 10 list. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/5-application-security/owasp-top-10-overview.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/5-application-security/owasp-top-10-overview.md",
+          "sourceFileName": "owasp-top-10-overview.md",
+          "sourceFileDir": "tutorials/cybersecurity/5-application-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/5-application-security/owasp-top-10-overview"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/owasp-top-10-overview",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676752",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/5-application-security/secure-software-development-lifecycle-ssdlc.md": {
+      "document": {
+        "title": "Secure Software Development Lifecycle (SSDLC)",
+        "slug": "secure-software-development-lifecycle-ssdlc",
+        "order": 2,
+        "description": "Integrating security practices into every phase of software development.",
+        "category": "5. Application Security",
+        "body": {
+          "raw": "\n## Secure Software Development Lifecycle (SSDLC)\n\nThis tutorial will explain the phases and benefits of the SSDLC. Content to be added.\n",
+          "html": "<h2>Secure Software Development Lifecycle (SSDLC)</h2>\n<p>This tutorial will explain the phases and benefits of the SSDLC. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/5-application-security/secure-software-development-lifecycle-ssdlc.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/5-application-security/secure-software-development-lifecycle-ssdlc.md",
+          "sourceFileName": "secure-software-development-lifecycle-ssdlc.md",
+          "sourceFileDir": "tutorials/cybersecurity/5-application-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/5-application-security/secure-software-development-lifecycle-ssdlc"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/secure-software-development-lifecycle-ssdlc",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676756",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/5-application-security/web-application-firewalls-waf.md": {
+      "document": {
+        "title": "Web Application Firewalls (WAF)",
+        "slug": "web-application-firewalls-waf",
+        "order": 3,
+        "description": "How a WAF helps protect web applications from common attacks.",
+        "category": "5. Application Security",
+        "body": {
+          "raw": "\n## Web Application Firewalls (WAF)\n\nThis tutorial will cover the role and function of a Web Application Firewall. Content to be added.\n",
+          "html": "<h2>Web Application Firewalls (WAF)</h2>\n<p>This tutorial will cover the role and function of a Web Application Firewall. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/5-application-security/web-application-firewalls-waf.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/5-application-security/web-application-firewalls-waf.md",
+          "sourceFileName": "web-application-firewalls-waf.md",
+          "sourceFileDir": "tutorials/cybersecurity/5-application-security",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/5-application-security/web-application-firewalls-waf"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/web-application-firewalls-waf",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676763",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/6-iam/authentication-vs-authorization.md": {
+      "document": {
+        "title": "Authentication vs. Authorization",
+        "slug": "authentication-vs-authorization",
+        "order": 1,
+        "description": "Learn the critical difference between verifying identity and granting permissions.",
+        "category": "6. Identity & Access Management (IAM)",
+        "body": {
+          "raw": "\n## Authentication vs. Authorization\n\nThis tutorial will explain the difference between authentication (AuthN) and authorization (AuthZ). Content to be added.\n",
+          "html": "<h2>Authentication vs. Authorization</h2>\n<p>This tutorial will explain the difference between authentication (AuthN) and authorization (AuthZ). Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/6-iam/authentication-vs-authorization.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/6-iam/authentication-vs-authorization.md",
+          "sourceFileName": "authentication-vs-authorization.md",
+          "sourceFileDir": "tutorials/cybersecurity/6-iam",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/6-iam/authentication-vs-authorization"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/authentication-vs-authorization",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676781",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/6-iam/multi-factor-authentication-mfa.md": {
+      "document": {
+        "title": "Multi-Factor Authentication (MFA)",
+        "slug": "multi-factor-authentication-mfa",
+        "order": 2,
+        "description": "Understanding the importance of multiple authentication factors.",
+        "category": "6. Identity & Access Management (IAM)",
+        "body": {
+          "raw": "\n## Multi-Factor Authentication (MFA)\n\nThis tutorial will cover the different types of authentication factors and how MFA enhances security. Content to be added.\n",
+          "html": "<h2>Multi-Factor Authentication (MFA)</h2>\n<p>This tutorial will cover the different types of authentication factors and how MFA enhances security. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/6-iam/multi-factor-authentication-mfa.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/6-iam/multi-factor-authentication-mfa.md",
+          "sourceFileName": "multi-factor-authentication-mfa.md",
+          "sourceFileDir": "tutorials/cybersecurity/6-iam",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/6-iam/multi-factor-authentication-mfa"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/multi-factor-authentication-mfa",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676786",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/6-iam/password-security-and-management.md": {
+      "document": {
+        "title": "Password Security and Management",
+        "slug": "password-security-and-management",
+        "order": 3,
+        "description": "Best practices for creating, storing, and managing passwords securely.",
+        "category": "6. Identity & Access Management (IAM)",
+        "body": {
+          "raw": "\n## Password Security and Management\n\nThis tutorial will cover password complexity, hashing, and management strategies. Content to be added.\n",
+          "html": "<h2>Password Security and Management</h2>\n<p>This tutorial will cover password complexity, hashing, and management strategies. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/6-iam/password-security-and-management.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/6-iam/password-security-and-management.md",
+          "sourceFileName": "password-security-and-management.md",
+          "sourceFileDir": "tutorials/cybersecurity/6-iam",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/6-iam/password-security-and-management"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/password-security-and-management",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676790",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/6-iam/role-based-access-control-rbac.md": {
+      "document": {
+        "title": "Role-Based Access Control (RBAC)",
+        "slug": "role-based-access-control-rbac",
+        "order": 4,
+        "description": "A model for restricting network access based on the roles of individual users.",
+        "category": "6. Identity & Access Management (IAM)",
+        "body": {
+          "raw": "\n## Role-Based Access Control (RBAC)\n\nThis tutorial will explain the principles and implementation of RBAC. Content to be added.\n",
+          "html": "<h2>Role-Based Access Control (RBAC)</h2>\n<p>This tutorial will explain the principles and implementation of RBAC. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/6-iam/role-based-access-control-rbac.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/6-iam/role-based-access-control-rbac.md",
+          "sourceFileName": "role-based-access-control-rbac.md",
+          "sourceFileDir": "tutorials/cybersecurity/6-iam",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/6-iam/role-based-access-control-rbac"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/role-based-access-control-rbac",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676792",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/cybersecurity/5-iam/authentication-vs-authorization.md": {
       "document": {
         "title": "Authentication vs. Authorization",
@@ -2466,6 +3597,222 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
+    "tutorials/cybersecurity/7-security-operations/introduction-to-digital-forensics.md": {
+      "document": {
+        "title": "Introduction to Digital Forensics",
+        "slug": "introduction-to-digital-forensics",
+        "order": 3,
+        "description": "The process of collecting, processing, and analyzing digital evidence.",
+        "category": "7. Security Operations (SecOps)",
+        "body": {
+          "raw": "\n## Introduction to Digital Forensics\n\nThis tutorial will provide a high-level overview of digital forensics. Content to be added.\n",
+          "html": "<h2>Introduction to Digital Forensics</h2>\n<p>This tutorial will provide a high-level overview of digital forensics. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/7-security-operations/introduction-to-digital-forensics.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/7-security-operations/introduction-to-digital-forensics.md",
+          "sourceFileName": "introduction-to-digital-forensics.md",
+          "sourceFileDir": "tutorials/cybersecurity/7-security-operations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/7-security-operations/introduction-to-digital-forensics"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/introduction-to-digital-forensics",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676807",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/7-security-operations/security-information-and-event-management-siem.md": {
+      "document": {
+        "title": "Security Information and Event Management (SIEM)",
+        "slug": "security-information-and-event-management-siem",
+        "order": 1,
+        "description": "Learn how SIEM systems provide real-time analysis of security alerts.",
+        "category": "7. Security Operations (SecOps)",
+        "body": {
+          "raw": "\n## Security Information and Event Management (SIEM)\n\nThis tutorial will introduce SIEM concepts and use cases. Content to be added.\n",
+          "html": "<h2>Security Information and Event Management (SIEM)</h2>\n<p>This tutorial will introduce SIEM concepts and use cases. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/7-security-operations/security-information-and-event-management-siem.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/7-security-operations/security-information-and-event-management-siem.md",
+          "sourceFileName": "security-information-and-event-management-siem.md",
+          "sourceFileDir": "tutorials/cybersecurity/7-security-operations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/7-security-operations/security-information-and-event-management-siem"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/security-information-and-event-management-siem",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676800",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/7-security-operations/the-incident-response-process.md": {
+      "document": {
+        "title": "The Incident Response Process",
+        "slug": "the-incident-response-process",
+        "order": 2,
+        "description": "Understand the lifecycle of responding to a security incident.",
+        "category": "7. Security Operations (SecOps)",
+        "body": {
+          "raw": "\n## The Incident Response Process\n\nThis tutorial will cover the phases of incident response: Preparation, Identification, Containment, Eradication, Recovery, and Lessons Learned. Content to be added.\n",
+          "html": "<h2>The Incident Response Process</h2>\n<p>This tutorial will cover the phases of incident response: Preparation, Identification, Containment, Eradication, Recovery, and Lessons Learned. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/7-security-operations/the-incident-response-process.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/7-security-operations/the-incident-response-process.md",
+          "sourceFileName": "the-incident-response-process.md",
+          "sourceFileDir": "tutorials/cybersecurity/7-security-operations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/7-security-operations/the-incident-response-process"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/the-incident-response-process",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676804",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/7-security-operations/threat-intelligence-and-threat-hunting.md": {
+      "document": {
+        "title": "Threat Intelligence and Threat Hunting",
+        "slug": "threat-intelligence-and-threat-hunting",
+        "order": 4,
+        "description": "Proactively searching for and mitigating cyber threats.",
+        "category": "7. Security Operations (SecOps)",
+        "body": {
+          "raw": "\n## Threat Intelligence and Threat Hunting\n\nThis tutorial will explain the difference between threat intelligence and threat hunting. Content to be added.\n",
+          "html": "<h2>Threat Intelligence and Threat Hunting</h2>\n<p>This tutorial will explain the difference between threat intelligence and threat hunting. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/7-security-operations/threat-intelligence-and-threat-hunting.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/7-security-operations/threat-intelligence-and-threat-hunting.md",
+          "sourceFileName": "threat-intelligence-and-threat-hunting.md",
+          "sourceFileDir": "tutorials/cybersecurity/7-security-operations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/7-security-operations/threat-intelligence-and-threat-hunting"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/threat-intelligence-and-threat-hunting",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676815",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/8-cryptography/digital-signatures-and-certificates.md": {
+      "document": {
+        "title": "Digital Signatures and Certificates",
+        "slug": "digital-signatures-and-certificates",
+        "order": 4,
+        "description": "Learn how digital signatures provide authenticity, integrity, and non-repudiation.",
+        "category": "8. Cryptography",
+        "body": {
+          "raw": "\n## Digital Signatures and Certificates\n\nThis tutorial will explain how digital signatures and certificates work. Content to be added.\n",
+          "html": "<h2>Digital Signatures and Certificates</h2>\n<p>This tutorial will explain how digital signatures and certificates work. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/8-cryptography/digital-signatures-and-certificates.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/8-cryptography/digital-signatures-and-certificates.md",
+          "sourceFileName": "digital-signatures-and-certificates.md",
+          "sourceFileDir": "tutorials/cybersecurity/8-cryptography",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/8-cryptography/digital-signatures-and-certificates"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/digital-signatures-and-certificates",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676826",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/8-cryptography/hashing-algorithms-sha256.md": {
+      "document": {
+        "title": "Hashing Algorithms (SHA-256)",
+        "slug": "hashing-algorithms-sha256",
+        "order": 2,
+        "description": "Learn how hashing creates a unique, fixed-size fingerprint of data.",
+        "category": "8. Cryptography",
+        "body": {
+          "raw": "\n## Hashing Algorithms (SHA-256)\n\nThis tutorial will explain hashing and common algorithms like SHA-256. Content to be added.\n",
+          "html": "<h2>Hashing Algorithms (SHA-256)</h2>\n<p>This tutorial will explain hashing and common algorithms like SHA-256. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/8-cryptography/hashing-algorithms-sha256.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/8-cryptography/hashing-algorithms-sha256.md",
+          "sourceFileName": "hashing-algorithms-sha256.md",
+          "sourceFileDir": "tutorials/cybersecurity/8-cryptography",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/8-cryptography/hashing-algorithms-sha256"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/hashing-algorithms-sha256",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676819",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/8-cryptography/public-key-infrastructure-pki.md": {
+      "document": {
+        "title": "Public Key Infrastructure (PKI)",
+        "slug": "public-key-infrastructure-pki",
+        "order": 3,
+        "description": "Understand the system for creating, managing, and validating digital certificates.",
+        "category": "8. Cryptography",
+        "body": {
+          "raw": "\n## Public Key Infrastructure (PKI)\n\nThis tutorial will provide an overview of PKI and its components. Content to be added.\n",
+          "html": "<h2>Public Key Infrastructure (PKI)</h2>\n<p>This tutorial will provide an overview of PKI and its components. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/8-cryptography/public-key-infrastructure-pki.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/8-cryptography/public-key-infrastructure-pki.md",
+          "sourceFileName": "public-key-infrastructure-pki.md",
+          "sourceFileDir": "tutorials/cybersecurity/8-cryptography",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/8-cryptography/public-key-infrastructure-pki"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/public-key-infrastructure-pki",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676823",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/8-cryptography/symmetric-vs-asymmetric-encryption.md": {
+      "document": {
+        "title": "Symmetric vs. Asymmetric Encryption",
+        "slug": "symmetric-vs-asymmetric-encryption",
+        "order": 1,
+        "description": "Understand the key differences between private and public key cryptography.",
+        "category": "8. Cryptography",
+        "body": {
+          "raw": "\n## Symmetric vs. Asymmetric Encryption\n\nThis tutorial will compare and contrast symmetric and asymmetric encryption methods. Content to be added.\n",
+          "html": "<h2>Symmetric vs. Asymmetric Encryption</h2>\n<p>This tutorial will compare and contrast symmetric and asymmetric encryption methods. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/8-cryptography/symmetric-vs-asymmetric-encryption.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/8-cryptography/symmetric-vs-asymmetric-encryption.md",
+          "sourceFileName": "symmetric-vs-asymmetric-encryption.md",
+          "sourceFileDir": "tutorials/cybersecurity/8-cryptography",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/8-cryptography/symmetric-vs-asymmetric-encryption"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/symmetric-vs-asymmetric-encryption",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676817",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
     "tutorials/cybersecurity/8-grc/intro-to-grc.md": {
       "document": {
         "title": "Introduction to GRC",
@@ -2517,6 +3864,114 @@
         "language": "cybersecurity"
       },
       "documentHash": "1756981050359",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/9-grc/data-privacy-laws-gdpr-ccpa.md": {
+      "document": {
+        "title": "Data Privacy Laws (GDPR, CCPA)",
+        "slug": "data-privacy-laws-gdpr-ccpa",
+        "order": 3,
+        "description": "An introduction to major data privacy regulations.",
+        "category": "9. Governance, Risk & Compliance",
+        "body": {
+          "raw": "\n## Data Privacy Laws (GDPR, CCPA)\n\nThis tutorial will provide an overview of GDPR and CCPA. Content to be added.\n",
+          "html": "<h2>Data Privacy Laws (GDPR, CCPA)</h2>\n<p>This tutorial will provide an overview of GDPR and CCPA. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/9-grc/data-privacy-laws-gdpr-ccpa.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/9-grc/data-privacy-laws-gdpr-ccpa.md",
+          "sourceFileName": "data-privacy-laws-gdpr-ccpa.md",
+          "sourceFileDir": "tutorials/cybersecurity/9-grc",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/9-grc/data-privacy-laws-gdpr-ccpa"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/data-privacy-laws-gdpr-ccpa",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676836",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/9-grc/introduction-to-security-frameworks-nist-iso27001.md": {
+      "document": {
+        "title": "Introduction to Security Frameworks (NIST, ISO 27001)",
+        "slug": "introduction-to-security-frameworks-nist-iso27001",
+        "order": 1,
+        "description": "An overview of common cybersecurity frameworks.",
+        "category": "9. Governance, Risk & Compliance",
+        "body": {
+          "raw": "\n## Introduction to Security Frameworks\n\nThis tutorial will introduce popular security frameworks like NIST and ISO 27001. Content to be added.\n",
+          "html": "<h2>Introduction to Security Frameworks</h2>\n<p>This tutorial will introduce popular security frameworks like NIST and ISO 27001. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/9-grc/introduction-to-security-frameworks-nist-iso27001.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/9-grc/introduction-to-security-frameworks-nist-iso27001.md",
+          "sourceFileName": "introduction-to-security-frameworks-nist-iso27001.md",
+          "sourceFileDir": "tutorials/cybersecurity/9-grc",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/9-grc/introduction-to-security-frameworks-nist-iso27001"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/introduction-to-security-frameworks-nist-iso27001",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676829",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/9-grc/risk-assessment-and-management.md": {
+      "document": {
+        "title": "Risk Assessment and Management",
+        "slug": "risk-assessment-and-management",
+        "order": 2,
+        "description": "The process of identifying, analyzing, and evaluating risk.",
+        "category": "9. Governance, Risk & Compliance",
+        "body": {
+          "raw": "\n## Risk Assessment and Management\n\nThis tutorial will cover the fundamentals of cybersecurity risk management. Content to be added.\n",
+          "html": "<h2>Risk Assessment and Management</h2>\n<p>This tutorial will cover the fundamentals of cybersecurity risk management. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/9-grc/risk-assessment-and-management.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/9-grc/risk-assessment-and-management.md",
+          "sourceFileName": "risk-assessment-and-management.md",
+          "sourceFileDir": "tutorials/cybersecurity/9-grc",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/9-grc/risk-assessment-and-management"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/risk-assessment-and-management",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676832",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/9-grc/security-auditing-and-compliance.md": {
+      "document": {
+        "title": "Security Auditing and Compliance",
+        "slug": "security-auditing-and-compliance",
+        "order": 4,
+        "description": "The process of auditing security controls and ensuring compliance.",
+        "category": "9. Governance, Risk & Compliance",
+        "body": {
+          "raw": "\n## Security Auditing and Compliance\n\nThis tutorial will explain the basics of security auditing. Content to be added.\n",
+          "html": "<h2>Security Auditing and Compliance</h2>\n<p>This tutorial will explain the basics of security auditing. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/9-grc/security-auditing-and-compliance.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/9-grc/security-auditing-and-compliance.md",
+          "sourceFileName": "security-auditing-and-compliance.md",
+          "sourceFileDir": "tutorials/cybersecurity/9-grc",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/9-grc/security-auditing-and-compliance"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/security-auditing-and-compliance",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676839",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     }

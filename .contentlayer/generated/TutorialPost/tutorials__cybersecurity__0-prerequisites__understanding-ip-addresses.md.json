@@ -1,0 +1,22 @@
+{
+  "title": "Understanding IP Addresses",
+  "slug": "understanding-ip-addresses",
+  "order": 4,
+  "description": "A guide to IPv4, IPv6, subnets, and how devices are addressed on a network.",
+  "category": "0. Prerequisites",
+  "body": {
+    "raw": "\n## Understanding IP Addresses\n\nThis tutorial will cover the structure and purpose of IP addresses. Content to be added.\n",
+    "html": "<h2>Understanding IP Addresses</h2>\n<p>This tutorial will cover the structure and purpose of IP addresses. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
+    "sourceFileName": "understanding-ip-addresses.md",
+    "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/understanding-ip-addresses",
+  "language": "cybersecurity"
+}
