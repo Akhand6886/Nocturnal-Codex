@@ -1,15 +1,16 @@
 
+
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, Link as LinkIcon, Brain } from "lucide-react";
 import Image from "next/image";
-import { allTopicPosts, TopicPost } from 'contentlayer/generated';
+import { allTopicPosts } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
+import { Button } from "@/components/ui/button";
 
 export const revalidate = 60; 
 
@@ -35,7 +36,6 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
   };
 }
 
-
 export default async function TopicPage({ params }: TopicPageProps) {
   const topic = allTopicPosts.find((t) => t.slug === params.topicSlug);
 
@@ -50,129 +50,56 @@ export default async function TopicPage({ params }: TopicPageProps) {
   ];
 
   return (
-    <div className="container mx-auto max-w-5xl px-4 py-10 md:py-12 space-y-8">
+    <div className="container mx-auto max-w-6xl px-4 py-10 md:py-12 space-y-12">
       <Breadcrumbs items={breadcrumbItems} />
       
-      <header className="pb-6 border-b border-border">
+      <header className="space-y-4">
         {topic.imageUrl && (
-          <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden mb-6 shadow-lg">
-            <Image src={topic.imageUrl} alt={topic.name} fill className="object-cover" data-ai-hint={topic.dataAiHint || "topic banner"} />
-            <div className="absolute inset-0 bg-black/50 flex items-end p-6">
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">{topic.name}</h1>
-            </div>
+          <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg border border-border/20">
+            <Image src={topic.imageUrl} alt={topic.name} fill className="object-cover" data-ai-hint={topic.dataAiHint || "topic banner"} priority />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
         )}
-        {!topic.imageUrl && <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">{topic.name}</h1>}
-        <MarkdownRenderer content={topic.body.raw} />
+        <div className="border-b border-border pb-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">{topic.name}</h1>
+            <div className="mt-4">
+                <MarkdownRenderer content={topic.body.raw} />
+            </div>
+        </div>
       </header>
 
-      <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-6">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          {topic.tutorials && topic.tutorials.length > 0 && <TabsTrigger value="tutorials">Tutorials</TabsTrigger>}
-          {topic.references && topic.references.length > 0 && <TabsTrigger value="references">References</TabsTrigger>}
-          {topic.thinkTankArticles && topic.thinkTankArticles.length > 0 && <TabsTrigger value="research">Research</TabsTrigger>}
-          {topic.codeSnippets && topic.codeSnippets.length > 0 && <TabsTrigger value="code">Code</TabsTrigger>}
-        </TabsList>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <main className="lg:col-span-2 space-y-12">
+          {topic.subtopics && topic.subtopics.length > 0 && (
+            <section id="subtopics">
+              <h2 className="text-2xl font-bold mb-6 flex items-center text-foreground/90">
+                <BookOpen className="mr-3 h-6 w-6 text-primary" />
+                Key Subtopics
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {topic.subtopics.map((sub) => (
+                  <Card key={sub.id} className="bg-card hover:bg-muted/40 transition-colors">
+                    <CardHeader>
+                      <CardTitle className="text-lg">{sub.name}</CardTitle>
+                    </CardHeader>
+                    {sub.description && (
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground">{sub.description}</p>
+                      </CardContent>
+                    )}
+                  </Card>
+                ))}
+              </div>
+            </section>
+          )}
 
-        <TabsContent value="overview" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center text-2xl"><BookOpen className="mr-2 h-6 w-6 text-primary" /> Subtopics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {topic.subtopics && topic.subtopics.length > 0 ? (
-                <ul className="space-y-3">
-                  {topic.subtopics.map((sub) => (
-                    <li key={sub.id} className="p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
-                      <h3 className="font-semibold text-lg text-foreground/90">{sub.name}</h3>
-                      {sub.description && <p className="text-sm text-muted-foreground mt-1">{sub.description}</p>}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-muted-foreground">No subtopics available for this topic yet.</p>
-              )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {topic.tutorials && topic.tutorials.length > 0 && (
-          <TabsContent value="tutorials">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center text-2xl"><GraduationCap className="mr-2 h-6 w-6 text-primary" /> Tutorials</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {topic.tutorials.map((tut) => (
-                    <li key={tut.id}>
-                      <Link href={tut.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
-                        <div>
-                          <h4 className="font-medium text-foreground/90 group-hover:text-primary">{tut.title}</h4>
-                          <p className="text-xs text-muted-foreground">Source: {tut.sourceName}</p>
-                        </div>
-                        <LinkIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary"/>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        )}
-
-        {topic.references && topic.references.length > 0 && (
-          <TabsContent value="references">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center text-2xl"><Lightbulb className="mr-2 h-6 w-6 text-primary" /> Wiki-Style References</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {topic.references.map((ref) => (
-                     <li key={ref.id}>
-                      <Link href={`/wiki/${ref.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
-                        <span className="font-medium text-foreground/90 group-hover:text-primary">{ref.title}</span>
-                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        )}
-
-        {topic.thinkTankArticles && topic.thinkTankArticles.length > 0 && (
-           <TabsContent value="research">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center text-2xl"><Brain className="mr-2 h-6 w-6 text-primary" /> Think Tank Articles</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {topic.thinkTankArticles.map((article) => ( 
-                     <li key={article.id}>
-                      <Link href={`/think-tank/${article.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
-                        <span className="font-medium text-foreground/90 group-hover:text-primary">{article.title}</span>
-                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        )}
-        
-        {topic.codeSnippets && topic.codeSnippets.length > 0 && (
-          <TabsContent value="code">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center text-2xl"><Code2 className="mr-2 h-6 w-6 text-primary" /> Code Snippets</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+          {topic.codeSnippets && topic.codeSnippets.length > 0 && (
+            <section id="code-snippets">
+              <h2 className="text-2xl font-bold mb-6 flex items-center text-foreground/90">
+                <Code2 className="mr-3 h-6 w-6 text-primary" />
+                Code Examples
+              </h2>
+              <div className="space-y-6">
                 {topic.codeSnippets.map((snippet) => (
                   <CodeSnippet 
                     key={snippet.id} 
@@ -182,11 +109,62 @@ export default async function TopicPage({ params }: TopicPageProps) {
                     description={snippet.description}
                   />
                 ))}
-              </CardContent>
-            </Card>
-          </TabsContent>
-        )}
-      </Tabs>
+              </div>
+            </section>
+          )}
+        </main>
+        
+        <aside className="lg:col-span-1 space-y-8 lg:sticky lg:top-24 self-start">
+            {topic.tutorials && topic.tutorials.length > 0 && (
+                 <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center text-lg"><GraduationCap className="mr-2 h-5 w-5 text-primary" /> Tutorials</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                        {topic.tutorials.map((tut) => (
+                             <Link href={tut.url} key={tut.id} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-2 rounded-md hover:bg-muted/50 transition-colors">
+                                <div>
+                                    <h4 className="text-sm font-medium text-foreground/90 group-hover:text-primary">{tut.title}</h4>
+                                    <p className="text-xs text-muted-foreground">Source: {tut.sourceName}</p>
+                                </div>
+                                <LinkIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary"/>
+                            </Link>
+                        ))}
+                    </CardContent>
+                </Card>
+            )}
+             {topic.references && topic.references.length > 0 && (
+                 <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center text-lg"><Lightbulb className="mr-2 h-5 w-5 text-primary" /> Related Wiki Articles</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                        {topic.references.map((ref) => (
+                            <Link href={`/wiki/${ref.slug}`} key={ref.id} className="group flex items-center justify-between p-2 rounded-md hover:bg-muted/50 transition-colors">
+                                <span className="text-sm font-medium text-foreground/90 group-hover:text-primary">{ref.title}</span>
+                                <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
+                            </Link>
+                        ))}
+                    </CardContent>
+                </Card>
+            )}
+            {topic.thinkTankArticles && topic.thinkTankArticles.length > 0 && (
+                 <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center text-lg"><Brain className="mr-2 h-5 w-5 text-primary" /> From The Think Tank</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                       {topic.thinkTankArticles.map((article) => ( 
+                           <Link href={`/think-tank/${article.slug}`} key={article.id} className="group flex items-center justify-between p-2 rounded-md hover:bg-muted/50 transition-colors">
+                                <span className="text-sm font-medium text-foreground/90 group-hover:text-primary">{article.title}</span>
+                                <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
+                           </Link>
+                        ))}
+                    </CardContent>
+                </Card>
+            )}
+        </aside>
+      </div>
     </div>
   );
 }
