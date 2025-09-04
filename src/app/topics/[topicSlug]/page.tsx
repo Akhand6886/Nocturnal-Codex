@@ -10,7 +10,7 @@ import Image from "next/image";
 import { allTopicPosts, TopicPost } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
-import type { WikiArticleStub, ThinkTankArticleStub } from '@/lib/data'; // Assuming these types are still needed if not defined in contentlayer
+import type { WikiArticleStub } from '@/lib/data'; // Assuming these types are still needed if not defined in contentlayer
 
 export const revalidate = 60; // Revalidate every 60 seconds
 

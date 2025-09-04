@@ -1,0 +1,23 @@
+{
+  "id": "cybersecurity",
+  "name": "Cybersecurity",
+  "slug": "cybersecurity",
+  "description": "Protecting systems from threats.",
+  "category": "Security",
+  "imageUrl": "https://placehold.co/400x300.png",
+  "dataAiHint": "hacker code",
+  "body": {
+    "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n",
+    "html": "<p>Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.</p>"
+  },
+  "_id": "topics/cybersecurity.md",
+  "_raw": {
+    "sourceFilePath": "topics/cybersecurity.md",
+    "sourceFileName": "cybersecurity.md",
+    "sourceFileDir": "topics",
+    "contentType": "markdown",
+    "flattenedPath": "topics/cybersecurity"
+  },
+  "type": "TopicPost",
+  "url": "/topics/cybersecurity"
+}

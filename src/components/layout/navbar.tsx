@@ -25,7 +25,7 @@ export interface NavItem {
 }
 
 interface NavbarProps {
-    topics?: TopicPost[];
+    topics: TopicPost[];
 }
 
 export function Navbar({ topics = [] }: NavbarProps) {
@@ -33,7 +33,7 @@ export function Navbar({ topics = [] }: NavbarProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const dynamicNavItems = useMemo(() => {
-    const topicsNavItems = (topics || []).map(topic => ({ label: topic.name, href: topic.url })).sort((a,b) => a.label.localeCompare(b.label));
+    const topicsNavItems = topics.map(topic => ({ label: topic.name, href: topic.url })).sort((a,b) => a.label.localeCompare(b.label));
     return NAV_ITEMS.map(item =>
       item.label === "Topics" ? { ...item, children: topicsNavItems } : item
     );

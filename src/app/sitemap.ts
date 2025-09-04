@@ -1,7 +1,8 @@
 
 import { MetadataRoute } from 'next';
-import { MOCK_WIKI_ARTICLES, MOCK_TOPICS } from '@/lib/data';
+import { MOCK_WIKI_ARTICLES } from '@/lib/data';
 import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
+import { allTopicPosts } from 'contentlayer/generated';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -46,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const topicPages = MOCK_TOPICS.map((topic) => ({
+  const topicPages = allTopicPosts.map((topic) => ({
     url: `${BASE_URL}/topics/${topic.slug}`,
     lastModified: new Date().toISOString(), 
     changeFrequency: 'weekly',
