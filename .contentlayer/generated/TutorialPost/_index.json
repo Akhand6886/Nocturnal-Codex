@@ -1430,28 +1430,6 @@
     "language": "cybersecurity"
   },
   {
-    "title": "Computer Hardware Components",
-    "slug": "computer-hardware-components",
-    "order": 1,
-    "description": "A look at the essential hardware components that make up a computer system.",
-    "category": "0. Prerequisites",
-    "body": {
-      "raw": "\n## Computer Hardware Components\n\nThis tutorial will cover the basic hardware components of a computer, such as the CPU, RAM, motherboard, and storage devices. Content to be added.\n",
-      "html": "<h2>Computer Hardware Components</h2>\n<p>This tutorial will cover the basic hardware components of a computer, such as the CPU, RAM, motherboard, and storage devices. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
-      "sourceFileName": "computer-hardware-components.md",
-      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/computer-hardware-components",
-    "language": "cybersecurity"
-  },
-  {
     "title": "Introduction to the Linux Command-Line",
     "slug": "introduction-to-linux-cli",
     "order": 5,
@@ -1471,94 +1449,6 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/introduction-to-linux-cli",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Introduction to Windows CMD & PowerShell",
-    "slug": "introduction-to-windows-cmd-powershell",
-    "order": 6,
-    "description": "An overview of the command-line interfaces available in Windows.",
-    "category": "0. Prerequisites",
-    "body": {
-      "raw": "\n## Introduction to Windows CMD & PowerShell\n\nThis tutorial will cover the basics of using the Command Prompt and PowerShell. Content to be added.\n",
-      "html": "<h2>Introduction to Windows CMD &#x26; PowerShell</h2>\n<p>This tutorial will cover the basics of using the Command Prompt and PowerShell. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell.md",
-      "sourceFileName": "introduction-to-windows-cmd-powershell.md",
-      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/introduction-to-windows-cmd-powershell"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/introduction-to-windows-cmd-powershell",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Networking Fundamentals (OSI & TCP/IP)",
-    "slug": "networking-fundamentals-osi-tcpip",
-    "order": 3,
-    "description": "Learn about the foundational models of computer networking: OSI and TCP/IP.",
-    "category": "0. Prerequisites",
-    "body": {
-      "raw": "\n## Networking Fundamentals (OSI & TCP/IP)\n\nThis tutorial will explain the layers of the OSI and TCP/IP models. Content to be added.\n",
-      "html": "<h2>Networking Fundamentals (OSI &#x26; TCP/IP)</h2>\n<p>This tutorial will explain the layers of the OSI and TCP/IP models. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
-      "sourceFileName": "networking-fundamentals-osi-tcpip.md",
-      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/networking-fundamentals-osi-tcpip",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Operating Systems Basics",
-    "slug": "operating-systems-basics",
-    "order": 2,
-    "description": "An introduction to the fundamental concepts of operating systems.",
-    "category": "0. Prerequisites",
-    "body": {
-      "raw": "\n## Operating Systems Basics\n\nThis tutorial will cover the role and basic functions of an operating system. Content to be added.\n",
-      "html": "<h2>Operating Systems Basics</h2>\n<p>This tutorial will cover the role and basic functions of an operating system. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
-      "sourceFileName": "operating-systems-basics.md",
-      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/operating-systems-basics",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Understanding IP Addresses",
-    "slug": "understanding-ip-addresses",
-    "order": 4,
-    "description": "A guide to IPv4, IPv6, subnets, and how devices are addressed on a network.",
-    "category": "0. Prerequisites",
-    "body": {
-      "raw": "\n## Understanding IP Addresses\n\nThis tutorial will cover the structure and purpose of IP addresses. Content to be added.\n",
-      "html": "<h2>Understanding IP Addresses</h2>\n<p>This tutorial will cover the structure and purpose of IP addresses. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
-      "sourceFileName": "understanding-ip-addresses.md",
-      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/understanding-ip-addresses",
     "language": "cybersecurity"
   },
   {
@@ -2468,6 +2358,28 @@
     "slug": "authentication-vs-authorization",
     "order": 1,
     "description": "Learn the critical difference between verifying identity and granting permissions.",
+    "category": "5. Identity & Access Management",
+    "body": {
+      "raw": "\n## Authentication vs. Authorization\n\nThis tutorial will explain the difference between authentication and authorization. Content to be added.\n",
+      "html": "<h2>Authentication vs. Authorization</h2>\n<p>This tutorial will explain the difference between authentication and authorization. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/5-iam/authentication-vs-authorization.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/5-iam/authentication-vs-authorization.md",
+      "sourceFileName": "authentication-vs-authorization.md",
+      "sourceFileDir": "tutorials/cybersecurity/5-iam",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/5-iam/authentication-vs-authorization"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/authentication-vs-authorization",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Authentication vs. Authorization",
+    "slug": "authentication-vs-authorization",
+    "order": 1,
+    "description": "Learn the critical difference between verifying identity and granting permissions.",
     "category": "6. Identity & Access Management (IAM)",
     "body": {
       "raw": "\n## Authentication vs. Authorization\n\nThis tutorial will explain the difference between authentication (AuthN) and authorization (AuthZ). Content to be added.\n",
@@ -2549,28 +2461,6 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/role-based-access-control-rbac",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Authentication vs. Authorization",
-    "slug": "authentication-vs-authorization",
-    "order": 1,
-    "description": "Learn the critical difference between verifying identity and granting permissions.",
-    "category": "5. Identity & Access Management",
-    "body": {
-      "raw": "\n## Authentication vs. Authorization\n\nThis tutorial will explain the difference between authentication and authorization. Content to be added.\n",
-      "html": "<h2>Authentication vs. Authorization</h2>\n<p>This tutorial will explain the difference between authentication and authorization. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/5-iam/authentication-vs-authorization.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/5-iam/authentication-vs-authorization.md",
-      "sourceFileName": "authentication-vs-authorization.md",
-      "sourceFileDir": "tutorials/cybersecurity/5-iam",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/5-iam/authentication-vs-authorization"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/authentication-vs-authorization",
     "language": "cybersecurity"
   },
   {

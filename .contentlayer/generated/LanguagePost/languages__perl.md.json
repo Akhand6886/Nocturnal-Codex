@@ -1,0 +1,21 @@
+{
+  "id": "perl",
+  "name": "Perl",
+  "slug": "perl",
+  "description": "A mature, dynamic language with a long history, particularly renowned for its powerful text processing and system administration capabilities.",
+  "iconName": "perl",
+  "body": {
+    "raw": "\nPerl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing, regular expressions, and system administration tasks.\n",
+    "html": "<p>Perl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing, regular expressions, and system administration tasks.</p>"
+  },
+  "_id": "languages/perl.md",
+  "_raw": {
+    "sourceFilePath": "languages/perl.md",
+    "sourceFileName": "perl.md",
+    "sourceFileDir": "languages",
+    "contentType": "markdown",
+    "flattenedPath": "languages/perl"
+  },
+  "type": "LanguagePost",
+  "url": "/languages/perl"
+}

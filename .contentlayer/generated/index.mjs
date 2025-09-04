@@ -7,9 +7,10 @@ export { isType } from 'contentlayer/client'
 import { allBlogPosts } from './BlogPost/_index.mjs'
 import { allTutorialPosts } from './TutorialPost/_index.mjs'
 import { allTopicPosts } from './TopicPost/_index.mjs'
+import { allLanguagePosts } from './LanguagePost/_index.mjs'
 
-export { allBlogPosts, allTutorialPosts, allTopicPosts }
+export { allBlogPosts, allTutorialPosts, allTopicPosts, allLanguagePosts }
 
-export const allDocuments = [...allBlogPosts, ...allTutorialPosts, ...allTopicPosts]
+export const allDocuments = [...allBlogPosts, ...allTutorialPosts, ...allTopicPosts, ...allLanguagePosts]
 
 

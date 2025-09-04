@@ -31,6 +31,21 @@ export type BlogPost = {
   id: string
 }
 
+export type LanguagePost = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'LanguagePost'
+  id: string
+  name: string
+  slug: string
+  description: string
+  iconName?: string | undefined
+  /** Markdown file body */
+  body: Markdown
+  url: string
+}
+
 export type TopicPost = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -134,8 +149,8 @@ export type WikiArticleStub = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = BlogPost | TopicPost | TutorialPost
-export type DocumentTypeNames = 'BlogPost' | 'TopicPost' | 'TutorialPost'
+export type DocumentTypes = BlogPost | LanguagePost | TopicPost | TutorialPost
+export type DocumentTypeNames = 'BlogPost' | 'LanguagePost' | 'TopicPost' | 'TutorialPost'
 
 export type NestedTypes = CodeSnippetItem | SubTopic | ThinkTankArticleStub | Tutorial | WikiArticleStub
 export type NestedTypeNames = 'CodeSnippetItem' | 'SubTopic' | 'ThinkTankArticleStub' | 'Tutorial' | 'WikiArticleStub'
@@ -145,6 +160,7 @@ export type DataExports = {
   allBlogPosts: BlogPost[]
   allTutorialPosts: TutorialPost[]
   allTopicPosts: TopicPost[]
+  allLanguagePosts: LanguagePost[]
 }
 
 
@@ -165,6 +181,7 @@ declare global {
 
 export type DocumentTypeMap = {
   BlogPost: BlogPost
+  LanguagePost: LanguagePost
   TopicPost: TopicPost
   TutorialPost: TutorialPost
 }
