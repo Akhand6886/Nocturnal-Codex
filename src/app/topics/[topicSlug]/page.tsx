@@ -84,16 +84,18 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {topic.subtopics.map((sub) => (
-                  <Card key={sub.id} className="bg-card hover:bg-muted/40 transition-colors">
-                    <CardHeader>
-                      <CardTitle className="text-lg">{sub.name}</CardTitle>
-                    </CardHeader>
-                    {sub.description && (
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{sub.description}</p>
-                      </CardContent>
-                    )}
-                  </Card>
+                  <Link href={sub.slug} key={sub.id} className="group block h-full">
+                    <Card className="h-full bg-card hover:bg-muted/40 hover:border-primary/40 transition-all duration-200 ease-in-out">
+                      <CardHeader>
+                        <CardTitle className="text-lg group-hover:text-primary transition-colors">{sub.name}</CardTitle>
+                      </CardHeader>
+                      {sub.description && (
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground">{sub.description}</p>
+                        </CardContent>
+                      )}
+                    </Card>
+                  </Link>
                 ))}
               </div>
             </section>
