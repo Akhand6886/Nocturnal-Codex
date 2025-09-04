@@ -1,7 +1,10 @@
 ---
 title: "Basic Scripting with Python"
-description: "An introduction to scripting with Python for cybersecurity, covering basic concepts and building a simple port scanner to automate tasks."
-tags: ["prerequisites", "python", "scripting", "automation"]
+slug: "basic-scripting-with-python"
+order: 7
+description: "Learn the fundamentals of Python scripting for automation and cybersecurity tasks."
+category: "0. Prerequisites"
+tags: ["0. Prerequisites"]
 ---
 
 ## Introduction

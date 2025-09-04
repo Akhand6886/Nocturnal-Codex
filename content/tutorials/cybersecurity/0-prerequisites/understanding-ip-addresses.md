@@ -1,8 +1,10 @@
 ---
 title: "Understanding IP Addresses"
+slug: "understanding-ip-addresses"
+order: 4
 description: "A guide to IPv4, IPv6, subnets, and how devices are addressed on a network."
 category: "0. Prerequisites"
-order: 4
+tags: ["0. Prerequisites"]
 ---
 
 ## Introduction

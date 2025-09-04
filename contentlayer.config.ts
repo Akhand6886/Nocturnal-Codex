@@ -34,6 +34,7 @@ export const TutorialPost = defineDocumentType(() => ({
       order: { type: 'number', required: true }, 
       description: { type: 'string', required: true }, 
       category: { type: 'string', required: true },
+      tags: { type: 'list', of: { type: 'string' }, required: false },
     },
     computedFields: {
       url: {

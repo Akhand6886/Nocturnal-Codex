@@ -1,8 +1,10 @@
 ---
 title: "Operating Systems Basics"
+slug: "operating-systems-basics"
+order: 2
 description: "Learn what an operating system (OS) is, its core functions, and why it is a critical battleground in cybersecurity."
 category: "0. Prerequisites"
-order: 2
+tags: ["0. Prerequisites"]
 ---
 
 ## Introduction

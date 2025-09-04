@@ -1,8 +1,10 @@
 ---
 title: "Networking Fundamentals (OSI & TCP/IP)"
+slug: "networking-fundamentals-osi-tcpip"
+order: 3
 description: "Learn about the foundational models of computer networking: OSI and TCP/IP."
 category: "0. Prerequisites"
-order: 3
+tags: ["0. Prerequisites"]
 ---
 
 ## Introduction

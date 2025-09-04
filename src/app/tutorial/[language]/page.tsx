@@ -1,11 +1,9 @@
+
 // src/app/tutorial/[language]/page.tsx
-import { allTutorialPosts } from 'contentlayer/generated';
+import { allTutorialPosts, allLanguagePosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import { TutorialCard } from '@/components/content/tutorial-card';
-import { Code2 } from 'lucide-react';
-import type { Metadata } from 'next';
 import { SimpleIcon } from '@/components/common/simple-icon';
-import { allLanguagePosts } from 'contentlayer/generated';
 
 export const revalidate = 60;
 
@@ -21,17 +19,6 @@ interface LanguageTutorialsPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export async function generateMetadata({ params }: LanguageTutorialsPageProps): Promise<Metadata> {
-    const language = allLanguagePosts.find(p => p.slug === params.language);
-    if (!language) {
-        return { title: 'Language Not Found' };
-    }
-    return {
-        title: `${language.name} Tutorials | Nocturnal Codex`,
-        description: `Browse all ${language.name} tutorials. ${language.description}`,
-    };
-}
-
 export default function LanguageTutorialsPage({ params, searchParams }: LanguageTutorialsPageProps) {
   const language = allLanguagePosts.find((p) => p.slug === params.language);
 
@@ -42,7 +29,7 @@ export default function LanguageTutorialsPage({ params, searchParams }: Language
   const categoryFilter = typeof searchParams.category === 'string' ? searchParams.category : null;
 
   const tutorials = allTutorialPosts
-    .filter((p) => p.language === language.slug)
+    .filter((p) => p.language === language.slug && (!categoryFilter || p.category === categoryFilter))
     .sort((a, b) => a.order - b.order);
   
   const groupedTutorials = tutorials.reduce((acc, tutorial) => {
@@ -55,7 +42,6 @@ export default function LanguageTutorialsPage({ params, searchParams }: Language
   }, {} as Record<string, typeof tutorials>);
 
   const sortedCategories = Object.keys(groupedTutorials)
-    .filter(category => !categoryFilter || category === categoryFilter)
     .sort((a, b) => {
         const aNum = parseInt(a.split('.')[0], 10);
         const bNum = parseInt(b.split('.')[0], 10);

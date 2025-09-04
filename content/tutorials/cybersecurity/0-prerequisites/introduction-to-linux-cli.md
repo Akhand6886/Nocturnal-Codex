@@ -1,8 +1,10 @@
 ---
 title: "Introduction to the Linux Command-Line"
+slug: "introduction-to-linux-cli"
+order: 5
 description: "Learn the essential commands for navigating and interacting with the Linux operating system, a critical skill for any cybersecurity professional."
 category: "0. Prerequisites"
-order: 5
+tags: ["0. Prerequisites"]
 ---
 
 ## Introduction
