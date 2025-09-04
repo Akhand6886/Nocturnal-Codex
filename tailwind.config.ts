@@ -106,4 +106,3 @@ export default {
     require("@tailwindcss/typography")
   ],
 } satisfies Config;
-
