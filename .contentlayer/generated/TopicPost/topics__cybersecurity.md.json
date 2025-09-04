@@ -2,10 +2,84 @@
   "id": "cybersecurity",
   "name": "Cybersecurity",
   "slug": "cybersecurity",
-  "description": "Protecting systems from threats.",
+  "description": "An in-depth guide to protecting systems, networks, and data from digital threats.",
   "category": "Security",
   "imageUrl": "https://placehold.co/400x300.png",
-  "dataAiHint": "hacker code",
+  "dataAiHint": "digital security matrix",
+  "subtopics": [
+    {
+      "id": "cyber-foundations",
+      "slug": "/tutorial/cybersecurity/intro-to-cybersecurity",
+      "name": "1. Cybersecurity Foundations",
+      "description": "Start here to learn the basic principles and terminology of cybersecurity.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "network-security",
+      "slug": "/tutorial/cybersecurity/firewalls-and-proxies",
+      "name": "2. Network Security",
+      "description": "Discover how to secure network infrastructure from unauthorized access and threats.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "app-security",
+      "slug": "/tutorial/cybersecurity/owasp-top-ten",
+      "name": "3. Application & Software Security",
+      "description": "Learn to identify and mitigate vulnerabilities in software and applications.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "cryptography",
+      "slug": "/tutorial/cybersecurity/intro-to-cryptography",
+      "name": "4. Cryptography",
+      "description": "Explore the science of secure communication and data protection.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "iam",
+      "slug": "/tutorial/cybersecurity/authentication-vs-authorization",
+      "name": "5. Identity & Access Management",
+      "description": "Understand how to manage and control user access to critical systems and data.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "threats-and-attacks",
+      "slug": "/tutorial/cybersecurity/malware-types",
+      "name": "6. Threats, Attacks, and Vulnerabilities",
+      "description": "An overview of common cyber threats and attack vectors.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "security-operations",
+      "slug": "/tutorial/cybersecurity/intro-to-siem",
+      "name": "7. Security Operations (SecOps)",
+      "description": "Learn about the tools and processes for monitoring and responding to security incidents.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "grc",
+      "slug": "/tutorial/cybersecurity/intro-to-grc",
+      "name": "8. Governance, Risk, and Compliance (GRC)",
+      "description": "Understand the frameworks and regulations that govern cybersecurity practices.",
+      "type": "SubTopic",
+      "_raw": {}
+    },
+    {
+      "id": "advanced-topics",
+      "slug": "/tutorial/cybersecurity/cloud-security-basics",
+      "name": "9. Advanced & Specialized Topics",
+      "description": "Dive into specialized areas like cloud security, IoT, and industrial control systems.",
+      "type": "SubTopic",
+      "_raw": {}
+    }
+  ],
   "body": {
     "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n",
     "html": "<p>Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.</p>"
