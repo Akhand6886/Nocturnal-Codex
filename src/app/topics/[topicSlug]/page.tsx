@@ -83,20 +83,23 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 Key Subtopics
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {topic.subtopics.map((sub) => (
-                  <Link href={sub.slug} key={sub.id} className="group block h-full">
-                    <Card className="h-full bg-card hover:bg-muted/40 hover:border-primary/40 transition-all duration-200 ease-in-out">
-                      <CardHeader>
-                        <CardTitle className="text-lg group-hover:text-primary transition-colors">{sub.name}</CardTitle>
-                      </CardHeader>
-                      {sub.description && (
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground">{sub.description}</p>
-                        </CardContent>
-                      )}
-                    </Card>
-                  </Link>
-                ))}
+                {topic.subtopics.map((sub) => {
+                  const href = `/languages/${topic.slug}?category=${encodeURIComponent(sub.slug)}`;
+                  return (
+                    <Link href={href} key={sub.id} className="group block h-full">
+                      <Card className="h-full bg-card hover:bg-muted/40 hover:border-primary/40 transition-all duration-200 ease-in-out">
+                        <CardHeader>
+                          <CardTitle className="text-lg group-hover:text-primary transition-colors">{sub.name}</CardTitle>
+                        </CardHeader>
+                        {sub.description && (
+                          <CardContent>
+                            <p className="text-sm text-muted-foreground">{sub.description}</p>
+                          </CardContent>
+                        )}
+                      </Card>
+                    </Link>
+                  )
+                })}
               </div>
             </section>
           )}
@@ -176,3 +179,4 @@ export default async function TopicPage({ params }: TopicPageProps) {
     </div>
   );
 }
+

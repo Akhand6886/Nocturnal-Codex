@@ -729,7 +729,7 @@
         "subtopics": [
           {
             "id": "cyber-prerequisites",
-            "slug": "/languages/cybersecurity?category=0.+Prerequisites",
+            "slug": "0. Prerequisites",
             "name": "0. Prerequisites",
             "description": "Build the foundational IT knowledge needed for a career in cybersecurity.",
             "type": "SubTopic",
@@ -737,7 +737,7 @@
           },
           {
             "id": "cyber-foundations",
-            "slug": "/languages/cybersecurity?category=1.+Security+Foundations",
+            "slug": "1. Security Foundations",
             "name": "1. Security Foundations",
             "description": "Learn the core principles, key terms, and threat landscape of cybersecurity.",
             "type": "SubTopic",
@@ -745,7 +745,7 @@
           },
           {
             "id": "os-security",
-            "slug": "/languages/cybersecurity?category=2.+OS+%26+System+Security",
+            "slug": "2. OS & System Security",
             "name": "2. OS & System Security",
             "description": "Master the fundamentals of securing operating systems like Linux and Windows.",
             "type": "SubTopic",
@@ -753,7 +753,7 @@
           },
           {
             "id": "network-security",
-            "slug": "/languages/cybersecurity?category=3.+Network+Security",
+            "slug": "3. Network Security",
             "name": "3. Network Security",
             "description": "Discover how to secure network infrastructure from unauthorized access and threats.",
             "type": "SubTopic",
@@ -761,7 +761,7 @@
           },
           {
             "id": "threats-and-vulnerabilities",
-            "slug": "/languages/cybersecurity?category=4.+Threats+%26+Vulnerabilities",
+            "slug": "4. Threats & Vulnerabilities",
             "name": "4. Threats & Vulnerabilities",
             "description": "An in-depth look at malware, social engineering, and vulnerability management.",
             "type": "SubTopic",
@@ -769,7 +769,7 @@
           },
           {
             "id": "app-security",
-            "slug": "/languages/cybersecurity?category=5.+Application+Security",
+            "slug": "5. Application Security",
             "name": "5. Application Security",
             "description": "Learn to identify and mitigate vulnerabilities like the OWASP Top 10 in software.",
             "type": "SubTopic",
@@ -777,7 +777,7 @@
           },
           {
             "id": "iam",
-            "slug": "/languages/cybersecurity?category=6.+Identity+%26+Access+Management+(IAM)",
+            "slug": "6. Identity & Access Management (IAM)",
             "name": "6. Identity & Access Management (IAM)",
             "description": "Understand how to manage user identities and control access to critical systems.",
             "type": "SubTopic",
@@ -785,7 +785,7 @@
           },
           {
             "id": "security-operations",
-            "slug": "/languages/cybersecurity?category=7.+Security+Operations+(SecOps)",
+            "slug": "7. Security Operations (SecOps)",
             "name": "7. Security Operations (SecOps)",
             "description": "Explore how to monitor systems, detect threats, and respond to security incidents.",
             "type": "SubTopic",
@@ -793,7 +793,7 @@
           },
           {
             "id": "cryptography",
-            "slug": "/languages/cybersecurity?category=8.+Cryptography",
+            "slug": "8. Cryptography",
             "name": "8. Cryptography",
             "description": "Explore the science of secure communication, hashing, and data protection.",
             "type": "SubTopic",
@@ -801,7 +801,7 @@
           },
           {
             "id": "grc",
-            "slug": "/languages/cybersecurity?category=9.+Governance,+Risk+%26+Compliance",
+            "slug": "9. Governance, Risk & Compliance",
             "name": "9. Governance, Risk & Compliance",
             "description": "Learn about security frameworks, risk management, and data privacy regulations.",
             "type": "SubTopic",
@@ -809,7 +809,7 @@
           },
           {
             "id": "cloud-security",
-            "slug": "/languages/cybersecurity?category=10.+Cloud+Security",
+            "slug": "10. Cloud Security",
             "name": "10. Cloud Security",
             "description": "Understand the unique security challenges and solutions for cloud environments.",
             "type": "SubTopic",
@@ -817,7 +817,7 @@
           },
           {
             "id": "offensive-security",
-            "slug": "/languages/cybersecurity?category=11.+Offensive+Security+(Red+Team)",
+            "slug": "11. Offensive Security (Red Team)",
             "name": "11. Offensive Security (Red Team)",
             "description": "Dive into the world of ethical hacking and penetration testing to find vulnerabilities.",
             "type": "SubTopic",
@@ -825,7 +825,7 @@
           }
         ],
         "body": {
-          "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n\n",
+          "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.\n",
           "html": "<p>Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.</p>"
         },
         "_id": "topics/cybersecurity.md",
@@ -839,7 +839,7 @@
         "type": "TopicPost",
         "url": "/topics/cybersecurity"
       },
-      "documentHash": "1757006569839",
+      "documentHash": "1757007391085",
       "hasWarnings": true,
       "documentTypeName": "TopicPost"
     },
