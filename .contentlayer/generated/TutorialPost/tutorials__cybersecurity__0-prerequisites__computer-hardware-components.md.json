@@ -1,0 +1,22 @@
+{
+  "title": "Computer Hardware Components",
+  "slug": "computer-hardware-components",
+  "order": 1,
+  "description": "A look at the essential hardware components that make up a computer system.",
+  "category": "0. Prerequisites",
+  "body": {
+    "raw": "\n## Computer Hardware Components\n\nThis tutorial will cover the basic hardware components of a computer, such as the CPU, RAM, motherboard, and storage devices. Content to be added.\n",
+    "html": "<h2>Computer Hardware Components</h2>\n<p>This tutorial will cover the basic hardware components of a computer, such as the CPU, RAM, motherboard, and storage devices. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
+    "sourceFileName": "computer-hardware-components.md",
+    "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/computer-hardware-components",
+  "language": "cybersecurity"
+}

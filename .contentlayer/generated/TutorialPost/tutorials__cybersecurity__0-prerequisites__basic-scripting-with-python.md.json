@@ -1,0 +1,22 @@
+{
+  "title": "Basic Scripting with Python",
+  "slug": "basic-scripting-with-python",
+  "order": 7,
+  "description": "Learn the fundamentals of Python scripting for automation and cybersecurity tasks.",
+  "category": "0. Prerequisites",
+  "body": {
+    "raw": "\n## Basic Scripting with Python\n\nThis tutorial will provide an introduction to writing simple Python scripts. Content to be added.\n",
+    "html": "<h2>Basic Scripting with Python</h2>\n<p>This tutorial will provide an introduction to writing simple Python scripts. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python.md",
+    "sourceFileName": "basic-scripting-with-python.md",
+    "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/basic-scripting-with-python",
+  "language": "cybersecurity"
+}

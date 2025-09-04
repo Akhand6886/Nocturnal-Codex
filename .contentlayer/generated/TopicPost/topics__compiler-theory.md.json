@@ -1,0 +1,23 @@
+{
+  "id": "compiler-theory",
+  "name": "Compiler Theory",
+  "slug": "compiler-theory",
+  "description": "The art of translating high-level code to machine instructions.",
+  "category": "Theoretical Computer Science",
+  "imageUrl": "https://placehold.co/400x300.png",
+  "dataAiHint": "code compilation",
+  "body": {
+    "raw": "\nUncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.\n",
+    "html": "<p>Uncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.</p>"
+  },
+  "_id": "topics/compiler-theory.md",
+  "_raw": {
+    "sourceFilePath": "topics/compiler-theory.md",
+    "sourceFileName": "compiler-theory.md",
+    "sourceFileDir": "topics",
+    "contentType": "markdown",
+    "flattenedPath": "topics/compiler-theory"
+  },
+  "type": "TopicPost",
+  "url": "/topics/compiler-theory"
+}

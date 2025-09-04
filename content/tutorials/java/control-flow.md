@@ -1,91 +1,105 @@
 ---
-title: "Java Control Flow"
-slug: "java-control-flow"
-order: 5
-description: "Learn how to control the flow of execution in Java using conditional statements and loops."
-category: "Java Fundamentals"
+title: "Java Conditional Statements (if/else)"
+slug: "java-conditional-statements"
+order: 7
+description: "Learn how to control the flow of your Java programs with conditional statements. Master the use of if, else if, and else to make decisions in your code."
+category: "Control Flow"
 ---
 
-## Control Flow in Java
+## Making Decisions in Your Code
 
-Control flow statements are what allow a program to make decisions and repeat actions.
+Conditional statements allow your program to execute a specific block of code only if a certain condition is true. They are the primary way a program can make decisions and behave differently in response to different inputs. The core conditional statements in Java are `if`, `else if`, and `else`.
 
-### Conditional Statements (`if`, `else if`, `else`)
+-----
 
-These statements allow your program to execute certain blocks of code based on a boolean condition.
+### **1. The `if` Statement**
+
+The `if` statement is the most basic control flow statement. It tells your program to execute a certain section of code only if a particular test evaluates to `true`.
+
+```java
+int age = 20;
+
+if (age >= 18) {
+  System.out.println("You are an adult.");
+}
+```
+
+**Output:**
+
+```text
+You are an adult.
+```
+
+If the `age` variable was less than 18, the `println` statement would be skipped.
+
+-----
+
+### **2. The `else` Statement**
+
+The `else` statement is used to provide a secondary path of execution when the `if` clause evaluates to `false`.
+
+```java
+int temperature = 15;
+
+if (temperature > 25) {
+  System.out.println("It's a hot day!");
+} else {
+  System.out.println("It's not a hot day.");
+}
+```
+
+**Output:**
+
+```text
+It's not a hot day.
+```
+
+-----
+
+### **3. The `else if` Statement**
+
+If you have more than two possible conditions to check, you can use the `else if` statement. This allows you to chain multiple conditions together.
 
 ```java
 int score = 85;
 
 if (score >= 90) {
-    System.out.println("Grade: A");
+  System.out.println("Grade: A");
 } else if (score >= 80) {
-    System.out.println("Grade: B"); // This will be printed
+  System.out.println("Grade: B");
 } else if (score >= 70) {
-    System.out.println("Grade: C");
+  System.out.println("Grade: C");
 } else {
-    System.out.println("Grade: F");
+  System.out.println("Grade: D");
 }
 ```
 
-### The `switch` Statement
+**Output:**
 
-A `switch` statement can be a cleaner alternative to a long chain of `if-else if` statements when you are checking a single variable against multiple values.
-
-```java
-int day = 4;
-String dayString;
-switch (day) {
-    case 1:  dayString = "Monday";
-             break;
-    case 2:  dayString = "Tuesday";
-             break;
-    case 3:  dayString = "Wednesday";
-             break;
-    case 4:  dayString = "Thursday";
-             break;
-    // ... other cases
-    default: dayString = "Invalid day";
-             break;
-}
-System.out.println(dayString); // Output: Thursday
+```text
+Grade: B
 ```
 
-### Loops
+The program checks each condition in order and executes the code for the first one that is `true`, skipping all the rest.
 
-Loops are used to execute a block of code repeatedly.
+-----
 
-#### The `for` Loop
+### **Ternary Operator**
 
-A `for` loop is ideal when you know how many times you want to iterate.
+For simple `if/else` conditions, Java has a shorter alternative called the ternary operator. It's a concise way to assign a value to a variable based on a condition.
 
-```java
-// Prints numbers from 0 to 4
-for (int i = 0; i < 5; i++) {
-    System.out.println("Iteration: " + i);
-}
-```
-
-#### The `while` Loop
-
-A `while` loop continues as long as a condition is true.
+**Syntax:** `variable = (condition) ? valueIfTrue : valueIfFalse;`
 
 ```java
-int count = 0;
-while (count < 3) {
-    System.out.println("Count is " + count);
-    count++;
-}
+int time = 20;
+String result = (time < 18) ? "Good day." : "Good evening.";
+System.out.println(result);
 ```
 
-#### The `do-while` Loop
+**Output:**
 
-A `do-while` loop is similar to a `while` loop, but it guarantees that the block of code is executed at least once.
-
-```java
-int i = 5;
-do {
-    System.out.println("This will print once, even though i is not less than 5.");
-    i++;
-} while (i < 5);
+```text
+Good evening.
 ```
+
+By mastering conditional statements, you gain the ability to write programs that can perform complex logic and respond intelligently to different scenarios.

@@ -1,0 +1,22 @@
+{
+  "title": "Common Threat Actors",
+  "slug": "common-threat-actors",
+  "order": 4,
+  "description": "An overview of different types of attackers, from hacktivists to nation-states.",
+  "category": "1. Security Foundations",
+  "body": {
+    "raw": "\n## Common Threat Actors\n\nThis tutorial will explore the motivations and methods of various threat actors. Content to be added.\n",
+    "html": "<h2>Common Threat Actors</h2>\n<p>This tutorial will explore the motivations and methods of various threat actors. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
+    "sourceFileName": "common-threat-actors.md",
+    "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/1-foundations/common-threat-actors"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/common-threat-actors",
+  "language": "cybersecurity"
+}

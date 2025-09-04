@@ -1,86 +1,103 @@
 ---
 title: "JavaScript Operators"
 slug: "javascript-operators"
-order: 5
-description: "Understand the different operators in JavaScript for performing arithmetic, assignment, comparison, and logical operations."
-category: "JS Fundamentals"
+order: 4
+description: "Learn about the different types of operators in JavaScript, including arithmetic, assignment, comparison, and logical operators, to perform various operations."
+category: "JavaScript Fundamentals"
 ---
 
-## JavaScript Operators
+## What are Operators?
 
-JavaScript uses operators to perform operations on values and variables.
+Operators are special symbols used to perform operations on operands (values and variables). For example, in `5 + 10`, `+` is an operator, and `5` and `10` are operands. JavaScript has a wide range of operators to help you manipulate data.
 
-### Arithmetic Operators
-Used to perform arithmetic between numeric values.
-- `+` Addition
-- `-` Subtraction
-- `*` Multiplication
-- `/` Division
-- `**` Exponentiation (ES2016)
-- `%` Modulus (Division Remainder)
-- `++` Increment
-- `--` Decrement
+-----
+
+### **1. Arithmetic Operators**
+
+These are used to perform mathematical calculations.
+
+| Operator | Description | Example |
+| :--- | :--- | :--- |
+| `+` | Addition | `x + y` |
+| `-` | Subtraction | `x - y` |
+| `*` | Multiplication | `x * y` |
+| `/` | Division | `x / y` |
+| `%` | Modulus (Remainder) | `x % y` |
+| `++` | Increment | `x++` (increases by one) |
+| `--` | Decrement | `x--` (decreases by one) |
 
 ```javascript
 let x = 10;
 let y = 4;
-console.log(x + y); // 14
-console.log(x % y); // 2
+
+console.log(x + y); // Output: 14
+console.log(x % y); // Output: 2
 ```
 
-### Assignment Operators
-Used to assign values to JavaScript variables.
-- `=` Assign
-- `+=` Add and assign
-- `-=` Subtract and assign
-- `*=` Multiply and assign
-- `/=` Divide and assign
+-----
+
+### **2. Assignment Operators**
+
+These operators are used to assign values to variables.
+
+| Operator | Example | Same As |
+| :--- | :--- | :--- |
+| `=` | `x = y` | `x = y` |
+| `+=` | `x += y` | `x = x + y` |
+| `-=` | `x -= y` | `x = x - y` |
+| `*=` | `x *= y` | `x = x * y` |
+| `/=` | `x /= y` | `x = x / y` |
 
 ```javascript
-let a = 10;
-a += 5; // a is now 15
+let score = 100;
+score += 50; // score is now 150
+console.log(score);
 ```
 
-### Comparison Operators
-Used in logical statements to determine equality or difference between variables or values.
-- `==` Equal to (value)
-- `===` Equal value and equal type (strict equality)
-- `!=` Not equal to (value)
-- `!==` Not equal value or not equal type
-- `>` Greater than
-- `<` Less than
-- `>=` Greater than or equal to
-- `<=` Less than or equal to
-- `?` Ternary operator
+-----
+
+### **3. Comparison Operators**
+
+These operators compare two values and return a boolean (`true` or `false`).
+
+| Operator | Description |
+| :--- | :--- |
+| `==` | Equal to |
+| `===` | Strict equal to (equal value and equal type) |
+| `!=` | Not equal to |
+| `!==` | Strict not equal to (not equal value or not equal type) |
+| `>` | Greater than |
+| `<` | Less than |
+| `>=` | Greater than or equal to |
+| `<=` | Less than or equal to |
+
+**`==` vs `===` (A Key Difference)**
+
+It is a best practice to always use **strict equality (`===`)** because it prevents unexpected behavior by checking both value and type.
 
 ```javascript
-let age = 18;
-let canVote = (age < 18) ? "Too young" : "Old enough";
-console.log(canVote); // "Old enough"
+console.log(5 == "5");   // Output: true (values are the same)
+console.log(5 === "5");  // Output: false (types are different: number vs string)
+console.log(5 !== "5");  // Output: true
 ```
 
-### Logical Operators
-Used to determine the logic between variables or values.
-- `&&` Logical AND
-- `||` Logical OR
-- `!` Logical NOT
+-----
+
+### **4. Logical Operators**
+
+These are used to combine or invert boolean values.
+
+| Operator | Description |
+| :--- | :--- |
+| `&&` | **AND**: `true` if both operands are true. |
+| `||` | **OR**: `true` if at least one operand is true. |
+| `!` | **NOT**: Inverts the boolean value (`true` becomes `false`). |
 
 ```javascript
-let isAdult = true;
-let hasLicense = false;
+let age = 25;
+let hasPhotoID = true;
 
-if (isAdult && hasLicense) {
-  console.log("Can drive.");
-} else {
-  console.log("Cannot drive.");
+if (age >= 18 && hasPhotoID) {
+  console.log("Entry granted.");
 }
-```
-
-### Type Operators
-- `typeof` Returns the type of a variable
-- `instanceof` Returns `true` if an object is an instance of an object type
-
-```javascript
-console.log(typeof "John"); // "string"
-console.log([1, 2] instanceof Array); // true
 ```

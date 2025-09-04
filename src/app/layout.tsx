@@ -7,6 +7,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react"
+import { allTopicPosts } from 'contentlayer/generated';
 
 const inter = Inter({ // Changed from Geist_Sans
   variable: '--font-inter', // Changed variable name
@@ -116,7 +117,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${robotoMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <ThemeProvider>
           <div className="flex-grow">
-            <Navbar />
+            <Navbar topics={allTopicPosts} />
             {children}
           </div>
           <Footer />

@@ -1,0 +1,9 @@
+---
+id: "python"
+name: "Python"
+slug: "python"
+description: "A versatile and beginner-friendly language for web development, data science, automation, and more."
+iconName: "python"
+---
+
+Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly procedural), object-oriented and functional programming. It is often described as a "batteries included" language due to its comprehensive standard library.

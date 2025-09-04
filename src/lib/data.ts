@@ -1,34 +1,8 @@
 
 import type { NavItem as NavItemType } from '@/components/layout/navbar';
-import type { CodeLanguage } from '@/components/content/code-snippet';
 
-export interface Topic {
-  id: string;
-  slug: string;
-  name: string;
-  description: string;
-  longDescription?: string;
-  imageUrl?: string;
-  dataAiHint?: string;
-  category?: string;
-  subtopics?: SubTopic[];
-  codeSnippets?: CodeSnippetItem[];
-}
-
-export interface SubTopic {
-  id: string;
-  slug: string;
-  name: string;
-  description?: string;
-}
-
-export interface CodeSnippetItem {
-  id: string;
-  title: string;
-  language: CodeLanguage;
-  code: string;
-  description?: string;
-}
+// This file is now primarily for static navigation and simple mock data.
+// Topic data has been migrated to `content/topics/` and is managed by Contentlayer.
 
 export interface WikiArticleStub {
   id: string;
@@ -40,129 +14,6 @@ export interface WikiArticle extends WikiArticleStub {
   content: string; // Markdown content
   lastUpdated: string;
 }
-
-export interface ThinkTankArticleStub {
-  id: string;
-  title: string;
-  slug: string;
-}
-
-export const MOCK_TOPICS: Topic[] = [
-  {
-    id: "algorithms",
-    slug: "algorithms",
-    name: "Algorithms",
-    category: "Core Computer Science",
-    description: "Core concepts of computation and problem-solving strategies.",
-    longDescription: "Delve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.",
-    imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "abstract algorithm",
-    subtopics: [
-      {id: "sorting", slug: "sorting", name: "Sorting Algorithms", description: "Techniques for arranging data in a specific order."},
-      {id: "graphs", slug: "graphs", name: "Graph Theory", description: "Study of networks and relationships between objects."},
-      {id: "dp", slug: "dynamic-programming", name: "Dynamic Programming", description: "Optimization technique by breaking down problems."},
-      {id: "complexity-analysis", slug: "complexity-analysis", name: "Complexity Analysis", description: "Understanding how algorithms scale with input size, using notations like Big O."}
-    ],
-    codeSnippets: [
-      {id: "cs-algo-1", title: "Python Merge Sort", language: "python", code: `
-def merge_sort(arr):
-    if len(arr) > 1:
-        mid = len(arr) // 2
-        L = arr[:mid]
-        R = arr[mid:]
-        merge_sort(L)
-        merge_sort(R)
-        # ... (merge logic)
-        i = j = k = 0
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                arr[k] = L[i]
-                i += 1
-            else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
-`, description: "A classic divide-and-conquer sorting algorithm."},
-      {
-        id: "cs-algo-bigo-example",
-        title: "Big O Notation Example (Linear Time)",
-        language: "python",
-        code:
-      `
-def find_element(arr, target):
-    # O(n) - Linear time complexity
-    for element in arr:
-        if element == target:
-            return True
-    return False
-
-my_list = [1, 2, 3, 4, 5]
-print(find_element(my_list, 3)) # True
-print(find_element(my_list, 6)) # False
-`,
-        description: "Illustrates an algorithm with O(n) time complexity."
-      }
-    ]
-  },
-  {
-    id: "os",
-    slug: "operating-systems",
-    name: "Operating Systems",
-    category: "Core Computer Science",
-    description: "Software managing computer hardware and resources.",
-    longDescription: "Explore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.",
-    imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "computer hardware"
-  },
-  {
-    id: "ml",
-    slug: "machine-learning",
-    name: "Machine Learning",
-    category: "Artificial Intelligence",
-    description: "Algorithms that learn from and make decisions based on data.",
-    longDescription: "Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
-    imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "artificial intelligence"
-  },
-  {
-    id: "cybersecurity",
-    slug: "cybersecurity",
-    name: "Cybersecurity",
-    category: "Security",
-    description: "Protecting systems from threats.",
-    longDescription: "Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.",
-    imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "hacker code"
-  },
-  {
-    id: "compiler-theory",
-    slug: "compiler-theory",
-    name: "Compiler Theory",
-    category: "Theoretical Computer Science",
-    description: "The art of translating high-level code to machine instructions.",
-    longDescription: "Uncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.",
-    imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "code compilation"
-  },
-  {
-    id: "language-theory",
-    slug: "language-theory",
-    name: "Language Theory",
-    category: "Theoretical Computer Science",
-    description: "Formal languages, automata, and computability.",
-    longDescription: "Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
-    imageUrl: "https://placehold.co/400x300.png",
-    dataAiHint: "abstract symbols"
-  },
-];
 
 export const MOCK_WIKI_ARTICLES: WikiArticle[] = [
   {
@@ -256,7 +107,7 @@ Python's philosophy emphasizes code readability and a syntax that allows program
   {
     id: "wiki-jvm",
     slug: "jvm-overview",
-    title: "Java Virtual Machine (JVM)",
+    title: "Java Virtual Machine (JVM) Overview",
     category: "Programming Languages",
     lastUpdated: "2024-03-10T11:00:00Z",
     content: `

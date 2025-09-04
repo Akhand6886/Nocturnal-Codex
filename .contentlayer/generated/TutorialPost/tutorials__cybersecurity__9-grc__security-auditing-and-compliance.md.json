@@ -1,0 +1,22 @@
+{
+  "title": "Security Auditing and Compliance",
+  "slug": "security-auditing-and-compliance",
+  "order": 4,
+  "description": "The process of auditing security controls and ensuring compliance.",
+  "category": "9. Governance, Risk & Compliance",
+  "body": {
+    "raw": "\n## Security Auditing and Compliance\n\nThis tutorial will explain the basics of security auditing. Content to be added.\n",
+    "html": "<h2>Security Auditing and Compliance</h2>\n<p>This tutorial will explain the basics of security auditing. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/9-grc/security-auditing-and-compliance.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/9-grc/security-auditing-and-compliance.md",
+    "sourceFileName": "security-auditing-and-compliance.md",
+    "sourceFileDir": "tutorials/cybersecurity/9-grc",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/9-grc/security-auditing-and-compliance"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/security-auditing-and-compliance",
+  "language": "cybersecurity"
+}

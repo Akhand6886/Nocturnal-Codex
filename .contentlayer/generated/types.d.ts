@@ -31,6 +31,28 @@ export type BlogPost = {
   id: string
 }
 
+export type TopicPost = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'TopicPost'
+  id: string
+  name: string
+  slug: string
+  description: string
+  category?: string | undefined
+  imageUrl?: string | undefined
+  dataAiHint?: string | undefined
+  subtopics?: SubTopic[] | undefined
+  codeSnippets?: CodeSnippetItem[] | undefined
+  tutorials?: Tutorial[] | undefined
+  references?: WikiArticleStub[] | undefined
+  thinkTankArticles?: ThinkTankArticleStub[] | undefined
+  /** Markdown file body */
+  body: Markdown
+  url: string
+}
+
 export type TutorialPost = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -48,23 +70,81 @@ export type TutorialPost = {
 }  
 
 /** Nested types */
-  
+export type CodeSnippetItem = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'CodeSnippetItem'
+  id: string
+  title: string
+  language: 'python' | 'javascript' | 'typescript' | 'html' | 'css' | 'json' | 'markdown' | 'csharp' | 'java' | 'go' | 'rust' | 'text' | 'cpp'
+  code: string
+  description?: string | undefined
+
+}
+
+export type SubTopic = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'SubTopic'
+  id: string
+  slug: string
+  name: string
+  description?: string | undefined
+
+}
+
+export type ThinkTankArticleStub = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'ThinkTankArticleStub'
+  id: string
+  title: string
+  slug: string
+
+}
+
+export type Tutorial = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Tutorial'
+  id: string
+  title: string
+  url: string
+  sourceName: string
+
+}
+
+export type WikiArticleStub = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'WikiArticleStub'
+  id: string
+  title: string
+  slug: string
+
+}  
 
 /** Helper types */
 
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = BlogPost | TutorialPost
-export type DocumentTypeNames = 'BlogPost' | 'TutorialPost'
+export type DocumentTypes = BlogPost | TopicPost | TutorialPost
+export type DocumentTypeNames = 'BlogPost' | 'TopicPost' | 'TutorialPost'
 
-export type NestedTypes = never
-export type NestedTypeNames = never
+export type NestedTypes = CodeSnippetItem | SubTopic | ThinkTankArticleStub | Tutorial | WikiArticleStub
+export type NestedTypeNames = 'CodeSnippetItem' | 'SubTopic' | 'ThinkTankArticleStub' | 'Tutorial' | 'WikiArticleStub'
 
 export type DataExports = {
   allDocuments: DocumentTypes[]
   allBlogPosts: BlogPost[]
   allTutorialPosts: TutorialPost[]
+  allTopicPosts: TopicPost[]
 }
 
 
@@ -85,11 +165,16 @@ declare global {
 
 export type DocumentTypeMap = {
   BlogPost: BlogPost
+  TopicPost: TopicPost
   TutorialPost: TutorialPost
 }
 
 export type NestedTypeMap = {
-
+  CodeSnippetItem: CodeSnippetItem
+  SubTopic: SubTopic
+  ThinkTankArticleStub: ThinkTankArticleStub
+  Tutorial: Tutorial
+  WikiArticleStub: WikiArticleStub
 }
 
  

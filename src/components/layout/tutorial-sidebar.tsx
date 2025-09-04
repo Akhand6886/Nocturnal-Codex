@@ -10,19 +10,18 @@ import type { TutorialPost } from 'contentlayer/generated';
 
 interface TutorialSidebarProps {
   groupedTutorials: Record<string, TutorialPost[]>;
+  currentLanguageSlug: string;
 }
 
-export function TutorialSidebar({ groupedTutorials }: TutorialSidebarProps) {
+export function TutorialSidebar({ groupedTutorials, currentLanguageSlug }: TutorialSidebarProps) {
   const pathname = usePathname();
 
   const sortedCategories = Object.keys(groupedTutorials).sort((a, b) => {
-    // Find the minimum order number in each category to determine its position
     const minOrderA = Math.min(...groupedTutorials[a].map(p => p.order));
     const minOrderB = Math.min(...groupedTutorials[b].map(p => p.order));
     return minOrderA - minOrderB;
   });
   
-  // To expand all categories by default, we pass all sorted category names to defaultValue.
   const defaultExpandedCategories = sortedCategories;
 
   return (

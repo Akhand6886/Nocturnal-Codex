@@ -1,0 +1,22 @@
+{
+  "title": "Wireless Security",
+  "slug": "wireless-security",
+  "order": 4,
+  "description": "Learn about securing Wi-Fi networks with protocols like WPA3.",
+  "category": "2. Network Security",
+  "body": {
+    "raw": "\n## Wireless Security\n\nThis tutorial will cover wireless security protocols. Content to be added.\n",
+    "html": "<h2>Wireless Security</h2>\n<p>This tutorial will cover wireless security protocols. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/2-network-security/wireless-security.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/2-network-security/wireless-security.md",
+    "sourceFileName": "wireless-security.md",
+    "sourceFileDir": "tutorials/cybersecurity/2-network-security",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/2-network-security/wireless-security"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/wireless-security",
+  "language": "cybersecurity"
+}

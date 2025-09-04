@@ -1,66 +1,87 @@
 ---
 title: "JavaScript Data Types"
 slug: "javascript-data-types"
-order: 4
-description: "Explore the different data types available in JavaScript, both primitive and non-primitive."
-category: "JS Variables and Data Types"
+order: 3
+description: "Explore the fundamental data types in JavaScript, including primitive types like strings, numbers, and booleans, and understand JavaScript's dynamic typing."
+category: "JavaScript Fundamentals"
 ---
 
-## JavaScript Data Types
+## Dynamically Typed Language
 
-JavaScript variables can hold different data types. JavaScript is a dynamically typed language, which means you don't need to specify the type of a variable when you declare it.
+JavaScript is a **dynamically typed** language. This means you don't have to specify the data type of a variable when you declare it. The data type is determined automatically at runtime.
 
-### Primitive Data Types
-Primitive data types are immutable (they cannot be changed).
+```javascript
+let myVar = "Hello"; // myVar is a string
+console.log(typeof myVar); // Output: "string"
 
-1.  **String**: Represents textual data.
-    ```javascript
-    let name = "Alice";
-    ```
-2.  **Number**: Represents numeric values, including integers and floating-point numbers.
-    ```javascript
-    let age = 30;
-    let price = 19.99;
-    ```
-3.  **BigInt**: Represents integers with arbitrary precision.
-    ```javascript
-    const veryLargeNumber = 9007199254740991n;
-    ```
-4.  **Boolean**: Represents `true` or `false`.
-    ```javascript
-    let isActive = true;
-    ```
-5.  **Undefined**: A variable that has been declared but not assigned a value has the value `undefined`.
-    ```javascript
-    let status; // status is undefined
-    ```
-6.  **Null**: Represents the intentional absence of any object value.
-    ```javascript
-    let user = null;
-    ```
-7.  **Symbol**: A unique and immutable primitive value, often used as object property keys.
-    ```javascript
-    const id = Symbol('id');
-    ```
+myVar = 50; // Now, myVar is a number
+console.log(typeof myVar); // Output: "number"
+```
 
-### Non-Primitive Data Type (Object)
-The `object` data type can store collections of data.
+JavaScript has several primitive data types and one complex data type.
 
-- **Object**: A collection of key-value pairs.
-  ```javascript
-  const person = {
-    firstName: "John",
-    lastName: "Doe",
-    age: 50
-  };
-  ```
-- **Array**: A special type of object for storing ordered collections.
-  ```javascript
-  const colors = ["red", "green", "blue"];
-  ```
-- **Function**: A block of code designed to perform a particular task.
-  ```javascript
-  function greet() {
-    return "Hello!";
-  }
-  ```
+-----
+
+## Primitive Data Types
+
+Primitive types are the most basic data types in the language.
+
+### **1. String**
+
+A **string** represents textual data. It must be enclosed in single (`'`) or double (`"`) quotes. Modern JavaScript also has template literals, enclosed in backticks (`` ` ``).
+
+```javascript
+let greeting = "Hello, Nocturnal Codex!";
+let userName = 'Alice';
+```
+
+### **2. Number**
+
+The **number** type represents both integer and floating-point numbers. Unlike some other languages, JavaScript does not have different types for integers and floats.
+
+```javascript
+let userAge = 25;       // An integer
+let price = 19.99;      // A floating-point number
+```
+
+The number type also includes special values like `Infinity`, `-Infinity`, and `NaN` (Not-a-Number). `NaN` represents a computational error, such as the result of an invalid mathematical operation (e.g., `0 / 0`).
+
+### **3. Boolean**
+
+A **boolean** represents a logical entity and can have only two values: `true` or `false`. Booleans are essential for conditional logic and making decisions in your code.
+
+```javascript
+let isLoggedIn = true;
+let isAdmin = false;
+```
+
+### **4. `undefined`**
+
+A variable that has been declared but has not yet been assigned a value has the type `undefined`.
+
+```javascript
+let userEmail;
+console.log(userEmail); // Output: undefined
+```
+
+### **5. `null`**
+
+`null` is a special value that represents the intentional absence of any object value. It's an assignment value, meaning a variable must be explicitly assigned `null`.
+
+```javascript
+let selectedUser = null; // We explicitly state there is "no value"
+```
+
+-----
+
+## The `typeof` Operator
+
+To find the data type of a JavaScript variable, you can use the `typeof` operator.
+
+```javascript
+console.log(typeof "Hello");      // Output: "string"
+console.log(typeof 123);          // Output: "number"
+console.log(typeof true);         // Output: "boolean"
+console.log(typeof undefined);    // Output: "undefined"
+console.log(typeof null);         // Output: "object" (This is a well-known quirk in JavaScript)
+```

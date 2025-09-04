@@ -14,8 +14,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS, MOCK_TOPICS } from "@/lib/data";
+import { NAV_ITEMS } from "@/lib/data";
 import { useState, useMemo } from "react";
+import type { TopicPost } from "contentlayer/generated";
 
 export interface NavItem {
   label: string;
@@ -23,16 +24,20 @@ export interface NavItem {
   children?: NavItem[];
 }
 
-export function Navbar() {
+interface NavbarProps {
+    topics: TopicPost[];
+}
+
+export function Navbar({ topics = [] }: NavbarProps) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const dynamicNavItems = useMemo(() => {
-    const topicsNavItems = MOCK_TOPICS.map(topic => ({ label: topic.name, href: `/topics/${topic.slug}` }));
+    const topicsNavItems = topics.map(topic => ({ label: topic.name, href: topic.url })).sort((a,b) => a.label.localeCompare(b.label));
     return NAV_ITEMS.map(item =>
       item.label === "Topics" ? { ...item, children: topicsNavItems } : item
     );
-  }, []);
+  }, [topics]);
 
 
   const renderNavItem = (item: NavItem, isMobile = false) => {

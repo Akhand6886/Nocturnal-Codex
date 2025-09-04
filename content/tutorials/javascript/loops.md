@@ -1,74 +1,100 @@
 ---
-title: "JavaScript Loops"
+title: "JavaScript Loops (for and while)"
 slug: "javascript-loops"
-order: 5
-description: "Learn how to repeat actions using different types of loops in JavaScript."
-category: "JS Control Flow"
+order: 10
+description: "Learn how to automate repetitive tasks in JavaScript using for and while loops. This guide covers iterating over arrays and repeating code based on conditions."
+category: "Program Flow and Functions"
 ---
 
-## JavaScript Loops
+## Repeating Code with Loops
 
-Loops are handy if you want to run the same code over and over again, each time with a different value.
+Loops are a core concept in programming that allow you to run a block of code over and over again. They are essential for working with collections of data, like arrays, or for performing any task that needs to be repeated. JavaScript has several kinds of loops, but the most common are the `for` loop and the `while` loop.
 
-### The `for` Loop
-The `for` loop is often the tool you'll use when you want to iterate over a block of code a certain number of times.
+-----
 
-```javascript
-for (let i = 0; i < 5; i++) {
-  console.log("The number is " + i);
-}
-// This will print numbers 0 through 4.
-```
+### **The `for` Loop**
 
-### The `for...in` Loop
-The `for...in` statement iterates over the properties of an object.
+The `for` loop is ideal when you know in advance how many times you want the loop to run. It repeats a block of code a specific number of times.
 
-```javascript
-const person = {fname:"John", lname:"Doe", age:25};
+The syntax of a `for` loop consists of three parts:
 
-for (let key in person) {
-  console.log(key + ": " + person[key]);
-}
-// Prints:
-// fname: John
-// lname: Doe
-// age: 25
-```
+1.  **Initialization**: Executed once before the loop starts (e.g., `let i = 0`).
+2.  **Condition**: Checked before each iteration. If it's `true`, the loop continues.
+3.  **Final Expression**: Executed at the end of each iteration (e.g., `i++`).
 
-### The `for...of` Loop
-The `for...of` statement iterates over the values of an iterable object (like an Array, String, Map, etc.).
+#### **Example: Looping Through an Array**
+
+This is the most common use case for a `for` loop.
 
 ```javascript
-const colors = ["red", "green", "blue"];
+const fruits = ["Apple", "Banana", "Cherry"];
 
-for (let color of colors) {
-  console.log(color);
-}
-// Prints:
-// red
-// green
-// blue
-```
-
-### The `while` Loop
-The `while` loop loops through a block of code as long as a specified condition is true.
-
-```javascript
-let i = 0;
-while (i < 5) {
-  console.log("The number is " + i);
-  i++;
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
 }
 ```
 
-### The `do...while` Loop
-The `do...while` loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.
+**Output:**
+
+```text
+Apple
+Banana
+Cherry
+```
+
+-----
+
+### **The `while` Loop**
+
+The `while` loop is used when you don't know exactly how many times the code needs to run. It continues to execute a block of code as long as a specified condition is `true`.
 
 ```javascript
-let i = 0;
-do {
-  console.log("The number is " + i);
-  i++;
+let count = 1;
+
+while (count <= 5) {
+  console.log("The count is: " + count);
+  count++; // Important: You must increment the counter, or you'll create an infinite loop!
 }
-while (i < 5);
 ```
+
+**Output:**
+
+```text
+The count is: 1
+The count is: 2
+The count is: 3
+The count is: 4
+The count is: 5
+```
+
+-----
+
+### **Loop Control Statements**
+
+You can control the execution of a loop with special statements.
+
+  * **`break`**: Immediately terminates the loop entirely.
+
+    ```javascript
+    for (let i = 0; i < 10; i++) {
+      if (i === 5) {
+        break; // Stop the loop when i is 5
+      }
+      console.log(i);
+    }
+    // Output: 0, 1, 2, 3, 4
+    ```
+
+  * **`continue`**: Skips the current iteration and proceeds to the next one.
+
+    ```javascript
+    for (let i = 0; i < 5; i++) {
+      if (i === 2) {
+        continue; // Skip the rest of the code for this iteration when i is 2
+      }
+      console.log(i);
+    }
+    // Output: 0, 1, 3, 4
+    ```
+
+Loops are fundamental for processing data and automating tasks, making them an indispensable tool in your JavaScript skill set.
