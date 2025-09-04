@@ -15,12 +15,10 @@ import { cache } from 'react';
 
 export const revalidate = 60; 
 
-// Use cache to deduplicate data fetching
-const getTopicFromParams = cache(async (topicSlug: string) => {
-  const topic = allTopicPosts.find((t) => t.slug === topicSlug);
-  return topic;
+// Use cache to deduplicate data fetching for a single request
+const getTopic = cache((slug: string) => {
+  return allTopicPosts.find((t) => t.slug === slug);
 });
-
 
 export async function generateStaticParams() {
   const topics = allTopicPosts || [];
@@ -34,7 +32,7 @@ interface TopicPageProps {
 }
 
 export async function generateMetadata({ params }: TopicPageProps): Promise<Metadata> {
-  const topic = await getTopicFromParams(params.topicSlug);
+  const topic = getTopic(params.topicSlug);
   if (!topic) {
     return { title: "Topic Not Found" };
   }
@@ -45,7 +43,7 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
 }
 
 export default async function TopicPage({ params }: TopicPageProps) {
-  const topic = await getTopicFromParams(params.topicSlug);
+  const topic = getTopic(params.topicSlug);
 
   if (!topic) {
     notFound();
@@ -176,4 +174,3 @@ export default async function TopicPage({ params }: TopicPageProps) {
     </div>
   );
 }
-
