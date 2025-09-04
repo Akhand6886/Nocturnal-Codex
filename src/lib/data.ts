@@ -135,11 +135,36 @@ print(find_element(my_list, 6)) # False
     imageUrl: "https://placehold.co/400x300.png",
     dataAiHint: "computer hardware",
     subtopics: [
-        { id: "os-proc-mgmt", slug: "process-management", name: "Process Management", description: "How the OS handles running programs and their resources." },
-        { id: "os-mem-mgmt", slug: "memory-management", name: "Memory Management", description: "Techniques for allocating and deallocating memory space." }
+      {id: "process-management", slug: "process-management", name: "Process Management", description: "How the OS handles running programs and processes."},
+      {id: "memory-management", slug: "memory-management", name: "Memory Management", description: "Techniques for allocating and deallocating memory."},
+      {id: "file-systems", slug: "file-systems", name: "File Systems", description: "How data is stored and retrieved on a storage device."}
     ],
-    references: [
-        { id: "wiki-jvm", title: "Java Virtual Machine (JVM) Overview", slug: "jvm-overview" }
+    codeSnippets: [
+      {
+        id: "os-fork-example",
+        title: "C++ Fork Example",
+        language: "cpp",
+        code: `
+#include <iostream>
+#include <unistd.h>
+
+int main() {
+    pid_t pid = fork();
+
+    if (pid == 0) {
+        std::cout << "Child process" << std::endl;
+    } else if (pid > 0) {
+        std::cout << "Parent process" << std::endl;
+    } else {
+        std::cerr << "Fork failed" << std::endl;
+        return 1;
+    }
+
+    return 0;
+}
+`,
+        description: "A simple example of creating a new process using fork()."
+      }
     ]
   },
   {
