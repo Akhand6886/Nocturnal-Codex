@@ -12,7 +12,7 @@ interface TopicTileProps {
 export function TopicTile({ topic }: TopicTileProps) {
   return (
     <Link href={topic.url} className="group block">
-      <Card className="h-full overflow-hidden shadow-lg hover:shadow-primary/30 transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 bg-card border border-border/50 hover:border-primary/60 rounded-xl">
+      <Card className="h-full overflow-hidden shadow-lg hover:shadow-primary/30 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-xl">
         {topic.imageUrl && (
           <div className="relative h-44 w-full overflow-hidden rounded-t-xl">
             <Image

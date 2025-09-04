@@ -5,14 +5,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, Link as LinkIcon, Brain } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Image from "next/image";
 import { allTopicPosts, TopicPost } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
-import type { WikiArticleStub } from '@/lib/data'; // Assuming these types are still needed if not defined in contentlayer
+import type { Metadata } from 'next';
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60; 
 
 export async function generateStaticParams() {
   const topics = allTopicPosts || [];
@@ -25,9 +24,20 @@ interface TopicPageProps {
   params: { topicSlug: string };
 }
 
+export async function generateMetadata({ params }: TopicPageProps): Promise<Metadata> {
+  const topic = allTopicPosts.find((p) => p.slug === params.topicSlug);
+  if (!topic) {
+    return { title: "Topic Not Found" };
+  }
+  return {
+    title: `${topic.name} | Nocturnal Codex`,
+    description: topic.description,
+  };
+}
+
+
 export default async function TopicPage({ params }: TopicPageProps) {
-  const topics = allTopicPosts || [];
-  const topic = topics.find((t) => t.slug === params.topicSlug);
+  const topic = allTopicPosts.find((t) => t.slug === params.topicSlug);
 
   if (!topic) {
     notFound();
@@ -46,7 +56,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       <header className="pb-6 border-b border-border">
         {topic.imageUrl && (
           <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden mb-6 shadow-lg">
-            <Image src={topic.imageUrl} alt={topic.name} fill objectFit="cover" data-ai-hint={topic.dataAiHint || "topic banner"} />
+            <Image src={topic.imageUrl} alt={topic.name} fill className="object-cover" data-ai-hint={topic.dataAiHint || "topic banner"} />
             <div className="absolute inset-0 bg-black/50 flex items-end p-6">
               <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">{topic.name}</h1>
             </div>
@@ -57,7 +67,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       </header>
 
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="flex flex-wrap justify-center gap-2 mb-6">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-6">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           {topic.tutorials && topic.tutorials.length > 0 && <TabsTrigger value="tutorials">Tutorials</TabsTrigger>}
           {topic.references && topic.references.length > 0 && <TabsTrigger value="references">References</TabsTrigger>}
@@ -73,8 +83,8 @@ export default async function TopicPage({ params }: TopicPageProps) {
             <CardContent>
               {topic.subtopics && topic.subtopics.length > 0 ? (
                 <ul className="space-y-3">
-                  {topic.subtopics.map((sub: any) => ( // Using 'any' for now, should be defined in contentlayer schema
-                    <li key={sub.id} className="p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
+                  {topic.subtopics.map((sub) => (
+                    <li key={sub.id} className="p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
                       <h3 className="font-semibold text-lg text-foreground/90">{sub.name}</h3>
                       {sub.description && <p className="text-sm text-muted-foreground mt-1">{sub.description}</p>}
                     </li>
@@ -95,14 +105,14 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {topic.tutorials.map((tut: any) => ( // Using 'any' for now
+                  {topic.tutorials.map((tut) => (
                     <li key={tut.id}>
-                      <Link href={tut.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
+                      <Link href={tut.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
                         <div>
-                          <h4 className="font-medium text-foreground/90 group-hover:text-accent-foreground">{tut.title}</h4>
+                          <h4 className="font-medium text-foreground/90 group-hover:text-primary">{tut.title}</h4>
                           <p className="text-xs text-muted-foreground">Source: {tut.sourceName}</p>
                         </div>
-                        <LinkIcon className="h-4 w-4 text-muted-foreground group-hover:text-accent-foreground"/>
+                        <LinkIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary"/>
                       </Link>
                     </li>
                   ))}
@@ -120,11 +130,11 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {topic.references.map((ref: any) => ( // Using 'any' for now
+                  {topic.references.map((ref) => (
                      <li key={ref.id}>
-                      <Link href={`/wiki/${ref.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
-                        <span className="font-medium text-foreground/90 group-hover:text-accent-foreground">{ref.title}</span>
-                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-accent-foreground opacity-0 group-hover:opacity-100 transition-opacity"/>
+                      <Link href={`/wiki/${ref.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
+                        <span className="font-medium text-foreground/90 group-hover:text-primary">{ref.title}</span>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
                       </Link>
                     </li>
                   ))}
@@ -142,11 +152,11 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {topic.thinkTankArticles.map((article: any) => ( // Using 'any' for now
+                  {topic.thinkTankArticles.map((article) => ( 
                      <li key={article.id}>
-                      <Link href={`/think-tank/${article.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-accent/50 transition-colors border border-transparent hover:border-accent">
-                        <span className="font-medium text-foreground/90 group-hover:text-accent-foreground">{article.title}</span>
-                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-accent-foreground opacity-0 group-hover:opacity-100 transition-opacity"/>
+                      <Link href={`/think-tank/${article.slug}`} className="group flex items-center justify-between p-3 rounded-md hover:bg-muted/50 transition-colors border border-transparent hover:border-border">
+                        <span className="font-medium text-foreground/90 group-hover:text-primary">{article.title}</span>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
                       </Link>
                     </li>
                   ))}
@@ -163,7 +173,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 <CardTitle className="flex items-center text-2xl"><Code2 className="mr-2 h-6 w-6 text-primary" /> Code Snippets</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {topic.codeSnippets.map((snippet: any) => ( // Using 'any' for now
+                {topic.codeSnippets.map((snippet) => (
                   <CodeSnippet 
                     key={snippet.id} 
                     code={snippet.code} 
@@ -179,16 +189,4 @@ export default async function TopicPage({ params }: TopicPageProps) {
       </Tabs>
     </div>
   );
-}
-
-export async function generateMetadata({ params }: TopicPageProps) {
-  const topics = allTopicPosts || [];
-  const topic = topics.find((t) => t.slug === params.topicSlug);
-  if (!topic) {
-    return { title: "Topic Not Found | Nocturnal Codex" };
-  }
-  return {
-    title: `${topic.name} | Nocturnal Codex`,
-    description: topic.description,
-  };
 }

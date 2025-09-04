@@ -1,9 +1,16 @@
 
 import { TopicTile } from "@/components/content/topic-tile";
 import { BookOpenText } from "lucide-react";
-import { allTopicPosts, TopicPost } from 'contentlayer/generated';
+import { allTopicPosts } from 'contentlayer/generated';
+import type { TopicPost } from 'contentlayer/generated';
+import type { Metadata } from 'next';
 
 export const revalidate = 60; 
+
+export const metadata: Metadata = {
+  title: "Topics | Nocturnal Codex",
+  description: "Explore various topics in computer science and related fields, organized by category.",
+};
 
 export default function TopicsExplorerPage() {
   const groupedTopics: Record<string, TopicPost[]> = {};
@@ -17,11 +24,9 @@ export default function TopicsExplorerPage() {
   });
 
   const sortedCategories = Object.keys(groupedTopics).sort((a, b) => {
-    // A simple sort to put "Core" and "Theoretical" first if they exist
-    if (a.includes('Core')) return -1;
-    if (b.includes('Core')) return 1;
-    if (a.includes('Theoretical')) return -1;
-    if (b.includes('Theoretical')) return 1;
+    const coreCategories = ["Core Computer Science", "Theoretical Computer Science"];
+    if (coreCategories.includes(a) && !coreCategories.includes(b)) return -1;
+    if (!coreCategories.includes(a) && coreCategories.includes(b)) return 1;
     return a.localeCompare(b);
   });
 
@@ -58,8 +63,3 @@ export default function TopicsExplorerPage() {
     </div>
   );
 }
-
-export const metadata = {
-  title: "Topics | Nocturnal Codex",
-  description: "Explore various topics in computer science and related fields, organized by category.",
-};
