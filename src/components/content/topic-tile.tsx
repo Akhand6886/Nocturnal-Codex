@@ -19,8 +19,7 @@ export function TopicTile({ topic }: TopicTileProps) {
               src={topic.imageUrl}
               alt={topic.name}
               fill
-              objectFit="cover"
-              className="transition-transform duration-300 group-hover:scale-105 ease-in-out"
+              className="object-cover transition-transform duration-300 group-hover:scale-105 ease-in-out"
               data-ai-hint={topic.dataAiHint || "abstract topic"}
             />
              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent group-hover:from-black/5 transition-colors duration-300"></div>
@@ -32,7 +31,7 @@ export function TopicTile({ topic }: TopicTileProps) {
           </CardTitle>
         </CardHeader>
         <CardContent className="pb-5">
-          <CardDescription className="text-sm text-muted-foreground mb-4 min-h-[3.5em] line-clamp-3">
+          <CardDescription className="text-sm text-muted-foreground mb-4 min-h-[3.5rem] line-clamp-3">
             {topic.description}
           </CardDescription>
           <div className="flex items-center text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out font-medium">
