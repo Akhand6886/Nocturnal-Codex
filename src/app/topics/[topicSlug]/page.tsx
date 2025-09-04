@@ -15,7 +15,8 @@ import type { WikiArticleStub, ThinkTankArticleStub } from '@/lib/data'; // Assu
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateStaticParams() {
-  return allTopicPosts.map((topic) => ({
+  const topics = allTopicPosts || [];
+  return topics.map((topic) => ({
     topicSlug: topic.slug,
   }));
 }
@@ -25,7 +26,8 @@ interface TopicPageProps {
 }
 
 export default async function TopicPage({ params }: TopicPageProps) {
-  const topic = allTopicPosts.find((t) => t.slug === params.topicSlug);
+  const topics = allTopicPosts || [];
+  const topic = topics.find((t) => t.slug === params.topicSlug);
 
   if (!topic) {
     notFound();
@@ -180,7 +182,8 @@ export default async function TopicPage({ params }: TopicPageProps) {
 }
 
 export async function generateMetadata({ params }: TopicPageProps) {
-  const topic = allTopicPosts.find((t) => t.slug === params.topicSlug);
+  const topics = allTopicPosts || [];
+  const topic = topics.find((t) => t.slug === params.topicSlug);
   if (!topic) {
     return { title: "Topic Not Found | Nocturnal Codex" };
   }
