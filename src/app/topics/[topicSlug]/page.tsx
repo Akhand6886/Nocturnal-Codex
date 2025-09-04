@@ -87,7 +87,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                   const href = `/languages/${topic.slug}?category=${encodeURIComponent(sub.slug)}`;
                   return (
                     <Link href={href} key={sub.id} className="group block h-full">
-                      <Card className="h-full bg-card hover:bg-muted/40 hover:border-primary/40 transition-all duration-200 ease-in-out">
+                      <Card className="h-full flex flex-col justify-between bg-card hover:bg-muted/40 hover:border-primary/40 transition-all duration-200 ease-in-out">
                         <CardHeader>
                           <CardTitle className="text-lg group-hover:text-primary transition-colors">{sub.name}</CardTitle>
                         </CardHeader>
@@ -179,4 +179,3 @@ export default async function TopicPage({ params }: TopicPageProps) {
     </div>
   );
 }
-

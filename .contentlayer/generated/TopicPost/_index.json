@@ -119,7 +119,7 @@
     "subtopics": [
       {
         "id": "cyber-prerequisites",
-        "slug": "0. Prerequisites",
+        "slug": "0-prerequisites",
         "name": "0. Prerequisites",
         "description": "Build the foundational IT knowledge needed for a career in cybersecurity.",
         "type": "SubTopic",
@@ -127,7 +127,7 @@
       },
       {
         "id": "cyber-foundations",
-        "slug": "1. Security Foundations",
+        "slug": "1-security-foundations",
         "name": "1. Security Foundations",
         "description": "Learn the core principles, key terms, and threat landscape of cybersecurity.",
         "type": "SubTopic",
@@ -135,7 +135,7 @@
       },
       {
         "id": "os-security",
-        "slug": "2. OS & System Security",
+        "slug": "2-os-security",
         "name": "2. OS & System Security",
         "description": "Master the fundamentals of securing operating systems like Linux and Windows.",
         "type": "SubTopic",
@@ -143,7 +143,7 @@
       },
       {
         "id": "network-security",
-        "slug": "3. Network Security",
+        "slug": "3-network-security",
         "name": "3. Network Security",
         "description": "Discover how to secure network infrastructure from unauthorized access and threats.",
         "type": "SubTopic",
@@ -151,7 +151,7 @@
       },
       {
         "id": "threats-and-vulnerabilities",
-        "slug": "4. Threats & Vulnerabilities",
+        "slug": "4-threats-and-vulnerabilities",
         "name": "4. Threats & Vulnerabilities",
         "description": "An in-depth look at malware, social engineering, and vulnerability management.",
         "type": "SubTopic",
@@ -159,7 +159,7 @@
       },
       {
         "id": "app-security",
-        "slug": "5. Application Security",
+        "slug": "5-application-security",
         "name": "5. Application Security",
         "description": "Learn to identify and mitigate vulnerabilities like the OWASP Top 10 in software.",
         "type": "SubTopic",
@@ -167,7 +167,7 @@
       },
       {
         "id": "iam",
-        "slug": "6. Identity & Access Management (IAM)",
+        "slug": "6-iam",
         "name": "6. Identity & Access Management (IAM)",
         "description": "Understand how to manage user identities and control access to critical systems.",
         "type": "SubTopic",
@@ -175,7 +175,7 @@
       },
       {
         "id": "security-operations",
-        "slug": "7. Security Operations (SecOps)",
+        "slug": "7-security-operations",
         "name": "7. Security Operations (SecOps)",
         "description": "Explore how to monitor systems, detect threats, and respond to security incidents.",
         "type": "SubTopic",
@@ -183,7 +183,7 @@
       },
       {
         "id": "cryptography",
-        "slug": "8. Cryptography",
+        "slug": "8-cryptography",
         "name": "8. Cryptography",
         "description": "Explore the science of secure communication, hashing, and data protection.",
         "type": "SubTopic",
@@ -191,7 +191,7 @@
       },
       {
         "id": "grc",
-        "slug": "9. Governance, Risk & Compliance",
+        "slug": "9-grc",
         "name": "9. Governance, Risk & Compliance",
         "description": "Learn about security frameworks, risk management, and data privacy regulations.",
         "type": "SubTopic",
@@ -199,7 +199,7 @@
       },
       {
         "id": "cloud-security",
-        "slug": "10. Cloud Security",
+        "slug": "10-cloud-security",
         "name": "10. Cloud Security",
         "description": "Understand the unique security challenges and solutions for cloud environments.",
         "type": "SubTopic",
@@ -207,7 +207,7 @@
       },
       {
         "id": "offensive-security",
-        "slug": "11. Offensive Security (Red Team)",
+        "slug": "11-offensive-security",
         "name": "11. Offensive Security (Red Team)",
         "description": "Dive into the world of ethical hacking and penetration testing to find vulnerabilities.",
         "type": "SubTopic",
