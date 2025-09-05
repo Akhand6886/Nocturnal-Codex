@@ -78,6 +78,7 @@ export type TutorialPost = {
   order: number
   description: string
   category: string
+  tags?: string[] | undefined
   /** Markdown file body */
   body: Markdown
   url: string
