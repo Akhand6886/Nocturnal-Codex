@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { MarkdownRenderer } from '@/components/content/markdown-renderer';
 import { TutorialPagination } from '@/components/layout/tutorial-pagination';
 import type { Metadata } from 'next';
+import { format } from 'date-fns';
 
 export const revalidate = 60;
 
@@ -60,7 +61,7 @@ export default function TutorialPage({ params }: TutorialPageProps) {
       <header className="mb-8">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground">{post.title}</h1>
         <p className="text-sm text-muted-foreground mt-2">
-            4 Apr 2025 | {readTimeMinutes} min read
+            Published on: {format(new Date(), "MMMM d, yyyy")} | {readTimeMinutes} min read
         </p>
       </header>
       
