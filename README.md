@@ -1,3 +1,4 @@
+
 # Nocturnal Codex: Project Documentation
 
 Welcome to the Nocturnal Codex, a digital sanctuary for deep dives into computer science, mathematics, and theoretical domains. This document provides a comprehensive overview of the project's architecture, technology stack, data management, and core functionalities.
@@ -59,12 +60,12 @@ The application's routing is file-system based, managed by the Next.js App Route
 -   `/think-tank`: `src/app/think-tank/page.tsx` (Lists all think tank articles)
 -   `/think-tank/[slug]`: `src/app/think-tank/[slug]/page.tsx` (Displays a single article)
 -   `/topics`: `src/app/topics/page.tsx` (Lists all high-level topics)
--   `/topics/[topicSlug]`: `src/app/topics/[topicSlug]/page.tsx` (Details for a specific topic)
--   `/languages/[languageSlug]`: `src/app/languages/[languageSlug]/page.tsx` (Details for a programming language)
+-   `/topics/[topicSlug]`: `src/app/topics/[topicSlug]/page.tsx` (Details for a specific topic, like the **Cybersecurity Roadmap**)
+-   `/languages`: `src/app/languages/page.tsx` (Lists all programming languages)
+-   `/languages/[languageSlug]`: `src/app/languages/[languageSlug]/page.tsx` (Lists all tutorials for a specific programming language)
 -   `/wiki`: `src/app/wiki/page.tsx` (The main wiki page)
 -   `/wiki/[slug]`: `src/app/wiki/[slug]/page.tsx` (A specific wiki article)
--   `/tutorial/[language]`: `src/app/tutorial/[language]/page.tsx` (Index of tutorials for a language)
--   `/tutorial/[language]/[slug]`: `src/app/tutorial/[language]/[slug]/page.tsx` (A specific language tutorial)
+-   `/tutorial/[language]/[slug]`: `src/app/tutorial/[language]/[slug]/page.tsx` (The page for an individual tutorial, with a sidebar)
 
 ## 4. Data Fetching & Content Management
 
