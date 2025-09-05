@@ -77,7 +77,7 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
   }
 
   // == CYBERSECURITY ROADMAP LAYOUT ==
-  if (topic.slug === 'cybersecurity' && !categoryFilter) {
+  if (topic.slug === 'cybersecurity') {
       return <CybersecurityRoadmap tutorials={tutorialsForTopic} />;
   }
   
