@@ -56,20 +56,22 @@ export default function TutorialPage({ params }: TutorialPageProps) {
   const readTimeMinutes = Math.ceil(post.body.raw.split(/\s+/).length / 200);
 
   return (
-    <article className="py-8 prose dark:prose-invert max-w-none">
-       <TutorialPagination prev={prevPost} next={nextPost} />
-      <header className="mb-8">
-        <h1 className="text-4xl font-extrabold tracking-tight text-foreground">{post.title}</h1>
-        <p className="text-sm text-muted-foreground mt-2">
-            Published on: {format(new Date(), "MMMM d, yyyy")} | {readTimeMinutes} min read
-        </p>
-      </header>
-      
-      <MarkdownRenderer content={post.body.raw} />
+    <div className="w-full">
+      <article className="prose dark:prose-invert max-w-none">
+        <TutorialPagination prev={prevPost} next={nextPost} />
+        <header className="mb-8 mt-6 border-b border-border pb-6">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground">{post.title}</h1>
+          <p className="text-sm text-muted-foreground mt-2">
+              {readTimeMinutes} min read
+          </p>
+        </header>
+        
+        <MarkdownRenderer content={post.body.raw} />
 
-      <hr className="my-12" />
-      
-      <TutorialPagination prev={prevPost} next={nextPost} />
-    </article>
+        <hr className="my-12" />
+        
+        <TutorialPagination prev={prevPost} next={nextPost} />
+      </article>
+    </div>
   );
 }
