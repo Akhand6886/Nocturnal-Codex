@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, useMemo } from 'react';
@@ -84,25 +85,25 @@ export function CybersecurityRoadmap({ tutorials }: CybersecurityRoadmapProps) {
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12">
-      <header className="text-center mb-12">
+      <header className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
           The Cyber Security Roadmap
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          Navigate your journey from beginner to expert. Select a topic to begin.
+        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+          Navigate your journey from beginner to expert. Click on a section to expand its topics and track your progress.
         </p>
       </header>
       
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {MAIN_SECTIONS.map(sectionName => (
-          <section key={sectionName}>
-            <h2 className="text-2xl font-bold text-primary mb-4">{sectionName}</h2>
-            <Accordion type="multiple" className="w-full">
+          <section key={sectionName} className="space-y-6">
+            <h2 className="text-2xl font-bold text-primary text-center pb-3 border-b-2 border-primary/50">{sectionName}</h2>
+            <Accordion type="multiple" className="w-full space-y-4">
               {sortedCategories(sectionName).map(category => {
-                 const isHighlighted = ["Operating Systems Basics", "Networking Fundamentals (OSI & TCP/IP)"].includes(formatCategoryTitle(category));
+                 const isHighlighted = ["0. Prerequisites", "3. Network Security", "1. Security Foundations"].includes(category);
                  return (
-                    <AccordionItem value={category} key={category} className={cn("border rounded-lg mb-4 bg-card", isHighlighted && "border-primary")}>
-                      <AccordionTrigger className="p-4 text-lg font-semibold hover:no-underline">
+                    <AccordionItem value={category} key={category} className={cn("border rounded-lg bg-card/80 shadow-md", isHighlighted ? "border-primary/50" : "border-border/70")}>
+                      <AccordionTrigger className="p-4 text-lg font-semibold hover:no-underline text-left">
                         {formatCategoryTitle(category)}
                       </AccordionTrigger>
                       <AccordionContent className="p-4 pt-0">
@@ -110,7 +111,7 @@ export function CybersecurityRoadmap({ tutorials }: CybersecurityRoadmapProps) {
                         {groupedTutorialsByMainSection[sectionName][category].map(tutorial => {
                             const isCompleted = completedSlugs.includes(tutorial.slug);
                             return (
-                            <div key={tutorial.slug} className={cn("flex items-center space-x-3 p-3 rounded-md transition-colors", isCompleted ? "bg-muted/50" : "hover:bg-muted/30")}>
+                            <div key={tutorial.slug} className={cn("flex items-center space-x-3 p-2.5 rounded-md transition-colors", isCompleted ? "bg-muted/50" : "hover:bg-muted/30")}>
                                 <Checkbox 
                                 id={`cb-${tutorial.slug}`}
                                 checked={isCompleted}
@@ -118,7 +119,7 @@ export function CybersecurityRoadmap({ tutorials }: CybersecurityRoadmapProps) {
                                 aria-label={`Mark ${tutorial.title} as completed`}
                                 />
                                 <Link href={tutorial.url} className="flex-1">
-                                <label htmlFor={`cb-${tutorial.slug}`} className={cn("cursor-pointer", isCompleted && "line-through text-muted-foreground")}>
+                                <label htmlFor={`cb-${tutorial.slug}`} className={cn("cursor-pointer text-sm", isCompleted && "line-through text-muted-foreground")}>
                                     {tutorial.title}
                                 </label>
                                 </Link>
