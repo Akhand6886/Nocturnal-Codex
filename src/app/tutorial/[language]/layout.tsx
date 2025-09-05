@@ -1,4 +1,3 @@
-
 // src/app/tutorial/[language]/layout.tsx
 import { TutorialSidebar } from '@/components/layout/tutorial-sidebar';
 import { allTutorialPosts } from 'contentlayer/generated';
@@ -23,9 +22,9 @@ export default function TutorialLanguageLayout({ children, params }: TutorialLan
   }
 
   return (
-    <div className="container mx-auto flex items-start gap-12 px-4 py-8">
+    <div className="flex items-start gap-12 px-4 py-8">
       <TutorialSidebar tutorials={tutorialsForLanguage} currentLanguage={params.language} />
-      <main className="flex-1 overflow-hidden">
+      <main className="container mx-auto flex-1 overflow-hidden">
         {children}
       </main>
     </div>
