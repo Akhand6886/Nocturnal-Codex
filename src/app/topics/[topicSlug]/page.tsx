@@ -44,6 +44,11 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
   };
 }
 
+// Helper to remove leading numbers (e.g., "1. ") from category titles for display
+const formatCategoryTitle = (title: string) => {
+    return title.replace(/^\d+\.\s*/, '');
+};
+
 export default async function TopicPage({ params, searchParams }: TopicPageProps) {
   const topic = getTopic(params.topicSlug);
   const categoryFilter = typeof searchParams.category === 'string' ? searchParams.category : null;
@@ -70,6 +75,66 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
       breadcrumbItems.push({ label: categoryFilter });
   }
 
+  // == CYBERSECURITY ROADMAP LAYOUT ==
+  if (topic.slug === 'cybersecurity' && !categoryFilter) {
+      const groupedTutorials = tutorialsForTopic.reduce((acc, tutorial) => {
+        const category = tutorial.category || 'General';
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(tutorial);
+        return acc;
+      }, {} as Record<string, typeof tutorialsForTopic>);
+
+      const sortedCategories = Object.keys(groupedTutorials)
+        .sort((a, b) => {
+            const getOrder = (str: string) => {
+                const match = str.match(/^(\d+)\./);
+                return match ? parseInt(match[1], 10) : Infinity;
+            };
+            const orderA = getOrder(a);
+            const orderB = getOrder(b);
+
+            if (orderA !== Infinity && orderB !== Infinity) {
+                return orderA - orderB;
+            }
+            return a.localeCompare(b);
+        });
+
+      return (
+        <div className="container mx-auto px-4 py-10 md:py-12 space-y-12">
+            <header className="pb-8 border-b border-border text-center">
+                 <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+                    Cybersecurity Roadmap
+                </h1>
+                <div className="mt-4 max-w-2xl mx-auto">
+                   <MarkdownRenderer content={topic.body.raw} />
+                </div>
+            </header>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start">
+                {sortedCategories.map(category => (
+                    <Card key={category} className="bg-card/50 border-border/60 shadow-md h-full">
+                        <CardHeader>
+                            <CardTitle className="text-center text-lg font-semibold text-primary">{formatCategoryTitle(category)}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex flex-col space-y-2">
+                           {groupedTutorials[category].map((tutorial) => (
+                             <Link href={tutorial.url} key={tutorial.slug} className="block">
+                               <div className="text-center text-sm font-medium p-2.5 rounded-md border-2 border-border bg-background hover:bg-primary/10 hover:border-primary/80 hover:text-primary transition-all duration-200 ease-in-out shadow-sm">
+                                   {tutorial.title}
+                               </div>
+                             </Link>
+                           ))}
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
+        </div>
+      );
+  }
+  
+  // == DEFAULT TOPIC PAGE LAYOUT ==
   return (
     <div className="container mx-auto max-w-6xl px-4 py-10 md:py-12 space-y-12">
       <Breadcrumbs items={breadcrumbItems} />
@@ -83,7 +148,7 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
         )}
         <div className="border-b border-border pb-6">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {categoryFilter ? `${topic.name}: ${categoryFilter}` : topic.name}
+                {categoryFilter ? `${topic.name}: ${formatCategoryTitle(categoryFilter)}` : topic.name}
             </h1>
             <div className="mt-4">
                 <MarkdownRenderer content={topic.body.raw} />
@@ -216,5 +281,3 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
     </div>
   );
 }
-
-    
