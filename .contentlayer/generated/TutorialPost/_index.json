@@ -1430,6 +1430,28 @@
     "language": "cybersecurity"
   },
   {
+    "title": "Understanding Computer Hardware Components",
+    "slug": "computer-hardware-components",
+    "order": 1,
+    "description": "A foundational overview of the essential hardware components that make up a computer, and why they matter for cybersecurity.",
+    "category": "0. Prerequisites",
+    "body": {
+      "raw": "\n## Introduction\n\nBefore you can protect a system, you need to understand what it's made of. Every computer, from a massive server to your smartphone, is built from a core set of physical components. Understanding what these parts do is the first step on your cybersecurity journey, as hardware can be a source of vulnerabilities and a target for attacks.\n\nThis article will introduce you to the essential hardware components of a modern computer.\n\n---\n\n## 1. The Central Processing Unit (CPU) - The Brain\n\nThe **CPU** is the primary component that performs most of the processing for a computer. It executes the instructions of a computer program, performing the basic arithmetic, logic, controlling, and input/output (I/O) operations.\n\n* **What it does:** Executes commands and runs software.\n* **Analogy:** The CPU is like the brain of the computer, making decisions and calculations.\n* **Cybersecurity Relevance:** CPU flaws, like the famous Spectre and Meltdown vulnerabilities, can allow attackers to steal sensitive data directly from the processor's memory.\n\n---\n\n## 2. Random Access Memory (RAM) - Short-Term Memory\n\n**RAM** is the computer's volatile, or temporary, memory. When you open an application, it gets loaded from the hard drive into RAM. This is much faster than reading from a hard drive, so it's used for data that the CPU needs to access quickly.\n\n* **What it does:** Temporarily stores data for actively running programs.\n* **Analogy:** RAM is like a workbench. You pull your tools (programs) onto it to work with them, and when you're done, you put them away. When the power is turned off, the workbench is cleared.\n* **Cybersecurity Relevance:** Malware often runs in RAM to avoid being detected on the hard drive. Forensic analysts frequently analyze RAM dumps to find evidence of an intrusion.\n\n---\n\n## 3. The Hard Drive - Long-Term Storage\n\nThe **Hard Drive** is the computer's non-volatile, or permanent, storage. This is where your operating system, software, and files are stored even when the computer is turned off. There are two main types:\n\n* **Hard Disk Drive (HDD):** A traditional spinning disk.\n* **Solid-State Drive (SSD):** Newer, faster technology with no moving parts.\n\n* **What it does:** Permanently stores files and software.\n* **Analogy:** The hard drive is like a filing cabinet or a library where all your books and documents are stored for the long term.\n* **Cybersecurity Relevance:** This is the primary target for ransomware, which encrypts the files on your hard drive. Ensuring storage is properly encrypted (e.g., with BitLocker or FileVault) is a critical security measure.\n\n---\n\n## 4. The Motherboard - The Nervous System\n\nThe **Motherboard** is the main circuit board that connects all the components. The CPU, RAM, and hard drive all plug into the motherboard, which allows them to communicate with each other.\n\n* **What it does:** Connects all hardware components so they can work together.\n* **Analogy:** The motherboard is like the body's central nervous system, relaying signals between the brain and the limbs.\n* **Cybersecurity Relevance:** The motherboard's firmware (like BIOS or UEFI) can be a target for sophisticated attacks known as rootkits, which can be very difficult to detect and remove.\n\n---\n\n## Key Takeaways\n\n* **CPU:** The brain that does the thinking.\n* **RAM:** The temporary workspace for active programs.\n* **Hard Drive:** The permanent storage for all your files.\n* **Motherboard:** The backbone that connects everything.\n* Every piece of hardware represents a potential **attack surface** that must be understood to be properly secured.\n\n---\n\n**Up Next:** Now that you have a basic understanding of hardware, the next logical step is to learn about the software that controls it. The next article in this series is **Operating Systems Basics**.\n",
+      "html": "<h2>Introduction</h2>\n<p>Before you can protect a system, you need to understand what it's made of. Every computer, from a massive server to your smartphone, is built from a core set of physical components. Understanding what these parts do is the first step on your cybersecurity journey, as hardware can be a source of vulnerabilities and a target for attacks.</p>\n<p>This article will introduce you to the essential hardware components of a modern computer.</p>\n<hr>\n<h2>1. The Central Processing Unit (CPU) - The Brain</h2>\n<p>The <strong>CPU</strong> is the primary component that performs most of the processing for a computer. It executes the instructions of a computer program, performing the basic arithmetic, logic, controlling, and input/output (I/O) operations.</p>\n<ul>\n<li><strong>What it does:</strong> Executes commands and runs software.</li>\n<li><strong>Analogy:</strong> The CPU is like the brain of the computer, making decisions and calculations.</li>\n<li><strong>Cybersecurity Relevance:</strong> CPU flaws, like the famous Spectre and Meltdown vulnerabilities, can allow attackers to steal sensitive data directly from the processor's memory.</li>\n</ul>\n<hr>\n<h2>2. Random Access Memory (RAM) - Short-Term Memory</h2>\n<p><strong>RAM</strong> is the computer's volatile, or temporary, memory. When you open an application, it gets loaded from the hard drive into RAM. This is much faster than reading from a hard drive, so it's used for data that the CPU needs to access quickly.</p>\n<ul>\n<li><strong>What it does:</strong> Temporarily stores data for actively running programs.</li>\n<li><strong>Analogy:</strong> RAM is like a workbench. You pull your tools (programs) onto it to work with them, and when you're done, you put them away. When the power is turned off, the workbench is cleared.</li>\n<li><strong>Cybersecurity Relevance:</strong> Malware often runs in RAM to avoid being detected on the hard drive. Forensic analysts frequently analyze RAM dumps to find evidence of an intrusion.</li>\n</ul>\n<hr>\n<h2>3. The Hard Drive - Long-Term Storage</h2>\n<p>The <strong>Hard Drive</strong> is the computer's non-volatile, or permanent, storage. This is where your operating system, software, and files are stored even when the computer is turned off. There are two main types:</p>\n<ul>\n<li>\n<p><strong>Hard Disk Drive (HDD):</strong> A traditional spinning disk.</p>\n</li>\n<li>\n<p><strong>Solid-State Drive (SSD):</strong> Newer, faster technology with no moving parts.</p>\n</li>\n<li>\n<p><strong>What it does:</strong> Permanently stores files and software.</p>\n</li>\n<li>\n<p><strong>Analogy:</strong> The hard drive is like a filing cabinet or a library where all your books and documents are stored for the long term.</p>\n</li>\n<li>\n<p><strong>Cybersecurity Relevance:</strong> This is the primary target for ransomware, which encrypts the files on your hard drive. Ensuring storage is properly encrypted (e.g., with BitLocker or FileVault) is a critical security measure.</p>\n</li>\n</ul>\n<hr>\n<h2>4. The Motherboard - The Nervous System</h2>\n<p>The <strong>Motherboard</strong> is the main circuit board that connects all the components. The CPU, RAM, and hard drive all plug into the motherboard, which allows them to communicate with each other.</p>\n<ul>\n<li><strong>What it does:</strong> Connects all hardware components so they can work together.</li>\n<li><strong>Analogy:</strong> The motherboard is like the body's central nervous system, relaying signals between the brain and the limbs.</li>\n<li><strong>Cybersecurity Relevance:</strong> The motherboard's firmware (like BIOS or UEFI) can be a target for sophisticated attacks known as rootkits, which can be very difficult to detect and remove.</li>\n</ul>\n<hr>\n<h2>Key Takeaways</h2>\n<ul>\n<li><strong>CPU:</strong> The brain that does the thinking.</li>\n<li><strong>RAM:</strong> The temporary workspace for active programs.</li>\n<li><strong>Hard Drive:</strong> The permanent storage for all your files.</li>\n<li><strong>Motherboard:</strong> The backbone that connects everything.</li>\n<li>Every piece of hardware represents a potential <strong>attack surface</strong> that must be understood to be properly secured.</li>\n</ul>\n<hr>\n<p><strong>Up Next:</strong> Now that you have a basic understanding of hardware, the next logical step is to learn about the software that controls it. The next article in this series is <strong>Operating Systems Basics</strong>.</p>"
+    },
+    "_id": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components.md",
+      "sourceFileName": "computer-hardware-components.md",
+      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/computer-hardware-components"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/computer-hardware-components",
+    "language": "cybersecurity"
+  },
+  {
     "title": "Introduction to the Linux Command-Line",
     "slug": "introduction-to-linux-cli",
     "order": 5,
@@ -1471,6 +1493,72 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/introduction-to-windows-cmd-powershell",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Networking Fundamentals: OSI and TCP/IP Models",
+    "slug": "networking-fundamentals-osi-tcpip",
+    "order": 3,
+    "description": "An introduction to the foundational models of computer networking, the OSI and TCP/IP models, and their importance in cybersecurity.",
+    "category": "0. Prerequisites",
+    "body": {
+      "raw": "\n## Introduction\n\nComputers are powerful on their own, but their true potential is unlocked when they are connected. **Networking** is the practice of connecting computers together to share data and resources. For cybersecurity professionals, the network is a primary domain to defend. Attacks, intrusions, and data theft almost always happen over a network.\n\nTo understand network security, you first need to understand how networks are structured. The two most important conceptual frameworks for this are the **OSI model** and the **TCP/IP model**.\n\n---\n\n## 1. The OSI Model - A Conceptual Framework\n\nThe **Open Systems Interconnection (OSI)** model is a 7-layer conceptual model that standardizes the functions of a telecommunication or computing system without regard to its underlying internal structure and technology. It's a theoretical model used to teach and understand network functions.\n\n**Analogy:** Think of the OSI model as sending a package from your office to a friend's office in another city.\n\n* **Layer 7: Application:** You write a letter (your data). (e.g., HTTP, FTP)\n* **Layer 6: Presentation:** You format the letter and put it in a standard envelope so your friend can read it (data formatting, encryption).\n* **Layer 5: Session:** You open a line of communication by deciding to send the letter (managing the connection).\n* **Layer 4: Transport:** The mailroom at your office bundles your letter with others going to the same city and ensures it's tracked (TCP/UDP, port numbers).\n* **Layer 3: Network:** The postal service routes the package from your city to your friend's city using addresses (IP addresses, routing).\n* **Layer 2: Data Link:** The local mail carrier takes the package from the post office to your friend's specific office building (MAC addresses, switches).\n* **Layer 1: Physical:** The actual trucks, planes, and roads that carry the letter (cables, Wi-Fi signals, hardware).\n\n---\n\n## 2. The TCP/IP Model - The Practical Implementation\n\nWhile the OSI model is great for theory, the **TCP/IP model** is the practical, 4-layer model that the internet is actually built upon. It's a more condensed and realistic framework.\n\n* **Layer 4: Application:** Combines the OSI model's Application, Presentation, and Session layers. This is where protocols like HTTP (web browsing) and SMTP (email) operate.\n* **Layer 3: Transport:** Maps directly to the OSI Transport layer. It handles reliable data delivery using protocols like **TCP (Transmission Control Protocol)** and **UDP (User Datagram Protocol)**.\n* **Layer 2: Internet:** Maps to the OSI Network layer. This is where **IP (Internet Protocol)** operates, handling the addressing and routing of data packets across networks.\n* **Layer 1: Network Access:** Combines the OSI Data Link and Physical layers. It deals with the physical transmission of data over the local network (e.g., Ethernet, Wi-Fi).\n\n---\n\n## 3. Why Do These Models Matter for Cybersecurity?\n\nUnderstanding these layers is critical for security because different attacks target different layers:\n\n* **Layer 7 (Application):** An SQL injection attack targets the web application.\n* **Layer 4 (Transport):** A SYN flood (a type of DDoS attack) targets the TCP protocol.\n* **Layer 3 (Network):** An attacker might spoof IP addresses to hide their location.\n* **Layer 2 (Data Link):** An attacker on your local Wi-Fi might use ARP spoofing to intercept your traffic.\n\nSecurity devices also operate at specific layers. A **firewall** often works at Layers 3 and 4, filtering traffic based on IP addresses and ports.\n\n---\n\n## Key Takeaways\n\n* The **OSI model** is a 7-layer theoretical framework used for understanding network functions.\n* The **TCP/IP model** is a 4-layer practical model that powers the internet.\n* Each layer has specific functions and is a potential target for different types of cyberattacks.\n* Understanding these models helps you diagnose network problems and identify where a security threat is occurring.\n\n---\n\n**Up Next:** Now that you know how networks are structured, it's time to learn about the most important addressing scheme used in networking. The next article is **Understanding IP Addresses**.\n",
+      "html": "<h2>Introduction</h2>\n<p>Computers are powerful on their own, but their true potential is unlocked when they are connected. <strong>Networking</strong> is the practice of connecting computers together to share data and resources. For cybersecurity professionals, the network is a primary domain to defend. Attacks, intrusions, and data theft almost always happen over a network.</p>\n<p>To understand network security, you first need to understand how networks are structured. The two most important conceptual frameworks for this are the <strong>OSI model</strong> and the <strong>TCP/IP model</strong>.</p>\n<hr>\n<h2>1. The OSI Model - A Conceptual Framework</h2>\n<p>The <strong>Open Systems Interconnection (OSI)</strong> model is a 7-layer conceptual model that standardizes the functions of a telecommunication or computing system without regard to its underlying internal structure and technology. It's a theoretical model used to teach and understand network functions.</p>\n<p><strong>Analogy:</strong> Think of the OSI model as sending a package from your office to a friend's office in another city.</p>\n<ul>\n<li><strong>Layer 7: Application:</strong> You write a letter (your data). (e.g., HTTP, FTP)</li>\n<li><strong>Layer 6: Presentation:</strong> You format the letter and put it in a standard envelope so your friend can read it (data formatting, encryption).</li>\n<li><strong>Layer 5: Session:</strong> You open a line of communication by deciding to send the letter (managing the connection).</li>\n<li><strong>Layer 4: Transport:</strong> The mailroom at your office bundles your letter with others going to the same city and ensures it's tracked (TCP/UDP, port numbers).</li>\n<li><strong>Layer 3: Network:</strong> The postal service routes the package from your city to your friend's city using addresses (IP addresses, routing).</li>\n<li><strong>Layer 2: Data Link:</strong> The local mail carrier takes the package from the post office to your friend's specific office building (MAC addresses, switches).</li>\n<li><strong>Layer 1: Physical:</strong> The actual trucks, planes, and roads that carry the letter (cables, Wi-Fi signals, hardware).</li>\n</ul>\n<hr>\n<h2>2. The TCP/IP Model - The Practical Implementation</h2>\n<p>While the OSI model is great for theory, the <strong>TCP/IP model</strong> is the practical, 4-layer model that the internet is actually built upon. It's a more condensed and realistic framework.</p>\n<ul>\n<li><strong>Layer 4: Application:</strong> Combines the OSI model's Application, Presentation, and Session layers. This is where protocols like HTTP (web browsing) and SMTP (email) operate.</li>\n<li><strong>Layer 3: Transport:</strong> Maps directly to the OSI Transport layer. It handles reliable data delivery using protocols like <strong>TCP (Transmission Control Protocol)</strong> and <strong>UDP (User Datagram Protocol)</strong>.</li>\n<li><strong>Layer 2: Internet:</strong> Maps to the OSI Network layer. This is where <strong>IP (Internet Protocol)</strong> operates, handling the addressing and routing of data packets across networks.</li>\n<li><strong>Layer 1: Network Access:</strong> Combines the OSI Data Link and Physical layers. It deals with the physical transmission of data over the local network (e.g., Ethernet, Wi-Fi).</li>\n</ul>\n<hr>\n<h2>3. Why Do These Models Matter for Cybersecurity?</h2>\n<p>Understanding these layers is critical for security because different attacks target different layers:</p>\n<ul>\n<li><strong>Layer 7 (Application):</strong> An SQL injection attack targets the web application.</li>\n<li><strong>Layer 4 (Transport):</strong> A SYN flood (a type of DDoS attack) targets the TCP protocol.</li>\n<li><strong>Layer 3 (Network):</strong> An attacker might spoof IP addresses to hide their location.</li>\n<li><strong>Layer 2 (Data Link):</strong> An attacker on your local Wi-Fi might use ARP spoofing to intercept your traffic.</li>\n</ul>\n<p>Security devices also operate at specific layers. A <strong>firewall</strong> often works at Layers 3 and 4, filtering traffic based on IP addresses and ports.</p>\n<hr>\n<h2>Key Takeaways</h2>\n<ul>\n<li>The <strong>OSI model</strong> is a 7-layer theoretical framework used for understanding network functions.</li>\n<li>The <strong>TCP/IP model</strong> is a 4-layer practical model that powers the internet.</li>\n<li>Each layer has specific functions and is a potential target for different types of cyberattacks.</li>\n<li>Understanding these models helps you diagnose network problems and identify where a security threat is occurring.</li>\n</ul>\n<hr>\n<p><strong>Up Next:</strong> Now that you know how networks are structured, it's time to learn about the most important addressing scheme used in networking. The next article is <strong>Understanding IP Addresses</strong>.</p>"
+    },
+    "_id": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip.md",
+      "sourceFileName": "networking-fundamentals-osi-tcpip.md",
+      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/networking-fundamentals-osi-tcpip"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/networking-fundamentals-osi-tcpip",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Operating Systems Basics",
+    "slug": "operating-systems-basics",
+    "order": 2,
+    "description": "Learn what an operating system (OS) is, its core functions, and why it is a critical battleground in cybersecurity.",
+    "category": "0. Prerequisites",
+    "body": {
+      "raw": "\n## Introduction\n\nIf hardware components are the body of a computer, the **Operating System (OS)** is its soul. The OS is the most important piece of software on any computer, acting as the intermediary between you (the user) and the physical hardware. It manages everything from your mouse clicks to the complex scheduling of CPU tasks.\n\nFor a cybersecurity professional, the OS is often the main target of an attack and the primary environment that must be defended.\n\n---\n\n## 1. What is an Operating System?\n\nAn **Operating System** is a powerful software program that manages computer hardware and software resources, and provides common services for computer programs. The three most common operating systems for personal computers are Microsoft Windows, macOS, and Linux.\n\nThe OS has four primary jobs:\n* **Process Management:** Manages which programs get to use the CPU and for how long.\n* **Memory Management:** Allocates and deallocates RAM to different programs.\n* **File System Management:** Organizes and keeps track of files on the hard drive.\n* **Device Management:** Controls hardware devices through their drivers (e.g., printers, webcams, keyboards).\n\n---\n\n## 2. The Kernel: The Core of the OS\n\nThe **Kernel** is the central component of an operating system. It has complete control over everything in the system. It's the first program loaded on start-up and it handles the rest of the start-up process, as well as input/output requests from software, translating them into data-processing instructions for the CPU.\n\n* **Analogy:** If the OS is the government of a country, the kernel is the head of state. It has the ultimate authority and makes the most critical decisions.\n* **Cybersecurity Relevance:** An attacker who compromises the kernel gains complete control over the system. This level of access is often called \"root\" on Linux/macOS or \"SYSTEM\" on Windows. Kernel-level exploits are among the most severe vulnerabilities.\n\n---\n\n## 3. Processes and Threads\n\n* A **Process** is an instance of a computer program that is being executed. When you double-click an application icon, you are starting a new process.\n* A **Thread** is the smallest sequence of programmed instructions that can be managed independently by a scheduler. A single process can contain multiple threads, allowing it to perform several tasks at once (e.g., a word processor spell-checking in the background while you type).\n\n* **Cybersecurity Relevance:** Malware often runs as a hidden process or injects malicious threads into legitimate processes (like your web browser) to steal information or persist on a system. Security professionals use tools like the Task Manager (Windows) or `ps`/`top` (Linux) to monitor and analyze running processes.\n\n---\n\n## 4. File Systems and Permissions\n\nA **File System** is how the OS organizes data on a storage device like a hard drive. It's a hierarchical structure of directories (folders) and files. Crucially, the file system also includes a set of rules, or **permissions**, that dictate who can read, write, and execute files.\n\n* **Cybersecurity Relevance:** Incorrect file permissions are a common security flaw. If a sensitive configuration file is accidentally made writable by any user, an attacker could modify it to gain control of the system. Ransomware's primary goal is to encrypt the user's files within the file system, making them inaccessible.\n\n---\n\n## Key Takeaways\n\n* The **OS** is the bridge between hardware and user applications.\n* The **Kernel** is the core of the OS with the highest level of privilege.\n* Malware often hides as a **process** or **thread**.\n* Proper **file permissions** are a simple yet critical security control.\n* Securing the OS (\"hardening\") is a fundamental task in defending any computer system.\n\n---\n\n**Up Next:** You've learned about the hardware (the body) and the OS (the soul). Now it's time to understand how computers talk to each other. The next article is **Networking Fundamentals (OSI, TCP/IP)**.\n",
+      "html": "<h2>Introduction</h2>\n<p>If hardware components are the body of a computer, the <strong>Operating System (OS)</strong> is its soul. The OS is the most important piece of software on any computer, acting as the intermediary between you (the user) and the physical hardware. It manages everything from your mouse clicks to the complex scheduling of CPU tasks.</p>\n<p>For a cybersecurity professional, the OS is often the main target of an attack and the primary environment that must be defended.</p>\n<hr>\n<h2>1. What is an Operating System?</h2>\n<p>An <strong>Operating System</strong> is a powerful software program that manages computer hardware and software resources, and provides common services for computer programs. The three most common operating systems for personal computers are Microsoft Windows, macOS, and Linux.</p>\n<p>The OS has four primary jobs:</p>\n<ul>\n<li><strong>Process Management:</strong> Manages which programs get to use the CPU and for how long.</li>\n<li><strong>Memory Management:</strong> Allocates and deallocates RAM to different programs.</li>\n<li><strong>File System Management:</strong> Organizes and keeps track of files on the hard drive.</li>\n<li><strong>Device Management:</strong> Controls hardware devices through their drivers (e.g., printers, webcams, keyboards).</li>\n</ul>\n<hr>\n<h2>2. The Kernel: The Core of the OS</h2>\n<p>The <strong>Kernel</strong> is the central component of an operating system. It has complete control over everything in the system. It's the first program loaded on start-up and it handles the rest of the start-up process, as well as input/output requests from software, translating them into data-processing instructions for the CPU.</p>\n<ul>\n<li><strong>Analogy:</strong> If the OS is the government of a country, the kernel is the head of state. It has the ultimate authority and makes the most critical decisions.</li>\n<li><strong>Cybersecurity Relevance:</strong> An attacker who compromises the kernel gains complete control over the system. This level of access is often called \"root\" on Linux/macOS or \"SYSTEM\" on Windows. Kernel-level exploits are among the most severe vulnerabilities.</li>\n</ul>\n<hr>\n<h2>3. Processes and Threads</h2>\n<ul>\n<li>\n<p>A <strong>Process</strong> is an instance of a computer program that is being executed. When you double-click an application icon, you are starting a new process.</p>\n</li>\n<li>\n<p>A <strong>Thread</strong> is the smallest sequence of programmed instructions that can be managed independently by a scheduler. A single process can contain multiple threads, allowing it to perform several tasks at once (e.g., a word processor spell-checking in the background while you type).</p>\n</li>\n<li>\n<p><strong>Cybersecurity Relevance:</strong> Malware often runs as a hidden process or injects malicious threads into legitimate processes (like your web browser) to steal information or persist on a system. Security professionals use tools like the Task Manager (Windows) or <code>ps</code>/<code>top</code> (Linux) to monitor and analyze running processes.</p>\n</li>\n</ul>\n<hr>\n<h2>4. File Systems and Permissions</h2>\n<p>A <strong>File System</strong> is how the OS organizes data on a storage device like a hard drive. It's a hierarchical structure of directories (folders) and files. Crucially, the file system also includes a set of rules, or <strong>permissions</strong>, that dictate who can read, write, and execute files.</p>\n<ul>\n<li><strong>Cybersecurity Relevance:</strong> Incorrect file permissions are a common security flaw. If a sensitive configuration file is accidentally made writable by any user, an attacker could modify it to gain control of the system. Ransomware's primary goal is to encrypt the user's files within the file system, making them inaccessible.</li>\n</ul>\n<hr>\n<h2>Key Takeaways</h2>\n<ul>\n<li>The <strong>OS</strong> is the bridge between hardware and user applications.</li>\n<li>The <strong>Kernel</strong> is the core of the OS with the highest level of privilege.</li>\n<li>Malware often hides as a <strong>process</strong> or <strong>thread</strong>.</li>\n<li>Proper <strong>file permissions</strong> are a simple yet critical security control.</li>\n<li>Securing the OS (\"hardening\") is a fundamental task in defending any computer system.</li>\n</ul>\n<hr>\n<p><strong>Up Next:</strong> You've learned about the hardware (the body) and the OS (the soul). Now it's time to understand how computers talk to each other. The next article is <strong>Networking Fundamentals (OSI, TCP/IP)</strong>.</p>"
+    },
+    "_id": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics.md",
+      "sourceFileName": "operating-systems-basics.md",
+      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/operating-systems-basics"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/operating-systems-basics",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Understanding IP Addresses",
+    "slug": "understanding-ip-addresses",
+    "order": 4,
+    "description": "A clear explanation of IPv4 and IPv6 addresses, the difference between public and private IPs, and their role in computer networking.",
+    "category": "0. Prerequisites",
+    "body": {
+      "raw": "\n## Introduction\n\nEvery device connected to a network, including the internet, needs a unique identifier so that data can be sent to and from it correctly. In the world of TCP/IP networking, this identifier is the **Internet Protocol (IP) Address**.\n\nThink of an IP address as a mailing address for your computer. If you want to receive a package (data), you need to provide a unique address where it can be delivered. For a cybersecurity professional, IP addresses are fundamental to tracking activity, identifying threats, and configuring security devices.\n\n---\n\n## 1. IPv4 - The Workhorse of the Internet\n\n**Internet Protocol version 4 (IPv4)** has been the standard for decades. It's a 32-bit number, which means there is a total of $2^{32}$ (about 4.3 billion) possible addresses.\n\n* **Structure:** It's represented as four blocks of numbers, each ranging from 0 to 255, separated by dots. This is called dot-decimal notation.\n* **Example:** `172.217.167.78` (This is one of Google's IP addresses).\n* **The Problem:** The world has run out of new IPv4 addresses due to the massive growth of the internet. This led to the development of its successor, IPv6.\n\n---\n\n## 2. IPv6 - The Next Generation\n\n**Internet Protocol version 6 (IPv6)** is the modern standard, created to solve the address exhaustion problem of IPv4. It is a 128-bit number, providing a virtually limitless number of unique addresses ($2^{128}$).\n\n* **Structure:** It's represented as eight blocks of four hexadecimal digits, separated by colons.\n* **Example:** `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\n* **Adoption:** While adoption is growing, the entire internet is still in a long transition period from IPv4 to IPv6. Both are used simultaneously.\n\n---\n\n## 3. Public vs. Private IP Addresses\n\nNot all IP addresses are visible on the public internet. They are separated into two categories:\n\n* **Public IP Address:** This is the address assigned to you by your Internet Service Provider (ISP). It is unique across the entire internet and is the address that external servers see when you visit a website.\n* **Private IP Address:** This address is used within a private, local network (like your home Wi-Fi). Devices inside your home (laptop, phone, smart TV) each have a unique private IP address, but they all share the *same* public IP address when accessing the internet. This is made possible by a process called **Network Address Translation (NAT)**, typically handled by your router.\n\n**Common Private IP Ranges:**\n* `10.0.0.0` to `10.255.255.255`\n* `172.16.0.0` to `172.31.255.255`\n* `192.168.0.0` to `192.168.255.255`\n\n**Cybersecurity Relevance:** An attacker's public IP address is a key piece of information for tracking them. Firewalls are configured to block traffic from known malicious public IP addresses. Understanding the difference between public and private IPs is crucial for network forensics and incident response.\n\n---\n\n## Key Takeaways\n\n* An **IP Address** is a unique identifier for a device on a network.\n* **IPv4** is the older, 32-bit standard, while **IPv6** is the newer, 128-bit standard created to provide more addresses.\n* A **Public IP** is your unique address on the global internet.\n* A **Private IP** is your address on a local network (e.g., behind a router).\n* Security tools and logs are filled with IP addresses; understanding them is non-negotiable for any security role.\n\n---\n\n**Up Next:** Interacting with many security tools and servers requires proficiency with a text-based interface. It's time to learn about the most common one. The next article is **Introduction to the Linux CLI**.\n",
+      "html": "<h2>Introduction</h2>\n<p>Every device connected to a network, including the internet, needs a unique identifier so that data can be sent to and from it correctly. In the world of TCP/IP networking, this identifier is the <strong>Internet Protocol (IP) Address</strong>.</p>\n<p>Think of an IP address as a mailing address for your computer. If you want to receive a package (data), you need to provide a unique address where it can be delivered. For a cybersecurity professional, IP addresses are fundamental to tracking activity, identifying threats, and configuring security devices.</p>\n<hr>\n<h2>1. IPv4 - The Workhorse of the Internet</h2>\n<p><strong>Internet Protocol version 4 (IPv4)</strong> has been the standard for decades. It's a 32-bit number, which means there is a total of $2^{32}$ (about 4.3 billion) possible addresses.</p>\n<ul>\n<li><strong>Structure:</strong> It's represented as four blocks of numbers, each ranging from 0 to 255, separated by dots. This is called dot-decimal notation.</li>\n<li><strong>Example:</strong> <code>172.217.167.78</code> (This is one of Google's IP addresses).</li>\n<li><strong>The Problem:</strong> The world has run out of new IPv4 addresses due to the massive growth of the internet. This led to the development of its successor, IPv6.</li>\n</ul>\n<hr>\n<h2>2. IPv6 - The Next Generation</h2>\n<p><strong>Internet Protocol version 6 (IPv6)</strong> is the modern standard, created to solve the address exhaustion problem of IPv4. It is a 128-bit number, providing a virtually limitless number of unique addresses ($2^{128}$).</p>\n<ul>\n<li><strong>Structure:</strong> It's represented as eight blocks of four hexadecimal digits, separated by colons.</li>\n<li><strong>Example:</strong> <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>\n<li><strong>Adoption:</strong> While adoption is growing, the entire internet is still in a long transition period from IPv4 to IPv6. Both are used simultaneously.</li>\n</ul>\n<hr>\n<h2>3. Public vs. Private IP Addresses</h2>\n<p>Not all IP addresses are visible on the public internet. They are separated into two categories:</p>\n<ul>\n<li><strong>Public IP Address:</strong> This is the address assigned to you by your Internet Service Provider (ISP). It is unique across the entire internet and is the address that external servers see when you visit a website.</li>\n<li><strong>Private IP Address:</strong> This address is used within a private, local network (like your home Wi-Fi). Devices inside your home (laptop, phone, smart TV) each have a unique private IP address, but they all share the <em>same</em> public IP address when accessing the internet. This is made possible by a process called <strong>Network Address Translation (NAT)</strong>, typically handled by your router.</li>\n</ul>\n<p><strong>Common Private IP Ranges:</strong></p>\n<ul>\n<li><code>10.0.0.0</code> to <code>10.255.255.255</code></li>\n<li><code>172.16.0.0</code> to <code>172.31.255.255</code></li>\n<li><code>192.168.0.0</code> to <code>192.168.255.255</code></li>\n</ul>\n<p><strong>Cybersecurity Relevance:</strong> An attacker's public IP address is a key piece of information for tracking them. Firewalls are configured to block traffic from known malicious public IP addresses. Understanding the difference between public and private IPs is crucial for network forensics and incident response.</p>\n<hr>\n<h2>Key Takeaways</h2>\n<ul>\n<li>An <strong>IP Address</strong> is a unique identifier for a device on a network.</li>\n<li><strong>IPv4</strong> is the older, 32-bit standard, while <strong>IPv6</strong> is the newer, 128-bit standard created to provide more addresses.</li>\n<li>A <strong>Public IP</strong> is your unique address on the global internet.</li>\n<li>A <strong>Private IP</strong> is your address on a local network (e.g., behind a router).</li>\n<li>Security tools and logs are filled with IP addresses; understanding them is non-negotiable for any security role.</li>\n</ul>\n<hr>\n<p><strong>Up Next:</strong> Interacting with many security tools and servers requires proficiency with a text-based interface. It's time to learn about the most common one. The next article is <strong>Introduction to the Linux CLI</strong>.</p>"
+    },
+    "_id": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses.md",
+      "sourceFileName": "understanding-ip-addresses.md",
+      "sourceFileDir": "tutorials/cybersecurity/0-prerequisites",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/0-prerequisites/understanding-ip-addresses"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/understanding-ip-addresses",
     "language": "cybersecurity"
   },
   {
@@ -2002,50 +2090,6 @@
     "language": "cybersecurity"
   },
   {
-    "title": "The OWASP Top 10",
-    "slug": "owasp-top-ten",
-    "order": 1,
-    "description": "An overview of the most critical web application security risks.",
-    "category": "3. Application & Software Security",
-    "body": {
-      "raw": "\n## The OWASP Top 10\n\nThis tutorial will cover the OWASP Top 10. Content to be added.\n",
-      "html": "<h2>The OWASP Top 10</h2>\n<p>This tutorial will cover the OWASP Top 10. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/3-application-security/owasp-top-ten.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/3-application-security/owasp-top-ten.md",
-      "sourceFileName": "owasp-top-ten.md",
-      "sourceFileDir": "tutorials/cybersecurity/3-application-security",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/3-application-security/owasp-top-ten"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/owasp-top-ten",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Secure Coding Practices",
-    "slug": "secure-coding-practices",
-    "order": 2,
-    "description": "Learn fundamental principles for writing more secure code.",
-    "category": "3. Application & Software Security",
-    "body": {
-      "raw": "\n## Secure Coding Practices\n\nThis tutorial will cover secure coding practices. Content to be added.\n",
-      "html": "<h2>Secure Coding Practices</h2>\n<p>This tutorial will cover secure coding practices. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/3-application-security/secure-coding-practices.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/3-application-security/secure-coding-practices.md",
-      "sourceFileName": "secure-coding-practices.md",
-      "sourceFileDir": "tutorials/cybersecurity/3-application-security",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/3-application-security/secure-coding-practices"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/secure-coding-practices",
-    "language": "cybersecurity"
-  },
-  {
     "title": "Firewalls and Network Segmentation",
     "slug": "firewalls-and-network-segmentation",
     "order": 2,
@@ -2131,6 +2175,50 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/wireless-security-wpa3",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "The OWASP Top 10",
+    "slug": "owasp-top-ten",
+    "order": 1,
+    "description": "An overview of the most critical web application security risks.",
+    "category": "3. Application & Software Security",
+    "body": {
+      "raw": "\n## The OWASP Top 10\n\nThis tutorial will cover the OWASP Top 10. Content to be added.\n",
+      "html": "<h2>The OWASP Top 10</h2>\n<p>This tutorial will cover the OWASP Top 10. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/3-application-security/owasp-top-ten.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/3-application-security/owasp-top-ten.md",
+      "sourceFileName": "owasp-top-ten.md",
+      "sourceFileDir": "tutorials/cybersecurity/3-application-security",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/3-application-security/owasp-top-ten"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/owasp-top-ten",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Secure Coding Practices",
+    "slug": "secure-coding-practices",
+    "order": 2,
+    "description": "Learn fundamental principles for writing more secure code.",
+    "category": "3. Application & Software Security",
+    "body": {
+      "raw": "\n## Secure Coding Practices\n\nThis tutorial will cover secure coding practices. Content to be added.\n",
+      "html": "<h2>Secure Coding Practices</h2>\n<p>This tutorial will cover secure coding practices. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/3-application-security/secure-coding-practices.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/3-application-security/secure-coding-practices.md",
+      "sourceFileName": "secure-coding-practices.md",
+      "sourceFileDir": "tutorials/cybersecurity/3-application-security",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/3-application-security/secure-coding-practices"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/secure-coding-practices",
     "language": "cybersecurity"
   },
   {
@@ -2706,28 +2794,6 @@
     "language": "cybersecurity"
   },
   {
-    "title": "Introduction to GRC",
-    "slug": "intro-to-grc",
-    "order": 1,
-    "description": "An overview of Governance, Risk, and Compliance in cybersecurity.",
-    "category": "8. Governance, Risk, and Compliance (GRC)",
-    "body": {
-      "raw": "\n## Introduction to GRC\n\nThis tutorial will introduce the concepts of GRC. Content to be added.\n",
-      "html": "<h2>Introduction to GRC</h2>\n<p>This tutorial will introduce the concepts of GRC. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
-      "sourceFileName": "intro-to-grc.md",
-      "sourceFileDir": "tutorials/cybersecurity/8-grc",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/8-grc/intro-to-grc"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/intro-to-grc",
-    "language": "cybersecurity"
-  },
-  {
     "title": "Cloud Security Basics",
     "slug": "cloud-security-basics",
     "order": 1,
@@ -2747,6 +2813,28 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/cloud-security-basics",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Introduction to GRC",
+    "slug": "intro-to-grc",
+    "order": 1,
+    "description": "An overview of Governance, Risk, and Compliance in cybersecurity.",
+    "category": "8. Governance, Risk, and Compliance (GRC)",
+    "body": {
+      "raw": "\n## Introduction to GRC\n\nThis tutorial will introduce the concepts of GRC. Content to be added.\n",
+      "html": "<h2>Introduction to GRC</h2>\n<p>This tutorial will introduce the concepts of GRC. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
+      "sourceFileName": "intro-to-grc.md",
+      "sourceFileDir": "tutorials/cybersecurity/8-grc",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/8-grc/intro-to-grc"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/intro-to-grc",
     "language": "cybersecurity"
   },
   {

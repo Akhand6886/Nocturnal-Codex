@@ -40,6 +40,7 @@ export type TopicPost = {
   name: string
   slug: string
   description: string
+  longDescription?: string | undefined
   category?: string | undefined
   imageUrl?: string | undefined
   dataAiHint?: string | undefined
