@@ -104,32 +104,6 @@
       "hasWarnings": false,
       "documentTypeName": "LanguagePost"
     },
-    "languages/cybersecurity.md": {
-      "document": {
-        "id": "cybersecurity",
-        "name": "Cybersecurity",
-        "slug": "cybersecurity",
-        "description": "An in-depth guide to protecting systems, networks, and data from digital threats.",
-        "iconName": "shield",
-        "body": {
-          "raw": "\nWelcome to the Cybersecurity Hub. This section provides a comprehensive curriculum, guiding you from the foundational principles of digital security to advanced topics in threat detection, cryptography, and more.\n",
-          "html": "<p>Welcome to the Cybersecurity Hub. This section provides a comprehensive curriculum, guiding you from the foundational principles of digital security to advanced topics in threat detection, cryptography, and more.</p>"
-        },
-        "_id": "languages/cybersecurity.md",
-        "_raw": {
-          "sourceFilePath": "languages/cybersecurity.md",
-          "sourceFileName": "cybersecurity.md",
-          "sourceFileDir": "languages",
-          "contentType": "markdown",
-          "flattenedPath": "languages/cybersecurity"
-        },
-        "type": "LanguagePost",
-        "url": "/languages/cybersecurity"
-      },
-      "documentHash": "1757318075985",
-      "hasWarnings": false,
-      "documentTypeName": "LanguagePost"
-    },
     "languages/dart.md": {
       "document": {
         "id": "dart",
