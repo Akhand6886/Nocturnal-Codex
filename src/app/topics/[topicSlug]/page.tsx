@@ -13,6 +13,7 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { cache } from 'react';
 import { TutorialCard } from "@/components/content/tutorial-card";
+import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
 
 export const revalidate = 60; 
 
@@ -72,66 +73,12 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
   ];
   
   if (categoryFilter) {
-      breadcrumbItems.push({ label: categoryFilter });
+      breadcrumbItems.push({ label: formatCategoryTitle(categoryFilter) });
   }
 
   // == CYBERSECURITY ROADMAP LAYOUT ==
   if (topic.slug === 'cybersecurity' && !categoryFilter) {
-      const groupedTutorials = tutorialsForTopic.reduce((acc, tutorial) => {
-        const category = tutorial.category || 'General';
-        if (!acc[category]) {
-          acc[category] = [];
-        }
-        acc[category].push(tutorial);
-        return acc;
-      }, {} as Record<string, typeof tutorialsForTopic>);
-
-      const sortedCategories = Object.keys(groupedTutorials)
-        .sort((a, b) => {
-            const getOrder = (str: string) => {
-                const match = str.match(/^(\d+)\./);
-                return match ? parseInt(match[1], 10) : Infinity;
-            };
-            const orderA = getOrder(a);
-            const orderB = getOrder(b);
-
-            if (orderA !== Infinity && orderB !== Infinity) {
-                return orderA - orderB;
-            }
-            return a.localeCompare(b);
-        });
-
-      return (
-        <div className="container mx-auto px-4 py-10 md:py-12 space-y-12">
-            <header className="pb-8 border-b border-border text-center">
-                 <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                    Cybersecurity Roadmap
-                </h1>
-                <div className="mt-4 max-w-2xl mx-auto">
-                   <MarkdownRenderer content={topic.body.raw} />
-                </div>
-            </header>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start">
-                {sortedCategories.map(category => (
-                    <Card key={category} className="bg-card/50 border-border/60 shadow-md h-full">
-                        <CardHeader>
-                            <CardTitle className="text-center text-lg font-semibold text-primary">{formatCategoryTitle(category)}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex flex-col space-y-2">
-                           {groupedTutorials[category].map((tutorial) => (
-                             <Link href={tutorial.url} key={tutorial.slug} className="block">
-                               <div className="text-center text-sm font-medium p-2.5 rounded-md border-2 border-border bg-background hover:bg-primary/10 hover:border-primary/80 hover:text-primary transition-all duration-200 ease-in-out shadow-sm">
-                                   {tutorial.title}
-                               </div>
-                             </Link>
-                           ))}
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
-        </div>
-      );
+      return <CybersecurityRoadmap tutorials={tutorialsForTopic} />;
   }
   
   // == DEFAULT TOPIC PAGE LAYOUT ==
