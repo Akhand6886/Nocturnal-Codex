@@ -106,6 +106,7 @@ export const TopicPost = defineDocumentType(() => ({
       name: { type: 'string', required: true },
       slug: { type: 'string', required: true },
       description: { type: 'string', required: true },
+      longDescription: { type: 'string', required: false },
       category: { type: 'string', required: false },
       imageUrl: { type: 'string', required: false },
       dataAiHint: { type: 'string', required: false },

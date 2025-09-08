@@ -97,6 +97,7 @@ var TopicPost = defineDocumentType(() => ({
     name: { type: "string", required: true },
     slug: { type: "string", required: true },
     description: { type: "string", required: true },
+    longDescription: { type: "string", required: false },
     category: { type: "string", required: false },
     imageUrl: { type: "string", required: false },
     dataAiHint: { type: "string", required: false },
@@ -123,4 +124,4 @@ export {
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-SAXTIUAZ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-4P3HUAZI.mjs.map
