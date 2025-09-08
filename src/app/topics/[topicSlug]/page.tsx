@@ -1,5 +1,4 @@
 
-
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeSnippet } from "@/components/content/code-snippet";
@@ -13,11 +12,10 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { cache } from 'react';
 import { TutorialCard } from "@/components/content/tutorial-card";
-import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
+import { SimpleIcon } from "@/components/common/simple-icon";
 
 export const revalidate = 60; 
 
-// Use cache to deduplicate data fetching for a single request
 const getTopic = cache((slug: string) => {
   return allTopicPosts.find((t) => t.slug === slug);
 });
@@ -45,7 +43,6 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
   };
 }
 
-// Helper to remove leading numbers (e.g., "1. ") from category titles for display
 const formatCategoryTitle = (title: string) => {
     return title.replace(/^\d+\.\s*/, '');
 };
@@ -76,9 +73,72 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
       breadcrumbItems.push({ label: formatCategoryTitle(categoryFilter) });
   }
 
-  // == CYBERSECURITY ROADMAP LAYOUT ==
-  if (topic.slug === 'cybersecurity' && !categoryFilter) {
-      return <CybersecurityRoadmap tutorials={tutorialsForTopic} />;
+  // == CYBERSECURITY TUTORIAL LIST LAYOUT ==
+  if (topic.slug === 'cybersecurity') {
+      const groupedTutorials = tutorialsForTopic.reduce((acc, tutorial) => {
+        const category = tutorial.category || 'General';
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(tutorial);
+        return acc;
+      }, {} as Record<string, typeof tutorialsForTopic>);
+
+      const sortedCategories = Object.keys(groupedTutorials)
+        .sort((a, b) => {
+            const getOrder = (str: string) => {
+                const match = str.match(/^(\d+)\./);
+                return match ? parseInt(match[1], 10) : Infinity;
+            };
+            const orderA = getOrder(a);
+            const orderB = getOrder(b);
+
+            if (orderA !== Infinity && orderB !== Infinity) {
+                return orderA - orderB;
+            }
+            return a.localeCompare(b);
+        });
+
+      return (
+        <div className="container mx-auto px-4 py-10 md:py-12 space-y-12">
+          <Breadcrumbs items={breadcrumbItems} />
+          <header className="pb-8 border-b border-border">
+            <div className="flex items-center space-x-4">
+                <SimpleIcon iconName={topic.iconName || 'code'} className="w-12 h-12 md:w-16 md:h-16 text-primary" />
+                <div>
+                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+                        {categoryFilter ? `${topic.name}: ${decodeURIComponent(categoryFilter)}` : `${topic.name} Tutorials`}
+                    </h1>
+                    <p className="mt-2 text-lg text-muted-foreground">
+                        {topic.description}
+                    </p>
+                    {categoryFilter && (
+                        <Button asChild variant="link" className="p-0 h-auto mt-2">
+                            <Link href={`/topics/${topic.slug}`}>View All {topic.name} Tutorials</Link>
+                        </Button>
+                    )}
+                </div>
+            </div>
+          </header>
+            
+          {sortedCategories.length > 0 ? (
+            <div className="space-y-12">
+              {sortedCategories.map(category => (
+                <section key={category}>
+                  <h2 className="text-2xl font-semibold mb-6 pb-2 border-b border-border/70">{formatCategoryTitle(category)}</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {groupedTutorials[category].map((tutorial) => (
+                        <TutorialCard key={tutorial.slug} tutorial={tutorial} />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-muted-foreground py-10">No tutorials available for {topic.name} yet. Check back soon.</p>
+          )}
+        </div>
+      );
   }
   
   // == DEFAULT TOPIC PAGE LAYOUT ==
