@@ -12,8 +12,8 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { cache } from 'react';
 import { TutorialCard } from "@/components/content/tutorial-card";
-import { SimpleIcon } from "@/components/common/simple-icon";
 import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
+
 
 export const revalidate = 60; 
 
