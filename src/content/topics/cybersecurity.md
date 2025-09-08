@@ -1,7 +1,7 @@
 ---
 id: "cybersecurity"
-name: "Cybersecurity"
 slug: "cybersecurity"
+name: "Cybersecurity"
 description: "An in-depth guide to protecting systems, networks, and data from digital threats."
 iconName: "shield-check"
 category: "Security"
