@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import { cache } from 'react';
 import { TutorialCard } from "@/components/content/tutorial-card";
 import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
-import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
 
 export const revalidate = 60; 
 
@@ -74,7 +73,6 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
   ];
   
   if (categoryFilter) {
-      breadcrumbItems.push({ label: formatCategoryTitle(categoryFilter) });
       breadcrumbItems.push({ label: formatCategoryTitle(categoryFilter) });
   }
 
