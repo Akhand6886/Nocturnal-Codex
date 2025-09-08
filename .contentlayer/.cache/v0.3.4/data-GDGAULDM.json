@@ -2736,195 +2736,6 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
-    "tutorials/cybersecurity/1-foundations/cia-triad.md": {
-      "document": {
-        "title": "The CIA Triad",
-        "slug": "cia-triad",
-        "order": 2,
-        "description": "Learn about Confidentiality, Integrity, and Availability - the core principles of information security.",
-        "category": "1. Cybersecurity Foundations",
-        "body": {
-          "raw": "\n## The CIA Triad\n\nThis tutorial will cover the CIA Triad: Confidentiality, Integrity, and Availability. Content to be added.\n",
-          "html": "<h2>The CIA Triad</h2>\n<p>This tutorial will cover the CIA Triad: Confidentiality, Integrity, and Availability. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/1-foundations/cia-triad.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/1-foundations/cia-triad.md",
-          "sourceFileName": "cia-triad.md",
-          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/1-foundations/cia-triad"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/cia-triad",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1756981050280",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/cybersecurity/1-foundations/common-threat-actors.md": {
-      "document": {
-        "title": "Common Threat Actors",
-        "slug": "common-threat-actors",
-        "order": 4,
-        "description": "An overview of different types of attackers, from hacktivists to nation-states.",
-        "category": "1. Security Foundations",
-        "body": {
-          "raw": "\n## Common Threat Actors\n\nThis tutorial will explore the motivations and methods of various threat actors. Content to be added.\n",
-          "html": "<h2>Common Threat Actors</h2>\n<p>This tutorial will explore the motivations and methods of various threat actors. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
-          "sourceFileName": "common-threat-actors.md",
-          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/1-foundations/common-threat-actors"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/common-threat-actors",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1757002676682",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity.md": {
-      "document": {
-        "title": "Introduction to Cybersecurity",
-        "slug": "intro-to-cybersecurity",
-        "order": 1,
-        "description": "A beginner's overview of the field of cybersecurity.",
-        "category": "1. Cybersecurity Foundations",
-        "body": {
-          "raw": "\n## Introduction to Cybersecurity\n\nThis tutorial will cover the basics of cybersecurity. Content to be added.\n",
-          "html": "<h2>Introduction to Cybersecurity</h2>\n<p>This tutorial will cover the basics of cybersecurity. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity.md",
-          "sourceFileName": "intro-to-cybersecurity.md",
-          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/intro-to-cybersecurity",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1756981050275",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md": {
-      "document": {
-        "title": "Introduction to Security Controls",
-        "slug": "introduction-to-security-controls",
-        "order": 5,
-        "description": "Learn about the different types of security controls (Preventive, Detective, Corrective).",
-        "category": "1. Security Foundations",
-        "body": {
-          "raw": "\n## Introduction to Security Controls\n\nThis tutorial will explain the purpose and types of security controls. Content to be added.\n",
-          "html": "<h2>Introduction to Security Controls</h2>\n<p>This tutorial will explain the purpose and types of security controls. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md",
-          "sourceFileName": "introduction-to-security-controls.md",
-          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/introduction-to-security-controls",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1757002676692",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md": {
-      "document": {
-        "title": "Key Security Concepts (Threat, Vulnerability, Risk)",
-        "slug": "key-security-concepts-threat-risk",
-        "order": 3,
-        "description": "Understand the fundamental terminology used in cybersecurity.",
-        "category": "1. Security Foundations",
-        "body": {
-          "raw": "\n## Key Security Concepts\n\nThis tutorial will define and differentiate between threats, vulnerabilities, and risks. Content to be added.\n",
-          "html": "<h2>Key Security Concepts</h2>\n<p>This tutorial will define and differentiate between threats, vulnerabilities, and risks. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md",
-          "sourceFileName": "key-security-concepts-threat-risk.md",
-          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/key-security-concepts-threat-risk",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1757002676669",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/cybersecurity/1-foundations/the-cia-triad.md": {
-      "document": {
-        "title": "The CIA Triad",
-        "slug": "the-cia-triad",
-        "order": 2,
-        "description": "Learn about the core principles of Confidentiality, Integrity, and Availability.",
-        "category": "1. Security Foundations",
-        "body": {
-          "raw": "\n## The CIA Triad\n\nThis tutorial will cover the CIA Triad in detail. Content to be added.\n",
-          "html": "<h2>The CIA Triad</h2>\n<p>This tutorial will cover the CIA Triad in detail. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
-          "sourceFileName": "the-cia-triad.md",
-          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/1-foundations/the-cia-triad"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/the-cia-triad",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1757002676661",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
-    "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md": {
-      "document": {
-        "title": "What is Cybersecurity?",
-        "slug": "what-is-cybersecurity",
-        "order": 1,
-        "description": "An introduction to the field of cybersecurity and its importance.",
-        "category": "1. Security Foundations",
-        "body": {
-          "raw": "\n## What is Cybersecurity?\n\nThis tutorial will provide a high-level overview of the cybersecurity discipline. Content to be added.\n",
-          "html": "<h2>What is Cybersecurity?</h2>\n<p>This tutorial will provide a high-level overview of the cybersecurity discipline. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md",
-          "sourceFileName": "what-is-cybersecurity.md",
-          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/what-is-cybersecurity",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1757002676650",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
     "tutorials/cybersecurity/0-prerequisites/basic-scripting-with-python.md": {
       "document": {
         "title": "Basic Scripting with Python",
@@ -3132,6 +2943,195 @@
         "language": "cybersecurity"
       },
       "documentHash": "1757009256046",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/cia-triad.md": {
+      "document": {
+        "title": "The CIA Triad",
+        "slug": "cia-triad",
+        "order": 2,
+        "description": "Learn about Confidentiality, Integrity, and Availability - the core principles of information security.",
+        "category": "1. Cybersecurity Foundations",
+        "body": {
+          "raw": "\n## The CIA Triad\n\nThis tutorial will cover the CIA Triad: Confidentiality, Integrity, and Availability. Content to be added.\n",
+          "html": "<h2>The CIA Triad</h2>\n<p>This tutorial will cover the CIA Triad: Confidentiality, Integrity, and Availability. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/cia-triad.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/cia-triad.md",
+          "sourceFileName": "cia-triad.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/cia-triad"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/cia-triad",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1756981050280",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/common-threat-actors.md": {
+      "document": {
+        "title": "Common Threat Actors",
+        "slug": "common-threat-actors",
+        "order": 4,
+        "description": "An overview of different types of attackers, from hacktivists to nation-states.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## Common Threat Actors\n\nThis tutorial will explore the motivations and methods of various threat actors. Content to be added.\n",
+          "html": "<h2>Common Threat Actors</h2>\n<p>This tutorial will explore the motivations and methods of various threat actors. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/common-threat-actors.md",
+          "sourceFileName": "common-threat-actors.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/common-threat-actors"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/common-threat-actors",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676682",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity.md": {
+      "document": {
+        "title": "Introduction to Cybersecurity",
+        "slug": "intro-to-cybersecurity",
+        "order": 1,
+        "description": "A beginner's overview of the field of cybersecurity.",
+        "category": "1. Cybersecurity Foundations",
+        "body": {
+          "raw": "\n## Introduction to Cybersecurity\n\nThis tutorial will cover the basics of cybersecurity. Content to be added.\n",
+          "html": "<h2>Introduction to Cybersecurity</h2>\n<p>This tutorial will cover the basics of cybersecurity. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity.md",
+          "sourceFileName": "intro-to-cybersecurity.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/intro-to-cybersecurity"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/intro-to-cybersecurity",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1756981050275",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md": {
+      "document": {
+        "title": "Introduction to Security Controls",
+        "slug": "introduction-to-security-controls",
+        "order": 5,
+        "description": "Learn about the different types of security controls (Preventive, Detective, Corrective).",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## Introduction to Security Controls\n\nThis tutorial will explain the purpose and types of security controls. Content to be added.\n",
+          "html": "<h2>Introduction to Security Controls</h2>\n<p>This tutorial will explain the purpose and types of security controls. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls.md",
+          "sourceFileName": "introduction-to-security-controls.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/introduction-to-security-controls"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/introduction-to-security-controls",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676692",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md": {
+      "document": {
+        "title": "Key Security Concepts (Threat, Vulnerability, Risk)",
+        "slug": "key-security-concepts-threat-risk",
+        "order": 3,
+        "description": "Understand the fundamental terminology used in cybersecurity.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## Key Security Concepts\n\nThis tutorial will define and differentiate between threats, vulnerabilities, and risks. Content to be added.\n",
+          "html": "<h2>Key Security Concepts</h2>\n<p>This tutorial will define and differentiate between threats, vulnerabilities, and risks. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk.md",
+          "sourceFileName": "key-security-concepts-threat-risk.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/key-security-concepts-threat-risk"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/key-security-concepts-threat-risk",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676669",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/the-cia-triad.md": {
+      "document": {
+        "title": "The CIA Triad",
+        "slug": "the-cia-triad",
+        "order": 2,
+        "description": "Learn about the core principles of Confidentiality, Integrity, and Availability.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## The CIA Triad\n\nThis tutorial will cover the CIA Triad in detail. Content to be added.\n",
+          "html": "<h2>The CIA Triad</h2>\n<p>This tutorial will cover the CIA Triad in detail. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
+          "sourceFileName": "the-cia-triad.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/the-cia-triad"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/the-cia-triad",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676661",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md": {
+      "document": {
+        "title": "What is Cybersecurity?",
+        "slug": "what-is-cybersecurity",
+        "order": 1,
+        "description": "An introduction to the field of cybersecurity and its importance.",
+        "category": "1. Security Foundations",
+        "body": {
+          "raw": "\n## What is Cybersecurity?\n\nThis tutorial will provide a high-level overview of the cybersecurity discipline. Content to be added.\n",
+          "html": "<h2>What is Cybersecurity?</h2>\n<p>This tutorial will provide a high-level overview of the cybersecurity discipline. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity.md",
+          "sourceFileName": "what-is-cybersecurity.md",
+          "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/1-foundations/what-is-cybersecurity"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/what-is-cybersecurity",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757002676650",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
