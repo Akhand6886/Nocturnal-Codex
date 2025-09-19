@@ -5,14 +5,13 @@ import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, Link as LinkIcon, Brain } from "lucide-react";
 import Image from "next/image";
-import { allTopicPosts, allTutorialPosts } from 'contentlayer/generated';
+import { allTopicPosts } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { cache } from 'react';
 import { TutorialCard } from "@/components/content/tutorial-card";
-import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
 
 
 export const revalidate = 60; 
@@ -50,34 +49,16 @@ const formatCategoryTitle = (title: string) => {
 
 export default async function TopicPage({ params, searchParams }: TopicPageProps) {
   const topic = getTopic(params.topicSlug);
-  const categoryFilter = typeof searchParams.category === 'string' ? searchParams.category : null;
 
   if (!topic) {
     notFound();
   }
-
-  // == CYBERSECURITY ROADMAP SPECIAL LAYOUT ==
-  if (topic.slug === 'cybersecurity') {
-    return <CybersecurityRoadmap />;
-  }
   
-  const tutorialsForTopic = allTutorialPosts
-    .filter(p => p.language === topic.slug)
-    .sort((a, b) => a.order - b.order);
-    
-  const filteredTutorials = categoryFilter 
-    ? tutorialsForTopic.filter(p => p.category === categoryFilter)
-    : [];
-
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
     { label: "Topics", href: "/topics" },
     { label: topic.name },
   ];
-  
-  if (categoryFilter) {
-      breadcrumbItems.push({ label: formatCategoryTitle(categoryFilter) });
-  }
   
   // == DEFAULT TOPIC PAGE LAYOUT ==
   return (
@@ -85,7 +66,7 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
       <Breadcrumbs items={breadcrumbItems} />
       
       <header className="space-y-4">
-        {topic.imageUrl && !categoryFilter && (
+        {topic.imageUrl && (
           <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg border border-border/20">
             <Image src={topic.imageUrl} alt={topic.name} fill className="object-cover" data-ai-hint={topic.dataAiHint || "topic banner"} priority />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -93,33 +74,14 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
         )}
         <div className="border-b border-border pb-6">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {categoryFilter ? `${topic.name}: ${formatCategoryTitle(categoryFilter)}` : topic.name}
+                {topic.name}
             </h1>
             <div className="mt-4">
                 <MarkdownRenderer content={topic.body.raw} />
-                 {categoryFilter && (
-                    <Button asChild variant="link" className="p-0 h-auto mt-4">
-                        <Link href={topic.url}>&larr; Back to all {topic.name} subtopics</Link>
-                    </Button>
-                )}
             </div>
         </div>
       </header>
       
-      {categoryFilter ? (
-        <section>
-            <h2 className="text-2xl font-semibold mb-6">Tutorials in this section</h2>
-            {filteredTutorials.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredTutorials.map((tutorial) => (
-                        <TutorialCard key={tutorial.slug} tutorial={tutorial} />
-                    ))}
-                </div>
-            ) : (
-                <p className="text-muted-foreground">No tutorials found for this category.</p>
-            )}
-        </section>
-      ) : (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <main className="lg:col-span-2 space-y-12">
             {topic.subtopics && topic.subtopics.length > 0 && (
@@ -222,7 +184,6 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
                 )}
             </aside>
         </div>
-      )}
     </div>
   );
 }
