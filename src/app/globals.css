@@ -110,7 +110,7 @@
   .markdown-content ol { @apply list-decimal; }
   .markdown-content li { @apply mb-1.5; }
   .markdown-content blockquote { @apply p-4 my-5 border-l-4 border-primary bg-muted/30 text-muted-foreground italic rounded-r-md shadow-sm; } 
-  .markdown-content code { @apply px-1.5 py-1 bg-muted/50 text-accent rounded-md font-mono text-[0.9em]; } 
+  .markdown-content code { @apply px-1.5 py-1 bg-muted/50 text-primary rounded-md font-mono text-[0.9em]; } 
   .markdown-content pre { @apply p-4 my-5 bg-muted/20 rounded-lg overflow-x-auto shadow-md; } 
   .markdown-content pre code { @apply bg-transparent p-0 text-sm leading-relaxed font-mono; } 
   .markdown-content a { @apply text-primary hover:text-primary/80 hover:underline underline-offset-2 transition-colors duration-150; }
