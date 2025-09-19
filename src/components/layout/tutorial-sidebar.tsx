@@ -27,14 +27,26 @@ export function TutorialSidebar({ tutorials, currentLanguage }: TutorialSidebarP
     return acc;
   }, {} as Record<string, TutorialPost[]>);
 
+  // Sort tutorials within each category by their order property
+  for (const category in groupedTutorials) {
+    groupedTutorials[category].sort((a, b) => a.order - b.order);
+  }
+
   const sortedCategories = Object.keys(groupedTutorials).sort((a, b) => {
-    const getOrder = (str: string) => {
-      const match = str.match(/^(\d+)\./);
-      return match ? parseInt(match[1], 10) : Infinity;
+    const getOrder = (categoryName: string): number => {
+        // Find the lowest order number of a tutorial within that category
+        const tutorialsInCategory = groupedTutorials[categoryName];
+        if (tutorialsInCategory && tutorialsInCategory.length > 0) {
+            return tutorialsInCategory.reduce((min, t) => Math.min(min, t.order), Infinity);
+        }
+        return Infinity;
     };
     const orderA = getOrder(a);
     const orderB = getOrder(b);
-    if (orderA !== Infinity && orderB !== Infinity) return orderA - orderB;
+    
+    if(orderA !== Infinity && orderB !== Infinity) {
+        return orderA - orderB;
+    }
     return a.localeCompare(b);
   });
 
