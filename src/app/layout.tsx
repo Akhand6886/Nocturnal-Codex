@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Inter, Roboto_Mono } from 'next/font/google'; // Changed from Geist_Sans, Geist_Mono
+import { Quicksand, Inconsolata } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Navbar } from '@/components/layout/navbar';
@@ -9,13 +9,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react"
 import { allTopicPosts } from 'contentlayer/generated';
 
-const inter = Inter({ // Changed from Geist_Sans
-  variable: '--font-inter', // Changed variable name
+const quicksand = Quicksand({
+  variable: '--font-quicksand',
   subsets: ['latin'],
 });
 
-const robotoMono = Roboto_Mono({ // Changed from Geist_Mono
-  variable: '--font-roboto-mono', // Changed variable name
+const inconsolata = Inconsolata({
+  variable: '--font-inconsolata',
   subsets: ['latin'],
 });
 
@@ -114,7 +114,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${robotoMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
+      <body className={`${quicksand.variable} ${inconsolata.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <ThemeProvider>
           <div className="flex-grow">
             <Navbar topics={allTopicPosts} />
