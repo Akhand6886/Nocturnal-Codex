@@ -60,12 +60,6 @@ export default function CybersecurityRoadmapPage() {
                 <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Cyber Security Roadmap</h1>
                 <p className="text-gray-500 dark:text-gray-400">A guide to becoming a cybersecurity professional.</p>
             </div>
-            <div className="text-right text-xs p-3 border border-gray-200 dark:border-gray-700 rounded-lg bg-blue-600 text-white dark:bg-blue-700/80 shadow-lg">
-                <p className="font-semibold">Find the detailed version of this roadmap along with other similar roadmaps</p>
-                <a href="https://roadmap.sh" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:underline flex items-center justify-end gap-1 font-bold">
-                    roadmap.sh <ExternalLink className="w-3 h-3" />
-                </a>
-            </div>
         </header>
 
         <main className="flex justify-center gap-4 sm:gap-6">
@@ -140,7 +134,7 @@ export default function CybersecurityRoadmapPage() {
               <div className="grid grid-cols-2 gap-x-4 w-full pt-4">
                   {/* Left side of security skills */}
                   <div className="flex flex-col gap-y-2">
-                      {['Understand Common Hacking Tools', 'Understand Common Exploit Frameworks', 'Understand Concept of Defense in Depth', 'Understand Concept of Runbooks', 'Understand Basics of Forensics', 'Basics and Concepts of Threat Hunting', 'Basics of Vulnerability Management', 'Basics of Reverse Engineering', 'Penetration Testing Rules of Engagement', 'Perimiter vs DMZ vs Segmentation'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
+                      {['Understand Common Hacking Tools', 'Understand Common Exploit Frameworks', 'Understand Concept of Defense in Depth', 'Understand Concept of Runbooks', 'Basics of Forensics', 'Basics and Concepts of Threat Hunting', 'Basics of Vulnerability Management', 'Basics of Reverse Engineering', 'Penetration Testing Rules of Engagement', 'Perimiter vs DMZ vs Segmentation'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
                   </div>
                   {/* Right side of security skills */}
                   <div className="flex flex-col gap-y-2">
