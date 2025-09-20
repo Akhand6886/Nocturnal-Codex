@@ -59,7 +59,7 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
   // == ROADMAP PAGE LAYOUT (Conditional) ==
   // Check if the topic has the special roadmap data.
   // The 'as any' is a temporary workaround for potential TypeScript module caching issues with Contentlayer.
-  if ((topic as any).roadmapColumns && (topic as any).roadmapColumns.length > 0) {
+  if (Array.isArray((topic as any).roadmapColumns) && (topic as any).roadmapColumns.length > 0) {
     return (
       <div className="container mx-auto max-w-7xl px-4 py-10 md:py-12 space-y-12">
         <Breadcrumbs items={breadcrumbItems} />
