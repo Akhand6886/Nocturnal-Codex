@@ -12,6 +12,7 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { cache } from 'react';
 import { TutorialCard } from "@/components/content/tutorial-card";
+import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
 
 
 export const revalidate = 60; 
@@ -59,6 +60,24 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
     { label: "Topics", href: "/topics" },
     { label: topic.name },
   ];
+
+  // == ROADMAP PAGE LAYOUT (Conditional) ==
+  if (topic.roadmapColumns && topic.roadmapColumns.length > 0) {
+    return (
+      <div className="container mx-auto max-w-7xl px-4 py-10 md:py-12 space-y-12">
+        <Breadcrumbs items={breadcrumbItems} />
+        <header className="space-y-4 text-center">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+                {topic.name} Roadmap
+            </h1>
+            <div className="max-w-3xl mx-auto text-lg text-muted-foreground">
+                <MarkdownRenderer content={topic.body.raw} />
+            </div>
+        </header>
+        <CybersecurityRoadmap topic={topic} />
+      </div>
+    );
+  }
   
   // == DEFAULT TOPIC PAGE LAYOUT ==
   return (
