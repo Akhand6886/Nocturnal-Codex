@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Youtube, Linkedin, ExternalLink, ArrowDown } from 'lucide-react';
+import { Youtube, Linkedin, ExternalLink, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -24,29 +24,30 @@ type RoadmapNodeProps = {
 
 // Generic block component with variants for different colors
 const RoadmapNode = ({ children, className, variant = 'default' }: RoadmapNodeProps) => {
-  const baseClasses = 'text-center text-xs sm:text-sm font-medium p-2.5 rounded-lg shadow-sm border';
-  const colorClasses = {
-    default: 'bg-orange-100 text-orange-900 border-orange-200 dark:bg-yellow-900/30 dark:text-yellow-200 dark:border-yellow-800/50',
-    primary: 'bg-yellow-300 text-yellow-900 border-yellow-400/80 dark:bg-yellow-500 dark:text-yellow-950 dark:border-yellow-600',
-    secondary: 'bg-white text-gray-800 border-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700',
-    purple: 'bg-purple-200 text-purple-900 border-purple-300 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800/60',
-    plain: 'text-center font-semibold text-gray-700 dark:text-gray-300 py-1'
-  };
-  return (
-      <TooltipProvider>
-        <Tooltip>
-            <TooltipTrigger asChild>
-                <div className={cn(baseClasses, colorClasses[variant], className, 'cursor-pointer hover:scale-105 transition-transform duration-200')}>
-                    {children}
-                </div>
-            </TooltipTrigger>
-            <TooltipContent>
-                <p>Details about "{children}" coming soon!</p>
-            </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-  );
+    const baseClasses = 'text-center text-xs sm:text-sm font-medium p-2.5 rounded-lg shadow-sm border';
+    const colorClasses = {
+      default: 'bg-orange-100 text-orange-900 border-orange-200 dark:bg-yellow-900/30 dark:text-yellow-200 dark:border-yellow-800/50',
+      primary: 'bg-yellow-300 text-yellow-900 border-yellow-400/80 dark:bg-yellow-500 dark:text-yellow-950 dark:border-yellow-600',
+      secondary: 'bg-white text-gray-800 border-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700',
+      purple: 'bg-purple-200 text-purple-900 border-purple-300 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800/60',
+      plain: 'text-center font-semibold text-gray-700 dark:text-gray-300 py-1'
+    };
+    return (
+        <TooltipProvider>
+          <Tooltip>
+              <TooltipTrigger asChild>
+                  <div className={cn(baseClasses, colorClasses[variant], className, 'cursor-pointer hover:scale-105 transition-transform duration-200')}>
+                      {children}
+                  </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                  <p>Details about "{children}" coming soon!</p>
+              </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+    );
 };
+
 
 // --- Main Page Component ---
 export default function CybersecurityRoadmapPage() {
@@ -178,15 +179,6 @@ export default function CybersecurityRoadmapPage() {
         </main>
         
         <footer className="mt-12 flex justify-between items-end">
-            <div className="w-full max-w-xs p-4 rounded-lg bg-gray-800 border border-gray-700 shadow-lg">
-                <p className="text-sm font-medium text-gray-200 flex items-center gap-2"><span className="text-yellow-400">✨</span> AI Tutor</p>
-                <input 
-                    type="text"
-                    placeholder="Have a question? Type here"
-                    className="w-full mt-2 bg-transparent text-sm text-gray-400 outline-none border-b border-gray-600 focus:border-yellow-400 transition-colors"
-                />
-            </div>
-
             <div className="flex flex-col gap-y-4">
                 <RoadmapNode variant="plain">Tools for Incident Response and Discovery</RoadmapNode>
                 <div className="grid grid-cols-6 gap-1 text-[10px] sm:text-xs">
