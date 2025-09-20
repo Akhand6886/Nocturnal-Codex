@@ -94,6 +94,16 @@ The site uses a hybrid approach for content, sourcing it from a Headless CMS, lo
 -   **Purpose**: For foundational site content that is relatively static and integral to the site's structure. This includes the main topics, programming language overviews, and wiki articles. This content could also be migrated to Contentlayer in the future for easier management.
 -   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_TOPICS`, `MOCK_PROGRAMMING_LANGUAGES`, `MOCK_WIKI_ARTICLES`). This approach is extremely fast and provides full type-safety, but it requires a developer to update the content directly in the code. This is suitable for content that doesn't change often.
 
+### Special Case: The Cybersecurity Roadmap
+
+The project includes a unique, highly customized user interface for the Cybersecurity topic page (`/topics/cybersecurity`). This page deviates from the standard topic layout to display an interactive, multi-column roadmap.
+
+-   **Content-Driven UI**: The structure of this roadmap is defined entirely within the frontmatter of the `content/topics/cybersecurity.md` file. It uses a custom YAML structure under the `roadmapColumns` key. This allows the content and layout of the roadmap to be edited directly in the Markdown file.
+-   **Conditional Rendering**: The page component at `src/app/topics/[topicSlug]/page.tsx` contains logic to check if a given `TopicPost` from Contentlayer contains the `roadmapColumns` field.
+    -   If `roadmapColumns` exists, it renders the specialized `src/components/content/cybersecurity-roadmap.tsx` component, which is responsible for building the visual flowchart.
+    -   If `roadmapColumns` does not exist, it renders the default topic page layout.
+-   **Component Logic**: The `CybersecurityRoadmap` component takes the topic data as a prop, parses the `roadmapColumns` structure, and uses Flexbox to render the main learning path and side columns. Each node in the roadmap links to a specific tutorial article, creating an interactive learning path. This architecture allows for the creation of other unique, data-driven page layouts for specific topics in the future without altering the core routing or component structure.
+
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 
 The website is highly optimized for performance by leveraging Next.js's rendering strategies.
