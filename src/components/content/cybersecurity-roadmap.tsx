@@ -93,6 +93,16 @@ export function CybersecurityRoadmap({ topic }: { topic: TopicPost }) {
     return (
         <div className="w-full">
             <div className="flex flex-col md:flex-row gap-8">
+                {/* Side Paths (left) */}
+                {sidePaths.slice(0, 1).map((column, colIndex) => (
+                    <div key={colIndex} className="flex-1 w-full md:w-1/3">
+                        <h2 className="text-xl font-bold text-center mb-6 text-primary">{column.title}</h2>
+                        {column.sections.map((section, sectionIndex) => (
+                             <Section key={sectionIndex} section={section} />
+                        ))}
+                    </div>
+                ))}
+                
                 {/* Main Path */}
                 {mainPath && (
                     <div className="flex-1 w-full md:w-1/3">
@@ -106,8 +116,9 @@ export function CybersecurityRoadmap({ topic }: { topic: TopicPost }) {
                         ))}
                     </div>
                 )}
-                 {/* Side Paths */}
-                {sidePaths.length > 0 && sidePaths.map((column, colIndex) => (
+                 
+                 {/* Side Paths (right) */}
+                {sidePaths.slice(1).map((column, colIndex) => (
                     <div key={colIndex} className="flex-1 w-full md:w-1/3">
                         <h2 className="text-xl font-bold text-center mb-6 text-primary">{column.title}</h2>
                         {column.sections.map((section, sectionIndex) => (
