@@ -1,13 +1,18 @@
 
+"use client";
+
 import { Facebook, Youtube, Linkedin, ExternalLink, ArrowDown } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
-export const metadata: Metadata = {
-  title: "Cybersecurity Roadmap | Nocturnal Codex",
-  description: "A visual, interactive roadmap for learning cybersecurity, from fundamental IT skills to advanced security concepts.",
-};
+// Note: Metadata is not used in client components, but can be exported
+// from a 'layout.tsx' or 'template.tsx' file in the same directory if needed.
+// For this single page, we can assume it might be handled in a parent layout.
+// export const metadata: Metadata = {
+//   title: "Cybersecurity Roadmap | Nocturnal Codex",
+//   description: "A visual, interactive roadmap for learning cybersecurity, from fundamental IT skills to advanced security concepts.",
+// };
 
 // --- Component Definitions for Roadmap Blocks ---
 
@@ -28,7 +33,20 @@ const RoadmapNode = ({ children, className, variant = 'default' }: RoadmapNodePr
     purple: 'bg-purple-200 text-purple-900 border-purple-300 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800/60',
     plain: 'text-center font-semibold text-gray-700 dark:text-gray-300 py-1'
   };
-  return <div className={cn(baseClasses, colorClasses[variant], className)}>{children}</div>;
+  return (
+      <TooltipProvider>
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <div className={cn(baseClasses, colorClasses[variant], className, 'cursor-pointer hover:scale-105 transition-transform duration-200')}>
+                    {children}
+                </div>
+            </TooltipTrigger>
+            <TooltipContent>
+                <p>Details about "{children}" coming soon!</p>
+            </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+  );
 };
 
 // --- Main Page Component ---
@@ -200,4 +218,10 @@ export default function CybersecurityRoadmapPage() {
             <div className="flex flex-col gap-y-2">
                 <RoadmapNode variant="plain">Attack Types and Differences</RoadmapNode>
                 <div className="grid grid-cols-3 gap-2"><RoadmapNode>Phishing</RoadmapNode><RoadmapNode>Whishing</RoadmapNode><RoadmapNode>Whaling</RoadmapNode></div>
-                <div className="grid grid-cols-3 gap-2"><RoadmapNode>Smishing</RoadmapNode><Roadm
+                <div className="grid grid-cols-3 gap-2"><RoadmapNode>Smishing</RoadmapNode><RoadmapNode>Vishing</RoadmapNode><RoadmapNode>Spamming</RoadmapNode></div>
+            </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
