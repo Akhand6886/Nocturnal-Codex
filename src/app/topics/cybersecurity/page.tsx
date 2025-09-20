@@ -37,11 +37,11 @@ const RoadmapNode = ({ children, className, variant = 'default' }: RoadmapNodePr
           <Tooltip>
               <TooltipTrigger asChild>
                   <div className={cn(baseClasses, colorClasses[variant], className, 'cursor-pointer hover:scale-105 transition-transform duration-200')}>
-                      {children}
+                      <span>{children}</span>
                   </div>
               </TooltipTrigger>
               <TooltipContent>
-                  <p>Details about "{children}" coming soon!</p>
+                  <p>Details about "{String(children)}" coming soon!</p>
               </TooltipContent>
           </Tooltip>
         </TooltipProvider>
