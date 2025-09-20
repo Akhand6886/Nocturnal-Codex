@@ -11,7 +11,6 @@ import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { cache } from 'react';
-import { TutorialCard } from "@/components/content/tutorial-card";
 import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
 
 
@@ -44,10 +43,6 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
   };
 }
 
-const formatCategoryTitle = (title: string) => {
-    return title.replace(/^\d+\.\s*/, '');
-};
-
 export default async function TopicPage({ params, searchParams }: TopicPageProps) {
   const topic = getTopic(params.topicSlug);
 
@@ -62,7 +57,9 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
   ];
 
   // == ROADMAP PAGE LAYOUT (Conditional) ==
-  if (topic.roadmapColumns && topic.roadmapColumns.length > 0) {
+  // Check if the topic has the special roadmap data.
+  // The 'as any' is a temporary workaround for potential TypeScript module caching issues with Contentlayer.
+  if ((topic as any).roadmapColumns && (topic as any).roadmapColumns.length > 0) {
     return (
       <div className="container mx-auto max-w-7xl px-4 py-10 md:py-12 space-y-12">
         <Breadcrumbs items={breadcrumbItems} />
@@ -206,3 +203,5 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
     </div>
   );
 }
+
+    
