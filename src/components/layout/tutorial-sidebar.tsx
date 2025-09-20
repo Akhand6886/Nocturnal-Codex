@@ -32,21 +32,23 @@ export function TutorialSidebar({ tutorials, currentLanguage }: TutorialSidebarP
     groupedTutorials[category].sort((a, b) => a.order - b.order);
   }
 
+  // Sort the categories based on the minimum order of tutorials within them
   const sortedCategories = Object.keys(groupedTutorials).sort((a, b) => {
-    const getOrder = (categoryName: string): number => {
-        // Find the lowest order number of a tutorial within that category
-        const tutorialsInCategory = groupedTutorials[categoryName];
-        if (tutorialsInCategory && tutorialsInCategory.length > 0) {
-            return tutorialsInCategory.reduce((min, t) => Math.min(min, t.order), Infinity);
-        }
+    const getMinOrder = (categoryName: string): number => {
+      const tutorialsInCategory = groupedTutorials[categoryName];
+      if (!tutorialsInCategory || tutorialsInCategory.length === 0) {
         return Infinity;
+      }
+      return tutorialsInCategory.reduce((min, t) => Math.min(min, t.order), Infinity);
     };
-    const orderA = getOrder(a);
-    const orderB = getOrder(b);
+
+    const orderA = getMinOrder(a);
+    const orderB = getMinOrder(b);
     
-    if(orderA !== Infinity && orderB !== Infinity) {
-        return orderA - orderB;
+    if (orderA !== Infinity && orderB !== Infinity) {
+      return orderA - orderB;
     }
+    // Fallback to localeCompare if orders are not available
     return a.localeCompare(b);
   });
 
