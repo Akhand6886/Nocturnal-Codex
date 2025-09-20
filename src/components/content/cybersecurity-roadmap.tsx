@@ -28,15 +28,15 @@ interface RoadmapColumn {
   isMainPath?: boolean;
 }
 
-// Helper to find tutorial URL
-const getTutorialUrl = (slug: string) => {
-    const tutorial = allTutorialPosts.find(p => p.language === 'cybersecurity' && p.slug === slug);
+// Helper to find tutorial URL dynamically based on the topic slug
+const getTutorialUrl = (slug: string, topicSlug: string) => {
+    const tutorial = allTutorialPosts.find(p => p.language === topicSlug && p.slug === slug);
     return tutorial?.url;
 };
 
 // Node Component
-const Node = ({ node }: { node: RoadmapNode }) => {
-    const url = getTutorialUrl(node.slug);
+const Node = ({ node, topicSlug }: { node: RoadmapNode; topicSlug: string }) => {
+    const url = getTutorialUrl(node.slug, topicSlug);
 
     const cardContent = (
         <Card className={cn(
@@ -65,13 +65,13 @@ const Node = ({ node }: { node: RoadmapNode }) => {
 
 
 // Section Component
-const Section = ({ section, isMainPath }: { section: RoadmapSection; isMainPath?: boolean }) => (
+const Section = ({ section, isMainPath, topicSlug }: { section: RoadmapSection; isMainPath?: boolean, topicSlug: string }) => (
     <div className={cn("mb-6", isMainPath && "flex flex-col items-center")}>
         <h3 className="text-lg font-bold text-foreground mb-4">{section.title}</h3>
         <div className={cn("space-y-3", isMainPath && "flex flex-col items-center")}>
             {section.nodes.map((node, index) => (
                 <div key={index} className={cn("w-full", isMainPath && "md:w-64")}>
-                    <Node node={node} />
+                    <Node node={node} topicSlug={topicSlug} />
                 </div>
             ))}
         </div>
@@ -98,7 +98,7 @@ export function CybersecurityRoadmap({ topic }: { topic: TopicPost }) {
                     <div key={colIndex} className="flex-1 w-full md:w-1/3">
                         <h2 className="text-xl font-bold text-center mb-6 text-primary">{column.title}</h2>
                         {column.sections.map((section, sectionIndex) => (
-                             <Section key={sectionIndex} section={section} />
+                             <Section key={sectionIndex} section={section} topicSlug={topic.slug} />
                         ))}
                     </div>
                 ))}
@@ -108,7 +108,7 @@ export function CybersecurityRoadmap({ topic }: { topic: TopicPost }) {
                     <div className="flex-1 w-full md:w-1/3">
                         {mainPath.sections.map((section, sectionIndex) => (
                             <div key={sectionIndex} className="flex flex-col items-center">
-                                <Section section={section} isMainPath />
+                                <Section section={section} isMainPath topicSlug={topic.slug} />
                                 {sectionIndex < mainPath.sections.length - 1 && (
                                     <ArrowDown className="my-4 h-8 w-8 text-muted-foreground" />
                                 )}
@@ -122,7 +122,7 @@ export function CybersecurityRoadmap({ topic }: { topic: TopicPost }) {
                     <div key={colIndex} className="flex-1 w-full md:w-1/3">
                         <h2 className="text-xl font-bold text-center mb-6 text-primary">{column.title}</h2>
                         {column.sections.map((section, sectionIndex) => (
-                             <Section key={sectionIndex} section={section} />
+                             <Section key={sectionIndex} section={section} topicSlug={topic.slug} />
                         ))}
                     </div>
                 ))}
