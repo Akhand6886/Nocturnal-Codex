@@ -2507,6 +2507,28 @@
     "language": "cybersecurity"
   },
   {
+    "title": "Types of Malware",
+    "slug": "malware-types",
+    "order": 1,
+    "description": "An overview of viruses, worms, ransomware, and other malicious software.",
+    "category": "6. Threats, Attacks, and Vulnerabilities",
+    "body": {
+      "raw": "\n## Types of Malware\n\nThis tutorial will cover the different types of malware. Content to be added.\n",
+      "html": "<h2>Types of Malware</h2>\n<p>This tutorial will cover the different types of malware. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
+      "sourceFileName": "malware-types.md",
+      "sourceFileDir": "tutorials/cybersecurity/6-threats-and-attacks",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/malware-types",
+    "language": "cybersecurity"
+  },
+  {
     "title": "Authentication vs. Authorization",
     "slug": "authentication-vs-authorization",
     "order": 1,
@@ -2592,28 +2614,6 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/role-based-access-control-rbac",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Types of Malware",
-    "slug": "malware-types",
-    "order": 1,
-    "description": "An overview of viruses, worms, ransomware, and other malicious software.",
-    "category": "6. Threats, Attacks, and Vulnerabilities",
-    "body": {
-      "raw": "\n## Types of Malware\n\nThis tutorial will cover the different types of malware. Content to be added.\n",
-      "html": "<h2>Types of Malware</h2>\n<p>This tutorial will cover the different types of malware. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
-      "sourceFileName": "malware-types.md",
-      "sourceFileDir": "tutorials/cybersecurity/6-threats-and-attacks",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/malware-types",
     "language": "cybersecurity"
   },
   {
@@ -2815,28 +2815,6 @@
     "language": "cybersecurity"
   },
   {
-    "title": "Introduction to GRC",
-    "slug": "intro-to-grc",
-    "order": 1,
-    "description": "An overview of Governance, Risk, and Compliance in cybersecurity.",
-    "category": "8. Governance, Risk, and Compliance (GRC)",
-    "body": {
-      "raw": "\n## Introduction to GRC\n\nThis tutorial will introduce the concepts of GRC. Content to be added.\n",
-      "html": "<h2>Introduction to GRC</h2>\n<p>This tutorial will introduce the concepts of GRC. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
-      "sourceFileName": "intro-to-grc.md",
-      "sourceFileDir": "tutorials/cybersecurity/8-grc",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/8-grc/intro-to-grc"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/intro-to-grc",
-    "language": "cybersecurity"
-  },
-  {
     "title": "Cloud Security Basics",
     "slug": "cloud-security-basics",
     "order": 1,
@@ -2856,6 +2834,28 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/cloud-security-basics",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Introduction to GRC",
+    "slug": "intro-to-grc",
+    "order": 1,
+    "description": "An overview of Governance, Risk, and Compliance in cybersecurity.",
+    "category": "8. Governance, Risk, and Compliance (GRC)",
+    "body": {
+      "raw": "\n## Introduction to GRC\n\nThis tutorial will introduce the concepts of GRC. Content to be added.\n",
+      "html": "<h2>Introduction to GRC</h2>\n<p>This tutorial will introduce the concepts of GRC. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/8-grc/intro-to-grc.md",
+      "sourceFileName": "intro-to-grc.md",
+      "sourceFileDir": "tutorials/cybersecurity/8-grc",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/8-grc/intro-to-grc"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/intro-to-grc",
     "language": "cybersecurity"
   },
   {
