@@ -62,13 +62,6 @@ export default function CybersecurityRoadmapPage() {
         </header>
 
         <main className="flex justify-center gap-4 sm:gap-6">
-          {/* Social Icons Column */}
-          <aside className="hidden sm:flex flex-col items-center space-y-4 pt-16">
-            <Facebook className="text-gray-400 w-5 h-5" />
-            <Youtube className="text-gray-400 w-5 h-5" />
-            <Linkedin className="text-gray-400 w-5 h-5" />
-          </aside>
-
           {/* Left Column: CTFs & Certs */}
           <div className="flex flex-col gap-y-4 w-1/5 max-w-xs">
             <RoadmapNode variant="purple">CTFs (Capture the Flag)</RoadmapNode>
