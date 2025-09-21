@@ -4054,33 +4054,6 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
-    "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md": {
-      "document": {
-        "title": "Types of Malware",
-        "slug": "malware-types",
-        "order": 1,
-        "description": "An overview of viruses, worms, ransomware, and other malicious software.",
-        "category": "6. Threats, Attacks, and Vulnerabilities",
-        "body": {
-          "raw": "\n## Types of Malware\n\nThis tutorial will cover the different types of malware. Content to be added.\n",
-          "html": "<h2>Types of Malware</h2>\n<p>This tutorial will cover the different types of malware. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
-          "sourceFileName": "malware-types.md",
-          "sourceFileDir": "tutorials/cybersecurity/6-threats-and-attacks",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/malware-types",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1757317774613",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
     "tutorials/cybersecurity/6-iam/authentication-vs-authorization.md": {
       "document": {
         "title": "Authentication vs. Authorization",
@@ -4183,6 +4156,33 @@
         },
         "type": "TutorialPost",
         "url": "/tutorial/cybersecurity/role-based-access-control-rbac",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757317774613",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md": {
+      "document": {
+        "title": "Types of Malware",
+        "slug": "malware-types",
+        "order": 1,
+        "description": "An overview of viruses, worms, ransomware, and other malicious software.",
+        "category": "6. Threats, Attacks, and Vulnerabilities",
+        "body": {
+          "raw": "\n## Types of Malware\n\nThis tutorial will cover the different types of malware. Content to be added.\n",
+          "html": "<h2>Types of Malware</h2>\n<p>This tutorial will cover the different types of malware. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types.md",
+          "sourceFileName": "malware-types.md",
+          "sourceFileDir": "tutorials/cybersecurity/6-threats-and-attacks",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/6-threats-and-attacks/malware-types"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/malware-types",
         "language": "cybersecurity"
       },
       "documentHash": "1757317774613",
@@ -4432,33 +4432,6 @@
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
-    "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics.md": {
-      "document": {
-        "title": "Cloud Security Basics",
-        "slug": "cloud-security-basics",
-        "order": 1,
-        "description": "Learn about the shared responsibility model and securing cloud environments.",
-        "category": "9. Advanced & Specialized Topics",
-        "body": {
-          "raw": "\n## Cloud Security Basics\n\nThis tutorial will cover the basics of cloud security. Content to be added.\n",
-          "html": "<h2>Cloud Security Basics</h2>\n<p>This tutorial will cover the basics of cloud security. Content to be added.</p>"
-        },
-        "_id": "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics.md",
-        "_raw": {
-          "sourceFilePath": "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics.md",
-          "sourceFileName": "cloud-security-basics.md",
-          "sourceFileDir": "tutorials/cybersecurity/9-advanced-topics",
-          "contentType": "markdown",
-          "flattenedPath": "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics"
-        },
-        "type": "TutorialPost",
-        "url": "/tutorial/cybersecurity/cloud-security-basics",
-        "language": "cybersecurity"
-      },
-      "documentHash": "1757317774622",
-      "hasWarnings": false,
-      "documentTypeName": "TutorialPost"
-    },
     "tutorials/cybersecurity/8-grc/intro-to-grc.md": {
       "document": {
         "title": "Introduction to GRC",
@@ -4483,6 +4456,33 @@
         "language": "cybersecurity"
       },
       "documentHash": "1757317774618",
+      "hasWarnings": false,
+      "documentTypeName": "TutorialPost"
+    },
+    "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics.md": {
+      "document": {
+        "title": "Cloud Security Basics",
+        "slug": "cloud-security-basics",
+        "order": 1,
+        "description": "Learn about the shared responsibility model and securing cloud environments.",
+        "category": "9. Advanced & Specialized Topics",
+        "body": {
+          "raw": "\n## Cloud Security Basics\n\nThis tutorial will cover the basics of cloud security. Content to be added.\n",
+          "html": "<h2>Cloud Security Basics</h2>\n<p>This tutorial will cover the basics of cloud security. Content to be added.</p>"
+        },
+        "_id": "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics.md",
+        "_raw": {
+          "sourceFilePath": "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics.md",
+          "sourceFileName": "cloud-security-basics.md",
+          "sourceFileDir": "tutorials/cybersecurity/9-advanced-topics",
+          "contentType": "markdown",
+          "flattenedPath": "tutorials/cybersecurity/9-advanced-topics/cloud-security-basics"
+        },
+        "type": "TutorialPost",
+        "url": "/tutorial/cybersecurity/cloud-security-basics",
+        "language": "cybersecurity"
+      },
+      "documentHash": "1757317774622",
       "hasWarnings": false,
       "documentTypeName": "TutorialPost"
     },
