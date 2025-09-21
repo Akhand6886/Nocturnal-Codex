@@ -1,205 +1,80 @@
-"use client";
-
-import { Youtube, Linkedin, ExternalLink, ArrowDown } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import type { Metadata } from 'next';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-
-// Note: Metadata is not used in client components, but can be exported
-// from a 'layout.tsx' or 'template.tsx' file in the same directory if needed.
-// For this single page, we can assume it might be handled in a parent layout.
-// export const metadata: Metadata = {
-//   title: "Cybersecurity Roadmap | Nocturnal Codex",
-//   description: "A visual, interactive roadmap for learning cybersecurity, from fundamental IT skills to advanced security concepts.",
-// };
-
-// --- Component Definitions for Roadmap Blocks ---
-
-// Type for a single roadmap item/node
-type RoadmapNodeProps = {
-  children: React.ReactNode;
-  className?: string;
-  variant?: 'default' | 'primary' | 'secondary' | 'purple' | 'plain';
-};
-
-// Generic block component with variants for different colors
-const RoadmapNode = ({ children, className, variant = 'default' }: RoadmapNodeProps) => {
-    const baseClasses = 'text-center text-xs sm:text-sm font-medium p-2.5 rounded-lg shadow-sm border';
-    const colorClasses = {
-      default: 'bg-orange-100 text-orange-900 border-orange-200 dark:bg-yellow-900/30 dark:text-yellow-200 dark:border-yellow-800/50',
-      primary: 'bg-yellow-300 text-yellow-900 border-yellow-400/80 dark:bg-yellow-500 dark:text-yellow-950 dark:border-yellow-600',
-      secondary: 'bg-white text-gray-800 border-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700',
-      purple: 'bg-purple-200 text-purple-900 border-purple-300 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800/60',
-      plain: 'text-center font-semibold text-gray-700 dark:text-gray-300 py-1'
-    };
-    return (
-        <TooltipProvider>
-          <Tooltip>
-              <TooltipTrigger asChild>
-                  <div className={cn(baseClasses, colorClasses[variant], className, 'cursor-pointer hover:scale-105 transition-transform duration-200')}>
-                      <span>{children}</span>
-                  </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                  <p>Details about "{String(children)}" coming soon!</p>
-              </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-    );
-};
-
-
-// --- Main Page Component ---
-export default function CybersecurityRoadmapPage() {
-
-  return (
-    <div className="bg-gray-50 dark:bg-gray-950 min-h-screen p-4 md:p-8">
-      <div className="max-w-screen-xl mx-auto">
-        <header className="flex justify-between items-start mb-8 flex-wrap gap-4">
-            <div>
-                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Cyber Security Roadmap</h1>
-                <p className="text-gray-500 dark:text-gray-400">A guide to becoming a cybersecurity professional.</p>
-            </div>
-        </header>
-
-        <main className="flex justify-center gap-4 sm:gap-6">
-          {/* Left Column: CTFs & Certs */}
-          <div className="flex flex-col gap-y-4 w-1/5 max-w-xs">
-            <RoadmapNode variant="purple">CTFs (Capture the Flag)</RoadmapNode>
-            {['HackTheBox', 'TryHackMe', 'VulnHub', 'picoCTF', 'SANS Holiday Hack Challenge'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-            
-            <RoadmapNode variant="plain">Certifications</RoadmapNode>
-            <RoadmapNode variant="secondary" className="font-bold">Beginner Certifications</RoadmapNode>
-            <div className="grid grid-cols-2 gap-2">
-                <RoadmapNode variant="secondary">CompTIA A+</RoadmapNode>
-                <RoadmapNode variant="secondary">CompTIA Linux+</RoadmapNode>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-                <RoadmapNode variant="secondary">CompTIA Network+</RoadmapNode>
-                <RoadmapNode variant="secondary">CCNA</RoadmapNode>
-            </div>
-            <RoadmapNode variant="secondary">CompTIA Security+</RoadmapNode>
-
-            <RoadmapNode variant="secondary" className="font-bold mt-2">Advanced Certifications</RoadmapNode>
-             <div className="grid grid-cols-3 gap-2">
-                {['CEH', 'CISA', 'CISM', 'GSEC', 'GPEN', 'GWAPT', 'GIAC', 'OSCP', 'CREST'].map(item => <RoadmapNode variant="secondary" key={item}>{item}</RoadmapNode>)}
-            </div>
-            <RoadmapNode variant="secondary">CISSP</RoadmapNode>
-
-             <RoadmapNode variant="plain" className="mt-2">Common Virtualization Technologies</RoadmapNode>
-             <div className="grid grid-cols-2 gap-2">
-                {['VMWare', 'VirtualBox', 'esxi', 'proxmox'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-            </div>
-            <RoadmapNode variant="plain" className="mt-2">Basics of Virtualization</RoadmapNode>
-             <div className="grid grid-cols-2 gap-2">
-                {['Hypervisor', 'GuestOS', 'HostOS', 'VM'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-            </div>
-            <RoadmapNode variant="plain" className="mt-2">Troubleshooting Tools</RoadmapNode>
-             <div className="grid grid-cols-4 gap-1 text-[10px] sm:text-xs">
-                 {['ipconfig', 'ping', 'dig', 'netstat', 'route', 'nmap', 'tcpdump', 'arp', 'tracert', 'nslookup', 'iptables'].map(item => <RoadmapNode key={item} className="p-1.5">{item}</RoadmapNode>)}
-             </div>
-             {['Packet Sniffers', 'Port Scanners', 'Protocol Analyzers'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-            <RoadmapNode variant="plain" className="mt-2">Authentication Methodologies</RoadmapNode>
-             <div className="grid grid-cols-4 gap-1 text-[10px] sm:text-xs">
-                {['Kerberos', 'RADIUS', 'LDAP', 'SSO'].map(item => <RoadmapNode key={item} className="p-1.5">{item}</RoadmapNode>)}
-             </div>
-             <div className="grid grid-cols-2 gap-2">
-                {['Certificates', 'Local Auth'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-             </div>
-          </div>
-
-          {/* Center Column: Main Path */}
-          <div className="flex flex-col items-center gap-y-4 w-3/5 max-w-md relative">
-              <RoadmapNode variant="primary">Fundamental IT Skills</RoadmapNode>
-              <ArrowDown className="text-gray-400 dark:text-gray-600 w-5 h-5"/>
-              {['Computer Hardware Components', 'Connection Types and their function', 'OS-Independent Troubleshooting', 'Understand Basics of Popular Suites', 'Basics of Computer Networking'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-              <ArrowDown className="text-gray-400 dark:text-gray-600 w-5 h-5"/>
-              <RoadmapNode variant="primary">Operating Systems</RoadmapNode>
-              <ArrowDown className="text-gray-400 dark:text-gray-600 w-5 h-5"/>
-              <RoadmapNode variant="secondary" className="font-bold">Learn following for each</RoadmapNode>
-              {['Installation and Configuration', 'Different Versions and Differences', 'Navigating using GUI and CLI', 'Understand Permissions', 'Installing Software and Applications', 'Performing CRUD on Files', 'Troubleshooting', 'Common Commands'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-              <ArrowDown className="text-gray-400 dark:text-gray-600 w-5 h-5"/>
-              <RoadmapNode variant="primary">Networking Knowledge</RoadmapNode>
-              <ArrowDown className="text-gray-400 dark:text-gray-600 w-5 h-5"/>
-              {['Understand the OSI Model', 'Common Protocols and their Uses', 'Common Ports and their Uses', 'SSL and TLS Basics', 'Basics of NAS and SAN'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-              <ArrowDown className="text-gray-400 dark:text-gray-600 w-5 h-5"/>
-              <RoadmapNode variant="primary">Security Skills and Knowledge</RoadmapNode>
-              <div className="grid grid-cols-2 gap-x-4 w-full pt-4">
-                  {/* Left side of security skills */}
-                  <div className="flex flex-col gap-y-2">
-                      {['Understand Common Hacking Tools', 'Understand Common Exploit Frameworks', 'Understand Concept of Defense in Depth', 'Understand Concept of Runbooks', 'Basics of Forensics', 'Basics and Concepts of Threat Hunting', 'Basics of Vulnerability Management', 'Basics of Reverse Engineering', 'Penetration Testing Rules of Engagement', 'Perimiter vs DMZ vs Segmentation'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-                  </div>
-                  {/* Right side of security skills */}
-                  <div className="flex flex-col gap-y-2">
-                      {['Core Concepts of Zero Trust', 'Roles of Compliance and Auditors', 'Understand the Definition of Risk', 'Understand Backups and Resiliency', 'Cyber Kill Chain', 'MFA & 2FA', 'Operating System Hardening', 'Understand Concept of Isolation', 'Basics of IDS and IPS', 'Authentication vs Authorization'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-                  </div>
-              </div>
-          </div>
-
-          {/* Right Column: Details & Side Knowledge */}
-          <div className="flex flex-col gap-y-4 w-1/5 max-w-xs pt-24">
-              <div className="grid grid-cols-2 gap-2">
-                  {['NFC', 'Bluetooth', 'WiFi', 'Infrared'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-              </div>
-              <div className="grid grid-cols-1 gap-2 mt-12">
-                   {['MS Office Suite', 'iCloud', 'Google Suite'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-              </div>
-               <div className="grid grid-cols-3 gap-2 mt-16">
-                  {['Windows', 'Linux', 'MacOS'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-              </div>
-
-               {/* Networking Side Details */}
-              <div className="mt-[28rem] flex flex-col gap-y-4">
-                <RoadmapNode variant="secondary" className="font-bold">Basics of Subnetting</RoadmapNode>
-                <RoadmapNode variant="secondary">Public vs Private IP Addresses</RoadmapNode>
-                <RoadmapNode variant="secondary" className="font-bold">IP Terminology</RoadmapNode>
-                <div className="grid grid-cols-3 gap-1 text-[10px] sm:text-xs"><RoadmapNode>localhost</RoadmapNode><RoadmapNode>loopback</RoadmapNode><RoadmapNode>CIDR</RoadmapNode></div>
-                <RoadmapNode>subnet mask</RoadmapNode>
-                <RoadmapNode>default gateway</RoadmapNode>
-                <RoadmapNode variant="secondary" className="font-bold">Understand the Terminology</RoadmapNode>
-                <div className="grid grid-cols-4 gap-1 text-[10px] sm:text-xs">{['VLAN', 'DMZ', 'ARP', 'VM', 'DHCP', 'DNS', 'NAT', 'IP'].map(item => <RoadmapNode className="p-1.5" key={item}>{item}</RoadmapNode>)}</div>
-                <div className="grid grid-cols-3 gap-1 text-[10px] sm:text-xs">{['Router', 'Switch', 'VPN'].map(item => <RoadmapNode className="p-1.5" key={item}>{item}</RoadmapNode>)}</div>
-                <RoadmapNode variant="secondary" className="font-bold">Understand these</RoadmapNode>
-                <div className="grid grid-cols-4 gap-1 text-[10px] sm:text-xs">{['MAN', 'LAN', 'WAN', 'WLAN'].map(item => <RoadmapNode className="p-1.5" key={item}>{item}</RoadmapNode>)}</div>
-                 <RoadmapNode variant="secondary" className="font-bold">Functions of each</RoadmapNode>
-                 <div className="grid grid-cols-4 gap-1 text-[10px] sm-text-xs">{['DHCP', 'DNS', 'NTP', 'IPAM'].map(item => <RoadmapNode className="p-1.5" key={item}>{item}</RoadmapNode>)}</div>
-                 <RoadmapNode variant="secondary" className="font-bold">Network Topologies</RoadmapNode>
-                 <div className="grid grid-cols-4 gap-1 text-[10px] sm-text-xs">{['Star', 'Ring', 'Mesh', 'Bus'].map(item => <RoadmapNode className="p-1.5" key={item}>{item}</RoadmapNode>)}</div>
-                 <RoadmapNode variant="secondary" className="font-bold">Network Protocols</RoadmapNode>
-                 <div className="grid grid-cols-4 gap-1 text-[10px] sm-text-xs">{['SSH', 'RDP', 'FTP', 'SFTP'].map(item => <RoadmapNode className="p-1.5" key={item}>{item}</RoadmapNode>)}</div>
-                 <div className="grid grid-cols-2 gap-2">{['HTTP / HTTPS', 'SSL / TLS'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}</div>
-              </div>
-
-               {/* Security Skills Side Details */}
-               <div className="mt-[13rem] flex flex-col gap-y-2">
-                   {['Blue / Red / Purple Teams', 'False Negative / False Positive', 'True Negative / True Positive', 'Basics of Threat Intel, OSINT', 'Understand Handshakes', 'Understand CIA Triad', 'Privilege Escalation', 'Web Based Attacks and OWASP10', 'Learn how Malware works and Types'].map(item => <RoadmapNode key={item}>{item}</RoadmapNode>)}
-                   <div className="grid grid-cols-2 gap-2 mt-2"><RoadmapNode>Honeypots</RoadmapNode></div>
-               </div>
-          </div>
-        </main>
-        
-        <footer className="mt-12 flex justify-between items-end">
-            <div className="flex flex-col gap-y-4">
-                <RoadmapNode variant="plain">Tools for Incident Response and Discovery</RoadmapNode>
-                <div className="grid grid-cols-6 gap-1 text-[10px] sm:text-xs">
-                    {['dig', 'nmap', 'ping', 'arp', 'cat', 'dd', 'tail', 'hping', 'head', 'grep', 'nslookup', 'tracert', 'winhex', 'autopsy', 'ipconfig', 'curl', 'wireshark', 'memdump'].map(item => <RoadmapNode className="p-1.5" key={item}>{item}</RoadmapNode>)}
-                </div>
-            </div>
-
-             <div className="flex flex-col gap-y-4">
-                <RoadmapNode variant="plain">Basics of Cryptography</RoadmapNode>
-                <div className="grid grid-cols-3 gap-2"><RoadmapNode>Salting</RoadmapNode><RoadmapNode>Hashing</RoadmapNode><RoadmapNode>Key Exchange</RoadmapNode></div>
-                <RoadmapNode>Private vs Public Keys</RoadmapNode>
-                <RoadmapNode>Understand Handshakes</RoadmapNode>
-            </div>
-            
-            <div className="flex flex-col gap-y-2">
-                <RoadmapNode variant="plain">Attack Types and Differences</RoadmapNode>
-                <div className="grid grid-cols-3 gap-2"><RoadmapNode>Phishing</RoadmapNode><RoadmapNode>Whishing</RoadmapNode><RoadmapNode>Whaling</RoadmapNode></div>
-                <div className="grid grid-cols-3 gap-2"><RoadmapNode>Smishing</RoadmapNode><RoadmapNode>Vishing</RoadmapNode><RoadmapNode>Spamming</RoadmapNode></div>
-            </div>
-        </footer>
-      </div>
-    </div>
-  );
+{
+  "name": "nextn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "contentlayer build && next dev",
+    "build": "contentlayer build && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.21.2",
+    "@contentful/rich-text-types": "^16.5.2",
+    "@hookform/resolvers": "^4.1.3",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-avatar": "^1.1.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-menubar": "^1.1.6",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-switch": "^1.1.3",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "@radix-ui/react-toast": "^1.2.6",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "@tailwindcss/typography": "^0.5.13",
+    "@vercel/analytics": "^1.3.1",
+    "@xyflow/react": "^11.11.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "contentful": "^10.12.2",
+    "contentlayer": "^0.3.4",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.5.0",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.475.0",
+    "next": "15.2.3",
+    "next-contentlayer": "^0.3.4",
+    "next-themes": "^0.3.0",
+    "react": "^18.3.1",
+    "react-day-picker": "^8.10.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "recharts": "^2.15.1",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "next-contentlayer": {
+      "next": "$next"
+    },
+    "@babel/parser": "^7.24.7",
+    "@babel/traverse": "^7.24.7",
+    "@babel/types": "^7.24.7",
+    "@inquirer/core": "^4.0.0",
+    "@inquirer/prompts": "^5.1.2",
+    "@inquirer/type": "^2.0.0"
+  }
 }

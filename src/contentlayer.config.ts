@@ -97,34 +97,6 @@ const ThinkTankArticleStub = defineNestedType(() => ({
     }
 }));
 
-const RoadmapNode = defineNestedType(() => ({
-    name: 'RoadmapNode',
-    fields: {
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-        description: { type: 'string', required: false },
-        isPrimary: { type: 'boolean', required: false, default: false },
-        isOptional: { type: 'boolean', required: false, default: false },
-    },
-}));
-
-const RoadmapSection = defineNestedType(() => ({
-    name: 'RoadmapSection',
-    fields: {
-        title: { type: 'string', required: true },
-        nodes: { type: 'list', of: RoadmapNode, required: true },
-    },
-}));
-
-const RoadmapColumn = defineNestedType(() => ({
-    name: 'RoadmapColumn',
-    fields: {
-        title: { type: 'string', required: true },
-        sections: { type: 'list', of: RoadmapSection, required: true },
-        isMainPath: { type: 'boolean', required: false, default: false },
-    },
-}));
-
 
 export const TopicPost = defineDocumentType(() => ({
     name: 'TopicPost',
@@ -143,7 +115,6 @@ export const TopicPost = defineDocumentType(() => ({
       tutorials: { type: 'list', of: Tutorial, required: false },
       references: { type: 'list', of: WikiArticleStub, required: false },
       thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
-      roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
     },
     computedFields: {
       url: {
