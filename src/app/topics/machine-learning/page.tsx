@@ -3,7 +3,6 @@
 
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { ArrowDown } from 'lucide-react';
 
 // Type for a single roadmap item/node
 type RoadmapNodeProps = {
@@ -21,7 +20,7 @@ const RoadmapNode = ({ children, className, variant = 'default' }: RoadmapNodePr
       secondary: 'bg-white text-gray-800 border-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700',
       purple: 'bg-purple-200 text-purple-900 border-purple-300 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800/60',
       blue: 'bg-blue-600 text-white dark:bg-blue-700/80 shadow-lg',
-      plain: 'text-center font-semibold text-gray-500 dark:text-gray-400 py-1 text-sm border-none shadow-none'
+      plain: 'text-center font-semibold text-gray-500 dark:text-gray-400 py-1 text-sm border-none shadow-none bg-transparent'
     };
     return (
         <TooltipProvider>
@@ -46,67 +45,83 @@ export default function MachineLearningRoadmapPage() {
   return (
     <div className="bg-gray-50 dark:bg-gray-950 min-h-screen p-4 md:p-8 font-sans">
       <div className="max-w-7xl mx-auto">
-        <header className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100">Machine Learning</h1>
+        <header className="mb-8 text-center">
+            <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100">Machine Learning Roadmap</h1>
             <p className="text-gray-500 dark:text-gray-400 mt-1">Step by step guide to becoming a Machine Learning Engineer in 2025</p>
         </header>
 
         <main className="space-y-4 flex flex-col items-center w-full">
             
-            <RoadmapNode variant='primary' className="max-w-xs">Introduction</RoadmapNode>
-            <div className="max-w-xs w-full space-y-2">
-                <RoadmapNode>What is an ML Engineer?</RoadmapNode>
-                <RoadmapNode>ML Engineer vs AI Engineer</RoadmapNode>
-                <RoadmapNode>Skills and Responsibilities</RoadmapNode>
+            <div className="relative w-full max-w-4xl flex justify-center items-start">
+                <RoadmapNode variant='primary' className="max-w-xs z-10">Introduction</RoadmapNode>
+                {/* Dotted lines from Introduction */}
+                <div className="absolute top-1/2 left-1/2 h-[2px] w-16 bg-repeat-x bg-[length:8px_2px] bg-center bg-[url('data:image/svg+xml,%3csvg%20width%3d%27100%25%27%20height%3d%27100%25%27%20xmlns%3d%27http%3a//www.w3.org/2000/svg%27%3e%3crect%20width%3d%27100%25%27%20height%3d%27100%25%27%20fill%3d%27none%27%20stroke%3d%27%233b82f6%27%20stroke-width%3d%274%27%20stroke-dasharray%3d%278%2c%208%27%20stroke-linecap%3d%27square%27/%3e%3c/svg%3e')] -translate-y-1/2 translate-x-[calc(theme(space.40)_-_2px)]"></div>
+                <div className="absolute top-0 right-0 w-48 space-y-2">
+                    <RoadmapNode>What is an ML Engineer?</RoadmapNode>
+                    <RoadmapNode>ML Engineer vs AI Engineer</RoadmapNode>
+                    <RoadmapNode>Skills and Responsibilities</RoadmapNode>
+                </div>
             </div>
             
-            <ArrowDown className="text-gray-400 my-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
+            
             <RoadmapNode variant='plain'>Mathematical Foundations</RoadmapNode>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl">
-                {/* Calculus */}
-                <div className="flex flex-col items-center space-y-2">
-                     <RoadmapNode variant='primary'>Calculus</RoadmapNode>
-                     <RoadmapNode>Derivatives, Partial Derivatives</RoadmapNode>
-                     <RoadmapNode>Chain rule of derivation</RoadmapNode>
-                     <RoadmapNode>Gradient, Jacobian, Hessian</RoadmapNode>
-                </div>
-                 {/* Linear Algebra */}
-                <div className="flex flex-col items-center space-y-2">
-                     <RoadmapNode variant='primary'>Linear Algebra</RoadmapNode>
-                     <RoadmapNode>Matrix & Matrix Operations</RoadmapNode>
-                     <RoadmapNode>Scalars, Vectors, Tensors</RoadmapNode>
-                     <RoadmapNode>Singular Value Decomposition</RoadmapNode>
-                     <RoadmapNode>Determinants, Inverse of Matrix</RoadmapNode>
-                     <RoadmapNode>Eigenvalues, Diagonalization</RoadmapNode>
-                </div>
-                 {/* Discrete Mathematics */}
-                <div className="flex flex-col items-center space-y-2">
-                     <RoadmapNode variant='primary'>Discrete Mathematics</RoadmapNode>
+            <div className="relative w-full max-w-6xl">
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-blue-500 -translate-y-1/2 z-0"></div>
+
+                <div className="relative flex justify-between items-start">
+                    {/* Calculus Section */}
+                    <div className="w-48 flex flex-col items-center space-y-2 z-10">
+                         <RoadmapNode>Derivatives, Partial Derivatives</RoadmapNode>
+                         <RoadmapNode>Chain rule of derivation</RoadmapNode>
+                         <RoadmapNode>Gradient, Jacobian, Hessian</RoadmapNode>
+                         <div className="w-px h-4 bg-blue-500 bg-repeat-y bg-[length:2px_8px] bg-center bg-[url('data:image/svg+xml,%3csvg%20width%3d%27100%25%27%20height%3d%27100%25%27%20xmlns%3d%27http%3a//www.w3.org/2000/svg%27%3e%3crect%20width%3d%27100%25%27%20height%3d%27100%25%27%20fill%3d%27none%27%20stroke%3d%27%233b82f6%27%20stroke-width%3d%274%27%20stroke-dasharray%3d%278%2c%208%27%20stroke-linecap%3d%27square%27/%3e%3c/svg%3e')]"></div>
+                         <RoadmapNode variant='primary'>Calculus</RoadmapNode>
+                         <div className="w-px h-12 bg-blue-500"></div>
+                         <RoadmapNode variant='primary'>Discrete Mathematics</RoadmapNode>
+                    </div>
+
+                    {/* Center Section */}
+                    <div className="w-48 flex flex-col items-center space-y-2 z-10">
+                        <div className="w-px h-16 bg-blue-500"></div>
+                        <RoadmapNode variant='primary'>Linear Algebra</RoadmapNode>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 h-16 w-px bg-blue-500 mt-2"></div>
+                        <div className="mt-20 flex flex-col items-center space-y-2">
+                             <RoadmapNode variant='primary'>Probability</RoadmapNode>
+                             <RoadmapNode>Basics of Probability</RoadmapNode>
+                             <RoadmapNode>Bayes Theorem</RoadmapNode>
+                             <RoadmapNode>Random Variances, PDFs</RoadmapNode>
+                             <RoadmapNode>Types of Distribution</RoadmapNode>
+                        </div>
+                    </div>
+
+                    {/* Linear Algebra Sub-items */}
+                    <div className="w-48 flex flex-col items-center space-y-2 z-10">
+                        <RoadmapNode>Matrix & Matrix Operations</RoadmapNode>
+                        <RoadmapNode>Scalars, Vectors, Tensors</RoadmapNode>
+                        <RoadmapNode>Singular Value Decomposition</RoadmapNode>
+                        <RoadmapNode>Determinants, inverse of Matrix</RoadmapNode>
+                        <RoadmapNode>Eigenvalues, Diagonalization</RoadmapNode>
+                    </div>
+
+                     {/* Dotted lines from Linear Algebra */}
+                    <div className="absolute top-[8rem] left-[calc(50%_+_6rem)]">
+                        <div className="absolute top-1/2 right-full h-[2px] w-12 bg-repeat-x bg-[length:8px_2px] bg-center bg-[url('data:image/svg+xml,%3csvg%20width%3d%27100%25%27%20height%3d%27100%25%27%20xmlns%3d%27http%3a//www.w3.org/2000/svg%27%3e%3crect%20width%3d%27100%25%27%20height%3d%27100%25%27%20fill%3d%27none%27%20stroke%3d%27%233b82f6%27%20stroke-width%3d%274%27%20stroke-dasharray%3d%278%2c%208%27%20stroke-linecap%3d%27square%27/%3e%3c/svg%3e')] -translate-y-full"></div>
+                        <div className="absolute top-1/2 right-full h-[2px] w-12 bg-repeat-x bg-[length:8px_2px] bg-center bg-[url('data:image/svg+xml,%3csvg%20width%3d%27100%25%27%20height%3d%27100%25%27%20xmlns%3d%27http%3a//www.w3.org/2000/svg%27%3e%3crect%20width%3d%27100%25%27%20height%3d%27100%25%27%20fill%3d%27none%27%20stroke%3d%27%233b82f6%27%20stroke-width%3d%274%27%20stroke-dasharray%3d%278%2c%208%27%20stroke-linecap%3d%27square%27/%3e%3c/svg%3e')] -translate-y-[200%]"></div>
+                         <div className="absolute top-1/2 right-full h-[2px] w-12 bg-repeat-x bg-[length:8px_2px] bg-center bg-[url('data:image/svg+xml,%3csvg%20width%3d%27100%25%27%20height%3d%27100%25%27%20xmlns%3d%27http%3a//www.w3.org/2000/svg%27%3e%3crect%20width%3d%27100%25%27%20height%3d%27100%25%27%20fill%3d%27none%27%20stroke%3d%27%233b82f6%27%20stroke-width%3d%274%27%20stroke-dasharray%3d%278%2c%208%27%20stroke-linecap%3d%27square%27/%3e%3c/svg%3e')] translate-y-[100%]"></div>
+                        <div className="absolute top-1/2 right-full h-[2px] w-12 bg-repeat-x bg-[length:8px_2px] bg-center bg-[url('data:image/svg+xml,%3csvg%20width%3d%27100%25%27%20height%3d%27100%25%27%20xmlns%3d%27http%3a//www.w3.org/2000/svg%27%3e%3crect%20width%3d%27100%25%27%20height%3d%27100%25%27%20fill%3d%27none%27%20stroke%3d%27%233b82f6%27%20stroke-width%3d%274%27%20stroke-dasharray%3d%278%2c%208%27%20stroke-linecap%3d%27square%27/%3e%3c/svg%3e')] translate-y-[200%]"></div>
+                    </div>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl mt-4">
-                <div className="flex flex-col items-center space-y-2">
-                    <RoadmapNode variant='primary'>Statistics</RoadmapNode>
-                    <RoadmapNode>Basic concepts</RoadmapNode>
-                    <RoadmapNode>Descriptive Statistics</RoadmapNode>
-                    <RoadmapNode>Graphs & Charts</RoadmapNode>
-                    <RoadmapNode>Inferential Statistics</RoadmapNode>
-               </div>
-                <div className="flex flex-col items-center space-y-2">
-                    <RoadmapNode variant='primary'>Probability</RoadmapNode>
-                    <RoadmapNode>Basics of Probability</RoadmapNode>
-                    <RoadmapNode>Bayes Theorem</RoadmapNode>
-                    <RoadmapNode>Random Variances, PDFs</RoadmapNode>
-                    <RoadmapNode>Types of Distribution</RoadmapNode>
-               </div>
-            </div>
-            
-            <ArrowDown className="text-gray-400 my-4"/>
-            <RoadmapNode variant='plain'>Programming Fundamentals</RoadmapNode>
+
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <RoadmapNode variant='primary' className="max-w-xs">Python</RoadmapNode>
-
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
+            
+            <RoadmapNode variant='plain'>Programming Fundamentals</RoadmapNode>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl mt-4">
                 <div className="flex flex-col items-center space-y-2">
                     <RoadmapNode variant='primary'>Object Oriented Programming</RoadmapNode>
@@ -121,6 +136,9 @@ export default function MachineLearningRoadmapPage() {
                     <RoadmapNode>Functions, Builtin Functions</RoadmapNode>
                 </div>
             </div>
+
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
+
              <div className="flex flex-col items-center space-y-2 mt-4 max-w-sm w-full">
                     <RoadmapNode variant='primary'>Essential Libraries</RoadmapNode>
                     <div className="flex gap-4 w-full">
@@ -133,7 +151,8 @@ export default function MachineLearningRoadmapPage() {
                     </div>
              </div>
 
-            <ArrowDown className="text-gray-400 my-4"/>
+             <div className="w-px h-8 bg-blue-500 my-2"></div>
+
             <RoadmapNode variant='plain'>Data Collection</RoadmapNode>
             <div className="flex flex-col items-center space-y-2 mt-4 max-w-sm w-full">
                 <RoadmapNode variant='primary'>Data Sources</RoadmapNode>
@@ -146,7 +165,7 @@ export default function MachineLearningRoadmapPage() {
                 </div>
             </div>
 
-            <ArrowDown className="text-gray-400 my-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <RoadmapNode variant='plain'>Data Cleaning</RoadmapNode>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl mt-4">
                 <div className="flex flex-col items-center space-y-2">
@@ -169,7 +188,7 @@ export default function MachineLearningRoadmapPage() {
                 </div>
             </div>
             
-            <ArrowDown className="text-gray-400 my-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <RoadmapNode variant='plain'>Machine Learning</RoadmapNode>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl mt-4">
                 <div className="flex flex-col items-center space-y-2">
@@ -184,7 +203,7 @@ export default function MachineLearningRoadmapPage() {
                 </div>
             </div>
 
-            <ArrowDown className="text-gray-400 my-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <div className="flex items-start justify-center gap-8 w-full max-w-2xl">
                 <div className="flex-1 space-y-2">
                     <RoadmapNode variant='primary'>Scikit-learn</RoadmapNode>
@@ -197,7 +216,7 @@ export default function MachineLearningRoadmapPage() {
                 </div>
             </div>
             
-            <ArrowDown className="text-gray-400 my-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 w-full max-w-4xl">
                  <div className="flex flex-col items-center space-y-4">
                     <RoadmapNode variant='plain'>Supervised Learning</RoadmapNode>
@@ -237,12 +256,12 @@ export default function MachineLearningRoadmapPage() {
                 </div>
             </div>
             
-            <ArrowDown className="text-gray-400 mt-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <RoadmapNode variant='plain'>Model Evaluation</RoadmapNode>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl">
                 <div className="flex flex-col items-center space-y-2">
                     <RoadmapNode variant='primary'>What is Reinforcement Learning?</RoadmapNode>
-                    <ArrowDown className="text-gray-400"/>
+                    <div className="w-px h-4 bg-blue-500"></div>
                     <RoadmapNode>Deep-Q Networks</RoadmapNode>
                     <RoadmapNode>Policy Gradient</RoadmapNode>
                     <RoadmapNode>Actor-Critic Methods</RoadmapNode>
@@ -274,7 +293,7 @@ export default function MachineLearningRoadmapPage() {
                 </div>
             </div>
 
-            <ArrowDown className="text-gray-400 my-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <RoadmapNode variant='plain'>Deep Learning</RoadmapNode>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mt-4">
@@ -338,7 +357,7 @@ export default function MachineLearningRoadmapPage() {
                 </div>
             </div>
 
-            <ArrowDown className="text-gray-400 my-4"/>
+            <div className="w-px h-8 bg-blue-500 my-2"></div>
             <RoadmapNode variant='plain'>Advanced Concepts in ML</RoadmapNode>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl mt-4">
                 <RoadmapNode>Generative Adversarial Networks</RoadmapNode>
@@ -358,3 +377,4 @@ export default function MachineLearningRoadmapPage() {
   );
 }
 
+    
