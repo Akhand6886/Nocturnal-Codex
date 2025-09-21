@@ -68,12 +68,6 @@ export default function MachineLearningRoadmapPage() {
                     <h3 className="font-bold text-sm mb-2">Pre-requisites</h3>
                     <RoadmapNode variant="secondary">Python Roadmap</RoadmapNode>
                 </div>
-                 <div className="border rounded-lg p-4 space-y-2 bg-card">
-                    <h3 className="font-bold text-sm mb-2">Related Roadmaps</h3>
-                    <RoadmapNode variant="secondary">AI Engineer Roadmap</RoadmapNode>
-                    <RoadmapNode variant="secondary">MLOps Roadmap</RoadmapNode>
-                    <RoadmapNode variant="secondary">AI and Data Scientist Roadmap</RoadmapNode>
-                </div>
             </div>
 
             {/* Main Flow */}
