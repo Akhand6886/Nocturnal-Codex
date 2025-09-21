@@ -392,22 +392,6 @@ export default function MachineLearningRoadmapPage() {
                         <RoadmapNode variant='blue'>AI Agents</RoadmapNode>
                     </div>
                 </div>
-
-                <div className="mt-12 w-full max-w-3xl">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="font-bold flex items-center gap-2"><BookOpen size={20}/> Related Roadmaps</h3>
-                    <Link href="#" className="text-sm font-medium text-primary hover:underline flex items-center gap-1">All Roadmaps <ArrowRight size={16}/></Link>
-                  </div>
-                  <div className="space-y-2">
-                    {relatedRoadmaps.map(roadmap => (
-                      <Link href="#" key={roadmap.title} className="block p-3 rounded-lg bg-card hover:bg-muted border transition-colors">
-                        <h4 className="font-semibold">{roadmap.title}</h4>
-                        <p className="text-sm text-muted-foreground">{roadmap.description}</p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
             </div>
         </main>
       </div>
