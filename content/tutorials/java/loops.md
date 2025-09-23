@@ -22,8 +22,6 @@ It consists of three parts, separated by semicolons:
 2.  **Condition**: The loop continues as long as this condition is `true`.
 3.  **Iteration**: An expression that is executed after each iteration, usually to increment or decrement the counter.
 
-<!-- end list -->
-
 ```java
 public class ForLoopExample {
   public static void main(String[] args) {
