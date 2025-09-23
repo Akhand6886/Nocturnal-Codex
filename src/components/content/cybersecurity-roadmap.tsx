@@ -28,7 +28,6 @@ type RoadmapNodeData = {
 const RoadmapNode = ({ node, level = 0, tutorials }: { node: RoadmapNodeData, level?: number, tutorials: TutorialPost[] }) => {
     const isParentNode = node.items && node.items.length > 0;
     
-    // Find the corresponding tutorial URL if a slug is provided
     const tutorial = node.slug ? tutorials.find(t => t.slug === node.slug) : undefined;
     const href = tutorial?.url;
   
