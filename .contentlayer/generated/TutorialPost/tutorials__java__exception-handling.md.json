@@ -1,0 +1,22 @@
+{
+  "title": "Exception Handling (try/catch/finally)",
+  "slug": "exception-handling",
+  "order": 19,
+  "description": "Learn about exception handling in Java.",
+  "category": "Intermediate Java",
+  "body": {
+    "raw": "\n## Exception Handling (try/catch/finally)\n\nThis tutorial will cover exception handling in Java. Content to be added.\n",
+    "html": "<h2>Exception Handling (try/catch/finally)</h2>\n<p>This tutorial will cover exception handling in Java. Content to be added.</p>"
+  },
+  "_id": "tutorials/java/exception-handling.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/exception-handling.md",
+    "sourceFileName": "exception-handling.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/exception-handling"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/exception-handling",
+  "language": "java"
+}

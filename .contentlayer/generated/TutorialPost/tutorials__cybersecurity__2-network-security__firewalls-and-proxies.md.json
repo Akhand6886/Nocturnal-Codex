@@ -1,0 +1,22 @@
+{
+  "title": "Firewalls and Proxies",
+  "slug": "firewalls-and-proxies",
+  "order": 1,
+  "description": "Understand the role of firewalls and proxies in network defense.",
+  "category": "2. Network Security",
+  "body": {
+    "raw": "\n## Firewalls and Proxies\n\nThis tutorial will cover firewalls and proxies. Content to be added.\n",
+    "html": "<h2>Firewalls and Proxies</h2>\n<p>This tutorial will cover firewalls and proxies. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/2-network-security/firewalls-and-proxies.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/2-network-security/firewalls-and-proxies.md",
+    "sourceFileName": "firewalls-and-proxies.md",
+    "sourceFileDir": "tutorials/cybersecurity/2-network-security",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/2-network-security/firewalls-and-proxies"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/firewalls-and-proxies",
+  "language": "cybersecurity"
+}

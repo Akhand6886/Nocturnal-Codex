@@ -1,0 +1,22 @@
+{
+  "title": "OOP Concepts",
+  "slug": "oop-concepts",
+  "order": 13,
+  "description": "Learn about Object-Oriented Programming concepts in Java.",
+  "category": "Object-Oriented Programming (OOP)",
+  "body": {
+    "raw": "\n## OOP Concepts\n\nThis tutorial will cover OOP concepts in Java. Content to be added.\n",
+    "html": "<h2>OOP Concepts</h2>\n<p>This tutorial will cover OOP concepts in Java. Content to be added.</p>"
+  },
+  "_id": "tutorials/java/oop-concepts.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/oop-concepts.md",
+    "sourceFileName": "oop-concepts.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/oop-concepts"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/oop-concepts",
+  "language": "java"
+}

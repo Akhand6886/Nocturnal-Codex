@@ -1,0 +1,22 @@
+{
+  "title": "Data Privacy Laws (GDPR, CCPA)",
+  "slug": "data-privacy-laws-gdpr-ccpa",
+  "order": 3,
+  "description": "An introduction to major data privacy regulations.",
+  "category": "9. Governance, Risk & Compliance",
+  "body": {
+    "raw": "\n## Data Privacy Laws (GDPR, CCPA)\n\nThis tutorial will provide an overview of GDPR and CCPA. Content to be added.\n",
+    "html": "<h2>Data Privacy Laws (GDPR, CCPA)</h2>\n<p>This tutorial will provide an overview of GDPR and CCPA. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/9-grc/data-privacy-laws-gdpr-ccpa.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/9-grc/data-privacy-laws-gdpr-ccpa.md",
+    "sourceFileName": "data-privacy-laws-gdpr-ccpa.md",
+    "sourceFileDir": "tutorials/cybersecurity/9-grc",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/9-grc/data-privacy-laws-gdpr-ccpa"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/data-privacy-laws-gdpr-ccpa",
+  "language": "cybersecurity"
+}

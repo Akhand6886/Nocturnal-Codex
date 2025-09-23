@@ -1,0 +1,22 @@
+{
+  "title": "Cloud Deployment Models (IaaS, PaaS, SaaS)",
+  "slug": "cloud-deployment-models-iaas-paas-saas",
+  "order": 1,
+  "description": "Understanding the different models of cloud computing.",
+  "category": "10. Cloud Security",
+  "body": {
+    "raw": "\n## Cloud Deployment Models\n\nThis tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.\n",
+    "html": "<h2>Cloud Deployment Models</h2>\n<p>This tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
+    "sourceFileName": "cloud-deployment-models-iaas-paas-saas.md",
+    "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/cloud-deployment-models-iaas-paas-saas",
+  "language": "cybersecurity"
+}

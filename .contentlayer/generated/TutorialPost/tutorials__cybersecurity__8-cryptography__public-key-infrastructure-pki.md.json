@@ -1,0 +1,22 @@
+{
+  "title": "Public Key Infrastructure (PKI)",
+  "slug": "public-key-infrastructure-pki",
+  "order": 3,
+  "description": "Understand the system for creating, managing, and validating digital certificates.",
+  "category": "8. Cryptography",
+  "body": {
+    "raw": "\n## Public Key Infrastructure (PKI)\n\nThis tutorial will provide an overview of PKI and its components. Content to be added.\n",
+    "html": "<h2>Public Key Infrastructure (PKI)</h2>\n<p>This tutorial will provide an overview of PKI and its components. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/8-cryptography/public-key-infrastructure-pki.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/8-cryptography/public-key-infrastructure-pki.md",
+    "sourceFileName": "public-key-infrastructure-pki.md",
+    "sourceFileDir": "tutorials/cybersecurity/8-cryptography",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/8-cryptography/public-key-infrastructure-pki"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/public-key-infrastructure-pki",
+  "language": "cybersecurity"
+}

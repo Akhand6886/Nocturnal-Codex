@@ -1,0 +1,485 @@
+[
+  {
+    "id": "c",
+    "name": "C",
+    "slug": "c",
+    "description": "A foundational, procedural language known for its performance and system-level programming capabilities.",
+    "iconName": "c",
+    "body": {
+      "raw": "\nC is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. It has found lasting use in applications previously coded in assembly language, including operating systems and various application software for computer architectures that range from supercomputers to PLCs and embedded systems.\n",
+      "html": "<p>C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. It has found lasting use in applications previously coded in assembly language, including operating systems and various application software for computer architectures that range from supercomputers to PLCs and embedded systems.</p>"
+    },
+    "_id": "languages/c.md",
+    "_raw": {
+      "sourceFilePath": "languages/c.md",
+      "sourceFileName": "c.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/c"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/c"
+  },
+  {
+    "id": "cplusplus",
+    "name": "C++",
+    "slug": "cplusplus",
+    "description": "An extension of C with object-oriented features, widely used in game development, high-performance computing, and system software.",
+    "iconName": "cplusplus",
+    "body": {
+      "raw": "\nC++ is a high-level, general-purpose programming language created as an extension of the C programming language, or \"C with Classes\". It has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation. It is used in a wide range of application domains, from embedded systems and mobile applications to large-scale distributed systems.\n",
+      "html": "<p>C++ is a high-level, general-purpose programming language created as an extension of the C programming language, or \"C with Classes\". It has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation. It is used in a wide range of application domains, from embedded systems and mobile applications to large-scale distributed systems.</p>"
+    },
+    "_id": "languages/cplusplus.md",
+    "_raw": {
+      "sourceFilePath": "languages/cplusplus.md",
+      "sourceFileName": "cplusplus.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/cplusplus"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/cplusplus"
+  },
+  {
+    "id": "csharp",
+    "name": "C#",
+    "slug": "csharp",
+    "description": "A modern, object-oriented language from Microsoft for building web, mobile, and desktop applications on the .NET framework.",
+    "iconName": "csharp",
+    "body": {
+      "raw": "\nC# (pronounced \"C sharp\") is a general-purpose, multi-paradigm programming language. C# encompasses static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines. It is one of the programming languages designed for the Common Language Infrastructure (CLI).\n",
+      "html": "<p>C# (pronounced \"C sharp\") is a general-purpose, multi-paradigm programming language. C# encompasses static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines. It is one of the programming languages designed for the Common Language Infrastructure (CLI).</p>"
+    },
+    "_id": "languages/csharp.md",
+    "_raw": {
+      "sourceFilePath": "languages/csharp.md",
+      "sourceFileName": "csharp.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/csharp"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/csharp"
+  },
+  {
+    "id": "css",
+    "name": "CSS",
+    "slug": "css",
+    "description": "The language for styling web pages, controlling everything from colors and fonts to layout and responsive design.",
+    "iconName": "css3",
+    "body": {
+      "raw": "\nCascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript. It is designed to enable the separation of presentation and content, including layout, colors, and fonts.\n",
+      "html": "<p>Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript. It is designed to enable the separation of presentation and content, including layout, colors, and fonts.</p>"
+    },
+    "_id": "languages/css.md",
+    "_raw": {
+      "sourceFilePath": "languages/css.md",
+      "sourceFileName": "css.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/css"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/css"
+  },
+  {
+    "id": "dart",
+    "name": "Dart",
+    "slug": "dart",
+    "description": "A client-optimized language by Google for building fast, beautiful apps for mobile, web, and desktop from a single codebase with Flutter.",
+    "iconName": "dart",
+    "body": {
+      "raw": "\nDart is a programming language designed for client development, such as for the web and mobile apps. It is developed by Google and can also be used to build server and desktop applications. It is an object-oriented, class-based, garbage-collected language with C-style syntax.\n",
+      "html": "<p>Dart is a programming language designed for client development, such as for the web and mobile apps. It is developed by Google and can also be used to build server and desktop applications. It is an object-oriented, class-based, garbage-collected language with C-style syntax.</p>"
+    },
+    "_id": "languages/dart.md",
+    "_raw": {
+      "sourceFilePath": "languages/dart.md",
+      "sourceFileName": "dart.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/dart"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/dart"
+  },
+  {
+    "id": "go",
+    "name": "Go",
+    "slug": "go",
+    "description": "A statically typed, compiled language from Google, known for its simplicity, concurrency, and performance in backend services.",
+    "iconName": "go",
+    "body": {
+      "raw": "\nGo, also known as Golang, is a statically typed, compiled programming language designed at Google. It is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. It is often used for building simple, reliable, and efficient software.\n",
+      "html": "<p>Go, also known as Golang, is a statically typed, compiled programming language designed at Google. It is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. It is often used for building simple, reliable, and efficient software.</p>"
+    },
+    "_id": "languages/go.md",
+    "_raw": {
+      "sourceFilePath": "languages/go.md",
+      "sourceFileName": "go.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/go"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/go"
+  },
+  {
+    "id": "html",
+    "name": "HTML",
+    "slug": "html",
+    "description": "The standard markup language for creating web pages and web applications, forming the basic structure of all websites.",
+    "iconName": "html5",
+    "body": {
+      "raw": "\nThe HyperText Markup Language, or HTML, is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript. Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages.\n",
+      "html": "<p>The HyperText Markup Language, or HTML, is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript. Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages.</p>"
+    },
+    "_id": "languages/html.md",
+    "_raw": {
+      "sourceFilePath": "languages/html.md",
+      "sourceFileName": "html.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/html"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/html"
+  },
+  {
+    "id": "java",
+    "name": "Java",
+    "slug": "java",
+    "description": "A class-based, object-oriented language for building enterprise-scale applications, Android apps, and large systems.",
+    "iconName": "java",
+    "body": {
+      "raw": "\nJava is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need to recompile.\n",
+      "html": "<p>Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need to recompile.</p>"
+    },
+    "_id": "languages/java.md",
+    "_raw": {
+      "sourceFilePath": "languages/java.md",
+      "sourceFileName": "java.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/java"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/java"
+  },
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "slug": "javascript",
+    "description": "The language of the web, enabling interactive and dynamic content for virtually all websites.",
+    "iconName": "javascript",
+    "body": {
+      "raw": "\nJavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2023, 98.7% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.\n",
+      "html": "<p>JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2023, 98.7% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.</p>"
+    },
+    "_id": "languages/javascript.md",
+    "_raw": {
+      "sourceFilePath": "languages/javascript.md",
+      "sourceFileName": "javascript.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/javascript"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/javascript"
+  },
+  {
+    "id": "kotlin",
+    "name": "Kotlin",
+    "slug": "kotlin",
+    "description": "A modern, concise, and safe programming language from JetBrains, officially supported by Google for Android development.",
+    "iconName": "kotlin",
+    "body": {
+      "raw": "\nKotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.\n",
+      "html": "<p>Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.</p>"
+    },
+    "_id": "languages/kotlin.md",
+    "_raw": {
+      "sourceFilePath": "languages/kotlin.md",
+      "sourceFileName": "kotlin.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/kotlin"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/kotlin"
+  },
+  {
+    "id": "matlab",
+    "name": "MATLAB",
+    "slug": "matlab",
+    "description": "A high-level language and interactive environment for numerical computation, visualization, and algorithm development.",
+    "iconName": "matlab",
+    "body": {
+      "raw": "\nMATLAB (matrix laboratory) is a proprietary multi-paradigm programming language and numerical computing environment developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages.\n",
+      "html": "<p>MATLAB (matrix laboratory) is a proprietary multi-paradigm programming language and numerical computing environment developed by MathWorks. MATLAB allows matrix manipulations, plotting of functions and data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other languages.</p>"
+    },
+    "_id": "languages/matlab.md",
+    "_raw": {
+      "sourceFilePath": "languages/matlab.md",
+      "sourceFileName": "matlab.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/matlab"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/matlab"
+  },
+  {
+    "id": "perl",
+    "name": "Perl",
+    "slug": "perl",
+    "description": "A mature, dynamic language with a long history, particularly renowned for its powerful text processing and system administration capabilities.",
+    "iconName": "perl",
+    "body": {
+      "raw": "\nPerl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing, regular expressions, and system administration tasks.\n",
+      "html": "<p>Perl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. \"Perl\" refers to Perl 5, but from 2000 to 2019 it also referred to its redesigned sister language, Raku (formerly known as Perl 6). Perl is particularly known for its strength in text processing, regular expressions, and system administration tasks.</p>"
+    },
+    "_id": "languages/perl.md",
+    "_raw": {
+      "sourceFilePath": "languages/perl.md",
+      "sourceFileName": "perl.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/perl"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/perl"
+  },
+  {
+    "id": "php",
+    "name": "PHP",
+    "slug": "php",
+    "description": "A popular server-side scripting language primarily used for web development and powering sites like WordPress and Facebook.",
+    "iconName": "php",
+    "body": {
+      "raw": "\nPHP (a recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML. PHP code is usually processed on a web server by a PHP interpreter implemented as a module, a daemon or as a Common Gateway Interface (CGI) executable.\n",
+      "html": "<p>PHP (a recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML. PHP code is usually processed on a web server by a PHP interpreter implemented as a module, a daemon or as a Common Gateway Interface (CGI) executable.</p>"
+    },
+    "_id": "languages/php.md",
+    "_raw": {
+      "sourceFilePath": "languages/php.md",
+      "sourceFileName": "php.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/php"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/php"
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "slug": "python",
+    "description": "A versatile and beginner-friendly language for web development, data science, automation, and more.",
+    "iconName": "python",
+    "body": {
+      "raw": "\nPython is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly procedural), object-oriented and functional programming. It is often described as a \"batteries included\" language due to its comprehensive standard library.\n",
+      "html": "<p>Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly procedural), object-oriented and functional programming. It is often described as a \"batteries included\" language due to its comprehensive standard library.</p>"
+    },
+    "_id": "languages/python.md",
+    "_raw": {
+      "sourceFilePath": "languages/python.md",
+      "sourceFileName": "python.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/python"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/python"
+  },
+  {
+    "id": "r",
+    "name": "R",
+    "slug": "r",
+    "description": "A free software environment and language for statistical computing, data analysis, and graphical representation.",
+    "iconName": "r",
+    "body": {
+      "raw": "\nR is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis. Polls, data mining surveys, and studies of scholarly literature databases show that R's popularity has increased substantially in recent years.\n",
+      "html": "<p>R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. The R language is widely used among statisticians and data miners for developing statistical software and data analysis. Polls, data mining surveys, and studies of scholarly literature databases show that R's popularity has increased substantially in recent years.</p>"
+    },
+    "_id": "languages/r.md",
+    "_raw": {
+      "sourceFilePath": "languages/r.md",
+      "sourceFileName": "r.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/r"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/r"
+  },
+  {
+    "id": "ruby",
+    "name": "Ruby",
+    "slug": "ruby",
+    "description": "A dynamic, open-source language with a focus on simplicity and productivity, best known for the Ruby on Rails web framework.",
+    "iconName": "ruby",
+    "body": {
+      "raw": "\nRuby is an interpreted, high-level, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro \\\"Matz\\\" Matsumoto in Japan. It is dynamically typed and uses garbage collection and just-in-time compilation. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.\n",
+      "html": "<p>Ruby is an interpreted, high-level, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro \"Matz\" Matsumoto in Japan. It is dynamically typed and uses garbage collection and just-in-time compilation. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.</p>"
+    },
+    "_id": "languages/ruby.md",
+    "_raw": {
+      "sourceFilePath": "languages/ruby.md",
+      "sourceFileName": "ruby.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/ruby"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/ruby"
+  },
+  {
+    "id": "rust",
+    "name": "Rust",
+    "slug": "rust",
+    "description": "A systems programming language focused on safety, speed, and concurrency, empowering developers to build reliable and efficient software.",
+    "iconName": "rust",
+    "body": {
+      "raw": "\nRust is a multi-paradigm, high-level, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety—meaning that all references point to valid memory—without needing a garbage collector or reference counting present in other memory-safe languages. To enforce memory safety, its borrow checker tracks the object lifetime of all references in a program during compilation.\n",
+      "html": "<p>Rust is a multi-paradigm, high-level, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety—meaning that all references point to valid memory—without needing a garbage collector or reference counting present in other memory-safe languages. To enforce memory safety, its borrow checker tracks the object lifetime of all references in a program during compilation.</p>"
+    },
+    "_id": "languages/rust.md",
+    "_raw": {
+      "sourceFilePath": "languages/rust.md",
+      "sourceFileName": "rust.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/rust"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/rust"
+  },
+  {
+    "id": "scala",
+    "name": "Scala",
+    "slug": "scala",
+    "description": "A hybrid functional/object-oriented language that runs on the JVM, designed to be concise, elegant, and type-safe.",
+    "iconName": "scala",
+    "body": {
+      "raw": "\nScala is a strong statically typed general-purpose programming language that supports both object-oriented and functional programming. Designed to be concise, many of Scala's design decisions are aimed to address criticisms of Java. Scala source code is intended to be compiled to Java bytecode, so that the resulting executable code runs on a Java virtual machine (JVM).\n",
+      "html": "<p>Scala is a strong statically typed general-purpose programming language that supports both object-oriented and functional programming. Designed to be concise, many of Scala's design decisions are aimed to address criticisms of Java. Scala source code is intended to be compiled to Java bytecode, so that the resulting executable code runs on a Java virtual machine (JVM).</p>"
+    },
+    "_id": "languages/scala.md",
+    "_raw": {
+      "sourceFilePath": "languages/scala.md",
+      "sourceFileName": "scala.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/scala"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/scala"
+  },
+  {
+    "id": "shell",
+    "name": "Shell Scripting",
+    "slug": "shell",
+    "description": "The art of automating command-line tasks and writing scripts for Unix-like operating systems like Linux and macOS.",
+    "iconName": "gnubash",
+    "body": {
+      "raw": "\nA shell script is a computer program designed to be run by a Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts include file manipulation, program execution, and printing text.\n",
+      "html": "<p>A shell script is a computer program designed to be run by a Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts include file manipulation, program execution, and printing text.</p>"
+    },
+    "_id": "languages/shell.md",
+    "_raw": {
+      "sourceFilePath": "languages/shell.md",
+      "sourceFileName": "shell.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/shell"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/shell"
+  },
+  {
+    "id": "sql",
+    "name": "SQL",
+    "slug": "sql",
+    "description": "The standard language for managing and querying data in relational databases, essential for data analysis and backend development.",
+    "iconName": "postgresql",
+    "body": {
+      "raw": "\nStructured Query Language (SQL) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS). It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.\n",
+      "html": "<p>Structured Query Language (SQL) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS). It is particularly useful in handling structured data, i.e., data incorporating relations among entities and variables.</p>"
+    },
+    "_id": "languages/sql.md",
+    "_raw": {
+      "sourceFilePath": "languages/sql.md",
+      "sourceFileName": "sql.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/sql"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/sql"
+  },
+  {
+    "id": "swift",
+    "name": "Swift",
+    "slug": "swift",
+    "description": "Apple's powerful and intuitive programming language for building apps across all Apple platforms, including iOS, macOS, watchOS, and tvOS.",
+    "iconName": "swift",
+    "body": {
+      "raw": "\nSwift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C. Swift is designed to work with Apple's Cocoa and Cocoa Touch frameworks and the large body of existing Objective-C code written for Apple products.\n",
+      "html": "<p>Swift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community. First released in 2014, Swift was developed as a replacement for Apple's earlier programming language Objective-C. Swift is designed to work with Apple's Cocoa and Cocoa Touch frameworks and the large body of existing Objective-C code written for Apple products.</p>"
+    },
+    "_id": "languages/swift.md",
+    "_raw": {
+      "sourceFilePath": "languages/swift.md",
+      "sourceFileName": "swift.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/swift"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/swift"
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "slug": "typescript",
+    "description": "A superset of JavaScript that adds static types, enabling developers to build safer, more robust, and larger-scale applications.",
+    "iconName": "typescript",
+    "body": {
+      "raw": "\nTypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript. Because TypeScript is a superset of JavaScript, all JavaScript programs are syntactically valid TypeScript.\n",
+      "html": "<p>TypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript. Because TypeScript is a superset of JavaScript, all JavaScript programs are syntactically valid TypeScript.</p>"
+    },
+    "_id": "languages/typescript.md",
+    "_raw": {
+      "sourceFilePath": "languages/typescript.md",
+      "sourceFileName": "typescript.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/typescript"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/typescript"
+  },
+  {
+    "id": "vba",
+    "name": "VBA",
+    "slug": "vba",
+    "description": "Visual Basic for Applications, the programming language for Microsoft Office, used to automate tasks and create custom solutions in Excel, Word, and more.",
+    "iconName": "microsoftoffice",
+    "body": {
+      "raw": "\nVisual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6, which was discontinued in 2008, and its associated integrated development environment (IDE). VBA is built into most Microsoft Office applications and is used to automate repetitive tasks, create custom forms, and add new functionality.\n",
+      "html": "<p>Visual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6, which was discontinued in 2008, and its associated integrated development environment (IDE). VBA is built into most Microsoft Office applications and is used to automate repetitive tasks, create custom forms, and add new functionality.</p>"
+    },
+    "_id": "languages/vba.md",
+    "_raw": {
+      "sourceFilePath": "languages/vba.md",
+      "sourceFileName": "vba.md",
+      "sourceFileDir": "languages",
+      "contentType": "markdown",
+      "flattenedPath": "languages/vba"
+    },
+    "type": "LanguagePost",
+    "url": "/languages/vba"
+  }
+]

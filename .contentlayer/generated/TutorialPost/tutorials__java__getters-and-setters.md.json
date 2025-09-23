@@ -1,0 +1,22 @@
+{
+  "title": "Getters and Setters (Encapsulation)",
+  "slug": "getters-and-setters",
+  "order": 16,
+  "description": "Learn about getters and setters and encapsulation in Java.",
+  "category": "Object-Oriented Programming (OOP)",
+  "body": {
+    "raw": "\n## Getters and Setters (Encapsulation)\n\nThis tutorial will cover getters, setters, and encapsulation in Java. Content to be added.\n",
+    "html": "<h2>Getters and Setters (Encapsulation)</h2>\n<p>This tutorial will cover getters, setters, and encapsulation in Java. Content to be added.</p>"
+  },
+  "_id": "tutorials/java/getters-and-setters.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/java/getters-and-setters.md",
+    "sourceFileName": "getters-and-setters.md",
+    "sourceFileDir": "tutorials/java",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/java/getters-and-setters"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/java/getters-and-setters",
+  "language": "java"
+}
