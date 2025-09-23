@@ -75,7 +75,7 @@ const Tutorial = defineNestedType(() => ({
         id: { type: 'string', required: true },
         title: { type: 'string', required: true },
         url: { type: 'string', required: true },
-        sourceName: { type: 'string', required: true },
+        category: { type: 'string', required: true },
     }
 }));
 
