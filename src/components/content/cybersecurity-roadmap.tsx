@@ -66,7 +66,7 @@ const RoadmapNode = ({ node, level = 0, tutorials }: { node: RoadmapNodeData, le
 };
 
 const RoadmapColumn = ({ title, nodes, colSpan = 1, tutorials }: { title: string, nodes: RoadmapNodeData[] | undefined | null, colSpan?: number, tutorials: TutorialPost[] }) => {
-  if (!nodes) return <div />;
+  if (!nodes) return <div className={`col-span-${colSpan}`} />;
   return (
     <div className={`flex flex-col items-center space-y-2 col-span-${colSpan}`}>
       <h3 className="font-bold text-sm uppercase text-muted-foreground tracking-wider mb-4">{title}</h3>
@@ -114,17 +114,16 @@ export function CybersecurityRoadmap({ topic, tutorials, breadcrumbs }: Cybersec
         </div>
 
         <div className="relative px-4">
-          {(topic.roadmapColumns || []).map((column, index) => (
+          {(topic.roadmapColumns || []).map((columnData, index) => (
             <div key={index} className="grid grid-cols-1 md:grid-cols-5 gap-x-6 items-start">
-               <RoadmapColumn title="Certifications & Tools" nodes={column.left} tutorials={tutorials} />
+               <RoadmapColumn title="Certifications & Tools" nodes={columnData.left} tutorials={tutorials} />
                <div className="col-span-1 md:col-span-3">
-                 <RoadmapColumn title="Main Learning Path" nodes={column.main} colSpan={3} tutorials={tutorials} />
+                 <RoadmapColumn title="Main Learning Path" nodes={columnData.main} colSpan={3} tutorials={tutorials} />
                </div>
-               <RoadmapColumn title="Fundamental Skills" nodes={column.right} tutorials={tutorials} />
+               <RoadmapColumn title="Fundamental Skills" nodes={columnData.right} tutorials={tutorials} />
             </div>
           ))}
         </div>
     </div>
   );
 }
-
