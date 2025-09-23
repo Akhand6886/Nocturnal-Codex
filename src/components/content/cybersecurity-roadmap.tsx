@@ -64,22 +64,23 @@ const RoadmapNode = ({ node, level = 0, tutorials }: { node: RoadmapNodeData, le
     );
 };
 
-const RoadmapColumn = ({ title, nodes, colSpan = 1, tutorials }: { title: string, nodes: RoadmapNodeData[] | undefined | null, colSpan?: number, tutorials: TutorialPost[] }) => {
-  if (!nodes) return <div className={`col-span-${colSpan}`} />;
-  return (
-    <div className={`flex flex-col items-center space-y-2 col-span-${colSpan}`}>
-      <h3 className="font-bold text-sm uppercase text-muted-foreground tracking-wider mb-4">{title}</h3>
-      {nodes.map((node, index) => (
-        <Fragment key={node.id}>
-          <RoadmapNode node={node} tutorials={tutorials} />
-          {index < nodes.length - 1 && (
-            <div className="h-6 w-px bg-border border-dashed" />
-          )}
-        </Fragment>
-      ))}
-    </div>
-  );
-}
+const RoadmapColumn = ({ title, nodes, colSpanClass, tutorials }: { title: string, nodes: RoadmapNodeData[] | undefined | null, colSpanClass: string, tutorials: TutorialPost[] }) => {
+    if (!nodes || nodes.length === 0) return <div className={colSpanClass} />;
+    
+    return (
+      <div className={`flex flex-col items-center space-y-2 ${colSpanClass}`}>
+        <h3 className="font-bold text-sm uppercase text-muted-foreground tracking-wider mb-4">{title}</h3>
+        {nodes.map((node, index) => (
+          <Fragment key={node.id}>
+            <RoadmapNode node={node} tutorials={tutorials} />
+            {index < nodes.length - 1 && (
+              <div className="h-6 w-px bg-border border-dashed" />
+            )}
+          </Fragment>
+        ))}
+      </div>
+    );
+  }
 
 
 export function CybersecurityRoadmap({ topic, tutorials, breadcrumbs }: CybersecurityRoadmapProps) {
@@ -115,11 +116,9 @@ export function CybersecurityRoadmap({ topic, tutorials, breadcrumbs }: Cybersec
         <div className="relative px-4">
           {(topic.roadmapColumns || []).map((columnData, index) => (
             <div key={index} className="grid grid-cols-1 md:grid-cols-5 gap-x-6 items-start">
-               <RoadmapColumn title="Certifications & Tools" nodes={columnData.left} tutorials={tutorials} />
-               <div className="col-span-1 md:col-span-3">
-                 <RoadmapColumn title="Main Learning Path" nodes={columnData.main} colSpan={3} tutorials={tutorials} />
-               </div>
-               <RoadmapColumn title="Fundamental Skills" nodes={columnData.right} tutorials={tutorials} />
+               <RoadmapColumn title="Certifications & Tools" nodes={columnData.left} colSpanClass="col-span-1" tutorials={tutorials} />
+               <RoadmapColumn title="Main Learning Path" nodes={columnData.main} colSpanClass="col-span-1 md:col-span-3" tutorials={tutorials} />
+               <RoadmapColumn title="Fundamental Skills" nodes={columnData.right} colSpanClass="col-span-1" tutorials={tutorials} />
             </div>
           ))}
         </div>
