@@ -3,7 +3,7 @@ import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, Link as LinkIcon, Brain } from "lucide-react";
+import { ArrowRight, BookOpen, Lightbulb, Code2, GraduationCap, Brain } from "lucide-react";
 import Image from "next/image";
 import { allTopicPosts, allTutorialPosts } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
@@ -218,24 +218,6 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
             </main>
             
             <aside className="lg:col-span-1 space-y-8 lg:sticky lg:top-24 self-start">
-                {topic.tutorials && topic.tutorials.length > 0 && (
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="flex items-center text-lg"><GraduationCap className="mr-2 h-5 w-5 text-primary" /> Tutorials</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            {topic.tutorials.map((tut) => (
-                                <Link href={tut.url} key={tut.id} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-2 rounded-md hover:bg-muted/50 transition-colors">
-                                    <div>
-                                        <h4 className="text-sm font-medium text-foreground/90 group-hover:text-primary">{tut.title}</h4>
-                                        <p className="text-xs text-muted-foreground">Source: {tut.sourceName}</p>
-                                    </div>
-                                    <LinkIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary"/>
-                                </Link>
-                            ))}
-                        </CardContent>
-                    </Card>
-                )}
                 {topic.references && topic.references.length > 0 && (
                     <Card>
                         <CardHeader>

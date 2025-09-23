@@ -69,16 +69,6 @@ const CodeSnippetItem = defineNestedType(() => ({
     }
 }));
 
-const Tutorial = defineNestedType(() => ({
-    name: 'Tutorial',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        url: { type: 'string', required: true },
-        category: { type: 'string', required: true },
-    }
-}));
-
 const WikiArticleStub = defineNestedType(() => ({
     name: 'WikiArticleStub',
     fields: {
@@ -112,7 +102,6 @@ export const TopicPost = defineDocumentType(() => ({
       dataAiHint: { type: 'string', required: false },
       subtopics: { type: 'list', of: SubTopic, required: false },
       codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
-      tutorials: { type: 'list', of: Tutorial, required: false },
       references: { type: 'list', of: WikiArticleStub, required: false },
       thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
     },
