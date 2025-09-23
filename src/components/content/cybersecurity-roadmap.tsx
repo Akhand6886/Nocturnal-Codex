@@ -4,69 +4,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { TopicPost, TutorialPost } from 'contentlayer/generated';
-import { allTutorialPosts } from 'contentlayer/generated';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Fragment } from "react";
 
-interface RoadmapNodeData {
-    id: string;
-    title: string;
-    description?: string;
-    slug?: string;
-    isMainPath?: boolean;
-    isGroup?: boolean;
-    items?: RoadmapNodeData[];
-}
-
-const Node = ({ node }: { node: RoadmapNodeData }) => {
-    // The slug from the roadmap data might not be a full tutorial slug.
-    // We find the *first* tutorial that matches the category of the node.
-    const tutorial = allTutorialPosts.find(p => node.slug && p.category.includes(node.slug));
-    const href = tutorial?.url || '#';
-    const isClickable = !!tutorial;
-
-    const NodeContent = () => (
-        <div className={`p-3 rounded-lg border-2 w-full h-full flex flex-col justify-center text-center ${node.isMainPath ? 'bg-primary/10 border-primary/40' : 'bg-muted/30 border-border'} ${isClickable ? 'group-hover:border-primary/70 group-hover:bg-primary/20' : ''} transition-colors`}>
-            <h3 className={`font-semibold text-sm ${isClickable ? 'group-hover:text-primary' : ''}`}>{node.title}</h3>
-            {node.description && <p className="text-xs text-muted-foreground mt-1">{node.description}</p>}
-        </div>
-    );
-    
-    if (isClickable) {
-        return <Link href={href} className="group block h-full">{NodeContent()}</Link>;
-    }
-    
-    return <div className="h-full">{NodeContent()}</div>;
-};
-
-const NodeGroup = ({ node }: { node: RoadmapNodeData }) => (
-    <div className="border-2 border-border/50 rounded-lg p-3 space-y-3 bg-card/50">
-        <h4 className="text-center font-bold text-foreground/80 text-sm">{node.title}</h4>
-        <div className={`grid grid-cols-2 gap-2`}>
-            {node.items?.map(item => <Node key={item.id} node={item} />)}
-        </div>
-    </div>
-);
-
-
 interface CybersecurityRoadmapProps {
-  topic: TopicPost & { roadmapColumns: { left: RoadmapNodeData[], main: RoadmapNodeData[], right: RoadmapNodeData[] } };
+  topic: TopicPost;
+  tutorials: TutorialPost[];
   breadcrumbs: BreadcrumbItem[];
 }
 
-export function CybersecurityRoadmap({ topic, breadcrumbs }: CybersecurityRoadmapProps) {
-  
-  const { left, main, right } = topic.roadmapColumns;
+export function CybersecurityRoadmap({ topic, tutorials, breadcrumbs }: CybersecurityRoadmapProps) {
 
-  const renderColumn = (nodes: RoadmapNodeData[], title: string) => (
-    <div className="space-y-6 flex flex-col items-stretch">
-        <h3 className="text-lg font-bold text-center text-foreground/90">{title}</h3>
-        {nodes.map(node => (
-            <Fragment key={node.id}>
-                {node.isGroup ? <NodeGroup node={node} /> : <Node node={node} />}
-            </Fragment>
-        ))}
-    </div>
-  );
+  const subtopicsByCategory: Record<string, any[]> = {};
+  if (topic.subtopics) {
+    topic.subtopics.forEach(sub => {
+      const category = sub.slug || "General";
+      if (!subtopicsByCategory[category]) {
+        subtopicsByCategory[category] = [];
+      }
+      subtopicsByCategory[category].push(sub);
+    });
+  }
+
+  const renderTutorialsForSubtopic = (subtopicSlug: string) => {
+    return tutorials
+      .filter(t => t.category === subtopicSlug)
+      .sort((a, b) => a.order - b.order)
+      .map(t => (
+        <Link href={t.url} key={t.slug} className="block text-sm text-primary hover:underline p-2 rounded-md hover:bg-muted/50">
+          {t.title}
+        </Link>
+      ));
+  };
+
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-10 md:py-12 space-y-12">
@@ -92,21 +62,24 @@ export function CybersecurityRoadmap({ topic, breadcrumbs }: CybersecurityRoadma
         <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-2 text-foreground/90">Cybersecurity Learning Path</h2>
             <p className="text-muted-foreground max-w-4xl mx-auto">
-                Follow this structured path to build your cybersecurity knowledge from the ground up. This roadmap, inspired by <a href="https://roadmap.sh/cyber-security" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">roadmap.sh</a>, outlines the fundamental skills and knowledge domains. The main path is in the center, with related specializations and tools on the sides.
+                Follow this structured path to build your cybersecurity knowledge from the ground up. This roadmap outlines the fundamental skills and knowledge domains required in the field.
             </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {/* Left Column */}
-            {renderColumn(left, 'Certifications & Practice')}
-            
-            {/* Center Column - Main Learning Path */}
-            <div className="lg:border-x-2 lg:border-dashed lg:border-border/50 lg:px-8">
-                {renderColumn(main, 'Main Learning Path')}
-            </div>
-
-            {/* Right Column */}
-            {renderColumn(right, 'Fundamental Skills')}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {topic.subtopics?.map(subtopic => (
+            <Card key={subtopic.id} className="h-full flex flex-col">
+              <CardHeader>
+                <CardTitle>{subtopic.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                  <p className="text-muted-foreground text-sm mb-4">{subtopic.description}</p>
+                  <div className="space-y-1">
+                      {renderTutorialsForSubtopic(subtopic.slug)}
+                  </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
     </div>
   );

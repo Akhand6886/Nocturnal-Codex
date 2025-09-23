@@ -5,7 +5,7 @@ import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
 import { ArrowRight, Lightbulb, Code2, Brain } from "lucide-react";
 import Image from "next/image";
-import { allTopicPosts } from 'contentlayer/generated';
+import { allTopicPosts, allTutorialPosts } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
@@ -55,8 +55,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
   ];
   
   // Special layout for Cybersecurity topic
-  if (topic.slug === 'cybersecurity' && topic.roadmapColumns) {
-    return <CybersecurityRoadmap topic={topic as any} breadcrumbs={breadcrumbItems} />;
+  if (topic.slug === 'cybersecurity') {
+    const tutorials = allTutorialPosts.filter(p => p.language === 'cybersecurity');
+    return <CybersecurityRoadmap topic={topic} tutorials={tutorials} breadcrumbs={breadcrumbItems} />;
   }
   
   // == DEFAULT TOPIC PAGE LAYOUT ==
@@ -106,6 +107,25 @@ export default async function TopicPage({ params }: TopicPageProps) {
             </main>
             
             <aside className="lg:col-span-1 space-y-8 lg:sticky lg:top-24 self-start">
+                {topic.subtopics && topic.subtopics.length > 0 && (
+                     <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center text-lg"><Brain className="mr-2 h-5 w-5 text-primary" /> Sub-Topics</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-2">
+                        {topic.subtopics.map((subtopic) => {
+                            const firstTutorial = allTutorialPosts.find(p => p.category === subtopic.slug);
+                            const href = firstTutorial ? firstTutorial.url : `/topics/${topic.slug}`;
+                            return (
+                                <Link href={href} key={subtopic.id} className="group flex items-center justify-between p-2 rounded-md hover:bg-muted/50 transition-colors">
+                                    <span className="text-sm font-medium text-foreground/90 group-hover:text-primary">{subtopic.name}</span>
+                                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
+                                </Link>
+                            )
+                        })}
+                        </CardContent>
+                    </Card>
+                )}
                 {topic.references && topic.references.length > 0 && (
                     <Card>
                         <CardHeader>
