@@ -51,13 +51,13 @@ export const TutorialPost = defineDocumentType(() => ({
 const RoadmapNode = defineNestedType(() => ({
     name: 'RoadmapNode',
     fields: {
-      id: { type: 'string', required: true },
-      title: { type: 'string', required: true },
-      slug: { type: 'string', required: false },
-      description: { type: 'string', required: false },
-      isMainPath: { type: 'boolean', required: false },
-      isGroup: { type: 'boolean', required: false },
-      items: { type: 'list', of: 'RoadmapNode', required: false },
+        id: { type: 'string', required: true },
+        title: { type: 'string', required: true },
+        slug: { type: 'string', required: false },
+        description: { type: 'string', required: false },
+        isMainPath: { type: 'boolean', required: false },
+        isGroup: { type: 'boolean', required: false },
+        items: { type: 'list', of: 'RoadmapNode', required: false },
     },
 }));
   
@@ -69,6 +69,16 @@ const RoadmapColumn = defineNestedType(() => ({
         right: { type: 'list', of: RoadmapNode, required: false },
     }
 }))
+
+const SubTopic = defineNestedType(() => ({
+    name: 'SubTopic',
+    fields: {
+      id: { type: 'string', required: true },
+      slug: { type: 'string', required: true },
+      name: { type: 'string', required: true },
+      description: { type: 'string', required: false },
+    },
+}));
 
 const CodeSnippetItem = defineNestedType(() => ({
     name: 'CodeSnippetItem',
@@ -112,10 +122,11 @@ export const TopicPost = defineDocumentType(() => ({
       category: { type: 'string', required: false },
       imageUrl: { type: 'string', required: false },
       dataAiHint: { type: 'string', required: false },
+      subtopics: { type: 'list', of: SubTopic, required: false },
       codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
       references: { type: 'list', of: WikiArticleStub, required: false },
       thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
-      roadmapColumns: { type: 'nested', of: RoadmapColumn, required: false },
+      roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
     },
     computedFields: {
       url: {
