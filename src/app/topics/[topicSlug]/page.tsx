@@ -55,7 +55,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   ];
   
   // Special layout for Cybersecurity topic
-  if (topic.slug === 'cybersecurity' && topic.subtopics) {
+  if (topic.slug === 'cybersecurity' && topic.roadmapColumns) {
     return <CybersecurityRoadmap topic={topic} breadcrumbs={breadcrumbItems} />;
   }
   
@@ -123,7 +123,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                     <CodeSnippet 
                         key={snippet.id} 
                         code={snippet.code} 
-                        language={snippet.language as any} 
+                        language={snippet.language} 
                         title={snippet.title}
                         description={snippet.description}
                     />
