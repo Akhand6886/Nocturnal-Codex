@@ -26,7 +26,7 @@ Every useful script is built from a few fundamental building blocks.
   target_ip = "127.0.0.1"
   port_number = 80
   is_active = True
-````
+```
 
   * **Control Flow (`if`/`else`):** A way to make decisions in your script.
 
