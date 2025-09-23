@@ -63,7 +63,7 @@ const CodeSnippetItem = defineNestedType(() => ({
     fields: {
         id: { type: 'string', required: true },
         title: { type: 'string', required: true },
-        language: { type: 'enum', options: ['python', 'javascript', 'typescript', 'html', 'css', 'json', 'markdown', 'csharp', 'java', 'go', 'rust', 'text', 'cpp'], required: true },
+        language: { type: 'enum', options: ['python', 'javascript', 'typescript', 'html', 'css', 'json', 'markdown', 'csharp', 'java', 'go', 'rust', 'text'], required: true },
         code: { type: 'string', required: true },
         description: { type: 'string', required: false },
     }
