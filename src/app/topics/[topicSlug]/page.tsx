@@ -3,9 +3,9 @@ import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Lightbulb, Code2, Brain } from "lucide-react";
+import { ArrowRight, Lightbulb, Code2, Brain } from "lucide-react";
 import Image from "next/image";
-import { allTopicPosts, allTutorialPosts } from 'contentlayer/generated';
+import { allTopicPosts } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
@@ -95,7 +95,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                     <CodeSnippet 
                         key={snippet.id} 
                         code={snippet.code} 
-                        language={snippet.language} 
+                        language={snippet.language as any} 
                         title={snippet.title}
                         description={snippet.description}
                     />

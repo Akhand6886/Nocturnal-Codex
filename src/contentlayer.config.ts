@@ -57,16 +57,9 @@ const RoadmapNode = defineNestedType(() => ({
       description: { type: 'string', required: false },
       isMainPath: { type: 'boolean', required: false },
       isGroup: { type: 'boolean', required: false },
+      items: { type: 'list', of: 'RoadmapNode', required: false },
     },
 }));
-
-RoadmapNode.addComputedFields({
-    items: {
-        type: 'list',
-        of: RoadmapNode,
-        resolve: (doc: any) => doc.items,
-    }
-})
   
 const RoadmapColumn = defineNestedType(() => ({
     name: 'RoadmapColumn',
