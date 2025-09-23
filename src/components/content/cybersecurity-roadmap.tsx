@@ -7,17 +7,17 @@ import type { TopicPost, TutorialPost } from 'contentlayer/generated';
 import { allTutorialPosts } from 'contentlayer/generated';
 import { Fragment } from "react";
 
-interface RoadmapNodeProps {
+interface RoadmapNodeData {
     id: string;
     title: string;
-    description: string;
-    slug: string;
+    description?: string;
+    slug?: string;
     isMainPath?: boolean;
     isGroup?: boolean;
-    items?: RoadmapNodeProps[];
+    items?: RoadmapNodeData[];
 }
 
-const Node = ({ node }: { node: RoadmapNodeProps }) => {
+const Node = ({ node }: { node: RoadmapNodeData }) => {
     // The slug from the roadmap data might not be a full tutorial slug.
     // We find the *first* tutorial that matches the category of the node.
     const tutorial = allTutorialPosts.find(p => node.slug && p.category.includes(node.slug));
@@ -38,10 +38,10 @@ const Node = ({ node }: { node: RoadmapNodeProps }) => {
     return <div className="h-full">{NodeContent()}</div>;
 };
 
-const NodeGroup = ({ node }: { node: RoadmapNodeProps }) => (
+const NodeGroup = ({ node }: { node: RoadmapNodeData }) => (
     <div className="border-2 border-border/50 rounded-lg p-3 space-y-3 bg-card/50">
         <h4 className="text-center font-bold text-foreground/80 text-sm">{node.title}</h4>
-        <div className={`grid grid-cols-${node.items && node.items.length > 3 ? '4' : '3'} gap-2`}>
+        <div className={`grid grid-cols-2 gap-2`}>
             {node.items?.map(item => <Node key={item.id} node={item} />)}
         </div>
     </div>
@@ -49,19 +49,17 @@ const NodeGroup = ({ node }: { node: RoadmapNodeProps }) => (
 
 
 interface CybersecurityRoadmapProps {
-  topic: TopicPost;
+  topic: TopicPost & { roadmapColumns: { left: RoadmapNodeData[], main: RoadmapNodeData[], right: RoadmapNodeData[] } };
   breadcrumbs: BreadcrumbItem[];
 }
 
 export function CybersecurityRoadmap({ topic, breadcrumbs }: CybersecurityRoadmapProps) {
-  if (!topic.roadmapColumns) {
-    return <div>Roadmap data is missing.</div>;
-  }
   
   const { left, main, right } = topic.roadmapColumns;
 
-  const renderColumn = (nodes: RoadmapNodeProps[]) => (
+  const renderColumn = (nodes: RoadmapNodeData[], title: string) => (
     <div className="space-y-6 flex flex-col items-stretch">
+        <h3 className="text-lg font-bold text-center text-foreground/90">{title}</h3>
         {nodes.map(node => (
             <Fragment key={node.id}>
                 {node.isGroup ? <NodeGroup node={node} /> : <Node node={node} />}
@@ -98,21 +96,18 @@ export function CybersecurityRoadmap({ topic, breadcrumbs }: CybersecurityRoadma
             </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-12 relative">
-            <div className="absolute top-1/2 left-0 right-0 h-px bg-border -z-10 hidden lg:block" />
-            
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-12">
             {/* Left Column */}
-            {renderColumn(left || [])}
+            {renderColumn(left, 'Certifications & Practice')}
             
             {/* Center Column - Main Learning Path */}
             <div className="lg:border-x-2 lg:border-dashed lg:border-border/50 lg:px-8">
-                {renderColumn(main || [])}
+                {renderColumn(main, 'Main Learning Path')}
             </div>
 
             {/* Right Column */}
-            {renderColumn(right || [])}
+            {renderColumn(right, 'Fundamental Skills')}
         </div>
     </div>
   );
 }
-

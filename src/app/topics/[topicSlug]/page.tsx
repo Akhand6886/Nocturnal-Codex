@@ -56,7 +56,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   
   // Special layout for Cybersecurity topic
   if (topic.slug === 'cybersecurity' && topic.roadmapColumns) {
-    return <CybersecurityRoadmap topic={topic} breadcrumbs={breadcrumbItems} />;
+    return <CybersecurityRoadmap topic={topic as any} breadcrumbs={breadcrumbItems} />;
   }
   
   // == DEFAULT TOPIC PAGE LAYOUT ==
@@ -83,34 +83,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
       
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <main className="lg:col-span-2 space-y-12">
-            {topic.subtopics && topic.subtopics.length > 0 && (
-                <section id="subtopics">
-                <h2 className="text-2xl font-bold mb-6 flex items-center text-foreground/90">
-                    <BookOpen className="mr-3 h-6 w-6 text-primary" />
-                    Key Subtopics
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {topic.subtopics.map((sub) => {
-                     const linkedTutorial = allTutorialPosts.find(p => p.slug === sub.slug);
-                     const href = linkedTutorial ? linkedTutorial.url : `/topics/${topic.slug}`;
-                    return (
-                        <Link href={href} key={sub.id} className="group block h-full">
-                        <Card className="h-full flex flex-col justify-between rounded-xl border text-card-foreground shadow-lg bg-card hover:bg-muted/40 transition-colors">
-                            <CardHeader>
-                            <CardTitle className="text-lg group-hover:text-primary transition-colors">{sub.name}</CardTitle>
-                            </CardHeader>
-                            {sub.description && (
-                            <CardContent>
-                                <p className="text-sm text-muted-foreground">{sub.description}</p>
-                            </CardContent>
-                            )}
-                        </Card>
-                        </Link>
-                    )
-                    })}
-                </div>
-                </section>
-            )}
 
             {topic.codeSnippets && topic.codeSnippets.length > 0 && (
                 <section id="code-snippets">
