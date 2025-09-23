@@ -57,8 +57,6 @@ Functions become truly powerful when you can pass data into them.
   * A **parameter** is a variable listed in the function's definition.
   * An **argument** is the actual value that is passed to the function when it is called.
 
-<!-- end list -->
-
 ```javascript
 // 'name' and 'age' are parameters
 function displayUserInfo(name, age) {
