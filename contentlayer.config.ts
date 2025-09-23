@@ -93,7 +93,7 @@ const ThinkTankArticleStub = defineNestedType(() => ({
     fields: {
         id: { type: 'string', required: true },
         title: { type: 'string', required: true },
-        slug: { type 'string', required: true },
+        slug: { type: 'string', required: true },
     }
 }));
 
