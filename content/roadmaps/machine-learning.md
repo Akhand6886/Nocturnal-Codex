@@ -4,7 +4,7 @@ slug: "machine-learning"
 name: "Machine Learning"
 category: "Artificial Intelligence"
 description: "Algorithms that learn from and make decisions based on data."
-imageUrl: "https://placehold.co/400x300.png"
+imageUrl: "https://picsum.photos/seed/machinelearning/600/400"
 dataAiHint: "artificial intelligence"
 ---
 

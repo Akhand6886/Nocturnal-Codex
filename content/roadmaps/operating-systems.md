@@ -4,7 +4,7 @@ slug: "operating-systems"
 name: "Operating Systems"
 category: "Core Computer Science"
 description: "Software managing computer hardware and resources."
-imageUrl: "https://placehold.co/400x300.png"
+imageUrl: "https://picsum.photos/seed/operatingsystems/600/400"
 dataAiHint: "computer hardware"
 subtopics:
   - id: "process-management"

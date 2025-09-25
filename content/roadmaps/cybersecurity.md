@@ -4,21 +4,10 @@ slug: "cybersecurity"
 name: "Cybersecurity"
 category: "Security"
 description: "An in-depth guide to protecting systems, networks, and data from digital threats."
-imageUrl: "https://placehold.co/400x300.png"
+imageUrl: "https://picsum.photos/seed/cybersecurity/600/400"
 dataAiHint: "digital security matrix"
 roadmapColumns:
-  - left:
-    - id: "certs-and-tools"
-      title: "CTFs & Certifications"
-      isGroup: true
-      items:
-        - id: "ctf"
-          title: "Capture The Flag (CTF)"
-        - id: "oscp"
-          title: "OSCP"
-        - id: "comptia"
-          title: "CompTIA Security+"
-    main:
+  - main:
     - id: "fundamental-it-skills"
       title: "Fundamental IT Skills"
       isMainPath: true
@@ -39,6 +28,27 @@ roadmapColumns:
       title: "Basic Scripting"
       isMainPath: true
       slug: "basic-scripting-with-python"
+    left:
+      - id: "certs-and-tools"
+        title: "CTFs & Certifications"
+        isGroup: true
+        items:
+          - id: "ctf"
+            title: "Capture The Flag (CTF)"
+          - id: "oscp"
+            title: "OSCP"
+          - id: "comptia"
+            title: "CompTIA Security+"
+      - id: "security-tools"
+        title: "Security Tools"
+        isGroup: true
+        items:
+          - id: "wireshark"
+            title: "Wireshark"
+          - id: "nmap-tool"
+            title: "Nmap"
+          - id: "metasploit"
+            title: "Metasploit"
     right:
       - id: "fundamental-skills"
         title: "Fundamental Skills"
@@ -50,16 +60,6 @@ roadmapColumns:
             title: "Analytical Thinking"
           - id: "communication"
             title: "Communication"
-      - id: "security-tools"
-        title: "Security Tools"
-        isGroup: true
-        items:
-          - id: "wireshark"
-            title: "Wireshark"
-          - id: "nmap-tool"
-            title: "Nmap"
-          - id: "metasploit"
-            title: "Metasploit"
 ---
 
 Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.

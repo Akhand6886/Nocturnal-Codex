@@ -4,7 +4,7 @@ slug: "compiler-theory"
 name: "Compiler Theory"
 category: "Theoretical Computer Science"
 description: "The art of translating high-level code to machine instructions."
-imageUrl: "https://placehold.co/400x300.png"
+imageUrl: "https://picsum.photos/seed/compilertheory/600/400"
 dataAiHint: "code compilation"
 ---
 

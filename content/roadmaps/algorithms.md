@@ -4,7 +4,7 @@ slug: "algorithms"
 name: "Algorithms"
 category: "Core Computer Science"
 description: "Core concepts of computation and problem-solving strategies."
-imageUrl: "https://placehold.co/400x300.png"
+imageUrl: "https://picsum.photos/seed/algorithms/600/400"
 dataAiHint: "abstract algorithm"
 subtopics:
   - id: "sorting"

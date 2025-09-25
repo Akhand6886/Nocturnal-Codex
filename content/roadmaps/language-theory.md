@@ -4,7 +4,7 @@ slug: "language-theory"
 name: "Language Theory"
 category: "Theoretical Computer Science"
 description: "Formal languages, automata, and computability."
-imageUrl: "https://placehold.co/400x300.png"
+imageUrl: "https://picsum.photos/seed/languagetheory/600/400"
 dataAiHint: "abstract symbols"
 references:
   - id: "2"
