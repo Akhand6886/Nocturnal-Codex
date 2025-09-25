@@ -48,7 +48,7 @@ export const TutorialPost = defineDocumentType(() => ({
     },
   }));
 
-const RoadmapNode = defineNestedType(() => ({
+const RoadmapNode: any = defineNestedType(() => ({
     name: 'RoadmapNode',
     fields: {
         id: { type: 'string', required: true },
@@ -57,9 +57,14 @@ const RoadmapNode = defineNestedType(() => ({
         description: { type: 'string', required: false },
         isMainPath: { type: 'boolean', required: false },
         isGroup: { type: 'boolean', required: false },
-        items: { type: 'list', of: 'RoadmapNode', required: false },
     },
 }));
+
+RoadmapNode.fields.items = {
+    type: 'list',
+    of: RoadmapNode,
+    required: false,
+};
   
 const RoadmapColumn = defineNestedType(() => ({
     name: 'RoadmapColumn',
@@ -69,16 +74,6 @@ const RoadmapColumn = defineNestedType(() => ({
         right: { type: 'list', of: RoadmapNode, required: false },
     }
 }))
-
-const SubTopic = defineNestedType(() => ({
-    name: 'SubTopic',
-    fields: {
-      id: { type: 'string', required: true },
-      slug: { type: 'string', required: true },
-      name: { type: 'string', required: true },
-      description: { type: 'string', required: false },
-    },
-}));
 
 const CodeSnippetItem = defineNestedType(() => ({
     name: 'CodeSnippetItem',
@@ -110,9 +105,9 @@ const ThinkTankArticleStub = defineNestedType(() => ({
 }));
 
 
-export const TopicPost = defineDocumentType(() => ({
-    name: 'TopicPost',
-    filePathPattern: `topics/**/*.md`,
+export const RoadmapPost = defineDocumentType(() => ({
+    name: 'RoadmapPost',
+    filePathPattern: `roadmaps/**/*.md`,
     contentType: 'markdown',
     fields: {
       id: { type: 'string', required: true },
@@ -122,7 +117,6 @@ export const TopicPost = defineDocumentType(() => ({
       category: { type: 'string', required: false },
       imageUrl: { type: 'string', required: false },
       dataAiHint: { type: 'string', required: false },
-      subtopics: { type: 'list', of: SubTopic, required: false },
       codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
       references: { type: 'list', of: WikiArticleStub, required: false },
       thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
@@ -131,7 +125,7 @@ export const TopicPost = defineDocumentType(() => ({
     computedFields: {
       url: {
         type: 'string',
-        resolve: (doc) => `/topics/${doc.slug}`,
+        resolve: (doc) => `/roadmaps/${doc.slug}`,
       },
     },
   }));
@@ -157,5 +151,5 @@ export const TopicPost = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, TutorialPost, TopicPost, LanguagePost],
+  documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost],
 })
