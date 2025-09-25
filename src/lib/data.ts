@@ -2,7 +2,7 @@
 import type { NavItem as NavItemType } from '@/components/layout/navbar';
 
 // This file is now primarily for static navigation and simple mock data.
-// Topic data has been migrated to `content/topics/` and is managed by Contentlayer.
+// Roadmap data has been migrated to `content/roadmaps/` and is managed by Contentlayer.
 
 export interface WikiArticleStub {
   id: string;
@@ -148,8 +148,8 @@ Java provides different garbage collection algorithms (e.g., Serial GC, Parallel
 export const NAV_ITEMS: NavItemType[] = [
   { label: "Home", href: "/" },
   {
-    label: "Topics",
-    href: "/topics",
+    label: "Roadmaps",
+    href: "/roadmaps",
   },
   {
     label: "Languages",

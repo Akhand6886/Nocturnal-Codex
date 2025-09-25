@@ -3,14 +3,13 @@ import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
-import type { TopicPost, TutorialPost } from 'contentlayer/generated';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { RoadmapPost, TutorialPost } from 'contentlayer/generated';
 import { Fragment } from "react";
 import { cn } from "@/lib/utils";
 import { CheckCircle } from "lucide-react";
 
 interface CybersecurityRoadmapProps {
-  topic: TopicPost;
+  roadmap: RoadmapPost;
   tutorials: TutorialPost[];
   breadcrumbs: BreadcrumbItem[];
 }
@@ -36,7 +35,7 @@ const RoadmapNode = ({ node, level = 0, tutorials }: { node: RoadmapNodeData, le
             <div className={cn(
                 "p-2 rounded-md w-full text-center text-xs font-semibold flex items-center justify-center gap-1.5",
                 node.isMainPath ? "bg-primary text-primary-foreground shadow-md" : "bg-card border border-border shadow-sm",
-                href ? "group-hover:bg-accent group-hover:text-accent-foreground transition-colors" : "",
+                href ? "group-hover:bg-accent group-hover:text-accent-foreground transition-colors" : "cursor-default",
                 isParentNode && "mb-2"
             )}>
                 {node.title}
@@ -83,25 +82,25 @@ const RoadmapColumn = ({ title, nodes, colSpanClass, tutorials }: { title: strin
   }
 
 
-export function CybersecurityRoadmap({ topic, tutorials, breadcrumbs }: CybersecurityRoadmapProps) {
+export function CybersecurityRoadmap({ roadmap, tutorials, breadcrumbs }: CybersecurityRoadmapProps) {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-10 md:py-12 space-y-12">
         <Breadcrumbs items={breadcrumbs} />
         
         <header className="space-y-4">
-            {topic.imageUrl && (
+            {roadmap.imageUrl && (
             <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg border border-border/20">
-                <Image src={topic.imageUrl} alt={topic.name} fill className="object-cover" data-ai-hint={topic.dataAiHint || "topic banner"} priority />
+                <Image src={roadmap.imageUrl} alt={roadmap.name} fill className="object-cover" data-ai-hint={roadmap.dataAiHint || "roadmap banner"} priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
             )}
             <div className="border-b border-border pb-6">
                 <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                    {topic.name}
+                    {roadmap.name}
                 </h1>
                 <div className="mt-4 prose dark:prose-invert max-w-none">
-                    <MarkdownRenderer content={topic.body.raw} />
+                    <MarkdownRenderer content={roadmap.body.raw} />
                 </div>
             </div>
         </header>
@@ -114,7 +113,7 @@ export function CybersecurityRoadmap({ topic, tutorials, breadcrumbs }: Cybersec
         </div>
 
         <div className="relative px-4">
-          {(topic.roadmapColumns || []).map((columnData, index) => (
+          {(roadmap.roadmapColumns || []).map((columnData, index) => (
             <div key={index} className="grid grid-cols-1 md:grid-cols-5 gap-x-6 items-start">
                <RoadmapColumn title="Certifications & Tools" nodes={columnData.left} colSpanClass="col-span-1" tutorials={tutorials} />
                <RoadmapColumn title="Main Learning Path" nodes={columnData.main} colSpanClass="col-span-1 md:col-span-3" tutorials={tutorials} />

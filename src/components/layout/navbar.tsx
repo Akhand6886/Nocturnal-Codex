@@ -16,7 +16,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/lib/data";
 import { useState, useMemo } from "react";
-import type { TopicPost } from "contentlayer/generated";
+import type { RoadmapPost } from "contentlayer/generated";
 
 export interface NavItem {
   label: string;
@@ -25,19 +25,19 @@ export interface NavItem {
 }
 
 interface NavbarProps {
-    topics: TopicPost[];
+    roadmaps: RoadmapPost[];
 }
 
-export function Navbar({ topics = [] }: NavbarProps) {
+export function Navbar({ roadmaps = [] }: NavbarProps) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const dynamicNavItems = useMemo(() => {
-    const topicsNavItems = topics.map(topic => ({ label: topic.name, href: topic.url })).sort((a,b) => a.label.localeCompare(b.label));
+    const roadmapsNavItems = roadmaps.map(roadmap => ({ label: roadmap.name, href: roadmap.url })).sort((a,b) => a.label.localeCompare(b.label));
     return NAV_ITEMS.map(item =>
-      item.label === "Topics" ? { ...item, children: topicsNavItems } : item
+      item.label === "Roadmaps" ? { ...item, children: roadmapsNavItems } : item
     );
-  }, [topics]);
+  }, [roadmaps]);
 
 
   const renderNavItem = (item: NavItem, isMobile = false) => {

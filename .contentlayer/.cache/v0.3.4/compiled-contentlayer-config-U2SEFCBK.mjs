@@ -45,13 +45,28 @@ var TutorialPost = defineDocumentType(() => ({
     }
   }
 }));
-var SubTopic = defineNestedType(() => ({
-  name: "SubTopic",
+var RoadmapNode = defineNestedType(() => ({
+  name: "RoadmapNode",
   fields: {
     id: { type: "string", required: true },
-    slug: { type: "string", required: true },
-    name: { type: "string", required: true },
-    description: { type: "string", required: false }
+    title: { type: "string", required: true },
+    slug: { type: "string", required: false },
+    description: { type: "string", required: false },
+    isMainPath: { type: "boolean", required: false },
+    isGroup: { type: "boolean", required: false }
+  }
+}));
+RoadmapNode.fields.items = {
+  type: "list",
+  of: RoadmapNode,
+  required: false
+};
+var RoadmapColumn = defineNestedType(() => ({
+  name: "RoadmapColumn",
+  fields: {
+    left: { type: "list", of: RoadmapNode, required: false },
+    main: { type: "list", of: RoadmapNode, required: false },
+    right: { type: "list", of: RoadmapNode, required: false }
   }
 }));
 var CodeSnippetItem = defineNestedType(() => ({
@@ -80,9 +95,9 @@ var ThinkTankArticleStub = defineNestedType(() => ({
     slug: { type: "string", required: true }
   }
 }));
-var TopicPost = defineDocumentType(() => ({
-  name: "TopicPost",
-  filePathPattern: `topics/**/*.md`,
+var RoadmapPost = defineDocumentType(() => ({
+  name: "RoadmapPost",
+  filePathPattern: `roadmaps/**/*.md`,
   contentType: "markdown",
   fields: {
     id: { type: "string", required: true },
@@ -92,15 +107,15 @@ var TopicPost = defineDocumentType(() => ({
     category: { type: "string", required: false },
     imageUrl: { type: "string", required: false },
     dataAiHint: { type: "string", required: false },
-    subtopics: { type: "list", of: SubTopic, required: false },
     codeSnippets: { type: "list", of: CodeSnippetItem, required: false },
     references: { type: "list", of: WikiArticleStub, required: false },
-    thinkTankArticles: { type: "list", of: ThinkTankArticleStub, required: false }
+    thinkTankArticles: { type: "list", of: ThinkTankArticleStub, required: false },
+    roadmapColumns: { type: "list", of: RoadmapColumn, required: false }
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/topics/${doc.slug}`
+      resolve: (doc) => `/roadmaps/${doc.slug}`
     }
   }
 }));
@@ -123,13 +138,13 @@ var LanguagePost = defineDocumentType(() => ({
 }));
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
-  documentTypes: [BlogPost, TutorialPost, TopicPost, LanguagePost]
+  documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost]
 });
 export {
   BlogPost,
   LanguagePost,
-  TopicPost,
+  RoadmapPost,
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-SIO2FGJY.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-U2SEFCBK.mjs.map

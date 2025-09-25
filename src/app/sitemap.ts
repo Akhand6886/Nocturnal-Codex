@@ -2,7 +2,7 @@
 import { MetadataRoute } from 'next';
 import { MOCK_WIKI_ARTICLES } from '@/lib/data';
 import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
-import { allTopicPosts } from 'contentlayer/generated';
+import { allRoadmapPosts } from 'contentlayer/generated';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tags',
     '/categories',
     '/think-tank',
-    '/topics',
+    '/roadmaps',
     '/wiki',
   ].map((route) => ({
     url: `${BASE_URL}${route}`,
@@ -47,8 +47,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const topicPages = allTopicPosts.map((topic) => ({
-    url: `${BASE_URL}/topics/${topic.slug}`,
+  const roadmapPages = allRoadmapPosts.map((roadmap) => ({
+    url: `${BASE_URL}/roadmaps/${roadmap.slug}`,
     lastModified: new Date().toISOString(), 
     changeFrequency: 'weekly',
     priority: 0.7,
@@ -75,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...blogPosts,
     ...thinkTankArticles,
     ...wikiArticles,
-    ...topicPages,
+    ...roadmapPages,
     ...tagDetailPages,
     ...categoryDetailPages,
   ];
