@@ -15,13 +15,15 @@ export const metadata: Metadata = {
 export default function RoadmapsExplorerPage() {
   const groupedRoadmaps: Record<string, RoadmapPost[]> = {};
 
-  allRoadmapPosts.forEach(roadmap => {
-    const category = roadmap.category || "Other Roadmaps";
-    if (!groupedRoadmaps[category]) {
-      groupedRoadmaps[category] = [];
-    }
-    groupedRoadmaps[category].push(roadmap);
-  });
+  if (allRoadmapPosts && Array.isArray(allRoadmapPosts)) {
+    allRoadmapPosts.forEach(roadmap => {
+      const category = roadmap.category || "Other Roadmaps";
+      if (!groupedRoadmaps[category]) {
+        groupedRoadmaps[category] = [];
+      }
+      groupedRoadmaps[category].push(roadmap);
+    });
+  }
 
   const sortedCategories = Object.keys(groupedRoadmaps).sort((a, b) => {
     const coreCategories = ["Core Computer Science", "Theoretical Computer Science"];
