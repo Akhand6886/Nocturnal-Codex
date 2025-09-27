@@ -48,91 +48,29 @@ export const TutorialPost = defineDocumentType(() => ({
     },
 }));
 
-const RoadmapNode = defineNestedType(() => ({
-    name: 'RoadmapNode',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: false },
-        description: { type: 'string', required: false },
-        isMainPath: { type: 'boolean', required: false },
-        isGroup: { type: 'boolean', required: false },
-        items: { type: 'json', required: false },
+export const InteractiveRoadmap = defineDocumentType(() => ({
+  name: 'InteractiveRoadmap',
+  filePathPattern: `roadmaps/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    category: { type: 'string', required: true },
+    difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: true },
+    estimatedTime: { type: 'string', required: true },
+    flowData: { type: 'json', required: true }, // React Flow structure
+    layoutType: { type: 'enum', options: ['flow', 'linear', 'tree'], default: 'flow' }
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-}));
-  
-const RoadmapColumn = defineNestedType(() => ({
-    name: 'RoadmapColumn',
-    fields: {
-        left: { type: 'list', of: RoadmapNode, required: false },
-        main: { type: 'list', of: RoadmapNode, required: false },
-        right: { type: 'list', of: RoadmapNode, required: false },
+    url: {
+      type: 'string', 
+      resolve: (doc) => `/roadmaps/${doc.slug}`,
     }
-}))
-
-const CodeSnippetItem = defineNestedType(() => ({
-    name: 'CodeSnippetItem',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        language: { type: 'enum', options: ['python', 'javascript', 'typescript', 'html', 'css', 'json', 'markdown', 'csharp', 'java', 'go', 'rust', 'text', 'cplusplus'], required: true },
-        code: { type: 'string', required: true },
-        description: { type: 'string', required: false },
-    }
-}));
-
-const WikiArticleStub = defineNestedType(() => ({
-    name: 'WikiArticleStub',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-    }
-}));
-
-const ThinkTankArticleStub = defineNestedType(() => ({
-    name: 'ThinkTankArticleStub',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-    }
-}));
-
-const Subtopic = defineNestedType(() => ({
-    name: 'Subtopic',
-    fields: {
-        id: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-        name: { type: 'string', required: true },
-        description: { type: 'string', required: true },
-    }
-}));
-
-export const RoadmapPost = defineDocumentType(() => ({
-    name: 'RoadmapPost',
-    filePathPattern: `roadmaps/**/*.md`,
-    contentType: 'markdown',
-    fields: {
-      id: { type: 'string', required: true },
-      name: { type: 'string', required: true },
-      slug: { type: 'string', required: true },
-      description: { type: 'string', required: true },
-      category: { type: 'string', required: false },
-      imageUrl: { type: 'string', required: false },
-      dataAiHint: { type: 'string', required: false },
-      codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
-      references: { type: 'list', of: WikiArticleStub, required: false },
-      thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
-      roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
-      subtopics: { type: 'list', of: Subtopic, required: false },
-    },
-    computedFields: {
-      url: {
-        type: 'string',
-        resolve: (doc) => `/roadmaps/${doc.slug}`,
-      },
-    },
+  }
 }));
 
 export const LanguagePost = defineDocumentType(() => ({
@@ -155,5 +93,5 @@ export const LanguagePost = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost],
+  documentTypes: [BlogPost, TutorialPost, InteractiveRoadmap, LanguagePost],
 })
