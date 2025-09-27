@@ -111,10 +111,6 @@ export default function RoadmapsPage() {
         
 
         {/* CTA */}
-        <Button size="lg" className="gap-2">
-          <Star className="h-4 w-4" />
-          Start Learning Today
-        </Button>
       </div>
 
       {/* Featured Roadmaps */}
