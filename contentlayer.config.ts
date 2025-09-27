@@ -1,4 +1,3 @@
-
 import { defineDocumentType, makeSource, defineNestedType } from 'contentlayer/source-files'
 
 export const BlogPost = defineDocumentType(() => ({
@@ -46,9 +45,10 @@ export const TutorialPost = defineDocumentType(() => ({
         resolve: (doc) => doc._raw.sourceFileDir.split('/')[1],
       }
     },
-  }));
+}));
 
-const RoadmapNode: any = defineNestedType(() => ({
+// ✅ FIXED: Define RoadmapNode with all fields at once
+const RoadmapNode = defineNestedType(() => ({
     name: 'RoadmapNode',
     fields: {
         id: { type: 'string', required: true },
@@ -57,14 +57,17 @@ const RoadmapNode: any = defineNestedType(() => ({
         description: { type: 'string', required: false },
         isMainPath: { type: 'boolean', required: false },
         isGroup: { type: 'boolean', required: false },
+        // ✅ Include the recursive items field here
+        items: { type: 'json', required: false }, // Use json for recursive structures
     },
 }));
 
-RoadmapNode.fields.items = {
-    type: 'list',
-    of: RoadmapNode,
-    required: false,
-};
+// ❌ REMOVE THIS - This was causing the error
+// RoadmapNode.fields.items = {
+//     type: 'list',
+//     of: RoadmapNode,
+//     required: false,
+// };
   
 const RoadmapColumn = defineNestedType(() => ({
     name: 'RoadmapColumn',
@@ -104,7 +107,6 @@ const ThinkTankArticleStub = defineNestedType(() => ({
     }
 }));
 
-
 export const RoadmapPost = defineDocumentType(() => ({
     name: 'RoadmapPost',
     filePathPattern: `roadmaps/**/*.md`,
@@ -128,9 +130,9 @@ export const RoadmapPost = defineDocumentType(() => ({
         resolve: (doc) => `/roadmaps/${doc.slug}`,
       },
     },
-  }));
+}));
 
-  export const LanguagePost = defineDocumentType(() => ({
+export const LanguagePost = defineDocumentType(() => ({
     name: 'LanguagePost',
     filePathPattern: `languages/**/*.md`,
     fields: {
@@ -146,8 +148,7 @@ export const RoadmapPost = defineDocumentType(() => ({
         resolve: (doc) => `/languages/${doc.slug}`,
       },
     },
-  }));
-
+}));
 
 export default makeSource({
   contentDirPath: 'content',
