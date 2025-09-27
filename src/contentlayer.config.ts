@@ -48,7 +48,7 @@ export const TutorialPost = defineDocumentType(() => ({
     },
   }));
 
-const RoadmapNode = defineNestedType(() => ({
+const RoadmapNode: any = defineNestedType(() => ({
     name: 'RoadmapNode',
     fields: {
         id: { type: 'string', required: true },
