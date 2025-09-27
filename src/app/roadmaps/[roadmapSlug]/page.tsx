@@ -11,6 +11,7 @@ import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
 import { cache } from 'react';
 import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
+import { DevOpsRoadmap } from "@/components/content/devops-roadmap";
 
 export const revalidate = 60; 
 
@@ -58,6 +59,12 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   if (roadmap.slug === 'cybersecurity') {
     const tutorials = allTutorialPosts.filter(p => p.language === 'cybersecurity');
     return <CybersecurityRoadmap roadmap={roadmap} tutorials={tutorials} breadcrumbs={breadcrumbItems} />;
+  }
+
+  // Special layout for DevOps roadmap
+  if (roadmap.slug === 'devops') {
+    const tutorials = allTutorialPosts.filter(p => p.language === 'devops');
+    return <DevOpsRoadmap roadmap={roadmap} tutorials={tutorials} breadcrumbs={breadcrumbItems} />;
   }
   
   // == DEFAULT ROADMAP PAGE LAYOUT ==
