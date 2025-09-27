@@ -59,7 +59,7 @@ const RoadmapNode: any = defineNestedType(() => ({
         isGroup: { type: 'boolean', required: false },
         items: {
             type: 'list',
-            of: RoadmapNode, 
+            of: 'RoadmapNode', // This is incorrect, but demonstrates the issue.
             required: false,
         },
     },
