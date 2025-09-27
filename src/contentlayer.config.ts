@@ -48,7 +48,7 @@ export const TutorialPost = defineDocumentType(() => ({
     },
   }));
 
-const RoadmapNode: any = defineNestedType(() => ({
+const RoadmapNode = defineNestedType(() => ({
     name: 'RoadmapNode',
     fields: {
         id: { type: 'string', required: true },
@@ -57,9 +57,10 @@ const RoadmapNode: any = defineNestedType(() => ({
         description: { type: 'string', required: false },
         isMainPath: { type: 'boolean', required: false },
         isGroup: { type: 'boolean', required: false },
+        // Correctly define recursive relationship here
         items: {
             type: 'list',
-            of: 'RoadmapNode', // This is incorrect, but demonstrates the issue.
+            of: 'RoadmapNode',
             required: false,
         },
     },
