@@ -206,3 +206,5 @@ export const revalidate = 60;
 
 // Enable static generation
 export const dynamic = 'force-static';
+
+    
