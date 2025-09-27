@@ -109,24 +109,6 @@ export default function RoadmapsPage() {
           Each roadmap is carefully crafted with hands-on projects, resources, and progress tracking.
         </p>
         
-        {/* Stats */}
-        <div className="flex flex-wrap justify-center gap-8 mb-8">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <BookOpen className="h-5 w-5" />
-            <span className="font-semibold">{totalRoadmaps}</span>
-            <span>Learning Paths</span>
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Users className="h-5 w-5" />
-            <span className="font-semibold">{categories.length}</span>
-            <span>Categories</span>
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <TrendingUp className="h-5 w-5" />
-            <span className="font-semibold">Interactive</span>
-            <span>Progress Tracking</span>
-          </div>
-        </div>
 
         {/* CTA */}
         <Button size="lg" className="gap-2">
