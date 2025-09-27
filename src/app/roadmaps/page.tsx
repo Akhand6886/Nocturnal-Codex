@@ -1,4 +1,3 @@
-
 // src/app/roadmaps/page.tsx
 import { allInteractiveRoadmaps } from 'contentlayer/generated';
 import { RoadmapCard } from '@/components/roadmap/RoadmapCard';
@@ -174,19 +173,7 @@ export default function RoadmapsPage() {
         </Tabs>
       </section>
 
-      {/* All Roadmaps with Filters */}
-      <section>
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">All Learning Roadmaps</h2>
-          <p className="text-muted-foreground">
-            Comprehensive collection of all available learning paths
-          </p>
-        </div>
-
-        <Suspense fallback={<RoadmapListingSkeleton />}>
-          <RoadmapListing roadmaps={publishedRoadmaps} />
-        </Suspense>
-      </section>
+      
     </div>
   );
 }
