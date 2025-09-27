@@ -48,7 +48,6 @@ export const TutorialPost = defineDocumentType(() => ({
     },
 }));
 
-// ✅ FIXED: Define RoadmapNode with all fields at once
 const RoadmapNode = defineNestedType(() => ({
     name: 'RoadmapNode',
     fields: {
@@ -58,11 +57,10 @@ const RoadmapNode = defineNestedType(() => ({
         description: { type: 'string', required: false },
         isMainPath: { type: 'boolean', required: false },
         isGroup: { type: 'boolean', required: false },
-        // ✅ Include the recursive items field here
-        items: { type: 'json', required: false }, // Use json for recursive structures
+        items: { type: 'json', required: false },
     },
 }));
-
+  
 const RoadmapColumn = defineNestedType(() => ({
     name: 'RoadmapColumn',
     fields: {
@@ -101,6 +99,16 @@ const ThinkTankArticleStub = defineNestedType(() => ({
     }
 }));
 
+const Subtopic = defineNestedType(() => ({
+    name: 'Subtopic',
+    fields: {
+        id: { type: 'string', required: true },
+        slug: { type: 'string', required: true },
+        name: { type: 'string', required: true },
+        description: { type: 'string', required: true },
+    }
+}));
+
 export const RoadmapPost = defineDocumentType(() => ({
     name: 'RoadmapPost',
     filePathPattern: `roadmaps/**/*.md`,
@@ -117,6 +125,7 @@ export const RoadmapPost = defineDocumentType(() => ({
       references: { type: 'list', of: WikiArticleStub, required: false },
       thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
       roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
+      subtopics: { type: 'list', of: Subtopic, required: false },
     },
     computedFields: {
       url: {
