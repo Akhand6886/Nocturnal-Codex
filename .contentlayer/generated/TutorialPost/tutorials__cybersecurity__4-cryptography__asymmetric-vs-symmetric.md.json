@@ -1,0 +1,22 @@
+{
+  "title": "Asymmetric vs. Symmetric Cryptography",
+  "slug": "asymmetric-vs-symmetric",
+  "order": 2,
+  "description": "Understand the key differences between private and public key cryptography.",
+  "category": "4. Cryptography",
+  "body": {
+    "raw": "\n## Asymmetric vs. Symmetric Cryptography\n\nThis tutorial will compare asymmetric and symmetric cryptography. Content to be added.\n",
+    "html": "<h2>Asymmetric vs. Symmetric Cryptography</h2>\n<p>This tutorial will compare asymmetric and symmetric cryptography. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/4-cryptography/asymmetric-vs-symmetric.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/4-cryptography/asymmetric-vs-symmetric.md",
+    "sourceFileName": "asymmetric-vs-symmetric.md",
+    "sourceFileDir": "tutorials/cybersecurity/4-cryptography",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/4-cryptography/asymmetric-vs-symmetric"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/asymmetric-vs-symmetric",
+  "language": "cybersecurity"
+}

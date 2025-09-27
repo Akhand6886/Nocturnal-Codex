@@ -1,0 +1,32 @@
+{
+  "id": "language-theory",
+  "name": "Language Theory",
+  "slug": "language-theory",
+  "description": "Formal languages, automata, and computability.",
+  "category": "Theoretical Computer Science",
+  "imageUrl": "https://picsum.photos/seed/languagetheory/600/400",
+  "dataAiHint": "abstract symbols",
+  "references": [
+    {
+      "id": "2",
+      "title": "Introduction to Turing Machines",
+      "slug": "turing-machines",
+      "type": "WikiArticleStub",
+      "_raw": {}
+    }
+  ],
+  "body": {
+    "raw": "\nExplore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
+    "html": "<p>Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.</p>"
+  },
+  "_id": "roadmaps/language-theory.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/language-theory.md",
+    "sourceFileName": "language-theory.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/language-theory"
+  },
+  "type": "RoadmapPost",
+  "url": "/roadmaps/language-theory"
+}

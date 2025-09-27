@@ -1,0 +1,28 @@
+{
+  "title": "The Release Stage",
+  "slug": "devops-release",
+  "order": 5,
+  "description": "Understand the 'Release' stage, where the application is prepared for deployment.",
+  "category": "DevOps Lifecycle",
+  "tags": [
+    "DevOps",
+    "Release",
+    "CD",
+    "Continuous Delivery"
+  ],
+  "body": {
+    "raw": "\n## 5. The Release Stage\n\nOnce an application has passed all the automated tests, it is ready for **Release**. This stage involves preparing the build artifact for deployment to a production environment.\n\n### Key Activities:\n- **Artifact Versioning:** Tagging the build artifact with a version number (e.g., v1.2.0).\n- **Storing Artifacts:** Pushing the artifact to a repository, such as Docker Hub for container images or Nexus/Artifactory for libraries.\n- **Approval Gates:** In some workflows, this stage includes a manual approval step before the code is deployed to production. This is a key part of **Continuous Delivery**.\n\nA successful release means you have a production-ready artifact waiting to be deployed.\n",
+    "html": "<h2>5. The Release Stage</h2>\n<p>Once an application has passed all the automated tests, it is ready for <strong>Release</strong>. This stage involves preparing the build artifact for deployment to a production environment.</p>\n<h3>Key Activities:</h3>\n<ul>\n<li><strong>Artifact Versioning:</strong> Tagging the build artifact with a version number (e.g., v1.2.0).</li>\n<li><strong>Storing Artifacts:</strong> Pushing the artifact to a repository, such as Docker Hub for container images or Nexus/Artifactory for libraries.</li>\n<li><strong>Approval Gates:</strong> In some workflows, this stage includes a manual approval step before the code is deployed to production. This is a key part of <strong>Continuous Delivery</strong>.</li>\n</ul>\n<p>A successful release means you have a production-ready artifact waiting to be deployed.</p>"
+  },
+  "_id": "tutorials/devops/devops-release.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/devops/devops-release.md",
+    "sourceFileName": "devops-release.md",
+    "sourceFileDir": "tutorials/devops",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/devops/devops-release"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/devops/devops-release",
+  "language": "devops"
+}

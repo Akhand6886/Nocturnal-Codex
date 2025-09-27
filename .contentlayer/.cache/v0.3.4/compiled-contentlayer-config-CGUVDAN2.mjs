@@ -53,14 +53,12 @@ var RoadmapNode = defineNestedType(() => ({
     slug: { type: "string", required: false },
     description: { type: "string", required: false },
     isMainPath: { type: "boolean", required: false },
-    isGroup: { type: "boolean", required: false }
+    isGroup: { type: "boolean", required: false },
+    // ✅ Include the recursive items field here
+    items: { type: "json", required: false }
+    // Use json for recursive structures
   }
 }));
-RoadmapNode.fields.items = {
-  type: "list",
-  of: RoadmapNode,
-  required: false
-};
 var RoadmapColumn = defineNestedType(() => ({
   name: "RoadmapColumn",
   fields: {
@@ -147,4 +145,4 @@ export {
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-U2SEFCBK.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-CGUVDAN2.mjs.map

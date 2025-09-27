@@ -1,0 +1,22 @@
+{
+  "title": "The CIA Triad",
+  "slug": "the-cia-triad",
+  "order": 2,
+  "description": "Learn about the core principles of Confidentiality, Integrity, and Availability.",
+  "category": "1. Security Foundations",
+  "body": {
+    "raw": "\n## The CIA Triad\n\nThis tutorial will cover the CIA Triad in detail. Content to be added.\n",
+    "html": "<h2>The CIA Triad</h2>\n<p>This tutorial will cover the CIA Triad in detail. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/1-foundations/the-cia-triad.md",
+    "sourceFileName": "the-cia-triad.md",
+    "sourceFileDir": "tutorials/cybersecurity/1-foundations",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/1-foundations/the-cia-triad"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/the-cia-triad",
+  "language": "cybersecurity"
+}

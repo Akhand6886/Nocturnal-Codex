@@ -1,0 +1,22 @@
+{
+  "title": "Virtual Private Networks (VPNs)",
+  "slug": "virtual-private-networks",
+  "order": 3,
+  "description": "Explore how VPNs create secure connections over public networks.",
+  "category": "2. Network Security",
+  "body": {
+    "raw": "\n## Virtual Private Networks (VPNs)\n\nThis tutorial will cover VPNs. Content to be added.\n",
+    "html": "<h2>Virtual Private Networks (VPNs)</h2>\n<p>This tutorial will cover VPNs. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/2-network-security/virtual-private-networks.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/2-network-security/virtual-private-networks.md",
+    "sourceFileName": "virtual-private-networks.md",
+    "sourceFileDir": "tutorials/cybersecurity/2-network-security",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/2-network-security/virtual-private-networks"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/virtual-private-networks",
+  "language": "cybersecurity"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ml",
+  "name": "Machine Learning",
+  "slug": "machine-learning",
+  "description": "Algorithms that learn from and make decisions based on data.",
+  "category": "Artificial Intelligence",
+  "imageUrl": "https://picsum.photos/seed/machinelearning/600/400",
+  "dataAiHint": "artificial intelligence",
+  "body": {
+    "raw": "\nDive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
+    "html": "<p>Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.</p>"
+  },
+  "_id": "roadmaps/machine-learning.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/machine-learning.md",
+    "sourceFileName": "machine-learning.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/machine-learning"
+  },
+  "type": "RoadmapPost",
+  "url": "/roadmaps/machine-learning"
+}

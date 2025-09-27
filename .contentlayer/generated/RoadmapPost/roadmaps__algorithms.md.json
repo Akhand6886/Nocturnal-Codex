@@ -1,0 +1,52 @@
+{
+  "id": "algorithms",
+  "name": "Algorithms",
+  "slug": "algorithms",
+  "description": "Core concepts of computation and problem-solving strategies.",
+  "category": "Core Computer Science",
+  "imageUrl": "https://picsum.photos/seed/algorithms/600/400",
+  "dataAiHint": "abstract algorithm",
+  "codeSnippets": [
+    {
+      "id": "cs-algo-1",
+      "title": "Python Merge Sort",
+      "language": "python",
+      "code": "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        # ... (merge logic)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n",
+      "description": "A classic divide-and-conquer sorting algorithm.",
+      "type": "CodeSnippetItem",
+      "_raw": {}
+    },
+    {
+      "id": "cs-algo-bigo-example",
+      "title": "Big O Notation Example (Linear Time)",
+      "language": "python",
+      "code": "def find_element(arr, target):\n    # O(n) - Linear time complexity\n    for element in arr:\n        if element == target:\n            return True\n    return False\n\nmy_list = [1, 2, 3, 4, 5]\nprint(find_element(my_list, 3)) # True\nprint(find_element(my_list, 6)) # False\n",
+      "description": "Illustrates an algorithm with O(n) time complexity.",
+      "type": "CodeSnippetItem",
+      "_raw": {}
+    }
+  ],
+  "references": [
+    {
+      "id": "1",
+      "title": "Big O Notation Explained",
+      "slug": "big-o-notation",
+      "type": "WikiArticleStub",
+      "_raw": {}
+    }
+  ],
+  "body": {
+    "raw": "\nDelve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.",
+    "html": "<p>Delve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.</p>"
+  },
+  "_id": "roadmaps/algorithms.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/algorithms.md",
+    "sourceFileName": "algorithms.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/algorithms"
+  },
+  "type": "RoadmapPost",
+  "url": "/roadmaps/algorithms"
+}

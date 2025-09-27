@@ -1,0 +1,28 @@
+{
+  "title": "The Build Stage",
+  "slug": "devops-build",
+  "order": 3,
+  "description": "Understand the 'Build' stage, where source code is compiled and packaged in an automated fashion.",
+  "category": "DevOps Lifecycle",
+  "tags": [
+    "DevOps",
+    "Build",
+    "CI",
+    "Continuous Integration"
+  ],
+  "body": {
+    "raw": "\n## 3. The Build Stage\n\nThe **Build** stage is the first step in automation. This is where **Continuous Integration (CI)** begins. In this stage, the source code from version control is compiled into a runnable artifact.\n\n### Key Activities:\n- **Automated Compilation:** Using tools like Maven (for Java), Webpack (for JavaScript), or `go build` to compile the source code.\n- **Artifact Generation:** Creating the package that will be tested and deployed, such as a `.jar` file, a Docker image, or a simple `.zip` archive.\n- **CI Servers:** Using tools like **Jenkins**, GitLab CI, or GitHub Actions to automate the build process whenever new code is pushed to the repository.\n\nA successful build is a prerequisite for the testing and release stages.\n",
+    "html": "<h2>3. The Build Stage</h2>\n<p>The <strong>Build</strong> stage is the first step in automation. This is where <strong>Continuous Integration (CI)</strong> begins. In this stage, the source code from version control is compiled into a runnable artifact.</p>\n<h3>Key Activities:</h3>\n<ul>\n<li><strong>Automated Compilation:</strong> Using tools like Maven (for Java), Webpack (for JavaScript), or <code>go build</code> to compile the source code.</li>\n<li><strong>Artifact Generation:</strong> Creating the package that will be tested and deployed, such as a <code>.jar</code> file, a Docker image, or a simple <code>.zip</code> archive.</li>\n<li><strong>CI Servers:</strong> Using tools like <strong>Jenkins</strong>, GitLab CI, or GitHub Actions to automate the build process whenever new code is pushed to the repository.</li>\n</ul>\n<p>A successful build is a prerequisite for the testing and release stages.</p>"
+  },
+  "_id": "tutorials/devops/devops-build.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/devops/devops-build.md",
+    "sourceFileName": "devops-build.md",
+    "sourceFileDir": "tutorials/devops",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/devops/devops-build"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/devops/devops-build",
+  "language": "devops"
+}

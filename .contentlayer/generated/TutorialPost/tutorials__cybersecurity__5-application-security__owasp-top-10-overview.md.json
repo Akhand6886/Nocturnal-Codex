@@ -1,0 +1,22 @@
+{
+  "title": "OWASP Top 10 Overview",
+  "slug": "owasp-top-10-overview",
+  "order": 1,
+  "description": "An introduction to the most critical web application security risks.",
+  "category": "5. Application Security",
+  "body": {
+    "raw": "\n## OWASP Top 10 Overview\n\nThis tutorial will provide an overview of the OWASP Top 10 list. Content to be added.\n",
+    "html": "<h2>OWASP Top 10 Overview</h2>\n<p>This tutorial will provide an overview of the OWASP Top 10 list. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/5-application-security/owasp-top-10-overview.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/5-application-security/owasp-top-10-overview.md",
+    "sourceFileName": "owasp-top-10-overview.md",
+    "sourceFileDir": "tutorials/cybersecurity/5-application-security",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/5-application-security/owasp-top-10-overview"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/owasp-top-10-overview",
+  "language": "cybersecurity"
+}

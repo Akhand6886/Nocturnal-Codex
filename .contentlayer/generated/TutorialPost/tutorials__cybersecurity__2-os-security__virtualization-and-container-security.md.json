@@ -1,0 +1,22 @@
+{
+  "title": "Virtualization and Container Security",
+  "slug": "virtualization-and-container-security",
+  "order": 4,
+  "description": "Learn about the security implications of VMs and containers like Docker.",
+  "category": "2. OS & System Security",
+  "body": {
+    "raw": "\n## Virtualization and Container Security\n\nThis tutorial will cover the security considerations for virtualized environments. Content to be added.\n",
+    "html": "<h2>Virtualization and Container Security</h2>\n<p>This tutorial will cover the security considerations for virtualized environments. Content to be added.</p>"
+  },
+  "_id": "tutorials/cybersecurity/2-os-security/virtualization-and-container-security.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/cybersecurity/2-os-security/virtualization-and-container-security.md",
+    "sourceFileName": "virtualization-and-container-security.md",
+    "sourceFileDir": "tutorials/cybersecurity/2-os-security",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/cybersecurity/2-os-security/virtualization-and-container-security"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/cybersecurity/virtualization-and-container-security",
+  "language": "cybersecurity"
+}

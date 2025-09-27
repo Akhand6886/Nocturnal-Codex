@@ -1,0 +1,28 @@
+{
+  "title": "The Monitor Stage",
+  "slug": "devops-monitor",
+  "order": 8,
+  "description": "Understand the crucial 'Monitor' stage of DevOps, where data is collected to provide feedback and improve the system.",
+  "category": "DevOps Lifecycle",
+  "tags": [
+    "DevOps",
+    "Monitoring",
+    "Logging",
+    "Feedback"
+  ],
+  "body": {
+    "raw": "\n## 8. The Monitor Stage\n\nThe **Monitor** stage is the final piece of the DevOps loop. It involves collecting data on the performance and usage of the application to feed back into the planning stage.\n\n### Key Activities:\n- **Logging:** Collecting logs from the application and infrastructure to diagnose issues.\n- **Monitoring:** Using tools like **Prometheus** and Grafana to track metrics like CPU usage, memory, and response times in real-time.\n- **Alerting:** Setting up automated alerts to notify the team when something goes wrong (e.g., an error rate spike or a server going down).\n\nThe insights gained from monitoring are used to create new tasks in the planning stage, thus completing the DevOps lifecycle and enabling continuous improvement.\n",
+    "html": "<h2>8. The Monitor Stage</h2>\n<p>The <strong>Monitor</strong> stage is the final piece of the DevOps loop. It involves collecting data on the performance and usage of the application to feed back into the planning stage.</p>\n<h3>Key Activities:</h3>\n<ul>\n<li><strong>Logging:</strong> Collecting logs from the application and infrastructure to diagnose issues.</li>\n<li><strong>Monitoring:</strong> Using tools like <strong>Prometheus</strong> and Grafana to track metrics like CPU usage, memory, and response times in real-time.</li>\n<li><strong>Alerting:</strong> Setting up automated alerts to notify the team when something goes wrong (e.g., an error rate spike or a server going down).</li>\n</ul>\n<p>The insights gained from monitoring are used to create new tasks in the planning stage, thus completing the DevOps lifecycle and enabling continuous improvement.</p>"
+  },
+  "_id": "tutorials/devops/devops-monitor.md",
+  "_raw": {
+    "sourceFilePath": "tutorials/devops/devops-monitor.md",
+    "sourceFileName": "devops-monitor.md",
+    "sourceFileDir": "tutorials/devops",
+    "contentType": "markdown",
+    "flattenedPath": "tutorials/devops/devops-monitor"
+  },
+  "type": "TutorialPost",
+  "url": "/tutorial/devops/devops-monitor",
+  "language": "devops"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "frontend",
+  "name": "Frontend Development",
+  "slug": "frontend",
+  "description": "A roadmap to building modern, interactive user interfaces for the web.",
+  "category": "Software Engineering",
+  "imageUrl": "https://picsum.photos/seed/frontendui/600/400",
+  "dataAiHint": "user interface",
+  "body": {
+    "raw": "\nMaster the technologies of the browser. This roadmap covers the essential languages (HTML, CSS, JavaScript) and frameworks (like React) for creating beautiful and responsive websites.\n",
+    "html": "<p>Master the technologies of the browser. This roadmap covers the essential languages (HTML, CSS, JavaScript) and frameworks (like React) for creating beautiful and responsive websites.</p>"
+  },
+  "_id": "roadmaps/frontend.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/frontend.md",
+    "sourceFileName": "frontend.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/frontend"
+  },
+  "type": "RoadmapPost",
+  "url": "/roadmaps/frontend"
+}
