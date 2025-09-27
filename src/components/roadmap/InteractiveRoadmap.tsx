@@ -21,9 +21,7 @@ import { RoadmapNode } from './RoadmapNode';
 import { TopicSidebar } from './TopicSidebar';
 import { ProgressTracker } from './ProgressTracker';
 import { RoadmapControls } from './RoadmapControls';
-import { useNodeSelection } from './hooks/useNodeSelection';
-import { useProgress } from './hooks/useProgress';
-import { transformToReactFlow } from '@/lib/roadmap-utils';
+import { useRoadmapData, useNodeSelection, useProgress } from './hooks';
 import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
 import { type InteractiveRoadmap as RoadmapType } from 'contentlayer/generated';
 
@@ -46,28 +44,46 @@ export function InteractiveRoadmap({
 }: InteractiveRoadmapProps) {
   const [searchTerm, setSearchTerm] = useState('');
   
-  // Transform flow data to React Flow format
-  const { nodes: initialNodes, edges: initialEdges } = useMemo(
-    () => transformToReactFlow(flowData),
-    [flowData]
-  );
-
-  // React Flow state management
+  // Use the custom hooks
+  const { 
+    nodes: initialNodes, 
+    edges: initialEdges,
+    loading: dataLoading,
+    error: dataError,
+  } = useRoadmapData({
+    slug,
+    initialFlowData: flowData,
+  });
+  
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  // Custom hooks for roadmap functionality
+  
   const { selectedNode, selectNode, clearSelection } = useNodeSelection();
-  const { progress, toggleNodeCompletion, getProgressPercentage } = useProgress(
-    slug,
-    nodes
-  );
+  const { 
+    progress, 
+    toggleNodeCompletion, 
+    getProgressPercentage 
+  } = useProgress(slug, nodes, edges);
+
+  // Update nodes with completion status from progress hook
+  useEffect(() => {
+    setNodes((nds) =>
+      nds.map((node) => ({
+        ...node,
+        data: {
+          ...node.data,
+          completed: progress.completedNodes.includes(node.id),
+        },
+      }))
+    );
+  }, [progress.completedNodes, setNodes]);
+
 
   // Handle node clicks
   const onNodeClick = useCallback(
     (event: React.MouseEvent, node: Node) => {
       event.stopPropagation();
-      selectNode(node);
+      selectNode(node as Node<RoadmapNodeData>);
     },
     [selectNode]
   );
@@ -76,23 +92,8 @@ export function InteractiveRoadmap({
   const onToggleCompletion = useCallback(
     (nodeId: string) => {
       toggleNodeCompletion(nodeId);
-      
-      // Update node visual state
-      setNodes((nds) =>
-        nds.map((node) =>
-          node.id === nodeId
-            ? {
-                ...node,
-                data: {
-                  ...node.data,
-                  completed: !node.data.completed,
-                },
-              }
-            : node
-        )
-      );
     },
-    [toggleNodeCompletion, setNodes]
+    [toggleNodeCompletion]
   );
 
   // Search functionality
@@ -124,6 +125,14 @@ export function InteractiveRoadmap({
   }, [nodes, selectNode]);
 
   const progressPercentage = getProgressPercentage();
+
+  if (dataLoading) {
+    return <div>Loading roadmap...</div>;
+  }
+
+  if (dataError) {
+    return <div>Error loading roadmap: {dataError}</div>
+  }
 
   return (
     <div className="relative w-full h-[800px] bg-background border rounded-lg overflow-hidden">

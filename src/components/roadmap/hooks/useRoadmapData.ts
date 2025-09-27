@@ -1,37 +1,77 @@
-// src/components/roadmap/hooks/useRoadmapData.ts
-'use client';
 
-import { useState, useEffect } from 'react';
-import { type RoadmapFlowData } from '@/types/roadmap';
+import { useState, useEffect, useMemo } from 'react';
+import { type Node, type Edge } from '@xyflow/react';
+import { transformToReactFlow, loadRoadmapFlowData } from '@/lib/roadmap-utils';
+import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
 
-export function useRoadmapData(slug: string) {
-  const [flowData, setFlowData] = useState<RoadmapFlowData | null>(null);
-  const [loading, setLoading] = useState(true);
+interface UseRoadmapDataProps {
+  slug: string;
+  initialFlowData?: RoadmapFlowData;
+}
+
+interface UseRoadmapDataReturn {
+  nodes: Node<RoadmapNodeData>[];
+  edges: Edge[];
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+}
+
+export function useRoadmapData({ 
+  slug, 
+  initialFlowData 
+}: UseRoadmapDataProps): UseRoadmapDataReturn {
+  const [flowData, setFlowData] = useState<RoadmapFlowData | null>(initialFlowData || null);
+  const [loading, setLoading] = useState(!initialFlowData);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function loadData() {
-      try {
-        setLoading(true);
-        const response = await fetch(`/roadmap-data/${slug}.json`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch roadmap data: ${response.statusText}`);
-        }
-        const data: RoadmapFlowData = await response.json();
+  const fetchData = async () => {
+    if (initialFlowData) return; // Don't fetch if we have initial data
+    
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const data = await loadRoadmapFlowData(slug);
+      if (data) {
         setFlowData(data);
-        setError(null);
-      } catch (err: any) {
-        setError(err.message || 'An unknown error occurred');
-        console.error(`Failed to load roadmap data for ${slug}:`, err);
-      } finally {
-        setLoading(false);
+      } else {
+        setError(`Failed to load roadmap data for ${slug}`);
       }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error occurred');
+    } finally {
+      setLoading(false);
     }
+  };
 
-    if (slug) {
-      loadData();
-    }
+  const refetch = async () => {
+    setFlowData(null);
+    await fetchData();
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [slug]);
 
-  return { flowData, loading, error };
+  const { nodes, edges } = useMemo(() => {
+    if (!flowData) {
+      return { nodes: [], edges: [] };
+    }
+    
+    try {
+      return transformToReactFlow(flowData);
+    } catch (err) {
+      setError('Failed to transform roadmap data');
+      return { nodes: [], edges: [] };
+    }
+  }, [flowData]);
+
+  return {
+    nodes,
+    edges,
+    loading,
+    error,
+    refetch,
+  };
 }
