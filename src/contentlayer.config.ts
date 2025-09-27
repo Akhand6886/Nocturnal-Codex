@@ -57,10 +57,9 @@ const RoadmapNode = defineNestedType(() => ({
         description: { type: 'string', required: false },
         isMainPath: { type: 'boolean', required: false },
         isGroup: { type: 'boolean', required: false },
-        // Correctly define recursive relationship here
         items: {
             type: 'list',
-            of: 'RoadmapNode',
+            of: 'RoadmapNode', // The type name as a string for recursion
             required: false,
         },
     },
