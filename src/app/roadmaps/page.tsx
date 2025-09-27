@@ -42,6 +42,16 @@ export const metadata: Metadata = {
 function getRoadmapStats() {
   const publishedRoadmaps = allInteractiveRoadmaps;
   
+  if (!publishedRoadmaps || publishedRoadmaps.length === 0) {
+    return {
+      publishedRoadmaps: [],
+      categories: [],
+      difficulties: [],
+      totalRoadmaps: 0,
+      avgEstimatedTime: '0',
+    };
+  }
+  
   const categories = Array.from(
     new Set(publishedRoadmaps.map(roadmap => roadmap.category))
   ).sort();
