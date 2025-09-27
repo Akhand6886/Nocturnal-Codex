@@ -1,25 +1,27 @@
 
+
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
 import { ArrowRight, Lightbulb, Code2, Brain } from "lucide-react";
 import Image from "next/image";
-import { allTopicPosts, allTutorialPosts } from 'contentlayer/generated';
+import { allInteractiveRoadmaps, allTutorialPosts } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
 import { cache } from 'react';
 import { CybersecurityRoadmap } from "@/components/content/cybersecurity-roadmap";
+import { DevOpsRoadmap } from "@/components/content/devops-roadmap";
 
 export const revalidate = 60; 
 
 const getTopic = cache((slug: string) => {
-  return allTopicPosts.find((t) => t.slug === slug);
+  return allInteractiveRoadmaps.find((t) => t.slug === slug);
 });
 
 export async function generateStaticParams() {
-  const topics = allTopicPosts || [];
+  const topics = allInteractiveRoadmaps || [];
   return topics.map((topic) => ({
     topicSlug: topic.slug,
   }));
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
     return { title: "Topic Not Found" };
   }
   return {
-    title: `${topic.name} | Nocturnal Codex`,
+    title: `${topic.title} | Nocturnal Codex`,
     description: topic.description,
   };
 }
@@ -51,13 +53,18 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
     { label: "Topics", href: "/topics" },
-    { label: topic.name },
+    { label: topic.title },
   ];
   
   // Special layout for Cybersecurity topic
-  if (topic.slug === 'cybersecurity') {
+  if (topic.slug === 'cybersecurity' && topic.roadmapColumns) {
     const tutorials = allTutorialPosts.filter(p => p.language === 'cybersecurity');
     return <CybersecurityRoadmap topic={topic} tutorials={tutorials} breadcrumbs={breadcrumbItems} />;
+  }
+  
+  if (topic.slug === 'devops' && topic.roadmapColumns) {
+    const tutorials = allTutorialPosts.filter(p => p.language === 'devops');
+    return <DevOpsRoadmap topic={topic} tutorials={tutorials} breadcrumbs={breadcrumbItems} />;
   }
   
   // == DEFAULT TOPIC PAGE LAYOUT ==
@@ -68,13 +75,13 @@ export default async function TopicPage({ params }: TopicPageProps) {
       <header className="space-y-4">
         {topic.imageUrl && (
           <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg border border-border/20">
-            <Image src={topic.imageUrl} alt={topic.name} fill className="object-cover" data-ai-hint={topic.dataAiHint || "topic banner"} priority />
+            <Image src={topic.imageUrl} alt={topic.title} fill className="object-cover" data-ai-hint={topic.dataAiHint || "topic banner"} priority />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
         )}
         <div className="border-b border-border pb-6">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {topic.name}
+                {topic.title}
             </h1>
             <div className="mt-4 prose dark:prose-invert max-w-none">
                 <MarkdownRenderer content={topic.body.raw} />
