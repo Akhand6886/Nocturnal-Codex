@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 // Get unique categories and stats
 function getRoadmapStats() {
-  const publishedRoadmaps = allInteractiveRoadmaps.filter(roadmap => roadmap.published);
+  const publishedRoadmaps = allInteractiveRoadmaps;
   
   const categories = Array.from(
     new Set(publishedRoadmaps.map(roadmap => roadmap.category))
@@ -78,12 +78,13 @@ export default function RoadmapsPage() {
 
   // Featured/Popular roadmaps (you can customize this logic)
   const featuredRoadmaps = publishedRoadmaps
-    .filter(roadmap => 
-      ['machine learning', 'frontend', 'backend', 'full stack'].some(keyword =>
-        roadmap.title.toLowerCase().includes(keyword) ||
-        roadmap.tags?.some(tag => tag.toLowerCase().includes(keyword))
-      )
-    )
+    .filter(roadmap => {
+        const tags = (roadmap as any).tags || [];
+        return ['machine learning', 'frontend', 'backend', 'full stack'].some(keyword =>
+            roadmap.title.toLowerCase().includes(keyword) ||
+            tags.some((tag: string) => tag.toLowerCase().includes(keyword))
+        )
+    })
     .slice(0, 6);
 
   return (

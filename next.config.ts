@@ -6,10 +6,10 @@ const nextConfig: NextConfig = {
   /* config options here */
   // output: 'export', // Removed for ISR
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   images: {
     remotePatterns: [
