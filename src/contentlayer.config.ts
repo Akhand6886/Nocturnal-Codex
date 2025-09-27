@@ -1,6 +1,80 @@
 
 import { defineDocumentType, makeSource, defineNestedType } from 'contentlayer/source-files'
 
+/**
+ * =================================================================================
+ * NESTED TYPE DEFINITIONS
+ * =================================================================================
+ */
+
+// Nested type for code snippets within roadmaps
+const CodeSnippetItem = defineNestedType(() => ({
+    name: 'CodeSnippetItem',
+    fields: {
+        id: { type: 'string', required: true },
+        title: { type: 'string', required: true },
+        language: { type: 'enum', options: ['python', 'javascript', 'typescript', 'html', 'css', 'json', 'markdown', 'csharp', 'java', 'go', 'rust', 'text', 'cplusplus'], required: true },
+        code: { type: 'string', required: true },
+        description: { type: 'string', required: false },
+    }
+}));
+
+// Nested type for linking to wiki articles
+const WikiArticleStub = defineNestedType(() => ({
+    name: 'WikiArticleStub',
+    fields: {
+        id: { type: 'string', required: true },
+        title: { type: 'string', required: true },
+        slug: { type: 'string', required: true },
+    }
+}));
+
+// Nested type for linking to think tank articles
+const ThinkTankArticleStub = defineNestedType(() => ({
+    name: 'ThinkTankArticleStub',
+    fields: {
+        id: { type: 'string', required: true },
+        title: { type: 'string', required: true },
+        slug: { type: 'string', required: true },
+    }
+}));
+
+// Recursive nested type for the cybersecurity roadmap nodes
+const RoadmapNode = defineNestedType(() => ({
+    name: 'RoadmapNode',
+    fields: {
+        id: { type: 'string', required: true },
+        title: { type: 'string', required: true },
+        slug: { type: 'string', required: false },
+        description: { type: 'string', required: false },
+        isMainPath: { type: 'boolean', required: false },
+        isGroup: { type: 'boolean', required: false },
+        items: {
+            type: 'list',
+            of: 'RoadmapNode', // Self-referencing for nested items
+            required: false,
+        },
+    },
+}));
+
+// Nested type for the columns in the cybersecurity roadmap
+const RoadmapColumn = defineNestedType(() => ({
+    name: 'RoadmapColumn',
+    fields: {
+        left: { type: 'list', of: RoadmapNode, required: false },
+        main: { type: 'list', of: RoadmapNode, required: false },
+        right: { type: 'list', of: RoadmapNode, required: false },
+    }
+}));
+
+
+/**
+ * =================================================================================
+ * DOCUMENT TYPE DEFINITIONS
+ * =================================================================================
+ */
+
+// Document type for Blog Posts
 export const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
   filePathPattern: `blog/**/*.md`,
@@ -24,6 +98,7 @@ export const BlogPost = defineDocumentType(() => ({
   },
 }));
 
+// Document type for Tutorials
 export const TutorialPost = defineDocumentType(() => ({
     name: 'TutorialPost',
     filePathPattern: `tutorials/**/*.md`, 
@@ -46,64 +121,9 @@ export const TutorialPost = defineDocumentType(() => ({
         resolve: (doc) => doc._raw.sourceFileDir.split('/')[1],
       }
     },
-  }));
-
-const RoadmapNode = defineNestedType(() => ({
-    name: 'RoadmapNode',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: false },
-        description: { type: 'string', required: false },
-        isMainPath: { type: 'boolean', required: false },
-        isGroup: { type: 'boolean', required: false },
-        items: {
-            type: 'list',
-            of: 'RoadmapNode', // The type name as a string for recursion
-            required: false,
-        },
-    },
-}));
-  
-const RoadmapColumn = defineNestedType(() => ({
-    name: 'RoadmapColumn',
-    fields: {
-        left: { type: 'list', of: RoadmapNode, required: false },
-        main: { type: 'list', of: RoadmapNode, required: false },
-        right: { type: 'list', of: RoadmapNode, required: false },
-    }
-}))
-
-const CodeSnippetItem = defineNestedType(() => ({
-    name: 'CodeSnippetItem',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        language: { type: 'enum', options: ['python', 'javascript', 'typescript', 'html', 'css', 'json', 'markdown', 'csharp', 'java', 'go', 'rust', 'text', 'cplusplus'], required: true },
-        code: { type: 'string', required: true },
-        description: { type: 'string', required: false },
-    }
 }));
 
-const WikiArticleStub = defineNestedType(() => ({
-    name: 'WikiArticleStub',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-    }
-}));
-
-const ThinkTankArticleStub = defineNestedType(() => ({
-    name: 'ThinkTankArticleStub',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-    }
-}));
-
-
+// Document type for Roadmaps (formerly Topics)
 export const RoadmapPost = defineDocumentType(() => ({
     name: 'RoadmapPost',
     filePathPattern: `roadmaps/**/*.md`,
@@ -127,9 +147,10 @@ export const RoadmapPost = defineDocumentType(() => ({
         resolve: (doc) => `/roadmaps/${doc.slug}`,
       },
     },
-  }));
+}));
 
-  export const LanguagePost = defineDocumentType(() => ({
+// Document type for Programming Languages
+export const LanguagePost = defineDocumentType(() => ({
     name: 'LanguagePost',
     filePathPattern: `languages/**/*.md`,
     fields: {
@@ -145,10 +166,15 @@ export const RoadmapPost = defineDocumentType(() => ({
         resolve: (doc) => `/languages/${doc.slug}`,
       },
     },
-  }));
+}));
 
+/**
+ * =================================================================================
+ * MAKE SOURCE
+ * =================================================================================
+ */
 
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost],
-})
+});
