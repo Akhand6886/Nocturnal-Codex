@@ -1,8 +1,7 @@
-
 // src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState, useEffect } from 'react';
 import {
   ReactFlow,
   Background,
@@ -12,8 +11,6 @@ import {
   useEdgesState,
   type Node,
   type Edge,
-  type OnNodesChange,
-  type OnEdgesChange,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 

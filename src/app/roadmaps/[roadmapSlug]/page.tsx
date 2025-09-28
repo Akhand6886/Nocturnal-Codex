@@ -74,7 +74,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   // Load the React Flow data from the public directory
   let flowData = null;
   try {
-    const flowDataPath = `/roadmap-data/${roadmap.flowDataFile}`;
+    const flowDataPath = `/roadmap-data/${roadmap.slug}.json`;
     const response = await fetch(
       new URL(flowDataPath, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000')
     );
