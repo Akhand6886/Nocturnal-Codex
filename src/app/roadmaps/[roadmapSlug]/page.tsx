@@ -1,4 +1,4 @@
-
+// src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allInteractiveRoadmaps } from 'contentlayer/generated';
 import { InteractiveRoadmap } from '@/components/roadmap/InteractiveRoadmap';
@@ -15,16 +15,18 @@ interface RoadmapPageProps {
 }
 
 export async function generateStaticParams() {
+  if (!allInteractiveRoadmaps) {
+    return [];
+  }
   return allInteractiveRoadmaps
-    .filter(roadmap => roadmap.published)
     .map((roadmap) => ({
-      roadmapSlug: roadmap.slugAsParams,
+      roadmapSlug: roadmap.slug,
     }));
 }
 
 export async function generateMetadata({ params }: RoadmapPageProps): Promise<Metadata> {
   const roadmap = allInteractiveRoadmaps.find(
-    (roadmap) => roadmap.slugAsParams === params.roadmapSlug
+    (roadmap) => roadmap.slug === params.roadmapSlug
   );
 
   if (!roadmap) {
@@ -41,7 +43,7 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
       title: roadmap.title,
       description: roadmap.description,
       type: 'article',
-      url: `/roadmaps/${roadmap.slugAsParams}`,
+      url: `/roadmaps/${roadmap.slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -53,10 +55,10 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
 
 export default async function RoadmapPage({ params }: RoadmapPageProps) {
   const roadmap = allInteractiveRoadmaps.find(
-    (roadmap) => roadmap.slugAsParams === params.roadmapSlug
+    (roadmap) => roadmap.slug === params.roadmapSlug
   );
 
-  if (!roadmap || !roadmap.published) {
+  if (!roadmap) {
     notFound();
   }
 
@@ -65,7 +67,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   try {
     const flowDataPath = `/roadmap-data/${roadmap.flowDataFile}`;
     const response = await fetch(
-      new URL(flowDataPath, process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000')
+      new URL(flowDataPath, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000')
     );
     
     if (response.ok) {
@@ -131,9 +133,9 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
             </div>
 
             {/* Tags */}
-            {roadmap.tags && roadmap.tags.length > 0 && (
+            {((roadmap as any).tags) && ((roadmap as any).tags).length > 0 && (
               <div className="flex flex-wrap gap-2 mt-4">
-                {roadmap.tags.map((tag) => (
+                {((roadmap as any).tags).map((tag: any) => (
                   <Badge key={tag} variant="secondary">
                     {tag}
                   </Badge>
@@ -168,7 +170,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
             <InteractiveRoadmap
               roadmapData={roadmap}
               flowData={flowData}
-              slug={roadmap.slugAsParams}
+              slug={roadmap.slug}
             />
           </CardContent>
         </Card>
@@ -206,5 +208,3 @@ export const revalidate = 60;
 
 // Enable static generation
 export const dynamic = 'force-static';
-
-    
