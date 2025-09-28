@@ -25,6 +25,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: RoadmapPageProps): Promise<Metadata> {
+  if (!allInteractiveRoadmaps) {
+    return {
+      title: 'Roadmaps Not Available',
+      description: 'The learning roadmaps are currently being updated.',
+    };
+  }
   const roadmap = allInteractiveRoadmaps.find(
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
@@ -54,6 +60,9 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
 }
 
 export default async function RoadmapPage({ params }: RoadmapPageProps) {
+    if (!allInteractiveRoadmaps) {
+        notFound();
+    }
   const roadmap = allInteractiveRoadmaps.find(
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
