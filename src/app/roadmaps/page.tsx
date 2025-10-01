@@ -53,7 +53,7 @@ function getRoadmapStats() {
   }
   
   const categories = Array.from(
-    new Set(publishedRoadmaps.map(roadmap => roadmap.category))
+    new Set(publishedRoadmaps.map(roadmap => roadmap.category).filter(Boolean))
   ).sort();
   
   const difficulties = Array.from(
@@ -90,6 +90,7 @@ export default function RoadmapsPage() {
   // Featured/Popular roadmaps (you can customize this logic)
   const featuredRoadmaps = publishedRoadmaps
     .filter(roadmap => {
+        if (!roadmap || !roadmap.title) return false; // <-- FIX: Add safety check
         const tags = (roadmap as any).tags || [];
         return ['machine learning', 'frontend', 'backend', 'full stack', 'devops', 'cyber-security'].some(keyword =>
             roadmap.title.toLowerCase().includes(keyword) ||
