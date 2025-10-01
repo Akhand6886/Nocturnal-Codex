@@ -93,21 +93,21 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   // Try to load interactive flow data. This is now allowed to fail gracefully.
   let flowData = null;
   // NOTE: Disabling interactive roadmap loading for now as it seems to be causing issues.
-  // try {
-  //   const flowDataPath = `/roadmap-data/${roadmap.slug}.json`;
-  //   const response = await fetch(
-  //     new URL(flowDataPath, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  //     // Use a short cache lifetime for this check
-  //     { next: { revalidate: 10 } }
-  //   );
+  try {
+    const flowDataPath = `/roadmap-data/${roadmap.slug}.json`;
+    const response = await fetch(
+      new URL(flowDataPath, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+      // Use a short cache lifetime for this check
+      { next: { revalidate: 10 } }
+    );
     
-  //   if (response.ok) {
-  //     flowData = await response.json();
-  //   }
-  // } catch (error) {
-  //   // This is not a critical error. The page can fall back to the static view.
-  //   console.log(`No interactive roadmap data found for '${roadmap.slug}'. Falling back to static view.`);
-  // }
+    if (response.ok) {
+      flowData = await response.json();
+    }
+  } catch (error) {
+    // This is not a critical error. The page can fall back to the static view.
+    console.log(`No interactive roadmap data found for '${roadmap.slug}'. Falling back to static view.`);
+  }
 
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
