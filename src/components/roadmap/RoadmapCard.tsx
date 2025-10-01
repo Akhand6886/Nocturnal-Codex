@@ -17,12 +17,12 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { type InteractiveRoadmap } from 'contentlayer/generated';
+import { type Roadmap } from 'contentlayer/generated';
 import { useProgress } from './hooks/useProgress';
 import { useMemo } from 'react';
 
 interface RoadmapCardProps {
-  roadmap: InteractiveRoadmap;
+  roadmap: Roadmap;
   featured?: boolean;
   showProgress?: boolean;
 }
@@ -32,7 +32,7 @@ export function RoadmapCard({ roadmap, featured = false, showProgress = true }: 
   const { getProgressPercentage } = useProgress(roadmap.slugAsParams, []);
   const progress = showProgress ? getProgressPercentage() : 0;
 
-  const getDifficultyColor = (difficulty: string) => {
+  const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
       case 'beginner':
         return 'bg-green-500/10 text-green-600 border-green-500/20';
@@ -45,7 +45,7 @@ export function RoadmapCard({ roadmap, featured = false, showProgress = true }: 
     }
   };
 
-  const getDifficultyIcon = (difficulty: string) => {
+  const getDifficultyIcon = (difficulty?: string) => {
     switch (difficulty) {
       case 'beginner':
         return '🌱';
@@ -92,13 +92,13 @@ export function RoadmapCard({ roadmap, featured = false, showProgress = true }: 
 
           {/* Badges */}
           <div className="flex flex-wrap gap-2">
-            <Badge 
+            {roadmap.difficulty && <Badge 
               variant="outline" 
               className={cn('text-xs', getDifficultyColor(roadmap.difficulty))}
             >
               <span className="mr-1">{getDifficultyIcon(roadmap.difficulty)}</span>
               {roadmap.difficulty}
-            </Badge>
+            </Badge>}
             
             {roadmap.estimatedTime && (
               <Badge variant="secondary" className="text-xs gap-1">

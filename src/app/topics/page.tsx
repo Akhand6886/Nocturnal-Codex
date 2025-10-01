@@ -1,8 +1,9 @@
 
+
 import { TopicTile } from "@/components/content/topic-tile";
 import { BookOpenText } from "lucide-react";
-import { allTopicPosts } from 'contentlayer/generated';
-import type { TopicPost } from 'contentlayer/generated';
+import { allRoadmaps } from 'contentlayer/generated';
+import type { Roadmap } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 
 export const revalidate = 60; 
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
 };
 
 export default function TopicsExplorerPage() {
-  const groupedTopics: Record<string, TopicPost[]> = {};
+  const groupedTopics: Record<string, Roadmap[]> = {};
 
-  allTopicPosts.forEach(topic => {
+  allRoadmaps.forEach(topic => {
     const category = topic.category || "Other Topics";
     if (!groupedTopics[category]) {
       groupedTopics[category] = [];
@@ -51,7 +52,7 @@ export default function TopicsExplorerPage() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {groupedTopics[category].map((topic) => (
-                  <TopicTile key={topic.id} topic={topic} />
+                  <TopicTile key={topic.slug} topic={topic} />
                 ))}
               </div>
             </section>

@@ -1,6 +1,6 @@
 
 // src/app/roadmaps/page.tsx
-import { allInteractiveRoadmaps } from 'contentlayer/generated';
+import { allRoadmaps } from 'contentlayer/generated';
 import { RoadmapCard } from '@/components/roadmap/RoadmapCard';
 import { RoadmapFilters } from '@/components/roadmap/RoadmapFilters';
 import { Badge } from '@/components/ui/badge';
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 // Get unique categories and stats
 function getRoadmapStats() {
-  const publishedRoadmaps = allInteractiveRoadmaps;
+  const publishedRoadmaps = allRoadmaps;
   
   if (!publishedRoadmaps || publishedRoadmaps.length === 0) {
     return {
@@ -57,7 +57,7 @@ function getRoadmapStats() {
   ).sort();
   
   const difficulties = Array.from(
-    new Set(publishedRoadmaps.map(roadmap => roadmap.difficulty))
+    new Set(publishedRoadmaps.map(roadmap => roadmap.difficulty).filter(Boolean) as string[])
   );
   
   const totalRoadmaps = publishedRoadmaps.length;
@@ -90,7 +90,7 @@ export default function RoadmapsPage() {
   const featuredRoadmaps = publishedRoadmaps
     .filter(roadmap => {
         const tags = (roadmap as any).tags || [];
-        return ['machine learning', 'frontend', 'backend', 'full stack'].some(keyword =>
+        return ['machine learning', 'frontend', 'backend', 'full stack', 'devops', 'cyber-security'].some(keyword =>
             roadmap.title.toLowerCase().includes(keyword) ||
             tags.some((tag: string) => tag.toLowerCase().includes(keyword))
         )
@@ -109,8 +109,6 @@ export default function RoadmapsPage() {
           Each roadmap is carefully crafted with hands-on projects, resources, and progress tracking.
         </p>
         
-
-        {/* CTA */}
       </div>
 
       {/* Featured Roadmaps */}
@@ -123,10 +121,7 @@ export default function RoadmapsPage() {
                 Most popular learning paths to kickstart your journey
               </p>
             </div>
-            <Button variant="outline" className="gap-2">
-              View All
-              <ArrowRight className="h-4 w-4" />
-            </Button>
+            
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -151,7 +146,7 @@ export default function RoadmapsPage() {
         </div>
 
         <Tabs defaultValue={categories[0]} className="w-full">
-          <TabsList className="grid grid-cols-2 lg:grid-cols-4 mb-8">
+          <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-8">
             {categories.map((category) => (
               <TabsTrigger key={category} value={category} className="capitalize">
                 {category}
@@ -180,7 +175,7 @@ export default function RoadmapsPage() {
 }
 
 // Client component for interactive filtering
-function RoadmapListing({ roadmaps }: { roadmaps: typeof allInteractiveRoadmaps }) {
+function RoadmapListing({ roadmaps }: { roadmaps: typeof allRoadmaps }) {
   return (
     <div className="space-y-6">
       {/* Search and Filters */}

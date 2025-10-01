@@ -21,11 +21,11 @@ import {
   Grid3X3,
   List
 } from 'lucide-react';
-import { type InteractiveRoadmap } from 'contentlayer/generated';
+import { type Roadmap } from 'contentlayer/generated';
 import { RoadmapCard } from './RoadmapCard';
 
 interface RoadmapFiltersProps {
-  roadmaps: InteractiveRoadmap[];
+  roadmaps: Roadmap[];
 }
 
 type SortOption = 'title' | 'difficulty' | 'category' | 'estimatedTime';
@@ -45,7 +45,7 @@ export function RoadmapFilters({ roadmaps }: RoadmapFiltersProps) {
   }, [roadmaps]);
 
   const difficulties = useMemo(() => {
-    const diffs = Array.from(new Set(roadmaps.map(r => r.difficulty))).sort();
+    const diffs = Array.from(new Set(roadmaps.map(r => r.difficulty).filter(Boolean) as string[])).sort();
     return diffs;
   }, [roadmaps]);
 
@@ -69,7 +69,9 @@ export function RoadmapFilters({ roadmaps }: RoadmapFiltersProps) {
           return a.title.localeCompare(b.title);
         case 'difficulty':
           const difficultyOrder = { beginner: 1, intermediate: 2, advanced: 3 };
-          return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
+          const difficultyA = a.difficulty as keyof typeof difficultyOrder;
+          const difficultyB = b.difficulty as keyof typeof difficultyOrder;
+          return (difficultyOrder[difficultyA] || 0) - (difficultyOrder[difficultyB] || 0);
         case 'category':
           return a.category.localeCompare(b.category);
         default:

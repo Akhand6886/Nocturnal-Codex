@@ -1,3 +1,4 @@
+
 // src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
@@ -20,7 +21,7 @@ import { ProgressTracker } from './ProgressTracker';
 import { RoadmapControls } from './RoadmapControls';
 import { useRoadmapData, useNodeSelection, useProgress } from './hooks';
 import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
-import { type InteractiveRoadmap as RoadmapType } from 'contentlayer/generated';
+import { type Roadmap as RoadmapType } from 'contentlayer/generated';
 
 interface InteractiveRoadmapProps {
   roadmapData: RoadmapType;

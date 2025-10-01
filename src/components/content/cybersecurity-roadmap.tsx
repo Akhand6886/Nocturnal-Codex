@@ -1,15 +1,16 @@
 
+
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
-import type { RoadmapPost, TutorialPost } from 'contentlayer/generated';
+import type { Roadmap, TutorialPost } from 'contentlayer/generated';
 import { Fragment } from "react";
 import { cn } from "@/lib/utils";
 import { CheckCircle } from "lucide-react";
 
 interface CybersecurityRoadmapProps {
-  roadmap: RoadmapPost;
+  topic: Roadmap;
   tutorials: TutorialPost[];
   breadcrumbs: BreadcrumbItem[];
 }
@@ -82,25 +83,25 @@ const RoadmapColumn = ({ title, nodes, colSpanClass, tutorials }: { title: strin
   }
 
 
-export function CybersecurityRoadmap({ roadmap, tutorials, breadcrumbs }: CybersecurityRoadmapProps) {
+export function CybersecurityRoadmap({ topic, tutorials, breadcrumbs }: CybersecurityRoadmapProps) {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-10 md:py-12 space-y-12">
         <Breadcrumbs items={breadcrumbs} />
         
         <header className="space-y-4">
-            {roadmap.imageUrl && (
+            {topic.imageUrl && (
             <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg border border-border/20">
-                <Image src={roadmap.imageUrl} alt={roadmap.name} fill className="object-cover" data-ai-hint={roadmap.dataAiHint || "roadmap banner"} priority />
+                <Image src={topic.imageUrl} alt={topic.title} fill className="object-cover" data-ai-hint={topic.dataAiHint || "roadmap banner"} priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
             )}
             <div className="border-b border-border pb-6">
                 <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                    {roadmap.name}
+                    {topic.title}
                 </h1>
                 <div className="mt-4 prose dark:prose-invert max-w-none">
-                    <MarkdownRenderer content={roadmap.body.raw} />
+                    <MarkdownRenderer content={topic.body.raw} />
                 </div>
             </div>
         </header>
@@ -113,7 +114,7 @@ export function CybersecurityRoadmap({ roadmap, tutorials, breadcrumbs }: Cybers
         </div>
 
         <div className="relative px-4">
-          {(roadmap.roadmapColumns || []).map((columnData, index) => (
+          {(topic.roadmapColumns || []).map((columnData, index) => (
             <div key={index} className="grid grid-cols-1 md:grid-cols-5 gap-x-6 items-start">
                <RoadmapColumn title="Certifications & Tools" nodes={columnData.left} colSpanClass="col-span-1" tutorials={tutorials} />
                <RoadmapColumn title="Main Learning Path" nodes={columnData.main} colSpanClass="col-span-1 md:col-span-3" tutorials={tutorials} />

@@ -1,15 +1,16 @@
 
+
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
-import type { RoadmapPost, TutorialPost } from 'contentlayer/generated';
+import type { Roadmap, TutorialPost } from 'contentlayer/generated';
 import { Fragment } from "react";
 import { cn } from "@/lib/utils";
 import { CheckCircle, GitCommit, Settings, ShieldCheck, Ship, PlayCircle, Search, Monitor, Users, GitBranch, Terminal } from "lucide-react";
 
 interface DevOpsRoadmapProps {
-  roadmap: RoadmapPost;
+  topic: Roadmap;
   tutorials: TutorialPost[];
   breadcrumbs: BreadcrumbItem[];
 }
@@ -70,7 +71,7 @@ const GroupNode = ({ node }: { node: RoadmapNodeData }) => (
     </div>
 );
 
-export function DevOpsRoadmap({ roadmap, tutorials, breadcrumbs }: DevOpsRoadmapProps) {
+export function DevOpsRoadmap({ topic, tutorials, breadcrumbs }: DevOpsRoadmapProps) {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-10 md:py-12 space-y-12">
@@ -78,21 +79,21 @@ export function DevOpsRoadmap({ roadmap, tutorials, breadcrumbs }: DevOpsRoadmap
         
         <header className="space-y-4 text-center">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {roadmap.name}
+                {topic.title}
             </h1>
             <div className="mt-4 prose dark:prose-invert max-w-3xl mx-auto">
-                <MarkdownRenderer content={roadmap.body.raw} />
+                <MarkdownRenderer content={topic.body.raw} />
             </div>
         </header>
 
         <div className="relative p-4 md:p-8 border border-border/50 rounded-xl bg-card/50 shadow-inner">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 overflow-x-auto pb-4">
-                {roadmap.roadmapColumns?.[0]?.main?.map((node, index) => (
+                {topic.roadmapColumns?.[0]?.main?.map((node, index) => (
                     <Fragment key={node.id}>
                         <div className="flex-shrink-0 w-48">
                             <RoadmapNode node={node} tutorials={tutorials} />
                         </div>
-                        {index < (roadmap.roadmapColumns?.[0]?.main?.length || 0) - 1 && (
+                        {index < (topic.roadmapColumns?.[0]?.main?.length || 0) - 1 && (
                             <div className="hidden md:block h-px w-full bg-border border-dashed" />
                         )}
                     </Fragment>
@@ -101,8 +102,8 @@ export function DevOpsRoadmap({ roadmap, tutorials, breadcrumbs }: DevOpsRoadmap
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
-            {roadmap.roadmapColumns?.[0]?.left?.map(node => <GroupNode key={node.id} node={node} />)}
-            {roadmap.roadmapColumns?.[0]?.right?.map(node => <GroupNode key={node.id} node={node} />)}
+            {topic.roadmapColumns?.[0]?.left?.map(node => <GroupNode key={node.id} node={node} />)}
+            {topic.roadmapColumns?.[0]?.right?.map(node => <GroupNode key={node.id} node={node} />)}
         </div>
     </div>
   );
