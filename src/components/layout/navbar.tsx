@@ -33,7 +33,11 @@ export function Navbar({ roadmaps = [] }: NavbarProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const dynamicNavItems = useMemo(() => {
-    const roadmapsNavItems = roadmaps.map(roadmap => ({ label: roadmap.title, href: roadmap.url })).sort((a,b) => a.label.localeCompare(b.label));
+    const roadmapsNavItems = (roadmaps || [])
+      .filter(roadmap => roadmap && roadmap.title) // Ensure roadmap and title exist
+      .map(roadmap => ({ label: roadmap.title, href: roadmap.url }))
+      .sort((a,b) => a.label.localeCompare(b.label));
+
     return NAV_ITEMS.map(item =>
       item.label === "Roadmaps" ? { ...item, children: roadmapsNavItems } : item
     );
