@@ -1,4 +1,3 @@
-
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allRoadmapPosts } from 'contentlayer/generated';
@@ -17,6 +16,7 @@ import { MarkdownRenderer } from '@/components/content/markdown-renderer';
 import { CodeSnippet } from '@/components/content/code-snippet';
 import Link from 'next/link';
 import { ArrowRight, Brain, Code2, Lightbulb } from 'lucide-react';
+import { loadRoadmapFlowData } from '@/lib/roadmap-utils';
 
 interface RoadmapPageProps {
   params: {
@@ -90,24 +90,8 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
     return <DevOpsRoadmap topic={roadmap} tutorials={tutorials} breadcrumbs={breadcrumbItems} />;
   }
 
-  // Try to load interactive flow data. This is now allowed to fail gracefully.
-  let flowData = null;
-  // NOTE: Disabling interactive roadmap loading for now as it seems to be causing issues.
-  try {
-    const flowDataPath = `/roadmap-data/${roadmap.slug}.json`;
-    const response = await fetch(
-      new URL(flowDataPath, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-      // Use a short cache lifetime for this check
-      { next: { revalidate: 10 } }
-    );
-    
-    if (response.ok) {
-      flowData = await response.json();
-    }
-  } catch (error) {
-    // This is not a critical error. The page can fall back to the static view.
-    console.log(`No interactive roadmap data found for '${roadmap.slug}'. Falling back to static view.`);
-  }
+  // Load interactive flow data if it exists.
+  const flowData = await loadRoadmapFlowData(params.roadmapSlug);
 
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
@@ -320,5 +304,3 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
 }
 
 export const revalidate = 60;
-
-    

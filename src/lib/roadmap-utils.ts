@@ -4,24 +4,18 @@ import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
 
 export async function loadRoadmapFlowData(slug: string): Promise<RoadmapFlowData | null> {
   try {
-    // For client-side fetching
-    if (typeof window !== 'undefined') {
-      const response = await fetch(`/roadmap-data/${slug}.json`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch roadmap data: ${response.statusText}`);
-      }
-      return await response.json();
+    const fullUrl = new URL(`/roadmap-data/${slug}.json`, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000');
+    const response = await fetch(fullUrl.href, {
+      next: { revalidate: 3600 } // Cache for 1 hour
+    });
+    if (!response.ok) {
+        // This is not a critical error, just means no interactive map exists.
+        console.log(`No interactive roadmap data found for ${slug} (status: ${response.status}). Falling back to static content.`);
+        return null;
     }
-    
-    // For server-side fetching (during SSG/SSR)
-    const fs = await import('fs').then(m => m.promises);
-    const path = await import('path');
-    
-    const filePath = path.join(process.cwd(), 'public', 'roadmap-data', `${slug}.json`);
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    return JSON.parse(fileContent);
+    return await response.json();
   } catch (error) {
-    console.error(`Failed to load roadmap data for ${slug}:`, error);
+    console.error(`Error loading roadmap data for ${slug}:`, error);
     return null;
   }
 }
@@ -30,7 +24,7 @@ export function transformToReactFlow(roadmapData: RoadmapFlowData): {
   nodes: Node<RoadmapNodeData>[];
   edges: Edge[];
 } {
-  const nodes: Node<RoadmapNodeData>[] = roadmapData.nodes?.map(node => ({
+  const nodes: Node<RoadmapNodeData>[] = roadmapData.nodes?.map((node: any) => ({
     id: node.id,
     type: 'roadmapNode',
     position: node.position || { x: 0, y: 0 },
@@ -46,17 +40,17 @@ export function transformToReactFlow(roadmapData: RoadmapFlowData): {
       objectives: node.data?.objectives || [],
       ...node.data
     },
-    draggable: false,
+    draggable: true,
     selectable: true,
     style: {
-      backgroundColor: 'transparent',
-      border: 'none',
+      width: node.width,
+      height: node.height,
       ...node.style,
       ...node.data?.style
     }
   })) || [];
 
-  const edges: Edge[] = roadmapData.edges?.map(edge => ({
+  const edges: Edge[] = roadmapData.edges?.map((edge: any) => ({
     id: edge.id || `${edge.source}-${edge.target}`,
     source: edge.source,
     target: edge.target,
