@@ -1,3 +1,4 @@
+
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allRoadmapPosts } from 'contentlayer/generated';
@@ -42,17 +43,17 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
   }
 
   return {
-    title: `${roadmap.displayTitle} - Learning Roadmap`,
+    title: `${roadmap.title} - Learning Roadmap`,
     description: roadmap.description,
     openGraph: {
-      title: roadmap.displayTitle,
+      title: roadmap.title,
       description: roadmap.description,
       type: 'article',
       url: `/roadmaps/${roadmap.slug}`,
     },
     twitter: {
       card: 'summary_large_image',
-      title: roadmap.displayTitle,
+      title: roadmap.title,
       description: roadmap.description,
     },
   };
@@ -70,7 +71,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
     { label: "Roadmaps", href: "/roadmaps" },
-    { label: roadmap.displayTitle },
+    { label: roadmap.title },
   ];
 
   // Special layout for Cybersecurity topic
@@ -85,19 +86,22 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
     return <DevOpsRoadmap topic={roadmap} tutorials={tutorials} breadcrumbs={breadcrumbItems} />;
   }
 
-  // Load the React Flow data from the public directory
+  // Try to load interactive flow data. This is now allowed to fail gracefully.
   let flowData = null;
   try {
     const flowDataPath = `/roadmap-data/${roadmap.slug}.json`;
     const response = await fetch(
-      new URL(flowDataPath, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000')
+      new URL(flowDataPath, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+      // Use a short cache lifetime for this check
+      { next: { revalidate: 10 } }
     );
     
     if (response.ok) {
       flowData = await response.json();
     }
   } catch (error) {
-    // It's okay if flow data doesn't exist, we can fall back to static page
+    // This is not a critical error. The page can fall back to the static view.
+    console.log(`No interactive roadmap data found for '${roadmap.slug}'. Falling back to static view.`);
   }
 
   const getDifficultyColor = (difficulty?: string) => {
@@ -113,6 +117,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
     }
   };
 
+  // If interactive data exists, render the interactive view
   if(flowData) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -121,7 +126,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <h1 className="text-4xl font-bold text-foreground">
-                  {roadmap.displayTitle}
+                  {roadmap.title}
                 </h1>
                 {roadmap.difficulty && (
                   <Badge 
@@ -215,13 +220,13 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
       <header className="space-y-4">
         {roadmap.imageUrl && (
           <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg border border-border/20">
-            <Image src={roadmap.imageUrl} alt={roadmap.displayTitle} fill className="object-cover" data-ai-hint={roadmap.dataAiHint || "topic banner"} priority />
+            <Image src={roadmap.imageUrl} alt={roadmap.title} fill className="object-cover" data-ai-hint={roadmap.dataAiHint || "topic banner"} priority />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
         )}
         <div className="border-b border-border pb-6">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {roadmap.displayTitle}
+                {roadmap.title}
             </h1>
             <div className="mt-4 prose dark:prose-invert max-w-none">
                 <MarkdownRenderer content={roadmap.body.raw} />
@@ -310,3 +315,5 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
 }
 
 export const revalidate = 60;
+
+    
