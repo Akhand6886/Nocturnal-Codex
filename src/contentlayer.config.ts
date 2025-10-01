@@ -58,8 +58,7 @@ export const InteractiveRoadmap = defineDocumentType(() => ({
     category: { type: 'string', required: true },
     difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: true },
     estimatedTime: { type: 'string', required: true },
-    flowData: { type: 'json', required: true }, // React Flow structure
-    layoutType: { type: 'enum', options: ['flow', 'linear', 'tree'], default: 'flow' }
+    tags: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
     slug: {
@@ -68,7 +67,11 @@ export const InteractiveRoadmap = defineDocumentType(() => ({
     },
     url: {
       type: 'string', 
-      resolve: (doc) => `/roadmaps/${doc.slug}`,
+      resolve: (doc) => `/roadmaps/${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
+    },
+     slugAsParams: {
+        type: 'string',
+        resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
     }
   }
 }));
