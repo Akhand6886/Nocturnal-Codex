@@ -25,22 +25,12 @@ interface RoadmapPageProps {
 }
 
 export async function generateStaticParams() {
-  if (!allRoadmapPosts) {
-    return [];
-  }
-  return allRoadmapPosts
-    .map((roadmap) => ({
-      roadmapSlug: roadmap.slug,
-    }));
+  return allRoadmapPosts.map((roadmap) => ({
+    roadmapSlug: roadmap.slug,
+  }));
 }
 
 export async function generateMetadata({ params }: RoadmapPageProps): Promise<Metadata> {
-  if (!allRoadmapPosts) {
-    return {
-      title: 'Roadmaps Not Available',
-      description: 'The learning roadmaps are currently being updated.',
-    };
-  }
   const roadmap = allRoadmapPosts.find(
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
@@ -70,9 +60,6 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
 }
 
 export default async function RoadmapPage({ params }: RoadmapPageProps) {
-    if (!allRoadmapPosts) {
-        notFound();
-    }
   const roadmap = allRoadmapPosts.find(
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
@@ -109,11 +96,9 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
     
     if (response.ok) {
       flowData = await response.json();
-    } else {
-      console.warn(`Failed to load flow data for roadmap: ${roadmap.slug}`);
     }
   } catch (error) {
-    console.error('Error loading flow data:', error);
+    // It's okay if flow data doesn't exist, we can fall back to static page
   }
 
   const getDifficultyColor = (difficulty?: string) => {
@@ -132,7 +117,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   if(flowData) {
     return (
       <div className="container mx-auto px-4 py-8">
-        {/* Header Section */}
         <div className="mb-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div className="flex-1">
@@ -140,40 +124,40 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
                 <h1 className="text-4xl font-bold text-foreground">
                   {roadmap.title}
                 </h1>
-                <Badge 
-                  variant="outline" 
-                  className={getDifficultyColor(roadmap.difficulty)}
-                >
-                  {roadmap.difficulty}
-                </Badge>
+                {roadmap.difficulty && (
+                  <Badge 
+                    variant="outline" 
+                    className={getDifficultyColor(roadmap.difficulty)}
+                  >
+                    {roadmap.difficulty}
+                  </Badge>
+                )}
               </div>
               
               <p className="text-xl text-muted-foreground mb-4 max-w-3xl">
                 {roadmap.description}
               </p>
 
-              {/* Roadmap Stats */}
               <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  <span>Est. Time: {roadmap.estimatedTime}</span>
-                </div>
-                
+                {roadmap.estimatedTime && (
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    <span>Est. Time: {roadmap.estimatedTime}</span>
+                  </div>
+                )}
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-4 w-4" />
                   <span>Category: {roadmap.category}</span>
                 </div>
-                
                 <div className="flex items-center gap-2">
                   <Users className="h-4 w-4" />
                   <span>Interactive Learning Path</span>
                 </div>
               </div>
 
-              {/* Tags */}
-              {((roadmap as any).tags) && ((roadmap as any).tags).length > 0 && (
+              {roadmap.tags && roadmap.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-4">
-                  {((roadmap as any).tags).map((tag: any) => (
+                  {roadmap.tags.map((tag: string) => (
                     <Badge key={tag} variant="secondary">
                       {tag}
                     </Badge>
@@ -182,7 +166,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
               )}
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col gap-3 md:flex-row">
               <Button size="lg" className="gap-2">
                 <Star className="h-4 w-4" />
@@ -195,7 +178,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
           </div>
         </div>
 
-        {/* Interactive Roadmap */}
         <Card className="mb-8">
           <CardHeader>
             <CardTitle>Interactive Learning Path</CardTitle>
@@ -212,7 +194,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
           </CardContent>
         </Card>
 
-        {/* Roadmap Content (MDX) */}
         {roadmap.body.raw && (
           <Card>
             <CardHeader>
@@ -227,7 +208,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
     );
   }
 
-  // == DEFAULT STATIC TOPIC PAGE LAYOUT ==
+  // == DEFAULT STATIC TOPIC PAGE LAYOUT (FALLBACK) ==
   return (
     <div className="container mx-auto max-w-6xl px-4 py-10 md:py-12 space-y-12">
       <Breadcrumbs items={breadcrumbItems} />
@@ -241,7 +222,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
         )}
         <div className="border-b border-border pb-6">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {roadmap.title || roadmap.name}
+                {roadmap.title}
             </h1>
             <div className="mt-4 prose dark:prose-invert max-w-none">
                 <MarkdownRenderer content={roadmap.body.raw} />
@@ -274,13 +255,13 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
             </main>
             
             <aside className="lg:col-span-1 space-y-8 lg:sticky lg:top-24 self-start">
-                {(roadmap as any).subtopics && (roadmap as any).subtopics.length > 0 && (
+                {roadmap.subtopics && roadmap.subtopics.length > 0 && (
                      <Card>
                         <CardHeader>
                             <CardTitle className="flex items-center text-lg"><Brain className="mr-2 h-5 w-5 text-primary" /> Sub-Topics</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-2">
-                        {(roadmap as any).subtopics.map((subtopic: any) => {
+                        {roadmap.subtopics.map((subtopic: any) => {
                             const firstTutorial = allTutorialPosts.find(p => p.category === subtopic.slug);
                             const href = firstTutorial ? firstTutorial.url : `/roadmaps/${roadmap.slug}`;
                             return (
@@ -329,5 +310,4 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   );
 }
 
-// Enable ISR with your existing revalidation strategy
 export const revalidate = 60;

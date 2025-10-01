@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen } from 'lucide-react';
 import { Metadata } from 'next';
+import { RoadmapFilters } from '@/components/roadmap/RoadmapFilters';
 
 export const metadata: Metadata = {
   title: 'Interactive Learning Roadmaps - Master Any Technology',
@@ -25,21 +26,8 @@ export const metadata: Metadata = {
 };
 
 export default function RoadmapsPage() {
-    const publishedRoadmaps = allRoadmapPosts.filter(p => p.title);
+    const publishedRoadmaps = allRoadmapPosts;
     
-    const categories = Array.from(
-        new Set(publishedRoadmaps.map(roadmap => roadmap.category).filter(Boolean))
-    ).sort();
-
-    // Group roadmaps by category
-    const roadmapsByCategory = categories.reduce((acc, category) => {
-        if(!category) return acc;
-        acc[category] = publishedRoadmaps.filter(roadmap => roadmap.category === category);
-        return acc;
-    }, {} as Record<string, typeof publishedRoadmaps>);
-
-    const featuredRoadmaps = publishedRoadmaps.slice(0, 6);
-
     return (
         <div className="container mx-auto px-4 py-8">
             {/* Header Section */}
@@ -53,31 +41,9 @@ export default function RoadmapsPage() {
                 </p>
             </div>
 
-            {/* Main content with Tabs for categories */}
-            <Tabs defaultValue={categories[0]} className="w-full">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-8">
-                    {categories.map((category) => (
-                        <TabsTrigger key={category} value={category!} className="capitalize">
-                            {category}
-                            <Badge variant="secondary" className="ml-2">
-                                {roadmapsByCategory[category!]?.length || 0}
-                            </Badge>
-                        </TabsTrigger>
-                    ))}
-                </TabsList>
-
-                {categories.map((category) => (
-                    <TabsContent key={category} value={category!}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {(roadmapsByCategory[category!] || []).map((roadmap) => (
-                                <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
-                            ))}
-                        </div>
-                    </TabsContent>
-                ))}
-            </Tabs>
-
-            {publishedRoadmaps.length === 0 && (
+            {publishedRoadmaps.length > 0 ? (
+                <RoadmapFilters roadmaps={publishedRoadmaps} />
+            ) : (
                 <div className="text-center py-16">
                     <h3 className="text-lg font-semibold mb-2">No roadmaps found</h3>
                     <p className="text-muted-foreground">
