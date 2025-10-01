@@ -2,10 +2,14 @@
 id: "devops"
 slug: "devops"
 name: "DevOps"
+title: "DevOps Lifecycle Roadmap"
 category: "Software Engineering"
 description: "A roadmap of the practices and tools that bridge software development and IT operations."
 imageUrl: "https://picsum.photos/seed/devopscloud/600/400"
 dataAiHint: "automation pipeline"
+difficulty: "intermediate"
+estimatedTime: "4-8 Months"
+tags: ["ci/cd", "automation", "kubernetes", "docker"]
 roadmapColumns:
   - main:
     - id: "devops-plan"

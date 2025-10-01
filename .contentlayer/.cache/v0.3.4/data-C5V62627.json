@@ -886,6 +886,7 @@
         "id": "devops",
         "slug": "devops",
         "name": "DevOps",
+        "title": "DevOps Lifecycle Roadmap",
         "category": "Software Engineering",
         "description": "A roadmap of the practices and tools that bridge software development and IT operations.",
         "imageUrl": "https://picsum.photos/seed/devopscloud/600/400",
@@ -1020,6 +1021,14 @@
             "_raw": {}
           }
         ],
+        "difficulty": "intermediate",
+        "estimatedTime": "4-8 Months",
+        "tags": [
+          "ci/cd",
+          "automation",
+          "kubernetes",
+          "docker"
+        ],
         "body": {
           "raw": "\nExplore the world of DevOps to learn how to improve the speed and quality of software development through automation, continuous integration, and continuous delivery (CI/CD). This roadmap outlines the key stages of the DevOps lifecycle, from planning to monitoring.\n",
           "html": "<p>Explore the world of DevOps to learn how to improve the speed and quality of software development through automation, continuous integration, and continuous delivery (CI/CD). This roadmap outlines the key stages of the DevOps lifecycle, from planning to monitoring.</p>"
@@ -1035,7 +1044,7 @@
         "type": "RoadmapPost",
         "url": "/roadmaps/devops"
       },
-      "documentHash": "1758963738912",
+      "documentHash": "1759328143668",
       "hasWarnings": false,
       "documentTypeName": "RoadmapPost"
     },
@@ -1122,13 +1131,22 @@
         "id": "ml",
         "slug": "machine-learning",
         "name": "Machine Learning",
+        "title": "Machine Learning Roadmap",
         "category": "Artificial Intelligence",
-        "description": "Algorithms that learn from and make decisions based on data.",
+        "description": "Algorithms that learn from and make decisions based on data. Explore the path from foundational math to advanced deep learning.",
         "imageUrl": "https://picsum.photos/seed/machinelearning/600/400",
         "dataAiHint": "artificial intelligence",
+        "difficulty": "intermediate",
+        "estimatedTime": "6-12 Months",
+        "tags": [
+          "ml",
+          "ai",
+          "data science",
+          "python"
+        ],
         "body": {
-          "raw": "\nDive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
-          "html": "<p>Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.</p>"
+          "raw": "\nDive into the field of Machine Learning, where algorithms enable systems to learn from data. This interactive roadmap covers the essential steps, from the mathematical foundations and programming skills to core concepts like supervised and unsupervised learning, and finally to advanced topics in deep learning.\n",
+          "html": "<p>Dive into the field of Machine Learning, where algorithms enable systems to learn from data. This interactive roadmap covers the essential steps, from the mathematical foundations and programming skills to core concepts like supervised and unsupervised learning, and finally to advanced topics in deep learning.</p>"
         },
         "_id": "roadmaps/machine-learning.md",
         "_raw": {
@@ -1141,7 +1159,7 @@
         "type": "RoadmapPost",
         "url": "/roadmaps/machine-learning"
       },
-      "documentHash": "1758817502796",
+      "documentHash": "1759328143640",
       "hasWarnings": false,
       "documentTypeName": "RoadmapPost"
     },
