@@ -92,33 +92,32 @@ var ThinkTankArticleStub = defineNestedType(() => ({
 }));
 var RoadmapPost = defineDocumentType(() => ({
   name: "RoadmapPost",
-  filePathPattern: `roadmaps/**/*.mdx?`,
+  filePathPattern: `roadmaps/**/*.md*`,
   contentType: "markdown",
   fields: {
-    title: { type: "string", required: true },
-    description: { type: "string", required: true },
+    id: { type: "string", required: true },
+    slug: { type: "string", required: true },
+    name: { type: "string", required: true },
+    title: { type: "string", required: false },
     category: { type: "string", required: true },
-    difficulty: { type: "enum", options: ["beginner", "intermediate", "advanced"], required: false },
-    estimatedTime: { type: "string", required: false },
-    tags: { type: "list", of: { type: "string" }, required: false },
-    id: { type: "string", required: false },
-    name: { type: "string", required: false },
+    description: { type: "string", required: true },
     imageUrl: { type: "string", required: false },
     dataAiHint: { type: "string", required: false },
+    // Fields for custom/static roadmaps
+    roadmapColumns: { type: "list", of: RoadmapColumn, required: false },
+    subtopics: { type: "list", of: RoadmapNode, required: false },
     codeSnippets: { type: "list", of: CodeSnippetItem, required: false },
     references: { type: "list", of: WikiArticleStub, required: false },
     thinkTankArticles: { type: "list", of: ThinkTankArticleStub, required: false },
-    roadmapColumns: { type: "list", of: RoadmapColumn, required: false },
-    subtopics: { type: "list", of: RoadmapNode, required: false }
+    // Fields for interactive roadmaps
+    difficulty: { type: "enum", options: ["beginner", "intermediate", "advanced"], required: false },
+    estimatedTime: { type: "string", required: false },
+    tags: { type: "list", of: { type: "string" }, required: false }
   },
   computedFields: {
-    slug: {
-      type: "string",
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx?$/, "")
-    },
     url: {
       type: "string",
-      resolve: (doc) => `/roadmaps/${doc._raw.sourceFileName.replace(/\.mdx?$/, "")}`
+      resolve: (doc) => `/roadmaps/${doc.slug}`
     }
   }
 }));
@@ -150,4 +149,4 @@ export {
   TutorialPost,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-PRHEH26J.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-C5V62627.mjs.map

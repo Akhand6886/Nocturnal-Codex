@@ -16,7 +16,7 @@ export function RoadmapCard({ roadmap }: RoadmapCardProps) {
           <div className="relative h-44 w-full overflow-hidden rounded-t-xl">
             <Image
               src={roadmap.imageUrl}
-              alt={roadmap.displayTitle}
+              alt={roadmap.title || "Roadmap image"}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105 ease-in-out"
               data-ai-hint={roadmap.dataAiHint || "abstract roadmap"}
@@ -26,7 +26,7 @@ export function RoadmapCard({ roadmap }: RoadmapCardProps) {
         )}
         <CardHeader className="pt-5 flex-grow">
           <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors duration-200 ease-in-out">
-            {roadmap.displayTitle}
+            {roadmap.title}
           </CardTitle>
         </CardHeader>
         <CardContent className="pb-5">
