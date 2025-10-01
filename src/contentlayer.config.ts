@@ -1,3 +1,4 @@
+
 import { defineDocumentType, makeSource, defineNestedType } from 'contentlayer/source-files'
 
 export const BlogPost = defineDocumentType(() => ({
@@ -99,10 +100,10 @@ const ThinkTankArticleStub = defineNestedType(() => ({
 }));
 
 // Unified Roadmap Schema
-export const Roadmap = defineDocumentType(() => ({
-  name: 'Roadmap',
+export const RoadmapPost = defineDocumentType(() => ({
+  name: 'RoadmapPost',
   filePathPattern: `roadmaps/**/*.mdx?`, // Match both .md and .mdx
-  contentType: 'mdx',
+  contentType: 'markdown',
   fields: {
     // Common fields
     title: { type: 'string', required: true },
@@ -123,6 +124,7 @@ export const Roadmap = defineDocumentType(() => ({
     references: { type: 'list', of: WikiArticleStub, required: false },
     thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
     roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
+    subtopics: { type: 'list', of: RoadmapNode, required: false },
   },
   computedFields: {
     slug: {
@@ -133,10 +135,6 @@ export const Roadmap = defineDocumentType(() => ({
       type: 'string', 
       resolve: (doc) => `/roadmaps/${doc._raw.sourceFileName.replace(/\.mdx?$/, '')}`,
     },
-     slugAsParams: {
-        type: 'string',
-        resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
-    }
   }
 }));
 
@@ -160,5 +158,5 @@ export const LanguagePost = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, TutorialPost, Roadmap, LanguagePost],
+  documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost],
 })

@@ -1,6 +1,6 @@
 
 // src/app/roadmaps/page.tsx
-import { allRoadmaps } from 'contentlayer/generated';
+import { allRoadmapPosts } from 'contentlayer/generated';
 import { RoadmapCard } from '@/components/roadmap/RoadmapCard';
 import { RoadmapFilters } from '@/components/roadmap/RoadmapFilters';
 import { Badge } from '@/components/ui/badge';
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 // Get unique categories and stats
 function getRoadmapStats() {
-  const publishedRoadmaps = allRoadmaps;
+  const publishedRoadmaps = allRoadmapPosts;
   
   if (!publishedRoadmaps || publishedRoadmaps.length === 0) {
     return {
@@ -82,6 +82,7 @@ export default function RoadmapsPage() {
 
   // Group roadmaps by category
   const roadmapsByCategory = categories.reduce((acc, category) => {
+    if(!category) return acc;
     acc[category] = publishedRoadmaps.filter(roadmap => roadmap.category === category);
     return acc;
   }, {} as Record<string, typeof publishedRoadmaps>);
@@ -145,22 +146,22 @@ export default function RoadmapsPage() {
           </p>
         </div>
 
-        <Tabs defaultValue={categories[0]} className="w-full">
+        <Tabs defaultValue={categories.filter(Boolean)[0]} className="w-full">
           <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-8">
-            {categories.map((category) => (
-              <TabsTrigger key={category} value={category} className="capitalize">
+            {categories.filter(Boolean).map((category) => (
+              <TabsTrigger key={category} value={category!} className="capitalize">
                 {category}
                 <Badge variant="secondary" className="ml-2">
-                  {roadmapsByCategory[category].length}
+                  {roadmapsByCategory[category!]?.length || 0}
                 </Badge>
               </TabsTrigger>
             ))}
           </TabsList>
 
-          {categories.map((category) => (
-            <TabsContent key={category} value={category}>
+          {categories.filter(Boolean).map((category) => (
+            <TabsContent key={category} value={category!}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {roadmapsByCategory[category].map((roadmap) => (
+                {roadmapsByCategory[category!]?.map((roadmap) => (
                   <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
                 ))}
               </div>
@@ -175,7 +176,7 @@ export default function RoadmapsPage() {
 }
 
 // Client component for interactive filtering
-function RoadmapListing({ roadmaps }: { roadmaps: typeof allRoadmaps }) {
+function RoadmapListing({ roadmaps }: { roadmaps: typeof allRoadmapPosts }) {
   return (
     <div className="space-y-6">
       {/* Search and Filters */}

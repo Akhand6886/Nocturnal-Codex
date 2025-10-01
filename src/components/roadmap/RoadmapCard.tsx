@@ -17,19 +17,19 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { type Roadmap } from 'contentlayer/generated';
+import { type RoadmapPost } from 'contentlayer/generated';
 import { useProgress } from './hooks/useProgress';
 import { useMemo } from 'react';
 
 interface RoadmapCardProps {
-  roadmap: Roadmap;
+  roadmap: RoadmapPost;
   featured?: boolean;
   showProgress?: boolean;
 }
 
 export function RoadmapCard({ roadmap, featured = false, showProgress = true }: RoadmapCardProps) {
   // Mock progress for demonstration - in real app, this would come from user data
-  const { getProgressPercentage } = useProgress(roadmap.slugAsParams, []);
+  const { getProgressPercentage } = useProgress(roadmap.slug, []);
   const progress = showProgress ? getProgressPercentage() : 0;
 
   const getDifficultyColor = (difficulty?: string) => {
@@ -119,7 +119,7 @@ export function RoadmapCard({ roadmap, featured = false, showProgress = true }: 
         {/* Tags */}
         {roadmap.tags && roadmap.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-4">
-            {roadmap.tags.slice(0, 3).map((tag) => (
+            {roadmap.tags.slice(0, 3).map((tag: string) => (
               <Badge key={tag} variant="outline" className="text-xs">
                 {tag}
               </Badge>

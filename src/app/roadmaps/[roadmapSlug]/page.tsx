@@ -1,7 +1,7 @@
 
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
-import { allRoadmaps } from 'contentlayer/generated';
+import { allRoadmapPosts } from 'contentlayer/generated';
 import { InteractiveRoadmap } from '@/components/roadmap/InteractiveRoadmap';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -25,23 +25,23 @@ interface RoadmapPageProps {
 }
 
 export async function generateStaticParams() {
-  if (!allRoadmaps) {
+  if (!allRoadmapPosts) {
     return [];
   }
-  return allRoadmaps
+  return allRoadmapPosts
     .map((roadmap) => ({
       roadmapSlug: roadmap.slug,
     }));
 }
 
 export async function generateMetadata({ params }: RoadmapPageProps): Promise<Metadata> {
-  if (!allRoadmaps) {
+  if (!allRoadmapPosts) {
     return {
       title: 'Roadmaps Not Available',
       description: 'The learning roadmaps are currently being updated.',
     };
   }
-  const roadmap = allRoadmaps.find(
+  const roadmap = allRoadmapPosts.find(
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
 
@@ -70,10 +70,10 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
 }
 
 export default async function RoadmapPage({ params }: RoadmapPageProps) {
-    if (!allRoadmaps) {
+    if (!allRoadmapPosts) {
         notFound();
     }
-  const roadmap = allRoadmaps.find(
+  const roadmap = allRoadmapPosts.find(
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
 
@@ -241,7 +241,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
         )}
         <div className="border-b border-border pb-6">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {roadmap.title}
+                {roadmap.title || roadmap.name}
             </h1>
             <div className="mt-4 prose dark:prose-invert max-w-none">
                 <MarkdownRenderer content={roadmap.body.raw} />
