@@ -2,24 +2,10 @@
 // src/app/roadmaps/page.tsx
 import { allRoadmapPosts } from 'contentlayer/generated';
 import { RoadmapCard } from '@/components/roadmap/RoadmapCard';
-import { RoadmapFilters } from '@/components/roadmap/RoadmapFilters';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Search, 
-  Filter, 
-  BookOpen, 
-  TrendingUp, 
-  Users, 
-  Clock,
-  ArrowRight,
-  Star
-} from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { BookOpen } from 'lucide-react';
 import { Metadata } from 'next';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Interactive Learning Roadmaps - Master Any Technology',
@@ -38,181 +24,69 @@ export const metadata: Metadata = {
   },
 };
 
-// Get unique categories and stats
-function getRoadmapStats() {
-  const publishedRoadmaps = allRoadmapPosts;
-  
-  if (!publishedRoadmaps || publishedRoadmaps.length === 0) {
-    return {
-      publishedRoadmaps: [],
-      categories: [],
-      difficulties: [],
-      totalRoadmaps: 0,
-      avgEstimatedTime: '0',
-    };
-  }
-  
-  const categories = Array.from(
-    new Set(publishedRoadmaps.map(roadmap => roadmap.category).filter(Boolean))
-  ).sort();
-  
-  const difficulties = Array.from(
-    new Set(publishedRoadmaps.map(roadmap => roadmap.difficulty).filter(Boolean) as string[])
-  );
-  
-  const totalRoadmaps = publishedRoadmaps.length;
-  const avgEstimatedTime = 'Variable'; // Could calculate this from estimatedTime fields
-  
-  return {
-    publishedRoadmaps,
-    categories,
-    difficulties,
-    totalRoadmaps,
-    avgEstimatedTime,
-  };
-}
-
 export default function RoadmapsPage() {
-  const {
-    publishedRoadmaps,
-    categories,
-    difficulties,
-    totalRoadmaps,
-  } = getRoadmapStats();
+    const publishedRoadmaps = allRoadmapPosts.filter(p => p.title);
+    
+    const categories = Array.from(
+        new Set(publishedRoadmaps.map(roadmap => roadmap.category).filter(Boolean))
+    ).sort();
 
-  // Group roadmaps by category
-  const roadmapsByCategory = categories.reduce((acc, category) => {
-    if(!category) return acc;
-    acc[category] = publishedRoadmaps.filter(roadmap => roadmap.category === category);
-    return acc;
-  }, {} as Record<string, typeof publishedRoadmaps>);
+    // Group roadmaps by category
+    const roadmapsByCategory = categories.reduce((acc, category) => {
+        if(!category) return acc;
+        acc[category] = publishedRoadmaps.filter(roadmap => roadmap.category === category);
+        return acc;
+    }, {} as Record<string, typeof publishedRoadmaps>);
 
-  // Featured/Popular roadmaps (you can customize this logic)
-  const featuredRoadmaps = publishedRoadmaps
-    .filter(roadmap => {
-        if (!roadmap || !roadmap.title) return false; // <-- FIX: Add safety check
-        const tags = (roadmap as any).tags || [];
-        return ['machine learning', 'frontend', 'backend', 'full stack', 'devops', 'cyber-security'].some(keyword =>
-            roadmap.title.toLowerCase().includes(keyword) ||
-            tags.some((tag: string) => tag.toLowerCase().includes(keyword))
-        )
-    })
-    .slice(0, 6);
+    const featuredRoadmaps = publishedRoadmaps.slice(0, 6);
 
-  return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">
-          Interactive Learning Roadmaps
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-          Master new technologies with our comprehensive, interactive learning paths. 
-          Each roadmap is carefully crafted with hands-on projects, resources, and progress tracking.
-        </p>
-        
-      </div>
-
-      {/* Featured Roadmaps */}
-      {featuredRoadmaps.length > 0 && (
-        <section className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">Featured Roadmaps</h2>
-              <p className="text-muted-foreground">
-                Most popular learning paths to kickstart your journey
-              </p>
+    return (
+        <div className="container mx-auto px-4 py-8">
+            {/* Header Section */}
+            <div className="text-center mb-12">
+                <h1 className="text-4xl font-bold mb-4 flex items-center justify-center">
+                    <BookOpen className="mr-3 h-9 w-9 text-primary" />
+                    Learning Roadmaps
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+                    Explore our comprehensive, community-driven learning paths to master new technologies.
+                </p>
             </div>
-            
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredRoadmaps.map((roadmap) => (
-              <RoadmapCard 
-                key={roadmap.slug} 
-                roadmap={roadmap}
-                featured
-              />
-            ))}
-          </div>
-        </section>
-      )}
 
-      {/* Browse by Category */}
-      <section className="mb-16">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Browse by Category</h2>
-          <p className="text-muted-foreground">
-            Find learning paths organized by technology domains
-          </p>
-        </div>
+            {/* Main content with Tabs for categories */}
+            <Tabs defaultValue={categories[0]} className="w-full">
+                <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-8">
+                    {categories.map((category) => (
+                        <TabsTrigger key={category} value={category!} className="capitalize">
+                            {category}
+                            <Badge variant="secondary" className="ml-2">
+                                {roadmapsByCategory[category!]?.length || 0}
+                            </Badge>
+                        </TabsTrigger>
+                    ))}
+                </TabsList>
 
-        <Tabs defaultValue={categories.filter(Boolean)[0]} className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-8">
-            {categories.filter(Boolean).map((category) => (
-              <TabsTrigger key={category} value={category!} className="capitalize">
-                {category}
-                <Badge variant="secondary" className="ml-2">
-                  {roadmapsByCategory[category!]?.length || 0}
-                </Badge>
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {categories.filter(Boolean).map((category) => (
-            <TabsContent key={category} value={category!}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {roadmapsByCategory[category!]?.map((roadmap) => (
-                  <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
+                {categories.map((category) => (
+                    <TabsContent key={category} value={category!}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {(roadmapsByCategory[category!] || []).map((roadmap) => (
+                                <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
+                            ))}
+                        </div>
+                    </TabsContent>
                 ))}
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-      </section>
+            </Tabs>
 
-      
-    </div>
-  );
-}
-
-// Client component for interactive filtering
-function RoadmapListing({ roadmaps }: { roadmaps: typeof allRoadmapPosts }) {
-  return (
-    <div className="space-y-6">
-      {/* Search and Filters */}
-      <RoadmapFilters roadmaps={roadmaps} />
-    </div>
-  );
-}
-
-// Loading skeleton
-function RoadmapListingSkeleton() {
-  return (
-    <div className="space-y-6">
-      <div className="flex gap-4">
-        <div className="h-10 w-80 bg-muted animate-pulse rounded-md" />
-        <div className="h-10 w-32 bg-muted animate-pulse rounded-md" />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <Card key={i} className="h-64 animate-pulse">
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <div className="h-4 w-3/4 bg-muted rounded" />
-                <div className="h-20 w-full bg-muted rounded" />
-                <div className="flex gap-2">
-                  <div className="h-6 w-16 bg-muted rounded-full" />
-                  <div className="h-6 w-20 bg-muted rounded-full" />
+            {publishedRoadmaps.length === 0 && (
+                <div className="text-center py-16">
+                    <h3 className="text-lg font-semibold mb-2">No roadmaps found</h3>
+                    <p className="text-muted-foreground">
+                        It looks like there are no roadmaps available at the moment. Please check back later.
+                    </p>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
+            )}
+        </div>
+    );
 }
 
-// Enable ISR
 export const revalidate = 60;
