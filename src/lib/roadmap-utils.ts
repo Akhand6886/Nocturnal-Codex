@@ -2,24 +2,6 @@
 import { type Node, type Edge } from '@xyflow/react';
 import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
 
-export async function loadRoadmapFlowData(slug: string): Promise<RoadmapFlowData | null> {
-  try {
-    const fullUrl = new URL(`/roadmap-data/${slug}.json`, process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000');
-    const response = await fetch(fullUrl.href, {
-      next: { revalidate: 3600 } // Cache for 1 hour
-    });
-    if (!response.ok) {
-        // This is not a critical error, just means no interactive map exists.
-        console.log(`No interactive roadmap data found for ${slug} (status: ${response.status}). Falling back to static content.`);
-        return null;
-    }
-    return await response.json();
-  } catch (error) {
-    console.error(`Error loading roadmap data for ${slug}:`, error);
-    return null;
-  }
-}
-
 export function transformToReactFlow(roadmapData: RoadmapFlowData): {
   nodes: Node<RoadmapNodeData>[];
   edges: Edge[];

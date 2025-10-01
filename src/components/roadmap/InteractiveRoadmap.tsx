@@ -1,4 +1,3 @@
-
 // src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
@@ -19,9 +18,10 @@ import { RoadmapNode } from './RoadmapNode';
 import { TopicSidebar } from './TopicSidebar';
 import { ProgressTracker } from './ProgressTracker';
 import { RoadmapControls } from './RoadmapControls';
-import { useRoadmapData, useNodeSelection, useProgress } from './hooks';
+import { useNodeSelection, useProgress } from './hooks';
 import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
-import { type Roadmap as RoadmapType } from 'contentlayer/generated';
+import { type RoadmapPost as RoadmapType } from 'contentlayer/generated';
+import { transformToReactFlow } from '@/lib/roadmap-utils';
 
 interface InteractiveRoadmapProps {
   roadmapData: RoadmapType;
@@ -42,16 +42,7 @@ export function InteractiveRoadmap({
 }: InteractiveRoadmapProps) {
   const [searchTerm, setSearchTerm] = useState('');
   
-  // Use the custom hooks
-  const { 
-    nodes: initialNodes, 
-    edges: initialEdges,
-    loading: dataLoading,
-    error: dataError,
-  } = useRoadmapData({
-    slug,
-    initialFlowData: flowData,
-  });
+  const { nodes: initialNodes, edges: initialEdges } = useMemo(() => transformToReactFlow(flowData), [flowData]);
   
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -124,14 +115,6 @@ export function InteractiveRoadmap({
 
   const progressPercentage = getProgressPercentage();
 
-  if (dataLoading) {
-    return <div>Loading roadmap...</div>;
-  }
-
-  if (dataError) {
-    return <div>Error loading roadmap: {dataError}</div>
-  }
-
   return (
     <div className="relative w-full h-[800px] bg-background border rounded-lg overflow-hidden">
       {/* Progress Tracker */}
@@ -139,7 +122,7 @@ export function InteractiveRoadmap({
         progress={progressPercentage}
         totalNodes={nodes.length}
         completedNodes={progress.completedNodes.length}
-        roadmapTitle={roadmapData.title}
+        roadmapTitle={roadmapData.title || roadmapData.name}
       />
 
       {/* Search and Controls */}
@@ -202,3 +185,5 @@ export function InteractiveRoadmap({
     </div>
   );
 }
+
+    

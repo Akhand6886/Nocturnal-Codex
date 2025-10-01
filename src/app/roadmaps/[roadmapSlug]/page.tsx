@@ -1,3 +1,4 @@
+
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allRoadmapPosts } from 'contentlayer/generated';
@@ -16,7 +17,7 @@ import { MarkdownRenderer } from '@/components/content/markdown-renderer';
 import { CodeSnippet } from '@/components/content/code-snippet';
 import Link from 'next/link';
 import { ArrowRight, Brain, Code2, Lightbulb } from 'lucide-react';
-import { loadRoadmapFlowData } from '@/lib/roadmap-utils';
+import { loadRoadmapFlowData } from '@/lib/roadmap-server-utils';
 
 interface RoadmapPageProps {
   params: {
@@ -288,7 +289,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
                             <CardTitle className="flex items-center text-lg"><Brain className="mr-2 h-5 w-5 text-primary" /> From The Think Tank</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-2">
-                        {roadmap.thinkTankArticles.map((article) => ( 
+                        {topic.thinkTankArticles.map((article) => ( 
                             <Link href={`/think-tank/${article.slug}`} key={article.id} className="group flex items-center justify-between p-2 rounded-md hover:bg-muted/50 transition-colors">
                                 <span className="text-sm font-medium text-foreground/90 group-hover:text-primary">{article.title}</span>
                                 <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
