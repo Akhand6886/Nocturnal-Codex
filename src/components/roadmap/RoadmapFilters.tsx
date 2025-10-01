@@ -21,11 +21,11 @@ import {
   Grid3X3,
   List
 } from 'lucide-react';
-import { type Roadmap } from 'contentlayer/generated';
+import { type RoadmapPost } from 'contentlayer/generated';
 import { RoadmapCard } from './RoadmapCard';
 
 interface RoadmapFiltersProps {
-  roadmaps: Roadmap[];
+  roadmaps: RoadmapPost[];
 }
 
 type SortOption = 'title' | 'difficulty' | 'category' | 'estimatedTime';
@@ -52,9 +52,11 @@ export function RoadmapFilters({ roadmaps }: RoadmapFiltersProps) {
   // Filter and sort roadmaps
   const filteredRoadmaps = useMemo(() => {
     let filtered = roadmaps.filter(roadmap => {
-      const matchesSearch = roadmap.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        roadmap.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        roadmap.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+      const lowerSearchTerm = searchTerm.toLowerCase();
+      const matchesSearch = 
+        (roadmap.title && roadmap.title.toLowerCase().includes(lowerSearchTerm)) ||
+        (roadmap.description && roadmap.description.toLowerCase().includes(lowerSearchTerm)) ||
+        (roadmap.tags && roadmap.tags.some(tag => tag.toLowerCase().includes(lowerSearchTerm)));
       
       const matchesCategory = selectedCategory === 'all' || roadmap.category === selectedCategory;
       const matchesDifficulty = selectedDifficulty === 'all' || roadmap.difficulty === selectedDifficulty;
@@ -66,14 +68,14 @@ export function RoadmapFilters({ roadmaps }: RoadmapFiltersProps) {
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'title':
-          return a.title.localeCompare(b.title);
+          return (a.title || '').localeCompare(b.title || '');
         case 'difficulty':
           const difficultyOrder = { beginner: 1, intermediate: 2, advanced: 3 };
           const difficultyA = a.difficulty as keyof typeof difficultyOrder;
           const difficultyB = b.difficulty as keyof typeof difficultyOrder;
-          return (difficultyOrder[difficultyA] || 0) - (difficultyOrder[difficultyB] || 0);
+          return (difficultyOrder[difficultyA] || 4) - (difficultyOrder[difficultyB] || 4);
         case 'category':
-          return a.category.localeCompare(b.category);
+          return (a.category || '').localeCompare(b.category || '');
         default:
           return 0;
       }
