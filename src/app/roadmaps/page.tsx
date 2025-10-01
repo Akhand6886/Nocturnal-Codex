@@ -1,6 +1,6 @@
 // src/app/roadmaps/page.tsx
 import { allRoadmapPosts } from 'contentlayer/generated';
-import { RoadmapCard } from '@/components/roadmap/RoadmapCard';
+import { RoadmapCard } from '@/components/content/roadmap-tile';
 import { BookOpen } from 'lucide-react';
 import { Metadata } from 'next';
 

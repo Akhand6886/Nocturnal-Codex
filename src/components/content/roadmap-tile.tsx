@@ -1,15 +1,14 @@
-
 import type { RoadmapPost } from "contentlayer/generated";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
-interface RoadmapTileProps {
+interface RoadmapCardProps {
   roadmap: RoadmapPost;
 }
 
-export function RoadmapTile({ roadmap }: RoadmapTileProps) {
+export function RoadmapCard({ roadmap }: RoadmapCardProps) {
   return (
     <Link href={roadmap.url} className="group block h-full">
       <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-primary/30 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-xl">
@@ -17,7 +16,7 @@ export function RoadmapTile({ roadmap }: RoadmapTileProps) {
           <div className="relative h-44 w-full overflow-hidden rounded-t-xl">
             <Image
               src={roadmap.imageUrl}
-              alt={roadmap.name}
+              alt={roadmap.displayTitle}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105 ease-in-out"
               data-ai-hint={roadmap.dataAiHint || "abstract roadmap"}
@@ -27,7 +26,7 @@ export function RoadmapTile({ roadmap }: RoadmapTileProps) {
         )}
         <CardHeader className="pt-5 flex-grow">
           <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors duration-200 ease-in-out">
-            {roadmap.name}
+            {roadmap.displayTitle}
           </CardTitle>
         </CardHeader>
         <CardContent className="pb-5">
