@@ -1,9 +1,9 @@
 {
   "id": "devops",
-  "name": "DevOps",
   "slug": "devops",
-  "description": "A roadmap of the practices and tools that bridge software development and IT operations.",
+  "name": "DevOps",
   "category": "Software Engineering",
+  "description": "A roadmap of the practices and tools that bridge software development and IT operations.",
   "imageUrl": "https://picsum.photos/seed/devopscloud/600/400",
   "dataAiHint": "automation pipeline",
   "roadmapColumns": [

@@ -1,3 +1,4 @@
+
 // src/app/roadmaps/page.tsx
 import { allRoadmapPosts } from 'contentlayer/generated';
 import { RoadmapCard } from '@/components/content/roadmap-card';
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function RoadmapsPage() {
-    const publishedRoadmaps = allRoadmapPosts;
+    const publishedRoadmaps = allRoadmapPosts.filter(p => p.title);
 
     const groupedRoadmaps = publishedRoadmaps.reduce((acc, roadmap) => {
         const category = roadmap.category || 'Uncategorized';
@@ -76,3 +77,5 @@ export default function RoadmapsPage() {
 }
 
 export const revalidate = 60;
+
+    

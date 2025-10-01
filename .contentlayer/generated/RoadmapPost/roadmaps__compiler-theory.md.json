@@ -1,9 +1,9 @@
 {
   "id": "compiler-theory",
-  "name": "Compiler Theory",
   "slug": "compiler-theory",
-  "description": "The art of translating high-level code to machine instructions.",
+  "name": "Compiler Theory",
   "category": "Theoretical Computer Science",
+  "description": "The art of translating high-level code to machine instructions.",
   "imageUrl": "https://picsum.photos/seed/compilertheory/600/400",
   "dataAiHint": "code compilation",
   "body": {

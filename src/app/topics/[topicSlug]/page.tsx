@@ -6,7 +6,7 @@ import { CodeSnippet } from "@/components/content/code-snippet";
 import Link from "next/link";
 import { ArrowRight, Lightbulb, Code2, Brain } from "lucide-react";
 import Image from "next/image";
-import { allInteractiveRoadmaps, allTutorialPosts } from 'contentlayer/generated';
+import { allRoadmapPosts, allTutorialPosts } from 'contentlayer/generated';
 import { notFound } from "next/navigation";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import type { Metadata } from 'next';
@@ -17,11 +17,11 @@ import { DevOpsRoadmap } from "@/components/content/devops-roadmap";
 export const revalidate = 60; 
 
 const getTopic = cache((slug: string) => {
-  return allInteractiveRoadmaps.find((t) => t.slug === slug);
+  return allRoadmapPosts.find((t) => t.slug === slug);
 });
 
 export async function generateStaticParams() {
-  const topics = allInteractiveRoadmaps || [];
+  const topics = allRoadmapPosts || [];
   return topics.map((topic) => ({
     topicSlug: topic.slug,
   }));

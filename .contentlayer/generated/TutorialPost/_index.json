@@ -1804,6 +1804,94 @@
     "language": "cybersecurity"
   },
   {
+    "title": "Cloud Deployment Models (IaaS, PaaS, SaaS)",
+    "slug": "cloud-deployment-models-iaas-paas-saas",
+    "order": 1,
+    "description": "Understanding the different models of cloud computing.",
+    "category": "10. Cloud Security",
+    "body": {
+      "raw": "\n## Cloud Deployment Models\n\nThis tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.\n",
+      "html": "<h2>Cloud Deployment Models</h2>\n<p>This tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
+      "sourceFileName": "cloud-deployment-models-iaas-paas-saas.md",
+      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/cloud-deployment-models-iaas-paas-saas",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Cloud Security Best Practices",
+    "slug": "cloud-security-best-practices",
+    "order": 5,
+    "description": "General best practices for securing cloud environments, regardless of provider.",
+    "category": "10. Cloud Security",
+    "body": {
+      "raw": "\n## Cloud Security Best Practices\n\nThis tutorial will discuss provider-agnostic cloud security best practices. Content to be added.\n",
+      "html": "<h2>Cloud Security Best Practices</h2>\n<p>This tutorial will discuss provider-agnostic cloud security best practices. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices.md",
+      "sourceFileName": "cloud-security-best-practices.md",
+      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/cloud-security-best-practices",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Securing AWS Environments",
+    "slug": "securing-aws-environments",
+    "order": 2,
+    "description": "An overview of key security services and best practices for AWS.",
+    "category": "10. Cloud Security",
+    "body": {
+      "raw": "\n## Securing AWS Environments\n\nThis tutorial will cover fundamental AWS security concepts. Content to be added.\n",
+      "html": "<h2>Securing AWS Environments</h2>\n<p>This tutorial will cover fundamental AWS security concepts. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
+      "sourceFileName": "securing-aws-environments.md",
+      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/securing-aws-environments",
+    "language": "cybersecurity"
+  },
+  {
+    "title": "Securing Azure Environments",
+    "slug": "securing-azure-environments",
+    "order": 3,
+    "description": "An overview of key security services and best practices for Microsoft Azure.",
+    "category": "10. Cloud Security",
+    "body": {
+      "raw": "\n## Securing Azure Environments\n\nThis tutorial will cover fundamental Azure security concepts. Content to be added.\n",
+      "html": "<h2>Securing Azure Environments</h2>\n<p>This tutorial will cover fundamental Azure security concepts. Content to be added.</p>"
+    },
+    "_id": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments.md",
+    "_raw": {
+      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments.md",
+      "sourceFileName": "securing-azure-environments.md",
+      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
+      "contentType": "markdown",
+      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments"
+    },
+    "type": "TutorialPost",
+    "url": "/tutorial/cybersecurity/securing-azure-environments",
+    "language": "cybersecurity"
+  },
+  {
     "title": "The CIA Triad",
     "slug": "cia-triad",
     "order": 2,
@@ -1955,94 +2043,6 @@
     },
     "type": "TutorialPost",
     "url": "/tutorial/cybersecurity/what-is-cybersecurity",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Cloud Deployment Models (IaaS, PaaS, SaaS)",
-    "slug": "cloud-deployment-models-iaas-paas-saas",
-    "order": 1,
-    "description": "Understanding the different models of cloud computing.",
-    "category": "10. Cloud Security",
-    "body": {
-      "raw": "\n## Cloud Deployment Models\n\nThis tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.\n",
-      "html": "<h2>Cloud Deployment Models</h2>\n<p>This tutorial will explain the differences between IaaS, PaaS, and SaaS. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas.md",
-      "sourceFileName": "cloud-deployment-models-iaas-paas-saas.md",
-      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/cloud-deployment-models-iaas-paas-saas"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/cloud-deployment-models-iaas-paas-saas",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Cloud Security Best Practices",
-    "slug": "cloud-security-best-practices",
-    "order": 5,
-    "description": "General best practices for securing cloud environments, regardless of provider.",
-    "category": "10. Cloud Security",
-    "body": {
-      "raw": "\n## Cloud Security Best Practices\n\nThis tutorial will discuss provider-agnostic cloud security best practices. Content to be added.\n",
-      "html": "<h2>Cloud Security Best Practices</h2>\n<p>This tutorial will discuss provider-agnostic cloud security best practices. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices.md",
-      "sourceFileName": "cloud-security-best-practices.md",
-      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/cloud-security-best-practices"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/cloud-security-best-practices",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Securing AWS Environments",
-    "slug": "securing-aws-environments",
-    "order": 2,
-    "description": "An overview of key security services and best practices for AWS.",
-    "category": "10. Cloud Security",
-    "body": {
-      "raw": "\n## Securing AWS Environments\n\nThis tutorial will cover fundamental AWS security concepts. Content to be added.\n",
-      "html": "<h2>Securing AWS Environments</h2>\n<p>This tutorial will cover fundamental AWS security concepts. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments.md",
-      "sourceFileName": "securing-aws-environments.md",
-      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/securing-aws-environments"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/securing-aws-environments",
-    "language": "cybersecurity"
-  },
-  {
-    "title": "Securing Azure Environments",
-    "slug": "securing-azure-environments",
-    "order": 3,
-    "description": "An overview of key security services and best practices for Microsoft Azure.",
-    "category": "10. Cloud Security",
-    "body": {
-      "raw": "\n## Securing Azure Environments\n\nThis tutorial will cover fundamental Azure security concepts. Content to be added.\n",
-      "html": "<h2>Securing Azure Environments</h2>\n<p>This tutorial will cover fundamental Azure security concepts. Content to be added.</p>"
-    },
-    "_id": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments.md",
-    "_raw": {
-      "sourceFilePath": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments.md",
-      "sourceFileName": "securing-azure-environments.md",
-      "sourceFileDir": "tutorials/cybersecurity/10-cloud-security",
-      "contentType": "markdown",
-      "flattenedPath": "tutorials/cybersecurity/10-cloud-security/securing-azure-environments"
-    },
-    "type": "TutorialPost",
-    "url": "/tutorial/cybersecurity/securing-azure-environments",
     "language": "cybersecurity"
   },
   {

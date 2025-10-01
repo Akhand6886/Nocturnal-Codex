@@ -1,3 +1,4 @@
+
 import type { RoadmapPost } from "contentlayer/generated";
 import Link from "next/link";
 import Image from "next/image";
@@ -41,3 +42,5 @@ export function RoadmapCard({ roadmap }: RoadmapCardProps) {
     </Link>
   );
 }
+
+    

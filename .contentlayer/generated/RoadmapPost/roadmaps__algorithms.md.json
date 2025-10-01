@@ -1,11 +1,37 @@
 {
   "id": "algorithms",
-  "name": "Algorithms",
   "slug": "algorithms",
-  "description": "Core concepts of computation and problem-solving strategies.",
+  "name": "Algorithms",
   "category": "Core Computer Science",
+  "description": "Core concepts of computation and problem-solving strategies.",
   "imageUrl": "https://picsum.photos/seed/algorithms/600/400",
   "dataAiHint": "abstract algorithm",
+  "subtopics": [
+    {
+      "id": "sorting",
+      "slug": "sorting",
+      "type": "RoadmapNode",
+      "_raw": {}
+    },
+    {
+      "id": "graphs",
+      "slug": "graphs",
+      "type": "RoadmapNode",
+      "_raw": {}
+    },
+    {
+      "id": "dp",
+      "slug": "dynamic-programming",
+      "type": "RoadmapNode",
+      "_raw": {}
+    },
+    {
+      "id": "complexity-analysis",
+      "slug": "complexity-analysis",
+      "type": "RoadmapNode",
+      "_raw": {}
+    }
+  ],
   "codeSnippets": [
     {
       "id": "cs-algo-1",

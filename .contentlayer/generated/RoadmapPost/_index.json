@@ -1,1 +1,558 @@
-[]
+[
+  {
+    "id": "algorithms",
+    "slug": "algorithms",
+    "name": "Algorithms",
+    "category": "Core Computer Science",
+    "description": "Core concepts of computation and problem-solving strategies.",
+    "imageUrl": "https://picsum.photos/seed/algorithms/600/400",
+    "dataAiHint": "abstract algorithm",
+    "subtopics": [
+      {
+        "id": "sorting",
+        "slug": "sorting",
+        "type": "RoadmapNode",
+        "_raw": {}
+      },
+      {
+        "id": "graphs",
+        "slug": "graphs",
+        "type": "RoadmapNode",
+        "_raw": {}
+      },
+      {
+        "id": "dp",
+        "slug": "dynamic-programming",
+        "type": "RoadmapNode",
+        "_raw": {}
+      },
+      {
+        "id": "complexity-analysis",
+        "slug": "complexity-analysis",
+        "type": "RoadmapNode",
+        "_raw": {}
+      }
+    ],
+    "codeSnippets": [
+      {
+        "id": "cs-algo-1",
+        "title": "Python Merge Sort",
+        "language": "python",
+        "code": "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        L = arr[:mid]\n        R = arr[mid:]\n        merge_sort(L)\n        merge_sort(R)\n        # ... (merge logic)\n        i = j = k = 0\n        while i < len(L) and j < len(R):\n            if L[i] < R[j]:\n                arr[k] = L[i]\n                i += 1\n            else:\n                arr[k] = R[j]\n                j += 1\n            k += 1\n        while i < len(L):\n            arr[k] = L[i]\n            i += 1\n            k += 1\n        while j < len(R):\n            arr[k] = R[j]\n            j += 1\n            k += 1\n",
+        "description": "A classic divide-and-conquer sorting algorithm.",
+        "type": "CodeSnippetItem",
+        "_raw": {}
+      },
+      {
+        "id": "cs-algo-bigo-example",
+        "title": "Big O Notation Example (Linear Time)",
+        "language": "python",
+        "code": "def find_element(arr, target):\n    # O(n) - Linear time complexity\n    for element in arr:\n        if element == target:\n            return True\n    return False\n\nmy_list = [1, 2, 3, 4, 5]\nprint(find_element(my_list, 3)) # True\nprint(find_element(my_list, 6)) # False\n",
+        "description": "Illustrates an algorithm with O(n) time complexity.",
+        "type": "CodeSnippetItem",
+        "_raw": {}
+      }
+    ],
+    "references": [
+      {
+        "id": "1",
+        "title": "Big O Notation Explained",
+        "slug": "big-o-notation",
+        "type": "WikiArticleStub",
+        "_raw": {}
+      }
+    ],
+    "body": {
+      "raw": "\nDelve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.",
+      "html": "<p>Delve into the fundamental building blocks of computation. This section explores various algorithmic paradigms, data structures, and complexity analysis essential for efficient problem-solving in computer science.</p>"
+    },
+    "_id": "roadmaps/algorithms.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/algorithms.md",
+      "sourceFileName": "algorithms.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/algorithms"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/algorithms"
+  },
+  {
+    "id": "backend",
+    "slug": "backend",
+    "name": "Backend Development",
+    "category": "Software Engineering",
+    "description": "A guide to server-side technologies, databases, and APIs for building robust web applications.",
+    "imageUrl": "https://picsum.photos/seed/backenddev/600/400",
+    "dataAiHint": "server database",
+    "body": {
+      "raw": "\nLearn how to build the logic and data management that powers web applications from behind the scenes. This roadmap covers languages, frameworks, databases, and architectural patterns.\n",
+      "html": "<p>Learn how to build the logic and data management that powers web applications from behind the scenes. This roadmap covers languages, frameworks, databases, and architectural patterns.</p>"
+    },
+    "_id": "roadmaps/backend.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/backend.md",
+      "sourceFileName": "backend.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/backend"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/backend"
+  },
+  {
+    "id": "compiler-theory",
+    "slug": "compiler-theory",
+    "name": "Compiler Theory",
+    "category": "Theoretical Computer Science",
+    "description": "The art of translating high-level code to machine instructions.",
+    "imageUrl": "https://picsum.photos/seed/compilertheory/600/400",
+    "dataAiHint": "code compilation",
+    "body": {
+      "raw": "\nUncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.",
+      "html": "<p>Uncover the magic behind compilers. Learn about lexical analysis, parsing, semantic analysis, code generation, and optimization techniques that transform source code into executable programs.</p>"
+    },
+    "_id": "roadmaps/compiler-theory.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/compiler-theory.md",
+      "sourceFileName": "compiler-theory.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/compiler-theory"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/compiler-theory"
+  },
+  {
+    "id": "cybersecurity",
+    "slug": "cybersecurity",
+    "name": "Cybersecurity",
+    "category": "Security",
+    "description": "An in-depth guide to protecting systems, networks, and data from digital threats.",
+    "imageUrl": "https://picsum.photos/seed/cybersecurity/600/400",
+    "dataAiHint": "digital security matrix",
+    "roadmapColumns": [
+      {
+        "left": [
+          {
+            "id": "certs-and-tools",
+            "title": "CTFs & Certifications",
+            "isGroup": true,
+            "items": [
+              {
+                "id": "ctf",
+                "title": "Capture The Flag (CTF)"
+              },
+              {
+                "id": "oscp",
+                "title": "OSCP"
+              },
+              {
+                "id": "comptia",
+                "title": "CompTIA Security+"
+              }
+            ],
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "security-tools",
+            "title": "Security Tools",
+            "isGroup": true,
+            "items": [
+              {
+                "id": "wireshark",
+                "title": "Wireshark"
+              },
+              {
+                "id": "nmap-tool",
+                "title": "Nmap"
+              },
+              {
+                "id": "metasploit",
+                "title": "Metasploit"
+              }
+            ],
+            "type": "RoadmapNode",
+            "_raw": {}
+          }
+        ],
+        "main": [
+          {
+            "id": "fundamental-it-skills",
+            "title": "Fundamental IT Skills",
+            "slug": "computer-hardware-components",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "operating-systems",
+            "title": "Operating Systems",
+            "slug": "operating-systems-basics",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "networking-knowledge",
+            "title": "Networking Knowledge",
+            "slug": "networking-fundamentals-osi-tcpip",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "intro-to-cli",
+            "title": "Intro to CLI",
+            "slug": "introduction-to-linux-cli",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "basic-scripting",
+            "title": "Basic Scripting",
+            "slug": "basic-scripting-with-python",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          }
+        ],
+        "right": [
+          {
+            "id": "fundamental-skills",
+            "title": "Fundamental Skills",
+            "isGroup": true,
+            "items": [
+              {
+                "id": "problem-solving",
+                "title": "Problem Solving"
+              },
+              {
+                "id": "analytical-thinking",
+                "title": "Analytical Thinking"
+              },
+              {
+                "id": "communication",
+                "title": "Communication"
+              }
+            ],
+            "type": "RoadmapNode",
+            "_raw": {}
+          }
+        ],
+        "type": "RoadmapColumn",
+        "_raw": {}
+      }
+    ],
+    "body": {
+      "raw": "\nUnderstand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.",
+      "html": "<p>Understand the principles and practices of cybersecurity. This section covers cryptography, network security, ethical hacking, and threat modeling to protect digital assets.</p>"
+    },
+    "_id": "roadmaps/cybersecurity.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/cybersecurity.md",
+      "sourceFileName": "cybersecurity.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/cybersecurity"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/cybersecurity"
+  },
+  {
+    "id": "devops",
+    "slug": "devops",
+    "name": "DevOps",
+    "category": "Software Engineering",
+    "description": "A roadmap of the practices and tools that bridge software development and IT operations.",
+    "imageUrl": "https://picsum.photos/seed/devopscloud/600/400",
+    "dataAiHint": "automation pipeline",
+    "roadmapColumns": [
+      {
+        "left": [
+          {
+            "id": "devops-culture",
+            "title": "DevOps Culture",
+            "isGroup": true,
+            "items": [
+              {
+                "id": "collaboration",
+                "title": "Collaboration"
+              },
+              {
+                "id": "automation-mindset",
+                "title": "Automation Mindset"
+              },
+              {
+                "id": "shared-responsibility",
+                "title": "Shared Responsibility"
+              }
+            ],
+            "type": "RoadmapNode",
+            "_raw": {}
+          }
+        ],
+        "main": [
+          {
+            "id": "devops-plan",
+            "title": "1. Plan",
+            "slug": "devops-plan",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "devops-code",
+            "title": "2. Code",
+            "slug": "devops-code",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "devops-build",
+            "title": "3. Build",
+            "slug": "devops-build",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "devops-test",
+            "title": "4. Test",
+            "slug": "devops-test",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "devops-release",
+            "title": "5. Release",
+            "slug": "devops-release",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "devops-deploy",
+            "title": "6. Deploy",
+            "slug": "devops-deploy",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "devops-operate",
+            "title": "7. Operate",
+            "slug": "devops-operate",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          },
+          {
+            "id": "devops-monitor",
+            "title": "8. Monitor",
+            "slug": "devops-monitor",
+            "isMainPath": true,
+            "type": "RoadmapNode",
+            "_raw": {}
+          }
+        ],
+        "right": [
+          {
+            "id": "key-tools",
+            "title": "Key Tools",
+            "isGroup": true,
+            "items": [
+              {
+                "id": "git",
+                "title": "Git"
+              },
+              {
+                "id": "docker",
+                "title": "Docker"
+              },
+              {
+                "id": "kubernetes",
+                "title": "Kubernetes"
+              },
+              {
+                "id": "jenkins",
+                "title": "Jenkins"
+              },
+              {
+                "id": "prometheus",
+                "title": "Prometheus"
+              },
+              {
+                "id": "ansible",
+                "title": "Ansible"
+              }
+            ],
+            "type": "RoadmapNode",
+            "_raw": {}
+          }
+        ],
+        "type": "RoadmapColumn",
+        "_raw": {}
+      }
+    ],
+    "body": {
+      "raw": "\nExplore the world of DevOps to learn how to improve the speed and quality of software development through automation, continuous integration, and continuous delivery (CI/CD). This roadmap outlines the key stages of the DevOps lifecycle, from planning to monitoring.\n",
+      "html": "<p>Explore the world of DevOps to learn how to improve the speed and quality of software development through automation, continuous integration, and continuous delivery (CI/CD). This roadmap outlines the key stages of the DevOps lifecycle, from planning to monitoring.</p>"
+    },
+    "_id": "roadmaps/devops.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/devops.md",
+      "sourceFileName": "devops.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/devops"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/devops"
+  },
+  {
+    "id": "frontend",
+    "slug": "frontend",
+    "name": "Frontend Development",
+    "category": "Software Engineering",
+    "description": "A roadmap to building modern, interactive user interfaces for the web.",
+    "imageUrl": "https://picsum.photos/seed/frontendui/600/400",
+    "dataAiHint": "user interface",
+    "body": {
+      "raw": "\nMaster the technologies of the browser. This roadmap covers the essential languages (HTML, CSS, JavaScript) and frameworks (like React) for creating beautiful and responsive websites.\n",
+      "html": "<p>Master the technologies of the browser. This roadmap covers the essential languages (HTML, CSS, JavaScript) and frameworks (like React) for creating beautiful and responsive websites.</p>"
+    },
+    "_id": "roadmaps/frontend.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/frontend.md",
+      "sourceFileName": "frontend.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/frontend"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/frontend"
+  },
+  {
+    "id": "language-theory",
+    "slug": "language-theory",
+    "name": "Language Theory",
+    "category": "Theoretical Computer Science",
+    "description": "Formal languages, automata, and computability.",
+    "imageUrl": "https://picsum.photos/seed/languagetheory/600/400",
+    "dataAiHint": "abstract symbols",
+    "references": [
+      {
+        "id": "2",
+        "title": "Introduction to Turing Machines",
+        "slug": "turing-machines",
+        "type": "WikiArticleStub",
+        "_raw": {}
+      }
+    ],
+    "body": {
+      "raw": "\nExplore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.",
+      "html": "<p>Explore the theoretical foundations of computation and formal languages. This section delves into automata theory, grammars, Turing machines, and the limits of what can be computed.</p>"
+    },
+    "_id": "roadmaps/language-theory.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/language-theory.md",
+      "sourceFileName": "language-theory.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/language-theory"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/language-theory"
+  },
+  {
+    "id": "ml",
+    "slug": "machine-learning",
+    "name": "Machine Learning",
+    "category": "Artificial Intelligence",
+    "description": "Algorithms that learn from and make decisions based on data.",
+    "imageUrl": "https://picsum.photos/seed/machinelearning/600/400",
+    "dataAiHint": "artificial intelligence",
+    "body": {
+      "raw": "\nDive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.",
+      "html": "<p>Dive into the field of Machine Learning, where algorithms enable systems to learn from data. Topics include supervised, unsupervised learning, neural networks, and model evaluation.</p>"
+    },
+    "_id": "roadmaps/machine-learning.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/machine-learning.md",
+      "sourceFileName": "machine-learning.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/machine-learning"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/machine-learning"
+  },
+  {
+    "id": "os",
+    "slug": "operating-systems",
+    "name": "Operating Systems",
+    "category": "Core Computer Science",
+    "description": "Software managing computer hardware and resources.",
+    "imageUrl": "https://picsum.photos/seed/operatingsystems/600/400",
+    "dataAiHint": "computer hardware",
+    "subtopics": [
+      {
+        "id": "process-management",
+        "slug": "process-management",
+        "type": "RoadmapNode",
+        "_raw": {}
+      },
+      {
+        "id": "memory-management",
+        "slug": "memory-management",
+        "type": "RoadmapNode",
+        "_raw": {}
+      },
+      {
+        "id": "file-systems",
+        "slug": "file-systems",
+        "type": "RoadmapNode",
+        "_raw": {}
+      }
+    ],
+    "codeSnippets": [
+      {
+        "id": "os-fork-example",
+        "title": "C++ Fork Example",
+        "language": "cplusplus",
+        "code": "#include <iostream>\n#include <unistd.h>\n\nint main() {\n    pid_t pid = fork();\n\n    if (pid == 0) {\n        std::cout << \"Child process\" << std::endl;\n    } else if (pid > 0) {\n        std::cout << \"Parent process\" << std::endl;\n    } else {\n        std::cerr << \"Fork failed\" << std::endl;\n        return 1;\n    }\n\n    return 0;\n}\n",
+        "description": "A simple example of creating a new process using fork().",
+        "type": "CodeSnippetItem",
+        "_raw": {}
+      }
+    ],
+    "references": [
+      {
+        "id": "wiki-jvm",
+        "title": "Java Virtual Machine (JVM) Overview",
+        "slug": "jvm-overview",
+        "type": "WikiArticleStub",
+        "_raw": {}
+      }
+    ],
+    "body": {
+      "raw": "\nExplore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.",
+      "html": "<p>Explore the intricate world of operating systems, the foundational software that bridges hardware and applications. Learn about process management, memory allocation, file systems, and concurrency.</p>"
+    },
+    "_id": "roadmaps/operating-systems.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/operating-systems.md",
+      "sourceFileName": "operating-systems.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/operating-systems"
+    },
+    "type": "RoadmapPost",
+    "url": "/roadmaps/operating-systems"
+  }
+]

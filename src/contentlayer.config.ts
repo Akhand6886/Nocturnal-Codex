@@ -103,44 +103,32 @@ export const RoadmapPost = defineDocumentType(() => ({
   filePathPattern: `roadmaps/**/*.md*`,
   contentType: 'markdown',
   fields: {
-    title: { type: 'string', required: false }, // Made optional to prevent build errors
-    name: { type: 'string', required: false }, // Kept for compatibility
-    description: { type: 'string', required: true },
+    id: { type: 'string', required: true },
+    slug: { type: 'string', required: true },
+    name: { type: 'string', required: true },
+    title: { type: 'string', required: true },
     category: { type: 'string', required: true },
-    id: { type: 'string', required: false },
-    
-    // Fields for both types
+    description: { type: 'string', required: true },
     imageUrl: { type: 'string', required: false },
     dataAiHint: { type: 'string', required: false },
-    tags: { type: 'list', of: { type: 'string' }, required: false },
     
-    // Fields primarily for static/simple roadmaps
+    // Fields for custom/static roadmaps
+    roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
     subtopics: { type: 'list', of: RoadmapNode, required: false },
     codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
     references: { type: 'list', of: WikiArticleStub, required: false },
     thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
-    
-    // Fields for custom layout roadmaps
-    roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
 
     // Fields for interactive roadmaps
     difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: false },
     estimatedTime: { type: 'string', required: false },
+    tags: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx?$/, ''),
-    },
     url: {
       type: 'string', 
-      resolve: (doc) => `/roadmaps/${doc._raw.sourceFileName.replace(/\.mdx?$/, '')}`,
+      resolve: (doc) => `/roadmaps/${doc.slug}`,
     },
-    // Unified title field to handle both `title` and `name` properties
-    displayTitle: {
-        type: 'string',
-        resolve: (doc) => doc.title || doc.name || 'Untitled Roadmap'
-    }
   }
 }));
 
@@ -166,3 +154,5 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost],
 })
+
+    

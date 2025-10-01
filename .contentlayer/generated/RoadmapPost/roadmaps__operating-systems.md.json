@@ -1,11 +1,31 @@
 {
   "id": "os",
-  "name": "Operating Systems",
   "slug": "operating-systems",
-  "description": "Software managing computer hardware and resources.",
+  "name": "Operating Systems",
   "category": "Core Computer Science",
+  "description": "Software managing computer hardware and resources.",
   "imageUrl": "https://picsum.photos/seed/operatingsystems/600/400",
   "dataAiHint": "computer hardware",
+  "subtopics": [
+    {
+      "id": "process-management",
+      "slug": "process-management",
+      "type": "RoadmapNode",
+      "_raw": {}
+    },
+    {
+      "id": "memory-management",
+      "slug": "memory-management",
+      "type": "RoadmapNode",
+      "_raw": {}
+    },
+    {
+      "id": "file-systems",
+      "slug": "file-systems",
+      "type": "RoadmapNode",
+      "_raw": {}
+    }
+  ],
   "codeSnippets": [
     {
       "id": "os-fork-example",

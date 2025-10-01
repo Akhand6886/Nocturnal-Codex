@@ -51,24 +51,24 @@ export type RoadmapPost = {
   _id: string
   _raw: Local.RawDocumentData
   type: 'RoadmapPost'
-  title: string
-  description: string
+  id: string
+  slug: string
+  name: string
+  title?: string | undefined
   category: string
-  difficulty?: 'beginner' | 'intermediate' | 'advanced' | undefined
-  estimatedTime?: string | undefined
-  tags?: string[] | undefined
-  id?: string | undefined
-  name?: string | undefined
+  description: string
   imageUrl?: string | undefined
   dataAiHint?: string | undefined
+  roadmapColumns?: RoadmapColumn[] | undefined
+  subtopics?: RoadmapNode[] | undefined
   codeSnippets?: CodeSnippetItem[] | undefined
   references?: WikiArticleStub[] | undefined
   thinkTankArticles?: ThinkTankArticleStub[] | undefined
-  roadmapColumns?: RoadmapColumn[] | undefined
-  subtopics?: RoadmapNode[] | undefined
+  difficulty?: 'beginner' | 'intermediate' | 'advanced' | undefined
+  estimatedTime?: string | undefined
+  tags?: string[] | undefined
   /** Markdown file body */
   body: Markdown
-  slug: string
   url: string
 }
 

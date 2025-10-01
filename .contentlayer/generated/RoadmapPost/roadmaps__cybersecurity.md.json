@@ -1,9 +1,9 @@
 {
   "id": "cybersecurity",
-  "name": "Cybersecurity",
   "slug": "cybersecurity",
-  "description": "An in-depth guide to protecting systems, networks, and data from digital threats.",
+  "name": "Cybersecurity",
   "category": "Security",
+  "description": "An in-depth guide to protecting systems, networks, and data from digital threats.",
   "imageUrl": "https://picsum.photos/seed/cybersecurity/600/400",
   "dataAiHint": "digital security matrix",
   "roadmapColumns": [

@@ -1,9 +1,9 @@
 {
   "id": "language-theory",
-  "name": "Language Theory",
   "slug": "language-theory",
-  "description": "Formal languages, automata, and computability.",
+  "name": "Language Theory",
   "category": "Theoretical Computer Science",
+  "description": "Formal languages, automata, and computability.",
   "imageUrl": "https://picsum.photos/seed/languagetheory/600/400",
   "dataAiHint": "abstract symbols",
   "references": [

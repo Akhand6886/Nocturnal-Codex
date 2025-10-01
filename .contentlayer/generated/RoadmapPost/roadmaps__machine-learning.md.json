@@ -1,9 +1,9 @@
 {
   "id": "ml",
-  "name": "Machine Learning",
   "slug": "machine-learning",
-  "description": "Algorithms that learn from and make decisions based on data.",
+  "name": "Machine Learning",
   "category": "Artificial Intelligence",
+  "description": "Algorithms that learn from and make decisions based on data.",
   "imageUrl": "https://picsum.photos/seed/machinelearning/600/400",
   "dataAiHint": "artificial intelligence",
   "body": {

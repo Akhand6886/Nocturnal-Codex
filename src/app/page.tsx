@@ -8,7 +8,7 @@ import { MOCK_WIKI_ARTICLES } from '@/lib/data';
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
-import { RoadmapTile } from "@/components/content/roadmap-tile";
+import { RoadmapCard } from "@/components/content/roadmap-card";
 import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
 import { allRoadmapPosts, allLanguagePosts } from "contentlayer/generated";
@@ -26,7 +26,7 @@ export default async function HomePage() {
   const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true }) || [];
   
   const featuredWikiArticles = MOCK_WIKI_ARTICLES ? MOCK_WIKI_ARTICLES.slice(0, 3) : [];
-  const featuredRoadmaps = allRoadmapPosts ? allRoadmapPosts.slice(0, 6) : [];
+  const featuredRoadmaps = allRoadmapPosts ? allRoadmapPosts.filter(p => p.title).slice(0, 6) : [];
   const featuredLanguages = allLanguagePosts ? allLanguagePosts.slice(0, 4) : [];
 
   return (
@@ -62,7 +62,7 @@ export default async function HomePage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredRoadmaps.map((roadmap) => (
-            <RoadmapTile key={roadmap.id} roadmap={roadmap} />
+            <RoadmapCard key={roadmap.id} roadmap={roadmap} />
           ))}
         </div>
         {allRoadmapPosts && allRoadmapPosts.length > 6 && (
@@ -165,3 +165,5 @@ export default async function HomePage() {
     </div>
   );
 }
+
+    

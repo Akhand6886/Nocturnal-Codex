@@ -1,9 +1,9 @@
 {
   "id": "frontend",
-  "name": "Frontend Development",
   "slug": "frontend",
-  "description": "A roadmap to building modern, interactive user interfaces for the web.",
+  "name": "Frontend Development",
   "category": "Software Engineering",
+  "description": "A roadmap to building modern, interactive user interfaces for the web.",
   "imageUrl": "https://picsum.photos/seed/frontendui/600/400",
   "dataAiHint": "user interface",
   "body": {
