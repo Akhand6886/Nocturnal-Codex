@@ -2,6 +2,7 @@
   "id": "backend",
   "slug": "backend",
   "name": "Backend Development",
+  "title": "Backend Development",
   "category": "Software Engineering",
   "description": "A guide to server-side technologies, databases, and APIs for building robust web applications.",
   "imageUrl": "https://picsum.photos/seed/backenddev/600/400",

@@ -106,7 +106,7 @@ export const RoadmapPost = defineDocumentType(() => ({
     id: { type: 'string', required: true },
     slug: { type: 'string', required: true },
     name: { type: 'string', required: true },
-    title: { type: 'string', required: true },
+    title: { type: 'string', required: false },
     category: { type: 'string', required: true },
     description: { type: 'string', required: true },
     imageUrl: { type: 'string', required: false },
@@ -154,5 +154,3 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost],
 })
-
-    

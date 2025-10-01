@@ -77,5 +77,3 @@ export default function RoadmapsPage() {
 }
 
 export const revalidate = 60;
-
-    
