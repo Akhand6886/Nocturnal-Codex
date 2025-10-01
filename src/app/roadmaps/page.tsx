@@ -1,12 +1,8 @@
-
 // src/app/roadmaps/page.tsx
 import { allRoadmapPosts } from 'contentlayer/generated';
 import { RoadmapCard } from '@/components/roadmap/RoadmapCard';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
 import { BookOpen } from 'lucide-react';
 import { Metadata } from 'next';
-import { RoadmapFilters } from '@/components/roadmap/RoadmapFilters';
 
 export const metadata: Metadata = {
   title: 'Interactive Learning Roadmaps - Master Any Technology',
@@ -27,9 +23,20 @@ export const metadata: Metadata = {
 
 export default function RoadmapsPage() {
     const publishedRoadmaps = allRoadmapPosts;
+
+    const groupedRoadmaps = publishedRoadmaps.reduce((acc, roadmap) => {
+        const category = roadmap.category || 'Uncategorized';
+        if (!acc[category]) {
+            acc[category] = [];
+        }
+        acc[category].push(roadmap);
+        return acc;
+    }, {} as Record<string, typeof publishedRoadmaps>);
+
+    const sortedCategories = Object.keys(groupedRoadmaps).sort((a, b) => a.localeCompare(b));
     
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 space-y-12">
             {/* Header Section */}
             <div className="text-center mb-12">
                 <h1 className="text-4xl font-bold mb-4 flex items-center justify-center">
@@ -42,7 +49,20 @@ export default function RoadmapsPage() {
             </div>
 
             {publishedRoadmaps.length > 0 ? (
-                <RoadmapFilters roadmaps={publishedRoadmaps} />
+                 <div className="space-y-12">
+                    {sortedCategories.map(category => (
+                        <section key={category}>
+                        <h2 className="text-2xl font-semibold mb-6 pb-3 border-b border-border text-foreground">
+                            {category}
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {groupedRoadmaps[category].map((roadmap) => (
+                                <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
+                            ))}
+                        </div>
+                        </section>
+                    ))}
+                </div>
             ) : (
                 <div className="text-center py-16">
                     <h3 className="text-lg font-semibold mb-2">No roadmaps found</h3>

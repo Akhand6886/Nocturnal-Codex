@@ -48,7 +48,6 @@ export const TutorialPost = defineDocumentType(() => ({
     },
 }));
 
-// Nested types for Roadmaps
 const RoadmapNode = defineNestedType(() => ({
     name: 'RoadmapNode',
     fields: {
@@ -57,7 +56,7 @@ const RoadmapNode = defineNestedType(() => ({
         slug: { type: 'string', required: false },
         isMainPath: { type: 'boolean', required: false },
         isGroup: { type: 'boolean', required: false },
-        items: { type: 'json', required: false }, // Use json for recursive structures
+        items: { type: 'json', required: false },
     },
 }));
   
@@ -99,32 +98,34 @@ const ThinkTankArticleStub = defineNestedType(() => ({
     }
 }));
 
-// Unified Roadmap Schema
 export const RoadmapPost = defineDocumentType(() => ({
   name: 'RoadmapPost',
-  filePathPattern: `roadmaps/**/*.mdx?`, // Match both .md and .mdx
+  filePathPattern: `roadmaps/**/*.md*`,
   contentType: 'markdown',
   fields: {
-    // Common fields
-    title: { type: 'string', required: true },
+    title: { type: 'string', required: false }, // Made optional to prevent build errors
+    name: { type: 'string', required: false }, // Kept for compatibility
     description: { type: 'string', required: true },
     category: { type: 'string', required: true },
-    
-    // Fields for Interactive Roadmaps (.mdx)
-    difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: false },
-    estimatedTime: { type: 'string', required: false },
-    tags: { type: 'list', of: { type: 'string' }, required: false },
-
-    // Fields for Static Roadmaps (.md)
     id: { type: 'string', required: false },
-    name: { type: 'string', required: false }, // Will use `title` as primary
+    
+    // Fields for both types
     imageUrl: { type: 'string', required: false },
     dataAiHint: { type: 'string', required: false },
+    tags: { type: 'list', of: { type: 'string' }, required: false },
+    
+    // Fields primarily for static/simple roadmaps
+    subtopics: { type: 'list', of: RoadmapNode, required: false },
     codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
     references: { type: 'list', of: WikiArticleStub, required: false },
     thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
+    
+    // Fields for custom layout roadmaps
     roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
-    subtopics: { type: 'list', of: RoadmapNode, required: false },
+
+    // Fields for interactive roadmaps
+    difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: false },
+    estimatedTime: { type: 'string', required: false },
   },
   computedFields: {
     slug: {
@@ -135,6 +136,11 @@ export const RoadmapPost = defineDocumentType(() => ({
       type: 'string', 
       resolve: (doc) => `/roadmaps/${doc._raw.sourceFileName.replace(/\.mdx?$/, '')}`,
     },
+    // Unified title field to handle both `title` and `name` properties
+    displayTitle: {
+        type: 'string',
+        resolve: (doc) => doc.title || doc.name || 'Untitled Roadmap'
+    }
   }
 }));
 

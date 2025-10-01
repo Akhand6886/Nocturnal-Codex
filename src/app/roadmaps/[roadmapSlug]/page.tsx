@@ -1,4 +1,3 @@
-
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allRoadmapPosts } from 'contentlayer/generated';
@@ -43,17 +42,17 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
   }
 
   return {
-    title: `${roadmap.title} - Learning Roadmap`,
+    title: `${roadmap.displayTitle} - Learning Roadmap`,
     description: roadmap.description,
     openGraph: {
-      title: roadmap.title,
+      title: roadmap.displayTitle,
       description: roadmap.description,
       type: 'article',
       url: `/roadmaps/${roadmap.slug}`,
     },
     twitter: {
       card: 'summary_large_image',
-      title: roadmap.title,
+      title: roadmap.displayTitle,
       description: roadmap.description,
     },
   };
@@ -71,7 +70,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", href: "/" },
     { label: "Roadmaps", href: "/roadmaps" },
-    { label: roadmap.title },
+    { label: roadmap.displayTitle },
   ];
 
   // Special layout for Cybersecurity topic
@@ -122,7 +121,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <h1 className="text-4xl font-bold text-foreground">
-                  {roadmap.title}
+                  {roadmap.displayTitle}
                 </h1>
                 {roadmap.difficulty && (
                   <Badge 
@@ -216,13 +215,13 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
       <header className="space-y-4">
         {roadmap.imageUrl && (
           <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg border border-border/20">
-            <Image src={roadmap.imageUrl} alt={roadmap.title} fill className="object-cover" data-ai-hint={roadmap.dataAiHint || "topic banner"} priority />
+            <Image src={roadmap.imageUrl} alt={roadmap.displayTitle} fill className="object-cover" data-ai-hint={roadmap.dataAiHint || "topic banner"} priority />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
         )}
         <div className="border-b border-border pb-6">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                {roadmap.title}
+                {roadmap.displayTitle}
             </h1>
             <div className="mt-4 prose dark:prose-invert max-w-none">
                 <MarkdownRenderer content={roadmap.body.raw} />

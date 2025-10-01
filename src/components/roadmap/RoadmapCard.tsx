@@ -1,4 +1,3 @@
-
 // src/components/roadmap/RoadmapCard.tsx
 'use client';
 
@@ -13,13 +12,10 @@ import {
   Star, 
   ArrowRight, 
   Trophy,
-  Users,
-  TrendingUp
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type RoadmapPost } from 'contentlayer/generated';
 import { useProgress } from './hooks/useProgress';
-import { useMemo } from 'react';
 
 interface RoadmapCardProps {
   roadmap: RoadmapPost;
@@ -28,7 +24,6 @@ interface RoadmapCardProps {
 }
 
 export function RoadmapCard({ roadmap, featured = false, showProgress = true }: RoadmapCardProps) {
-  // Mock progress for demonstration - in real app, this would come from user data
   const { getProgressPercentage } = useProgress(roadmap.slug, []);
   const progress = showProgress ? getProgressPercentage() : 0;
 
@@ -82,7 +77,7 @@ export function RoadmapCard({ roadmap, featured = false, showProgress = true }: 
               className="block group-hover:text-primary transition-colors"
             >
               <h3 className="font-semibold text-lg leading-tight line-clamp-2">
-                {roadmap.title}
+                {roadmap.displayTitle}
               </h3>
             </Link>
             <p className="text-sm text-muted-foreground mt-1 capitalize">
