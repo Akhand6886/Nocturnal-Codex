@@ -1,74 +1,101 @@
+
 {
   "nodes": [
     {
       "id": "1",
-      "position": { "x": 250, "y": 0 },
+      "type": "roadmapNode",
+      "position": { "x": 350, "y": 25 },
       "data": {
         "label": "Internet",
-        "description": "Start by learning the basics of how the internet works. Understand concepts like HTTP/HTTPS, browsers, DNS, and hosting.",
-        "category": "Foundation",
-        "estimatedTime": "1 Week",
-        "resources": [
-          {
-            "title": "How does the Internet work?",
-            "url": "https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work",
-            "type": "article",
-            "free": true
-          }
-        ]
+        "description": "Understand the basics of how the internet works.",
+        "category": "foundation",
+        "estimatedTime": "1 Day"
       }
     },
     {
       "id": "2",
-      "position": { "x": 250, "y": 180 },
+      "type": "roadmapNode",
+      "position": { "x": 350, "y": 175 },
       "data": {
-        "label": "Choose a Language",
-        "description": "Pick a server-side language to be your primary tool. Popular choices include Node.js (JavaScript), Python, Java, Go, and Rust.",
-        "category": "Programming",
-        "estimatedTime": "1 Month",
-        "objectives": [
-          "Learn basic syntax and data structures.",
-          "Understand how to handle web requests.",
-          "Explore the standard library for your chosen language."
-        ]
+        "label": "Learn a Language",
+        "description": "Pick a server-side language to be your primary tool.",
+        "category": "programming"
+      }
+    },
+    {
+      "id": "2-1",
+      "type": "roadmapNode",
+      "position": { "x": 50, "y": 325 },
+      "data": {
+        "label": "JavaScript (Node.js)",
+        "description": "Dynamic and versatile, runs everywhere.",
+        "category": "programming",
+        "resources": [{ "title": "Node.js Official Docs", "url": "https://nodejs.org/en/docs/", "type": "documentation", "free": true }]
+      }
+    },
+    {
+      "id": "2-2",
+      "type": "roadmapNode",
+      "position": { "x": 250, "y": 325 },
+      "data": {
+        "label": "Python",
+        "description": "Great for web development, data science, and scripting.",
+        "category": "programming"
+      }
+    },
+    {
+      "id": "2-3",
+      "type": "roadmapNode",
+      "position": { "x": 450, "y": 325 },
+      "data": {
+        "label": "Java",
+        "description": "Robust, enterprise-level language.",
+        "category": "programming"
+      }
+    },
+    {
+      "id": "2-4",
+      "type": "roadmapNode",
+      "position": { "x": 650, "y": 325 },
+      "data": {
+        "label": "Go",
+        "description": "Known for high performance and concurrency.",
+        "category": "programming"
       }
     },
     {
       "id": "3",
-      "position": { "x": 50, "y": 360 },
+      "type": "roadmapNode",
+      "position": { "x": 350, "y": 475 },
       "data": {
         "label": "Databases",
-        "description": "Learn how to store and retrieve data. You should understand both SQL (relational) and NoSQL databases.",
-        "category": "Data",
-        "estimatedTime": "1 Month"
+        "description": "Learn how to store and retrieve data.",
+        "category": "foundation",
+        "objectives": ["Understand SQL vs NoSQL", "Learn to model data", "Perform basic CRUD operations"]
       }
     },
     {
       "id": "4",
-      "position": { "x": 450, "y": 360 },
+      "type": "roadmapNode",
+      "position": { "x": 350, "y": 625 },
       "data": {
         "label": "APIs",
-        "description": "Learn how to create APIs (Application Programming Interfaces) to allow communication between the client and server.",
-        "category": "Architecture",
-        "estimatedTime": "3 Weeks"
+        "description": "Learn how services communicate with each other.",
+        "category": "foundation",
+        "prerequisites": ["Learn a Language", "Databases"]
       }
-    },
-    {
-        "id": "5",
-        "position": { "x": 250, "y": 540 },
-        "data": {
-          "label": "Authentication",
-          "description": "Understand how to secure your application by authenticating and authorizing users. Learn about sessions, cookies, JWT, and OAuth.",
-          "category": "Security",
-          "estimatedTime": "2 Weeks"
-        }
-      }
+    }
   ],
   "edges": [
-    { "id": "e1-2", "source": "1", "target": "2", "animated": true },
-    { "id": "e2-3", "source": "2", "target": "3" },
-    { "id": "e2-4", "source": "2", "target": "4" },
-    { "id": "e3-5", "source": "3", "target": "5" },
-    { "id": "e4-5", "source": "4", "target": "5" }
+    { "id": "e1-2", "source": "1", "target": "2" },
+    { "id": "e2-21", "source": "2", "target": "2-1" },
+    { "id": "e2-22", "source": "2", "target": "2-2" },
+    { "id": "e2-23", "source": "2", "target": "2-3" },
+    { "id": "e2-24", "source": "2", "target": "2-4" },
+    { "id": "e21-3", "source": "2-1", "target": "3" },
+    { "id": "e22-3", "source": "2-2", "target": "3" },
+    { "id": "e23-3", "source": "2-3", "target": "3" },
+    { "id": "e24-3", "source": "2-4", "target": "3" },
+    { "id": "e3-4", "source": "3", "target": "4" }
   ]
 }
