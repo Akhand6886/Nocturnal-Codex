@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
 
-  const title = roadmap?.displayTitle || 'Roadmap';
+  const title = roadmap?.title || 'Roadmap';
 
   if (!roadmap) {
     return {
@@ -80,7 +80,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
   
     // --- FALLBACK FOR STATIC ROADMAPS ---
     // This code runs only if no JSON blueprint or content directory is found.
-    const pageTitle = roadmap.displayTitle;
+    const pageTitle = roadmap.title;
     const breadcrumbItems: BreadcrumbItem[] = [
       { label: "Home", href: "/" },
       { label: "Roadmaps", href: "/roadmaps" },
