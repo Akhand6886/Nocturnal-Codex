@@ -1,4 +1,3 @@
-
 // src/components/roadmap/TopicSidebar.tsx
 'use client';
 
@@ -28,7 +27,8 @@ import {
   List,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { type RoadmapNodeData, type Resource } from '@/types/roadmap';
+import { type RoadmapNodeData, type Resource, type TopicContent } from '@/types/roadmap';
+import { MarkdownRenderer } from '@/components/content/markdown-renderer';
 
 interface TopicSidebarProps {
   isOpen: boolean;
@@ -43,21 +43,18 @@ export function TopicSidebar({
   onClose,
   selectedNode,
   onToggleCompletion,
-  roadmapSlug,
 }: TopicSidebarProps) {
   if (!selectedNode) return null;
 
   const { data } = selectedNode;
   const {
     label,
-    description,
     category,
-    estimatedTime,
     completed = false,
-    resources = [],
-    prerequisites = [],
-    objectives = [],
+    content, // This is the detailed content from the markdown file
   } = data;
+  
+  const estimatedTime = content?.description?.length ? `${Math.ceil(content.description.length / 1000)} min read` : undefined;
 
   // Get resource icon based on type
   const getResourceIcon = (type: Resource['type']) => {
@@ -76,8 +73,8 @@ export function TopicSidebar({
   };
 
   // Get category color
-  const getCategoryColor = (category?: string) => {
-    switch (category?.toLowerCase()) {
+  const getCategoryColor = (cat?: string) => {
+    switch (cat?.toLowerCase()) {
       case 'foundation':
         return 'bg-blue-500/10 text-blue-600 border-blue-500/20';
       case 'programming':
@@ -103,7 +100,7 @@ export function TopicSidebar({
               <div className="flex items-start justify-between">
                 <div className="flex-1 space-y-2">
                   <SheetTitle className="text-2xl font-bold leading-tight">
-                    {label}
+                    {content?.title || label}
                   </SheetTitle>
                   
                   <div className="flex flex-wrap gap-2">
@@ -115,9 +112,8 @@ export function TopicSidebar({
                         {category}
                       </Badge>
                     )}
-                    
                     {estimatedTime && (
-                      <Badge variant="secondary" className="gap-1">
+                       <Badge variant="secondary" className="gap-1">
                         <Clock className="h-3 w-3" />
                         {estimatedTime}
                       </Badge>
@@ -145,44 +141,22 @@ export function TopicSidebar({
             </SheetHeader>
 
             <div className="mt-6 space-y-6">
-              {/* Description */}
-              {description && (
+              {/* Description from Markdown */}
+              {content?.description && (
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-lg">Overview</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
-                      {description}
+                      {content.description}
                     </p>
                   </CardContent>
                 </Card>
               )}
 
-              {/* Prerequisites */}
-              {prerequisites.length > 0 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <List className="h-5 w-5" />
-                      Prerequisites
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {prerequisites.map((prereq, index) => (
-                        <li key={index} className="flex items-center gap-2 text-sm">
-                          <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground flex-shrink-0" />
-                          <span>{prereq}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              )}
-
-              {/* Learning Objectives */}
-              {objectives.length > 0 && (
+              {/* Learning Objectives from Markdown */}
+              {content?.objectives && content.objectives.length > 0 && (
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
@@ -192,7 +166,7 @@ export function TopicSidebar({
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
-                      {objectives.map((objective, index) => (
+                      {content.objectives.map((objective, index) => (
                         <li key={index} className="flex items-center gap-2 text-sm">
                           <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                           <span>{objective}</span>
@@ -203,8 +177,20 @@ export function TopicSidebar({
                 </Card>
               )}
 
-              {/* Resources */}
-              {resources.length > 0 && (
+              {/* Raw Markdown Content */}
+              {content?.rawContent && (
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-lg">Details</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <MarkdownRenderer content={content.rawContent} />
+                    </CardContent>
+                </Card>
+              )}
+
+              {/* Resources from Markdown */}
+              {content?.resources && content.resources.length > 0 && (
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
@@ -214,7 +200,7 @@ export function TopicSidebar({
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      {resources.map((resource, index) => (
+                      {content.resources.map((resource, index) => (
                         <div
                           key={index}
                           className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
@@ -240,11 +226,6 @@ export function TopicSidebar({
                                   <Badge variant="outline" className="text-xs text-green-600 border-green-200">
                                     Free
                                   </Badge>
-                                )}
-                                {resource.duration && (
-                                  <span className="text-xs text-muted-foreground">
-                                    {resource.duration}
-                                  </span>
                                 )}
                               </div>
                             </div>

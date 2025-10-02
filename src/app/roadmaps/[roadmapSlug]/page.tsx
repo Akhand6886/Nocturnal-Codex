@@ -1,23 +1,13 @@
-
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allRoadmapPosts } from 'contentlayer/generated';
 import { InteractiveRoadmap } from '@/components/roadmap/InteractiveRoadmap';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Clock, BookOpen, Users, Star } from 'lucide-react';
 import { Metadata } from 'next';
-import { CybersecurityRoadmap } from '@/components/content/cybersecurity-roadmap';
-import { DevOpsRoadmap } from '@/components/content/devops-roadmap';
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import Image from 'next/image';
-import { allTutorialPosts } from 'contentlayer/generated';
 import { MarkdownRenderer } from '@/components/content/markdown-renderer';
-import { CodeSnippet } from '@/components/content/code-snippet';
-import Link from 'next/link';
-import { ArrowRight, Brain, Code2, Lightbulb } from 'lucide-react';
-import { loadRoadmapFlowData } from '@/lib/roadmap-server-utils';
+import { loadRoadmapBlueprint, loadTopicContent } from '@/lib/roadmap-server-utils';
+import type { TopicContent } from '@/types/roadmap';
 
 interface RoadmapPageProps {
   params: {
@@ -36,7 +26,7 @@ export async function generateMetadata({ params }: RoadmapPageProps): Promise<Me
     (roadmap) => roadmap.slug === params.roadmapSlug
   );
 
-  const title = roadmap?.title || roadmap?.name;
+  const title = roadmap?.displayTitle || 'Roadmap';
 
   if (!roadmap) {
     return {
@@ -71,24 +61,26 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
       notFound();
     }
   
-    // This function will fetch the JSON blueprint for interactive roadmaps
-    const blueprint = await loadRoadmapFlowData(params.roadmapSlug);
-  
-    // If a blueprint exists, render the interactive roadmap view
-    if (blueprint) {
+    // Attempt to load the blueprint for an interactive roadmap
+    const blueprint = await loadRoadmapBlueprint(params.roadmapSlug);
+    // Attempt to load all markdown content for the topics in this roadmap
+    const topicsContent = await loadTopicContent(params.roadmapSlug);
+
+    // If a blueprint AND topic content exist, render the interactive roadmap
+    if (blueprint && topicsContent) {
       return (
         <InteractiveRoadmap
           roadmapData={roadmap}
-          flowData={blueprint}
+          blueprint={blueprint}
+          topicsContent={topicsContent}
           slug={params.roadmapSlug}
         />
       );
     }
   
     // --- FALLBACK FOR STATIC ROADMAPS ---
-    // This code runs only if no JSON blueprint is found
-  
-    const pageTitle = roadmap.title || roadmap.name;
+    // This code runs only if no JSON blueprint or content directory is found.
+    const pageTitle = roadmap.displayTitle;
     const breadcrumbItems: BreadcrumbItem[] = [
       { label: "Home", href: "/" },
       { label: "Roadmaps", href: "/roadmaps" },
@@ -96,7 +88,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
     ];
   
     return (
-      <div className="container mx-auto max-w-6xl px-4 py-10 md:py-12 space-y-12">
+      <div className="container mx-auto max-w-4xl px-4 py-10 md:py-12 space-y-12">
         <Breadcrumbs items={breadcrumbItems} />
         
         <header className="space-y-4">
@@ -116,9 +108,9 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
           </div>
         </header>
         
-        {/* Static content rendering for non-interactive roadmaps */}
+        {/* Static content from the markdown body is rendered above */}
       </div>
     );
-  }
+}
 
 export const revalidate = 60;

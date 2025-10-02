@@ -1,29 +1,63 @@
 
-import { type RoadmapFlowData } from '@/types/roadmap';
+import { type RoadmapFlowData, type TopicContent } from '@/types/roadmap';
 import fs from 'fs/promises';
 import path from 'path';
+import matter from 'gray-matter';
 
-export async function loadRoadmapFlowData(slug: string): Promise<RoadmapFlowData | null> {
+// Loads the JSON blueprint for the roadmap graph structure
+export async function loadRoadmapBlueprint(slug: string): Promise<RoadmapFlowData | null> {
   try {
-    // Construct a direct path to the file in the public directory
-    const filePath = path.join(process.cwd(), 'public', 'roadmap-data', `${slug}.json`);
-    
-    // Read the file directly from the filesystem
+    const filePath = path.join(process.cwd(), 'public', 'roadmap-content', `${slug}.json`);
     const fileContents = await fs.readFile(filePath, 'utf8');
 
     if (!fileContents) {
-      console.log(`No interactive roadmap data found for ${slug}. Falling back to static content.`);
+      console.log(`No interactive roadmap blueprint found for ${slug}.`);
       return null;
     }
     
     return JSON.parse(fileContents);
   } catch (error: any) {
-    // A "file not found" error is expected for static roadmaps, so we don't log it as a critical error.
     if (error.code === 'ENOENT') {
-      console.log(`No interactive roadmap file found for slug: ${slug}`);
+      console.log(`No blueprint file found for slug: ${slug}`);
     } else {
-      // Log other, unexpected errors.
-      console.error(`Error loading or parsing roadmap data for ${slug}:`, error);
+      console.error(`Error loading or parsing roadmap blueprint for ${slug}:`, error);
+    }
+    return null;
+  }
+}
+
+
+// Loads all markdown content for the topics within a single roadmap
+export async function loadTopicContent(slug: string): Promise<Record<string, TopicContent> | null> {
+  const contentDir = path.join(process.cwd(), 'src', 'data', 'roadmaps', slug);
+  try {
+    const filenames = await fs.readdir(contentDir);
+    const topics: Record<string, TopicContent> = {};
+
+    for (const filename of filenames) {
+      if (path.extname(filename) === '.md') {
+        const filePath = path.join(contentDir, filename);
+        const fileContents = await fs.readFile(filePath, 'utf8');
+        const { data, content } = matter(fileContents);
+        const topicId = path.basename(filename, '.md');
+        
+        topics[topicId] = {
+          id: topicId,
+          title: data.title,
+          description: data.description,
+          objectives: data.objectives || [],
+          resources: data.resources || [],
+          rawContent: content,
+        };
+      }
+    }
+    return Object.keys(topics).length > 0 ? topics : null;
+
+  } catch (error: any) {
+     if (error.code === 'ENOENT') {
+      console.log(`No content directory found for roadmap slug: ${slug}`);
+    } else {
+      console.error(`Error loading topic content for ${slug}:`, error);
     }
     return null;
   }

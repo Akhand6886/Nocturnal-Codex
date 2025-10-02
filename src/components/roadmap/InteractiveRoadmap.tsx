@@ -1,4 +1,3 @@
-
 // src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
@@ -18,25 +17,25 @@ import '@xyflow/react/dist/style.css';
 import { RoadmapNode } from './RoadmapNode';
 import { TopicSidebar } from './TopicSidebar';
 import { useNodeSelection, useProgress } from './hooks';
-import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
+import { type RoadmapFlowData, type RoadmapNodeData, type TopicContent } from '@/types/roadmap';
 import { type RoadmapPost as RoadmapType } from 'contentlayer/generated';
 import { transformToReactFlow } from '@/lib/roadmap-utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
 import {
   ArrowLeft,
-  Bookmark,
   Calendar,
   Download,
   Share2,
+  Bookmark,
   BookCopy,
   Link as LinkIcon,
 } from 'lucide-react';
 
 interface InteractiveRoadmapProps {
   roadmapData: RoadmapType;
-  flowData: RoadmapFlowData;
+  blueprint: RoadmapFlowData;
+  topicsContent: Record<string, TopicContent>;
   slug: string;
 }
 
@@ -48,12 +47,13 @@ const defaultViewport = { x: 0, y: 0, zoom: 0.7 };
 
 export function InteractiveRoadmap({
   roadmapData,
-  flowData,
+  blueprint,
+  topicsContent,
   slug,
 }: InteractiveRoadmapProps) {
   const { nodes: initialNodes, edges: initialEdges } = useMemo(
-    () => transformToReactFlow(flowData),
-    [flowData]
+    () => transformToReactFlow(blueprint, topicsContent),
+    [blueprint, topicsContent]
   );
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -100,8 +100,8 @@ export function InteractiveRoadmap({
     clearSelection();
   }, [clearSelection]);
   
-  const pageTitle = roadmapData.title || roadmapData.name;
-  const { prerequisites, relatedRoadmaps } = flowData.metadata || {};
+  const pageTitle = roadmapData.displayTitle;
+  const { prerequisites, relatedRoadmaps } = blueprint.metadata || {};
 
   return (
     <div className="container mx-auto px-4 py-8">

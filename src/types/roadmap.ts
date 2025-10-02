@@ -1,20 +1,30 @@
-
 // src/types/roadmap.ts
 import { type Node, type Edge } from '@xyflow/react';
 
+// Represents the data properties of a single node in the React Flow graph.
+// This data comes from the JSON blueprint and is enriched with content.
 export interface RoadmapNodeData {
   id: string;
   label: string;
-  description?: string;
+  // Content is now separate
+  content?: TopicContent; 
+  // Fields from JSON blueprint
   category?: string;
-  estimatedTime?: string;
-  completed?: boolean;
-  resources?: Resource[];
-  prerequisites?: string[];
-  objectives?: string[];
-  highlighted?: boolean;
   position?: { x: number; y: number };
   style?: React.CSSProperties;
+  // State-related fields
+  completed?: boolean;
+  highlighted?: boolean;
+}
+
+// Represents the content for a single topic, loaded from a markdown file.
+export interface TopicContent {
+  id: string;
+  title: string;
+  description: string;
+  objectives: string[];
+  resources: Resource[];
+  rawContent: string; // The raw markdown body
 }
 
 export interface Resource {
@@ -31,8 +41,15 @@ export interface RoadmapLink {
     slug: string;
 }
 
+// Represents the structure of the JSON blueprint file.
 export interface RoadmapFlowData {
-  nodes: RoadmapNodeData[];
+  nodes: Array<{
+    id: string;
+    label: string;
+    category?: string;
+    position?: { x: number, y: number };
+    style?: React.CSSProperties;
+  }>;
   edges: Array<{
     id?: string;
     source: string;
@@ -41,16 +58,7 @@ export interface RoadmapFlowData {
     animated?: boolean;
     style?: Record<string, any>;
   }>;
-  viewport?: {
-    x: number;
-    y: number;
-    zoom: number;
-  };
   metadata?: {
-    title: string;
-    version: string;
-    lastUpdated: string;
-    totalTopics: number;
     prerequisites?: RoadmapLink[];
     relatedRoadmaps?: RoadmapLink[];
   };
