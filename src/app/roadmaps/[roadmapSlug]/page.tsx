@@ -1,3 +1,4 @@
+
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allRoadmapPosts } from 'contentlayer/generated';
@@ -7,7 +8,6 @@ import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import Image from 'next/image';
 import { MarkdownRenderer } from '@/components/content/markdown-renderer';
 import { loadRoadmapBlueprint, loadTopicContent } from '@/lib/roadmap-server-utils';
-import type { TopicContent } from '@/types/roadmap';
 
 interface RoadmapPageProps {
   params: {
@@ -61,12 +61,9 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
       notFound();
     }
   
-    // Attempt to load the blueprint for an interactive roadmap
     const blueprint = await loadRoadmapBlueprint(params.roadmapSlug);
-    // Attempt to load all markdown content for the topics in this roadmap
     const topicsContent = await loadTopicContent(params.roadmapSlug);
 
-    // If a blueprint AND topic content exist, render the interactive roadmap
     if (blueprint && topicsContent) {
       return (
         <InteractiveRoadmap
@@ -79,7 +76,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
     }
   
     // --- FALLBACK FOR STATIC ROADMAPS ---
-    // This code runs only if no JSON blueprint or content directory is found.
     const pageTitle = roadmap.title;
     const breadcrumbItems: BreadcrumbItem[] = [
       { label: "Home", href: "/" },
@@ -108,7 +104,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
           </div>
         </header>
         
-        {/* Static content from the markdown body is rendered above */}
       </div>
     );
 }

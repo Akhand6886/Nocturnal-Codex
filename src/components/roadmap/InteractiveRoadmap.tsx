@@ -22,13 +22,15 @@ import { transformToReactFlow } from '@/lib/roadmap-utils';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Bookmark, BookCopy, Calendar, Download, Link as LinkIcon, Share2 } from 'lucide-react';
 import Link from 'next/link';
-import { Badge } from '../ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+
 
 interface InteractiveRoadmapProps {
   roadmapData: RoadmapType;
   blueprint: RoadmapFlowData;
-  topicsContent: Record<string, TopicContent>;
+  topicsContent: Record<string, TopicContent> | null;
   slug: string;
 }
 
@@ -45,7 +47,7 @@ export function InteractiveRoadmap({
   slug,
 }: InteractiveRoadmapProps) {
   const { nodes: initialNodes, edges: initialEdges } = useMemo(
-    () => transformToReactFlow(blueprint, topicsContent),
+    () => transformToReactFlow(blueprint, topicsContent || {}),
     [blueprint, topicsContent]
   );
 
@@ -65,6 +67,7 @@ export function InteractiveRoadmap({
       if (totalNodes === 0) return 0;
       return Math.round((completedNodesCount / totalNodes) * 100);
   }, [completedNodesCount, totalNodes]);
+
 
   React.useEffect(() => {
     setNodes((nds) =>

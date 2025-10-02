@@ -15,11 +15,10 @@ export function transformToReactFlow(
     position: node.position || { x: 0, y: 0 },
     data: {
       id: node.id,
-      label: node.label || 'Untitled',
+      label: node.label || 'Untitled', // Correctly assign the label here
       category: node.category,
-      // Enrich node data with content from markdown files
       content: topicsContent ? topicsContent[node.id] : undefined,
-      completed: false, // Default state
+      completed: false, 
       highlighted: false,
     },
     draggable: true,
