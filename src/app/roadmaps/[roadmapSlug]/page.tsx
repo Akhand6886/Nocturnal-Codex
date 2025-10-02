@@ -159,13 +159,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
                 </div>
               )}
             </div>
-
-            <div className="flex flex-col gap-3 md:flex-row">
-              <Button size="lg" className="gap-2">
-                <Star className="h-4 w-4" />
-                Start Learning
-              </Button>
-            </div>
           </div>
         </div>
 
