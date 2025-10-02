@@ -1,3 +1,4 @@
+
 // src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
@@ -31,6 +32,7 @@ import {
   BookCopy,
   Link as LinkIcon,
 } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface InteractiveRoadmapProps {
   roadmapData: RoadmapType;
@@ -100,7 +102,7 @@ export function InteractiveRoadmap({
     clearSelection();
   }, [clearSelection]);
   
-  const pageTitle = roadmapData.displayTitle;
+  const pageTitle = roadmapData.title || roadmapData.name;
   const { prerequisites, relatedRoadmaps } = blueprint.metadata || {};
 
   return (
