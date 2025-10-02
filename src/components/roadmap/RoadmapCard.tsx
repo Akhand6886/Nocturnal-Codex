@@ -1,3 +1,4 @@
+
 // src/components/roadmap/RoadmapCard.tsx
 'use client';
 
@@ -26,6 +27,7 @@ interface RoadmapCardProps {
 export function RoadmapCard({ roadmap, featured = false, showProgress = true }: RoadmapCardProps) {
   const { getProgressPercentage } = useProgress(roadmap.slug, []);
   const progress = showProgress ? getProgressPercentage() : 0;
+  const pageTitle = roadmap.title || roadmap.name;
 
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
@@ -77,7 +79,7 @@ export function RoadmapCard({ roadmap, featured = false, showProgress = true }: 
               className="block group-hover:text-primary transition-colors"
             >
               <h3 className="font-semibold text-lg leading-tight line-clamp-2">
-                {roadmap.displayTitle}
+                {pageTitle}
               </h3>
             </Link>
             <p className="text-sm text-muted-foreground mt-1 capitalize">

@@ -14,11 +14,13 @@ export const RoadmapNode = memo<NodeProps<RoadmapNodeData>>(({ data, selected })
   const {
     label,
     category,
-    estimatedTime,
     completed = false,
-    resources = [],
+    content,
     highlighted = false,
   } = data;
+
+  const estimatedTime = content?.description?.length ? `${Math.ceil(content.description.length / 1000)} min read` : undefined;
+  const resources = content?.resources || [];
 
   // Get category color
   const getCategoryColor = (category?: string) => {
