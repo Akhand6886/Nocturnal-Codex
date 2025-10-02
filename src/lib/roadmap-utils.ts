@@ -18,7 +18,7 @@ export function transformToReactFlow(
       label: node.label || 'Untitled',
       category: node.category,
       // Enrich node data with content from markdown files
-      content: topicsContent[node.id],
+      content: topicsContent ? topicsContent[node.id] : undefined,
       completed: false, // Default state
       highlighted: false,
     },
@@ -70,6 +70,38 @@ export function validateRoadmapData(data: any): data is RoadmapFlowData {
     )
   );
 }
+
+
+export function calculateEstimatedCompletionTime(
+  nodes: Node<RoadmapNodeData>[],
+  completedNodeIds: string[]
+): string {
+    const totalMinutes = nodes.reduce((acc, node) => {
+        if (completedNodeIds.includes(node.id)) {
+            return acc;
+        }
+
+        const timeString = node.data.content?.resources
+            ?.reduce((resourceAcc, resource) => resourceAcc + (parseInt(resource.duration || '0')), 0).toString();
+
+        if (timeString) {
+            const time = parseInt(timeString, 10);
+            if (!isNaN(time)) {
+                return acc + time;
+            }
+        }
+        return acc;
+    }, 0);
+
+    if (totalMinutes < 60) {
+        return `${totalMinutes}m`;
+    } else {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        return `${hours}h ${minutes}m`;
+    }
+}
+
 
 export function getNextRecommendedNodes(
   nodes: Node<RoadmapNodeData>[],
