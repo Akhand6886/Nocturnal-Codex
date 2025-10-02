@@ -165,9 +165,6 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
                 <Star className="h-4 w-4" />
                 Start Learning
               </Button>
-              <Button variant="outline" size="lg">
-                Share Roadmap
-              </Button>
             </div>
           </div>
         </div>
@@ -289,7 +286,7 @@ export default async function RoadmapPage({ params }: RoadmapPageProps) {
                             <CardTitle className="flex items-center text-lg"><Brain className="mr-2 h-5 w-5 text-primary" /> From The Think Tank</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-2">
-                        {topic.thinkTankArticles.map((article) => ( 
+                        {roadmap.thinkTankArticles.map((article) => ( 
                             <Link href={`/think-tank/${article.slug}`} key={article.id} className="group flex items-center justify-between p-2 rounded-md hover:bg-muted/50 transition-colors">
                                 <span className="text-sm font-medium text-foreground/90 group-hover:text-primary">{article.title}</span>
                                 <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity"/>
