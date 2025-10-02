@@ -17,7 +17,6 @@ import '@xyflow/react/dist/style.css';
 import { RoadmapNode } from './RoadmapNode';
 import { TopicSidebar } from './TopicSidebar';
 import { ProgressTracker } from './ProgressTracker';
-import { RoadmapControls } from './RoadmapControls';
 import { useNodeSelection, useProgress } from './hooks';
 import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
 import { type RoadmapPost as RoadmapType } from 'contentlayer/generated';
@@ -40,8 +39,6 @@ export function InteractiveRoadmap({
   flowData,
   slug,
 }: InteractiveRoadmapProps) {
-  const [searchTerm, setSearchTerm] = useState('');
-  
   const { nodes: initialNodes, edges: initialEdges } = useMemo(() => transformToReactFlow(flowData), [flowData]);
   
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -85,33 +82,10 @@ export function InteractiveRoadmap({
     [toggleNodeCompletion]
   );
 
-  // Search functionality
-  const filteredNodes = useMemo(() => {
-    if (!searchTerm) return nodes;
-    
-    return nodes.map((node) => ({
-      ...node,
-      data: {
-        ...node.data,
-        highlighted: node.data.label
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()),
-      },
-    }));
-  }, [nodes, searchTerm]);
-
   // Handle background click to clear selection
   const onPaneClick = useCallback(() => {
     clearSelection();
   }, [clearSelection]);
-
-  // Focus on searched node
-  const onFocusNode = useCallback((nodeId: string) => {
-    const node = nodes.find((n) => n.id === nodeId);
-    if (node) {
-      selectNode(node);
-    }
-  }, [nodes, selectNode]);
 
   const progressPercentage = getProgressPercentage();
 
@@ -125,17 +99,9 @@ export function InteractiveRoadmap({
         roadmapTitle={roadmapData.title || roadmapData.name}
       />
 
-      {/* Search and Controls */}
-      <RoadmapControls
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-        nodes={nodes}
-        onFocusNode={onFocusNode}
-      />
-
       {/* Main React Flow */}
       <ReactFlow
-        nodes={filteredNodes}
+        nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
@@ -185,5 +151,3 @@ export function InteractiveRoadmap({
     </div>
   );
 }
-
-    
