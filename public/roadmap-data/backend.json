@@ -6,7 +6,6 @@
       "type": "roadmapNode",
       "position": { "x": 0, "y": 0 },
       "data": {
-        "id": "learn-language",
         "label": "Choose a Language",
         "category": "foundation",
         "description": "Select a primary programming language. Your choice will influence which frameworks and tools you use. Node.js (JavaScript), Python, and Go are popular choices.",
@@ -27,16 +26,16 @@
       "type": "roadmapNode",
       "position": { "x": 0, "y": 200 },
       "data": {
-        "id": "vcs",
         "label": "Version Control Systems",
         "category": "tools",
         "description": "Learn how to use Git, the most popular version control system, to track changes in your code and collaborate with others.",
         "estimatedTime": "1 Week",
         "prerequisites": ["Choose a Language"],
-        "objectives": ["Understand Git basics: commit, push, pull, branch, merge.", "Learn how to use a hosting service like GitHub or GitLab."],
-        "resources": [
-          { "title": "Git-SCM - Pro Git Book", "url": "https://git-scm.com/book/en/v2", "type": "book", "free": true }
-        ]
+        "objectives": [
+          "Understand Git basics: commit, push, pull, branch, merge.",
+          "Learn how to use a hosting service like GitHub or GitLab."
+        ],
+        "resources": [{ "title": "Git-SCM - Pro Git Book", "url": "https://git-scm.com/book/en/v2", "type": "book", "free": true }]
       }
     },
     {
@@ -44,13 +43,16 @@
       "type": "roadmapNode",
       "position": { "x": 0, "y": 400 },
       "data": {
-        "id": "databases",
         "label": "Databases",
         "category": "foundation",
         "description": "Learn how to store and retrieve data. Understand the differences between relational (SQL) and non-relational (NoSQL) databases.",
         "estimatedTime": "2-3 Weeks",
         "prerequisites": ["Version Control Systems"],
-        "objectives": ["Learn basic SQL queries (SELECT, INSERT, UPDATE, DELETE).", "Understand when to use SQL vs. NoSQL.", "Connect a database to your application."],
+        "objectives": [
+          "Learn basic SQL queries (SELECT, INSERT, UPDATE, DELETE).",
+          "Understand when to use SQL vs. NoSQL.",
+          "Connect a database to your application."
+        ],
         "resources": [
           { "title": "SQLZoo", "url": "https://sqlzoo.net/wiki/SQL_Tutorial", "type": "course", "free": true },
           { "title": "MongoDB University", "url": "https://university.mongodb.com/", "type": "course", "free": true }
@@ -62,13 +64,16 @@
       "type": "roadmapNode",
       "position": { "x": 0, "y": 600 },
       "data": {
-        "id": "apis",
         "label": "APIs & Communication",
         "category": "programming",
         "description": "Learn how to create APIs (Application Programming Interfaces) to allow the frontend to communicate with your backend.",
         "estimatedTime": "2 Weeks",
         "prerequisites": ["Databases"],
-        "objectives": ["Understand RESTful principles.", "Learn how to build REST APIs.", "Get an introduction to GraphQL as an alternative."],
+        "objectives": [
+          "Understand RESTful principles.",
+          "Learn how to build REST APIs.",
+          "Get an introduction to GraphQL as an alternative."
+        ],
         "resources": [
           { "title": "MDN - Introduction to REST", "url": "#", "type": "article", "free": true },
           { "title": "How to GraphQL", "url": "https://www.howtographql.com/", "type": "documentation", "free": true }
@@ -80,13 +85,16 @@
       "type": "roadmapNode",
       "position": { "x": -250, "y": 800 },
       "data": {
-        "id": "authentication",
         "label": "Authentication",
         "category": "advanced",
         "description": "Learn how to secure your application by verifying user identities.",
         "estimatedTime": "1-2 Weeks",
         "prerequisites": ["APIs & Communication"],
-        "objectives": ["Implement session-based authentication.", "Understand token-based authentication (e.g., JWT).", "Learn about OAuth for third-party logins."]
+        "objectives": [
+          "Implement session-based authentication.",
+          "Understand token-based authentication (e.g., JWT).",
+          "Learn about OAuth for third-party logins."
+        ]
       }
     },
     {
@@ -94,13 +102,16 @@
       "type": "roadmapNode",
       "position": { "x": 250, "y": 800 },
       "data": {
-        "id": "testing",
         "label": "Testing",
         "category": "tools",
         "description": "Learn how to write tests for your backend to ensure it is reliable and bug-free.",
         "estimatedTime": "2 Weeks",
         "prerequisites": ["APIs & Communication"],
-        "objectives": ["Write unit tests for individual functions.", "Write integration tests to check how components work together.", "Understand end-to-end testing concepts."]
+        "objectives": [
+          "Write unit tests for individual functions.",
+          "Write integration tests to check how components work together.",
+          "Understand end-to-end testing concepts."
+        ]
       }
     }
   ],
