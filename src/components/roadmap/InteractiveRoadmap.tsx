@@ -16,7 +16,6 @@ import '@xyflow/react/dist/style.css';
 
 import { RoadmapNode } from './RoadmapNode';
 import { TopicSidebar } from './TopicSidebar';
-import { ProgressTracker } from './ProgressTracker';
 import { useNodeSelection, useProgress } from './hooks';
 import { type RoadmapFlowData, type RoadmapNodeData } from '@/types/roadmap';
 import { type RoadmapPost as RoadmapType } from 'contentlayer/generated';
@@ -48,7 +47,6 @@ export function InteractiveRoadmap({
   const { 
     progress, 
     toggleNodeCompletion, 
-    getProgressPercentage 
   } = useProgress(slug, nodes, edges);
 
   // Update nodes with completion status from progress hook
@@ -87,18 +85,8 @@ export function InteractiveRoadmap({
     clearSelection();
   }, [clearSelection]);
 
-  const progressPercentage = getProgressPercentage();
-
   return (
     <div className="relative w-full h-[800px] bg-background border rounded-lg overflow-hidden">
-      {/* Progress Tracker */}
-      <ProgressTracker
-        progress={progressPercentage}
-        totalNodes={nodes.length}
-        completedNodes={progress.completedNodes.length}
-        roadmapTitle={roadmapData.title || roadmapData.name}
-      />
-
       {/* Main React Flow */}
       <ReactFlow
         nodes={nodes}
