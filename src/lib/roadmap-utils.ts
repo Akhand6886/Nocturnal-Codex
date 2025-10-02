@@ -11,7 +11,7 @@ export function transformToReactFlow(roadmapData: RoadmapFlowData): {
     type: 'roadmapNode',
     position: node.position || { x: 0, y: 0 },
     data: {
-      id: node.id,
+      id: node.id, // This is the crucial fix
       label: node.data?.label || 'Untitled',
       description: node.data?.description,
       category: node.data?.category,
