@@ -12,14 +12,14 @@ export function transformToReactFlow(roadmapData: RoadmapFlowData): {
     position: node.position || { x: 0, y: 0 },
     data: {
       id: node.id, // This is the crucial fix
-      label: node.data?.label || 'Untitled',
-      description: node.data?.description,
-      category: node.data?.category,
-      estimatedTime: node.data?.estimatedTime,
+      label: node.label || 'Untitled',
+      description: node.description,
+      category: node.category,
+      estimatedTime: node.estimatedTime,
       completed: false, // Always start as not completed
-      resources: node.data?.resources || [],
-      prerequisites: node.data?.prerequisites || [],
-      objectives: node.data?.objectives || [],
+      resources: node.resources || [],
+      prerequisites: node.prerequisites || [],
+      objectives: node.objectives || [],
       ...node.data
     },
     draggable: true,
@@ -39,15 +39,15 @@ export function transformToReactFlow(roadmapData: RoadmapFlowData): {
     type: edge.type || 'smoothstep',
     animated: edge.animated || false,
     style: {
-      strokeWidth: 2,
-      stroke: '#94a3b8',
-      ...edge.style
+      strokeWidth: edge.style?.strokeWidth || 1.5,
+      stroke: edge.style?.stroke || '#a1a1aa', // neutral-400
+      ...(edge.style || {})
     },
     markerEnd: {
       type: 'arrowclosed',
-      width: 20,
-      height: 20,
-      color: '#94a3b8',
+      width: 15,
+      height: 15,
+      color: edge.style?.stroke || '#a1a1aa',
     }
   })) || [];
 

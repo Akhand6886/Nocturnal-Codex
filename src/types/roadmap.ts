@@ -13,6 +13,8 @@ export interface RoadmapNodeData {
   prerequisites?: string[];
   objectives?: string[];
   highlighted?: boolean;
+  position?: { x: number; y: number };
+  style?: React.CSSProperties;
 }
 
 export interface Resource {
@@ -22,6 +24,11 @@ export interface Resource {
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
   duration?: string;
   free?: boolean;
+}
+
+export interface RoadmapLink {
+    title: string;
+    slug: string;
 }
 
 export interface RoadmapFlowData {
@@ -44,6 +51,8 @@ export interface RoadmapFlowData {
     version: string;
     lastUpdated: string;
     totalTopics: number;
+    prerequisites?: RoadmapLink[];
+    relatedRoadmaps?: RoadmapLink[];
   };
 }
 
