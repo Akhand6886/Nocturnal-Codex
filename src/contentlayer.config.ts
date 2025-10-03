@@ -48,106 +48,6 @@ export const TutorialPost = defineDocumentType(() => ({
     },
 }));
 
-const RoadmapNode = defineNestedType(() => ({
-    name: 'RoadmapNode',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: false },
-        isMainPath: { type: 'boolean', required: false },
-        isGroup: { type: 'boolean', required: false },
-        items: { type: 'json', required: false },
-    },
-}));
-  
-const RoadmapColumn = defineNestedType(() => ({
-    name: 'RoadmapColumn',
-    fields: {
-        left: { type: 'list', of: RoadmapNode, required: false },
-        main: { type: 'list', of: RoadmapNode, required: false },
-        right: { type: 'list', of: RoadmapNode, required: false },
-    }
-}));
-
-const CodeSnippetItem = defineNestedType(() => ({
-    name: 'CodeSnippetItem',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        language: { type: 'enum', options: ['python', 'javascript', 'typescript', 'html', 'css', 'json', 'markdown', 'csharp', 'java', 'go', 'rust', 'text', 'cplusplus'], required: true },
-        code: { type: 'string', required: true },
-        description: { type: 'string', required: false },
-    }
-}));
-
-const WikiArticleStub = defineNestedType(() => ({
-    name: 'WikiArticleStub',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-    }
-}));
-
-const ThinkTankArticleStub = defineNestedType(() => ({
-    name: 'ThinkTankArticleStub',
-    fields: {
-        id: { type: 'string', required: true },
-        title: { type: 'string', required: true },
-        slug: { type: 'string', required: true },
-    }
-}));
-
-export const RoadmapPost = defineDocumentType(() => ({
-  name: 'RoadmapPost',
-  filePathPattern: `roadmaps/**/*.md*`,
-  contentType: 'markdown',
-  fields: {
-    // Fields from frontmatter
-    title: { type: 'string', required: false },
-    category: { type: 'string', required: false },
-    description: { type: 'string', required: false },
-    imageUrl: { type: 'string', required: false },
-    dataAiHint: { type: 'string', required: false },
-    
-    // Fields for custom/static roadmaps
-    roadmapColumns: { type: 'list', of: RoadmapColumn, required: false },
-    subtopics: { type: 'list', of: RoadmapNode, required: false },
-    codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
-    references: { type: 'list', of: WikiArticleStub, required: false },
-    thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
-
-    // Fields for interactive roadmaps
-    difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: false },
-    estimatedTime: { type: 'string', required: false },
-    tags: { type: 'list', of: { type: 'string' }, required: false },
-    dimensions: { type: 'json', required: false },
-    
-    // id, slug, and name are derived from file path and are required
-  },
-  computedFields: {
-    url: {
-      type: 'string', 
-      resolve: (doc) => `/roadmaps/${doc._raw.flattenedPath.replace('roadmaps/', '')}`,
-    },
-    id: { 
-        type: 'string', 
-        resolve: (doc) => doc._raw.flattenedPath.replace('roadmaps/', ''),
-        required: true 
-    },
-    slug: { 
-        type: 'string', 
-        resolve: (doc) => doc._raw.flattenedPath.replace('roadmaps/', ''),
-        required: true
-    },
-    name: { 
-        type: 'string', 
-        resolve: (doc) => doc.title || doc._raw.flattenedPath.replace('roadmaps/', ''),
-        required: true
-    },
-  }
-}));
-
 export const LanguagePost = defineDocumentType(() => ({
     name: 'LanguagePost',
     filePathPattern: `languages/**/*.md`,
@@ -168,5 +68,5 @@ export const LanguagePost = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [BlogPost, TutorialPost, RoadmapPost, LanguagePost],
+  documentTypes: [BlogPost, TutorialPost, LanguagePost],
 })
