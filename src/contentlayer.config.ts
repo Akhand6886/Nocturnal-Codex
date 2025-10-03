@@ -28,7 +28,7 @@ export const Roadmap = defineDocumentType(() => ({
 
 export const TutorialPost = defineDocumentType(() => ({
     name: 'TutorialPost',
-    filePathPattern: `tutorials/**/*.md`, 
+    filePathPattern: `tutorials/*/*.md`, 
     contentType: 'markdown',
     fields: {
       title: { type: 'string', required: true },
