@@ -25,7 +25,7 @@ const getRoadmapData = cache(async (slug: string) => {
     const topicsContent = await loadTopicContent(slug);
 
     if (!topicsContent) {
-        // If topics are missing, we still want to show the graph shape
+        // If topics are missing, we can still show the graph shape from the blueprint
         const { nodes, edges } = transformToReactFlow(blueprint, null);
         return { roadmap, initialNodes: nodes, initialEdges: edges, blueprint };
     }
@@ -37,8 +37,9 @@ const getRoadmapData = cache(async (slug: string) => {
 
 export async function generateStaticParams() {
   const roadmaps = allRoadmapPosts || [];
+  // Corrected to use `id` for slug generation, which matches the file names `backend.json`, etc.
   return roadmaps.map((roadmap) => ({
-    roadmapSlug: roadmap.slug,
+    roadmapSlug: roadmap.id,
   }));
 }
 
@@ -64,6 +65,20 @@ export default async function RoadmapPage({ params }: { params: { roadmapSlug: s
     }
     
     const { roadmap, initialNodes, initialEdges, blueprint } = roadmapData;
+
+    // If there are no nodes after processing, show a WIP message.
+    if (!initialNodes || initialNodes.length === 0) {
+        return (
+            <div className="container mx-auto px-4 py-8 text-center">
+                <RoadmapHeader roadmapData={roadmap} />
+                <div className="text-center py-16 text-muted-foreground mt-8 border-t">
+                    <p className='text-lg'>This interactive roadmap is currently a work in progress.</p>
+                    <p className='text-sm'>The blueprint for its nodes and connections is not yet available.</p>
+                </div>
+            </div>
+        );
+    }
+
 
     return (
         <div className="container mx-auto px-4 py-8">

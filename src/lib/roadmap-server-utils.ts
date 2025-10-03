@@ -6,20 +6,22 @@ import matter from 'gray-matter';
 
 // Loads the JSON blueprint for the roadmap graph structure
 export async function loadRoadmapBlueprint(slug: string): Promise<RoadmapFlowData | null> {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'roadmaps', `${slug}.json`);
   try {
-    // The JSON blueprints are now located in src/data/roadmaps/
-    const filePath = path.join(process.cwd(), 'src', 'data', 'roadmaps', `${slug}.json`);
+    // Added logging to verify path
+    console.log(`Attempting to load blueprint from: ${filePath}`);
     const fileContents = await fs.readFile(filePath, 'utf8');
 
     if (!fileContents) {
-      console.log(`No interactive roadmap blueprint found for ${slug}.`);
+      console.warn(`No interactive roadmap blueprint found for ${slug} at ${filePath}.`);
       return null;
     }
     
     return JSON.parse(fileContents);
   } catch (error: any) {
     if (error.code === 'ENOENT') {
-      console.log(`No blueprint file found for slug: ${slug}`);
+      // Made error message more explicit
+      console.error(`Blueprint file not found for slug: ${slug}. Expected at: ${filePath}`);
     } else {
       console.error(`Error loading or parsing roadmap blueprint for ${slug}:`, error);
     }
@@ -56,7 +58,7 @@ export async function loadTopicContent(slug: string): Promise<Record<string, Top
 
   } catch (error: any) {
      if (error.code === 'ENOENT') {
-      console.log(`No content directory found for roadmap slug: ${slug}`);
+      console.warn(`No content directory found for roadmap slug: ${slug}`);
     } else {
       console.error(`Error loading topic content for ${slug}:`, error);
     }
