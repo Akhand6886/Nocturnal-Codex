@@ -1,12 +1,18 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import type { RouteContext } from 'next/dist/server/route-modules/app-route/module';
+
+type RouteContext = {
+  params: {
+    id: string;
+  };
+};
 
 export async function POST(
   request: NextRequest,
-  ctx: RouteContext<'/api/roadmaps/[id]'>
+  context: RouteContext
 ) {
-  const { id } = await ctx.params;
+  const { id } = context.params;
   const body = await request.json();
+  
   return NextResponse.json({
     message: `POST request for roadmap: ${id}`,
     data: body,
