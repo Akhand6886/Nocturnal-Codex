@@ -1,0 +1,24 @@
+{
+  "title": "Frontend Roadmap",
+  "description": "Step-by-step guide to becoming a modern frontend developer.",
+  "category": "Core",
+  "difficulty": "Beginner",
+  "featured": true,
+  "imageUrl": "/placeholder.png",
+  "order": 2,
+  "body": {
+    "raw": "",
+    "html": ""
+  },
+  "_id": "roadmaps/frontend.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/frontend.md",
+    "sourceFileName": "frontend.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/frontend"
+  },
+  "type": "Roadmap",
+  "url": "/roadmaps/frontend",
+  "slug": "frontend"
+}

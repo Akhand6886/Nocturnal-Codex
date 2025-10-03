@@ -1,0 +1,24 @@
+{
+  "title": "Full Stack Roadmap",
+  "description": "Step-by-step guide to becoming a full stack developer.",
+  "category": "Core",
+  "difficulty": "Advanced",
+  "featured": false,
+  "imageUrl": "/placeholder.png",
+  "order": 6,
+  "body": {
+    "raw": "",
+    "html": ""
+  },
+  "_id": "roadmaps/full-stack.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/full-stack.md",
+    "sourceFileName": "full-stack.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/full-stack"
+  },
+  "type": "Roadmap",
+  "url": "/roadmaps/full-stack",
+  "slug": "full-stack"
+}

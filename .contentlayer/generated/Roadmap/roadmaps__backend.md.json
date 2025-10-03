@@ -1,0 +1,24 @@
+{
+  "title": "Backend Roadmap",
+  "description": "Step-by-step guide to becoming a modern backend developer.",
+  "category": "Core",
+  "difficulty": "Beginner",
+  "featured": true,
+  "imageUrl": "/placeholder.png",
+  "order": 1,
+  "body": {
+    "raw": "",
+    "html": ""
+  },
+  "_id": "roadmaps/backend.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/backend.md",
+    "sourceFileName": "backend.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/backend"
+  },
+  "type": "Roadmap",
+  "url": "/roadmaps/backend",
+  "slug": "backend"
+}

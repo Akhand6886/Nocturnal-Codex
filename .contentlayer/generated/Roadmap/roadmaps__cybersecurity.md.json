@@ -1,0 +1,24 @@
+{
+  "title": "Cybersecurity Roadmap",
+  "description": "Step-by-step guide to becoming a cybersecurity expert.",
+  "category": "Specialized",
+  "difficulty": "Intermediate",
+  "featured": false,
+  "imageUrl": "/placeholder.png",
+  "order": 4,
+  "body": {
+    "raw": "",
+    "html": ""
+  },
+  "_id": "roadmaps/cybersecurity.md",
+  "_raw": {
+    "sourceFilePath": "roadmaps/cybersecurity.md",
+    "sourceFileName": "cybersecurity.md",
+    "sourceFileDir": "roadmaps",
+    "contentType": "markdown",
+    "flattenedPath": "roadmaps/cybersecurity"
+  },
+  "type": "Roadmap",
+  "url": "/roadmaps/cybersecurity",
+  "slug": "cybersecurity"
+}

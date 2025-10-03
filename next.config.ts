@@ -1,16 +1,7 @@
-
 import type {NextConfig} from 'next';
 import { withContentlayer } from 'next-contentlayer';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  // output: 'export', // Removed for ISR
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  eslint: {
-    ignoreDuringBuilds: false,
-  },
   images: {
     remotePatterns: [
       {
@@ -37,8 +28,13 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'roadmap.sh',
+        port: '',
+        pathname: '/**',
+      }
     ],
-    // unoptimized: true, // Removed to allow Next.js default image optimization with a server
   },
 };
 

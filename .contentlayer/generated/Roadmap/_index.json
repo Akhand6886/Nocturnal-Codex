@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Backend Roadmap",
+    "description": "Step-by-step guide to becoming a modern backend developer.",
+    "category": "Core",
+    "difficulty": "Beginner",
+    "featured": true,
+    "imageUrl": "/placeholder.png",
+    "order": 1,
+    "body": {
+      "raw": "",
+      "html": ""
+    },
+    "_id": "roadmaps/backend.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/backend.md",
+      "sourceFileName": "backend.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/backend"
+    },
+    "type": "Roadmap",
+    "url": "/roadmaps/backend",
+    "slug": "backend"
+  },
+  {
+    "title": "Cybersecurity Roadmap",
+    "description": "Step-by-step guide to becoming a cybersecurity expert.",
+    "category": "Specialized",
+    "difficulty": "Intermediate",
+    "featured": false,
+    "imageUrl": "/placeholder.png",
+    "order": 4,
+    "body": {
+      "raw": "",
+      "html": ""
+    },
+    "_id": "roadmaps/cybersecurity.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/cybersecurity.md",
+      "sourceFileName": "cybersecurity.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/cybersecurity"
+    },
+    "type": "Roadmap",
+    "url": "/roadmaps/cybersecurity",
+    "slug": "cybersecurity"
+  },
+  {
+    "title": "DevOps Roadmap",
+    "description": "Step-by-step guide to becoming a DevOps engineer.",
+    "category": "Core",
+    "difficulty": "Intermediate",
+    "featured": false,
+    "imageUrl": "/placeholder.png",
+    "order": 5,
+    "body": {
+      "raw": "",
+      "html": ""
+    },
+    "_id": "roadmaps/devops.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/devops.md",
+      "sourceFileName": "devops.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/devops"
+    },
+    "type": "Roadmap",
+    "url": "/roadmaps/devops",
+    "slug": "devops"
+  },
+  {
+    "title": "Frontend Roadmap",
+    "description": "Step-by-step guide to becoming a modern frontend developer.",
+    "category": "Core",
+    "difficulty": "Beginner",
+    "featured": true,
+    "imageUrl": "/placeholder.png",
+    "order": 2,
+    "body": {
+      "raw": "",
+      "html": ""
+    },
+    "_id": "roadmaps/frontend.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/frontend.md",
+      "sourceFileName": "frontend.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/frontend"
+    },
+    "type": "Roadmap",
+    "url": "/roadmaps/frontend",
+    "slug": "frontend"
+  },
+  {
+    "title": "Full Stack Roadmap",
+    "description": "Step-by-step guide to becoming a full stack developer.",
+    "category": "Core",
+    "difficulty": "Advanced",
+    "featured": false,
+    "imageUrl": "/placeholder.png",
+    "order": 6,
+    "body": {
+      "raw": "",
+      "html": ""
+    },
+    "_id": "roadmaps/full-stack.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/full-stack.md",
+      "sourceFileName": "full-stack.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/full-stack"
+    },
+    "type": "Roadmap",
+    "url": "/roadmaps/full-stack",
+    "slug": "full-stack"
+  },
+  {
+    "title": "Machine Learning Roadmap",
+    "description": "Step-by-step guide to becoming a Machine Learning engineer.",
+    "category": "Specialized",
+    "difficulty": "Intermediate",
+    "featured": false,
+    "imageUrl": "/placeholder.png",
+    "order": 3,
+    "body": {
+      "raw": "",
+      "html": ""
+    },
+    "_id": "roadmaps/machine-learning.md",
+    "_raw": {
+      "sourceFilePath": "roadmaps/machine-learning.md",
+      "sourceFileName": "machine-learning.md",
+      "sourceFileDir": "roadmaps",
+      "contentType": "markdown",
+      "flattenedPath": "roadmaps/machine-learning"
+    },
+    "type": "Roadmap",
+    "url": "/roadmaps/machine-learning",
+    "slug": "machine-learning"
+  }
+]

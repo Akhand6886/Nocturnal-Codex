@@ -46,6 +46,24 @@ export type LanguagePost = {
   url: string
 }
 
+export type Roadmap = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Roadmap'
+  title: string
+  description: string
+  category: string
+  difficulty: string
+  featured: boolean
+  imageUrl: string
+  order: number
+  /** Markdown file body */
+  body: Markdown
+  url: string
+  slug: string
+}
+
 export type TutorialPost = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -71,14 +89,15 @@ export type TutorialPost = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = BlogPost | LanguagePost | TutorialPost
-export type DocumentTypeNames = 'BlogPost' | 'LanguagePost' | 'TutorialPost'
+export type DocumentTypes = BlogPost | LanguagePost | Roadmap | TutorialPost
+export type DocumentTypeNames = 'BlogPost' | 'LanguagePost' | 'Roadmap' | 'TutorialPost'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
 
 export type DataExports = {
   allDocuments: DocumentTypes[]
+  allRoadmaps: Roadmap[]
   allBlogPosts: BlogPost[]
   allTutorialPosts: TutorialPost[]
   allLanguagePosts: LanguagePost[]
@@ -103,6 +122,7 @@ declare global {
 export type DocumentTypeMap = {
   BlogPost: BlogPost
   LanguagePost: LanguagePost
+  Roadmap: Roadmap
   TutorialPost: TutorialPost
 }
 
