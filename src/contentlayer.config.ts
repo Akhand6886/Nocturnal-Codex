@@ -3,7 +3,7 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 
 export const Roadmap = defineDocumentType(() => ({
   name: 'Roadmap',
-  filePathPattern: `roadmaps/**/*.md`,
+  filePathPattern: `roadmaps/*.md`,
   contentType: 'markdown',
   fields: {
     title: { type: 'string', required: true },
@@ -28,7 +28,7 @@ export const Roadmap = defineDocumentType(() => ({
 
 export const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
-  filePathPattern: `blog/**/*.md`,
+  filePathPattern: `blog/*.md`,
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
@@ -75,7 +75,7 @@ export const TutorialPost = defineDocumentType(() => ({
 
 export const LanguagePost = defineDocumentType(() => ({
     name: 'LanguagePost',
-    filePathPattern: `languages/**/*.md`,
+    filePathPattern: `languages/*.md`,
     fields: {
       id: { type: 'string', required: true },
       name: { type: 'string', required: true },
