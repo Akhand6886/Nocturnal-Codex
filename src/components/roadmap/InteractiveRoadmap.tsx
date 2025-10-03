@@ -1,7 +1,7 @@
 // src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import {
   ReactFlow,
   Controls,
@@ -38,7 +38,7 @@ export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, bluepr
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   
   const { selectedNode, selectNode, clearSelection } = useNodeSelection();
-  const { progress, updateNodeStatus, getNodeStatus, getCompletedCount, getProgressPercentage } = useProgress(roadmap.slug || '', nodes);
+  const { progress, updateNodeStatus, getNodeStatus, getCompletedCount, getProgressPercentage } = useProgress(roadmap.slug || roadmap.id || '', nodes);
   
   const nodeTypes = useMemo(() => ({ roadmapNode: CustomRoadmapNode }), []);
 
@@ -87,6 +87,14 @@ export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, bluepr
   const handleUpdateStatus = useCallback((nodeId: string, status: ProgressStatus) => {
     updateNodeStatus(nodeId, status);
   }, [updateNodeStatus]);
+
+  if (!initialNodes || initialNodes.length === 0) {
+      return (
+        <div className="text-center py-16 text-muted-foreground">
+            <p>This roadmap is currently a work in progress. Interactive nodes will be available soon.</p>
+        </div>
+      );
+  }
 
   return (
     <div className="w-full h-full">

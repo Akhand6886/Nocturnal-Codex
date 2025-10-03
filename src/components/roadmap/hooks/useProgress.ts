@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { type Node } from '@xyflow/react';
 import { type RoadmapNodeData, type RoadmapProgress, type ProgressStatus } from '@/types/roadmap';
 import useLocalStorage from './useLocalStorage';
@@ -42,10 +42,10 @@ export function useProgress(
   }, [progress]);
 
   const getProgressPercentage = useCallback(() => {
-    if (nodes.length === 0) return 0;
+    if (!nodes || nodes.length === 0) return 0;
     const completedCount = getCompletedCount();
     return Math.round((completedCount / nodes.length) * 100);
-  }, [nodes.length, getCompletedCount]);
+  }, [nodes, getCompletedCount]);
 
   return {
     progress,
