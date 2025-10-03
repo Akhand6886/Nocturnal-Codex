@@ -1,9 +1,7 @@
 
-import path from 'path';
-import { promises as fs } from 'fs';
-import { notFound } from 'next/navigation';
 import { allRoadmaps } from 'contentlayer/generated';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
 import type { Node, Edge } from '@xyflow/react';
 
@@ -17,22 +15,6 @@ export async function generateStaticParams() {
 
 interface RoadmapDetailsPageProps {
   params: { roadmapId: string };
-}
-
-// Function to get the roadmap data from the JSON file
-async function getRoadmapData(roadmapId: string): Promise<{ nodes: Node[], edges: Edge[] } | null> {
-  const filePath = path.join(process.cwd(), 'public', 'roadmap-content', `${roadmapId}.json`);
-  try {
-    const fileContent = await fs.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContent);
-    return {
-      nodes: data.nodes || [],
-      edges: data.edges || [],
-    };
-  } catch (error) {
-    console.error(`Failed to load roadmap data for ${roadmapId}:`, error);
-    return null;
-  }
 }
 
 // Function to generate metadata for the page
@@ -51,13 +33,13 @@ export async function generateMetadata({ params }: RoadmapDetailsPageProps): Pro
 
 // The main page component
 export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageProps) {
-  const roadmapData = await getRoadmapData(params.roadmapId);
   const roadmapMeta = allRoadmaps.find((r) => r.slug === params.roadmapId);
 
-  if (!roadmapData || !roadmapMeta) {
+  if (!roadmapMeta) {
     notFound();
   }
 
+  // The EditorRoadmapRenderer will now fetch its own data on the client
   return (
     <div>
       <header className="pb-6 pt-10 border-b border-border text-center">
@@ -68,7 +50,7 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
           {roadmapMeta.description}
         </p>
       </header>
-      <EditorRoadmapRenderer roadmapId={params.roadmapId} roadmapData={roadmapData} />
+      <EditorRoadmapRenderer roadmapId={params.roadmapId} />
     </div>
   );
 }
