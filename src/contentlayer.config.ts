@@ -1,31 +1,6 @@
 
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 
-export const Roadmap = defineDocumentType(() => ({
-  name: 'Roadmap',
-  filePathPattern: `roadmaps/*.md`,
-  contentType: 'markdown',
-  fields: {
-    title: { type: 'string', required: true },
-    description: { type: 'string', required: true },
-    category: { type: 'string', required: true },
-    difficulty: { type: 'string', required: true },
-    featured: { type: 'boolean', default: false },
-    imageUrl: { type: 'string', required: true },
-    order: { type: 'number', default: 0 },
-  },
-  computedFields: {
-    url: {
-      type: 'string',
-      resolve: (doc) => `/roadmaps/${doc._raw.flattenedPath.replace('roadmaps/', '')}`,
-    },
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace('roadmaps/', ''),
-    },
-  },
-}));
-
 export const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
   filePathPattern: `blog/**/*.md`,
@@ -93,5 +68,5 @@ export const LanguagePost = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Roadmap, BlogPost, TutorialPost, LanguagePost],
+  documentTypes: [BlogPost, TutorialPost, LanguagePost],
 });

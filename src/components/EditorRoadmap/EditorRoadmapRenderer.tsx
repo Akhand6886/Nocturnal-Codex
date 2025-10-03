@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { ReactFlow, Background, Controls, Node, Edge } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import './EditorRoadmapRenderer.css';
-import { TopicSidebar } from './TopicSidebar';
 
 interface EditorRoadmapRendererProps {
   roadmapId: string;
@@ -20,7 +19,8 @@ export function EditorRoadmapRenderer({ roadmapId, roadmapData }: EditorRoadmapR
 
   const handleNodeClick = (event: React.MouseEvent, node: Node) => {
     setSelectedNode(node);
-    setIsSidebarOpen(true);
+    // We can re-enable the sidebar later if needed.
+    // setIsSidebarOpen(true);
   };
 
   const closeSidebar = () => {
@@ -46,13 +46,6 @@ export function EditorRoadmapRenderer({ roadmapId, roadmapData }: EditorRoadmapR
           <Background />
           <Controls showInteractive={false} />
         </ReactFlow>
-
-        {/* Sidebar with topic details */}
-        {isSidebarOpen && selectedNode && (
-          <div className="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl z-50 overflow-y-auto border-l">
-            <TopicSidebar node={selectedNode} onClose={closeSidebar} roadmapId={roadmapId} />
-          </div>
-        )}
       </div>
 
       {/* Info box at bottom */}
