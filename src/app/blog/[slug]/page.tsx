@@ -11,22 +11,25 @@ export const revalidate = 60;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
 export async function generateStaticParams() {
   if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
     console.warn("Contentful env-vars missing at build-time – ISR paths for blog posts will not be generated.");
     return [];
   }
   const posts = await fetchBlogPosts({ limit: 50 }); 
+  if (!posts) return [];
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string }; 
-}) {
+export default async function PostPage({ params }: PageProps) {
   const post = await fetchBlogPostBySlug(params.slug);
   
   if (!post) {
@@ -58,7 +61,7 @@ export default async function PostPage({
   );
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await fetchBlogPostBySlug(params.slug);
 
   if (!post) {
