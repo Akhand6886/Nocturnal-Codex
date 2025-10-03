@@ -100,5 +100,11 @@
     { "source": "frameworks", "target": "testing", "id": "frameworks-testing" },
     { "source": "frameworks", "target": "ssr", "id": "frameworks-ssr" },
     { "source": "frameworks", "target": "accessibility", "id": "frameworks-accessibility" }
-  ]
+  ],
+  "metadata": {
+    "title": "Frontend Development Roadmap",
+    "version": "1.0.0",
+    "lastUpdated": "2024-07-28",
+    "totalTopics": 12
+  }
 }

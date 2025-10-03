@@ -117,20 +117,13 @@ export const RoadmapPost = defineDocumentType(() => ({
     references: { type: 'list', of: WikiArticleStub, required: false },
     thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
 
-    // Fields for interactive roadmaps from user example
-    renderer: { type: 'string', required: false },
-    dimensions: { type: 'json', required: false },
-
     // Fields for interactive roadmaps
     difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: false },
     estimatedTime: { type: 'string', required: false },
     tags: { type: 'list', of: { type: 'string' }, required: false },
-
-    // The id, slug, and name are now required and derived from the file path
-    // We keep them here in case they are ever provided in frontmatter, but the computed fields will override
-    id: { type: 'string', required: false },
-    slug: { type: 'string', required: false },
-    name: { type: 'string', required: false },
+    dimensions: { type: 'json', required: false },
+    
+    // id, slug, and name are derived from file path and are required
   },
   computedFields: {
     url: {
@@ -139,17 +132,17 @@ export const RoadmapPost = defineDocumentType(() => ({
     },
     id: { 
         type: 'string', 
-        resolve: (doc) => doc.id || doc._raw.flattenedPath.replace('roadmaps/', ''),
+        resolve: (doc) => doc._raw.flattenedPath.replace('roadmaps/', ''),
         required: true 
     },
     slug: { 
         type: 'string', 
-        resolve: (doc) => doc.slug || doc._raw.flattenedPath.replace('roadmaps/', ''),
+        resolve: (doc) => doc._raw.flattenedPath.replace('roadmaps/', ''),
         required: true
     },
     name: { 
         type: 'string', 
-        resolve: (doc) => doc.name || doc.title || doc._raw.flattenedPath.replace('roadmaps/', ''),
+        resolve: (doc) => doc.title || doc._raw.flattenedPath.replace('roadmaps/', ''),
         required: true
     },
   }

@@ -3,327 +3,255 @@
   "nodes": [
     {
       "id": "internet",
-      "label": "Internet",
-      "category": "foundation",
-      "position": { "x": 384, "y": 0 }
+      "data": { "label": "Internet" },
+      "type": "topic",
+      "position": { "x": -257.97, "y": 37.7 }
     },
     {
       "id": "learn-a-language",
-      "label": "Pick a Language",
-      "category": "programming",
-      "position": { "x": 384, "y": 150 }
+      "data": { "label": "Pick a Language" },
+      "type": "topic",
+      "position": { "x": -445.22, "y": 164.2 }
     },
     {
       "id": "javascript",
-      "label": "JavaScript",
-      "category": "programming",
-      "position": { "x": -50, "y": 250 }
+      "data": { "label": "JavaScript" },
+      "type": "subtopic",
+      "position": { "x": -713.88, "y": 5.7 }
     },
     {
       "id": "python",
-      "label": "Python",
-      "category": "programming",
-      "position": { "x": 100, "y": 250 }
+      "data": { "label": "Python" },
+      "type": "subtopic",
+      "position": { "x": -713.88, "y": 58.7 }
     },
     {
       "id": "java",
-      "label": "Java",
-      "category": "programming",
-      "position": { "x": 250, "y": 250 }
+      "data": { "label": "Java" },
+      "type": "subtopic",
+      "position": { "x": -713.76, "y": 111.7 }
     },
     {
       "id": "csharp",
-      "label": "C#",
-      "category": "programming",
-      "position": { "x": 400, "y": 250 }
+      "data": { "label": "C#" },
+      "type": "subtopic",
+      "position": { "x": -590.88, "y": 111.7 }
     },
     {
       "id": "go",
-      "label": "Go",
-      "category": "programming",
-      "position": { "x": 550, "y": 250 }
+      "data": { "label": "Go" },
+      "type": "subtopic",
+      "position": { "x": -590.88, "y": 5.7 }
     },
     {
       "id": "ruby",
-      "label": "Ruby",
-      "category": "programming",
-      "position": { "x": 700, "y": 250 }
+      "data": { "label": "Ruby" },
+      "type": "subtopic",
+      "position": { "x": -590.88, "y": 58.7 }
     },
     {
       "id": "php",
-      "label": "PHP",
-      "category": "programming",
-      "position": { "x": 850, "y": 250 }
+      "data": { "label": "PHP" },
+      "type": "subtopic",
+      "position": { "x": -713.76, "y": 164.7 }
+    },
+    {
+      "id": "rust",
+      "data": { "label": "Rust" },
+      "type": "subtopic",
+      "position": { "x": -590.88, "y": 164.7 }
     },
     {
       "id": "version-control-systems",
-      "label": "Version Control Systems",
-      "category": "tools",
-      "position": { "x": 384, "y": 400 }
+      "data": { "label": "Version Control Systems" },
+      "type": "topic",
+      "position": { "x": -270.08, "y": 307.68 }
     },
     {
       "id": "git",
-      "label": "Git",
-      "category": "tools",
-      "position": { "x": 284, "y": 500 }
+      "data": { "label": "Git" },
+      "type": "subtopic",
+      "position": { "x": -204.58, "y": 218.7 }
     },
     {
       "id": "repo-hosting-services",
-      "label": "Repo Hosting Services",
-      "category": "tools",
-      "position": { "x": 484, "y": 500 }
+      "data": { "label": "Repo Hosting Services" },
+      "type": "topic",
+      "position": { "x": -711.35, "y": 409.93 }
     },
     {
       "id": "github",
-      "label": "GitHub",
-      "category": "tools",
-      "position": { "x": 384, "y": 600 }
+      "data": { "label": "GitHub" },
+      "type": "subtopic",
+      "position": { "x": -666.35, "y": 258.68 }
     },
     {
       "id": "gitlab",
-      "label": "GitLab",
-      "category": "tools",
-      "position": { "x": 484, "y": 600 }
+      "data": { "label": "GitLab" },
+      "type": "subtopic",
+      "position": { "x": -666.35, "y": 311.68 }
     },
     {
       "id": "bitbucket",
-      "label": "Bitbucket",
-      "category": "tools",
-      "position": { "x": 584, "y": 600 }
+      "data": { "label": "Bitbucket" },
+      "type": "subtopic",
+      "position": { "x": -664.85, "y": 497.1 }
     },
     {
       "id": "more-about-databases",
-      "label": "More about Databases",
-      "category": "foundation",
-      "position": { "x": 384, "y": 750 }
+      "data": { "label": "More about Databases" },
+      "type": "topic",
+      "position": { "x": -213.58, "y": 1371.12 }
     },
     {
       "id": "relational-databases",
-      "label": "Relational Databases",
-      "category": "databases",
-      "position": { "x": 192, "y": 850 }
+      "data": { "label": "Relational Databases" },
+      "type": "topic",
+      "position": { "x": -260.08, "y": 499.1 }
     },
     {
       "id": "nosql-databases",
-      "label": "NoSQL Databases",
-      "category": "databases",
-      "position": { "x": 576, "y": 850 }
+      "data": { "label": "NoSQL Databases" },
+      "type": "topic",
+      "position": { "x": -410.41, "y": 2665.81 }
     },
     {
       "id": "postgresql",
-      "label": "PostgreSQL",
-      "category": "databases",
-      "position": { "x": -50, "y": 950 }
+      "data": { "label": "PostgreSQL" },
+      "type": "subtopic",
+      "position": { "x": -210.58, "y": 409.1 }
     },
     {
       "id": "mysql",
-      "label": "MySQL",
-      "category": "databases",
-      "position": { "x": 100, "y": 950 }
+      "data": { "label": "MySQL" },
+      "type": "subtopic",
+      "position": { "x": 132.71, "y": 335.1 }
     },
     {
       "id": "mssql",
-      "label": "MS SQL",
-      "category": "databases",
-      "position": { "x": 250, "y": 950 }
+      "data": { "label": "MS SQL" },
+      "type": "subtopic",
+      "position": { "x": 132.71, "y": 443.1 }
     },
     {
       "id": "oracle",
-      "label": "Oracle",
-      "category": "databases",
-      "position": { "x": 400, "y": 950 }
+      "data": { "label": "Oracle" },
+      "type": "subtopic",
+      "position": { "x": 132.71, "y": 497.1 }
     },
     {
       "id": "mongodb",
-      "label": "MongoDB",
-      "category": "databases",
-      "position": { "x": 500, "y": 950 }
+      "data": { "label": "MongoDB" },
+      "type": "subtopic",
+      "position": { "x": -635.95, "y": 2485.04 }
     },
     {
       "id": "redis",
-      "label": "Redis",
-      "category": "databases",
-      "position": { "x": 650, "y": 950 }
+      "data": { "label": "Redis" },
+      "type": "subtopic",
+      "position": { "x": -482.51, "y": 2482.58 }
     },
     {
       "id": "dynamodb",
-      "label": "DynamoDB",
-      "category": "databases",
-      "position": { "x": 800, "y": 950 }
+      "data": { "label": "DynamoDB" },
+      "type": "subtopic",
+      "position": { "x": -482.51, "y": 2535.58 }
     },
     {
       "id": "apis",
-      "label": "Learn about APIs",
-      "category": "apis",
-      "position": { "x": 384, "y": 1100 }
+      "data": { "label": "Learn about APIs" },
+      "type": "topic",
+      "position": { "x": -258.87, "y": 740.48 }
     },
     {
       "id": "rest",
-      "label": "REST",
-      "category": "apis",
-      "position": { "x": 192, "y": 1200 }
+      "data": { "label": "REST" },
+      "type": "subtopic",
+      "position": { "x": -246.32, "y": 820.99 }
     },
     {
       "id": "json-apis",
-      "label": "JSON APIs",
-      "category": "apis",
-      "position": { "x": 384, "y": 1200 }
+      "data": { "label": "JSON APIs" },
+      "type": "subtopic",
+      "position": { "x": -246.32, "y": 873.99 }
     },
     {
       "id": "graphql",
-      "label": "GraphQL",
-      "category": "apis",
-      "position": { "x": 576, "y": 1200 }
+      "data": { "label": "GraphQL" },
+      "type": "subtopic",
+      "position": { "x": -246.32, "y": 980.99 }
     },
     {
       "id": "authentication",
-      "label": "Authentication",
-      "category": "security",
-      "position": { "x": 384, "y": 1350 }
+      "data": { "label": "Authentication" },
+      "type": "subtopic",
+      "position": { "x": 51.56, "y": 647.91 }
     },
     {
       "id": "basic-authentication",
-      "label": "Basic Authentication",
-      "category": "security",
-      "position": { "x": -50, "y": 1450 }
+      "data": { "label": "Basic Authentication" },
+      "type": "subtopic",
+      "position": { "x": 71.54, "y": 761.59 }
     },
     {
       "id": "cookie-based-authentication",
-      "label": "Cookie Based Auth",
-      "category": "security",
-      "position": { "x": 100, "y": 1450 }
+      "data": { "label": "Cookie Based Auth" },
+      "type": "subtopic",
+      "position": { "x": 71.54, "y": 868.08 }
     },
     {
       "id": "token-authentication",
-      "label": "Token Authentication",
-      "category": "security",
-      "position": { "x": 250, "y": 1450 }
+      "data": { "label": "Token Authentication" },
+      "type": "subtopic",
+      "position": { "x": 71.54, "y": 814.59 }
     },
     {
       "id": "jwt",
-      "label": "JWT",
-      "category": "security",
-      "position": { "x": 400, "y": 1450 }
+      "data": { "label": "JWT" },
+      "type": "subtopic",
+      "position": { "x": 71.54, "y": 708.59 }
     },
     {
       "id": "oauth",
-      "label": "OAuth",
-      "category": "security",
-      "position": { "x": 550, "y": 1450 }
+      "data": { "label": "OAuth" },
+      "type": "subtopic",
+      "position": { "x": 200.54, "y": 708.59 }
     },
     {
       "id": "openid",
-      "label": "OpenID",
-      "category": "security",
-      "position": { "x": 700, "y": 1450 }
+      "data": { "label": "OpenID" },
+      "type": "subtopic",
+      "position": { "x": 71.54, "y": 923.07 }
     },
     {
       "id": "saml",
-      "label": "SAML",
-      "category": "security",
-      "position": { "x": 850, "y": 1450 }
+      "data": { "label": "SAML" },
+      "type": "subtopic",
+      "position": { "x": 188.54, "y": 923.56 }
     },
     {
       "id": "caching",
-      "label": "Caching",
-      "category": "performance",
-      "position": { "x": 384, "y": 1600 }
-    },
-    {
-      "id": "client-side-caching",
-      "label": "Client Side Caching",
-      "category": "performance",
-      "position": { "x": 234, "y": 1700 }
-    },
-    {
-      "id": "server-side-caching",
-      "label": "Server Side Caching",
-      "category": "performance",
-      "position": { "x": 534, "y": 1700 }
-    },
-    {
-      "id": "cdn",
-      "label": "CDN",
-      "category": "performance",
-      "position": { "x": 384, "y": 1800 }
+      "data": { "label": "Caching" },
+      "type": "topic",
+      "position": { "x": -441.57, "y": 740.48 }
     },
     {
       "id": "web-security-knowledge",
-      "label": "Web Security Knowledge",
-      "category": "security",
-      "position": { "x": 384, "y": 1950 }
-    },
-    {
-      "id": "cors",
-      "label": "CORS",
-      "category": "security",
-      "position": { "x": -50, "y": 2050 }
-    },
-    {
-      "id": "ssl-tls",
-      "label": "SSL/TLS",
-      "category": "security",
-      "position": { "x": 100, "y": 2050 }
-    },
-    {
-      "id": "bcrypt",
-      "label": "bcrypt",
-      "category": "security",
-      "position": { "x": 250, "y": 2050 }
-    },
-    {
-      "id": "scrypt",
-      "label": "scrypt",
-      "category": "security",
-      "position": { "x": 400, "y": 2050 }
-    },
-    {
-      "id": "md5",
-      "label": "MD5",
-      "category": "security",
-      "position": { "x": 550, "y": 2050 }
-    },
-    {
-      "id": "sha-family",
-      "label": "SHA",
-      "category": "security",
-      "position": { "x": 700, "y": 2050 }
-    },
-    {
-      "id": "owasp",
-      "label": "OWASP",
-      "category": "security",
-      "position": { "x": 850, "y": 2050 }
+      "data": { "label": "Web Security" },
+      "type": "topic",
+      "position": { "x": -460.07, "y": 1071.36 }
     },
     {
       "id": "testing",
-      "label": "Testing",
-      "category": "testing",
-      "position": { "x": 384, "y": 2200 }
-    },
-    {
-      "id": "unit-testing",
-      "label": "Unit Testing",
-      "category": "testing",
-      "position": { "x": 134, "y": 2300 }
-    },
-    {
-      "id": "integration-testing",
-      "label": "Integration Testing",
-      "category": "testing",
-      "position": { "x": 384, "y": 2300 }
-    },
-    {
-      "id": "functional-testing",
-      "label": "Functional Testing",
-      "category": "testing",
-      "position": { "x": 634, "y": 2300 }
+      "data": { "label": "Testing" },
+      "type": "topic",
+      "position": { "x": -179.58, "y": 1071.36 }
     },
     {
       "id": "ci-cd",
-      "label": "CI / CD",
-      "category": "tools",
-      "position": { "x": 384, "y": 2450 }
+      "data": { "label": "CI / CD" },
+      "type": "topic",
+      "position": { "x": -179.08, "y": 1210.66 }
     }
   ],
   "edges": [
@@ -335,44 +263,28 @@
     { "source": "learn-a-language", "target": "go" },
     { "source": "learn-a-language", "target": "ruby" },
     { "source": "learn-a-language", "target": "php" },
-    { "source": "javascript", "target": "version-control-systems" },
-    { "source": "python", "target": "version-control-systems" },
-    { "source": "java", "target": "version-control-systems" },
-    { "source": "csharp", "target": "version-control-systems" },
-    { "source": "go", "target": "version-control-systems" },
-    { "source": "ruby", "target": "version-control-systems" },
-    { "source": "php", "target": "version-control-systems" },
+    { "source": "learn-a-language", "target": "rust" },
+    { "source": "learn-a-language", "target": "version-control-systems" },
     { "source": "version-control-systems", "target": "git" },
     { "source": "version-control-systems", "target": "repo-hosting-services" },
     { "source": "repo-hosting-services", "target": "github" },
     { "source": "repo-hosting-services", "target": "gitlab" },
     { "source": "repo-hosting-services", "target": "bitbucket" },
-    { "source": "github", "target": "more-about-databases" },
-    { "source": "gitlab", "target": "more-about-databases" },
-    { "source": "bitbucket", "target": "more-about-databases" },
-    { "source": "git", "target": "more-about-databases" },
-    { "source": "more-about-databases", "target": "relational-databases" },
-    { "source": "more-about-databases", "target": "nosql-databases" },
+    { "source": "repo-hosting-services", "target": "relational-databases" },
     { "source": "relational-databases", "target": "postgresql" },
     { "source": "relational-databases", "target": "mysql" },
     { "source": "relational-databases", "target": "mssql" },
     { "source": "relational-databases", "target": "oracle" },
+    { "source": "relational-databases", "target": "apis" },
+    { "source": "relational-databases", "target": "nosql-databases" },
     { "source": "nosql-databases", "target": "mongodb" },
     { "source": "nosql-databases", "target": "redis" },
     { "source": "nosql-databases", "target": "dynamodb" },
-    { "source": "postgresql", "target": "apis" },
-    { "source": "mysql", "target": "apis" },
-    { "source": "mssql", "target": "apis" },
-    { "source": "oracle", "target": "apis" },
-    { "source": "mongodb", "target": "apis" },
-    { "source": "redis", "target": "apis" },
-    { "source": "dynamodb", "target": "apis" },
+    { "source": "nosql-databases", "target": "apis" },
     { "source": "apis", "target": "rest" },
     { "source": "apis", "target": "json-apis" },
     { "source": "apis", "target": "graphql" },
-    { "source": "rest", "target": "authentication" },
-    { "source": "json-apis", "target": "authentication" },
-    { "source": "graphql", "target": "authentication" },
+    { "source": "apis", "target": "authentication" },
     { "source": "authentication", "target": "basic-authentication" },
     { "source": "authentication", "target": "cookie-based-authentication" },
     { "source": "authentication", "target": "token-authentication" },
@@ -380,43 +292,10 @@
     { "source": "authentication", "target": "oauth" },
     { "source": "authentication", "target": "openid" },
     { "source": "authentication", "target": "saml" },
-    { "source": "basic-authentication", "target": "caching" },
-    { "source": "cookie-based-authentication", "target": "caching" },
-    { "source": "token-authentication", "target": "caching" },
-    { "source": "jwt", "target": "caching" },
-    { "source": "oauth", "target": "caching" },
-    { "source": "openid", "target": "caching" },
-    { "source": "saml", "target": "caching" },
-    { "source": "caching", "target": "client-side-caching" },
-    { "source": "caching", "target": "server-side-caching" },
-    { "source": "client-side-caching", "target": "cdn" },
-    { "source": "server-side-caching", "target": "cdn" },
-    { "source": "cdn", "target": "web-security-knowledge" },
-    { "source": "web-security-knowledge", "target": "cors" },
-    { "source": "web-security-knowledge", "target": "ssl-tls" },
-    { "source": "web-security-knowledge", "target": "bcrypt" },
-    { "source": "web-security-knowledge", "target": "scrypt" },
-    { "source": "web-security-knowledge", "target": "md5" },
-    { "source": "web-security-knowledge", "target": "sha-family" },
-    { "source": "web-security-knowledge", "target": "owasp" },
-    { "source": "cors", "target": "testing" },
-    { "source": "ssl-tls", "target": "testing" },
-    { "source": "bcrypt", "target": "testing" },
-    { "source": "scrypt", "target": "testing" },
-    { "source": "md5", "target": "testing" },
-    { "source": "sha-family", "target": "testing" },
-    { "source": "owasp", "target": "testing" },
-    { "source": "testing", "target": "unit-testing" },
-    { "source": "testing", "target": "integration-testing" },
-    { "source": "testing", "target": "functional-testing" },
-    { "source": "unit-testing", "target": "ci-cd" },
-    { "source": "integration-testing", "target": "ci-cd" },
-    { "source": "functional-testing", "target": "ci-cd" }
-  ],
-  "metadata": {
-    "title": "Backend Development Roadmap",
-    "version": "1.1.0",
-    "lastUpdated": "2024-07-29",
-    "totalTopics": 44
-  }
+    { "source": "authentication", "target": "caching" },
+    { "source": "caching", "target": "web-security-knowledge" },
+    { "source": "web-security-knowledge", "target": "testing" },
+    { "source": "testing", "target": "ci-cd" },
+    { "source": "ci-cd", "target": "more-about-databases" }
+  ]
 }
