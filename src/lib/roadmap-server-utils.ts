@@ -42,8 +42,8 @@ export async function loadTopicContent(slug: string): Promise<Record<string, Top
         
         topics[topicId] = {
           id: topicId,
-          title: data.title,
-          description: data.description,
+          title: data.title || 'Untitled Topic',
+          description: data.description || '',
           objectives: data.objectives || [],
           resources: data.resources || [],
           rawContent: content,

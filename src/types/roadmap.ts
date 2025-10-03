@@ -9,14 +9,14 @@ export interface RoadmapNodeData {
   id: string;
   label: string;
   // Content is now separate
-  content?: TopicContent; 
+  content: TopicContent; 
   // Fields from JSON blueprint
   category?: string;
   position?: { x: number; y: number };
   style?: React.CSSProperties;
   // State-related fields
-  status?: ProgressStatus;
-  highlighted?: boolean;
+  status: ProgressStatus;
+  highlighted: boolean;
 }
 
 // Represents the content for a single topic, loaded from a markdown file.
