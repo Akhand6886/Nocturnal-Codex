@@ -3,90 +3,102 @@
   "nodes": [
     {
       "id": "internet",
-      "label": "Internet",
-      "category": "foundation",
-      "position": { "x": 384, "y": 0 }
+      "type": "topic",
+      "position": { "x": 384, "y": 0 },
+      "data": { "label": "Internet" },
+      "category": "foundation"
     },
     {
       "id": "html",
-      "label": "HTML",
-      "category": "foundation",
-      "position": { "x": 192, "y": 100 }
+      "type": "topic",
+      "position": { "x": 192, "y": 100 },
+      "data": { "label": "HTML" },
+      "category": "foundation"
     },
     {
       "id": "css",
-      "label": "CSS",
-      "category": "foundation",
-      "position": { "x": 384, "y": 100 }
+      "type": "topic",
+      "position": { "x": 384, "y": 100 },
+      "data": { "label": "CSS" },
+      "category": "foundation"
     },
     {
       "id": "javascript",
-      "label": "JavaScript",
-      "category": "foundation",
-      "position": { "x": 576, "y": 100 }
+      "type": "topic",
+      "position": { "x": 576, "y": 100 },
+      "data": { "label": "JavaScript" },
+      "category": "foundation"
     },
     {
       "id": "git",
-      "label": "Version Control",
-      "category": "tools",
-      "position": { "x": 384, "y": 200 }
+      "type": "topic",
+      "position": { "x": 384, "y": 200 },
+      "data": { "label": "Version Control" },
+      "category": "tools"
     },
     {
       "id": "package-managers",
-      "label": "Package Managers",
-      "category": "tools",
-      "position": { "x": 384, "y": 300 }
+      "type": "topic",
+      "position": { "x": 384, "y": 300 },
+      "data": { "label": "Package Managers" },
+      "category": "tools"
     },
     {
       "id": "build-tools",
-      "label": "Build Tools",
-      "category": "tools",
-      "position": { "x": 192, "y": 400 }
+      "type": "topic",
+      "position": { "x": 192, "y": 400 },
+      "data": { "label": "Build Tools" },
+      "category": "tools"
     },
     {
       "id": "frameworks",
-      "label": "Pick a Framework",
-      "category": "programming",
-      "position": { "x": 384, "y": 400 }
+      "type": "topic",
+      "position": { "x": 384, "y": 400 },
+      "data": { "label": "Pick a Framework" },
+      "category": "programming"
     },
     {
       "id": "typescript",
-      "label": "TypeScript",
-      "category": "programming",
-      "position": { "x": 576, "y": 400 }
+      "type": "topic",
+      "position": { "x": 576, "y": 400 },
+      "data": { "label": "TypeScript" },
+      "category": "programming"
     },
     {
       "id": "testing",
-      "label": "Testing",
-      "category": "testing",
-      "position": { "x": 192, "y": 500 }
+      "type": "topic",
+      "position": { "x": 192, "y": 500 },
+      "data": { "label": "Testing" },
+      "category": "testing"
     },
     {
       "id": "ssr",
-      "label": "Server-Side Rendering",
-      "category": "advanced",
-      "position": { "x": 384, "y": 500 }
+      "type": "topic",
+      "position": { "x": 384, "y": 500 },
+      "data": { "label": "Server-Side Rendering" },
+      "category": "advanced"
     },
     {
       "id": "accessibility",
-      "label": "Accessibility",
-      "category": "foundation",
-      "position": { "x": 576, "y": 500 }
+      "type": "topic",
+      "position": { "x": 576, "y": 500 },
+      "data": { "label": "Accessibility" },
+      "category": "foundation"
     }
   ],
   "edges": [
-    { "source": "internet", "target": "html" },
-    { "source": "internet", "target": "css" },
-    { "source": "internet", "target": "javascript" },
-    { "source": "html", "target": "git" },
-    { "source": "css", "target": "git" },
-    { "source": "javascript", "target": "git" },
-    { "source": "git", "target": "package-managers" },
-    { "source": "package-managers", "target": "build-tools" },
-    { "source": "package-managers", "target": "frameworks" },
-    { "source": "package-managers", "target": "typescript" },
-    { "source": "frameworks", "target": "testing" },
-    { "source": "frameworks", "target": "ssr" },
-    { "source": "frameworks", "target": "accessibility" }
+    { "source": "internet", "target": "html", "id": "internet-html" },
+    { "source": "internet", "target": "css", "id": "internet-css" },
+    { "source": "internet", "target": "javascript", "id": "internet-javascript" },
+    { "source": "html", "target": "git", "id": "html-git" },
+    { "source": "css", "target": "git", "id": "css-git" },
+    { "source": "javascript", "target": "git", "id": "javascript-git" },
+    { "source": "git", "target": "package-managers", "id": "git-package-managers" },
+    { "source": "package-managers", "target": "build-tools", "id": "package-managers-build-tools" },
+    { "source": "package-managers", "target": "frameworks", "id": "package-managers-frameworks" },
+    { "source": "package-managers", "target": "typescript", "id": "package-managers-typescript" },
+    { "source": "frameworks", "target": "testing", "id": "frameworks-testing" },
+    { "source": "frameworks", "target": "ssr", "id": "frameworks-ssr" },
+    { "source": "frameworks", "target": "accessibility", "id": "frameworks-accessibility" }
   ]
 }

@@ -103,9 +103,7 @@ export const RoadmapPost = defineDocumentType(() => ({
   filePathPattern: `roadmaps/**/*.md*`,
   contentType: 'markdown',
   fields: {
-    id: { type: 'string', required: false },
-    slug: { type: 'string', required: false },
-    name: { type: 'string', required: false },
+    // Fields from frontmatter
     title: { type: 'string', required: false },
     category: { type: 'string', required: false },
     description: { type: 'string', required: false },
@@ -127,17 +125,21 @@ export const RoadmapPost = defineDocumentType(() => ({
     difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: false },
     estimatedTime: { type: 'string', required: false },
     tags: { type: 'list', of: { type: 'string' }, required: false },
+
+    // The id, slug, and name are now required and derived from the file path
+    // We keep them here in case they are ever provided in frontmatter, but the computed fields will override
+    id: { type: 'string', required: false },
+    slug: { type: 'string', required: false },
+    name: { type: 'string', required: false },
   },
   computedFields: {
     url: {
       type: 'string', 
-      resolve: (doc) => `/roadmaps/${doc.slug}`,
+      resolve: (doc) => `/roadmaps/${doc._raw.flattenedPath.replace('roadmaps/', '')}`,
     },
-    // Make these computed fields required to ensure they always exist, but derive them from the filename
-    // which is more robust than relying on potentially missing frontmatter.
     id: { 
         type: 'string', 
-        resolve: (doc) => doc.slug || doc._raw.flattenedPath.replace('roadmaps/', ''),
+        resolve: (doc) => doc.id || doc._raw.flattenedPath.replace('roadmaps/', ''),
         required: true 
     },
     slug: { 
