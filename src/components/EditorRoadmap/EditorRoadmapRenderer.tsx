@@ -2,7 +2,7 @@
 
 import './EditorRoadmapRenderer.css';
 import React, { FC } from 'react';
-import ReactFlow, { Background, Controls, MiniMap, type Node, type Edge, ReactFlowProvider, useReactFlow } from '@xyflow/react';
+import { ReactFlow, Background, Controls, MiniMap, type Node, type Edge, ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
 interface EditorRoadmapRendererProps {
