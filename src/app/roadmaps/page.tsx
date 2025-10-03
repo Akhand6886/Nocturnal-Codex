@@ -21,10 +21,6 @@ export default function RoadmapsPage() {
         </h1>
         <p className="mt-3 text-lg text-muted-foreground">
           Step-by-step guides and paths to learn different tools and technologies.
-          For a more detailed and interactive experience, visit{' '}
-          <a href="https://roadmap.sh" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-            roadmap.sh
-          </a>.
         </p>
       </header>
 
