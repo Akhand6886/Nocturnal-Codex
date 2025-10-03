@@ -4,13 +4,13 @@ import type { Metadata } from 'next';
 import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
 import type { Node, Edge } from '@xyflow/react';
 import { allRoadmaps } from 'contentlayer/generated';
+import path from 'path';
+import { promises as fs } from 'fs';
 
 export const revalidate = 3600; // Revalidate every hour
 
 // This tells Next.js which roadmap pages to build at build time
 export async function generateStaticParams() {
-  // Since we are fetching JSON files, we manually define the slugs.
-  // This should match the filenames in `public/roadmap-content/`.
   const roadmapSlugs = [
     'backend',
     'frontend',
@@ -31,19 +31,18 @@ interface RoadmapData {
 }
 
 async function getRoadmapData(roadmapId: string): Promise<RoadmapData | null> {
-  // Because this is a server component, we can fetch directly from the public folder.
-  // The URL needs to be absolute for the fetch to work on the server.
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const url = `${baseUrl}/roadmap-content/${roadmapId}.json`;
+  // Construct the path to the JSON file within the public directory
+  const jsonPath = path.join(process.cwd(), 'public', 'roadmap-content', `${roadmapId}.json`);
   
   try {
-    const res = await fetch(url, { next: { revalidate: 3600 } }); // Cache for an hour
-    if (!res.ok) {
-      return null;
+    const fileContents = await fs.readFile(jsonPath, 'utf-8');
+    if (!fileContents) {
+        return null;
     }
-    return res.json();
+    const data = JSON.parse(fileContents);
+    return data;
   } catch (error) {
-    console.error(`Failed to fetch roadmap data for ${roadmapId}:`, error);
+    console.error(`Failed to read or parse roadmap data for ${roadmapId}:`, error);
     return null;
   }
 }
