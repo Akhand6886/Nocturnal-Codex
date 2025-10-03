@@ -8,14 +8,6 @@ import { type NextRequest, NextResponse } from 'next/server';
  * @param context.params - An object containing the dynamic segments of the URL.
  * @param context.params.id - The ID of the roadmap from the URL.
  * @returns A JSON response with a message.
- */
-export async function GET(
-  request: NextRequest,
-  context: { params: { roadmapId: string } }
-) {
-  const { roadmapId } = context.params;
-  return NextResponse.json({ message: `GET request for roadmap: ${roadmapId}` });
-}
 
 /**
  * Handles POST requests to /api/roadmaps/[id].
