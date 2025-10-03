@@ -1,8 +1,13 @@
+
 // src/components/layout/tutorial-pagination.tsx
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import type { TutorialPost } from 'contentlayer/generated';
+
+// Faked type since contentlayer is gone
+interface TutorialPost {
+    url: string;
+}
 
 interface TutorialPaginationProps {
   prev: TutorialPost | null;

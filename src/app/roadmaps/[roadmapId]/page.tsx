@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
 import type { Node, Edge } from '@xyflow/react';
-import { allRoadmaps } from 'contentlayer/generated';
 import path from 'path';
 import { promises as fs } from 'fs';
 
@@ -30,6 +29,40 @@ interface RoadmapData {
   edges: Edge[];
 }
 
+interface RoadmapMeta {
+    title: string;
+    description: string;
+}
+
+// Faking roadmap metadata since contentlayer is gone
+const getRoadmapMeta = (slug: string): RoadmapMeta | null => {
+    const titles: { [key: string]: string } = {
+        'backend': "Backend Roadmap",
+        'frontend': "Frontend Roadmap",
+        'devops': "DevOps Roadmap",
+        'full-stack': "Full Stack Roadmap",
+        'machine-learning': "Machine Learning Roadmap",
+        'cybersecurity': "Cybersecurity Roadmap",
+    };
+    const descriptions: { [key: string]: string } = {
+        'backend': "Step-by-step guide to becoming a modern backend developer.",
+        'frontend': "Step-by-step guide to becoming a modern frontend developer.",
+        'devops': "Step-by-step guide to becoming a DevOps engineer.",
+        'full-stack': "Step-by-step guide to becoming a full stack developer.",
+        'machine-learning': "Step-by-step guide to becoming a Machine Learning engineer.",
+        'cybersecurity': "Step-by-step guide to becoming a cybersecurity expert.",
+    };
+
+    if (titles[slug]) {
+        return {
+            title: titles[slug],
+            description: descriptions[slug]
+        }
+    }
+    return null;
+}
+
+
 async function getRoadmapData(roadmapId: string): Promise<RoadmapData | null> {
   // Construct the path to the JSON file within the public directory
   const jsonPath = path.join(process.cwd(), 'public', 'roadmap-content', `${roadmapId}.json`);
@@ -53,7 +86,7 @@ interface RoadmapDetailsPageProps {
 
 // Function to generate metadata for the page
 export async function generateMetadata({ params }: RoadmapDetailsPageProps): Promise<Metadata> {
-  const roadmapMeta = allRoadmaps.find((r) => r.slug === params.roadmapId);
+  const roadmapMeta = getRoadmapMeta(params.roadmapId);
   if (!roadmapMeta) {
     return {
       title: 'Roadmap Not Found',
@@ -68,7 +101,7 @@ export async function generateMetadata({ params }: RoadmapDetailsPageProps): Pro
 // The main page component
 export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageProps) {
   const roadmapData = await getRoadmapData(params.roadmapId);
-  const roadmapMeta = allRoadmaps.find((r) => r.slug === params.roadmapId);
+  const roadmapMeta = getRoadmapMeta(params.roadmapId);
 
   if (!roadmapMeta || !roadmapData) {
     notFound();
@@ -84,7 +117,7 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
           {roadmapMeta.description}
         </p>
       </header>
-      <EditorRoadmapRenderer roadmapId={params.roadmapId} roadmapData={roadmapData} />
+      <EditorRoadmapRenderer roadmapId={params.roadmapId} />
     </div>
   );
 }

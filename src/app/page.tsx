@@ -10,7 +10,6 @@ import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
-import { allLanguagePosts } from "contentlayer/generated";
 import { SimpleIcon } from "@/components/common/simple-icon";
 
 export const revalidate = 60; 
@@ -20,12 +19,15 @@ export const metadata: Metadata = {
   description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
 };
 
+// Placeholder for language data since contentlayer was removed
+const allLanguagePosts: any[] = [];
+const featuredLanguages = allLanguagePosts ? allLanguagePosts.slice(0, 4) : [];
+
 export default async function HomePage() {
   const recentBlogPosts = await fetchBlogPosts({ limit: 2 }) || [];
   const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true }) || [];
   
   const featuredWikiArticles = MOCK_WIKI_ARTICLES ? MOCK_WIKI_ARTICLES.slice(0, 3) : [];
-  const featuredLanguages = allLanguagePosts ? allLanguagePosts.slice(0, 4) : [];
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
@@ -53,13 +55,14 @@ export default async function HomePage() {
       </section>
       
       {/* Featured Languages Section */}
+      {featuredLanguages.length > 0 && (
       <section>
         <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90">
             <Code2 className="mr-3 h-7 w-7 text-primary" />
             Featured Languages
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredLanguages.map((lang) => (
+            {featuredLanguages.map((lang: any) => (
                 <Link href={lang.url} key={lang.id} className="group block">
                     <Card className="h-full overflow-hidden shadow-md hover:shadow-primary/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-lg">
                       <CardContent className="p-6 flex flex-col items-center text-center">
@@ -78,6 +81,7 @@ export default async function HomePage() {
             </div>
         )}
       </section>
+      )}
 
       {/* Featured Posts Section */}
       {featuredBlogPosts.length > 0 && (

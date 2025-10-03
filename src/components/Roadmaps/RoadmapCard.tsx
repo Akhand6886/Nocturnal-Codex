@@ -2,9 +2,20 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
-import type { Roadmap } from 'contentlayer/generated';
 import { Badge } from '@/components/ui/badge';
 import { BookMarked } from 'lucide-react';
+
+interface Roadmap {
+    title: string;
+    description?: string;
+    category: string;
+    difficulty: string;
+    featured: boolean;
+    imageUrl?: string;
+    order: number;
+    url: string;
+    slug: string;
+}
 
 interface RoadmapCardProps {
   roadmap: Roadmap;

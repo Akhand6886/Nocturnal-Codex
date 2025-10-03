@@ -53,7 +53,7 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
 
   if (loading) {
     return (
-      <div style={{ height: 'calc(100vh - 150px)' }} className="w-full flex items-center justify-center">
+      <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center">
         <Spinner className="text-primary" />
       </div>
     );
@@ -61,14 +61,14 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
 
   if (error || !roadmapData) {
     return (
-      <div style={{ height: 'calc(100vh - 150px)' }} className="w-full flex items-center justify-center text-destructive">
+      <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center text-destructive">
         <p>Error loading roadmap: {error || 'Data could not be loaded.'}</p>
       </div>
     );
   }
 
   return (
-    <div style={{ height: 'calc(100vh - 150px)' }} className="w-full">
+    <div style={{ height: 'calc(100vh - 250px)' }} className="w-full">
       <ReactFlowProvider>
         <ReactFlow
           nodes={roadmapData.nodes}

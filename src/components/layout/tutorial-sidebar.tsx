@@ -3,16 +3,31 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import type { TutorialPost } from 'contentlayer/generated';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { allLanguagePosts } from 'contentlayer/generated';
 import { SimpleIcon } from '@/components/common/simple-icon';
+
+// Faked types since contentlayer is gone
+interface TutorialPost {
+    slug: string;
+    url: string;
+    title: string;
+    category?: string;
+    order: number;
+}
+interface LanguagePost {
+    slug: string;
+    iconName?: string;
+    name: string;
+}
 
 interface TutorialSidebarProps {
   tutorials: TutorialPost[];
   currentLanguage: string;
 }
+
+// Faked data since contentlayer is gone
+const allLanguagePosts: LanguagePost[] = [];
 
 export function TutorialSidebar({ tutorials, currentLanguage }: TutorialSidebarProps) {
   const pathname = usePathname();
