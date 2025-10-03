@@ -1,3 +1,4 @@
+
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 import { notFound } from 'next/navigation';
 import { allRoadmapPosts } from 'contentlayer/generated';
@@ -16,13 +17,12 @@ const getRoadmapData = cache(async (slug: string) => {
         return null;
     }
 
-    // Since this is a Server Component, we can directly fetch and process data here.
     const blueprint = await loadRoadmapBlueprint(slug);
     const topicsContent = await loadTopicContent(slug);
 
     if (!blueprint || !topicsContent) {
-        // Return roadmap data even if interactive parts are missing
-        // to allow for static content display.
+        // If interactive content isn't ready, return the static roadmap data
+        // but with empty nodes/edges so the UI can handle it gracefully.
         return { roadmap, initialNodes: [], initialEdges: [], blueprint: null };
     }
     
@@ -61,7 +61,6 @@ export default async function RoadmapPage({ params }: { params: { roadmapSlug: s
     
     const { roadmap, initialNodes, initialEdges, blueprint } = roadmapData;
 
-    // The Server Component fetches the data and then passes it to the Client Component.
     return (
         <div className="container mx-auto px-4 py-8">
              <RoadmapHeader roadmapData={roadmap} />

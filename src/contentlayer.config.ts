@@ -133,6 +133,23 @@ export const RoadmapPost = defineDocumentType(() => ({
       type: 'string', 
       resolve: (doc) => `/roadmaps/${doc.slug}`,
     },
+    // Make these computed fields required to ensure they always exist, but derive them from the filename
+    // which is more robust than relying on potentially missing frontmatter.
+    id: { 
+        type: 'string', 
+        resolve: (doc) => doc.slug || doc._raw.flattenedPath.replace('roadmaps/', ''),
+        required: true 
+    },
+    slug: { 
+        type: 'string', 
+        resolve: (doc) => doc.slug || doc._raw.flattenedPath.replace('roadmaps/', ''),
+        required: true
+    },
+    name: { 
+        type: 'string', 
+        resolve: (doc) => doc.name || doc.title || doc._raw.flattenedPath.replace('roadmaps/', ''),
+        required: true
+    },
   }
 }));
 
