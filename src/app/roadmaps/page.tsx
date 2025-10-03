@@ -1,45 +1,37 @@
-import { notFound } from 'next/navigation';
-import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
-import { RoadmapHeader } from '@/components/roadmap/RoadmapHeader';
+
 import { allRoadmaps } from 'contentlayer/generated';
+import { RoadmapCard } from '@/components/Roadmaps/RoadmapCard';
+import { BookMarked } from 'lucide-react';
+import type { Metadata } from 'next';
 
-interface RoadmapPageProps {
-  params: {
-    roadmapId: string;
-  };
-}
+export const metadata: Metadata = {
+  title: 'Developer Roadmaps',
+  description: 'Step-by-step guides and paths to learn different tools and technologies.',
+};
 
-export async function generateStaticParams() {
-  return allRoadmaps.map((roadmap) => ({
-    roadmapId: roadmap.slug,
-  }));
-}
-
-export default async function RoadmapPage({ params }: RoadmapPageProps) {
-  const roadmap = allRoadmaps.find((r) => r.slug === params.roadmapId);
-
-  if (!roadmap) {
-    notFound();
-  }
-
-  // Fetch the roadmap JSON data
-  const roadmapData = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/roadmap-content/${params.roadmapId}.json`
-  ).then((res) => res.json());
+export default function RoadmapsPage() {
+  const roadmaps = allRoadmaps.sort((a, b) => a.order - b.order);
 
   return (
-    <div className="min-h-screen bg-white">
-      <RoadmapHeader
-        title={roadmap.title}
-        description={roadmap.description}
-        roadmapId={params.roadmapId}
-      />
-      
-      <div className="relative">
-        <EditorRoadmapRenderer
-          roadmapId={params.roadmapId}
-          roadmapData={roadmapData}
-        />
+    <div className="container mx-auto px-4 py-10 md:py-12">
+      <header className="pb-6 border-b border-border">
+        <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
+          <BookMarked className="mr-4 h-10 w-10 text-primary" />
+          Developer Roadmaps
+        </h1>
+        <p className="mt-3 text-lg text-muted-foreground">
+          Step-by-step guides and paths to learn different tools and technologies.
+          For a more detailed and interactive experience, visit{' '}
+          <a href="https://roadmap.sh" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+            roadmap.sh
+          </a>.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+        {roadmaps.map((roadmap) => (
+          <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
+        ))}
       </div>
     </div>
   );
