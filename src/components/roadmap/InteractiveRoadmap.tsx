@@ -2,7 +2,8 @@
 'use client';
 
 import React, { useState, useCallback, useMemo } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   Background,
   MiniMap,
@@ -38,7 +39,7 @@ export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, bluepr
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   
   const { selectedNode, selectNode, clearSelection } = useNodeSelection();
-  const { progress, updateNodeStatus, getNodeStatus, getCompletedCount, getProgressPercentage } = useProgress(roadmap.slug, nodes);
+  const { progress, updateNodeStatus, getNodeStatus, getCompletedCount, getProgressPercentage } = useProgress(roadmap.slug || '', nodes);
   
   const nodeTypes = useMemo(() => ({ roadmapNode: CustomRoadmapNode }), []);
 
@@ -85,7 +86,7 @@ export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, bluepr
 
   return (
     <div className="w-full h-full">
-        {blueprint && <RoadmapHeader roadmapData={roadmap} blueprint={blueprint} />}
+        {blueprint && <RoadmapHeader roadmapData={roadmap} />}
         
         <RoadmapProgressDisplay 
             completedNodesCount={getCompletedCount()} 
