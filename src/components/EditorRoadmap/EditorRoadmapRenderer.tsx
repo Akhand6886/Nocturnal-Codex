@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { ReactFlow, Background, Controls, Node, Edge } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import './EditorRoadmapRenderer.css';
@@ -15,17 +16,9 @@ interface EditorRoadmapRendererProps {
 
 export function EditorRoadmapRenderer({ roadmapId, roadmapData }: EditorRoadmapRendererProps) {
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleNodeClick = (event: React.MouseEvent, node: Node) => {
     setSelectedNode(node);
-    // We can re-enable the sidebar later if needed.
-    // setIsSidebarOpen(true);
-  };
-
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-    setSelectedNode(null);
   };
 
   return (
@@ -49,10 +42,26 @@ export function EditorRoadmapRenderer({ roadmapId, roadmapData }: EditorRoadmapR
       </div>
 
       {/* Info box at bottom */}
-      <div className="border-t bg-gray-50 p-4 text-center text-sm text-gray-600">
-        Find the detailed version of this roadmap along with other similar roadmaps · 
-        <a href="https://roadmap.sh" className="ml-1 text-blue-600 hover:underline">roadmap.sh</a>
+      <div className="border-t bg-card p-4 text-center text-sm text-muted-foreground">
+        Find the detailed version of this roadmap and more at{' '}
+        <a 
+            href={`https://roadmap.sh/${roadmapId}`} 
+            className="ml-1 text-primary hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            roadmap.sh/{roadmapId}
+        </a>
       </div>
+
+       {/* You can re-enable and build a sidebar for selected nodes later */}
+       {selectedNode && (
+        <div className="fixed top-0 right-0 h-full w-96 bg-background border-l shadow-lg z-10 p-4 overflow-y-auto">
+            <button onClick={() => setSelectedNode(null)} className="absolute top-2 right-2 p-1">X</button>
+            <h2 className="text-xl font-bold mb-4">{selectedNode.data.label}</h2>
+            <p className="text-sm text-muted-foreground">{JSON.stringify(selectedNode.data)}</p>
+        </div>
+      )}
     </>
   );
 }
