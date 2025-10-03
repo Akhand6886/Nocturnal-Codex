@@ -1,3 +1,4 @@
+
 // src/components/roadmap/RoadmapNode.tsx
 'use client';
 
@@ -11,6 +12,7 @@ import { type RoadmapNodeData, type ProgressStatus } from '@/types/roadmap';
 
 export const RoadmapNode = memo<NodeProps<RoadmapNodeData>>(({ data, selected }) => {
   const {
+    id,
     label,
     category,
     status = 'pending',
@@ -59,7 +61,7 @@ export const RoadmapNode = memo<NodeProps<RoadmapNodeData>>(({ data, selected })
         <CardContent className="p-4">
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1">
-              <h4 className="font-semibold text-sm leading-tight text-foreground">{label}</h4>
+              <h4 className="font-semibold text-sm leading-tight text-foreground">{label || id}</h4>
             </div>
             <div className="ml-2 flex-shrink-0">{getStatusIcon(status)}</div>
           </div>

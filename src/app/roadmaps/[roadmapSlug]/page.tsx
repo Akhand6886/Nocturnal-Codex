@@ -18,12 +18,16 @@ const getRoadmapData = cache(async (slug: string) => {
     }
 
     const blueprint = await loadRoadmapBlueprint(slug);
+    if (!blueprint) {
+        return { roadmap, initialNodes: [], initialEdges: [], blueprint: null };
+    }
+
     const topicsContent = await loadTopicContent(slug);
 
-    if (!blueprint || !topicsContent) {
-        // If interactive content isn't ready, return the static roadmap data
-        // but with empty nodes/edges so the UI can handle it gracefully.
-        return { roadmap, initialNodes: [], initialEdges: [], blueprint: null };
+    if (!topicsContent) {
+        // If topics are missing, we still want to show the graph shape
+        const { nodes, edges } = transformToReactFlow(blueprint, null);
+        return { roadmap, initialNodes: nodes, initialEdges: edges, blueprint };
     }
     
     const { nodes, edges } = transformToReactFlow(blueprint, topicsContent);
