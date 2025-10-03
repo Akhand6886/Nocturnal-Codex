@@ -6,7 +6,8 @@ import matter from 'gray-matter';
 // Loads the JSON blueprint for the roadmap graph structure
 export async function loadRoadmapBlueprint(slug: string): Promise<RoadmapFlowData | null> {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'roadmap-content', `${slug}.json`);
+    // The JSON blueprints are now located in src/data/roadmaps/
+    const filePath = path.join(process.cwd(), 'src', 'data', 'roadmaps', `${slug}.json`);
     const fileContents = await fs.readFile(filePath, 'utf8');
 
     if (!fileContents) {
@@ -45,7 +46,7 @@ export async function loadTopicContent(slug: string): Promise<Record<string, Top
           title: data.title || 'Untitled Topic',
           description: data.description || '',
           objectives: data.objectives || [],
-          resources: data.resources || [],
+          resources: data.resources || data.links || [], // Support for 'links' as fallback
           rawContent: content,
         };
       }

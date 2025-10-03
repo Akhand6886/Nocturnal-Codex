@@ -1,0 +1,45 @@
+
+{
+  "nodes": [
+    {
+      "id": "SiYUdtYMDImRPmV2_XPkH",
+      "label": "Internet",
+      "category": "foundation",
+      "position": { "x": 384, "y": 0 }
+    },
+    { "id": "2f0ZO6GJElfZ2Eis28Hzg", "label": "Pick a Language", "position": { "x": 384, "y": 100 } },
+    { "id": "ezdqQW9wTUw93F6kjOzku", "label": "Version Control", "position": { "x": 192, "y": 200 } },
+    { "id": "LJt27onEOeIBomiEMTyKd", "label": "Databases", "position": { "x": 576, "y": 200 } },
+    { "id": "EwvLPSI6AlZ4TnNIJTZA4", "label": "APIs", "position": { "x": 384, "y": 300 } },
+    { "id": "ELj8af7Mi38kUbaPJfCUR", "label": "Caching", "position": { "x": 192, "y": 400 } },
+    { "id": "RBrIP5KbVQ2F0ly7kMfTo", "label": "Web Security", "position": { "x": 576, "y": 400 } },
+    { "id": "STQQbPa7PE3gbjMdL6P-t", "label": "Testing", "position": { "x": 384, "y": 500 } },
+    { "id": "mGfD7HfuP184lFkXZzGjG", "label": "CI/CD", "position": { "x": 192, "y": 600 } },
+    { "id": "9Fpoor-Os_9lvrwu5Zjh-", "label": "Design Principles", "position": { "x": 576, "y": 600 } },
+    { "id": "tHiUpG9LN35E5RaHddMv5", "label": "Architectural Patterns", "position": { "x": 384, "y": 700 } },
+    { "id": "nJ5FpFgGCRaALcWmAKBKT", "label": "Message Brokers", "position": { "x": 192, "y": 800 } },
+    { "id": "SGVwJme-jT_pbOTvems0v", "label": "Containerization", "position": { "x": 576, "y": 800 } },
+    { "id": "fekyMpEnaGqjh1Cu4Nyc4", "label": "Web Servers", "position": { "x": 384, "y": 900 } },
+    { "id": "SHmbcMRsc3SygEDksJQBD", "label": "Scalability", "position": { "x": 384, "y": 1000 } }
+  ],
+  "edges": [
+    { "source": "SiYUdtYMDImRPmV2_XPkH", "target": "2f0ZO6GJElfZ2Eis28Hzg" },
+    { "source": "2f0ZO6GJElfZ2Eis28Hzg", "target": "ezdqQW9wTUw93F6kjOzku" },
+    { "source": "2f0ZO6GJElfZ2Eis28Hzg", "target": "LJt27onEOeIBomiEMTyKd" },
+    { "source": "ezdqQW9wTUw93F6kjOzku", "target": "EwvLPSI6AlZ4TnNIJTZA4" },
+    { "source": "LJt27onEOeIBomiEMTyKd", "target": "EwvLPSI6AlZ4TnNIJTZA4" },
+    { "source": "EwvLPSI6AlZ4TnNIJTZA4", "target": "ELj8af7Mi38kUbaPJfCUR" },
+    { "source": "EwvLPSI6AlZ4TnNIJTZA4", "target": "RBrIP5KbVQ2F0ly7kMfTo" },
+    { "source": "ELj8af7Mi38kUbaPJfCUR", "target": "STQQbPa7PE3gbjMdL6P-t" },
+    { "source": "RBrIP5KbVQ2F0ly7kMfTo", "target": "STQQbPa7PE3gbjMdL6P-t" },
+    { "source": "STQQbPa7PE3gbjMdL6P-t", "target": "mGfD7HfuP184lFkXZzGjG" },
+    { "source": "STQQbPa7PE3gbjMdL6P-t", "target": "9Fpoor-Os_9lvrwu5Zjh-" },
+    { "source": "mGfD7HfuP184lFkXZzGjG", "target": "tHiUpG9LN35E5RaHddMv5" },
+    { "source": "9Fpoor-Os_9lvrwu5Zjh-", "target": "tHiUpG9LN35E5RaHddMv5" },
+    { "source": "tHiUpG9LN35E5RaHddMv5", "target": "nJ5FpFgGCRaALcWmAKBKT" },
+    { "source": "tHiUpG9LN35E5RaHddMv5", "target": "SGVwJme-jT_pbOTvems0v" },
+    { "source": "nJ5FpFgGCRaALcWmAKBKT", "target": "fekyMpEnaGqjh1Cu4Nyc4" },
+    { "source": "SGVwJme-jT_pbOTvems0v", "target": "fekyMpEnaGqjh1Cu4Nyc4" },
+    { "source": "fekyMpEnaGqjh1Cu4Nyc4", "target": "SHmbcMRsc3SygEDksJQBD" }
+  ]
+}
