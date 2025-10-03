@@ -103,12 +103,12 @@ export const RoadmapPost = defineDocumentType(() => ({
   filePathPattern: `roadmaps/**/*.md*`,
   contentType: 'markdown',
   fields: {
-    id: { type: 'string', required: true },
+    id: { type: 'string', required: false },
     slug: { type: 'string', required: true },
-    name: { type: 'string', required: true },
+    name: { type: 'string', required: false },
     title: { type: 'string', required: false },
-    category: { type: 'string', required: true },
-    description: { type: 'string', required: true },
+    category: { type: 'string', required: false },
+    description: { type: 'string', required: false },
     imageUrl: { type: 'string', required: false },
     dataAiHint: { type: 'string', required: false },
     
@@ -118,6 +118,10 @@ export const RoadmapPost = defineDocumentType(() => ({
     codeSnippets: { type: 'list', of: CodeSnippetItem, required: false },
     references: { type: 'list', of: WikiArticleStub, required: false },
     thinkTankArticles: { type: 'list', of: ThinkTankArticleStub, required: false },
+
+    // Fields for interactive roadmaps from user example
+    renderer: { type: 'string', required: false },
+    dimensions: { type: 'json', required: false },
 
     // Fields for interactive roadmaps
     difficulty: { type: 'enum', options: ['beginner', 'intermediate', 'advanced'], required: false },

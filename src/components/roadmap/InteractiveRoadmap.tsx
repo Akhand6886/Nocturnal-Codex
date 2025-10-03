@@ -1,140 +1,126 @@
-// src/components/roadmap/InteractiveRoadmap.tsx
+
 'use client';
 
-import React, { useCallback, useMemo, useEffect } from 'react';
-import {
-  ReactFlow, Background, Controls, MiniMap, useNodesState, useEdgesState, type Node,
+import React, { useState, useCallback, useMemo } from 'react';
+import ReactFlow, {
+  Controls,
+  Background,
+  MiniMap,
+  useNodesState,
+  useEdgesState,
+  type Node,
+  type Edge,
+  type OnNodesChange,
+  type OnEdgesChange,
+  type NodeMouseHandler,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import { RoadmapNode } from './RoadmapNode';
+import { RoadmapNode as CustomRoadmapNode } from './RoadmapNode';
 import { TopicSidebar } from './TopicSidebar';
 import { useNodeSelection, useProgress } from './hooks';
-import { type RoadmapFlowData, type RoadmapNodeData, type TopicContent, type ProgressStatus } from '@/types/roadmap';
-import { type RoadmapPost as RoadmapType } from 'contentlayer/generated';
-import { transformToReactFlow } from '@/lib/roadmap-utils';
+import { type RoadmapPost } from 'contentlayer/generated';
+import { type RoadmapFlowData, type ProgressStatus, type RoadmapNodeData } from '@/types/roadmap';
 
 import { RoadmapHeader } from './RoadmapHeader';
 import { RoadmapProgressDisplay } from './RoadmapProgressDisplay';
-import { RoadmapSidebar as PageSidebar } from './RoadmapSidebar';
-
+import { RoadmapSidebar } from './RoadmapSidebar';
 
 interface InteractiveRoadmapProps {
-  roadmapData: RoadmapType;
-  blueprint: RoadmapFlowData;
-  topicsContent: Record<string, TopicContent> | null;
-  slug: string;
+  initialNodes: Node<RoadmapNodeData>[];
+  initialEdges: Edge[];
+  roadmap: RoadmapPost;
+  blueprint: RoadmapFlowData | null;
 }
 
-const nodeTypes = { roadmapNode: RoadmapNode };
-const defaultViewport = { x: 0, y: 0, zoom: 0.7 };
-
-export function InteractiveRoadmap({
-  roadmapData,
-  blueprint,
-  topicsContent,
-  slug,
-}: InteractiveRoadmapProps) {
-  const { nodes: initialNodes, edges: initialEdges } = useMemo(
-    () => transformToReactFlow(blueprint, topicsContent || {}),
-    [blueprint, topicsContent]
-  );
-
+export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, blueprint }: InteractiveRoadmapProps) {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
+  
   const { selectedNode, selectNode, clearSelection } = useNodeSelection();
-  const { progress, updateNodeStatus, getCompletedCount, getProgressPercentage } = useProgress(slug, nodes);
+  const { progress, updateNodeStatus, getNodeStatus, getCompletedCount, getProgressPercentage } = useProgress(roadmap.slug, nodes);
+  
+  const nodeTypes = useMemo(() => ({ roadmapNode: CustomRoadmapNode }), []);
 
-  useEffect(() => {
-    setNodes((nds) =>
-      nds.map((node) => ({
-        ...node,
-        data: {
-          ...node.data,
-          status: progress[node.id] || 'pending',
-        },
-      }))
-    );
-  }, [progress, setNodes]);
+  const onNodeClick: NodeMouseHandler = useCallback((event, node) => {
+    selectNode(node as Node<RoadmapNodeData>);
 
-  const onNodeClick = useCallback(
-    (event: React.MouseEvent, node: Node<RoadmapNodeData>) => {
-      event.stopPropagation();
-      if (event.shiftKey) {
-        const currentStatus = progress[node.id] || 'pending';
+    if (event.shiftKey) {
+        event.preventDefault();
+        const currentStatus = getNodeStatus(node.id);
         const newStatus = currentStatus === 'learning' ? 'pending' : 'learning';
         updateNodeStatus(node.id, newStatus);
-      } else {
-        selectNode(node);
-      }
-    },
-    [selectNode, updateNodeStatus, progress]
-  );
+    } else if (event.altKey) {
+        event.preventDefault();
+        const currentStatus = getNodeStatus(node.id);
+        const newStatus = currentStatus === 'skipped' ? 'pending' : 'skipped';
+        updateNodeStatus(node.id, newStatus);
+    } else {
+        selectNode(node as Node<RoadmapNodeData>);
+    }
 
-  const onNodeContextMenu = useCallback(
-    (event: React.MouseEvent, node: Node<RoadmapNodeData>) => {
+  }, [selectNode, updateNodeStatus, getNodeStatus]);
+
+  const onNodeContextMenu: NodeMouseHandler = useCallback((event, node) => {
       event.preventDefault();
-      const currentStatus = progress[node.id] || 'pending';
+      const currentStatus = getNodeStatus(node.id);
       const newStatus = currentStatus === 'done' ? 'pending' : 'done';
       updateNodeStatus(node.id, newStatus);
-    },
-    [updateNodeStatus, progress]
-  );
+  }, [updateNodeStatus, getNodeStatus]);
 
-  const onPaneClick = useCallback(() => {
-    clearSelection();
-  }, [clearSelection]);
-  
+  // Apply progress status to nodes
+  const nodesWithStatus = useMemo(() => {
+    return nodes.map(node => ({
+      ...node,
+      data: {
+        ...node.data,
+        status: getNodeStatus(node.id),
+      },
+    }));
+  }, [nodes, progress, getNodeStatus]);
+
+  const handleUpdateStatus = useCallback((nodeId: string, status: ProgressStatus) => {
+    updateNodeStatus(nodeId, status);
+  }, [updateNodeStatus]);
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <RoadmapHeader roadmapData={roadmapData} />
-      
-      <RoadmapProgressDisplay
-        completedNodesCount={getCompletedCount()}
-        totalNodes={nodes.length}
-        progressPercentage={getProgressPercentage()}
-      />
+    <div className="w-full h-full">
+        {blueprint && <RoadmapHeader roadmapData={roadmap} blueprint={blueprint} />}
+        
+        <RoadmapProgressDisplay 
+            completedNodesCount={getCompletedCount()} 
+            totalNodes={nodes.length}
+            progressPercentage={getProgressPercentage()}
+        />
 
-      <div className="flex flex-col lg:flex-row gap-8">
-        <PageSidebar blueprint={blueprint} />
+        <div className="flex flex-col lg:flex-row gap-8">
+            {blueprint && <RoadmapSidebar blueprint={blueprint} />}
 
-        <main className="flex-1">
-          <div className="relative w-full h-[900px] border rounded-lg overflow-hidden bg-background">
-            <ReactFlow
-              nodes={nodes}
-              edges={edges}
-              onNodesChange={onNodesChange}
-              onEdgesChange={onEdgesChange}
-              onNodeClick={onNodeClick}
-              onNodeContextMenu={onNodeContextMenu}
-              onPaneClick={onPaneClick}
-              nodeTypes={nodeTypes}
-              defaultViewport={defaultViewport}
-              fitView
-              fitViewOptions={{ padding: 0.2 }}
-              proOptions={{ hideAttribution: true }}
-            >
-              <Background variant="dots" gap={20} size={1} className="opacity-50" />
-              <Controls showInteractive={false} />
-              <MiniMap nodeColor={(n: Node<RoadmapNodeData>) => {
-                switch(n.data.status) {
-                  case 'done': return '#10b981';
-                  case 'learning': return '#f59e0b';
-                  default: return '#a1a1aa';
-                }
-              }} pannable zoomable />
-            </ReactFlow>
+            <div className="flex-1 h-[80vh] rounded-lg border bg-card shadow-sm">
+                <ReactFlow
+                    nodes={nodesWithStatus}
+                    edges={edges}
+                    onNodesChange={onNodesChange as OnNodesChange<Node<RoadmapNodeData>>}
+                    onEdgesChange={onEdgesChange}
+                    onNodeClick={onNodeClick}
+                    onNodeContextMenu={onNodeContextMenu}
+                    nodeTypes={nodeTypes}
+                    fitView
+                    className="bg-background"
+                >
+                    <Controls />
+                    <MiniMap nodeStrokeWidth={3} zoomable pannable />
+                    <Background gap={16} />
+                </ReactFlow>
+            </div>
+        </div>
 
-            <TopicSidebar
-              isOpen={!!selectedNode}
-              onClose={clearSelection}
-              selectedNode={selectedNode}
-              onUpdateStatus={updateNodeStatus}
-            />
-          </div>
-        </main>
-      </div>
+        <TopicSidebar
+            isOpen={!!selectedNode}
+            onClose={clearSelection}
+            selectedNode={selectedNode}
+            onUpdateStatus={handleUpdateStatus}
+        />
     </div>
   );
 }
