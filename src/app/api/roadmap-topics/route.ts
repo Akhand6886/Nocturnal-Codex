@@ -1,3 +1,4 @@
+
 import { NextResponse, type NextRequest } from 'next/server';
 
 // This function is a placeholder and doesn't currently use loadTopicContent.
