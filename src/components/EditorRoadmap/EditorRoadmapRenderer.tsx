@@ -29,12 +29,12 @@ export function EditorRoadmapRenderer({ roadmapId, roadmapData }: EditorRoadmapR
           edges={roadmapData.edges}
           onNodeClick={handleNodeClick}
           fitView
-          minZoom={0.5}
-          maxZoom={1.5}
-          defaultViewport={{ x: 0, y: 0, zoom: 0.8 }}
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={true}
+          zoomOnScroll={false}
+          panOnDrag={false}
+          preventScrolling={false}
         >
           <Background />
           <Controls showInteractive={false} />
