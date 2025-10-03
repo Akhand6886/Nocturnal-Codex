@@ -1,8 +1,11 @@
+
+import { type NextRequest, NextResponse } from 'next/server';
+
 export async function POST(
   request: NextRequest,
-  context: { params: { id: string } }  // Changed from roadmapId to id
+  context: { params: { id: string } }
 ) {
-  const { id } = context.params;  // Changed from roadmapId to id
+  const { id } = context.params;
   const body = await request.json();
   return NextResponse.json({
     message: `POST request for roadmap: ${id}`,
