@@ -1,24 +1,14 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-interface RouteContext {
-  params: {
-    id: string;
-  }
-}
-
-export async function GET(
-  request: NextRequest,
-  { params }: RouteContext
-) {
-  const { id } = params;
+export async function GET(request: NextRequest) {
+  const url = new URL(request.url)
+  const id = url.pathname.split('/').pop() // extract [id] dynamically
   return NextResponse.json({ message: `GET request for roadmap: ${id}` })
 }
 
-export async function POST(
-  request: NextRequest,
-  { params }: RouteContext
-) {
-  const { id } = params;
+export async function POST(request: NextRequest) {
+  const url = new URL(request.url)
+  const id = url.pathname.split('/').pop()
   const body = await request.json()
   return NextResponse.json({ message: `POST request for roadmap: ${id}`, data: body })
 }
