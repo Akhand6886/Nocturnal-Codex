@@ -104,7 +104,7 @@ export const RoadmapPost = defineDocumentType(() => ({
   contentType: 'markdown',
   fields: {
     id: { type: 'string', required: false },
-    slug: { type: 'string', required: true },
+    slug: { type: 'string', required: false },
     name: { type: 'string', required: false },
     title: { type: 'string', required: false },
     category: { type: 'string', required: false },
