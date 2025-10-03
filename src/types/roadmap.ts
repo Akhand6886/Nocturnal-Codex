@@ -1,6 +1,8 @@
 // src/types/roadmap.ts
 import { type Node, type Edge } from '@xyflow/react';
 
+export type ProgressStatus = 'pending' | 'learning' | 'done' | 'skipped';
+
 // Represents the data properties of a single node in the React Flow graph.
 // This data comes from the JSON blueprint and is enriched with content.
 export interface RoadmapNodeData {
@@ -13,7 +15,7 @@ export interface RoadmapNodeData {
   position?: { x: number; y: number };
   style?: React.CSSProperties;
   // State-related fields
-  completed?: boolean;
+  status?: ProgressStatus;
   highlighted?: boolean;
 }
 
@@ -65,11 +67,7 @@ export interface RoadmapFlowData {
 }
 
 export interface RoadmapProgress {
-  userId: string;
-  roadmapSlug: string;
-  completedNodes: string[];
-  lastAccessed: Date;
-  totalProgress: number;
+  [nodeId: string]: ProgressStatus;
 }
 
 export type RoadmapNode = Node<RoadmapNodeData>;

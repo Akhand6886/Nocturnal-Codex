@@ -1,30 +1,23 @@
+
 // src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useEffect } from 'react';
 import {
-  ReactFlow,
-  Background,
-  Controls,
-  MiniMap,
-  useNodesState,
-  useEdgesState,
-  type Node,
+  ReactFlow, Background, Controls, MiniMap, useNodesState, useEdgesState, type Node,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
 import { RoadmapNode } from './RoadmapNode';
 import { TopicSidebar } from './TopicSidebar';
 import { useNodeSelection, useProgress } from './hooks';
-import { type RoadmapFlowData, type RoadmapNodeData, type TopicContent } from '@/types/roadmap';
+import { type RoadmapFlowData, type RoadmapNodeData, type TopicContent, type ProgressStatus } from '@/types/roadmap';
 import { type RoadmapPost as RoadmapType } from 'contentlayer/generated';
 import { transformToReactFlow } from '@/lib/roadmap-utils';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, Bookmark, BookCopy, Calendar, Download, Link as LinkIcon, Share2 } from 'lucide-react';
-import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+
+import { RoadmapHeader } from './RoadmapHeader';
+import { RoadmapProgressDisplay } from './RoadmapProgressDisplay';
+import { RoadmapSidebar as PageSidebar } from './RoadmapSidebar';
 
 
 interface InteractiveRoadmapProps {
@@ -34,10 +27,7 @@ interface InteractiveRoadmapProps {
   slug: string;
 }
 
-const nodeTypes = {
-  roadmapNode: RoadmapNode,
-};
-
+const nodeTypes = { roadmapNode: RoadmapNode };
 const defaultViewport = { x: 0, y: 0, zoom: 0.7 };
 
 export function InteractiveRoadmap({
@@ -55,157 +45,61 @@ export function InteractiveRoadmap({
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const { selectedNode, selectNode, clearSelection } = useNodeSelection();
-  const { progress, toggleNodeCompletion } = useProgress(
-    slug,
-    nodes,
-    edges
-  );
-  
-  const totalNodes = useMemo(() => nodes.length, [nodes]);
-  const completedNodesCount = useMemo(() => progress.completedNodes.length, [progress.completedNodes]);
-  const progressPercentage = useMemo(() => {
-      if (totalNodes === 0) return 0;
-      return Math.round((completedNodesCount / totalNodes) * 100);
-  }, [completedNodesCount, totalNodes]);
+  const { progress, updateNodeStatus, getCompletedCount, getProgressPercentage } = useProgress(slug, nodes);
 
-
-  React.useEffect(() => {
+  useEffect(() => {
     setNodes((nds) =>
       nds.map((node) => ({
         ...node,
         data: {
           ...node.data,
-          completed: progress.completedNodes.includes(node.id),
+          status: progress[node.id] || 'pending',
         },
       }))
     );
-  }, [progress.completedNodes, setNodes]);
+  }, [progress, setNodes]);
 
   const onNodeClick = useCallback(
-    (event: React.MouseEvent, node: Node) => {
+    (event: React.MouseEvent, node: Node<RoadmapNodeData>) => {
       event.stopPropagation();
-      selectNode(node as Node<RoadmapNodeData>);
+      if (event.shiftKey) {
+        const currentStatus = progress[node.id] || 'pending';
+        const newStatus = currentStatus === 'learning' ? 'pending' : 'learning';
+        updateNodeStatus(node.id, newStatus);
+      } else {
+        selectNode(node);
+      }
     },
-    [selectNode]
+    [selectNode, updateNodeStatus, progress]
   );
 
-  const onToggleCompletion = useCallback(
-    (nodeId: string) => {
-      toggleNodeCompletion(nodeId);
+  const onNodeContextMenu = useCallback(
+    (event: React.MouseEvent, node: Node<RoadmapNodeData>) => {
+      event.preventDefault();
+      const currentStatus = progress[node.id] || 'pending';
+      const newStatus = currentStatus === 'done' ? 'pending' : 'done';
+      updateNodeStatus(node.id, newStatus);
     },
-    [toggleNodeCompletion]
+    [updateNodeStatus, progress]
   );
 
   const onPaneClick = useCallback(() => {
     clearSelection();
   }, [clearSelection]);
   
-  const pageTitle = roadmapData.title || roadmapData.name;
-  const { prerequisites, relatedRoadmaps } = blueprint.metadata || {};
-
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* HEADER */}
-       <div className="mb-6">
-            <Button variant="ghost" asChild className="mb-4 text-muted-foreground">
-            <Link href="/roadmaps">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                All Roadmaps
-            </Link>
-            </Button>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-                <h1 className="text-4xl font-bold tracking-tight text-foreground">{pageTitle}</h1>
-                <p className="mt-2 text-lg text-muted-foreground">{roadmapData.description}</p>
-            </div>
-            <div className="flex items-center gap-2 flex-shrink-0">
-                <Button variant="outline" size="sm" className="gap-1.5">
-                <Calendar className="h-4 w-4" /> Schedule
-                </Button>
-                <Button variant="outline" size="sm" className="gap-1.5">
-                <Download className="h-4 w-4" /> Download
-                </Button>
-                <Button variant="outline" size="sm" className="gap-1.5">
-                <Share2 className="h-4 w-4" /> Share
-                </Button>
-                <Button variant="ghost" size="icon">
-                <Bookmark className="h-5 w-5" />
-                </Button>
-            </div>
-            </div>
-        </div>
+      <RoadmapHeader roadmapData={roadmapData} />
       
-      {/* PROGRESS BAR */}
-      <div className="mb-8 p-4 border rounded-lg bg-card flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-4">
-                <div className="relative w-20 h-20">
-                    <svg className="w-full h-full" viewBox="0 0 36 36">
-                        <path
-                            className="text-border"
-                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                            fill="none" stroke="currentColor" strokeWidth="3"
-                        />
-                        <path
-                            className="text-primary"
-                            strokeDasharray={`${progressPercentage}, 100`}
-                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                            fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"
-                        />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-lg font-bold">{progressPercentage}%</span>
-                    </div>
-                </div>
-                <div>
-                    <p className="font-semibold text-foreground">{completedNodesCount} of {totalNodes} Done</p>
-                    <p className="text-sm text-muted-foreground">Track Progress</p>
-                </div>
-            </div>
-            <div className="flex items-center gap-2 border rounded-full p-1 bg-muted">
-                <Button size="sm" className="rounded-full">Roadmap</Button>
-                <Button size="sm" variant="ghost" className="rounded-full">AI Tutor</Button>
-            </div>
-            <div>
-                <Button variant="secondary" className="gap-1.5">
-                    Personalize <Badge className="ml-2">New</Badge>
-                </Button>
-            </div>
-      </div>
+      <RoadmapProgressDisplay
+        completedNodesCount={getCompletedCount()}
+        totalNodes={nodes.length}
+        progressPercentage={getProgressPercentage()}
+      />
 
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* SIDEBAR */}
-        <aside className="w-full lg:w-1/4 lg:sticky lg:top-24 self-start space-y-6">
-            {prerequisites && prerequisites.length > 0 && (
-                 <Card>
-                    <CardHeader>
-                        <CardTitle className="text-md flex items-center gap-2"><BookCopy className="h-4 w-4"/>Pre-requisites</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                        {prerequisites.map(prereq => (
-                            <Button key={prereq.slug} variant="outline" size="sm" asChild className="w-full justify-start">
-                                <Link href={`/roadmaps/${prereq.slug}`}>{prereq.title}</Link>
-                            </Button>
-                        ))}
-                    </CardContent>
-                </Card>
-            )}
-            {relatedRoadmaps && relatedRoadmaps.length > 0 && (
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="text-md flex items-center gap-2"><LinkIcon className="h-4 w-4"/>Related Roadmaps</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                         {relatedRoadmaps.map(related => (
-                            <Link key={related.slug} href={`/roadmaps/${related.slug}`} className="text-sm text-muted-foreground hover:text-primary flex items-center gap-2">
-                               <Bookmark className="h-4 w-4" /> {related.title}
-                            </Link>
-                        ))}
-                    </CardContent>
-                </Card>
-            )}
-        </aside>
+        <PageSidebar blueprint={blueprint} />
 
-        {/* Main Content */}
         <main className="flex-1">
           <div className="relative w-full h-[900px] border rounded-lg overflow-hidden bg-background">
             <ReactFlow
@@ -214,6 +108,7 @@ export function InteractiveRoadmap({
               onNodesChange={onNodesChange}
               onEdgesChange={onEdgesChange}
               onNodeClick={onNodeClick}
+              onNodeContextMenu={onNodeContextMenu}
               onPaneClick={onPaneClick}
               nodeTypes={nodeTypes}
               defaultViewport={defaultViewport}
@@ -223,15 +118,20 @@ export function InteractiveRoadmap({
             >
               <Background variant="dots" gap={20} size={1} className="opacity-50" />
               <Controls showInteractive={false} />
-              <MiniMap nodeColor={(n) => n.data.completed ? '#10b981' : '#a1a1aa'} pannable zoomable />
+              <MiniMap nodeColor={(n: Node<RoadmapNodeData>) => {
+                switch(n.data.status) {
+                  case 'done': return '#10b981';
+                  case 'learning': return '#f59e0b';
+                  default: return '#a1a1aa';
+                }
+              }} pannable zoomable />
             </ReactFlow>
 
             <TopicSidebar
               isOpen={!!selectedNode}
               onClose={clearSelection}
               selectedNode={selectedNode}
-              onToggleCompletion={onToggleCompletion}
-              roadmapSlug={slug}
+              onUpdateStatus={updateNodeStatus}
             />
           </div>
         </main>
