@@ -1,13 +1,13 @@
 ---
-title: "Migration Strategies"
-description: "Migration strategies plan transitions between environments. Key approaches: Rehost (lift and shift with minimal changes), Replatform (optimize for new environment), Refactor (redesign for new features), Repurchase (replace with new solutions), Retain (keep in current environment), Retire (decommission redundant systems)."
+title: "Migrations"
+description: "Database migrations are version-controlled incremental schema changes that modify database structure without affecting existing data. Ensure consistent, repeatable evolution across environments while maintaining compatibility. Executed using tools like Liquibase, Flyway, or ORM features."
 resources:
-  - title: "Databases as a Challenge for Continuous Delivery"
-    url: "https://phauer.com/2015/databases-challenge-continuous-delivery/"
+  - title: "What are Database Migrations?"
+    url: "https://www.prisma.io/dataguide/types/relational/what-are-database-migrations"
     type: "article"
-  - title: "AWS Cloud Migration Strategies"
-    url: "https://www.youtube.com/watch?v=9ziB82V7qVM"
+  - title: "Database Migrations for Beginners"
+    url: "https://www.youtube.com/watch?v=dJDBP7pPA-o"
     type: "video"
 ---
 
-Migration strategies plan transitions between environments. Key approaches: Rehost (lift and shift with minimal changes), Replatform (optimize for new environment), Refactor (redesign for new features), Repurchase (replace with new solutions), Retain (keep in current environment), Retire (decommission redundant systems).
+Database migrations are version-controlled incremental schema changes that modify database structure without affecting existing data. Ensure consistent, repeatable evolution across environments while maintaining compatibility. Executed using tools like Liquibase, Flyway, or ORM features.
