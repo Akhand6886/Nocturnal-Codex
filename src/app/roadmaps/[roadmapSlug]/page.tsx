@@ -1,4 +1,3 @@
-
 // src/app/roadmaps/[roadmapSlug]/page.tsx
 'use client';
 import { notFound, useParams } from 'next/navigation';
@@ -58,10 +57,6 @@ export default function RoadmapPage() {
         fetchData();
     }, [roadmapSlug]);
 
-    if (!roadmap) {
-        notFound();
-    }
-
     if (isLoading) {
         return (
             <div className="container mx-auto px-4 py-8 flex justify-center items-center h-[calc(100vh-10rem)]">
@@ -69,7 +64,11 @@ export default function RoadmapPage() {
             </div>
         );
     }
-  
+    
+    if (!roadmap) {
+        notFound();
+    }
+
     return (
         <div className="container mx-auto px-4 py-8">
             <InteractiveRoadmap
