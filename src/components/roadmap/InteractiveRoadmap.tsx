@@ -1,4 +1,4 @@
-
+// src/components/roadmap/InteractiveRoadmap.tsx
 'use client';
 
 import React, { useState, useCallback, useMemo } from 'react';
@@ -23,7 +23,6 @@ import { useNodeSelection, useProgress } from './hooks';
 import { type RoadmapPost } from 'contentlayer/generated';
 import { type RoadmapFlowData, type ProgressStatus, type RoadmapNodeData } from '@/types/roadmap';
 
-import { RoadmapHeader } from './RoadmapHeader';
 import { RoadmapProgressDisplay } from './RoadmapProgressDisplay';
 import { RoadmapSidebar } from './RoadmapSidebar';
 
@@ -44,21 +43,26 @@ export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, bluepr
   const nodeTypes = useMemo(() => ({ roadmapNode: CustomRoadmapNode }), []);
 
   const onNodeClick: NodeMouseHandler = useCallback((event, node) => {
-    selectNode(node as Node<RoadmapNodeData>);
-
+    // For shift-click to mark as 'learning'
     if (event.shiftKey) {
         event.preventDefault();
         const currentStatus = getNodeStatus(node.id);
         const newStatus = currentStatus === 'learning' ? 'pending' : 'learning';
         updateNodeStatus(node.id, newStatus);
-    } else if (event.altKey) {
+        return; // Stop further execution
+    }
+
+    // For alt-click to mark as 'skipped'
+    if (event.altKey) {
         event.preventDefault();
         const currentStatus = getNodeStatus(node.id);
         const newStatus = currentStatus === 'skipped' ? 'pending' : 'skipped';
         updateNodeStatus(node.id, newStatus);
-    } else {
-        selectNode(node as Node<RoadmapNodeData>);
+        return; // Stop further execution
     }
+    
+    // Default click action: select node to open sidebar
+    selectNode(node as Node<RoadmapNodeData>);
 
   }, [selectNode, updateNodeStatus, getNodeStatus]);
 
@@ -69,7 +73,7 @@ export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, bluepr
       updateNodeStatus(node.id, newStatus);
   }, [updateNodeStatus, getNodeStatus]);
 
-  // Apply progress status to nodes
+  // Apply progress status to nodes for consistent styling
   const nodesWithStatus = useMemo(() => {
     return nodes.map(node => ({
       ...node,
@@ -86,8 +90,6 @@ export function InteractiveRoadmap({ initialNodes, initialEdges, roadmap, bluepr
 
   return (
     <div className="w-full h-full">
-        {blueprint && <RoadmapHeader roadmapData={roadmap} />}
-        
         <RoadmapProgressDisplay 
             completedNodesCount={getCompletedCount()} 
             totalNodes={nodes.length}
