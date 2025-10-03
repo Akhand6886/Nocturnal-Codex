@@ -1,8 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
+
+interface RouteContext {
+  params: {
+    id: string;
+  }
+}
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: RouteContext
 ) {
   const { id } = params;
   return NextResponse.json({ message: `GET request for roadmap: ${id}` })
@@ -10,7 +16,7 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: RouteContext
 ) {
   const { id } = params;
   const body = await request.json()
