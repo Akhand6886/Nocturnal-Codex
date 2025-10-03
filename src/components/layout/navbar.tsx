@@ -15,8 +15,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/lib/data";
-import { useState, useMemo } from "react";
-import type { RoadmapPost } from "contentlayer/generated";
+import { useState } from "react";
 
 export interface NavItem {
   label: string;
@@ -25,24 +24,12 @@ export interface NavItem {
 }
 
 interface NavbarProps {
-    roadmaps: RoadmapPost[];
+    // No longer needs roadmaps prop
 }
 
-export function Navbar({ roadmaps = [] }: NavbarProps) {
+export function Navbar({}: NavbarProps) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-
-  const dynamicNavItems = useMemo(() => {
-    const roadmapsNavItems = (roadmaps || [])
-      .filter(roadmap => roadmap?.title)
-      .map(roadmap => ({ label: roadmap.title, href: roadmap.url }))
-      .sort((a,b) => a.label.localeCompare(b.label));
-
-    return NAV_ITEMS.map(item =>
-      item.label === "Roadmaps" ? { ...item, children: roadmapsNavItems } : item
-    );
-  }, [roadmaps]);
-
 
   const renderNavItem = (item: NavItem, isMobile = false) => {
     const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
@@ -127,7 +114,7 @@ export function Navbar({ roadmaps = [] }: NavbarProps) {
         
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center space-x-1.5 md:ml-6"> {/* Added md:ml-6 */}
-          {dynamicNavItems.map((item) => renderNavItem(item))}
+          {NAV_ITEMS.map((item) => renderNavItem(item))}
         </nav>
 
         {/* Spacer to push controls to the right on desktop */}
@@ -156,7 +143,7 @@ export function Navbar({ roadmaps = [] }: NavbarProps) {
                   <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
                 </Link>
                 <nav className="flex flex-col space-y-1.5 px-4">
-                  {dynamicNavItems.map((item) => renderNavItem(item, true))}
+                  {NAV_ITEMS.map((item) => renderNavItem(item, true))}
                 </nav>
               </SheetContent>
             </Sheet>

@@ -7,7 +7,6 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react"
-import { allRoadmapPosts } from 'contentlayer/generated';
 
 const quicksand = Quicksand({
   variable: '--font-quicksand',
@@ -117,7 +116,7 @@ export default function RootLayout({
       <body className={`${quicksand.variable} ${inconsolata.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <ThemeProvider>
           <div className="flex-grow">
-            <Navbar roadmaps={allRoadmapPosts} />
+            <Navbar />
             {children}
           </div>
           <Footer />

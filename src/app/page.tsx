@@ -8,10 +8,9 @@ import { MOCK_WIKI_ARTICLES } from '@/lib/data';
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
-import { RoadmapCard } from "@/components/content/roadmap-card";
 import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
-import { allRoadmapPosts, allLanguagePosts } from "contentlayer/generated";
+import { allLanguagePosts } from "contentlayer/generated";
 import { SimpleIcon } from "@/components/common/simple-icon";
 
 export const revalidate = 60; 
@@ -26,7 +25,6 @@ export default async function HomePage() {
   const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true }) || [];
   
   const featuredWikiArticles = MOCK_WIKI_ARTICLES ? MOCK_WIKI_ARTICLES.slice(0, 3) : [];
-  const featuredRoadmaps = allRoadmapPosts ? allRoadmapPosts.filter(p => p.title).slice(0, 6) : [];
   const featuredLanguages = allLanguagePosts ? allLanguagePosts.slice(0, 4) : [];
 
   return (
@@ -42,8 +40,8 @@ export default async function HomePage() {
             Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world. Explore, learn, and contribute to the collective intellect.
           </p>
           <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-primary/40 transform hover:scale-105 transition-all duration-300 ease-in-out rounded-lg">
-            <Link href="/roadmaps">
-              Explore Roadmaps <ArrowRight className="ml-2 h-5 w-5" />
+            <Link href="/topics">
+              Explore Topics <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
@@ -52,26 +50,6 @@ export default async function HomePage() {
       {/* Random Theory Drop */}
       <section>
         <RandomTheoryDrop />
-      </section>
-
-      {/* Explore Core Roadmaps Section */}
-      <section>
-        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90">
-          <BookOpenText className="mr-3 h-7 w-7 text-primary" />
-          Explore Core Roadmaps
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredRoadmaps.map((roadmap) => (
-            <RoadmapCard key={roadmap.id} roadmap={roadmap} />
-          ))}
-        </div>
-        {allRoadmapPosts && allRoadmapPosts.length > 6 && (
-            <div className="mt-10 text-center">
-                <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
-                    <Link href="/roadmaps">View All Roadmaps <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-            </div>
-        )}
       </section>
       
       {/* Featured Languages Section */}
@@ -165,5 +143,3 @@ export default async function HomePage() {
     </div>
   );
 }
-
-    
