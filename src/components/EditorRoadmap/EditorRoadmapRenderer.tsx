@@ -2,7 +2,7 @@
 
 import './EditorRoadmapRenderer.css';
 import React, { FC } from 'react';
-import ReactFlow, { Background, Controls, MiniMap, Node, Edge, ReactFlowProvider, useReactFlow } from '@xyflow/react';
+import ReactFlow, { Background, Controls, MiniMap, type Node, type Edge, ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
 interface EditorRoadmapRendererProps {
@@ -16,7 +16,9 @@ interface EditorRoadmapRendererProps {
 const FitViewUpdater: FC = () => {
   const { fitView } = useReactFlow();
   React.useEffect(() => {
-    fitView({ duration: 200 });
+    // Adding a small delay to ensure the container is sized correctly before fitting the view.
+    const timer = setTimeout(() => fitView({ duration: 200, padding: 0.1 }), 10);
+    return () => clearTimeout(timer);
   }, [fitView]);
   return null;
 };
