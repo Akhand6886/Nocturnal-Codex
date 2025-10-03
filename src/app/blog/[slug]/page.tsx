@@ -12,9 +12,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }
 
 export async function generateStaticParams() {
@@ -29,7 +27,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({ params }: PageProps) {
+export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await fetchBlogPostBySlug(params.slug);
   
   if (!post) {
