@@ -1,6 +1,0 @@
-{
-  "nodes": [
-    { "id": "start", "position": { "x": 250, "y": 0 }, "data": { "label": "Start PHP Journey" } }
-  ],
-  "edges": []
-}
