@@ -1,16 +1,11 @@
-import { type NextRequest, NextResponse } from 'next/server';
 
-type RouteContext = {
-  params: {
-    id: string;
-  };
-};
+import { type NextRequest, NextResponse } from 'next/server';
 
 export async function POST(
   request: NextRequest,
-  context: RouteContext
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params;
+  const { id } = params;
   const body = await request.json();
   
   return NextResponse.json({
