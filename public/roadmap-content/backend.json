@@ -1,0 +1,529 @@
+
+{
+  "nodes": [
+    {
+      "id": "internet",
+      "type": "topic",
+      "position": {
+        "x": -257.97839322321585,
+        "y": 37.70730350215206
+      },
+      "data": {
+        "label": "Internet"
+      }
+    },
+    {
+      "id": "how-does-the-internet-work",
+      "type": "subtopic",
+      "position": {
+        "x": 64.19732720359934,
+        "y": -72.29269649784797
+      },
+      "data": {
+        "label": "How does the internet work?",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "what-is-http",
+      "type": "subtopic",
+      "position": {
+        "x": 64.19732720359934,
+        "y": -18.29269649784797
+      },
+      "data": {
+        "label": "What is HTTP?",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "what-is-domain-name",
+      "type": "subtopic",
+      "position": {
+        "x": 64.19732720359934,
+        "y": 35.70730350215206
+      },
+      "data": {
+        "label": "What is Domain Name?",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "what-is-hosting",
+      "type": "subtopic",
+      "position": {
+        "x": 64.19732720359934,
+        "y": 89.70730350215206
+      },
+      "data": {
+        "label": "What is hosting?",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "dns-and-how-it-works",
+      "type": "subtopic",
+      "position": {
+        "x": 64.19732720359934,
+        "y": 143.70730350215206
+      },
+      "data": {
+        "label": "DNS and how it works?",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "browsers-and-how-they-work",
+      "type": "subtopic",
+      "position": {
+        "x": 64.19732720359934,
+        "y": 197.70730350215206
+      },
+      "data": {
+        "label": "Browsers and how they work?",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "version-control-systems",
+      "type": "topic",
+      "position": {
+        "x": -270.08230823147517,
+        "y": 307.6876382503563
+      },
+      "data": {
+        "label": "Version Control Systems"
+      }
+    },
+    {
+      "id": "git",
+      "type": "subtopic",
+      "position": {
+        "x": -204.58230823147517,
+        "y": 218.70730350215206
+      },
+      "data": {
+        "label": "Git",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "repo-hosting",
+      "type": "topic",
+      "position": {
+        "x": -711.3591391487768,
+        "y": 409.93150039307886
+      },
+      "data": {
+        "label": "Repo Hosting Services"
+      }
+    },
+    {
+      "id": "github",
+      "type": "subtopic",
+      "position": {
+        "x": -666.3591391487768,
+        "y": 258.6876382503563
+      },
+      "data": {
+        "label": "GitHub",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "gitlab",
+      "type": "subtopic",
+      "position": {
+        "x": -666.3591391487768,
+        "y": 311.6876382503563
+      },
+      "data": {
+        "label": "GitLab",
+        "legendId": "DMx7rAjVBWMbzjSde-tvp"
+      }
+    },
+    {
+      "id": "bitbucket",
+      "type": "subtopic",
+      "position": {
+        "x": -664.8591391487768,
+        "y": 497.10143585693174
+      },
+      "data": {
+        "label": "Bitbucket",
+        "legendId": "DMx7rAjVBWMbzjSde-tvp"
+      }
+    },
+    {
+      "id": "relational-databases",
+      "type": "topic",
+      "position": {
+        "x": -260.08230823147517,
+        "y": 499.10143585693174
+      },
+      "data": {
+        "label": "Relational Databases"
+      }
+    },
+    {
+      "id": "postgresql",
+      "type": "subtopic",
+      "position": {
+        "x": -210.58230823147517,
+        "y": 409.10143585693174
+      },
+      "data": {
+        "label": "PostgreSQL",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+      "id": "mysql",
+      "type": "subtopic",
+      "position": {
+        "x": 132.7143470412414,
+        "y": 335.10143585693174
+      },
+      "data": {
+        "label": "MySQL",
+        "legendId": "DMx7rAjVBWMbzjSde-tvp"
+      }
+    },
+    {
+      "id": "mariadb",
+      "type": "subtopic",
+      "position": {
+        "x": 132.7143470412414,
+        "y": 389.10143585693174
+      },
+      "data": {
+        "label": "MariaDB",
+        "legendId": "DMx7rAjVBWMbzjSde-tvp"
+      }
+    },
+    {
+      "id": "ms-sql",
+      "type": "subtopic",
+      "position": {
+        "x": 132.7143470412414,
+        "y": 443.10143585693174
+      },
+      "data": {
+        "label": "MS SQL",
+        "legendId": "DMx7rAjVBWMbzjSde-tvp"
+      }
+    },
+    {
+      "id": "oracle",
+      "type": "subtopic",
+      "position": {
+        "x": 132.7143470412414,
+        "y": 497.10143585693174
+      },
+      "data": {
+        "label": "Oracle",
+        "legendId": "DMx7rAjVBWMbzjSde-tvp"
+      }
+    },
+    {
+      "id": "sqlite",
+      "type": "subtopic",
+      "position": {
+        "x": 132.7143470412414,
+        "y": 552.1014358569317
+      },
+      "data": {
+        "label": "SQLite",
+        "legendId": "DMx7rAjVBWMbzjSde-tvp"
+      }
+    },
+    {
+      "id": "learn-apis",
+      "type": "topic",
+      "position": {
+        "x": -258.87943926509024,
+        "y": 740.4861514388111
+      },
+      "data": {
+        "label": "Learn about APIs"
+      }
+    },
+    {
+      "id": "authentication",
+      "type": "subtopic",
+      "position": {
+        "x": 51.5678836929921,
+        "y": 647.9126418589183
+      },
+      "data": {
+        "label": "Authentication"
+      }
+    },
+    {
+      "id": "jwt",
+      "type": "subtopic",
+      "position": {
+        "x": 71.54739402688512,
+        "y": 708.5986472065365
+      },
+      "data": {
+        "label": "JWT",
+        "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+      }
+    },
+    {
+        "id": "oauth",
+        "type": "subtopic",
+        "position": {
+          "x": 200.54739402688512,
+          "y": 708.5986472065365
+        },
+        "data": {
+          "label": "OAuth",
+          "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+        }
+    },
+    {
+        "id": "basic-auth",
+        "type": "subtopic",
+        "position": {
+          "x": 71.54739402688512,
+          "y": 761.5986472065365
+        },
+        "data": {
+          "label": "Basic Authentication",
+          "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+        }
+    },
+    {
+        "id": "token-auth",
+        "type": "subtopic",
+        "position": {
+          "x": 71.54739402688512,
+          "y": 814.5986472065365
+        },
+        "data": {
+          "label": "Token Authentication",
+          "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+        }
+    },
+    {
+        "id": "cookie-auth",
+        "type": "subtopic",
+        "position": {
+          "x": 71.54739402688512,
+          "y": 868.0822888531077
+        },
+        "data": {
+          "label": "Cookie Based Auth",
+          "legendId": "NJhQIvMyMD1Cu-JA1UCmJ"
+        }
+    },
+    {
+        "id": "openid",
+        "type": "subtopic",
+        "position": {
+          "x": 71.54739402688512,
+          "y": 923.0781506183678
+        },
+        "data": {
+          "label": "OpenID",
+          "legendId": "R9WLhURhPdVNXP7AUTDvR"
+        }
+    },
+    {
+        "id": "saml",
+        "type": "subtopic",
+        "position": {
+          "x": 188.54739402688512,
+          "y": 923.561792264939
+        },
+        "data": {
+          "label": "SAML",
+          "legendId": "R9WLhURhPdVNXP7AUTDvR"
+        }
+    }
+  ],
+  "edges": [
+    {
+      "id": "internet-to-version-control",
+      "source": "internet",
+      "target": "version-control-systems",
+      "type": "smoothstep"
+    },
+    {
+      "id": "internet-to-subtopics",
+      "source": "internet",
+      "target": "how-does-the-internet-work",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "how-to-what-http",
+      "source": "how-does-the-internet-work",
+      "target": "what-is-http",
+      "type": "smoothstep"
+    },
+    {
+      "id": "http-to-domain",
+      "source": "what-is-http",
+      "target": "what-is-domain-name",
+      "type": "smoothstep"
+    },
+    {
+      "id": "domain-to-hosting",
+      "source": "what-is-domain-name",
+      "target": "what-is-hosting",
+      "type": "smoothstep"
+    },
+    {
+      "id": "hosting-to-dns",
+      "source": "what-is-hosting",
+      "target": "dns-and-how-it-works",
+      "type": "smoothstep"
+    },
+    {
+      "id": "dns-to-browsers",
+      "source": "dns-and-how-it-works",
+      "target": "browsers-and-how-they-work",
+      "type": "smoothstep"
+    },
+    {
+      "id": "vcs-to-git",
+      "source": "version-control-systems",
+      "target": "git",
+      "type": "smoothstep"
+    },
+    {
+      "id": "vcs-to-repo-hosting",
+      "source": "version-control-systems",
+      "target": "repo-hosting",
+      "type": "smoothstep"
+    },
+    {
+      "id": "repo-hosting-to-github",
+      "source": "repo-hosting",
+      "target": "github",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "repo-hosting-to-gitlab",
+      "source": "repo-hosting",
+      "target": "gitlab",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "repo-hosting-to-bitbucket",
+      "source": "repo-hosting",
+      "target": "bitbucket",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "vcs-to-relational-db",
+      "source": "version-control-systems",
+      "target": "relational-databases",
+      "type": "smoothstep"
+    },
+    {
+      "id": "relational-db-to-postgresql",
+      "source": "relational-databases",
+      "target": "postgresql",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "relational-db-to-mysql",
+      "source": "relational-databases",
+      "target": "mysql",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "relational-db-to-mariadb",
+      "source": "relational-databases",
+      "target": "mariadb",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "relational-db-to-mssql",
+      "source": "relational-databases",
+      "target": "ms-sql",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+      "id": "relational-db-to-oracle",
+      "source": "relational-databases",
+      "target": "oracle",
+      "type": "smoothstep",
+      "style": { "strokeDasharray": "5 5" }
+    },
+    {
+        "id": "relational-db-to-sqlite",
+        "source": "relational-databases",
+        "target": "sqlite",
+        "type": "smoothstep",
+        "style": { "strokeDasharray": "5 5" }
+      },
+    {
+      "id": "relational-db-to-learn-apis",
+      "source": "relational-databases",
+      "target": "learn-apis",
+      "type": "smoothstep"
+    },
+    {
+        "id": "learn-apis-to-auth",
+        "source": "learn-apis",
+        "target": "authentication",
+        "type": "smoothstep",
+        "style": { "strokeDasharray": "5 5" }
+    },
+    {
+        "id": "auth-to-jwt",
+        "source": "authentication",
+        "target": "jwt",
+        "type": "smoothstep"
+    },
+    {
+        "id": "auth-to-oauth",
+        "source": "authentication",
+        "target": "oauth",
+        "type": "smoothstep"
+    },
+    {
+        "id": "jwt-to-basic-auth",
+        "source": "jwt",
+        "target": "basic-auth",
+        "type": "smoothstep"
+    },
+    {
+        "id": "basic-auth-to-token-auth",
+        "source": "basic-auth",
+        "target": "token-auth",
+        "type": "smoothstep"
+    },
+    {
+        "id": "token-auth-to-cookie-auth",
+        "source": "token-auth",
+        "target": "cookie-auth",
+        "type": "smoothstep"
+    },
+    {
+        "id": "cookie-auth-to-openid",
+        "source": "cookie-auth",
+        "target": "openid",
+        "type": "smoothstep"
+    },
+    {
+        "id": "openid-to-saml",
+        "source": "openid",
+        "target": "saml",
+        "type": "smoothstep"
+    }
+  ],
+  "metadata": {}
+}
