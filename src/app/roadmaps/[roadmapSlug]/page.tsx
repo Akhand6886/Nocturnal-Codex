@@ -12,7 +12,6 @@ async function getRoadmapData(slug: string) {
         return null;
     }
 
-    // Since we are in a server component, we can directly call these functions
     const blueprint = await loadRoadmapBlueprint(slug);
     const topicsContent = await loadTopicContent(slug);
 
@@ -24,7 +23,6 @@ async function getRoadmapData(slug: string) {
 
     return { roadmap, initialNodes: nodes, initialEdges: edges, blueprint };
 }
-
 
 export default async function RoadmapPage({ params }: { params: { roadmapSlug: string } }) {
     const roadmapData = await getRoadmapData(params.roadmapSlug);
