@@ -1,3 +1,4 @@
+
 import { MOCK_WIKI_ARTICLES } from "@/lib/data";
 import type { WikiArticle } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
@@ -7,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import {format} from 'date-fns';
 import Link from "next/link";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -16,26 +19,29 @@ export async function generateStaticParams() {
   }));
 }
 
-// Updated interface - params is now a Promise
 interface WikiArticlePageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
-// Page component - await params
-export default async function WikiArticlePage({ params }: WikiArticlePageProps) {
-  const { slug } = await params;  // Await params here
+export async function generateMetadata({ params }: WikiArticlePageProps): Promise<Metadata> {
+  const { slug } = params;
   const article = MOCK_WIKI_ARTICLES.find((a) => a.slug === slug);
+  if (!article) {
+    return { title: "Article Not Found | Nocturnal Codex" };
+  }
+  return {
+    title: `${article.title} - Wiki | Nocturnal Codex`,
+    description: `Wiki article on ${article.title}.`,
+  };
+}
+
+
+export default async function WikiArticlePage({ params }: WikiArticlePageProps) {
+  const { slug } = params;
+  const article = MOCK_WICKI_ARTICLES.find((a) => a.slug === slug);
 
   if (!article) {
-    return (
-      <div className="text-center py-10">
-        <h1 className="text-2xl font-bold">Article Not Found</h1>
-        <p className="text-muted-foreground">The requested wiki article could not be found.</p>
-        <Link href="/wiki" className="text-primary hover:underline mt-4 inline-block">
-          Back to Wiki
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   const breadcrumbItems: BreadcrumbItem[] = [
@@ -53,7 +59,7 @@ export default async function WikiArticlePage({ params }: WikiArticlePageProps) 
     .map(otherArticle => ({
       title: otherArticle.title,
       slug: otherArticle.slug,
-      type: 'wiki',
+      type: 'wiki' as const, // Explicitly type 'wiki' as a const
       excerpt: otherArticle.content.substring(0, 100).split('\n')[0] + "..." 
     }))
     .slice(0, 4); 
@@ -99,17 +105,4 @@ export default async function WikiArticlePage({ params }: WikiArticlePageProps) 
       )}
     </div>
   );
-}
-
-// generateMetadata - await params
-export async function generateMetadata({ params }: WikiArticlePageProps) {
-  const { slug } = await params;  // Await params here
-  const article = MOCK_WIKI_ARTICLES.find((a) => a.slug === slug);
-  if (!article) {
-    return { title: "Article Not Found | Nocturnal Codex" };
-  }
-  return {
-    title: `${article.title} - Wiki | Nocturnal Codex`,
-    description: `Wiki article on ${article.title}.`,
-  };
 }
