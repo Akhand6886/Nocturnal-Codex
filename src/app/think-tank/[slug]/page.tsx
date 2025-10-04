@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -26,12 +25,15 @@ export async function generateStaticParams() {
   }));
 }
 
+// Updated interface - params is now a Promise
 interface ThinkTankArticlePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
+// Page component - await params
 export default async function ThinkTankArticlePage({ params }: ThinkTankArticlePageProps) {
-  const article = await fetchThinkTankArticleBySlug(params.slug);
+  const { slug } = await params;  // Await params here
+  const article = await fetchThinkTankArticleBySlug(slug);
 
   if (!article) {
     notFound();
@@ -142,8 +144,10 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
   );
 }
 
+// generateMetadata - await params
 export async function generateMetadata({ params }: ThinkTankArticlePageProps): Promise<Metadata> {
-  const article = await fetchThinkTankArticleBySlug(params.slug);
+  const { slug } = await params;  // Await params here
+  const article = await fetchThinkTankArticleBySlug(slug);
   if (!article) {
     return { title: "Article Not Found | Nocturnal Codex" };
   }

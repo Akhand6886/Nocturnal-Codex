@@ -1,4 +1,3 @@
-
 import { MOCK_WIKI_ARTICLES } from "@/lib/data";
 import type { WikiArticle } from "@/lib/data";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
@@ -17,12 +16,15 @@ export async function generateStaticParams() {
   }));
 }
 
+// Updated interface - params is now a Promise
 interface WikiArticlePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
+// Page component - await params
 export default async function WikiArticlePage({ params }: WikiArticlePageProps) {
-  const article = MOCK_WIKI_ARTICLES.find((a) => a.slug === params.slug);
+  const { slug } = await params;  // Await params here
+  const article = MOCK_WIKI_ARTICLES.find((a) => a.slug === slug);
 
   if (!article) {
     return (
@@ -99,8 +101,10 @@ export default async function WikiArticlePage({ params }: WikiArticlePageProps) 
   );
 }
 
+// generateMetadata - await params
 export async function generateMetadata({ params }: WikiArticlePageProps) {
-  const article = MOCK_WIKI_ARTICLES.find((a) => a.slug === params.slug);
+  const { slug } = await params;  // Await params here
+  const article = MOCK_WIKI_ARTICLES.find((a) => a.slug === slug);
   if (!article) {
     return { title: "Article Not Found | Nocturnal Codex" };
   }
