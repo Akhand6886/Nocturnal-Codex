@@ -10,6 +10,7 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
+  if (!posts) return [];
   const tags = posts.flatMap(post => post.tags || []);
   const uniqueTags = Array.from(new Set(tags.filter(Boolean)));
   
@@ -18,14 +19,12 @@ export async function generateStaticParams() {
   }));
 }
 
-// Updated interface - params is now a Promise
 interface TagPageProps {
-  params: Promise<{ tagSlug: string }>;
+  params: { tagSlug: string };
 }
 
-// generateMetadata - await params
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
-  const { tagSlug } = await params;  // Await params here
+  const { tagSlug } = params;
   const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
   return {
@@ -37,15 +36,15 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
 async function getPostsByTag(tagSlug: string): Promise<BlogPost[]> {
   const tagName = decodeURIComponent(tagSlug);
   const allPosts = await fetchBlogPosts();
+  if (!allPosts) return [];
   const posts = allPosts.filter(post => 
     post.tags?.some(tag => tag.toLowerCase() === tagName.toLowerCase())
   );
   return posts;
 }
 
-// Page component - await params
 export default async function TagPage({ params }: TagPageProps) {
-  const { tagSlug } = await params;  // Await params here
+  const { tagSlug } = params;
   const postsWithTag = await getPostsByTag(tagSlug);
   const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
