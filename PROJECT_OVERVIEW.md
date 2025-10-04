@@ -21,31 +21,29 @@ The project follows a standard Next.js App Router structure. Here are the key di
 
 ```
 nocturnal-codex/
-├── content/          # Markdown files for languages.
-│   └── languages/
+├── content/          # Contains local markdown files for content.
+│   └── languages/    # Markdown files for each programming language.
 ├── public/           # Static assets like images and fonts.
-│   └── roadmap-content/ # JSON files for developer roadmaps.
+│   └── roadmap-content/ # JSON files that define the structure of developer roadmaps.
 ├── src/
-│   ├── app/          # The core of the Next.js App Router.
-│   │   ├── (folders)/  # Each folder represents a URL route (e.g., /blog, /roadmaps).
-│   │   │   ├── page.tsx      # The main UI for a route.
-│   │   │   ├── layout.tsx    # A shared UI layout for a route and its children.
-│   │   │   └── loading.tsx   # (Optional) A loading UI for a route.
-│   │   ├── globals.css   # Global styles and Tailwind CSS theme variables.
-│   │   └── layout.tsx    # The root layout for the entire application.
-│   ├── components/     # Reusable React components.
-│   │   ├── content/      # Components specifically for displaying content (e.g., BlogPostCard).
-│   │   ├── forms/        # Form components (e.g., ContactForm).
-│   │   ├── layout/       # Major layout components (Navbar, Footer).
-│   │   └── ui/           # Core UI elements from ShadCN (Button, Card, etc.).
-│   ├── hooks/          # Custom React hooks (e.g., useToast).
+│   ├── app/          # The core of the Next.js App Router. Each folder represents a URL route.
+│   │   ├── blog/       # Contains pages for listing and displaying blog posts.
+│   │   ├── roadmaps/   # Contains pages for listing and displaying roadmaps.
+│   │   ├── ... (other routes)
+│   │   ├── globals.css # Global styles and Tailwind CSS theme variables.
+│   │   └── layout.tsx  # The root layout for the entire application.
+│   ├── components/     # Reusable React components, organized by function.
+│   │   ├── content/    # Components specifically for displaying content (e.g., BlogPostCard).
+│   │   ├── forms/      # Form components (e.g., ContactForm).
+│   │   ├── layout/     # Major layout components (Navbar, Footer, Breadcrumbs).
+│   │   └── ui/         # Core UI elements from ShadCN (Button, Card, etc.).
 │   ├── lib/            # Utility functions, data sources, and API clients.
-│   │   ├── contentful.ts # Functions for fetching data from Contentful.
-│   │   ├── languages.ts  # Functions for reading language data from markdown.
-│   │   ├── data.ts       # Mock data for wiki articles and navigation.
+│   │   ├── contentful.ts # Functions for fetching blog and think tank data from Contentful.
+│   │   ├── languages.ts  # Functions for reading language data from local markdown.
+│   │   ├── data.ts       # Mock data for wiki articles and site navigation.
 │   │   └── utils.ts      # General utility functions (e.g., cn for classnames).
 │   └── types/          # TypeScript type definitions (e.g., BlogPost, ThinkTankArticle).
-└── next.config.ts    # Configuration for Next.js.
+└── next.config.ts    # Configuration for Next.js, including image remote patterns.
 ```
 
 ## 3. Routing
@@ -72,22 +70,22 @@ The site uses a hybrid approach for content, sourcing it from a Headless CMS, lo
 ### Contentful API (Blog & Think Tank)
 
 -   **Purpose**: Manages dynamic, long-form content that may be updated frequently by content editors. This includes all blog posts and think tank articles.
--   **Implementation**: The `src/lib/contentful.ts` file contains the logic to connect to the Contentful Delivery API.
+-   **Implementation**: The `src/lib/contentful.ts` file contains the logic to connect to the Contentful Delivery API. It includes functions like `fetchBlogPosts` and `fetchThinkTankArticles` that use the `fetch` API with Next.js revalidation to retrieve and cache data. It also contains parsers to transform the raw Contentful response into the TypeScript types defined in `src/types/index.ts`.
 
 ### Local Markdown Files (Languages)
 
--   **Purpose**: Manages the content for individual programming languages.
--   **Implementation**: The `src/lib/languages.ts` file uses Node.js `fs` and the `gray-matter` library to read and parse the markdown files located in the `content/languages/` directory.
+-   **Purpose**: Manages the content for individual programming languages. This content is part of the Git repository and changes require a code deployment.
+-   **Implementation**: The `src/lib/languages.ts` file uses Node.js `fs` and the `gray-matter` library to read and parse the markdown files located in the `content/languages/` directory. The `getAllLanguages` function iterates through the files, extracts the frontmatter and content, and returns an array of `Language` objects.
 
 ### Static JSON (Developer Roadmaps)
 
--   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps.
--   **Implementation**: The `EditorRoadmapRenderer` component in `src/components/EditorRoadmap/EditorRoadmapRenderer.tsx` fetches the corresponding JSON file (e.g., `frontend.json`) from the `public/roadmap-content/` directory and renders it using `@xyflow/react`.
+-   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps. The node and edge data is ideal for a JSON format.
+-   **Implementation**: The `EditorRoadmapRenderer` component in `src/components/EditorRoadmap/EditorRoadmapRenderer.tsx` fetches the corresponding JSON file (e.g., `frontend.json`) from the `public/roadmap-content/` directory using a client-side `fetch` call. The data is then rendered into an interactive graph using the `@xyflow/react` library.
 
 ### Mock Data (Wiki Articles & Navigation)
 
--   **Purpose**: For foundational site content that is relatively static, like wiki articles and navigation links.
--   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_WIKI_ARTICLES`, `NAV_ITEMS`). This is fast and type-safe but requires a developer to update content.
+-   **Purpose**: For foundational site content that is relatively static and can be defined directly in code. This includes wiki articles and the main site navigation links.
+-   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_WIKI_ARTICLES`, `NAV_ITEMS`). This is fast, type-safe, and simple, but requires a developer to make any content updates. The wiki pages (`/wiki/[slug]`) directly import and use this data.
 
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 
