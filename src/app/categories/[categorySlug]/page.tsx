@@ -9,6 +9,10 @@ import type { BlogPost } from "@/types";
 
 export const revalidate = 60;
 
+interface PageProps {
+  params: { categorySlug: string };
+}
+
 const slugifyCategory = (categoryName: string) => encodeURIComponent(categoryName.toLowerCase().replace(/\s+/g, '-'));
 const deslugifyCategory = (slug: string) => {
   const name = decodeURIComponent(slug).replace(/-/g, ' ');
@@ -17,6 +21,7 @@ const deslugifyCategory = (slug: string) => {
 
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
+  if (!posts) return [];
   const categories = posts.map(post => post.category);
   const uniqueCategories = Array.from(new Set(categories.filter(Boolean)));
   
@@ -25,11 +30,7 @@ export async function generateStaticParams() {
   }));
 }
 
-interface CategoryPageProps {
-  params: { categorySlug: string };
-}
-
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const originalCategoryName = deslugifyCategory(params.categorySlug);
   return {
     title: `Posts in category "${originalCategoryName}" | Nocturnal Codex`,
@@ -39,6 +40,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPost[], actualCategoryName: string }> {
   const allPosts = await fetchBlogPosts();
+  if (!allPosts) return { posts: [], actualCategoryName: deslugifyCategory(categorySlug) };
+
   let actualCategoryName = '';
   
   const posts = allPosts.filter(post => {
@@ -57,7 +60,7 @@ async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPo
   return { posts, actualCategoryName };
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params }: PageProps) {
   const { categorySlug } = params;
   const { posts: postsInCategory, actualCategoryName } = await getPostsByCategory(categorySlug);
 
