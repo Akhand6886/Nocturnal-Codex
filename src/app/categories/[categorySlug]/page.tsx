@@ -1,4 +1,3 @@
-
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { FolderArchive } from "lucide-react";
@@ -9,19 +8,15 @@ import type { BlogPost } from "@/types";
 
 export const revalidate = 60;
 
-interface PageProps {
-  params: { categorySlug: string };
-}
-
 const slugifyCategory = (categoryName: string) => encodeURIComponent(categoryName.toLowerCase().replace(/\s+/g, '-'));
 const deslugifyCategory = (slug: string) => {
   const name = decodeURIComponent(slug).replace(/-/g, ' ');
   return name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
 
+// Return type stays the same (no Promise wrapper)
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
-  if (!posts) return [];
   const categories = posts.map(post => post.category);
   const uniqueCategories = Array.from(new Set(categories.filter(Boolean)));
   
@@ -30,8 +25,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const originalCategoryName = deslugifyCategory(params.categorySlug);
+// Updated interface - params is now a Promise
+interface CategoryPageProps {
+  params: Promise<{ categorySlug: string }>;
+}
+
+// generateMetadata - await params
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { categorySlug } = await params;  // Await params here
+  const originalCategoryName = deslugifyCategory(categorySlug);
   return {
     title: `Posts in category "${originalCategoryName}" | Nocturnal Codex`,
     description: `Find all blog posts in the category "${originalCategoryName}" on Nocturnal Codex.`,
@@ -40,8 +42,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPost[], actualCategoryName: string }> {
   const allPosts = await fetchBlogPosts();
-  if (!allPosts) return { posts: [], actualCategoryName: deslugifyCategory(categorySlug) };
-
   let actualCategoryName = '';
   
   const posts = allPosts.filter(post => {
@@ -60,13 +60,12 @@ async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPo
   return { posts, actualCategoryName };
 }
 
-export default async function CategoryPage({ params }: PageProps) {
-  const { categorySlug } = params;
+// Page component - await params
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { categorySlug } = await params;  // Await params here
   const { posts: postsInCategory, actualCategoryName } = await getPostsByCategory(categorySlug);
 
   if (postsInCategory.length === 0) {
-    // You might want to check if the category slug is valid at all
-    // by fetching all categories first, but this check also works.
     notFound();
   }
 
