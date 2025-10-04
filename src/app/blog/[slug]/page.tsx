@@ -15,19 +15,20 @@ interface PageProps {
   params: { slug: string };
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<PageProps['params'][]> {
   if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
     console.warn("Contentful env-vars missing at build-time – ISR paths for blog posts will not be generated.");
     return [];
   }
   const posts = await fetchBlogPosts({ limit: 50 }); 
   if (!posts) return [];
+  
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage({ params }: PageProps) {
   const post = await fetchBlogPostBySlug(params.slug);
   
   if (!post) {
