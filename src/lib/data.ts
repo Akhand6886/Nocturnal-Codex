@@ -145,10 +145,7 @@ Java provides different garbage collection algorithms (e.g., Serial GC, Parallel
 export const NAV_ITEMS: NavItemType[] = [
   { label: "Home", href: "/" },
   { label: "Roadmaps", href: "/roadmaps" },
-  {
-    label: "Languages",
-    href: "/languages",
-  },
+  { label: "Languages", href: "/languages" },
   { label: "Blog", href: "/blog" },
   { label: "Wiki", href: "/wiki" },
   { label: "Think Tank", href: "/think-tank" },

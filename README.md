@@ -21,6 +21,8 @@ The project follows a standard Next.js App Router structure. Here are the key di
 
 ```
 nocturnal-codex/
+├── content/          # Markdown files for languages.
+│   └── languages/
 ├── public/           # Static assets like images and fonts.
 │   └── roadmap-content/ # JSON files for developer roadmaps.
 ├── src/
@@ -39,6 +41,7 @@ nocturnal-codex/
 │   ├── hooks/          # Custom React hooks (e.g., useToast).
 │   ├── lib/            # Utility functions, data sources, and API clients.
 │   │   ├── contentful.ts # Functions for fetching data from Contentful.
+│   │   ├── languages.ts  # Functions for reading language data from markdown.
 │   │   ├── data.ts       # Mock data for wiki articles and navigation.
 │   │   └── utils.ts      # General utility functions (e.g., cn for classnames).
 │   └── types/          # TypeScript type definitions (e.g., BlogPost, ThinkTankArticle).
@@ -59,33 +62,32 @@ The application's routing is file-system based, managed by the Next.js App Route
 -   `/roadmaps/[roadmapId]`: `src/app/roadmaps/[roadmapId]/page.tsx` (Displays an interactive roadmap)
 -   `/wiki`: `src/app/wiki/page.tsx` (The main wiki page)
 -   `/wiki/[slug]`: `src/app/wiki/[slug]/page.tsx` (A specific wiki article)
+-   `/languages`: `src/app/languages/page.tsx` (Lists all programming languages)
 -   `/contact`: `src/app/contact/page.tsx`
 
 ## 4. Data Fetching & Content Management
 
-The site uses a hybrid approach for content, sourcing it from a Headless CMS, local JSON files, and static mock data.
+The site uses a hybrid approach for content, sourcing it from a Headless CMS, local Markdown/JSON files, and static mock data.
 
 ### Contentful API (Blog & Think Tank)
 
 -   **Purpose**: Manages dynamic, long-form content that may be updated frequently by content editors. This includes all blog posts and think tank articles.
 -   **Implementation**: The `src/lib/contentful.ts` file contains the logic to connect to the Contentful Delivery API.
-    -   `createClient()`: Initializes the Contentful client using environment variables for the Space ID and Access Token.
-    -   `fetchBlogPosts()`, `fetchThinkTankArticles()`: These functions query the Contentful API for collections of entries based on their Content Type ID (`blogPost` and `thinkTankArticle`, respectively).
-    -   `fetchBlogPostBySlug()`, `fetchThinkTankArticleBySlug()`: These functions fetch a single entry by its unique slug.
-    -   `parseBlogPost()`, `parseThinkTankArticle()`: Helper functions that transform the raw API response from Contentful into the application's specific `BlogPost` and `ThinkTankArticle` types, ensuring data consistency.
+
+### Local Markdown Files (Languages)
+
+-   **Purpose**: Manages the content for individual programming languages.
+-   **Implementation**: The `src/lib/languages.ts` file uses Node.js `fs` and the `gray-matter` library to read and parse the markdown files located in the `content/languages/` directory.
 
 ### Static JSON (Developer Roadmaps)
 
--   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps. This approach allows for version control and easy editing of the roadmap structure without a complex CMS.
--   **Implementation**:
-    1.  **Data Storage**: JSON files, each representing a full roadmap (nodes and edges), are stored in the `public/roadmap-content/` directory (e.g., `frontend.json`, `backend.json`).
-    2.  **Data Fetching**: The `EditorRoadmapRenderer` component in `src/components/EditorRoadmap/EditorRoadmapRenderer.tsx` fetches the corresponding JSON file using a standard `fetch` call when a user navigates to a roadmap page.
-    3.  **Rendering**: The fetched JSON data, which conforms to the `@xyflow/react` library's expected format, is passed directly to the `ReactFlow` component to render the interactive graph.
+-   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps.
+-   **Implementation**: The `EditorRoadmapRenderer` component in `src/components/EditorRoadmap/EditorRoadmapRenderer.tsx` fetches the corresponding JSON file (e.g., `frontend.json`) from the `public/roadmap-content/` directory and renders it using `@xyflow/react`.
 
 ### Mock Data (Wiki Articles & Navigation)
 
--   **Purpose**: For foundational site content that is relatively static and integral to the site's structure. This includes the main wiki articles and the site's navigation links.
--   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_WIKI_ARTICLES`, `NAV_ITEMS`). This approach is extremely fast and provides full type-safety, but it requires a developer to update the content directly in the code. This is suitable for content that doesn't change often.
+-   **Purpose**: For foundational site content that is relatively static, like wiki articles and navigation links.
+-   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_WIKI_ARTICLES`, `NAV_ITEMS`). This is fast and type-safe but requires a developer to update content.
 
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 
