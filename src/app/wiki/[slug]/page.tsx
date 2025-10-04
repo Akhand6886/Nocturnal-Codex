@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: WikiArticlePageProps): Promis
 
 export default async function WikiArticlePage({ params }: WikiArticlePageProps) {
   const { slug } = params;
-  const article = MOCK_WICKI_ARTICLES.find((a) => a.slug === slug);
+  const article = MOCK_WIKI_ARTICLES.find((a) => a.slug === slug);
 
   if (!article) {
     notFound();
