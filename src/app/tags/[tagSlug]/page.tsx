@@ -1,4 +1,3 @@
-
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Tag as TagIcon } from "lucide-react";
@@ -19,12 +18,15 @@ export async function generateStaticParams() {
   }));
 }
 
+// Updated interface - params is now a Promise
 interface TagPageProps {
-  params: { tagSlug: string };
+  params: Promise<{ tagSlug: string }>;
 }
 
+// generateMetadata - await params
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
-  const tagName = decodeURIComponent(params.tagSlug);
+  const { tagSlug } = await params;  // Await params here
+  const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
   return {
     title: `Posts tagged "${capitalizedTagName}" | Nocturnal Codex`,
@@ -41,8 +43,9 @@ async function getPostsByTag(tagSlug: string): Promise<BlogPost[]> {
   return posts;
 }
 
+// Page component - await params
 export default async function TagPage({ params }: TagPageProps) {
-  const { tagSlug } = params;
+  const { tagSlug } = await params;  // Await params here
   const postsWithTag = await getPostsByTag(tagSlug);
   const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
