@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb } from 'lucide-react';
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 
 // Static facts to cycle through (client-side only)
 const STATIC_THEORY_FACTS = [
@@ -15,19 +15,20 @@ const STATIC_THEORY_FACTS = [
 ];
 
 export function RandomTheoryDrop() {
-  const [fact, setFact] = React.useState("Loading theory...");
+  const [fact, setFact] = useState("Loading theory...");
 
-  React.useEffect(() => {
+  // useEffect ensures this only runs on the client, after hydration
+  useEffect(() => {
     const randomIndex = Math.floor(Math.random() * STATIC_THEORY_FACTS.length);
     setFact(STATIC_THEORY_FACTS[randomIndex]);
-  }, []);
+  }, []); // Empty dependency array means it runs once on mount
 
 
   return (
     <Card className="bg-card shadow-lg border-border/60">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-lg font-semibold text-primary">
-          Static Theory Drop
+          Random Theory Drop
         </CardTitle>
         <Lightbulb className="h-5 w-5 text-accent" />
       </CardHeader>
