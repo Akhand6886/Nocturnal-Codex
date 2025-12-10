@@ -1,6 +1,5 @@
 
 import { MetadataRoute } from 'next';
-import { MOCK_WIKI_ARTICLES } from '@/lib/data';
 import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
 import { getAllLanguages } from '@/lib/languages';
 
@@ -15,7 +14,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tags',
     '/categories',
     '/think-tank',
-    '/wiki',
     '/languages',
     '/roadmaps'
   ].map((route) => ({
@@ -41,13 +39,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const wikiArticles: MetadataRoute.Sitemap = MOCK_WIKI_ARTICLES.map((article) => ({
-    url: `${BASE_URL}/wiki/${article.slug}`,
-    lastModified: new Date(article.lastUpdated).toISOString(),
-    changeFrequency: 'weekly',
-    priority: 0.6,
-  }));
-  
   const allLanguages = getAllLanguages();
   const languagePages: MetadataRoute.Sitemap = allLanguages.map(lang => ({
       url: `${BASE_URL}/languages/${lang.slug}`,
@@ -76,7 +67,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages,
     ...blogPosts,
     ...thinkTankArticles,
-    ...wikiArticles,
     ...languagePages,
     ...tagDetailPages,
     ...categoryDetailPages,

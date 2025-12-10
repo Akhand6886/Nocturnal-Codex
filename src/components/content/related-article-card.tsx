@@ -6,7 +6,7 @@ import { ArrowRight, FileText, Brain, BookOpen } from 'lucide-react';
 export interface RelatedArticle {
   title: string;
   slug: string;
-  type: 'blog' | 'think-tank' | 'wiki';
+  type: 'blog' | 'think-tank';
   excerpt?: string; 
 }
 
@@ -17,7 +17,6 @@ interface RelatedArticleCardProps {
 const typeIconMap = {
   blog: <FileText className="h-5 w-5 text-primary" />,
   'think-tank': <Brain className="h-5 w-5 text-accent" />,
-  wiki: <BookOpen className="h-5 w-5 text-secondary-foreground" />, 
 };
 
 export function RelatedArticleCard({ article }: RelatedArticleCardProps) {

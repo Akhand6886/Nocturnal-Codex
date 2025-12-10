@@ -4,9 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2, Star } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
-import { MOCK_WIKI_ARTICLES } from '@/lib/data';
 import { BlogPostCard } from "@/components/content/blog-post-card";
-import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
@@ -27,7 +25,6 @@ export default async function HomePage() {
   const recentBlogPosts = await fetchBlogPosts({ limit: 2 }) || [];
   const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true }) || [];
   
-  const featuredWikiArticles = MOCK_WIKI_ARTICLES ? MOCK_WIKI_ARTICLES.slice(0, 3) : [];
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
@@ -121,28 +118,22 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Key Concepts from the Wiki Section */}
+        {/* Think Tank Section */}
         <section>
           <div>
             <h2 className="text-3xl font-bold mb-2 flex items-center text-foreground/90">
-              <Lightbulb className="mr-3 h-7 w-7 text-secondary-foreground" />
-              From the Wiki
+              <Brain className="mr-3 h-7 w-7 text-accent" />
+              From the Think Tank
             </h2>
-            <p className="text-muted-foreground mb-8 text-sm">A reference library of core concepts and definitions.</p>
+            <p className="text-muted-foreground mb-8 text-sm">In-depth research, original theories, and explorations.</p>
           </div>
-          <Card className="bg-card shadow-xl border border-border/30 hover:border-secondary/50 hover:shadow-secondary/20 transition-all duration-300 ease-in-out rounded-xl">
-            <CardContent className="p-4 space-y-3">
-              {featuredWikiArticles.map((article) => (
-                <WikiArticleLink key={article.id} article={article} />
-              ))}
-               {MOCK_WIKI_ARTICLES && MOCK_WIKI_ARTICLES.length > 3 && (
-                <Button asChild variant="outline" className="w-full mt-6 hover:border-secondary hover:bg-secondary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-secondary-foreground">
-                  <Link href="/wiki">Explore Full Wiki <ArrowRight className="ml-2 h-4 w-4" /></Link>
+          <Card className="bg-card shadow-xl border border-border/30 hover:border-accent/50 hover:shadow-accent/20 transition-all duration-300 ease-in-out rounded-xl">
+             <CardContent className="p-4">
+               {/* This section can be populated with Think Tank articles if desired */}
+               <p className="text-muted-foreground text-center py-6">No think tank articles featured yet.</p>
+                <Button asChild variant="outline" className="w-full mt-4 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent-foreground">
+                  <Link href="/think-tank">Explore Think Tank <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
-              )}
-              {featuredWikiArticles.length === 0 && (
-                 <p className="text-muted-foreground text-center py-6">No wiki articles featured yet.</p>
-              )}
             </CardContent>
           </Card>
         </section>
