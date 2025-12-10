@@ -8,7 +8,7 @@ export const revalidate = 60; // Revalidate every 60 seconds
 
 export const metadata: Metadata = {
   title: "Think Tank | Nocturnal Codex",
-  description: "In-depth research articles and theoretical explorations.",
+  description: "In-depth research articles, original theories, and explorations on the frontiers of knowledge.",
 };
 
 export default async function ThinkTankPage() {
@@ -22,7 +22,7 @@ export default async function ThinkTankPage() {
           Think Tank
         </h1>
         <p className="mt-3 text-lg text-muted-foreground">
-          Long-form theoretical research, explorations of complex ideas, and dialogues on the frontiers of knowledge.
+          In-depth research articles, original theories, and explorations on the frontiers of knowledge.
         </p>
       </header>
       

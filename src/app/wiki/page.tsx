@@ -3,6 +3,7 @@ import { MOCK_WIKI_ARTICLES } from "@/lib/data";
 import { WikiArticleLink } from "@/components/content/wiki-article-link";
 import { BookMarked } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import type { Metadata } from 'next';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -27,7 +28,7 @@ export default function WikiPage() {
           Wiki
         </h1>
         <p className="mt-3 text-lg text-muted-foreground">
-          A compendium of factual, reference-style articles on computer science concepts, theories, and technologies.
+          A reference library of core concepts, technologies, and definitions. Factual and to the point.
         </p>
       </header>
       
@@ -51,7 +52,7 @@ export default function WikiPage() {
   );
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Wiki | Nocturnal Codex",
-  description: "Reference articles on computer science and technology.",
+  description: "A reference library of core concepts, technologies, and definitions.",
 };

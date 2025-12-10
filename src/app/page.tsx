@@ -123,10 +123,13 @@ export default async function HomePage() {
 
         {/* Key Concepts from the Wiki Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-secondary/70 flex items-center text-foreground/90">
-            <Lightbulb className="mr-3 h-7 w-7 text-secondary-foreground" />
-            Key Concepts from the Wiki
-          </h2>
+          <div>
+            <h2 className="text-3xl font-bold mb-2 flex items-center text-foreground/90">
+              <Lightbulb className="mr-3 h-7 w-7 text-secondary-foreground" />
+              From the Wiki
+            </h2>
+            <p className="text-muted-foreground mb-8 text-sm">A reference library of core concepts and definitions.</p>
+          </div>
           <Card className="bg-card shadow-xl border border-border/30 hover:border-secondary/50 hover:shadow-secondary/20 transition-all duration-300 ease-in-out rounded-xl">
             <CardContent className="p-4 space-y-3">
               {featuredWikiArticles.map((article) => (
