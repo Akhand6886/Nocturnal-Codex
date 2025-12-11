@@ -9,6 +9,7 @@ import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-st
 import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
 import { SimpleIcon } from "@/components/common/simple-icon";
+import { getAllLanguages, type Language } from "@/lib/languages";
 
 export const revalidate = 60; 
 
@@ -17,13 +18,11 @@ export const metadata: Metadata = {
   description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
 };
 
-// Placeholder for language data since contentlayer was removed
-const allLanguagePosts: any[] = [];
-const featuredLanguages = allLanguagePosts ? allLanguagePosts.slice(0, 4) : [];
-
 export default async function HomePage() {
   const recentBlogPosts = await fetchBlogPosts({ limit: 2 }) || [];
   const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true }) || [];
+  const allLanguages = getAllLanguages();
+  const featuredLanguages = allLanguages.slice(0, 6);
   
 
   return (
@@ -39,8 +38,8 @@ export default async function HomePage() {
             Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world. Explore, learn, and contribute to the collective intellect.
           </p>
           <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-primary/40 transform hover:scale-105 transition-all duration-300 ease-in-out rounded-lg">
-            <Link href="/topics">
-              Explore Topics <ArrowRight className="ml-2 h-5 w-5" />
+            <Link href="/roadmaps">
+              Explore Roadmaps <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
@@ -58,19 +57,19 @@ export default async function HomePage() {
             <Code2 className="mr-3 h-7 w-7 text-primary" />
             Featured Languages
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredLanguages.map((lang: any) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {featuredLanguages.map((lang: Language) => (
                 <Link href={lang.url} key={lang.id} className="group block">
                     <Card className="h-full overflow-hidden shadow-md hover:shadow-primary/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-lg">
                       <CardContent className="p-6 flex flex-col items-center text-center">
                           <SimpleIcon iconName={lang.iconName || 'code'} className="w-12 h-12 mb-4 text-primary" />
-                          <h3 className="text-lg font-semibold group-hover:text-primary">{lang.name}</h3>
+                          <h3 className="text-base font-semibold group-hover:text-primary">{lang.name}</h3>
                       </CardContent>
                     </Card>
                 </Link>
             ))}
         </div>
-        {allLanguagePosts && allLanguagePosts.length > 4 && (
+        {allLanguages && allLanguages.length > 6 && (
              <div className="mt-10 text-center">
                 <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
                     <Link href="/languages">View All Languages <ArrowRight className="ml-2 h-4 w-4" /></Link>
