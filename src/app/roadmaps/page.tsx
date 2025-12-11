@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 // Placeholder since contentlayer was removed
 const allRoadmaps = [
-    { order: 1, url: '/roadmaps/backend', slug: 'backend', title: 'Backend Roadmap', category: 'Core', difficulty: 'Beginner', featured: true },
-    { order: 2, url: '/roadmaps/frontend', slug: 'frontend', title: 'Frontend Roadmap', category: 'Core', difficulty: 'Beginner', featured: true },
-    { order: 3, url: '/roadmaps/machine-learning', slug: 'machine-learning', title: 'Machine Learning Roadmap', category: 'Specialized', difficulty: 'Intermediate', featured: false },
-    { order: 4, url: '/roadmaps/cybersecurity', slug: 'cybersecurity', title: 'Cybersecurity Roadmap', category: 'Specialized', difficulty: 'Intermediate', featured: false },
-    { order: 5, url: '/roadmaps/devops', slug: 'devops', title: 'DevOps Roadmap', category: 'Core', difficulty: 'Intermediate', featured: false },
-    { order: 6, url: '/roadmaps/full-stack', slug: 'full-stack', title: 'Full Stack Roadmap', category: 'Core', difficulty: 'Advanced', featured: false },
+    { order: 1, url: '/roadmaps/backend', slug: 'backend', title: 'Backend Roadmap', description: "Step-by-step guide to becoming a modern backend developer.", category: 'Core', difficulty: 'Beginner', featured: true },
+    { order: 2, url: '/roadmaps/frontend', slug: 'frontend', title: 'Frontend Roadmap', description: "Step-by-step guide to becoming a modern frontend developer.", category: 'Core', difficulty: 'Beginner', featured: true },
+    { order: 3, url: '/roadmaps/machine-learning', slug: 'machine-learning', title: 'Machine Learning Roadmap', description: "Step-by-step guide to becoming a Machine Learning engineer.", category: 'Specialized', difficulty: 'Intermediate', featured: false },
+    { order: 4, url: '/roadmaps/cybersecurity', slug: 'cybersecurity', title: 'Cybersecurity Roadmap', description: "Step-by-step guide to becoming a cybersecurity expert.", category: 'Specialized', difficulty: 'Intermediate', featured: false },
+    { order: 5, url: '/roadmaps/devops', slug: 'devops', title: 'DevOps Roadmap', description: "Step-by-step guide to becoming a DevOps engineer.", category: 'Core', difficulty: 'Intermediate', featured: false },
+    { order: 6, url: '/roadmaps/full-stack', slug: 'full-stack', title: 'Full Stack Roadmap', description: "Step-by-step guide to becoming a full stack developer.", category: 'Core', difficulty: 'Advanced', featured: false },
 ];
 
 export default function RoadmapsPage() {
@@ -33,7 +33,7 @@ export default function RoadmapsPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10">
         {roadmaps.map((roadmap) => (
           <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
         ))}
