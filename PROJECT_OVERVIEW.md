@@ -40,13 +40,87 @@ nocturnal-codex/
 │   ├── lib/            # Utility functions, data sources, and API clients.
 │   │   ├── contentful.ts # Functions for fetching blog and think tank data from Contentful.
 │   │   ├── languages.ts  # Functions for reading language data from local markdown.
-│   │   ├── data.ts       # Mock data for wiki articles and site navigation.
+│   │   ├── data.ts       # Mock data for site navigation.
 │   │   └── utils.ts      # General utility functions (e.g., cn for classnames).
 │   └── types/          # TypeScript type definitions (e.g., BlogPost, ThinkTankArticle).
 └── next.config.ts    # Configuration for Next.js, including image remote patterns.
 ```
 
-## 3. Routing
+## 3. Data Structures and Component Architecture
+
+The application's architecture is designed around a clear data flow: **Data Source -> Library -> Page -> Component**.
+
+### Data Structures
+
+The core data models are defined in `src/types/index.ts` to ensure type safety.
+
+-   **`BlogPost`**: Represents a single blog post.
+    ```typescript
+    interface BlogPost {
+      id: string;
+      slug: string;
+      title: string;
+      date: string;
+      shortDescription: string;
+      content: Document; // From Contentful's rich-text-types
+      featuredImage: ContentfulImage | null;
+      author: string;
+      tags: string[];
+      category: string;
+      featured: boolean;
+      url: string;
+    }
+    ```
+-   **`ThinkTankArticle`**: Represents a research article.
+    ```typescript
+    interface ThinkTankArticle {
+      id: string;
+      slug: string;
+      title: string;
+      date: string;
+      abstract: Document;
+      content: Document;
+      featuredImage: ContentfulImage | null;
+      authors: string[];
+      tags: string[];
+      url: string;
+    }
+    ```
+-   **`Language`**: Represents a programming language.
+    ```typescript
+    interface Language {
+      id: string;
+      name: string;
+      slug: string;
+      description: string;
+      iconName: string;
+      content: string; // Markdown content
+      url: string;
+    }
+    ```
+-   **`Roadmap`**: The roadmap data is split into two parts:
+    1.  **Metadata**: An object containing `title`, `description`, `category`, `difficulty`, etc. This is currently hardcoded in the page components but will be migrated to a more robust system.
+    2.  **Graph Data**: An object with `nodes` and `edges` arrays, conforming to the `@xyflow/react` library's structure. This is stored in JSON files.
+
+### Component Structure and Data Flow
+
+1.  **Data Fetching Layer (`src/lib`)**: This layer is responsible for abstracting the data sources.
+    -   `lib/contentful.ts` fetches data from the Contentful API.
+    -   `lib/languages.ts` reads and parses markdown files from the `content/` directory.
+
+2.  **Page Layer (`src/app/**/page.tsx`)**: These are server components that orchestrate data fetching and UI composition.
+    -   They call the functions from the `lib` directory (e.g., `await fetchBlogPosts()`).
+    -   They pass the fetched data as props to presentation components.
+    -   **Example (`/blog/page.tsx`)**: Fetches an array of `BlogPost` objects and maps over them, rendering a `BlogPostCard` for each.
+
+3.  **Presentation Component Layer (`src/components`)**: These components are responsible for rendering the UI based on the props they receive. They are generally "dumb" and don't fetch data themselves.
+    -   `components/content/BlogPostCard.tsx`: Receives a single `post` object and renders the title, image, and description in a `<Card>`.
+    -   `components/contentful/RichTextRenderer.tsx`: Receives a Contentful `Document` and renders it into styled HTML.
+    -   `components/EditorRoadmap/EditorRoadmapRenderer.tsx`: A client component responsible for fetching the roadmap JSON and rendering the interactive graph using `@xyflow/react`.
+
+This layered architecture creates a clean separation of concerns, making the application easier to test, maintain, and scale.
+
+## 4. Routing
 
 The application's routing is file-system based, managed by the Next.js App Router.
 
@@ -58,34 +132,8 @@ The application's routing is file-system based, managed by the Next.js App Route
 -   `/think-tank/[slug]`: `src/app/think-tank/[slug]/page.tsx` (Displays a single article)
 -   `/roadmaps`: `src/app/roadmaps/page.tsx` (Lists all available developer roadmaps)
 -   `/roadmaps/[roadmapId]`: `src/app/roadmaps/[roadmapId]/page.tsx` (Displays an interactive roadmap)
--   `/wiki`: `src/app/wiki/page.tsx` (The main wiki page)
--   `/wiki/[slug]`: `src/app/wiki/[slug]/page.tsx` (A specific wiki article)
 -   `/languages`: `src/app/languages/page.tsx` (Lists all programming languages)
 -   `/contact`: `src/app/contact/page.tsx`
-
-## 4. Data Fetching & Content Management
-
-The site uses a hybrid approach for content, sourcing it from a Headless CMS, local Markdown/JSON files, and static mock data.
-
-### Contentful API (Blog & Think Tank)
-
--   **Purpose**: Manages dynamic, long-form content that may be updated frequently by content editors. This includes all blog posts and think tank articles.
--   **Implementation**: The `src/lib/contentful.ts` file contains the logic to connect to the Contentful Delivery API. It includes functions like `fetchBlogPosts` and `fetchThinkTankArticles` that use the `fetch` API with Next.js revalidation to retrieve and cache data. It also contains parsers to transform the raw Contentful response into the TypeScript types defined in `src/types/index.ts`.
-
-### Local Markdown Files (Languages)
-
--   **Purpose**: Manages the content for individual programming languages. This content is part of the Git repository and changes require a code deployment.
--   **Implementation**: The `src/lib/languages.ts` file uses Node.js `fs` and the `gray-matter` library to read and parse the markdown files located in the `content/languages/` directory. The `getAllLanguages` function iterates through the files, extracts the frontmatter and content, and returns an array of `Language` objects.
-
-### Static JSON (Developer Roadmaps)
-
--   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps. The node and edge data is ideal for a JSON format.
--   **Implementation**: The `EditorRoadmapRenderer` component in `src/components/EditorRoadmap/EditorRoadmapRenderer.tsx` fetches the corresponding JSON file (e.g., `frontend.json`) from the `public/roadmap-content/` directory using a client-side `fetch` call. The data is then rendered into an interactive graph using the `@xyflow/react` library.
-
-### Mock Data (Wiki Articles & Navigation)
-
--   **Purpose**: For foundational site content that is relatively static and can be defined directly in code. This includes wiki articles and the main site navigation links.
--   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_WIKI_ARTICLES`, `NAV_ITEMS`). This is fast, type-safe, and simple, but requires a developer to make any content updates. The wiki pages (`/wiki/[slug]`) directly import and use this data.
 
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 
