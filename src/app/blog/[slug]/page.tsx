@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import type { Metadata } from 'next';
 import Image from "next/image";
@@ -10,12 +11,12 @@ export const revalidate = 60;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
-// Updated interface - params is now a Promise
+// Corrected interface - params is a plain object
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
-// generateStaticParams return type stays the same (no Promise)
+// generateStaticParams return type is correct
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
     console.warn("Contentful env-vars missing at build-time – ISR paths for blog posts will not be generated.");
@@ -29,9 +30,9 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-// Page component - await params
+// Page component - no await on params
 export default async function PostPage({ params }: PageProps) {
-  const { slug } = await params;  // Await params here
+  const { slug } = params;
   const post = await fetchBlogPostBySlug(slug);
   
   if (!post) {
@@ -63,9 +64,9 @@ export default async function PostPage({ params }: PageProps) {
   );
 }
 
-// generateMetadata - await params
+// generateMetadata - no await on params
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;  // Await params here
+  const { slug } = params;
   const post = await fetchBlogPostBySlug(slug);
 
   if (!post) {

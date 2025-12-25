@@ -1,3 +1,4 @@
+
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Tag as TagIcon } from "lucide-react";
@@ -19,6 +20,7 @@ export async function generateStaticParams() {
   }));
 }
 
+// Corrected interface - params is a plain object
 interface TagPageProps {
   params: { tagSlug: string };
 }

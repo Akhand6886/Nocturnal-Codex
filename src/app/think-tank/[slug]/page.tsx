@@ -26,14 +26,14 @@ export async function generateStaticParams() {
   }));
 }
 
-// Updated interface - params is now a Promise
+// Corrected interface - params is a plain object
 interface ThinkTankArticlePageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
-// Page component - await params
+// Page component - no await on params
 export default async function ThinkTankArticlePage({ params }: ThinkTankArticlePageProps) {
-  const { slug } = await params;  // Await params here
+  const { slug } = params;
   const article = await fetchThinkTankArticleBySlug(slug);
 
   if (!article) {
@@ -145,9 +145,9 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
   );
 }
 
-// generateMetadata - await params
+// generateMetadata - no await on params
 export async function generateMetadata({ params }: ThinkTankArticlePageProps): Promise<Metadata> {
-  const { slug } = await params;  // Await params here
+  const { slug } = params;
   const article = await fetchThinkTankArticleBySlug(slug);
   if (!article) {
     return { title: "Article Not Found | Nocturnal Codex" };

@@ -1,3 +1,4 @@
+
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { FolderArchive } from "lucide-react";
@@ -14,7 +15,6 @@ const deslugifyCategory = (slug: string) => {
   return name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
 
-// Return type stays the same (no Promise wrapper)
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
   const categories = posts.map(post => post.category);
@@ -25,14 +25,14 @@ export async function generateStaticParams() {
   }));
 }
 
-// Updated interface - params is now a Promise
+// Corrected interface - params is a plain object
 interface CategoryPageProps {
-  params: Promise<{ categorySlug: string }>;
+  params: { categorySlug: string };
 }
 
-// generateMetadata - await params
+// generateMetadata - no await on params
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const { categorySlug } = await params;  // Await params here
+  const { categorySlug } = params;
   const originalCategoryName = deslugifyCategory(categorySlug);
   return {
     title: `Posts in category "${originalCategoryName}" | Nocturnal Codex`,
@@ -60,9 +60,9 @@ async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPo
   return { posts, actualCategoryName };
 }
 
-// Page component - await params
+// Page component - no await on params
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { categorySlug } = await params;  // Await params here
+  const { categorySlug } = params;
   const { posts: postsInCategory, actualCategoryName } = await getPostsByCategory(categorySlug);
 
   if (postsInCategory.length === 0) {
