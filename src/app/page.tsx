@@ -11,6 +11,7 @@ import { fetchBlogPosts } from "@/lib/contentful";
 import { SimpleIcon } from "@/components/common/simple-icon";
 import { getAllLanguages, type Language } from "@/lib/languages";
 import { RoadmapCard } from "@/components/Roadmaps/RoadmapCard";
+import { getAllRoadmaps } from "@/lib/roadmaps";
 
 export const revalidate = 60; 
 
@@ -19,22 +20,12 @@ export const metadata: Metadata = {
   description: 'Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world.',
 };
 
-// Placeholder since contentlayer was removed
-const allRoadmaps = [
-    { order: 1, url: '/roadmaps/backend', slug: 'backend', title: 'Backend Roadmap', description: "Step-by-step guide to becoming a modern backend developer.", category: 'Core', difficulty: 'Beginner', featured: true },
-    { order: 2, url: '/roadmaps/frontend', slug: 'frontend', title: 'Frontend Roadmap', description: "Step-by-step guide to becoming a modern frontend developer.", category: 'Core', difficulty: 'Beginner', featured: true },
-    { order: 3, url: '/roadmaps/machine-learning', slug: 'machine-learning', title: 'Machine Learning Roadmap', description: "Step-by-step guide to becoming a Machine Learning engineer.", category: 'Specialized', difficulty: 'Intermediate', featured: false },
-    { order: 4, url: '/roadmaps/cybersecurity', slug: 'cybersecurity', title: 'Cybersecurity Roadmap', description: "Step-by-step guide to becoming a cybersecurity expert.", category: 'Specialized', difficulty: 'Intermediate', featured: false },
-    { order: 5, url: '/roadmaps/devops', slug: 'devops', title: 'DevOps Roadmap', description: "Step-by-step guide to becoming a DevOps engineer.", category: 'Core', difficulty: 'Intermediate', featured: false },
-    { order: 6, url: '/roadmaps/full-stack', slug: 'full-stack', title: 'Full Stack Roadmap', description: "Step-by-step guide to becoming a full stack developer.", category: 'Core', difficulty: 'Advanced', featured: false },
-];
-
-
 export default async function HomePage() {
   const recentBlogPosts = await fetchBlogPosts({ limit: 2 }) || [];
   const featuredBlogPosts = await fetchBlogPosts({ limit: 2, featured: true }) || [];
   const allLanguages = getAllLanguages();
   const featuredLanguages = allLanguages.slice(0, 6);
+  const allRoadmaps = getAllRoadmaps();
   const featuredRoadmaps = allRoadmaps.filter(r => r.featured);
   
 
@@ -175,3 +166,5 @@ export default async function HomePage() {
     </div>
   );
 }
+
+    

@@ -2,24 +2,15 @@
 import { RoadmapCard } from '@/components/Roadmaps/RoadmapCard';
 import { BookMarked } from 'lucide-react';
 import type { Metadata } from 'next';
+import { getAllRoadmaps } from '@/lib/roadmaps';
 
 export const metadata: Metadata = {
   title: 'Developer Roadmaps',
   description: 'Step-by-step guides and paths to learn different tools and technologies.',
 };
 
-// Placeholder since contentlayer was removed
-const allRoadmaps = [
-    { order: 1, url: '/roadmaps/backend', slug: 'backend', title: 'Backend Roadmap', description: "Step-by-step guide to becoming a modern backend developer.", category: 'Core', difficulty: 'Beginner', featured: true },
-    { order: 2, url: '/roadmaps/frontend', slug: 'frontend', title: 'Frontend Roadmap', description: "Step-by-step guide to becoming a modern frontend developer.", category: 'Core', difficulty: 'Beginner', featured: true },
-    { order: 3, url: '/roadmaps/machine-learning', slug: 'machine-learning', title: 'Machine Learning Roadmap', description: "Step-by-step guide to becoming a Machine Learning engineer.", category: 'Specialized', difficulty: 'Intermediate', featured: false },
-    { order: 4, url: '/roadmaps/cybersecurity', slug: 'cybersecurity', title: 'Cybersecurity Roadmap', description: "Step-by-step guide to becoming a cybersecurity expert.", category: 'Specialized', difficulty: 'Intermediate', featured: false },
-    { order: 5, url: '/roadmaps/devops', slug: 'devops', title: 'DevOps Roadmap', description: "Step-by-step guide to becoming a DevOps engineer.", category: 'Core', difficulty: 'Intermediate', featured: false },
-    { order: 6, url: '/roadmaps/full-stack', slug: 'full-stack', title: 'Full Stack Roadmap', description: "Step-by-step guide to becoming a full stack developer.", category: 'Core', difficulty: 'Advanced', featured: false },
-];
-
 export default function RoadmapsPage() {
-  const roadmaps = allRoadmaps.sort((a, b) => a.order - b.order);
+  const roadmaps = getAllRoadmaps();
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12">
@@ -41,3 +32,5 @@ export default function RoadmapsPage() {
     </div>
   );
 }
+
+    
