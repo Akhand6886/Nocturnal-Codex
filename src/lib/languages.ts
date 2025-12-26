@@ -14,27 +14,44 @@ export interface Language {
 
 const languagesDirectory = path.join(process.cwd(), 'content/languages');
 
+let allLanguagesCache: Language[];
+
+function fetchAllLanguages(): Language[] {
+    if (allLanguagesCache) {
+        return allLanguagesCache;
+    }
+
+    try {
+        const fileNames = fs.readdirSync(languagesDirectory);
+        const allLanguagesData = fileNames.map((fileName) => {
+            const id = fileName.replace(/\.md$/, '');
+            const fullPath = path.join(languagesDirectory, fileName);
+            const fileContents = fs.readFileSync(fullPath, 'utf8');
+            const matterResult = matter(fileContents);
+
+            const frontmatter = matterResult.data as Omit<Language, 'content' | 'url'>;
+
+            return {
+                ...frontmatter,
+                content: matterResult.content,
+                url: `/languages/${frontmatter.slug}`,
+            } as Language;
+        });
+
+        allLanguagesCache = allLanguagesData.sort((a, b) => a.name.localeCompare(b.name));
+        return allLanguagesCache;
+
+    } catch (error) {
+        console.error("Could not read languages directory:", error);
+        return [];
+    }
+}
+
+
 export function getAllLanguages(): Language[] {
-  try {
-    const fileNames = fs.readdirSync(languagesDirectory);
-    const allLanguagesData = fileNames.map((fileName) => {
-      const id = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(languagesDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const matterResult = matter(fileContents);
+  return fetchAllLanguages();
+}
 
-      const frontmatter = matterResult.data as Omit<Language, 'content' | 'url'>;
-
-      return {
-        ...frontmatter,
-        content: matterResult.content,
-        url: `/languages/${frontmatter.slug}`,
-      } as Language;
-    });
-
-    return allLanguagesData.sort((a, b) => a.name.localeCompare(b.name));
-  } catch (error) {
-    console.error("Could not read languages directory:", error);
-    return [];
-  }
+export function getLanguageBySlug(slug: string): Language | undefined {
+  return fetchAllLanguages().find(lang => lang.slug === slug);
 }
