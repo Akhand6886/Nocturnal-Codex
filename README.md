@@ -21,8 +21,9 @@ The project follows a standard Next.js App Router structure. Here are the key di
 
 ```
 nocturnal-codex/
-├── content/          # Markdown files for languages.
-│   └── languages/
+├── content/          # Markdown files for languages and roadmaps.
+│   ├── languages/
+│   └── roadmaps/
 ├── public/           # Static assets like images and fonts.
 │   └── roadmap-content/ # JSON files for developer roadmaps.
 ├── src/
@@ -42,7 +43,7 @@ nocturnal-codex/
 │   ├── lib/            # Utility functions, data sources, and API clients.
 │   │   ├── contentful.ts # Functions for fetching data from Contentful.
 │   │   ├── languages.ts  # Functions for reading language data from markdown.
-│   │   ├── data.ts       # Mock data for wiki articles and navigation.
+│   │   ├── roadmaps.ts   # Functions for reading roadmap data from markdown.
 │   │   └── utils.ts      # General utility functions (e.g., cn for classnames).
 │   └── types/          # TypeScript type definitions (e.g., BlogPost, ThinkTankArticle).
 └── next.config.ts    # Configuration for Next.js.
@@ -60,34 +61,29 @@ The application's routing is file-system based, managed by the Next.js App Route
 -   `/think-tank/[slug]`: `src/app/think-tank/[slug]/page.tsx` (Displays a single article)
 -   `/roadmaps`: `src/app/roadmaps/page.tsx` (Lists all available developer roadmaps)
 -   `/roadmaps/[roadmapId]`: `src/app/roadmaps/[roadmapId]/page.tsx` (Displays an interactive roadmap)
--   `/wiki`: `src/app/wiki/page.tsx` (The main wiki page)
--   `/wiki/[slug]`: `src/app/wiki/[slug]/page.tsx` (A specific wiki article)
 -   `/languages`: `src/app/languages/page.tsx` (Lists all programming languages)
 -   `/contact`: `src/app/contact/page.tsx`
 
 ## 4. Data Fetching & Content Management
 
-The site uses a hybrid approach for content, sourcing it from a Headless CMS, local Markdown/JSON files, and static mock data.
+The site uses a hybrid approach for content, sourcing it from a Headless CMS and local Markdown/JSON files.
 
 ### Contentful API (Blog & Think Tank)
 
 -   **Purpose**: Manages dynamic, long-form content that may be updated frequently by content editors. This includes all blog posts and think tank articles.
 -   **Implementation**: The `src/lib/contentful.ts` file contains the logic to connect to the Contentful Delivery API.
 
-### Local Markdown Files (Languages)
+### Local Markdown Files (Languages & Roadmaps)
 
--   **Purpose**: Manages the content for individual programming languages.
--   **Implementation**: The `src/lib/languages.ts` file uses Node.js `fs` and the `gray-matter` library to read and parse the markdown files located in the `content/languages/` directory.
+-   **Purpose**: Manages the metadata and content for individual programming languages and developer roadmaps. This approach is great for content that is version-controlled alongside the codebase.
+-   **Implementation**:
+    -   `src/lib/languages.ts` uses Node.js `fs` and the `gray-matter` library to read and parse the markdown files located in the `content/languages/` directory.
+    -   `src/lib/roadmaps.ts` uses the same technique for markdown files in `content/roadmaps/`.
 
 ### Static JSON (Developer Roadmaps)
 
 -   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps.
 -   **Implementation**: The `EditorRoadmapRenderer` component in `src/components/EditorRoadmap/EditorRoadmapRenderer.tsx` fetches the corresponding JSON file (e.g., `frontend.json`) from the `public/roadmap-content/` directory and renders it using `@xyflow/react`.
-
-### Mock Data (Wiki Articles & Navigation)
-
--   **Purpose**: For foundational site content that is relatively static, like wiki articles and navigation links.
--   **Implementation**: The file `src/lib/data.ts` contains exported arrays of TypeScript objects (e.g., `MOCK_WIKI_ARTICLES`, `NAV_ITEMS`). This is fast and type-safe but requires a developer to update content.
 
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 
