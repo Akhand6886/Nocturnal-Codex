@@ -22,6 +22,7 @@ export function Footer() {
               <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
               <li><Link href="/roadmaps" className="text-sm text-muted-foreground hover:text-primary transition-colors">Roadmaps</Link></li>
               <li><Link href="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
+              <li><Link href="/languages" className="text-sm text-muted-foreground hover:text-primary transition-colors">Languages</Link></li>
             </ul>
           </div>
 
@@ -29,9 +30,9 @@ export function Footer() {
           <div>
             <h4 className="text-md font-semibold text-foreground mb-3">Reference</h4>
             <ul className="space-y-2">
-              <li><Link href="/wiki" className="text-sm text-muted-foreground hover:text-primary transition-colors">Wiki</Link></li>
               <li><Link href="/think-tank" className="text-sm text-muted-foreground hover:text-primary transition-colors">Think Tank</Link></li>
               <li><Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About</Link></li>
+              <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
         </div>

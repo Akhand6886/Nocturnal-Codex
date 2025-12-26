@@ -26,7 +26,7 @@ export default async function ThinkTankPage() {
         </p>
       </header>
       
-      {articles.length > 0 ? (
+      {articles && articles.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
           {articles.map((article) => (
             <ThinkTankArticleCard key={article.id} article={article} />

@@ -21,6 +21,7 @@ export async function generateStaticParams() {
     return [];
   }
   const articles = await fetchThinkTankArticles({ limit: 50 });
+  if (!articles) return [];
   return articles.map((article) => ({
     slug: article.slug,
   }));
