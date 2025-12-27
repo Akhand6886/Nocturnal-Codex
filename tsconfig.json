@@ -22,8 +22,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": ["./src/*"]
     },
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": false,
@@ -34,9 +33,7 @@
     "**/*.ts", 
     "**/*.tsx", 
     "**/*.mdx",
-    ".next/types/**/*.ts", 
-    "contentlayer.config.ts", 
-    ".contentlayer/generated/**/*.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
