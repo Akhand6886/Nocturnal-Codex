@@ -54,7 +54,8 @@
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 0% 100%; /* White */
+    /* Keep primary vibrant for gradient */
+    --primary: 180 100% 45%; /* A slightly brighter teal for dark mode contrast */
     --primary-foreground: 0 0% 5%;
 
     --secondary: 0 0% 20%;
@@ -63,7 +64,8 @@
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 0 0% 50%; /* Muted gray */
+    /* Keep accent vibrant for gradient */
+    --accent: 45 90% 55%; /* A slightly brighter gold for dark mode contrast */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 65% 55%;
