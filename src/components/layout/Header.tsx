@@ -1,4 +1,3 @@
-
 # Nocturnal Codex: Project Documentation
 
 Welcome to the Nocturnal Codex, a digital sanctuary for deep dives into computer science, mathematics, and theoretical domains. This document provides a comprehensive overview of the project's architecture, technology stack, data management, and core functionalities.
