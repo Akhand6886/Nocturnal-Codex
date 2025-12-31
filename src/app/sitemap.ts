@@ -2,11 +2,12 @@
 import { MetadataRoute } from 'next';
 import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
 import { getAllLanguages } from '@/lib/languages';
+import { getAllRoadmaps } from '@/lib/roadmaps';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages: MetadataRoute.Sitemap = [
+  const staticRoutes = [
     '/',
     '/about',
     '/blog',
@@ -16,7 +17,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/think-tank',
     '/languages',
     '/roadmaps'
-  ].map((route) => ({
+  ];
+
+  const staticPages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: route === '/' ? 'daily' : 'weekly',
@@ -46,8 +49,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.6,
   }));
+  
+  const allRoadmaps = getAllRoadmaps();
+  const roadmapPages: MetadataRoute.Sitemap = allRoadmaps.map(roadmap => ({
+      url: `${BASE_URL}/roadmaps/${roadmap.slug}`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+  }));
 
-  const uniqueTags = Array.from(new Set(blogPostsData.flatMap(post => post.tags || [])));
+  const uniqueTags = Array.from(new Set(blogPostsData.flatMap(post => post.tags || []).filter(Boolean)));
   const tagDetailPages: MetadataRoute.Sitemap = uniqueTags.map((tag) => ({
     url: `${BASE_URL}/tags/${encodeURIComponent(tag.toLowerCase())}`,
     lastModified: new Date().toISOString(),
@@ -68,6 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...blogPosts,
     ...thinkTankArticles,
     ...languagePages,
+    ...roadmapPages,
     ...tagDetailPages,
     ...categoryDetailPages,
   ];

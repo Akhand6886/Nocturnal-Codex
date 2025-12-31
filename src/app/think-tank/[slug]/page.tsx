@@ -153,18 +153,21 @@ export async function generateMetadata({ params }: ThinkTankArticlePageProps): P
   if (!article) {
     return { title: "Article Not Found | Nocturnal Codex" };
   }
+
+  const plainTextDescription = richTextToPlainText(article.abstract);
+
   return {
     title: `${article.title} | Think Tank | Nocturnal Codex`,
-    description: richTextToPlainText(article.abstract),
+    description: plainTextDescription,
     openGraph: {
       title: article.title,
-      description: richTextToPlainText(article.abstract),
-      images: article.featuredImage ? [article.featuredImage.url] : [],
+      description: plainTextDescription,
+      images: article.featuredImage ? [{ url: article.featuredImage.url, width: article.featuredImage.width, height: article.featuredImage.height, alt: article.featuredImage.alt }] : [],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
-      description: richTextToPlainText(article.abstract),
+      description: plainTextDescription,
       images: article.featuredImage ? [article.featuredImage.url] : [],
     }
   };
