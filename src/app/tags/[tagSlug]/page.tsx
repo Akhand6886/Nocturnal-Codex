@@ -11,6 +11,7 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
+  if (!posts) return [];
   const tags = posts.flatMap(post => post.tags || []);
   const uniqueTags = Array.from(new Set(tags.filter(Boolean)));
   
@@ -19,12 +20,14 @@ export async function generateStaticParams() {
   }));
 }
 
+// Corrected interface - params is a plain object
 interface TagPageProps {
   params: { tagSlug: string };
 }
 
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
-  const tagName = decodeURIComponent(params.tagSlug);
+  const { tagSlug } = params;
+  const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
   return {
     title: `Posts tagged "${capitalizedTagName}" | Nocturnal Codex`,
@@ -35,6 +38,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
 async function getPostsByTag(tagSlug: string): Promise<BlogPost[]> {
   const tagName = decodeURIComponent(tagSlug);
   const allPosts = await fetchBlogPosts();
+  if (!allPosts) return [];
   const posts = allPosts.filter(post => 
     post.tags?.some(tag => tag.toLowerCase() === tagName.toLowerCase())
   );

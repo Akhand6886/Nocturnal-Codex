@@ -1,8 +1,15 @@
+
 // src/components/content/tutorial-card.tsx
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import type { TutorialPost } from 'contentlayer/generated';
 import { ArrowRight } from 'lucide-react';
+
+// Faked type since contentlayer is gone
+interface TutorialPost {
+    url: string;
+    title: string;
+    description?: string;
+}
 
 interface TutorialCardProps {
   tutorial: TutorialPost;

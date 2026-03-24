@@ -1,0 +1,110 @@
+{
+    "nodes": [
+      {
+        "id": "ml-intro",
+        "type": "default",
+        "position": { "x": 400, "y": 50 },
+        "data": {
+          "label": "Machine Learning",
+          "description": "Machine Learning is a subset of AI focused on building systems that learn from data.",
+          "resources": []
+        },
+        "className": "section-header"
+      },
+      {
+        "id": "intro",
+        "type": "default",
+        "position": { "x": 400, "y": 150 },
+        "data": {
+          "label": "Introduction",
+          "description": "Get started with machine learning fundamentals",
+          "resources": [
+            {
+              "title": "What is an ML Engineer?",
+              "url": "https://example.com",
+              "type": "article"
+            }
+          ]
+        },
+        "className": "highlight"
+      },
+      {
+        "id": "calculus",
+        "type": "default",
+        "position": { "x": 150, "y": 250 },
+        "data": {
+          "label": "Calculus",
+          "description": "Learn differential and integral calculus",
+          "resources": [
+            {
+              "title": "Calculus Tutorial",
+              "url": "https://example.com",
+              "type": "video"
+            }
+          ]
+        },
+        "className": "highlight"
+      },
+      {
+        "id": "linear-algebra",
+        "type": "default",
+        "position": { "x": 400, "y": 250 },
+        "data": {
+          "label": "Linear Algebra",
+          "description": "Master vectors, matrices, and linear transformations",
+          "resources": [
+            {
+              "title": "Linear Algebra Course",
+              "url": "https://example.com",
+              "type": "course"
+            }
+          ]
+        },
+        "className": ""
+      },
+      {
+        "id": "python",
+        "type": "default",
+        "position": { "x": 650, "y": 250 },
+        "data": {
+          "label": "Python",
+          "description": "Learn Python programming fundamentals",
+          "resources": [
+            {
+              "title": "Python for ML",
+              "url": "https://example.com",
+              "type": "article"
+            }
+          ]
+        },
+        "className": "highlight"
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "ml-intro",
+        "target": "intro",
+        "type": "default"
+      },
+      {
+        "id": "e2",
+        "source": "intro",
+        "target": "calculus",
+        "type": "default"
+      },
+      {
+        "id": "e3",
+        "source": "intro",
+        "target": "linear-algebra",
+        "type": "default"
+      },
+      {
+        "id": "e4",
+        "source": "intro",
+        "target": "python",
+        "type": "default"
+      }
+    ]
+  }
+  

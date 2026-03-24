@@ -1,57 +1,104 @@
 
-// src/components/layout/tutorial-sidebar.tsx
 'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
-import type { TutorialPost } from 'contentlayer/generated';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { SimpleIcon } from '@/components/common/simple-icon';
 
-interface TutorialSidebarProps {
-  groupedTutorials: Record<string, TutorialPost[]>;
-  currentLanguageSlug: string;
+// Faked types since contentlayer is gone
+interface TutorialPost {
+    slug: string;
+    url: string;
+    title: string;
+    category?: string;
+    order: number;
+}
+interface LanguagePost {
+    slug: string;
+    iconName?: string;
+    name: string;
 }
 
-export function TutorialSidebar({ groupedTutorials, currentLanguageSlug }: TutorialSidebarProps) {
-  const pathname = usePathname();
+interface TutorialSidebarProps {
+  tutorials: TutorialPost[];
+  currentLanguage: string;
+}
 
+// Faked data since contentlayer is gone
+const allLanguagePosts: LanguagePost[] = [];
+
+export function TutorialSidebar({ tutorials, currentLanguage }: TutorialSidebarProps) {
+  const pathname = usePathname();
+  const language = allLanguagePosts.find(lang => lang.slug === currentLanguage);
+
+  const groupedTutorials = tutorials.reduce((acc, tutorial) => {
+    const category = tutorial.category || 'General';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(tutorial);
+    return acc;
+  }, {} as Record<string, TutorialPost[]>);
+
+  // Sort tutorials within each category by their order property
+  for (const category in groupedTutorials) {
+    groupedTutorials[category].sort((a, b) => a.order - b.order);
+  }
+
+  // Sort the categories based on the minimum order of tutorials within them
   const sortedCategories = Object.keys(groupedTutorials).sort((a, b) => {
-    const minOrderA = Math.min(...groupedTutorials[a].map(p => p.order));
-    const minOrderB = Math.min(...groupedTutorials[b].map(p => p.order));
-    return minOrderA - minOrderB;
+    const getMinOrder = (categoryName: string): number => {
+      const tutorialsInCategory = groupedTutorials[categoryName];
+      if (!tutorialsInCategory || tutorialsInCategory.length === 0) {
+        return Infinity;
+      }
+      return tutorialsInCategory.reduce((min, t) => Math.min(min, t.order), Infinity);
+    };
+
+    const orderA = getMinOrder(a);
+    const orderB = getMinOrder(b);
+    
+    if (orderA !== Infinity && orderB !== Infinity) {
+      return orderA - orderB;
+    }
+    // Fallback to localeCompare if orders are not available
+    return a.localeCompare(b);
   });
-  
-  const defaultExpandedCategories = sortedCategories;
 
   return (
-    <nav className="w-full">
-      <Accordion type="multiple" defaultValue={defaultExpandedCategories} className="w-full">
+    <aside className="sticky top-20 hidden h-[calc(100vh-5rem)] w-64 flex-shrink-0 md:block">
+      <ScrollArea className="h-full pr-4">
+        <div className="mb-6 flex items-center gap-3">
+            {language && <SimpleIcon iconName={language.iconName || 'code'} className="w-8 h-8 text-primary" />}
+            <h3 className="text-lg font-semibold text-foreground">{language?.name || currentLanguage} Tutorials</h3>
+        </div>
+        <div className="space-y-6">
           {sortedCategories.map((category) => (
-              <AccordionItem value={category} key={category} className="border-b-0 mb-1">
-                  <AccordionTrigger className="py-2 px-3 text-sm font-semibold text-foreground/80 hover:no-underline hover:bg-muted/50 rounded-md data-[state=open]:bg-muted/60">
-                      {category}
-                  </AccordionTrigger>
-                  <AccordionContent className="pl-3 mt-1 space-y-1">
-                      {groupedTutorials[category].map((tutorial) => (
-                          <li key={tutorial.slug} className="list-none">
-                          <Link
-                              href={tutorial.url}
-                              className={cn(
-                              'block w-full py-1.5 px-3 text-sm rounded-md transition-colors',
-                              pathname === tutorial.url
-                                  ? 'bg-primary text-primary-foreground font-medium'
-                                  : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
-                              )}
-                          >
-                              {tutorial.title}
-                          </Link>
-                          </li>
-                      ))}
-                  </AccordionContent>
-              </AccordionItem>
+            <div key={category}>
+              <h4 className="mb-2 text-sm font-semibold text-muted-foreground">{category}</h4>
+              <ul className="space-y-1">
+                {groupedTutorials[category].map((tutorial) => (
+                  <li key={tutorial.slug}>
+                    <Link
+                      href={tutorial.url}
+                      className={cn(
+                        'block rounded-md px-3 py-1.5 text-sm transition-colors',
+                        pathname === tutorial.url
+                          ? 'bg-primary/10 font-semibold text-primary'
+                          : 'text-foreground/80 hover:bg-muted/50 hover:text-foreground'
+                      )}
+                    >
+                      {tutorial.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-      </Accordion>
-    </nav>
+        </div>
+      </ScrollArea>
+    </aside>
   );
 }

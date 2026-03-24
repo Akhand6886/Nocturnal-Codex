@@ -11,8 +11,8 @@ export default {
   theme: {
   	extend: {
       fontFamily: {
-        sans: ['var(--font-inter)'], 
-        mono: ['var(--font-roboto-mono)'], 
+        sans: ['var(--font-quicksand)'], 
+        mono: ['var(--font-inconsolata)'], 
       },
   		colors: {
   			background: 'hsl(var(--background))',

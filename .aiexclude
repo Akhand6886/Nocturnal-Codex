@@ -1,0 +1,4 @@
+# Folders to exclude from AI processing
+.contentlayer/
+.next/
+node_modules/

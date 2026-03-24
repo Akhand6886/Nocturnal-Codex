@@ -1,0 +1,36 @@
+
+import { RoadmapCard } from '@/components/Roadmaps/RoadmapCard';
+import { BookMarked } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getAllRoadmaps } from '@/lib/roadmaps';
+
+export const metadata: Metadata = {
+  title: 'Developer Roadmaps',
+  description: 'Step-by-step guides and paths to learn different tools and technologies.',
+};
+
+export default function RoadmapsPage() {
+  const roadmaps = getAllRoadmaps();
+
+  return (
+    <div className="container mx-auto px-4 py-10 md:py-12">
+      <header className="pb-6 border-b border-border">
+        <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
+          <BookMarked className="mr-4 h-10 w-10 text-primary" />
+          Developer Roadmaps
+        </h1>
+        <p className="mt-3 text-lg text-muted-foreground">
+          Step-by-step guides and paths to learn different tools and technologies.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10">
+        {roadmaps.map((roadmap) => (
+          <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+    
