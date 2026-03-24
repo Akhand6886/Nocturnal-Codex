@@ -40,7 +40,6 @@ export function ContactForm() {
   });
 
   async function onSubmit(data: ContactFormValues) {
-    form.control.disabled = true;
     console.log("Form submitted (demonstration only):", data);
     try {
       // Simulate a delay
@@ -60,7 +59,7 @@ export function ContactForm() {
         variant: "destructive",
       });
     } finally {
-       form.control.disabled = false;
+       // isSubmitting state handles disabling automatically
     }
   }
 

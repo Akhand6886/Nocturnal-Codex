@@ -27,12 +27,12 @@ export async function generateStaticParams() {
 
 // Corrected interface - params is a plain object
 interface CategoryPageProps {
-  params: { categorySlug: string };
+  params: Promise<{ categorySlug: string }>;
 }
 
 // generateMetadata - no await on params
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const { categorySlug } = params;
+  const { categorySlug } = await params;
   const originalCategoryName = deslugifyCategory(categorySlug);
   return {
     title: `Posts in category "${originalCategoryName}" | Nocturnal Codex`,
@@ -62,7 +62,7 @@ async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPo
 
 // Page component - no await on params
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { categorySlug } = params;
+  const { categorySlug } = await params;
   const { posts: postsInCategory, actualCategoryName } = await getPostsByCategory(categorySlug);
 
   if (postsInCategory.length === 0) {

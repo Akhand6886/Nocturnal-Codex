@@ -1,7 +1,7 @@
 
 import { cn } from "@/lib/utils";
 
-interface SimpleIconProps extends React.SVGProps<SVGSVGElement> {
+interface SimpleIconProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   iconName: string;
 }
 

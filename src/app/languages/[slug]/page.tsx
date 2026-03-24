@@ -17,12 +17,13 @@ export async function generateStaticParams() {
 }
 
 interface LanguagePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // Generate dynamic metadata for each language page
 export async function generateMetadata({ params }: LanguagePageProps): Promise<Metadata> {
-  const lang = getLanguageBySlug(params.slug);
+  const { slug } = await params;
+  const lang = getLanguageBySlug(slug);
   
   if (!lang) {
     return {
@@ -37,7 +38,8 @@ export async function generateMetadata({ params }: LanguagePageProps): Promise<M
 
 // The main page component
 export default async function LanguagePage({ params }: LanguagePageProps) {
-  const lang = getLanguageBySlug(params.slug);
+  const { slug } = await params;
+  const lang = getLanguageBySlug(slug);
 
   if (!lang) {
     notFound();

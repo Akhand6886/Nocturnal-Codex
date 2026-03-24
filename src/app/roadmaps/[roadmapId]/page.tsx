@@ -15,12 +15,12 @@ export async function generateStaticParams() {
 }
 
 interface RoadmapDetailsPageProps {
-  params: { roadmapId: string };
+  params: Promise<{ roadmapId: string }>;
 }
 
 // Function to generate metadata for the page
 export async function generateMetadata({ params }: RoadmapDetailsPageProps): Promise<Metadata> {
-  const roadmapId = params.roadmapId;
+  const { roadmapId } = await params;
   const roadmapMeta = getRoadmapBySlug(roadmapId);
   
   if (!roadmapMeta) {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: RoadmapDetailsPageProps): Pro
 
 // The main page component
 export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageProps) {
-  const { roadmapId } = params;
+  const { roadmapId } = await params;
   const roadmapMeta = getRoadmapBySlug(roadmapId);
 
   // The roadmap *data* (nodes/edges) is fetched on the client by the renderer

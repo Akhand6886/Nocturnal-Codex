@@ -13,7 +13,7 @@ const defaultOgImage = `${siteUrl}/images/og-default.png`;
 
 // Corrected interface - params is a plain object
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // generateStaticParams return type is correct
@@ -32,7 +32,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 
 // Page component - no await on params
 export default async function PostPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await fetchBlogPostBySlug(slug);
   
   if (!post) {
@@ -66,7 +66,7 @@ export default async function PostPage({ params }: PageProps) {
 
 // generateMetadata - no await on params
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await fetchBlogPostBySlug(slug);
 
   if (!post) {

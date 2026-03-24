@@ -22,11 +22,11 @@ export async function generateStaticParams() {
 
 // Corrected interface - params is a plain object
 interface TagPageProps {
-  params: { tagSlug: string };
+  params: Promise<{ tagSlug: string }>;
 }
 
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
-  const { tagSlug } = params;
+  const { tagSlug } = await params;
   const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
   return {
@@ -46,7 +46,7 @@ async function getPostsByTag(tagSlug: string): Promise<BlogPost[]> {
 }
 
 export default async function TagPage({ params }: TagPageProps) {
-  const { tagSlug } = params;
+  const { tagSlug } = await params;
   const postsWithTag = await getPostsByTag(tagSlug);
   const tagName = decodeURIComponent(tagSlug);
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
