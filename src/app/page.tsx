@@ -34,7 +34,7 @@ export default async function HomePage() {
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
       <HeroTextGradientStyle />
       {/* Hero Section */}
-      <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-primary/10 to-accent/15 rounded-xl shadow-2xl overflow-hidden">
+      <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-secondary/30 to-muted/20 rounded-xl shadow-2xl overflow-hidden">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end animate-text-gradient-flow">
             For Hackers, Theorists, Builders, Learners.
@@ -58,7 +58,7 @@ export default async function HomePage() {
       {/* Featured Roadmaps Section */}
       {featuredRoadmaps.length > 0 && (
       <section>
-        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90">
+        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/30 flex items-center text-foreground/90">
             <BookMarked className="mr-3 h-7 w-7 text-primary" />
             Featured Roadmaps
         </h2>
@@ -80,7 +80,7 @@ export default async function HomePage() {
       {/* Featured Languages Section */}
       {featuredLanguages.length > 0 && (
       <section>
-        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90">
+        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/30 flex items-center text-foreground/90">
             <Code2 className="mr-3 h-7 w-7 text-primary" />
             Featured Languages
         </h2>
@@ -109,7 +109,7 @@ export default async function HomePage() {
       {/* Featured Posts Section */}
       {featuredBlogPosts.length > 0 && (
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90">
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/30 flex items-center text-foreground/90">
             <Star className="mr-3 h-7 w-7 text-primary" />
             Featured Insights
           </h2>
@@ -125,7 +125,7 @@ export default async function HomePage() {
       <div className="grid md:grid-cols-2 gap-12 pt-8 border-t border-border">
         {/* Recent Blog Posts Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/70 flex items-center text-foreground/90"> 
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/30 flex items-center text-foreground/90"> 
             <FileText className="mr-3 h-7 w-7 text-primary" />
             Latest From The Blog
           </h2>
@@ -147,7 +147,7 @@ export default async function HomePage() {
 
         {/* Think Tank Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-accent/70 flex items-center text-foreground/90">
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-accent/30 flex items-center text-foreground/90">
             <Brain className="mr-3 h-7 w-7 text-accent" />
             From the Think Tank
           </h2>

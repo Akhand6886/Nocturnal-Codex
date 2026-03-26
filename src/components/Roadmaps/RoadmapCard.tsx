@@ -23,7 +23,7 @@ interface RoadmapCardProps {
 export function RoadmapCard({ roadmap }: RoadmapCardProps) {
   return (
     <Link href={roadmap.url} className="group block h-full">
-      <Card className="h-full flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-primary/25 transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 bg-card border border-border/50 hover:border-primary/60 rounded-xl">
+      <Card className="h-full flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-primary/15 transition-all duration-300 ease-in-out transform hover:-translate-y-1.5 bg-card border border-border/50 hover:border-primary/40 rounded-xl">
         <CardHeader className="pb-3 pt-5">
             <div className="flex items-start gap-4 mb-2">
                 <div className="p-2 bg-primary/10 rounded-lg">

@@ -33,7 +33,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
   
   return (
     <Link href={post.url} className="group block">
-        <Card className="flex h-full flex-col overflow-hidden shadow-lg hover:shadow-primary/30 border border-border/50 hover:border-primary/60 transition-all duration-300 ease-in-out bg-card group rounded-xl">
+        <Card className="flex h-full flex-col overflow-hidden shadow-lg hover:shadow-primary/15 border border-border/50 hover:border-primary/40 transition-all duration-300 ease-in-out bg-card group rounded-xl">
             <div className="relative h-52 w-full overflow-hidden rounded-t-xl">
                 <Image
                 src={imageUrl}

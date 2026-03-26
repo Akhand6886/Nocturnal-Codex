@@ -20,7 +20,7 @@ export function ThinkTankArticleCard({ article }: ThinkTankArticleCardProps) {
   
   return (
     <Link href={article.url} className="group block">
-        <Card className="flex h-full flex-col overflow-hidden shadow-lg hover:shadow-accent/30 border border-border/50 hover:border-accent/60 transition-all duration-300 ease-in-out bg-card group rounded-xl">
+        <Card className="flex h-full flex-col overflow-hidden shadow-lg hover:shadow-accent/15 border border-border/50 hover:border-accent/40 transition-all duration-300 ease-in-out bg-card group rounded-xl">
         {imageUrl && (
             <div className="relative h-60 w-full overflow-hidden rounded-t-xl">
             <Image
