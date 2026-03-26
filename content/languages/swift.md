@@ -12,6 +12,45 @@ website: "https://swift.org/"
 category: "Mobile"
 featured: false
 difficulty: "Intermediate"
+topics:
+  - section: "Basics"
+    items:
+      - title: "Introduction to Swift"
+        description: "Swift's safety features, Xcode setup, and Playgrounds"
+      - title: "Variables & Constants"
+        description: "let vs var, type inference, and type annotations"
+      - title: "Data Types"
+        description: "Strings, Int, Double, Bool, tuples, and Any/AnyObject"
+      - title: "Control Flow"
+        description: "if/else, guard, switch (pattern matching), for-in, while"
+      - title: "Optionals"
+        description: "Optional binding, nil coalescing, forced unwrapping, and optional chaining"
+  - section: "Functions & Closures"
+    items:
+      - title: "Functions"
+        description: "External/internal names, default values, inout, and throwing functions"
+      - title: "Closures"
+        description: "Trailing closures, capturing values, @escaping, and shorthand syntax"
+      - title: "Enums"
+        description: "Associated values, raw values, CaseIterable, and indirect enums"
+  - section: "OOP & Protocols"
+    items:
+      - title: "Structs vs Classes"
+        description: "Value vs reference semantics, mutating, and when to use each"
+      - title: "Protocols"
+        description: "Protocol definition, conformance, extensions, and PATs"
+      - title: "Generics"
+        description: "Generic types, functions, associated types, and where clauses"
+      - title: "Extensions"
+        description: "Adding functionality to existing types, protocol extensions"
+  - section: "SwiftUI & Modern Swift"
+    items:
+      - title: "SwiftUI Basics"
+        description: "Declarative views, @State, @Binding, @ObservedObject"
+      - title: "Concurrency"
+        description: "async/await, Task, actor model, and structured concurrency"
+      - title: "Result Builders"
+        description: "@ViewBuilder and custom DSLs with result builders"
 ---
 
 ## Overview
@@ -29,7 +68,6 @@ Swift is a powerful and intuitive programming language developed by Apple for iO
 ## Code Example
 
 ```swift
-// Swift optionals and protocol-oriented programming
 protocol Describable {
     var description: String { get }
 }

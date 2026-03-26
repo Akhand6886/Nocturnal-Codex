@@ -12,24 +12,54 @@ website: "https://www.w3.org/Style/CSS/"
 category: "Web"
 featured: false
 difficulty: "Beginner"
+topics:
+  - section: "Basics"
+    items:
+      - title: "Selectors"
+        description: "Element, class, ID, attribute, pseudo-class, and combinators"
+      - title: "Box Model"
+        description: "Content, padding, border, margin, and box-sizing"
+      - title: "Colors & Typography"
+        description: "Color formats, fonts, line-height, letter-spacing"
+      - title: "Units"
+        description: "px, em, rem, %, vh/vw, and when to use each"
+  - section: "Layout"
+    items:
+      - title: "Flexbox"
+        description: "Flex container, items, alignment, wrapping, and ordering"
+      - title: "Grid"
+        description: "Grid template, areas, auto-fill, minmax, and subgrid"
+      - title: "Positioning"
+        description: "static, relative, absolute, fixed, sticky"
+      - title: "Responsive Design"
+        description: "Media queries, container queries, and mobile-first approach"
+  - section: "Modern CSS"
+    items:
+      - title: "Custom Properties"
+        description: "CSS variables, theming, and dynamic values"
+      - title: "Animations"
+        description: "@keyframes, transitions, and performance optimization"
+      - title: "Nesting"
+        description: "Native CSS nesting without preprocessors"
+      - title: "Container Queries"
+        description: "Component-level responsive design"
 ---
 
 ## Overview
 
-CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of HTML documents. Modern CSS has evolved far beyond simple color and font changes — it now supports grid and flexbox layouts, custom properties (variables), container queries, nesting, and complex animations. CSS is no longer "just styling"; it's a powerful layout and design engine.
+CSS (Cascading Style Sheets) describes the presentation of HTML documents. Modern CSS supports grid and flexbox layouts, custom properties, container queries, nesting, and complex animations.
 
 ## Key Features
 
-- **Flexbox & Grid** — Powerful two-dimensional layout systems
+- **Flexbox & Grid** — Powerful layout systems
 - **Custom Properties** — CSS variables for dynamic theming
 - **Container Queries** — Component-level responsive design
-- **Animations & Transitions** — Smooth, hardware-accelerated motion
-- **Nesting** — Native CSS nesting (no preprocessor needed)
+- **Animations & Transitions** — Hardware-accelerated motion
+- **Nesting** — Native CSS nesting
 
 ## Code Example
 
 ```css
-/* Modern CSS with custom properties and grid */
 :root {
   --primary: hsl(180, 100%, 30%);
   --bg: hsl(220, 20%, 4%);

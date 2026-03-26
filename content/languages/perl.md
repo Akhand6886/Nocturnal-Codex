@@ -12,19 +12,48 @@ website: "https://www.perl.org/"
 category: "General Purpose"
 featured: false
 difficulty: "Intermediate"
+topics:
+  - section: "Basics"
+    items:
+      - title: "Introduction to Perl"
+        description: "Perl 5 vs Perl 7, CPAN, and the Perl philosophy"
+      - title: "Variables"
+        description: "Scalars ($), arrays (@), hashes (%), and context"
+      - title: "Regular Expressions"
+        description: "Pattern matching, substitution, and capture groups"
+      - title: "Control Flow"
+        description: "if/unless, while/until, for/foreach, and given/when"
+  - section: "Data & Subroutines"
+    items:
+      - title: "Subroutines"
+        description: "sub, @_, return, and prototypes"
+      - title: "References"
+        description: "Scalar refs, array refs, hash refs, and dereferencing"
+      - title: "File I/O"
+        description: "open, read, write, and filehandles"
+      - title: "Modules"
+        description: "use, require, Exporter, and CPAN module management"
+  - section: "Advanced"
+    items:
+      - title: "OOP in Perl"
+        description: "bless, method dispatch, and Moose/Moo"
+      - title: "One-Liners"
+        description: "Powerful command-line text processing with perl -e/-p/-n"
+      - title: "Text Processing"
+        description: "String manipulation, parsing, and report generation"
 ---
 
 ## Overview
 
-Perl is a family of high-level, general-purpose, interpreted, dynamic programming languages. Originally developed for text manipulation, it has grown to be used for system administration, web development, network programming, GUI development, and bioinformatics. Perl's powerful built-in support for regular expressions and text processing makes it the "Swiss army chainsaw" of programming languages.
+Perl is a family of high-level, general-purpose, interpreted, dynamic programming languages. Originally developed for text manipulation, it has grown to be used for system administration, web development, network programming, and bioinformatics. Perl's powerful built-in regular expression support makes it the "Swiss army chainsaw" of programming.
 
 ## Key Features
 
-- **Regex mastery** — First-class regular expression support integrated into the language
-- **CPAN** — Comprehensive Perl Archive Network with over 200,000 modules
+- **Regex mastery** — First-class regular expression support
+- **CPAN** — Over 200,000 modules
 - **Text processing** — Unmatched string manipulation capabilities
-- **TMTOWTDI** — "There's More Than One Way To Do It" philosophy
-- **One-liners** — Powerful command-line scripting capabilities
+- **TMTOWTDI** — "There's More Than One Way To Do It"
+- **One-liners** — Powerful command-line scripting
 
 ## Code Example
 
@@ -33,7 +62,6 @@ Perl is a family of high-level, general-purpose, interpreted, dynamic programmin
 use strict;
 use warnings;
 
-# Perl's regex power: extract emails from text
 my $text = "Contact us at info\@example.com or support\@nocturnal.dev";
 my @emails = ($text =~ /[\w.+-]+\@[\w.-]+\.\w+/g);
 

@@ -12,11 +12,46 @@ website: "https://www.r-project.org/"
 category: "Data"
 featured: false
 difficulty: "Intermediate"
+topics:
+  - section: "Basics"
+    items:
+      - title: "Introduction to R"
+        description: "RStudio, REPL, and the R ecosystem"
+      - title: "Data Types"
+        description: "Vectors, factors, matrices, lists, and data frames"
+      - title: "Operators & Control Flow"
+        description: "Vectorized operations, if/else, for, apply family"
+      - title: "Functions"
+        description: "Function definition, scoping, and anonymous functions"
+  - section: "Data Manipulation"
+    items:
+      - title: "Tidyverse"
+        description: "dplyr, tidyr, stringr, and the pipe operator (%>%)"
+      - title: "Data Import/Export"
+        description: "readr, readxl, and database connections"
+      - title: "Data Wrangling"
+        description: "filter, mutate, group_by, summarise, joins"
+  - section: "Visualization"
+    items:
+      - title: "ggplot2"
+        description: "Grammar of Graphics, geoms, aesthetics, and themes"
+      - title: "Interactive Plots"
+        description: "plotly, Shiny dashboards, and htmlwidgets"
+      - title: "R Markdown"
+        description: "Reproducible reports, Quarto, and literate programming"
+  - section: "Statistics & ML"
+    items:
+      - title: "Statistical Tests"
+        description: "t-test, chi-square, ANOVA, and regression"
+      - title: "Machine Learning"
+        description: "caret, tidymodels, random forests, and cross-validation"
+      - title: "Time Series"
+        description: "ARIMA, forecasting, and zoo/xts packages"
 ---
 
 ## Overview
 
-R is a programming language and software environment for statistical computing and graphics. It is widely used among statisticians and data miners for developing statistical software and data analysis. R provides a wide variety of statistical techniques (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering) and graphical techniques through its extensive package ecosystem (CRAN).
+R is a programming language and software environment for statistical computing and graphics. It provides a wide variety of statistical techniques and graphical techniques through its extensive package ecosystem (CRAN with 19,000+ packages).
 
 ## Key Features
 
@@ -29,7 +64,6 @@ R is a programming language and software environment for statistical computing a
 ## Code Example
 
 ```r
-# R data analysis with tidyverse
 library(dplyr)
 library(ggplot2)
 

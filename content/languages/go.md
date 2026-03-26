@@ -12,6 +12,64 @@ website: "https://go.dev/"
 category: "Systems"
 featured: true
 difficulty: "Beginner"
+topics:
+  - section: "Basics"
+    description: "Go fundamentals — syntax, types, and program structure."
+    items:
+      - title: "Introduction to Go"
+        description: "Why Go, installation, go run, and Hello World"
+      - title: "Variables & Types"
+        description: "var, :=, basic types, zero values, and type conversion"
+      - title: "Functions"
+        description: "Multiple return values, named returns, and variadic functions"
+      - title: "Control Flow"
+        description: "if, switch (no break needed), for (the only loop), defer"
+      - title: "Packages & Imports"
+        description: "Package system, visibility (capitalization), and go mod"
+  - section: "Data Structures"
+    description: "Go's built-in composite types."
+    items:
+      - title: "Arrays & Slices"
+        description: "Fixed-size arrays, dynamic slices, append, copy, and capacity"
+      - title: "Maps"
+        description: "Hash maps, iteration, delete, and comma-ok idiom"
+      - title: "Structs"
+        description: "Field types, embedding, methods, and pointer receivers"
+      - title: "Pointers"
+        description: "Address-of (&), dereference (*), and no pointer arithmetic"
+  - section: "Interfaces & Error Handling"
+    description: "Go's approach to polymorphism and errors."
+    items:
+      - title: "Interfaces"
+        description: "Implicit satisfaction, empty interface, and type assertions"
+      - title: "Error Handling"
+        description: "error interface, errors.Is/As, wrapping with %w, and sentinel errors"
+      - title: "Panic & Recover"
+        description: "When to panic, defer+recover pattern, and stack unwinding"
+  - section: "Concurrency"
+    description: "Go's killer feature — goroutines and channels."
+    items:
+      - title: "Goroutines"
+        description: "Lightweight threads, go keyword, and goroutine lifecycle"
+      - title: "Channels"
+        description: "Unbuffered, buffered, directional channels, and close"
+      - title: "Select"
+        description: "Multiplexing channels, timeout, and non-blocking operations"
+      - title: "sync Package"
+        description: "WaitGroup, Mutex, Once, and Pool"
+      - title: "Context"
+        description: "Cancellation, deadlines, and request-scoped values"
+  - section: "Advanced Topics"
+    description: "Production-ready Go techniques."
+    items:
+      - title: "Generics (1.18+)"
+        description: "Type parameters, constraints, and generic data structures"
+      - title: "Testing"
+        description: "go test, table-driven tests, benchmarks, and fuzzing"
+      - title: "Reflection"
+        description: "reflect package, type inspection, and use cases"
+      - title: "CGo"
+        description: "Calling C code from Go and performance considerations"
 ---
 
 ## Overview
@@ -25,14 +83,6 @@ Go (or Golang) is an open-source programming language designed at Google. It is 
 - **Simple syntax** — Deliberately minimal; one way to do things
 - **Built-in tooling** — `go fmt`, `go test`, `go vet`, `go mod` out of the box
 - **Static binary** — Single binary deployment with no dependencies
-
-## Common Use Cases
-
-- **Cloud Infrastructure** — Docker, Kubernetes, Terraform, Prometheus
-- **Microservices** — gRPC, REST APIs with net/http, Gin, Echo
-- **CLI Tools** — cobra, viper, gh (GitHub CLI)
-- **Networking** — Proxies, load balancers, mesh systems
-- **DevOps Tooling** — CI/CD pipelines, infrastructure management
 
 ## Code Example
 

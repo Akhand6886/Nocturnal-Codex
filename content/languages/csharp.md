@@ -12,6 +12,62 @@ website: "https://dotnet.microsoft.com/en-us/languages/csharp"
 category: "General Purpose"
 featured: false
 difficulty: "Intermediate"
+topics:
+  - section: "Basics"
+    description: "C# fundamentals and the .NET platform."
+    items:
+      - title: "Introduction to C#"
+        description: ".NET platform, CLI, and the C# compilation model"
+      - title: "Variables & Types"
+        description: "Value types vs reference types, var, and nullable types"
+      - title: "Control Flow"
+        description: "if/else, switch expressions, for, foreach, while"
+      - title: "Methods"
+        description: "Parameters (ref, out, in), overloading, and expression-bodied members"
+      - title: "Strings"
+        description: "Interpolation, verbatim strings, Span<char>, and StringBuilder"
+  - section: "OOP"
+    description: "Object-oriented programming in C#."
+    items:
+      - title: "Classes & Structs"
+        description: "Properties, constructors, destructors, and init-only setters"
+      - title: "Inheritance & Interfaces"
+        description: "sealed, abstract, virtual, interface default methods"
+      - title: "Generics"
+        description: "Generic classes, methods, constraints, and covariance/contravariance"
+      - title: "Records"
+        description: "Immutable reference types with value equality (C# 9+)"
+      - title: "Pattern Matching"
+        description: "is, switch expressions, property patterns, and relational patterns"
+  - section: "LINQ & Collections"
+    description: "Language-integrated queries and data processing."
+    items:
+      - title: "LINQ Basics"
+        description: "from/where/select, method syntax, and deferred execution"
+      - title: "LINQ Operations"
+        description: "GroupBy, Join, Aggregate, OrderBy, and custom operators"
+      - title: "Collections"
+        description: "List<T>, Dictionary<TK,TV>, HashSet<T>, and concurrent collections"
+  - section: "Async Programming"
+    description: "Asynchronous patterns in C#."
+    items:
+      - title: "async/await"
+        description: "Task, Task<T>, ValueTask, and async method patterns"
+      - title: "Parallel Programming"
+        description: "Parallel.ForEach, PLINQ, and data parallelism"
+      - title: "Channels"
+        description: "Producer-consumer with System.Threading.Channels"
+  - section: "Modern C#"
+    description: "Latest features in C# 10-12."
+    items:
+      - title: "Primary Constructors"
+        description: "Constructor parameters on class/struct declarations"
+      - title: "Collection Expressions"
+        description: "Simplified collection initialization with spread operator"
+      - title: "Source Generators"
+        description: "Compile-time code generation for serialization, DI, and more"
+      - title: "ASP.NET Core"
+        description: "Minimal APIs, controllers, middleware, and dependency injection"
 ---
 
 ## Overview
@@ -26,18 +82,9 @@ C# is a modern, general-purpose programming language developed by Microsoft as p
 - **Async/await** — First-class asynchronous programming support
 - **Cross-platform** — .NET (Core) runs on Windows, Linux, macOS
 
-## Common Use Cases
-
-- **Game Development** — Unity game engine (primary language)
-- **Enterprise Software** — ASP.NET Core web apps and APIs
-- **Desktop Applications** — WPF, WinForms, MAUI
-- **Cloud & Microservices** — Azure Functions, gRPC services
-- **Mobile Apps** — Xamarin / .NET MAUI
-
 ## Code Example
 
 ```csharp
-// C# records and pattern matching
 public record Point(double X, double Y);
 
 public static string Classify(Point point) => point switch

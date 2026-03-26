@@ -12,24 +12,50 @@ website: "https://learn.microsoft.com/en-us/office/vba/api/overview/"
 category: "General Purpose"
 featured: false
 difficulty: "Beginner"
+topics:
+  - section: "Basics"
+    items:
+      - title: "VBA Editor"
+        description: "VBE, modules, Immediate Window, and macro recording"
+      - title: "Variables & Data Types"
+        description: "Dim, data types, Variant, and Option Explicit"
+      - title: "Control Flow"
+        description: "If/Then/Else, Select Case, For/Next, Do/Loop"
+      - title: "Procedures"
+        description: "Sub vs Function, parameters, and ByRef vs ByVal"
+  - section: "Excel Object Model"
+    items:
+      - title: "Workbooks & Worksheets"
+        description: "Accessing, creating, and manipulating Excel objects"
+      - title: "Ranges & Cells"
+        description: "Range object, Cells property, and dynamic ranges"
+      - title: "Charts & Formatting"
+        description: "Creating charts, conditional formatting, and styles"
+  - section: "Advanced"
+    items:
+      - title: "UserForms"
+        description: "Custom dialog boxes, controls, and event handling"
+      - title: "Error Handling"
+        description: "On Error, Resume Next, and error logging"
+      - title: "COM Automation"
+        description: "Controlling Outlook, Word, and external applications"
 ---
 
 ## Overview
 
-VBA (Visual Basic for Applications) is an implementation of Microsoft's Visual Basic built into Microsoft Office applications. It enables users to automate repetitive tasks, create custom functions, build forms and user interfaces, and extend Office functionality. While often underestimated, VBA remains critical in business environments where Excel, Access, and Outlook automation drives daily workflows for millions of users.
+VBA (Visual Basic for Applications) is an implementation of Microsoft's Visual Basic built into Microsoft Office applications. It enables users to automate repetitive tasks, create custom functions, build forms, and extend Office functionality.
 
 ## Key Features
 
-- **Office integration** — Direct access to Excel, Word, Outlook, Access object models
+- **Office integration** — Direct access to Excel, Word, Outlook object models
 - **Macro recording** — Generate code by recording user actions
 - **UserForms** — Build custom dialog boxes and input forms
-- **COM automation** — Control other Windows applications programmatically
+- **COM automation** — Control other Windows applications
 - **Immediate Window** — REPL-like debugging and testing
 
 ## Code Example
 
 ```vb
-' VBA: Format and summarize Excel data
 Sub SummarizeData()
     Dim ws As Worksheet
     Set ws = ThisWorkbook.Sheets("Sales")
@@ -37,7 +63,6 @@ Sub SummarizeData()
     Dim lastRow As Long
     lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
 
-    ' Apply formatting and calculate totals
     With ws.Range("A1:D" & lastRow)
         .Borders.LineStyle = xlContinuous
         .Font.Name = "Calibri"

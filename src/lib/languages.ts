@@ -2,6 +2,18 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+export interface TopicItem {
+  title: string;
+  description?: string;
+  link?: string;
+}
+
+export interface TopicSection {
+  section: string;
+  description?: string;
+  items: TopicItem[];
+}
+
 export interface Language {
   id: string;
   name: string;
@@ -19,6 +31,8 @@ export interface Language {
   category?: string;
   featured?: boolean;
   difficulty?: string;
+  // Tutorial curriculum
+  topics?: TopicSection[];
 }
 
 const languagesDirectory = path.join(process.cwd(), 'content/languages');

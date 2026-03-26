@@ -12,11 +12,48 @@ website: "https://www.ruby-lang.org/"
 category: "Web"
 featured: false
 difficulty: "Beginner"
+topics:
+  - section: "Basics"
+    items:
+      - title: "Introduction to Ruby"
+        description: "IRB, RubyGems, and the Ruby philosophy"
+      - title: "Variables & Types"
+        description: "Dynamic typing, symbols, strings, numbers, and nil"
+      - title: "Control Flow"
+        description: "if/unless, case/when, while/until, and ternary"
+      - title: "Methods"
+        description: "def, return values, default params, and variadic args (*)"
+  - section: "Collections & Iteration"
+    items:
+      - title: "Arrays"
+        description: "Creation, slicing, map, select, reject, flatten"
+      - title: "Hashes"
+        description: "Symbol keys, default values, merge, and transform"
+      - title: "Blocks, Procs & Lambdas"
+        description: "yield, Proc.new, lambda, and the block/proc distinction"
+      - title: "Enumerable"
+        description: "each, map, reduce, group_by, and lazy enumerators"
+  - section: "OOP"
+    items:
+      - title: "Classes & Modules"
+        description: "attr_accessor, initialize, inheritance, and mixins"
+      - title: "Metaprogramming"
+        description: "method_missing, define_method, and open classes"
+      - title: "Patterns"
+        description: "Duck typing, convention over configuration, and DSLs"
+  - section: "Ruby on Rails"
+    items:
+      - title: "MVC Architecture"
+        description: "Models, views, controllers, and the Rails request cycle"
+      - title: "Active Record"
+        description: "ORM, migrations, validations, and associations"
+      - title: "Testing"
+        description: "RSpec, Minitest, FactoryBot, and TDD practices"
 ---
 
 ## Overview
 
-Ruby is a dynamic, open-source language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write. Everything in Ruby is an object, and every expression returns a value. Ruby on Rails, the web framework that popularized Ruby, introduced conventions like MVC architecture and "convention over configuration" that influenced web development frameworks across all languages.
+Ruby is a dynamic, open-source language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write. Everything in Ruby is an object. Ruby on Rails, the web framework that popularized Ruby, introduced conventions like MVC and "convention over configuration" that influenced web development across all languages.
 
 ## Key Features
 
@@ -29,7 +66,6 @@ Ruby is a dynamic, open-source language with a focus on simplicity and productiv
 ## Code Example
 
 ```ruby
-# Ruby's expressive syntax
 class Greeter
   def initialize(names)
     @names = names

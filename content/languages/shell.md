@@ -12,15 +12,44 @@ website: "https://www.gnu.org/software/bash/"
 category: "General Purpose"
 featured: false
 difficulty: "Intermediate"
+topics:
+  - section: "Basics"
+    items:
+      - title: "Shell Fundamentals"
+        description: "Commands, arguments, shell types, and shebang lines"
+      - title: "Variables"
+        description: "Assignment, expansion, environment variables, and quoting"
+      - title: "Control Flow"
+        description: "if/then/else, case, for, while, until, and test conditions"
+      - title: "I/O Redirection"
+        description: "stdin, stdout, stderr, pipes (|), and here documents"
+  - section: "Text Processing"
+    items:
+      - title: "grep & Regular Expressions"
+        description: "Pattern matching, egrep, and POSIX regex"
+      - title: "sed & awk"
+        description: "Stream editing, field processing, and one-liners"
+      - title: "cut, sort, uniq"
+        description: "Column extraction, sorting, and deduplication"
+  - section: "Scripting"
+    items:
+      - title: "Functions"
+        description: "Function definition, local variables, and return values"
+      - title: "Arrays"
+        description: "Indexed and associative arrays, iteration"
+      - title: "Process Management"
+        description: "Background jobs, signals, trap, and exit codes"
+      - title: "Best Practices"
+        description: "set -euo pipefail, shellcheck, and defensive scripting"
 ---
 
 ## Overview
 
-Bash (Bourne Again SHell) is a Unix shell and command language. It is the default shell on most Linux distributions and macOS (prior to Catalina). Shell scripting is essential for system administration, automating repetitive tasks, managing deployments, and creating CI/CD pipelines. Understanding shell scripting is a fundamental skill for any developer working in Unix-like environments.
+Bash (Bourne Again SHell) is a Unix shell and command language. Shell scripting is essential for system administration, automating repetitive tasks, managing deployments, and creating CI/CD pipelines.
 
 ## Key Features
 
-- **Pipes & redirection** — Chain commands to build powerful data pipelines
+- **Pipes & redirection** — Chain commands into data pipelines
 - **Process control** — Background jobs, signals, subshells
 - **Text processing** — Integration with grep, sed, awk, cut, sort
 - **Variables & arrays** — Basic data structures for automation
@@ -30,7 +59,6 @@ Bash (Bourne Again SHell) is a Unix shell and command language. It is the defaul
 
 ```bash
 #!/bin/bash
-# Find the top 5 largest files in a directory
 find "${1:-.}" -type f -exec du -h {} + 2>/dev/null |
     sort -rh |
     head -5 |

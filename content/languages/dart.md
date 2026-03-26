@@ -12,11 +12,52 @@ website: "https://dart.dev/"
 category: "Mobile"
 featured: false
 difficulty: "Beginner"
+topics:
+  - section: "Basics"
+    items:
+      - title: "Introduction to Dart"
+        description: "Dart VM, AOT/JIT compilation, and DartPad"
+      - title: "Variables & Types"
+        description: "var, final, const, dynamic, and Dart's sound type system"
+      - title: "Functions"
+        description: "Arrow syntax, optional params, named params, and closures"
+      - title: "Control Flow"
+        description: "if/else, switch, for, while, and pattern matching (3.0+)"
+      - title: "Null Safety"
+        description: "Non-nullable by default, ?, !, late, and required"
+  - section: "OOP in Dart"
+    items:
+      - title: "Classes"
+        description: "Constructors (named, factory, const), this, and cascade notation (..)"
+      - title: "Inheritance & Mixins"
+        description: "extends, implements, with, and mixin classes"
+      - title: "Generics"
+        description: "Generic classes, functions, and type constraints"
+      - title: "Enums"
+        description: "Enhanced enums with methods and implementations"
+  - section: "Async & Collections"
+    items:
+      - title: "Futures"
+        description: "async/await, Future.then, and error handling"
+      - title: "Streams"
+        description: "Single-subscription, broadcast streams, and StreamBuilder"
+      - title: "Isolates"
+        description: "Concurrent execution without shared-state threads"
+      - title: "Collections"
+        description: "List, Set, Map, Iterable, and collection literals"
+  - section: "Flutter & UI"
+    items:
+      - title: "Flutter Basics"
+        description: "Widget tree, StatelessWidget, StatefulWidget, and build()"
+      - title: "State Management"
+        description: "setState, Provider, Riverpod, Bloc"
+      - title: "Navigation & Routing"
+        description: "Navigator 2.0, go_router, and deep linking"
 ---
 
 ## Overview
 
-Dart is a client-optimized language for developing fast apps on any platform. It is the language behind Flutter, Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. Dart features a sound type system, null safety, and can compile to ARM and x64 machine code for mobile and desktop, or to JavaScript for the web.
+Dart is a client-optimized language for developing fast apps on any platform. It is the language behind Flutter, Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. Dart features a sound type system, null safety, and can compile to ARM and x64 machine code or to JavaScript for the web.
 
 ## Key Features
 
@@ -29,7 +70,6 @@ Dart is a client-optimized language for developing fast apps on any platform. It
 ## Code Example
 
 ```dart
-// Dart null safety and async
 Future<String> greetUser(String? name) async {
   final displayName = name ?? 'Guest';
   await Future.delayed(Duration(seconds: 1));
@@ -37,8 +77,8 @@ Future<String> greetUser(String? name) async {
 }
 
 void main() async {
-  print(await greetUser('Alice')); // Welcome, Alice!
-  print(await greetUser(null));    // Welcome, Guest!
+  print(await greetUser('Alice'));
+  print(await greetUser(null));
 }
 ```
 

@@ -9,6 +9,7 @@ import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, User, ExternalLink, Layers, BarChart3, Code2 } from "lucide-react";
+import { LearningPath } from "@/components/content/learning-path";
 
 export const revalidate = 3600;
 
@@ -166,6 +167,11 @@ export default async function LanguagePage({ params }: LanguagePageProps) {
           )}
         </aside>
       </div>
+
+      {/* Learning Path */}
+      {lang.topics && lang.topics.length > 0 && (
+        <LearningPath topics={lang.topics} languageName={lang.name} />
+      )}
 
       {/* Related Languages */}
       {relatedLanguages.length > 0 && (
