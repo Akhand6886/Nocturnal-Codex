@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, User, ExternalLink, Layers, BarChart3, Code2, Globe } from "lucide-react";
 import { LearningPath } from "@/components/content/learning-path";
-import { LanguageTocSidebar } from "@/components/content/language-toc-sidebar";
+import { TopicSidebar } from "@/components/content/topic-sidebar";
 
 export const revalidate = 3600;
 
@@ -85,7 +85,7 @@ export default async function LanguageDetailPage({ params }: { params: Promise<{
         {/* LEFT: ToC Sidebar (only if topics exist) */}
         {hasTopics && (
           <aside className="hidden lg:block">
-            <LanguageTocSidebar topics={lang.topics!} />
+            <TopicSidebar topics={lang.topics!} langSlug={lang.slug} activeTopicSlug="" />
           </aside>
         )}
 
