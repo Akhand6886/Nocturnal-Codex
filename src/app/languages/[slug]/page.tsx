@@ -113,7 +113,7 @@ export default async function LanguageDetailPage({ params }: { params: Promise<{
                   {totalTopics} topics across {lang.topics!.length} sections
                 </p>
               </div>
-              <LearningPath topics={lang.topics!} />
+              <LearningPath topics={lang.topics!} langSlug={lang.slug} />
             </div>
           )}
         </main>

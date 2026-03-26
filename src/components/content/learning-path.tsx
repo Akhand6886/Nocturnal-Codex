@@ -1,11 +1,13 @@
+import Link from "next/link";
 import { BookOpen, ExternalLink } from "lucide-react";
 import type { TopicSection } from "@/lib/languages";
 
 interface LearningPathProps {
   topics: TopicSection[];
+  langSlug: string;
 }
 
-export function LearningPath({ topics }: LearningPathProps) {
+export function LearningPath({ topics, langSlug }: LearningPathProps) {
   return (
     <div className="space-y-10">
       {topics.map((section, sectionIdx) => (
@@ -37,6 +39,13 @@ export function LearningPath({ topics }: LearningPathProps) {
                       {item.title}
                       <ExternalLink className="h-3 w-3" />
                     </a>
+                  ) : item.slug ? (
+                    <Link
+                      href={`/languages/${langSlug}/${item.slug}`}
+                      className="font-medium text-foreground hover:text-primary transition-colors"
+                    >
+                      {item.title}
+                    </Link>
                   ) : (
                     <span className="font-medium text-foreground">{item.title}</span>
                   )}

@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 
 export interface TopicItem {
   title: string;
+  slug?: string;
   description?: string;
   link?: string;
 }
@@ -35,6 +36,12 @@ export interface Language {
   topics?: TopicSection[];
 }
 
+export interface TopicContent {
+  title: string;
+  description?: string;
+  content: string;
+}
+
 const languagesDirectory = path.join(process.cwd(), 'content/languages');
 
 let allLanguagesCache: Language[];
@@ -45,21 +52,27 @@ function fetchAllLanguages(): Language[] {
     }
 
     try {
-        const fileNames = fs.readdirSync(languagesDirectory);
-        const allLanguagesData = fileNames.map((fileName) => {
-            const id = fileName.replace(/\.md$/, '');
-            const fullPath = path.join(languagesDirectory, fileName);
-            const fileContents = fs.readFileSync(fullPath, 'utf8');
-            const matterResult = matter(fileContents);
+        const entries = fs.readdirSync(languagesDirectory, { withFileTypes: true });
+        const allLanguagesData = entries
+            .filter(entry => entry.isDirectory())
+            .map((dir) => {
+                const id = dir.name;
+                const fullPath = path.join(languagesDirectory, dir.name, 'index.md');
+                
+                if (!fs.existsSync(fullPath)) return null;
+                
+                const fileContents = fs.readFileSync(fullPath, 'utf8');
+                const matterResult = matter(fileContents);
 
-            const frontmatter = matterResult.data as Omit<Language, 'content' | 'url'>;
+                const frontmatter = matterResult.data as Omit<Language, 'content' | 'url'>;
 
-            return {
-                ...frontmatter,
-                content: matterResult.content,
-                url: `/languages/${frontmatter.slug}`,
-            } as Language;
-        });
+                return {
+                    ...frontmatter,
+                    content: matterResult.content,
+                    url: `/languages/${frontmatter.slug}`,
+                } as Language;
+            })
+            .filter(Boolean) as Language[];
 
         allLanguagesCache = allLanguagesData.sort((a, b) => a.name.localeCompare(b.name));
         return allLanguagesCache;
@@ -68,6 +81,25 @@ function fetchAllLanguages(): Language[] {
         console.error("Could not read languages directory:", error);
         return [];
     }
+}
+
+export function getLanguageTopic(langSlug: string, topicSlug: string): TopicContent | null {
+  try {
+    const fullPath = path.join(languagesDirectory, langSlug, `${topicSlug}.md`);
+    if (!fs.existsSync(fullPath)) return null;
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const matterResult = matter(fileContents);
+
+    return {
+      title: matterResult.data.title || topicSlug,
+      description: matterResult.data.description,
+      content: matterResult.content,
+    };
+  } catch (error) {
+    console.error(`Could not read topic ${topicSlug} for language ${langSlug}:`, error);
+    return null;
+  }
 }
 
 
