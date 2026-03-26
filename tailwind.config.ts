@@ -15,6 +15,9 @@ export default {
         mono: ['var(--font-inconsolata)'], 
       },
   		colors: {
+        'gradient-start': 'hsl(var(--primary))',
+        'gradient-middle': 'hsl(var(--accent))',
+        'gradient-end': 'hsl(var(--primary))',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

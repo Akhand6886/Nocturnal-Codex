@@ -24,6 +24,9 @@ export function richTextToPlainText(richText: Document | null | undefined): stri
       }
 
       if ('content' in node && Array.isArray(node.content)) {
+        if (node.nodeType.startsWith('heading')) {
+            text += ' '; // Add space after headings
+        }
         if (node.nodeType === 'paragraph' && text.length > 0 && !text.endsWith(' ')) {
           text += ' '; // Add a space between paragraphs
         }
@@ -33,5 +36,10 @@ export function richTextToPlainText(richText: Document | null | undefined): stri
   };
 
   traverse(richText.content);
-  return text.trim().replace(/\s+/g, ' '); // Consolidate whitespace
+  // Consolidate whitespace and trim, then truncate
+  const cleanedText = text.trim().replace(/\s+/g, ' ');
+  if (cleanedText.length > 200) {
+      return cleanedText.substring(0, 200) + '...';
+  }
+  return cleanedText;
 }

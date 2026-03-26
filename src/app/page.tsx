@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -7,11 +6,12 @@ import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
 import type { Metadata } from 'next';
-import { fetchBlogPosts } from "@/lib/contentful";
+import { fetchBlogPosts, fetchThinkTankArticles } from "@/lib/contentful";
 import { SimpleIcon } from "@/components/common/simple-icon";
 import { getAllLanguages, type Language } from "@/lib/languages";
 import { RoadmapCard } from "@/components/Roadmaps/RoadmapCard";
 import { getAllRoadmaps } from "@/lib/roadmaps";
+import { ThinkTankArticleCard } from "@/components/content/think-tank-article-card";
 
 export const revalidate = 60; 
 
@@ -27,6 +27,7 @@ export default async function HomePage() {
   const featuredLanguages = allLanguages.slice(0, 6);
   const allRoadmaps = getAllRoadmaps();
   const featuredRoadmaps = allRoadmaps.filter(r => r.featured);
+  const recentThinkTankArticles = await fetchThinkTankArticles({ limit: 2 }) || [];
   
 
   return (
@@ -35,7 +36,7 @@ export default async function HomePage() {
       {/* Hero Section */}
       <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-primary/10 to-accent/15 rounded-xl shadow-2xl overflow-hidden">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary/70 animate-text-gradient-flow">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end animate-text-gradient-flow">
             For Hackers, Theorists, Builders, Learners.
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
@@ -129,15 +130,16 @@ export default async function HomePage() {
             Latest From The Blog
           </h2>
           <div className="space-y-10">
-            {recentBlogPosts.map((post) => (
-              <BlogPostCard key={post.id} post={post} />
-            ))}
-            {recentBlogPosts.length >= 2 && ( 
-               <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> 
-                <Link href="/blog">View All Blog Posts <ArrowRight className="ml-2 h-4 w-4" /></Link>
-              </Button>
-            )}
-             {recentBlogPosts.length === 0 && (
+            {recentBlogPosts.length > 0 ? (
+              <>
+                {recentBlogPosts.map((post) => (
+                  <BlogPostCard key={post.id} post={post} />
+                ))}
+                <Button asChild variant="outline" className="w-full mt-6 hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary"> 
+                  <Link href="/blog">View All Blog Posts <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+              </>
+            ) : (
               <p className="text-muted-foreground text-center py-6">No recent blog posts. Check back soon!</p>
             )}
           </div>
@@ -145,26 +147,33 @@ export default async function HomePage() {
 
         {/* Think Tank Section */}
         <section>
-          <div>
-            <h2 className="text-3xl font-bold mb-2 flex items-center text-foreground/90">
-              <Brain className="mr-3 h-7 w-7 text-accent" />
-              From the Think Tank
-            </h2>
-            <p className="text-muted-foreground mb-8 text-sm">In-depth research, original theories, and explorations.</p>
-          </div>
-          <Card className="bg-card shadow-xl border border-border/30 hover:border-accent/50 hover:shadow-accent/20 transition-all duration-300 ease-in-out rounded-xl">
-             <CardContent className="p-4">
-               {/* This section can be populated with Think Tank articles if desired */}
-               <p className="text-muted-foreground text-center py-6">No think tank articles featured yet.</p>
-                <Button asChild variant="outline" className="w-full mt-4 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent-foreground">
+          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-accent/70 flex items-center text-foreground/90">
+            <Brain className="mr-3 h-7 w-7 text-accent" />
+            From the Think Tank
+          </h2>
+          <div className="space-y-10">
+            {recentThinkTankArticles.length > 0 ? (
+              <>
+                {recentThinkTankArticles.map((article) => (
+                  <ThinkTankArticleCard key={article.id} article={article} />
+                ))}
+                <Button asChild variant="outline" className="w-full mt-6 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent-foreground">
                   <Link href="/think-tank">Explore Think Tank <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
-            </CardContent>
-          </Card>
+              </>
+            ) : (
+                <Card className="bg-card shadow-xl border border-border/30 hover:border-accent/50 hover:shadow-accent/20 transition-all duration-300 ease-in-out rounded-xl">
+                    <CardContent className="p-4">
+                        <p className="text-muted-foreground text-center py-6">No think tank articles featured yet.</p>
+                        <Button asChild variant="outline" className="w-full mt-4 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent-foreground">
+                        <Link href="/think-tank">Explore Think Tank <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                        </Button>
+                    </CardContent>
+                </Card>
+            )}
+          </div>
         </section>
       </div>
     </div>
   );
 }
-
-    

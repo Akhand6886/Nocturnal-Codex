@@ -17,6 +17,7 @@ const deslugifyCategory = (slug: string) => {
 
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
+  if (!posts) return [];
   const categories = posts.map(post => post.category);
   const uniqueCategories = Array.from(new Set(categories.filter(Boolean)));
   
@@ -42,9 +43,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 async function getPostsByCategory(categorySlug: string): Promise<{ posts: BlogPost[], actualCategoryName: string }> {
   const allPosts = await fetchBlogPosts();
+  if (!allPosts) return { posts: [], actualCategoryName: deslugifyCategory(categorySlug) };
+  
   let actualCategoryName = '';
   
   const posts = allPosts.filter(post => {
+      if (!post.category) return false;
       const postCategorySlug = slugifyCategory(post.category);
       if (postCategorySlug === categorySlug) {
           actualCategoryName = post.category;

@@ -61,6 +61,7 @@ The application's routing is file-system based, managed by the Next.js App Route
 -   `/roadmaps`: `src/app/roadmaps/page.tsx` (Lists all available developer roadmaps)
 -   `/roadmaps/[roadmapId]`: `src/app/roadmaps/[roadmapId]/page.tsx` (Displays an interactive roadmap)
 -   `/languages`: `src/app/languages/page.tsx` (Lists all programming languages)
+-   `/languages/[slug]`: `src/app/languages/[slug]/page.tsx` (Displays a single language)
 -   `/contact`: `src/app/contact/page.tsx`
 
 ## 4. Data Fetching & Content Management
