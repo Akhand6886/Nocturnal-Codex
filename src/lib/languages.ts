@@ -10,6 +10,15 @@ export interface Language {
   iconName: string;
   content: string;
   url: string;
+  // Extended metadata
+  year?: number;
+  creator?: string;
+  paradigm?: string[];
+  useCases?: string[];
+  website?: string;
+  category?: string;
+  featured?: boolean;
+  difficulty?: string;
 }
 
 const languagesDirectory = path.join(process.cwd(), 'content/languages');
