@@ -3,9 +3,11 @@ import type { Metadata } from 'next';
 import { getAllLanguages, getLanguageBySlug, getLanguageTopic } from '@/lib/languages';
 import { SimpleIcon } from '@/components/common/simple-icon';
 import { MarkdownRenderer } from '@/components/content/markdown-renderer';
-import { Breadcrumbs, BreadcrumbItem } from "@/components/layout/breadcrumbs";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { TopicSidebar } from "@/components/content/topic-sidebar";
-import { BookOpen, CalendarDays } from "lucide-react";
+import { TopicPagination } from "@/components/content/topic-pagination";
+import { TableOfContents } from "@/components/content/table-of-contents";
+import { BookOpen } from "lucide-react";
 
 export const revalidate = 3600;
 
@@ -59,7 +61,7 @@ export default async function TopicDetailPage({ params }: { params: Promise<{ sl
         { label: topic.title }
       ]} />
 
-      <div className="grid gap-8 lg:grid-cols-[280px_1fr] mt-6">
+      <div className="grid gap-8 lg:grid-cols-[260px_1fr] xl:grid-cols-[260px_1fr_240px] mt-6">
         {/* Left: Curriculum Nav */}
         <aside className="hidden lg:block">
           {lang.topics && (
@@ -67,8 +69,8 @@ export default async function TopicDetailPage({ params }: { params: Promise<{ sl
           )}
         </aside>
 
-        {/* Right: Main Content */}
-        <main className="min-w-0">
+        {/* Center: Main Content */}
+        <main className="min-w-0 pb-16">
           <header className="mb-8 pb-6 border-b border-border/50">
             <div className="flex items-center gap-3 text-muted-foreground mb-3">
                <SimpleIcon iconName={lang.iconName || 'code'} className="w-5 h-5 text-primary" />
@@ -87,17 +89,22 @@ export default async function TopicDetailPage({ params }: { params: Promise<{ sl
 
           <article className="prose prose-invert max-w-none 
             prose-headings:text-foreground prose-headings:font-semibold
-            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-5 prose-h2:pb-2 prose-h2:border-b prose-h2:border-border/30
-            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
             prose-p:text-muted-foreground prose-p:leading-relaxed
             prose-li:text-muted-foreground
-            prose-strong:text-foreground
-            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-            prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs
-            prose-pre:bg-card prose-pre:border prose-pre:border-border/50 prose-pre:rounded-lg">
+            prose-strong:text-foreground">
             <MarkdownRenderer content={topic.content} />
           </article>
+
+          {/* Next & Previous Pagination */}
+          {lang.topics && (
+            <TopicPagination topics={lang.topics} langSlug={lang.slug} activeTopicSlug={topicSlug} />
+          )}
         </main>
+
+        {/* Right: Local Table of Contents */}
+        <aside className="hidden xl:block">
+          <TableOfContents content={topic.content} />
+        </aside>
       </div>
     </div>
   );

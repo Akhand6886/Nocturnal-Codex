@@ -7,11 +7,32 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion, Variants } from "framer-motion";
 
 interface MarkdownRendererProps {
   content: string;
   className?: string;
 }
+
+const generateSlug = (children: any) => {
+  return String(children)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+};
+
+const containerVars: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 }
+  }
+};
+
+const itemVars: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 280, damping: 24 } }
+};
 
 // Custom Mac-style Code Block with Copy function
 function MacCodeBlock({ language, value }: { language: string; value: string }) {
@@ -73,14 +94,41 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
   }
 
   return (
-    <div className={cn(
-      "prose dark:prose-invert max-w-none w-full markdown-content",
-      "animate-in fade-in slide-in-from-bottom-5 duration-700 ease-out fill-mode-both",
-      className
-    )}>
+    <motion.div 
+      initial="hidden" 
+      animate="show" 
+      variants={containerVars}
+      className={cn(
+        "prose dark:prose-invert max-w-none w-full markdown-content",
+        "prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0",
+        className
+      )}
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          // Text & Structural nodes wrap in Framer Motion items
+          p({ children, ...props }) {
+            return <motion.p variants={itemVars} {...(props as any)}>{children}</motion.p>;
+          },
+          h1({ children, ...props }) {
+            return <motion.h1 variants={itemVars} className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl border-b border-border/40 pb-4 mb-8" {...(props as any)}>{children}</motion.h1>;
+          },
+          h2({ children, ...props }) {
+            const id = generateSlug(children);
+            return <motion.h2 id={id} variants={itemVars} className="scroll-m-20 border-b border-border/30 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 mt-10 mb-5" {...(props as any)}>{children}</motion.h2>;
+          },
+          h3({ children, ...props }) {
+            const id = generateSlug(children);
+            return <motion.h3 id={id} variants={itemVars} className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4 border-b border-border/10 pb-1" {...(props as any)}>{children}</motion.h3>;
+          },
+          ul({ children, ...props }) {
+            return <motion.ul variants={itemVars} className="my-6 ml-6 list-disc [&>li]:mt-2" {...(props as any)}>{children}</motion.ul>;
+          },
+          ol({ children, ...props }) {
+            return <motion.ol variants={itemVars} className="my-6 ml-6 list-decimal [&>li]:mt-2" {...(props as any)}>{children}</motion.ol>;
+          },
+
           // Code overrides
           code({ node, inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || "");
@@ -89,27 +137,32 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             // Inline code
             if (inline) {
               return (
-                <code className="bg-secondary/50 text-primary px-1.5 py-0.5 rounded-md font-mono text-[0.85em] border border-border/50" {...props}>
+                <code className="bg-secondary/60 text-primary px-1.5 py-0.5 rounded-md font-mono text-[0.85em] border border-border/40" {...props}>
                   {children}
                 </code>
               );
             }
             
-            // Block code
-            return <MacCodeBlock language={language} value={String(children).replace(/\n$/, "")} />;
+            // Block code needs to be animated as a block
+            return (
+              <motion.div variants={itemVars}>
+                <MacCodeBlock language={language} value={String(children).replace(/\n$/, "")} />
+              </motion.div>
+            );
           },
           
           // Blockquote override for beautiful callouts
           blockquote({ children, ...props }) {
             return (
-              <blockquote 
-                className="my-6 border-l-4 border-l-primary bg-primary/10 px-5 py-4 rounded-r-xl italic text-foreground/90 font-medium leading-relaxed relative overflow-hidden" 
-                {...props}
+              <motion.blockquote 
+                variants={itemVars}
+                className="my-8 border-l-4 border-l-primary bg-primary/10 px-6 py-4 rounded-r-xl italic text-foreground/90 font-medium leading-relaxed relative overflow-hidden shadow-sm" 
+                {...(props as any)}
               >
                 {/* Subtle background glow effect */}
                 <div className="absolute -left-4 top-0 bottom-0 w-8 bg-primary/20 blur-xl" />
-                <div className="relative z-10">{children}</div>
-              </blockquote>
+                <div className="relative z-10 space-y-2">{children}</div>
+              </motion.blockquote>
             );
           },
 
@@ -130,17 +183,19 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           // Image override
           img({ node, ...props }) {
             return (
-              <img 
-                className="rounded-xl border border-border/50 shadow-lg mx-auto" 
-                loading="lazy"
-                {...props} 
-              />
+              <motion.div variants={itemVars} className="my-8 flex justify-center">
+                <img 
+                  className="rounded-xl border border-border/50 shadow-lg" 
+                  loading="lazy"
+                  {...props} 
+                />
+              </motion.div>
             );
           },
         }}
       >
         {content}
       </ReactMarkdown>
-    </div>
+    </motion.div>
   );
 }
