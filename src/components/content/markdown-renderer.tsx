@@ -130,18 +130,20 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           },
 
           // Code overrides
-          code({ node, inline, className, children, ...props }: any) {
+          code({ node, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || "");
-            const language = match ? match[1] : "";
+            const isBlock = match || String(children).includes("\n");
             
             // Inline code
-            if (inline) {
+            if (!isBlock) {
               return (
                 <code className="bg-secondary/60 text-primary px-1.5 py-0.5 rounded-md font-mono text-[0.85em] border border-border/40" {...props}>
                   {children}
                 </code>
               );
             }
+            
+            const language = match ? match[1] : "text";
             
             // Block code needs to be animated as a block
             return (
