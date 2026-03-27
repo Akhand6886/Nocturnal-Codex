@@ -99,7 +99,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
       animate="show" 
       variants={containerVars}
       className={cn(
-        "prose dark:prose-invert max-w-none w-full markdown-content",
+        "prose prose-lg dark:prose-invert max-w-3xl w-full markdown-content",
         "prose-pre:p-0 prose-pre:bg-transparent prose-pre:m-0",
         className
       )}
@@ -109,7 +109,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         components={{
           // Text & Structural nodes wrap in Framer Motion items
           p({ children, ...props }) {
-            return <motion.p variants={itemVars} {...(props as any)}>{children}</motion.p>;
+            return <motion.div variants={itemVars} className="my-5 text-lg leading-7 text-foreground/90" {...(props as any)}>{children}</motion.div>;
           },
           h1({ children, ...props }) {
             return <motion.h1 variants={itemVars} className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl border-b border-border/40 pb-4 mb-8" {...(props as any)}>{children}</motion.h1>;
@@ -123,10 +123,10 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             return <motion.h3 id={id} variants={itemVars} className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4 border-b border-border/10 pb-1" {...(props as any)}>{children}</motion.h3>;
           },
           ul({ children, ...props }) {
-            return <motion.ul variants={itemVars} className="my-6 ml-6 list-disc [&>li]:mt-2" {...(props as any)}>{children}</motion.ul>;
+            return <motion.ul variants={itemVars} className="my-6 ml-6 list-disc [&>li]:mt-3 text-lg leading-7 text-foreground/90" {...(props as any)}>{children}</motion.ul>;
           },
           ol({ children, ...props }) {
-            return <motion.ol variants={itemVars} className="my-6 ml-6 list-decimal [&>li]:mt-2" {...(props as any)}>{children}</motion.ol>;
+            return <motion.ol variants={itemVars} className="my-6 ml-6 list-decimal [&>li]:mt-3 text-lg leading-7 text-foreground/90" {...(props as any)}>{children}</motion.ol>;
           },
 
           // Code overrides

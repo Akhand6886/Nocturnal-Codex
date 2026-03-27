@@ -87,11 +87,7 @@ export default async function TopicDetailPage({ params }: { params: Promise<{ sl
             )}
           </header>
 
-          <article className="prose prose-invert max-w-none 
-            prose-headings:text-foreground prose-headings:font-semibold
-            prose-p:text-muted-foreground prose-p:leading-relaxed
-            prose-li:text-muted-foreground
-            prose-strong:text-foreground">
+          <article>
             <MarkdownRenderer content={topic.content} />
           </article>
 
