@@ -85,35 +85,10 @@ async def main():
 asyncio.run(main())
 ```
 
-## Comparisons: Which should I use?
+## Summary
 
 | Framework | Best Workload | Mechanism |
 | :--- | :--- | :--- |
 | **threading** | I/O (Network, API) | Shared memory; limited by GIL. |
 | **multiprocessing**| CPU (Math, Images) | Multiple processes (No GIL issue). |
 | **asyncio** | High-scale I/O (Web server) | Single-threaded; cooperative multitasking.|
-
-## Common Concurrency Pitfalls
-
-1.  **Race Conditions**: When two threads try to modify the same variable at the same time. Use `threading.Lock()` to prevent this.
-2.  **Deadlocks**: When two threads are waiting for each other to release a lock.
-3.  **GIL Confusion**: Trying to use `threading` to speed up a `for i in range(100000000)` loop.
-
-## Summary
-
-| Term | Description |
-| :--- | :--- |
-| **GIL** | A lock that limits execution to 1 thread at a time |
-| **Thread** | Lightweight, shared memory, good for I/O |
-| **Process** | Heavier, separate memory, good for CPU-heavy math |
-| **AsyncIO**| High-performance I/O within one thread using an event loop |
-| **Lock** | Object used to prevent race conditions |
-| **Event Loop** | The engine that runs asyncio tasks |
-| **Await** | Tell Python to pause this task and work on another while waiting |
-| **Pool** | Use `ThreadPoolExecutor` or `ProcessPoolExecutor` for managing tasks |
-| **Best For**| Scraping, Web Servers, Data Processing |
-| **Race Condition** | Two tasks fighting for the same data |
-| **Coroutines**| Functions defined with `async def` |
-| **Future** | An object representing a result that isn't ready yet |
-| **Blocking**| Code that stops everything else (e.g., `time.sleep()`) |
-| **Non-blocking**| Code that allows other tasks to run while waiting |

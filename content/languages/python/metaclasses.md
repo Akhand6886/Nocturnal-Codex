@@ -19,11 +19,6 @@ print(type(User)) # <class 'type'>
 
 By default, Python uses the **`type`** metaclass to build classes. To create a custom metaclass, you inherit from `type` and override the `__new__` method.
 
-1.  **`cls`**: The metaclass itself.
-2.  **`name`**: The name of the class being created.
-3.  **`bases`**: The parent classes of the new class.
-4.  **`attrs`**: The attributes (methods/variables) defined in the new class.
-
 ```python
 # Create a custom metaclass: ForceUpperCase
 class ForceUpperCase(type):
@@ -62,15 +57,6 @@ class MyPlugin(PluginBase): pass
 # This prints: Registered plugin: MyPlugin! (No special logic needed!)
 ```
 
-## Why Use Metaclasses?
-
-1.  **Class Registration**: Automatically adding classes to a directory or database.
-2.  **Validation**: Ensuring all subclasses implement certain methods or have certain attributes.
-3.  **Automatic Modification**: Decorating all methods in a class automatically.
-4.  **Proxying**: Changing how a class interacts with its attributes.
-
-> **Warning**: Metaclasses are the most advanced (and most dangerous!) part of Python. If you don't know why you need a metaclass, you probably don't need one! Most of the time, class decorators or inheritance are better solutions.
-
 ## Summary
 
 | Term | Description |
@@ -79,7 +65,5 @@ class MyPlugin(PluginBase): pass
 | **metaclass=** | Keyword used to define a custom metaclass |
 | **__new__** | Method where the class is physically created |
 | **__init_subclass__**| The safer, modern way to hook into class creation |
-| **Class Decorator**| A function that modifies a class after it's been created |
 | **Best For** | Plugin systems, DB Models (Django/SQLAlchemy), Validation |
-| **Everything is object**| True! Even classes have classes (`type`) |
-| **Attribute Hook** | `__getattr__` or `__setattr__` (different from metaclasses!) |
+| **Caution** | High complexity; use inheritance or decorators first! |

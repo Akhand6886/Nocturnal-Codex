@@ -28,6 +28,8 @@ Any class can become a context manager by implementing these two magic methods.
 2.  **`__exit__`**: Teardown logic. Runs *at the end* of the `with` block (and handles any exceptions!).
 
 ```python
+import time
+
 class MyTimer:
     def __enter__(self):
         self.start = time.perf_counter()
@@ -49,10 +51,6 @@ with MyTimer():
 
 Writing a class for every context manager can be overkill. The **`contextlib`** module provides a decorator that turns a **generator function** into a context manager using `yield`.
 
--   Code **before** `yield` is the setup (`__enter__`).
--   The **yielded** value is the object returned.
--   Code **after** `yield` is the teardown (`__exit__`).
-
 ```python
 from contextlib import contextmanager
 
@@ -72,37 +70,13 @@ with temporary_file("test.log") as f:
     f.write("Log started")
 ```
 
-## Other Common Use Cases
-
-| Context Manager | Purpose |
-| :--- | :--- |
-| **with open()** | File handling |
-| **with threading.Lock()** | Synchronization for concurrency |
-| **with sqlite3.connect()** | Database transactions |
-| **with decimal.localcontext()**| Floating-point precision Control |
-| **with unittest.mock.patch()** | Temporary code replacement for testing |
-
-## Why Use Context Managers?
-
-1.  **Reliability**: Prevents resource leaks (memory, open files, network sockets).
-2.  **Safety**: Ensures resources are cleaned up even if the program crashes.
-3.  **Readability**: Makes it clear exactly where a resource is being used.
-4.  **Standardization**: Everyone knows `with` means "I'm using this resource temporarily."
-
 ## Summary
 
-| Term | Description |
+| Feature | Method / Syntax |
 | :--- | :--- |
 | **with** | The keyword to activate a context manager |
 | **__enter__** | Setup logic |
 | **__exit__** | Cleanup/Teardown logic |
 | **yield** | Used in `contextlib` to separate setup and teardown |
 | **Best For** | File I/O, DB Connections, Locks, Timers |
-| **Closing** | Handled automatically! |
-| **Exception Handling** | `__exit__` handles errors for you |
-| **Nested context** | `with open(a) as fa, open(b) as fb:` |
-| **Resource Leak** | Not closing resources (avoid this with `with`!) |
-| **Contextlib** | Library for building custom managers |
-| **Exit Stack** | Manage a dynamic list of context managers (`contextlib.ExitStack`) |
-| **Suppress** | `contextlib.suppress(Error)` to ignore specific errors |
-| **Redirect** | `contextlib.redirect_stdout()` to capture print output |
+| **Safety** | Ensures resources are cleaned up even on crash |

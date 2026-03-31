@@ -68,34 +68,6 @@ def process_item(item: Wrapper):
     print(item.wrap())
 ```
 
-## Generics: `TypeVar`
-
-If a function handles multiple types but the return type depends on the input type, use **`TypeVar`**.
-
-```python
-from typing import TypeVar, List
-
-# Define a generic type variable!
-T = TypeVar("T")
-
-def get_first(items: List[T]) -> T:
-    # Returns an item of the same type as the input list!
-    return items[0]
-
-print(get_first([1, 2, 3]))    # Returns int
-print(get_first(["A", "B"]))  # Returns str
-```
-
-## Static Analysis with `mypy`
-
-The most powerful way to use type hints is with a tool called **`mypy`**. It scans your whole project and points out where you've used a variable of the wrong type!
-
-```bash
-pip install mypy
-# Scan your file!
-mypy myscript.py
-```
-
 ## Summary
 
 | Feature | Syntax | Purpose |
@@ -109,5 +81,3 @@ mypy myscript.py
 | **Best For** | IDE support, Documentation, Large refactors |
 | **Mypy** | `mypy project/` | The tool that checks types staticly |
 | **TypeAlias** | `Scores = list[int]` | Give a type a new name |
-| **Final** | `x: Final = 10` | Declare as constant |
-| **Literal** | `mode: Literal["read", "write"]`| Restricted value set |
