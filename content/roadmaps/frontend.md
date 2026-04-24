@@ -6,4 +6,9 @@ difficulty: "Beginner"
 featured: true
 imageUrl: "/placeholder.png"
 order: 2
+relatedLanguages:
+  - html
+  - css
+  - javascript
+  - typescript
 ---
