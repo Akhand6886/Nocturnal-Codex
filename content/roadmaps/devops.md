@@ -6,4 +6,8 @@ difficulty: "Intermediate"
 featured: false
 imageUrl: "/placeholder.png"
 order: 5
+relatedLanguages:
+  - shell
+  - python
+  - go
 ---
