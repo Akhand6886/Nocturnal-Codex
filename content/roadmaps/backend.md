@@ -6,4 +6,12 @@ difficulty: "Beginner"
 featured: true
 imageUrl: "/placeholder.png"
 order: 1
+relatedLanguages:
+  - python
+  - java
+  - go
+  - csharp
+  - sql
+  - ruby
+  - php
 ---
