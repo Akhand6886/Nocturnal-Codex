@@ -2,165 +2,604 @@
   "nodes": [
     {
       "id": "fe-header",
-      "type": "default",
-      "position": { "x": 400, "y": 0 },
-      "data": { "label": "Frontend Development", "description": "Complete roadmap to becoming a modern frontend developer.", "resources": [] },
+      "type": "section",
+      "position": {
+        "x": 400,
+        "y": 0
+      },
+      "data": {
+        "label": "Frontend Development",
+        "description": "Complete roadmap to becoming a modern frontend developer.",
+        "resources": []
+      },
       "className": "section-header"
     },
     {
       "id": "internet",
-      "type": "default",
-      "position": { "x": 400, "y": 100 },
-      "data": { "label": "How the Internet Works", "description": "DNS, HTTP/HTTPS, domain names, hosting, and browser rendering.", "resources": [{ "title": "MDN: How the Web Works", "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "data": {
+        "label": "How the Internet Works",
+        "description": "DNS, HTTP/HTTPS, domain names, hosting, and browser rendering.",
+        "resources": [
+          {
+            "title": "MDN: How the Web Works",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "html",
-      "type": "default",
-      "position": { "x": 400, "y": 200 },
-      "data": { "label": "HTML", "description": "Semantic HTML5, forms, accessibility, and document structure.", "resources": [{ "title": "HTML Basics", "url": "/languages/html", "type": "article" }, { "title": "Forms", "url": "/languages/html/forms", "type": "article" }, { "title": "Accessibility", "url": "/languages/html/accessibility", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 200
+      },
+      "data": {
+        "label": "HTML",
+        "description": "Semantic HTML5, forms, accessibility, and document structure.",
+        "resources": [
+          {
+            "title": "HTML Basics",
+            "url": "/languages/html",
+            "type": "article"
+          },
+          {
+            "title": "Forms",
+            "url": "/languages/html/forms",
+            "type": "article"
+          },
+          {
+            "title": "Accessibility",
+            "url": "/languages/html/accessibility",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "css",
-      "type": "default",
-      "position": { "x": 400, "y": 300 },
-      "data": { "label": "CSS", "description": "Box model, selectors, Flexbox, Grid, responsive design, and animations.", "resources": [{ "title": "CSS Basics", "url": "/languages/css", "type": "article" }, { "title": "Flexbox", "url": "/languages/css/flexbox", "type": "article" }, { "title": "Grid", "url": "/languages/css/grid", "type": "article" }, { "title": "Responsive Design", "url": "/languages/css/responsive-design", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 300
+      },
+      "data": {
+        "label": "CSS",
+        "description": "Box model, selectors, Flexbox, Grid, responsive design, and animations.",
+        "resources": [
+          {
+            "title": "CSS Basics",
+            "url": "/languages/css",
+            "type": "article"
+          },
+          {
+            "title": "Flexbox",
+            "url": "/languages/css/flexbox",
+            "type": "article"
+          },
+          {
+            "title": "Grid",
+            "url": "/languages/css/grid",
+            "type": "article"
+          },
+          {
+            "title": "Responsive Design",
+            "url": "/languages/css/responsive-design",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "js-basics",
-      "type": "default",
-      "position": { "x": 400, "y": 400 },
-      "data": { "label": "JavaScript Fundamentals", "description": "Variables, data types, operators, control flow, functions, and scope.", "resources": [{ "title": "JS Intro", "url": "/languages/javascript", "type": "article" }, { "title": "Variables & Data Types", "url": "/languages/javascript/variables-data-types", "type": "article" }, { "title": "Functions", "url": "/languages/javascript/functions", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 400
+      },
+      "data": {
+        "label": "JavaScript Fundamentals",
+        "description": "Variables, data types, operators, control flow, functions, and scope.",
+        "resources": [
+          {
+            "title": "JS Intro",
+            "url": "/languages/javascript",
+            "type": "article"
+          },
+          {
+            "title": "Variables & Data Types",
+            "url": "/languages/javascript/variables-data-types",
+            "type": "article"
+          },
+          {
+            "title": "Functions",
+            "url": "/languages/javascript/functions",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "js-dom",
-      "type": "default",
-      "position": { "x": 150, "y": 510 },
-      "data": { "label": "DOM Manipulation", "description": "Query selectors, event listeners, and dynamic page updates.", "resources": [{ "title": "DOM Manipulation", "url": "/languages/javascript/dom-manipulation", "type": "article" }, { "title": "Events", "url": "/languages/javascript/events", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 150,
+        "y": 510
+      },
+      "data": {
+        "label": "DOM Manipulation",
+        "description": "Query selectors, event listeners, and dynamic page updates.",
+        "resources": [
+          {
+            "title": "DOM Manipulation",
+            "url": "/languages/javascript/dom-manipulation",
+            "type": "article"
+          },
+          {
+            "title": "Events",
+            "url": "/languages/javascript/events",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "js-async",
-      "type": "default",
-      "position": { "x": 400, "y": 510 },
-      "data": { "label": "Async JavaScript", "description": "Callbacks, Promises, async/await, and the event loop.", "resources": [{ "title": "Promises", "url": "/languages/javascript/promises", "type": "article" }, { "title": "Async/Await", "url": "/languages/javascript/async-await", "type": "article" }, { "title": "Event Loop", "url": "/languages/javascript/event-loop", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 510
+      },
+      "data": {
+        "label": "Async JavaScript",
+        "description": "Callbacks, Promises, async/await, and the event loop.",
+        "resources": [
+          {
+            "title": "Promises",
+            "url": "/languages/javascript/promises",
+            "type": "article"
+          },
+          {
+            "title": "Async/Await",
+            "url": "/languages/javascript/async-await",
+            "type": "article"
+          },
+          {
+            "title": "Event Loop",
+            "url": "/languages/javascript/event-loop",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "js-advanced",
-      "type": "default",
-      "position": { "x": 650, "y": 510 },
-      "data": { "label": "Advanced JavaScript", "description": "Prototypes, closures, modules, iterators, and design patterns.", "resources": [{ "title": "Prototypes", "url": "/languages/javascript/prototypes", "type": "article" }, { "title": "Modules", "url": "/languages/javascript/modules", "type": "article" }, { "title": "Design Patterns", "url": "/languages/javascript/design-patterns", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 650,
+        "y": 510
+      },
+      "data": {
+        "label": "Advanced JavaScript",
+        "description": "Prototypes, closures, modules, iterators, and design patterns.",
+        "resources": [
+          {
+            "title": "Prototypes",
+            "url": "/languages/javascript/prototypes",
+            "type": "article"
+          },
+          {
+            "title": "Modules",
+            "url": "/languages/javascript/modules",
+            "type": "article"
+          },
+          {
+            "title": "Design Patterns",
+            "url": "/languages/javascript/design-patterns",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "git",
-      "type": "default",
-      "position": { "x": 900, "y": 400 },
-      "data": { "label": "Version Control (Git)", "description": "Commits, branches, merging, rebasing, and pull requests.", "resources": [{ "title": "Pro Git Book", "url": "https://git-scm.com/book/en/v2", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 900,
+        "y": 400
+      },
+      "data": {
+        "label": "Version Control (Git)",
+        "description": "Commits, branches, merging, rebasing, and pull requests.",
+        "resources": [
+          {
+            "title": "Pro Git Book",
+            "url": "https://git-scm.com/book/en/v2",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "package-mgr",
-      "type": "default",
-      "position": { "x": 900, "y": 510 },
-      "data": { "label": "Package Managers", "description": "npm, yarn, pnpm — managing dependencies and scripts.", "resources": [{ "title": "npm Docs", "url": "https://docs.npmjs.com/", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 900,
+        "y": 510
+      },
+      "data": {
+        "label": "Package Managers",
+        "description": "npm, yarn, pnpm — managing dependencies and scripts.",
+        "resources": [
+          {
+            "title": "npm Docs",
+            "url": "https://docs.npmjs.com/",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "typescript",
-      "type": "default",
-      "position": { "x": 400, "y": 630 },
-      "data": { "label": "TypeScript", "description": "Type annotations, interfaces, generics, and type safety.", "resources": [{ "title": "TypeScript Intro", "url": "/languages/typescript", "type": "article" }, { "title": "Generics", "url": "/languages/typescript/generics", "type": "article" }, { "title": "Utility Types", "url": "/languages/typescript/utility-types", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 630
+      },
+      "data": {
+        "label": "TypeScript",
+        "description": "Type annotations, interfaces, generics, and type safety.",
+        "resources": [
+          {
+            "title": "TypeScript Intro",
+            "url": "/languages/typescript",
+            "type": "article"
+          },
+          {
+            "title": "Generics",
+            "url": "/languages/typescript/generics",
+            "type": "article"
+          },
+          {
+            "title": "Utility Types",
+            "url": "/languages/typescript/utility-types",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "css-arch",
-      "type": "default",
-      "position": { "x": 100, "y": 630 },
-      "data": { "label": "CSS Architecture", "description": "CSS Modules, Tailwind CSS, Sass, BEM, and custom properties.", "resources": [{ "title": "Custom Properties", "url": "/languages/css/custom-properties", "type": "article" }, { "title": "Container Queries", "url": "/languages/css/container-queries", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 100,
+        "y": 630
+      },
+      "data": {
+        "label": "CSS Architecture",
+        "description": "CSS Modules, Tailwind CSS, Sass, BEM, and custom properties.",
+        "resources": [
+          {
+            "title": "Custom Properties",
+            "url": "/languages/css/custom-properties",
+            "type": "article"
+          },
+          {
+            "title": "Container Queries",
+            "url": "/languages/css/container-queries",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "web-apis",
-      "type": "default",
-      "position": { "x": 900, "y": 630 },
-      "data": { "label": "Web APIs", "description": "Fetch API, Web Storage, Canvas, WebSockets, and Service Workers.", "resources": [{ "title": "Fetch API", "url": "/languages/javascript/fetch-api", "type": "article" }, { "title": "Web Storage", "url": "/languages/javascript/web-storage", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 900,
+        "y": 630
+      },
+      "data": {
+        "label": "Web APIs",
+        "description": "Fetch API, Web Storage, Canvas, WebSockets, and Service Workers.",
+        "resources": [
+          {
+            "title": "Fetch API",
+            "url": "/languages/javascript/fetch-api",
+            "type": "article"
+          },
+          {
+            "title": "Web Storage",
+            "url": "/languages/javascript/web-storage",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "react",
-      "type": "default",
-      "position": { "x": 400, "y": 750 },
-      "data": { "label": "React", "description": "Components, JSX, hooks, state, props, and the React ecosystem.", "resources": [{ "title": "React Docs", "url": "https://react.dev/learn", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 750
+      },
+      "data": {
+        "label": "React",
+        "description": "Components, JSX, hooks, state, props, and the React ecosystem.",
+        "resources": [
+          {
+            "title": "React Docs",
+            "url": "https://react.dev/learn",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "alt-fw",
-      "type": "default",
-      "position": { "x": 100, "y": 750 },
-      "data": { "label": "Alternative Frameworks", "description": "Vue.js, Angular, Svelte, Solid — explore alternatives to React.", "resources": [{ "title": "Vue.js Guide", "url": "https://vuejs.org/guide/introduction.html", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 100,
+        "y": 750
+      },
+      "data": {
+        "label": "Alternative Frameworks",
+        "description": "Vue.js, Angular, Svelte, Solid — explore alternatives to React.",
+        "resources": [
+          {
+            "title": "Vue.js Guide",
+            "url": "https://vuejs.org/guide/introduction.html",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "state-mgmt",
-      "type": "default",
-      "position": { "x": 700, "y": 750 },
-      "data": { "label": "State Management", "description": "Context API, Zustand, Redux Toolkit, Jotai, and React Query.", "resources": [{ "title": "Zustand", "url": "https://zustand-demo.pmnd.rs/", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 750
+      },
+      "data": {
+        "label": "State Management",
+        "description": "Context API, Zustand, Redux Toolkit, Jotai, and React Query.",
+        "resources": [
+          {
+            "title": "Zustand",
+            "url": "https://zustand-demo.pmnd.rs/",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "meta-fw",
-      "type": "default",
-      "position": { "x": 400, "y": 870 },
-      "data": { "label": "Meta-Frameworks", "description": "Next.js, Remix, Astro — SSR, SSG, and full-stack React.", "resources": [{ "title": "Next.js Docs", "url": "https://nextjs.org/docs", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 870
+      },
+      "data": {
+        "label": "Meta-Frameworks",
+        "description": "Next.js, Remix, Astro — SSR, SSG, and full-stack React.",
+        "resources": [
+          {
+            "title": "Next.js Docs",
+            "url": "https://nextjs.org/docs",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "testing",
-      "type": "default",
-      "position": { "x": 150, "y": 980 },
-      "data": { "label": "Testing", "description": "Vitest/Jest, Testing Library, E2E with Playwright.", "resources": [{ "title": "Vitest", "url": "https://vitest.dev/", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 150,
+        "y": 980
+      },
+      "data": {
+        "label": "Testing",
+        "description": "Vitest/Jest, Testing Library, E2E with Playwright.",
+        "resources": [
+          {
+            "title": "Vitest",
+            "url": "https://vitest.dev/",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "build-tools",
-      "type": "default",
-      "position": { "x": 400, "y": 980 },
-      "data": { "label": "Build Tools", "description": "Vite, Webpack, esbuild, SWC — bundling and code splitting.", "resources": [{ "title": "Vite Guide", "url": "https://vite.dev/guide/", "type": "article" }, { "title": "Build Tools", "url": "/languages/typescript/build-tools", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 400,
+        "y": 980
+      },
+      "data": {
+        "label": "Build Tools",
+        "description": "Vite, Webpack, esbuild, SWC — bundling and code splitting.",
+        "resources": [
+          {
+            "title": "Vite Guide",
+            "url": "https://vite.dev/guide/",
+            "type": "article"
+          },
+          {
+            "title": "Build Tools",
+            "url": "/languages/typescript/build-tools",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "performance",
-      "type": "default",
-      "position": { "x": 650, "y": 980 },
-      "data": { "label": "Performance", "description": "Core Web Vitals, lazy loading, image optimization, and caching.", "resources": [{ "title": "JS Performance", "url": "/languages/javascript/performance", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 650,
+        "y": 980
+      },
+      "data": {
+        "label": "Performance",
+        "description": "Core Web Vitals, lazy loading, image optimization, and caching.",
+        "resources": [
+          {
+            "title": "JS Performance",
+            "url": "/languages/javascript/performance",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     }
   ],
   "edges": [
-    { "id": "e1", "source": "fe-header", "target": "internet", "type": "default" },
-    { "id": "e2", "source": "internet", "target": "html", "type": "default" },
-    { "id": "e3", "source": "html", "target": "css", "type": "default" },
-    { "id": "e4", "source": "css", "target": "js-basics", "type": "default" },
-    { "id": "e5", "source": "js-basics", "target": "js-dom", "type": "default" },
-    { "id": "e6", "source": "js-basics", "target": "js-async", "type": "default" },
-    { "id": "e7", "source": "js-basics", "target": "js-advanced", "type": "default" },
-    { "id": "e8", "source": "js-basics", "target": "git", "type": "default" },
-    { "id": "e9", "source": "git", "target": "package-mgr", "type": "default" },
-    { "id": "e10", "source": "js-async", "target": "typescript", "type": "default" },
-    { "id": "e11", "source": "js-dom", "target": "css-arch", "type": "default" },
-    { "id": "e12", "source": "js-advanced", "target": "web-apis", "type": "default" },
-    { "id": "e13", "source": "typescript", "target": "react", "type": "default" },
-    { "id": "e14", "source": "css-arch", "target": "alt-fw", "type": "default" },
-    { "id": "e15", "source": "react", "target": "state-mgmt", "type": "default" },
-    { "id": "e16", "source": "react", "target": "meta-fw", "type": "default" },
-    { "id": "e17", "source": "alt-fw", "target": "meta-fw", "type": "default" },
-    { "id": "e18", "source": "meta-fw", "target": "testing", "type": "default" },
-    { "id": "e19", "source": "meta-fw", "target": "build-tools", "type": "default" },
-    { "id": "e20", "source": "meta-fw", "target": "performance", "type": "default" }
+    {
+      "id": "e1",
+      "source": "fe-header",
+      "target": "internet",
+      "type": "roadmap"
+    },
+    {
+      "id": "e2",
+      "source": "internet",
+      "target": "html",
+      "type": "roadmap"
+    },
+    {
+      "id": "e3",
+      "source": "html",
+      "target": "css",
+      "type": "roadmap"
+    },
+    {
+      "id": "e4",
+      "source": "css",
+      "target": "js-basics",
+      "type": "roadmap"
+    },
+    {
+      "id": "e5",
+      "source": "js-basics",
+      "target": "js-dom",
+      "type": "roadmap"
+    },
+    {
+      "id": "e6",
+      "source": "js-basics",
+      "target": "js-async",
+      "type": "roadmap"
+    },
+    {
+      "id": "e7",
+      "source": "js-basics",
+      "target": "js-advanced",
+      "type": "roadmap"
+    },
+    {
+      "id": "e8",
+      "source": "js-basics",
+      "target": "git",
+      "type": "roadmap"
+    },
+    {
+      "id": "e9",
+      "source": "git",
+      "target": "package-mgr",
+      "type": "roadmap"
+    },
+    {
+      "id": "e10",
+      "source": "js-async",
+      "target": "typescript",
+      "type": "roadmap"
+    },
+    {
+      "id": "e11",
+      "source": "js-dom",
+      "target": "css-arch",
+      "type": "roadmap"
+    },
+    {
+      "id": "e12",
+      "source": "js-advanced",
+      "target": "web-apis",
+      "type": "roadmap"
+    },
+    {
+      "id": "e13",
+      "source": "typescript",
+      "target": "react",
+      "type": "roadmap"
+    },
+    {
+      "id": "e14",
+      "source": "css-arch",
+      "target": "alt-fw",
+      "type": "roadmap"
+    },
+    {
+      "id": "e15",
+      "source": "react",
+      "target": "state-mgmt",
+      "type": "roadmap"
+    },
+    {
+      "id": "e16",
+      "source": "react",
+      "target": "meta-fw",
+      "type": "roadmap"
+    },
+    {
+      "id": "e17",
+      "source": "alt-fw",
+      "target": "meta-fw",
+      "type": "roadmap"
+    },
+    {
+      "id": "e18",
+      "source": "meta-fw",
+      "target": "testing",
+      "type": "roadmap"
+    },
+    {
+      "id": "e19",
+      "source": "meta-fw",
+      "target": "build-tools",
+      "type": "roadmap"
+    },
+    {
+      "id": "e20",
+      "source": "meta-fw",
+      "target": "performance",
+      "type": "roadmap"
+    }
   ]
 }

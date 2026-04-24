@@ -2,128 +2,442 @@
   "nodes": [
     {
       "id": "devops-header",
-      "type": "default",
-      "position": { "x": 400, "y": 0 },
-      "data": { "label": "DevOps Engineering", "description": "Complete roadmap to becoming a DevOps engineer.", "resources": [] },
+      "type": "section",
+      "position": {
+        "x": 400,
+        "y": 0
+      },
+      "data": {
+        "label": "DevOps Engineering",
+        "description": "Complete roadmap to becoming a DevOps engineer.",
+        "resources": []
+      },
       "className": "section-header"
     },
     {
       "id": "linux",
-      "type": "default",
-      "position": { "x": 400, "y": 100 },
-      "data": { "label": "Linux & OS Fundamentals", "description": "File system, processes, permissions, systemd, and shell navigation.", "resources": [{ "title": "Shell Fundamentals", "url": "/languages/shell/shell-fundamentals", "type": "article" }, { "title": "Process Management", "url": "/languages/shell/process-management", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "data": {
+        "label": "Linux & OS Fundamentals",
+        "description": "File system, processes, permissions, systemd, and shell navigation.",
+        "resources": [
+          {
+            "title": "Shell Fundamentals",
+            "url": "/languages/shell/shell-fundamentals",
+            "type": "article"
+          },
+          {
+            "title": "Process Management",
+            "url": "/languages/shell/process-management",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "scripting",
-      "type": "default",
-      "position": { "x": 150, "y": 210 },
-      "data": { "label": "Shell Scripting", "description": "Bash/Zsh scripting, variables, control flow, and automation.", "resources": [{ "title": "Shell Guide", "url": "/languages/shell", "type": "article" }, { "title": "Variables", "url": "/languages/shell/variables", "type": "article" }, { "title": "Control Flow", "url": "/languages/shell/control-flow", "type": "article" }, { "title": "Functions", "url": "/languages/shell/functions", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 150,
+        "y": 210
+      },
+      "data": {
+        "label": "Shell Scripting",
+        "description": "Bash/Zsh scripting, variables, control flow, and automation.",
+        "resources": [
+          {
+            "title": "Shell Guide",
+            "url": "/languages/shell",
+            "type": "article"
+          },
+          {
+            "title": "Variables",
+            "url": "/languages/shell/variables",
+            "type": "article"
+          },
+          {
+            "title": "Control Flow",
+            "url": "/languages/shell/control-flow",
+            "type": "article"
+          },
+          {
+            "title": "Functions",
+            "url": "/languages/shell/functions",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "python",
-      "type": "default",
-      "position": { "x": 650, "y": 210 },
-      "data": { "label": "Python for DevOps", "description": "Scripting, automation, and infrastructure tools.", "resources": [{ "title": "Python Guide", "url": "/languages/python", "type": "article" }, { "title": "Modules & Packages", "url": "/languages/python/modules-packages", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 210
+      },
+      "data": {
+        "label": "Python for DevOps",
+        "description": "Scripting, automation, and infrastructure tools.",
+        "resources": [
+          {
+            "title": "Python Guide",
+            "url": "/languages/python",
+            "type": "article"
+          },
+          {
+            "title": "Modules & Packages",
+            "url": "/languages/python/modules-packages",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "git",
-      "type": "default",
-      "position": { "x": 400, "y": 320 },
-      "data": { "label": "Version Control (Git)", "description": "Branching strategies, Git flow, and repository management.", "resources": [{ "title": "Pro Git Book", "url": "https://git-scm.com/book/en/v2", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 400,
+        "y": 320
+      },
+      "data": {
+        "label": "Version Control (Git)",
+        "description": "Branching strategies, Git flow, and repository management.",
+        "resources": [
+          {
+            "title": "Pro Git Book",
+            "url": "https://git-scm.com/book/en/v2",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "networking",
-      "type": "default",
-      "position": { "x": 400, "y": 420 },
-      "data": { "label": "Networking", "description": "TCP/IP, DNS, HTTP/HTTPS, firewalls, VPN, and load balancing.", "resources": [{ "title": "Shell Networking", "url": "/languages/shell/best-practices", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 420
+      },
+      "data": {
+        "label": "Networking",
+        "description": "TCP/IP, DNS, HTTP/HTTPS, firewalls, VPN, and load balancing.",
+        "resources": [
+          {
+            "title": "Shell Networking",
+            "url": "/languages/shell/best-practices",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "containers",
-      "type": "default",
-      "position": { "x": 400, "y": 530 },
-      "data": { "label": "Containers (Docker)", "description": "Images, Dockerfiles, docker-compose, and container registries.", "resources": [{ "title": "Docker Docs", "url": "https://docs.docker.com/get-started/", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 530
+      },
+      "data": {
+        "label": "Containers (Docker)",
+        "description": "Images, Dockerfiles, docker-compose, and container registries.",
+        "resources": [
+          {
+            "title": "Docker Docs",
+            "url": "https://docs.docker.com/get-started/",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "k8s",
-      "type": "default",
-      "position": { "x": 400, "y": 640 },
-      "data": { "label": "Kubernetes", "description": "Pods, services, deployments, Helm charts, and cluster management.", "resources": [{ "title": "Kubernetes Docs", "url": "https://kubernetes.io/docs/tutorials/", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 640
+      },
+      "data": {
+        "label": "Kubernetes",
+        "description": "Pods, services, deployments, Helm charts, and cluster management.",
+        "resources": [
+          {
+            "title": "Kubernetes Docs",
+            "url": "https://kubernetes.io/docs/tutorials/",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "ci-cd",
-      "type": "default",
-      "position": { "x": 150, "y": 750 },
-      "data": { "label": "CI/CD Pipelines", "description": "GitHub Actions, Jenkins, GitLab CI, ArgoCD.", "resources": [{ "title": "GitHub Actions", "url": "https://docs.github.com/en/actions", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 150,
+        "y": 750
+      },
+      "data": {
+        "label": "CI/CD Pipelines",
+        "description": "GitHub Actions, Jenkins, GitLab CI, ArgoCD.",
+        "resources": [
+          {
+            "title": "GitHub Actions",
+            "url": "https://docs.github.com/en/actions",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "iac",
-      "type": "default",
-      "position": { "x": 650, "y": 750 },
-      "data": { "label": "Infrastructure as Code", "description": "Terraform, Ansible, Pulumi — declarative infrastructure.", "resources": [{ "title": "Terraform Docs", "url": "https://developer.hashicorp.com/terraform/docs", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 750
+      },
+      "data": {
+        "label": "Infrastructure as Code",
+        "description": "Terraform, Ansible, Pulumi — declarative infrastructure.",
+        "resources": [
+          {
+            "title": "Terraform Docs",
+            "url": "https://developer.hashicorp.com/terraform/docs",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "cloud",
-      "type": "default",
-      "position": { "x": 400, "y": 860 },
-      "data": { "label": "Cloud Providers", "description": "AWS, GCP, Azure — compute, storage, networking, and serverless.", "resources": [{ "title": "AWS Getting Started", "url": "https://aws.amazon.com/getting-started/", "type": "article" }] },
+      "type": "topic",
+      "position": {
+        "x": 400,
+        "y": 860
+      },
+      "data": {
+        "label": "Cloud Providers",
+        "description": "AWS, GCP, Azure — compute, storage, networking, and serverless.",
+        "resources": [
+          {
+            "title": "AWS Getting Started",
+            "url": "https://aws.amazon.com/getting-started/",
+            "type": "article"
+          }
+        ]
+      },
       "className": "highlight"
     },
     {
       "id": "monitoring",
-      "type": "default",
-      "position": { "x": 150, "y": 970 },
-      "data": { "label": "Monitoring & Logging", "description": "Prometheus, Grafana, ELK Stack, Datadog, and alerting.", "resources": [{ "title": "Python Logging", "url": "/languages/python/logging", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 150,
+        "y": 970
+      },
+      "data": {
+        "label": "Monitoring & Logging",
+        "description": "Prometheus, Grafana, ELK Stack, Datadog, and alerting.",
+        "resources": [
+          {
+            "title": "Python Logging",
+            "url": "/languages/python/logging",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "security",
-      "type": "default",
-      "position": { "x": 650, "y": 970 },
-      "data": { "label": "Security", "description": "Secrets management, vulnerability scanning, and compliance.", "resources": [{ "title": "OWASP Top 10", "url": "https://owasp.org/www-project-top-ten/", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 650,
+        "y": 970
+      },
+      "data": {
+        "label": "Security",
+        "description": "Secrets management, vulnerability scanning, and compliance.",
+        "resources": [
+          {
+            "title": "OWASP Top 10",
+            "url": "https://owasp.org/www-project-top-ten/",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "text-tools",
-      "type": "default",
-      "position": { "x": 150, "y": 420 },
-      "data": { "label": "Text Processing", "description": "grep, sed, awk, cut, sort, uniq — data pipeline essentials.", "resources": [{ "title": "grep & Regex", "url": "/languages/shell/grep-regular-expressions", "type": "article" }, { "title": "sed & awk", "url": "/languages/shell/sed-awk", "type": "article" }, { "title": "cut, sort, uniq", "url": "/languages/shell/cut-sort-uniq", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 150,
+        "y": 420
+      },
+      "data": {
+        "label": "Text Processing",
+        "description": "grep, sed, awk, cut, sort, uniq — data pipeline essentials.",
+        "resources": [
+          {
+            "title": "grep & Regex",
+            "url": "/languages/shell/grep-regular-expressions",
+            "type": "article"
+          },
+          {
+            "title": "sed & awk",
+            "url": "/languages/shell/sed-awk",
+            "type": "article"
+          },
+          {
+            "title": "cut, sort, uniq",
+            "url": "/languages/shell/cut-sort-uniq",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     },
     {
       "id": "io-redir",
-      "type": "default",
-      "position": { "x": 650, "y": 420 },
-      "data": { "label": "I/O & Redirection", "description": "Pipes, stdin/stdout/stderr, and file descriptors.", "resources": [{ "title": "I/O Redirection", "url": "/languages/shell/i-o-redirection", "type": "article" }] },
+      "type": "subtopic",
+      "position": {
+        "x": 650,
+        "y": 420
+      },
+      "data": {
+        "label": "I/O & Redirection",
+        "description": "Pipes, stdin/stdout/stderr, and file descriptors.",
+        "resources": [
+          {
+            "title": "I/O Redirection",
+            "url": "/languages/shell/i-o-redirection",
+            "type": "article"
+          }
+        ]
+      },
       "className": ""
     }
   ],
   "edges": [
-    { "id": "e1", "source": "devops-header", "target": "linux", "type": "default" },
-    { "id": "e2", "source": "linux", "target": "scripting", "type": "default" },
-    { "id": "e3", "source": "linux", "target": "python", "type": "default" },
-    { "id": "e4", "source": "scripting", "target": "git", "type": "default" },
-    { "id": "e5", "source": "python", "target": "git", "type": "default" },
-    { "id": "e6", "source": "scripting", "target": "text-tools", "type": "default" },
-    { "id": "e7", "source": "python", "target": "io-redir", "type": "default" },
-    { "id": "e8", "source": "git", "target": "networking", "type": "default" },
-    { "id": "e9", "source": "text-tools", "target": "networking", "type": "default" },
-    { "id": "e10", "source": "io-redir", "target": "networking", "type": "default" },
-    { "id": "e11", "source": "networking", "target": "containers", "type": "default" },
-    { "id": "e12", "source": "containers", "target": "k8s", "type": "default" },
-    { "id": "e13", "source": "k8s", "target": "ci-cd", "type": "default" },
-    { "id": "e14", "source": "k8s", "target": "iac", "type": "default" },
-    { "id": "e15", "source": "ci-cd", "target": "cloud", "type": "default" },
-    { "id": "e16", "source": "iac", "target": "cloud", "type": "default" },
-    { "id": "e17", "source": "cloud", "target": "monitoring", "type": "default" },
-    { "id": "e18", "source": "cloud", "target": "security", "type": "default" }
+    {
+      "id": "e1",
+      "source": "devops-header",
+      "target": "linux",
+      "type": "roadmap"
+    },
+    {
+      "id": "e2",
+      "source": "linux",
+      "target": "scripting",
+      "type": "roadmap"
+    },
+    {
+      "id": "e3",
+      "source": "linux",
+      "target": "python",
+      "type": "roadmap"
+    },
+    {
+      "id": "e4",
+      "source": "scripting",
+      "target": "git",
+      "type": "roadmap"
+    },
+    {
+      "id": "e5",
+      "source": "python",
+      "target": "git",
+      "type": "roadmap"
+    },
+    {
+      "id": "e6",
+      "source": "scripting",
+      "target": "text-tools",
+      "type": "roadmap"
+    },
+    {
+      "id": "e7",
+      "source": "python",
+      "target": "io-redir",
+      "type": "roadmap"
+    },
+    {
+      "id": "e8",
+      "source": "git",
+      "target": "networking",
+      "type": "roadmap"
+    },
+    {
+      "id": "e9",
+      "source": "text-tools",
+      "target": "networking",
+      "type": "roadmap"
+    },
+    {
+      "id": "e10",
+      "source": "io-redir",
+      "target": "networking",
+      "type": "roadmap"
+    },
+    {
+      "id": "e11",
+      "source": "networking",
+      "target": "containers",
+      "type": "roadmap"
+    },
+    {
+      "id": "e12",
+      "source": "containers",
+      "target": "k8s",
+      "type": "roadmap"
+    },
+    {
+      "id": "e13",
+      "source": "k8s",
+      "target": "ci-cd",
+      "type": "roadmap"
+    },
+    {
+      "id": "e14",
+      "source": "k8s",
+      "target": "iac",
+      "type": "roadmap"
+    },
+    {
+      "id": "e15",
+      "source": "ci-cd",
+      "target": "cloud",
+      "type": "roadmap"
+    },
+    {
+      "id": "e16",
+      "source": "iac",
+      "target": "cloud",
+      "type": "roadmap"
+    },
+    {
+      "id": "e17",
+      "source": "cloud",
+      "target": "monitoring",
+      "type": "roadmap"
+    },
+    {
+      "id": "e18",
+      "source": "cloud",
+      "target": "security",
+      "type": "roadmap"
+    }
   ]
 }
