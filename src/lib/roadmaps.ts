@@ -13,6 +13,8 @@ export interface Roadmap {
   order: number;
   content: string; // The markdown content, if any
   url: string;
+  relatedLanguages?: string[];
+  imageUrl?: string;
 }
 
 const roadmapsDirectory = path.join(process.cwd(), 'content/roadmaps');
