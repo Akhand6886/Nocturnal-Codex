@@ -37,6 +37,23 @@
     --chart-3: 210 90% 50%;
     --chart-4: 0 70% 60%;
     --chart-5: 280 60% 60%;
+
+    /* Roadmap UI specific colors */
+    --rm-topic-bg: 54 100% 85%; /* Yellowish */
+    --rm-topic-border: 54 100% 30%;
+    --rm-topic-text: 54 100% 15%;
+    
+    --rm-section-bg: 220 100% 90%; /* Blueish */
+    --rm-section-border: 220 100% 40%;
+    --rm-section-text: 220 100% 20%;
+    
+    --rm-learning-bg: 270 100% 90%; /* Purpleish */
+    --rm-learning-border: 270 100% 50%;
+    
+    --rm-done-bg: 180 15% 90%; /* Grayish */
+    --rm-done-border: 180 15% 50%;
+    
+    --rm-edge: 220 20% 60%;
   }
 
   .dark {
@@ -72,6 +89,23 @@
     --chart-3: 210 90% 60%;
     --chart-4: 0 70% 65%;
     --chart-5: 280 60% 70%;
+
+    /* Dark mode Roadmap UI specific colors */
+    --rm-topic-bg: 54 90% 15%;
+    --rm-topic-border: 54 90% 50%;
+    --rm-topic-text: 54 90% 85%;
+    
+    --rm-section-bg: 220 90% 15%;
+    --rm-section-border: 220 90% 50%;
+    --rm-section-text: 220 90% 85%;
+    
+    --rm-learning-bg: 270 90% 15%;
+    --rm-learning-border: 270 90% 50%;
+    
+    --rm-done-bg: 220 15% 15%;
+    --rm-done-border: 220 15% 40%;
+    
+    --rm-edge: 220 15% 40%;
   }
 }
 
@@ -114,6 +148,12 @@
   .markdown-content img { @apply max-w-full h-auto rounded-lg my-5 shadow-lg; } 
   .markdown-content strong {
     @apply font-semibold text-foreground;
+  }
+}
+
+@layer utilities {
+  .roadmap-font {
+    font-family: var(--font-balsamiq), var(--font-quicksand), sans-serif;
   }
 }
 
