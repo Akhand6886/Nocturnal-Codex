@@ -6,4 +6,8 @@ difficulty: "Intermediate"
 featured: false
 imageUrl: "/placeholder.png"
 order: 3
+relatedLanguages:
+  - python
+  - r
+  - matlab
 ---
