@@ -18,7 +18,7 @@ export default function RoadmapEdge({
     targetX,
     targetY,
     targetPosition,
-    borderRadius: 16,
+    borderRadius: 8, // Smaller border radius for sharper lines like the image
   });
 
   return (
@@ -29,10 +29,10 @@ export default function RoadmapEdge({
         markerEnd={markerEnd}
         style={{
           ...style,
-          strokeWidth: 3,
+          strokeWidth: 2,
           stroke: 'hsl(var(--rm-edge))',
         }}
-        className="roadmap-edge-path transition-all duration-300 hover:stroke-primary hover:stroke-[4px]"
+        className="roadmap-edge-path transition-all duration-300 hover:stroke-[3px]"
       />
     </>
   );
