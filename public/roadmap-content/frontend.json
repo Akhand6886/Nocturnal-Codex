@@ -256,7 +256,7 @@
     },
     {
       "id": "typescript",
-      "type": "topic",
+      "type": "blue",
       "position": {
         "x": 400,
         "y": 630
@@ -478,6 +478,17 @@
         ]
       },
       "className": ""
+    },
+    {
+      "id": "info-block-1",
+      "type": "info",
+      "position": {
+        "x": 50,
+        "y": 300
+      },
+      "data": {
+        "label": "HTML, CSS and JavaScript are the backbone of web development. Make sure to practice by building lots of projects."
+      }
     }
   ],
   "edges": [
@@ -509,7 +520,7 @@
       "id": "e5",
       "source": "js-basics",
       "target": "js-dom",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e6",
@@ -521,19 +532,19 @@
       "id": "e7",
       "source": "js-basics",
       "target": "js-advanced",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e8",
       "source": "js-basics",
       "target": "git",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e9",
       "source": "git",
       "target": "package-mgr",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e10",
@@ -545,13 +556,13 @@
       "id": "e11",
       "source": "js-dom",
       "target": "css-arch",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e12",
       "source": "js-advanced",
       "target": "web-apis",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e13",
@@ -563,13 +574,13 @@
       "id": "e14",
       "source": "css-arch",
       "target": "alt-fw",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e15",
       "source": "react",
       "target": "state-mgmt",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e16",
@@ -587,19 +598,19 @@
       "id": "e18",
       "source": "meta-fw",
       "target": "testing",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e19",
       "source": "meta-fw",
       "target": "build-tools",
-      "type": "roadmap"
+      "type": "dotted"
     },
     {
       "id": "e20",
       "source": "meta-fw",
       "target": "performance",
-      "type": "roadmap"
+      "type": "dotted"
     }
   ]
 }
