@@ -39,21 +39,26 @@
     --chart-5: 280 60% 60%;
 
     /* Roadmap UI specific colors */
-    --rm-topic-bg: 54 100% 85%; /* Yellowish */
-    --rm-topic-border: 54 100% 30%;
-    --rm-topic-text: 54 100% 15%;
+    --rm-topic-bg: 54 99% 54%; /* #FEF015 Bright Yellow */
+    --rm-topic-border: 0 0% 0%; /* Black */
+    --rm-topic-text: 0 0% 0%; /* Black */
     
-    --rm-section-bg: 220 100% 90%; /* Blueish */
-    --rm-section-border: 220 100% 40%;
-    --rm-section-text: 220 100% 20%;
+    --rm-subtopic-bg: 58 100% 88%; /* #FFFDC4 Pale Yellow/Beige */
+    --rm-subtopic-border: 0 0% 0%;
+    --rm-subtopic-text: 0 0% 0%;
     
-    --rm-learning-bg: 270 100% 90%; /* Purpleish */
-    --rm-learning-border: 270 100% 50%;
+    --rm-section-text: 0 0% 0%;
     
-    --rm-done-bg: 180 15% 90%; /* Grayish */
-    --rm-done-border: 180 15% 50%;
+    --rm-blue-bg: 217 91% 60%; /* #3b82f6 Tailwind Blue 500 */
+    --rm-blue-text: 0 0% 100%; /* White */
     
-    --rm-edge: 220 20% 60%;
+    --rm-info-bg: 210 20% 98%; /* #f8fafc Light Gray/Slate */
+    --rm-info-text: 215 25% 27%; /* Slate 700 */
+    
+    --rm-edge: 217 91% 60%; /* Blue 500 */
+    
+    --rm-done-icon: 260 100% 65%; /* Purple status */
+    --rm-learning-icon: 142 71% 45%; /* Green status */
   }
 
   .dark {
@@ -91,21 +96,26 @@
     --chart-5: 280 60% 70%;
 
     /* Dark mode Roadmap UI specific colors */
-    --rm-topic-bg: 54 90% 15%;
-    --rm-topic-border: 54 90% 50%;
-    --rm-topic-text: 54 90% 85%;
+    --rm-topic-bg: 54 99% 54%; /* Keep yellow bright in dark mode for contrast like roadmap.sh */
+    --rm-topic-border: 0 0% 0%;
+    --rm-topic-text: 0 0% 0%;
     
-    --rm-section-bg: 220 90% 15%;
-    --rm-section-border: 220 90% 50%;
-    --rm-section-text: 220 90% 85%;
+    --rm-subtopic-bg: 58 100% 88%;
+    --rm-subtopic-border: 0 0% 0%;
+    --rm-subtopic-text: 0 0% 0%;
     
-    --rm-learning-bg: 270 90% 15%;
-    --rm-learning-border: 270 90% 50%;
+    --rm-section-text: 0 0% 100%; /* White text in dark mode for section headers */
     
-    --rm-done-bg: 220 15% 15%;
-    --rm-done-border: 220 15% 40%;
+    --rm-blue-bg: 217 91% 60%; 
+    --rm-blue-text: 0 0% 100%;
     
-    --rm-edge: 220 15% 40%;
+    --rm-info-bg: 215 28% 17%; /* Slate 800 */
+    --rm-info-text: 210 40% 98%; /* Slate 50 */
+    
+    --rm-edge: 217 91% 60%;
+    
+    --rm-done-icon: 260 100% 65%;
+    --rm-learning-icon: 142 71% 45%;
   }
 }
 
