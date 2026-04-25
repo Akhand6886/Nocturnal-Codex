@@ -18,7 +18,11 @@ import { Spinner } from '@/components/common/spinner';
 import TopicNode from '../Roadmaps/nodes/TopicNode';
 import SectionNode from '../Roadmaps/nodes/SectionNode';
 import SubtopicNode from '../Roadmaps/nodes/SubtopicNode';
+import BlueNode from '../Roadmaps/nodes/BlueNode';
+import InfoNode from '../Roadmaps/nodes/InfoNode';
+import LabelNode from '../Roadmaps/nodes/LabelNode';
 import RoadmapEdge from '../Roadmaps/edges/RoadmapEdge';
+import DottedEdge from '../Roadmaps/edges/DottedEdge';
 import { RoadmapDrawer, SelectedNodeData } from '../Roadmaps/RoadmapDrawer';
 
 interface EditorRoadmapRendererProps {
@@ -34,11 +38,15 @@ const nodeTypes = {
   topic: TopicNode,
   section: SectionNode,
   subtopic: SubtopicNode,
+  blue: BlueNode,
+  info: InfoNode,
+  label: LabelNode,
   default: TopicNode, // Fallback
 };
 
 const edgeTypes = {
   roadmap: RoadmapEdge,
+  dotted: DottedEdge,
   default: RoadmapEdge, // Fallback
 };
 
