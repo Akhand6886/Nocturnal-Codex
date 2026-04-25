@@ -1,5 +1,6 @@
 import { Handle, Position, NodeProps, Node } from '@xyflow/react';
 import { memo } from 'react';
+import { Check } from 'lucide-react';
 
 type SubtopicNodeData = {
   label: string;
@@ -9,27 +10,30 @@ type SubtopicNodeData = {
 type SubtopicNodeType = Node<SubtopicNodeData, 'subtopic'>;
 
 const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
-  let bgClass = "bg-[hsl(var(--rm-topic-bg))]";
-  let borderClass = "border-[hsl(var(--rm-topic-border))]";
-  let textClass = "text-[hsl(var(--rm-topic-text))]";
+  let bgClass = "bg-[hsl(var(--rm-subtopic-bg))]";
+  let borderClass = "border-[2px] border-[hsl(var(--rm-subtopic-border))]";
+  let textClass = "text-[hsl(var(--rm-subtopic-text))]";
 
+  // Determine status color for the badge
+  let statusColor = "";
   if (data.status === 'done') {
-    bgClass = "bg-[hsl(var(--rm-done-bg))]";
-    borderClass = "border-[hsl(var(--rm-done-border))]";
-    textClass = "text-[hsl(var(--rm-done-border))] line-through";
+    statusColor = "bg-[hsl(var(--rm-done-icon))]"; // Purple
   } else if (data.status === 'learning') {
-    bgClass = "bg-[hsl(var(--rm-learning-bg))]";
-    borderClass = "border-[hsl(var(--rm-learning-border))]";
-    textClass = "text-[hsl(var(--rm-learning-border))] underline";
+    statusColor = "bg-[hsl(var(--rm-learning-icon))]"; // Green
   }
 
   return (
     <div className={`
-      relative px-4 py-2 min-w-[120px] text-center
-      border-2 rounded-full shadow-[2px_2px_0_hsl(var(--rm-edge))]
-      transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_hsl(var(--rm-edge))]
+      relative px-4 py-1.5 min-w-[110px] text-center
+      rounded-[4px]
+      transition-transform duration-200 hover:-translate-y-0.5
       ${bgClass} ${borderClass} ${selected ? 'ring-2 ring-primary ring-offset-1' : ''}
     `}>
+      {data.status && (
+        <div className={`absolute -top-1.5 -left-1.5 w-4 h-4 rounded-full flex items-center justify-center border-[1.5px] border-black ${statusColor}`}>
+          <Check strokeWidth={4} className="w-2.5 h-2.5 text-white" />
+        </div>
+      )}
       <Handle 
         type="target" 
         position={Position.Top} 
