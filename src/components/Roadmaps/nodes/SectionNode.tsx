@@ -10,11 +10,9 @@ type SectionNodeType = Node<SectionNodeData, 'section'>;
 const SectionNode = ({ data, selected }: NodeProps<SectionNodeType>) => {
   return (
     <div className={`
-      relative px-8 py-4 min-w-[200px] text-center
-      border-2 rounded-md shadow-[4px_4px_0_hsl(var(--rm-edge))]
-      bg-[hsl(var(--rm-section-bg))] border-[hsl(var(--rm-section-border))]
-      transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_hsl(var(--rm-edge))]
-      ${selected ? 'ring-2 ring-primary ring-offset-2' : ''}
+      relative px-8 py-2 min-w-[200px] text-center
+      bg-transparent border-none
+      transition-transform duration-200
     `}>
       <Handle 
         type="target" 
@@ -23,7 +21,7 @@ const SectionNode = ({ data, selected }: NodeProps<SectionNodeType>) => {
         isConnectable={false}
       />
       
-      <div className="roadmap-font font-extrabold text-base tracking-widest uppercase text-[hsl(var(--rm-section-text))]">
+      <div className="roadmap-font font-extrabold text-2xl tracking-wide text-[hsl(var(--rm-section-text))]">
         {data.label}
       </div>
 
