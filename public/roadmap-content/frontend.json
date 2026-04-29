@@ -1,616 +1,1685 @@
 {
   "nodes": [
     {
-      "id": "fe-header",
+      "id": "header",
       "type": "section",
       "position": {
-        "x": 400,
-        "y": 0
+        "x": 440,
+        "y": 20
       },
       "data": {
-        "label": "Frontend Development",
-        "description": "Complete roadmap to becoming a modern frontend developer.",
-        "resources": []
-      },
-      "className": "section-header"
+        "label": "Front-end"
+      }
     },
     {
       "id": "internet",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 100
+        "x": 440,
+        "y": 90
       },
       "data": {
-        "label": "How the Internet Works",
-        "description": "DNS, HTTP/HTTPS, domain names, hosting, and browser rendering.",
-        "resources": [
-          {
-            "title": "MDN: How the Web Works",
-            "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works",
-            "type": "article"
-          }
-        ]
+        "label": "Internet",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "how-internet",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 60
       },
-      "className": "highlight"
+      "data": {
+        "label": "How does the internet work?",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "what-http",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 105
+      },
+      "data": {
+        "label": "What is HTTP?",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "what-domain",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 150
+      },
+      "data": {
+        "label": "What is Domain Name?",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "what-hosting",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 195
+      },
+      "data": {
+        "label": "What is hosting?",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "dns",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 240
+      },
+      "data": {
+        "label": "DNS and how it works?",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "browsers",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 285
+      },
+      "data": {
+        "label": "Browsers and how they work?",
+        "status": "recommended"
+      }
     },
     {
       "id": "html",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 200
+        "x": 440,
+        "y": 195
       },
       "data": {
         "label": "HTML",
-        "description": "Semantic HTML5, forms, accessibility, and document structure.",
-        "resources": [
-          {
-            "title": "HTML Basics",
-            "url": "/languages/html",
-            "type": "article"
-          },
-          {
-            "title": "Forms",
-            "url": "/languages/html/forms",
-            "type": "article"
-          },
-          {
-            "title": "Accessibility",
-            "url": "/languages/html/accessibility",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "status": "recommended"
+      }
     },
     {
       "id": "css",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 300
+        "x": 440,
+        "y": 290
       },
       "data": {
         "label": "CSS",
-        "description": "Box model, selectors, Flexbox, Grid, responsive design, and animations.",
-        "resources": [
-          {
-            "title": "CSS Basics",
-            "url": "/languages/css",
-            "type": "article"
-          },
-          {
-            "title": "Flexbox",
-            "url": "/languages/css/flexbox",
-            "type": "article"
-          },
-          {
-            "title": "Grid",
-            "url": "/languages/css/grid",
-            "type": "article"
-          },
-          {
-            "title": "Responsive Design",
-            "url": "/languages/css/responsive-design",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "status": "recommended"
+      }
     },
     {
-      "id": "js-basics",
+      "id": "info-html-css",
+      "type": "info",
+      "position": {
+        "x": 130,
+        "y": 220
+      },
+      "data": {
+        "label": "HTML, CSS and JavaScript are the backbone of web development. Make sure to practice by building lots of projects."
+      }
+    },
+    {
+      "id": "javascript",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 400
+        "x": 440,
+        "y": 385
       },
       "data": {
-        "label": "JavaScript Fundamentals",
-        "description": "Variables, data types, operators, control flow, functions, and scope.",
-        "resources": [
-          {
-            "title": "JS Intro",
-            "url": "/languages/javascript",
-            "type": "article"
-          },
-          {
-            "title": "Variables & Data Types",
-            "url": "/languages/javascript/variables-data-types",
-            "type": "article"
-          },
-          {
-            "title": "Functions",
-            "url": "/languages/javascript/functions",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "JavaScript",
+        "status": "recommended"
+      }
     },
     {
-      "id": "js-dom",
-      "type": "subtopic",
-      "position": {
-        "x": 150,
-        "y": 510
-      },
-      "data": {
-        "label": "DOM Manipulation",
-        "description": "Query selectors, event listeners, and dynamic page updates.",
-        "resources": [
-          {
-            "title": "DOM Manipulation",
-            "url": "/languages/javascript/dom-manipulation",
-            "type": "article"
-          },
-          {
-            "title": "Events",
-            "url": "/languages/javascript/events",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "js-async",
+      "id": "vc",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 510
+        "x": 440,
+        "y": 480
       },
       "data": {
-        "label": "Async JavaScript",
-        "description": "Callbacks, Promises, async/await, and the event loop.",
-        "resources": [
-          {
-            "title": "Promises",
-            "url": "/languages/javascript/promises",
-            "type": "article"
-          },
-          {
-            "title": "Async/Await",
-            "url": "/languages/javascript/async-await",
-            "type": "article"
-          },
-          {
-            "title": "Event Loop",
-            "url": "/languages/javascript/event-loop",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "js-advanced",
-      "type": "subtopic",
-      "position": {
-        "x": 650,
-        "y": 510
-      },
-      "data": {
-        "label": "Advanced JavaScript",
-        "description": "Prototypes, closures, modules, iterators, and design patterns.",
-        "resources": [
-          {
-            "title": "Prototypes",
-            "url": "/languages/javascript/prototypes",
-            "type": "article"
-          },
-          {
-            "title": "Modules",
-            "url": "/languages/javascript/modules",
-            "type": "article"
-          },
-          {
-            "title": "Design Patterns",
-            "url": "/languages/javascript/design-patterns",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Version Control",
+        "status": "recommended"
+      }
     },
     {
       "id": "git",
       "type": "subtopic",
       "position": {
-        "x": 900,
-        "y": 400
+        "x": 190,
+        "y": 455
       },
       "data": {
-        "label": "Version Control (Git)",
-        "description": "Commits, branches, merging, rebasing, and pull requests.",
-        "resources": [
-          {
-            "title": "Pro Git Book",
-            "url": "https://git-scm.com/book/en/v2",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Git",
+        "status": "recommended"
+      }
     },
     {
-      "id": "package-mgr",
+      "id": "gitlab",
       "type": "subtopic",
       "position": {
-        "x": 900,
+        "x": 130,
         "y": 510
       },
       "data": {
-        "label": "Package Managers",
-        "description": "npm, yarn, pnpm — managing dependencies and scripts.",
-        "resources": [
-          {
-            "title": "npm Docs",
-            "url": "https://docs.npmjs.com/",
-            "type": "article"
-          }
-        ]
+        "label": "GitLab",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "github",
+      "type": "subtopic",
+      "position": {
+        "x": 250,
+        "y": 510
       },
-      "className": ""
+      "data": {
+        "label": "GitHub",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "pkg-mgr",
+      "type": "topic",
+      "position": {
+        "x": 720,
+        "y": 455
+      },
+      "data": {
+        "label": "Package Managers"
+      }
+    },
+    {
+      "id": "npm",
+      "type": "subtopic",
+      "position": {
+        "x": 660,
+        "y": 510
+      },
+      "data": {
+        "label": "npm",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "yarn",
+      "type": "subtopic",
+      "position": {
+        "x": 760,
+        "y": 510
+      },
+      "data": {
+        "label": "yarn",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "pnpm",
+      "type": "subtopic",
+      "position": {
+        "x": 660,
+        "y": 555
+      },
+      "data": {
+        "label": "pnpm",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "bun",
+      "type": "subtopic",
+      "position": {
+        "x": 760,
+        "y": 555
+      },
+      "data": {
+        "label": "Bun",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "info-beginner",
+      "type": "info",
+      "position": {
+        "x": 130,
+        "y": 600
+      },
+      "data": {
+        "label": "At this point, you should be able to build modern vanilla JS frontend applications."
+      }
+    },
+    {
+      "id": "css-fw",
+      "type": "topic",
+      "position": {
+        "x": 720,
+        "y": 620
+      },
+      "data": {
+        "label": "CSS Frameworks"
+      }
+    },
+    {
+      "id": "tailwind",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 680
+      },
+      "data": {
+        "label": "Tailwind",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "framework",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 660
+      },
+      "data": {
+        "label": "Learn a Framework",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "react",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 660
+      },
+      "data": {
+        "label": "React",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "vuejs",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 705
+      },
+      "data": {
+        "label": "Vue.js",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "angular",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 750
+      },
+      "data": {
+        "label": "Angular",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "svelte",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 795
+      },
+      "data": {
+        "label": "Svelte",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "solidjs",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 840
+      },
+      "data": {
+        "label": "Solid JS",
+        "not-required": true
+      }
+    },
+    {
+      "id": "lbl-ai",
+      "type": "label",
+      "position": {
+        "x": 590,
+        "y": 668
+      },
+      "data": {
+        "label": "AI in Development"
+      }
+    },
+    {
+      "id": "ai-coding",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 770
+      },
+      "data": {
+        "label": "AI Assisted Coding"
+      }
+    },
+    {
+      "id": "claude-code",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 900
+      },
+      "data": {
+        "label": "Claude Code",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "cursor",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 945
+      },
+      "data": {
+        "label": "Cursor",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "copilot",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 990
+      },
+      "data": {
+        "label": "Copilot",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "antigravity-node",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 1035
+      },
+      "data": {
+        "label": "Antigravity",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "prompt-eng-lbl",
+      "type": "blue",
+      "position": {
+        "x": 170,
+        "y": 1090
+      },
+      "data": {
+        "label": "Prompt Engineering"
+      }
+    },
+    {
+      "id": "prompt-tech",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1050
+      },
+      "data": {
+        "label": "Prompting Techniques"
+      }
+    },
+    {
+      "id": "ai-agents-rm",
+      "type": "blue",
+      "position": {
+        "x": 720,
+        "y": 770
+      },
+      "data": {
+        "label": "Learn the Basics"
+      }
+    },
+    {
+      "id": "how-llms",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 820
+      },
+      "data": {
+        "label": "How LLMs work",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "ai-vs-trad",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 865
+      },
+      "data": {
+        "label": "AI vs Traditional Coding",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "applications",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 910
+      },
+      "data": {
+        "label": "Applications",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "agents",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1140
+      },
+      "data": {
+        "label": "Agents"
+      }
+    },
+    {
+      "id": "mcp",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1230
+      },
+      "data": {
+        "label": "MCP"
+      }
+    },
+    {
+      "id": "skills",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1320
+      },
+      "data": {
+        "label": "Skills"
+      }
+    },
+    {
+      "id": "gemini",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 1175
+      },
+      "data": {
+        "label": "Gemini",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "openai-nd",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 1220
+      },
+      "data": {
+        "label": "OpenAI",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "anthropic",
+      "type": "subtopic",
+      "position": {
+        "x": 170,
+        "y": 1265
+      },
+      "data": {
+        "label": "Anthropic",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "code-reviews",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 1000
+      },
+      "data": {
+        "label": "Code Reviews",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "refactoring",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 1045
+      },
+      "data": {
+        "label": "Refactoring",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "doc-gen",
+      "type": "subtopic",
+      "position": {
+        "x": 720,
+        "y": 1090
+      },
+      "data": {
+        "label": "Doc Generation",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "impl-ai",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1410
+      },
+      "data": {
+        "label": "Implementing AI",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "lbl-adv",
+      "type": "label",
+      "position": {
+        "x": 590,
+        "y": 1140
+      },
+      "data": {
+        "label": "Advanced Frontend"
+      }
+    },
+    {
+      "id": "bundlers",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1500
+      },
+      "data": {
+        "label": "Module Bundlers"
+      }
+    },
+    {
+      "id": "vite",
+      "type": "subtopic",
+      "position": {
+        "x": 390,
+        "y": 1570
+      },
+      "data": {
+        "label": "Vite",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "esbuild",
+      "type": "subtopic",
+      "position": {
+        "x": 460,
+        "y": 1570
+      },
+      "data": {
+        "label": "esbuild",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "webpack",
+      "type": "subtopic",
+      "position": {
+        "x": 390,
+        "y": 1615
+      },
+      "data": {
+        "label": "Webpack",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "rolldown",
+      "type": "subtopic",
+      "position": {
+        "x": 460,
+        "y": 1615
+      },
+      "data": {
+        "label": "Rolldown",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "parcel",
+      "type": "subtopic",
+      "position": {
+        "x": 425,
+        "y": 1660
+      },
+      "data": {
+        "label": "Parcel",
+        "status": "not-required"
+      }
+    },
+    {
+      "id": "auth",
+      "type": "topic",
+      "position": {
+        "x": 170,
+        "y": 1500
+      },
+      "data": {
+        "label": "Auth Strategies"
+      }
+    },
+    {
+      "id": "linters",
+      "type": "topic",
+      "position": {
+        "x": 720,
+        "y": 1500
+      },
+      "data": {
+        "label": "Linters & Formatters"
+      }
+    },
+    {
+      "id": "biome",
+      "type": "subtopic",
+      "position": {
+        "x": 660,
+        "y": 1570
+      },
+      "data": {
+        "label": "Biome",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "prettier",
+      "type": "subtopic",
+      "position": {
+        "x": 760,
+        "y": 1570
+      },
+      "data": {
+        "label": "Prettier",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "eslint",
+      "type": "subtopic",
+      "position": {
+        "x": 710,
+        "y": 1615
+      },
+      "data": {
+        "label": "ESLint",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "testing",
+      "type": "topic",
+      "position": {
+        "x": 170,
+        "y": 1720
+      },
+      "data": {
+        "label": "Testing"
+      }
+    },
+    {
+      "id": "vitest",
+      "type": "subtopic",
+      "position": {
+        "x": 80,
+        "y": 1790
+      },
+      "data": {
+        "label": "Vitest",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "playwright",
+      "type": "subtopic",
+      "position": {
+        "x": 180,
+        "y": 1790
+      },
+      "data": {
+        "label": "Playwright",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "cypress",
+      "type": "subtopic",
+      "position": {
+        "x": 80,
+        "y": 1835
+      },
+      "data": {
+        "label": "Cypress",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "jest",
+      "type": "subtopic",
+      "position": {
+        "x": 180,
+        "y": 1835
+      },
+      "data": {
+        "label": "Jest",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "webapis",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1720
+      },
+      "data": {
+        "label": "Web APIs"
+      }
+    },
+    {
+      "id": "angular2",
+      "type": "subtopic",
+      "position": {
+        "x": 370,
+        "y": 1790
+      },
+      "data": {
+        "label": "Angular",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "react2",
+      "type": "subtopic",
+      "position": {
+        "x": 460,
+        "y": 1790
+      },
+      "data": {
+        "label": "React",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "vuejs2",
+      "type": "subtopic",
+      "position": {
+        "x": 370,
+        "y": 1835
+      },
+      "data": {
+        "label": "Nuxt.js",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "svelte2",
+      "type": "subtopic",
+      "position": {
+        "x": 460,
+        "y": 1835
+      },
+      "data": {
+        "label": "TanStack Start",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "solid2",
+      "type": "subtopic",
+      "position": {
+        "x": 370,
+        "y": 1880
+      },
+      "data": {
+        "label": "Astro",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "rmix",
+      "type": "subtopic",
+      "position": {
+        "x": 460,
+        "y": 1880
+      },
+      "data": {
+        "label": "react-router",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "web-sec",
+      "type": "topic",
+      "position": {
+        "x": 720,
+        "y": 1720
+      },
+      "data": {
+        "label": "Web Security"
+      }
+    },
+    {
+      "id": "cors",
+      "type": "subtopic",
+      "position": {
+        "x": 660,
+        "y": 1790
+      },
+      "data": {
+        "label": "CORS",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "https",
+      "type": "subtopic",
+      "position": {
+        "x": 760,
+        "y": 1790
+      },
+      "data": {
+        "label": "HTTPS",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "csp",
+      "type": "subtopic",
+      "position": {
+        "x": 660,
+        "y": 1835
+      },
+      "data": {
+        "label": "CSP",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "owasp",
+      "type": "subtopic",
+      "position": {
+        "x": 760,
+        "y": 1835
+      },
+      "data": {
+        "label": "OWASP Risks",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "deployment",
+      "type": "topic",
+      "position": {
+        "x": 170,
+        "y": 1940
+      },
+      "data": {
+        "label": "Deployment"
+      }
+    },
+    {
+      "id": "gh-pages",
+      "type": "subtopic",
+      "position": {
+        "x": 80,
+        "y": 2010
+      },
+      "data": {
+        "label": "GitHub Pages",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "vercel",
+      "type": "subtopic",
+      "position": {
+        "x": 180,
+        "y": 2010
+      },
+      "data": {
+        "label": "Vercel",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "netlify",
+      "type": "subtopic",
+      "position": {
+        "x": 80,
+        "y": 2055
+      },
+      "data": {
+        "label": "Netlify",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "cloudflare",
+      "type": "subtopic",
+      "position": {
+        "x": 180,
+        "y": 2055
+      },
+      "data": {
+        "label": "Cloudflare",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "railway",
+      "type": "subtopic",
+      "position": {
+        "x": 80,
+        "y": 2100
+      },
+      "data": {
+        "label": "Railway",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "render",
+      "type": "subtopic",
+      "position": {
+        "x": 180,
+        "y": 2100
+      },
+      "data": {
+        "label": "Render",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "type-check",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 1940
+      },
+      "data": {
+        "label": "Type Checkers"
+      }
     },
     {
       "id": "typescript",
       "type": "blue",
       "position": {
-        "x": 400,
-        "y": 630
+        "x": 440,
+        "y": 2010
       },
       "data": {
-        "label": "TypeScript",
-        "description": "Type annotations, interfaces, generics, and type safety.",
-        "resources": [
-          {
-            "title": "TypeScript Intro",
-            "url": "/languages/typescript",
-            "type": "article"
-          },
-          {
-            "title": "Generics",
-            "url": "/languages/typescript/generics",
-            "type": "article"
-          },
-          {
-            "title": "Utility Types",
-            "url": "/languages/typescript/utility-types",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "TypeScript"
+      }
     },
     {
-      "id": "css-arch",
-      "type": "subtopic",
-      "position": {
-        "x": 100,
-        "y": 630
-      },
-      "data": {
-        "label": "CSS Architecture",
-        "description": "CSS Modules, Tailwind CSS, Sass, BEM, and custom properties.",
-        "resources": [
-          {
-            "title": "Custom Properties",
-            "url": "/languages/css/custom-properties",
-            "type": "article"
-          },
-          {
-            "title": "Container Queries",
-            "url": "/languages/css/container-queries",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "web-apis",
-      "type": "subtopic",
-      "position": {
-        "x": 900,
-        "y": 630
-      },
-      "data": {
-        "label": "Web APIs",
-        "description": "Fetch API, Web Storage, Canvas, WebSockets, and Service Workers.",
-        "resources": [
-          {
-            "title": "Fetch API",
-            "url": "/languages/javascript/fetch-api",
-            "type": "article"
-          },
-          {
-            "title": "Web Storage",
-            "url": "/languages/javascript/web-storage",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "react",
+      "id": "ssr",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 750
+        "x": 720,
+        "y": 1940
       },
       "data": {
-        "label": "React",
-        "description": "Components, JSX, hooks, state, props, and the React ecosystem.",
-        "resources": [
-          {
-            "title": "React Docs",
-            "url": "https://react.dev/learn",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "SSR"
+      }
     },
     {
-      "id": "alt-fw",
+      "id": "astro2",
       "type": "subtopic",
       "position": {
-        "x": 100,
-        "y": 750
+        "x": 660,
+        "y": 2010
       },
       "data": {
-        "label": "Alternative Frameworks",
-        "description": "Vue.js, Angular, Svelte, Solid — explore alternatives to React.",
-        "resources": [
-          {
-            "title": "Vue.js Guide",
-            "url": "https://vuejs.org/guide/introduction.html",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Astro",
+        "status": "recommended"
+      }
     },
     {
-      "id": "state-mgmt",
+      "id": "nextjs",
       "type": "subtopic",
       "position": {
-        "x": 700,
-        "y": 750
+        "x": 760,
+        "y": 2010
       },
       "data": {
-        "label": "State Management",
-        "description": "Context API, Zustand, Redux Toolkit, Jotai, and React Query.",
-        "resources": [
-          {
-            "title": "Zustand",
-            "url": "https://zustand-demo.pmnd.rs/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Next.js",
+        "status": "recommended"
+      }
     },
     {
-      "id": "meta-fw",
+      "id": "design-sys",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 870
+        "x": 170,
+        "y": 2155
       },
       "data": {
-        "label": "Meta-Frameworks",
-        "description": "Next.js, Remix, Astro — SSR, SSG, and full-stack React.",
-        "resources": [
-          {
-            "title": "Next.js Docs",
-            "url": "https://nextjs.org/docs",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Design Systems"
+      }
     },
     {
-      "id": "testing",
+      "id": "astro3",
       "type": "subtopic",
       "position": {
-        "x": 150,
-        "y": 980
+        "x": 80,
+        "y": 2225
       },
       "data": {
-        "label": "Testing",
-        "description": "Vitest/Jest, Testing Library, E2E with Playwright.",
-        "resources": [
-          {
-            "title": "Vitest",
-            "url": "https://vitest.dev/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Astro",
+        "status": "recommended"
+      }
     },
     {
-      "id": "build-tools",
+      "id": "nextjs2",
       "type": "subtopic",
       "position": {
-        "x": 400,
-        "y": 980
+        "x": 180,
+        "y": 2225
       },
       "data": {
-        "label": "Build Tools",
-        "description": "Vite, Webpack, esbuild, SWC — bundling and code splitting.",
-        "resources": [
-          {
-            "title": "Vite Guide",
-            "url": "https://vite.dev/guide/",
-            "type": "article"
-          },
-          {
-            "title": "Build Tools",
-            "url": "/languages/typescript/build-tools",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "performance",
-      "type": "subtopic",
-      "position": {
-        "x": 650,
-        "y": 980
-      },
-      "data": {
-        "label": "Performance",
-        "description": "Core Web Vitals, lazy loading, image optimization, and caching.",
-        "resources": [
-          {
-            "title": "JS Performance",
-            "url": "/languages/javascript/performance",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "info-block-1",
-      "type": "info",
-      "position": {
-        "x": 50,
-        "y": 300
-      },
-      "data": {
-        "label": "HTML, CSS and JavaScript are the backbone of web development. Make sure to practice by building lots of projects."
+        "label": "Next.js",
+        "status": "recommended"
       }
     }
   ],
   "edges": [
     {
-      "id": "e1",
-      "source": "fe-header",
+      "id": "e-hdr-net",
+      "source": "header",
       "target": "internet",
       "type": "roadmap"
     },
     {
-      "id": "e2",
+      "id": "e-net-html",
       "source": "internet",
       "target": "html",
       "type": "roadmap"
     },
     {
-      "id": "e3",
+      "id": "e-html-css",
       "source": "html",
       "target": "css",
       "type": "roadmap"
     },
     {
-      "id": "e4",
+      "id": "e-css-js",
       "source": "css",
-      "target": "js-basics",
+      "target": "javascript",
       "type": "roadmap"
     },
     {
-      "id": "e5",
-      "source": "js-basics",
-      "target": "js-dom",
-      "type": "dotted"
-    },
-    {
-      "id": "e6",
-      "source": "js-basics",
-      "target": "js-async",
+      "id": "e-js-vc",
+      "source": "javascript",
+      "target": "vc",
       "type": "roadmap"
     },
     {
-      "id": "e7",
-      "source": "js-basics",
-      "target": "js-advanced",
+      "id": "e-vc-fw",
+      "source": "vc",
+      "target": "framework",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-fw-ai",
+      "source": "framework",
+      "target": "ai-coding",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-ai-pt",
+      "source": "ai-coding",
+      "target": "prompt-tech",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-pt-ag",
+      "source": "prompt-tech",
+      "target": "agents",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-ag-mcp",
+      "source": "agents",
+      "target": "mcp",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-mcp-sk",
+      "source": "mcp",
+      "target": "skills",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-sk-impl",
+      "source": "skills",
+      "target": "impl-ai",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-impl-bnd",
+      "source": "impl-ai",
+      "target": "bundlers",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-bnd-web",
+      "source": "bundlers",
+      "target": "webapis",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-web-tc",
+      "source": "webapis",
+      "target": "type-check",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-tc-ds",
+      "source": "type-check",
+      "target": "design-sys",
+      "type": "roadmap"
+    },
+    {
+      "id": "eh-vc-pkg",
+      "source": "vc",
+      "target": "pkg-mgr",
+      "type": "roadmap"
+    },
+    {
+      "id": "eh-fw-cssfw",
+      "source": "framework",
+      "target": "css-fw",
+      "type": "roadmap"
+    },
+    {
+      "id": "eh-bnd-lint",
+      "source": "bundlers",
+      "target": "linters",
+      "type": "roadmap"
+    },
+    {
+      "id": "eh-test-web",
+      "source": "testing",
+      "target": "webapis",
+      "type": "roadmap"
+    },
+    {
+      "id": "eh-web-wsec",
+      "source": "webapis",
+      "target": "web-sec",
+      "type": "roadmap"
+    },
+    {
+      "id": "eh-dep-tc",
+      "source": "deployment",
+      "target": "type-check",
+      "type": "roadmap"
+    },
+    {
+      "id": "eh-tc-ssr",
+      "source": "type-check",
+      "target": "ssr",
+      "type": "roadmap"
+    },
+    {
+      "id": "d-net-hw",
+      "source": "internet",
+      "target": "how-internet",
       "type": "dotted"
     },
     {
-      "id": "e8",
-      "source": "js-basics",
+      "id": "d-net-hh",
+      "source": "internet",
+      "target": "what-http",
+      "type": "dotted"
+    },
+    {
+      "id": "d-net-dn",
+      "source": "internet",
+      "target": "what-domain",
+      "type": "dotted"
+    },
+    {
+      "id": "d-net-wh",
+      "source": "internet",
+      "target": "what-hosting",
+      "type": "dotted"
+    },
+    {
+      "id": "d-net-dns",
+      "source": "internet",
+      "target": "dns",
+      "type": "dotted"
+    },
+    {
+      "id": "d-net-br",
+      "source": "internet",
+      "target": "browsers",
+      "type": "dotted"
+    },
+    {
+      "id": "d-vc-git",
+      "source": "vc",
       "target": "git",
       "type": "dotted"
     },
     {
-      "id": "e9",
+      "id": "d-git-gl",
       "source": "git",
-      "target": "package-mgr",
+      "target": "gitlab",
       "type": "dotted"
     },
     {
-      "id": "e10",
-      "source": "js-async",
-      "target": "typescript",
-      "type": "roadmap"
-    },
-    {
-      "id": "e11",
-      "source": "js-dom",
-      "target": "css-arch",
+      "id": "d-git-gh",
+      "source": "git",
+      "target": "github",
       "type": "dotted"
     },
     {
-      "id": "e12",
-      "source": "js-advanced",
-      "target": "web-apis",
+      "id": "d-pm-npm",
+      "source": "pkg-mgr",
+      "target": "npm",
       "type": "dotted"
     },
     {
-      "id": "e13",
-      "source": "typescript",
+      "id": "d-pm-yarn",
+      "source": "pkg-mgr",
+      "target": "yarn",
+      "type": "dotted"
+    },
+    {
+      "id": "d-pm-pnpm",
+      "source": "pkg-mgr",
+      "target": "pnpm",
+      "type": "dotted"
+    },
+    {
+      "id": "d-pm-bun",
+      "source": "pkg-mgr",
+      "target": "bun",
+      "type": "dotted"
+    },
+    {
+      "id": "d-cssfw-tw",
+      "source": "css-fw",
+      "target": "tailwind",
+      "type": "dotted"
+    },
+    {
+      "id": "d-fw-react",
+      "source": "framework",
       "target": "react",
-      "type": "roadmap"
-    },
-    {
-      "id": "e14",
-      "source": "css-arch",
-      "target": "alt-fw",
       "type": "dotted"
     },
     {
-      "id": "e15",
-      "source": "react",
-      "target": "state-mgmt",
+      "id": "d-fw-vue",
+      "source": "framework",
+      "target": "vuejs",
       "type": "dotted"
     },
     {
-      "id": "e16",
-      "source": "react",
-      "target": "meta-fw",
+      "id": "d-fw-ang",
+      "source": "framework",
+      "target": "angular",
+      "type": "dotted"
+    },
+    {
+      "id": "d-fw-svl",
+      "source": "framework",
+      "target": "svelte",
+      "type": "dotted"
+    },
+    {
+      "id": "d-fw-sol",
+      "source": "framework",
+      "target": "solidjs",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-cc",
+      "source": "ai-coding",
+      "target": "claude-code",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-cur",
+      "source": "ai-coding",
+      "target": "cursor",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-cop",
+      "source": "ai-coding",
+      "target": "copilot",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-ag",
+      "source": "ai-coding",
+      "target": "antigravity-node",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-pe",
+      "source": "prompt-tech",
+      "target": "prompt-eng-lbl",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-rm",
+      "source": "ai-coding",
+      "target": "ai-agents-rm",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-ll",
+      "source": "ai-coding",
+      "target": "how-llms",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-vs",
+      "source": "ai-coding",
+      "target": "ai-vs-trad",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ai-app",
+      "source": "ai-coding",
+      "target": "applications",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ag-gm",
+      "source": "agents",
+      "target": "gemini",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ag-oa",
+      "source": "agents",
+      "target": "openai-nd",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ag-an",
+      "source": "agents",
+      "target": "anthropic",
+      "type": "dotted"
+    },
+    {
+      "id": "d-adv-cr",
+      "source": "impl-ai",
+      "target": "code-reviews",
+      "type": "dotted"
+    },
+    {
+      "id": "d-adv-rf",
+      "source": "impl-ai",
+      "target": "refactoring",
+      "type": "dotted"
+    },
+    {
+      "id": "d-adv-dg",
+      "source": "impl-ai",
+      "target": "doc-gen",
+      "type": "dotted"
+    },
+    {
+      "id": "d-bnd-vt",
+      "source": "bundlers",
+      "target": "vite",
+      "type": "dotted"
+    },
+    {
+      "id": "d-bnd-es",
+      "source": "bundlers",
+      "target": "esbuild",
+      "type": "dotted"
+    },
+    {
+      "id": "d-bnd-wp",
+      "source": "bundlers",
+      "target": "webpack",
+      "type": "dotted"
+    },
+    {
+      "id": "d-bnd-rd",
+      "source": "bundlers",
+      "target": "rolldown",
+      "type": "dotted"
+    },
+    {
+      "id": "d-bnd-pc",
+      "source": "bundlers",
+      "target": "parcel",
+      "type": "dotted"
+    },
+    {
+      "id": "d-lint-bm",
+      "source": "linters",
+      "target": "biome",
+      "type": "dotted"
+    },
+    {
+      "id": "d-lint-pr",
+      "source": "linters",
+      "target": "prettier",
+      "type": "dotted"
+    },
+    {
+      "id": "d-lint-es",
+      "source": "linters",
+      "target": "eslint",
+      "type": "dotted"
+    },
+    {
+      "id": "d-test-vi",
+      "source": "testing",
+      "target": "vitest",
+      "type": "dotted"
+    },
+    {
+      "id": "d-test-pw",
+      "source": "testing",
+      "target": "playwright",
+      "type": "dotted"
+    },
+    {
+      "id": "d-test-cy",
+      "source": "testing",
+      "target": "cypress",
+      "type": "dotted"
+    },
+    {
+      "id": "d-test-je",
+      "source": "testing",
+      "target": "jest",
+      "type": "dotted"
+    },
+    {
+      "id": "d-web-ang",
+      "source": "webapis",
+      "target": "angular2",
+      "type": "dotted"
+    },
+    {
+      "id": "d-web-re",
+      "source": "webapis",
+      "target": "react2",
+      "type": "dotted"
+    },
+    {
+      "id": "d-web-vj",
+      "source": "webapis",
+      "target": "vuejs2",
+      "type": "dotted"
+    },
+    {
+      "id": "d-web-sv",
+      "source": "webapis",
+      "target": "svelte2",
+      "type": "dotted"
+    },
+    {
+      "id": "d-web-so",
+      "source": "webapis",
+      "target": "solid2",
+      "type": "dotted"
+    },
+    {
+      "id": "d-web-rm",
+      "source": "webapis",
+      "target": "rmix",
+      "type": "dotted"
+    },
+    {
+      "id": "d-sec-cors",
+      "source": "web-sec",
+      "target": "cors",
+      "type": "dotted"
+    },
+    {
+      "id": "d-sec-https",
+      "source": "web-sec",
+      "target": "https",
+      "type": "dotted"
+    },
+    {
+      "id": "d-sec-csp",
+      "source": "web-sec",
+      "target": "csp",
+      "type": "dotted"
+    },
+    {
+      "id": "d-sec-ow",
+      "source": "web-sec",
+      "target": "owasp",
+      "type": "dotted"
+    },
+    {
+      "id": "d-dep-ghp",
+      "source": "deployment",
+      "target": "gh-pages",
+      "type": "dotted"
+    },
+    {
+      "id": "d-dep-vc",
+      "source": "deployment",
+      "target": "vercel",
+      "type": "dotted"
+    },
+    {
+      "id": "d-dep-nl",
+      "source": "deployment",
+      "target": "netlify",
+      "type": "dotted"
+    },
+    {
+      "id": "d-dep-cf",
+      "source": "deployment",
+      "target": "cloudflare",
+      "type": "dotted"
+    },
+    {
+      "id": "d-dep-rw",
+      "source": "deployment",
+      "target": "railway",
+      "type": "dotted"
+    },
+    {
+      "id": "d-dep-rn",
+      "source": "deployment",
+      "target": "render",
+      "type": "dotted"
+    },
+    {
+      "id": "d-tc-ts",
+      "source": "type-check",
+      "target": "typescript",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ssr-as",
+      "source": "ssr",
+      "target": "astro2",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ssr-nj",
+      "source": "ssr",
+      "target": "nextjs",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ds-as",
+      "source": "design-sys",
+      "target": "astro3",
+      "type": "dotted"
+    },
+    {
+      "id": "d-ds-nj",
+      "source": "design-sys",
+      "target": "nextjs2",
+      "type": "dotted"
+    },
+    {
+      "id": "eh-bnd-dep",
+      "source": "bundlers",
+      "target": "deployment",
       "type": "roadmap"
     },
     {
-      "id": "e17",
-      "source": "alt-fw",
-      "target": "meta-fw",
-      "type": "roadmap"
-    },
-    {
-      "id": "e18",
-      "source": "meta-fw",
+      "id": "eh-bnd-test",
+      "source": "bundlers",
       "target": "testing",
-      "type": "dotted"
-    },
-    {
-      "id": "e19",
-      "source": "meta-fw",
-      "target": "build-tools",
-      "type": "dotted"
-    },
-    {
-      "id": "e20",
-      "source": "meta-fw",
-      "target": "performance",
-      "type": "dotted"
+      "type": "roadmap"
     }
   ]
 }
