@@ -1,70 +1,67 @@
 import { Handle, Position, NodeProps, Node } from '@xyflow/react';
 import { memo } from 'react';
-import { Check } from 'lucide-react';
+import { NodeStatus } from './TopicNode';
 
 type SubtopicNodeData = {
   label: string;
-  status?: 'done' | 'learning' | 'pending';
+  status?: NodeStatus;
 };
 
 type SubtopicNodeType = Node<SubtopicNodeData, 'subtopic'>;
 
-const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
-  let bgClass = "bg-[hsl(var(--rm-subtopic-bg))]";
-  let borderClass = "border-[2px] border-[hsl(var(--rm-subtopic-border))]";
-  let textClass = "text-[hsl(var(--rm-subtopic-text))]";
+const STATUS_BADGE: Record<string, { bg: string; border: string }> = {
+  recommended:  { bg: '#a855f7', border: '#7e22ce' },
+  alternative:  { bg: '#22c55e', border: '#15803d' },
+  'not-required': { bg: '#94a3b8', border: '#64748b' },
+  done:         { bg: '#a855f7', border: '#7e22ce' },
+  'in-progress':{ bg: '#f59e0b', border: '#d97706' },
+  skip:         { bg: '#94a3b8', border: '#64748b' },
+};
 
-  // Determine status color for the badge
-  let statusColor = "";
-  if (data.status === 'done') {
-    statusColor = "bg-[hsl(var(--rm-done-icon))]"; // Purple
-  } else if (data.status === 'learning') {
-    statusColor = "bg-[hsl(var(--rm-learning-icon))]"; // Green
-  }
+const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
+  const badge = data.status ? STATUS_BADGE[data.status] : null;
 
   return (
-    <div className={`
-      relative px-4 py-1.5 min-w-[110px] text-center
-      rounded-[4px]
-      transition-transform duration-200 hover:-translate-y-0.5
-      ${bgClass} ${borderClass} ${selected ? 'ring-2 ring-primary ring-offset-1' : ''}
-    `}>
-      {data.status && (
-        <div className={`absolute -top-1.5 -left-1.5 w-4 h-4 rounded-full flex items-center justify-center border-[1.5px] border-black ${statusColor}`}>
-          <Check strokeWidth={4} className="w-2.5 h-2.5 text-white" />
-        </div>
+    <div
+      style={{
+        background: '#fefce8',
+        border: '2px solid #1a1a1a',
+        borderRadius: 6,
+        minWidth: 110,
+        padding: '4px 12px',
+        textAlign: 'center',
+        cursor: 'pointer',
+        boxShadow: selected ? '0 0 0 2px #3b82f6' : 'none',
+        position: 'relative',
+        transition: 'transform 0.15s ease',
+      }}
+      className="hover:-translate-y-px"
+    >
+      {badge && (
+        <span
+          style={{
+            position: 'absolute',
+            top: -6,
+            left: -6,
+            width: 12,
+            height: 12,
+            borderRadius: '50%',
+            background: badge.bg,
+            border: `1.5px solid ${badge.border}`,
+            display: 'block',
+          }}
+        />
       )}
-      <Handle 
-        type="target" 
-        position={Position.Top} 
-        className="w-1.5 h-1.5 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      
-      <div className={`roadmap-font font-semibold text-xs tracking-wide ${textClass}`}>
-        {data.label}
-      </div>
 
-      <Handle 
-        type="source" 
-        position={Position.Bottom} 
-        className="w-1.5 h-1.5 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      <Handle 
-        type="source" 
-        position={Position.Right} 
-        id="right"
-        className="w-1.5 h-1.5 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      <Handle 
-        type="target" 
-        position={Position.Left} 
-        id="left"
-        className="w-1.5 h-1.5 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
+      <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
+      <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
+
+      <span className="roadmap-font font-semibold text-[12px] text-[#1a1a1a] leading-tight">
+        {data.label}
+      </span>
+
+      <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} isConnectable={false} />
+      <Handle type="source" position={Position.Right} id="right" style={{ opacity: 0 }} isConnectable={false} />
     </div>
   );
 };
