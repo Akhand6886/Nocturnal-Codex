@@ -11,14 +11,14 @@ const BlueNode = ({ data, selected }: NodeProps<BlueNodeType>) => {
   return (
     <div
       style={{
-        background: '#3b82f6',
+        background: '#3B82F6',
         border: '2px solid #000',
-        borderRadius: 4,
+        borderRadius: 8,
         minWidth: 110,
         padding: '5px 14px',
         textAlign: 'center',
         cursor: 'pointer',
-        boxShadow: selected ? '0 0 0 2px #f59e0b' : '4px 4px 0px #000',
+        boxShadow: selected ? '0 0 0 2px #f59e0b' : '2px 2px 0px #000',
         transition: 'transform 0.15s ease',
       }}
       className="hover:-translate-y-px"

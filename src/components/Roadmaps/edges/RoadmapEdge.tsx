@@ -28,8 +28,8 @@ export default function RoadmapEdge({
       markerEnd={markerEnd}
       style={{
         ...style,
-        strokeWidth: 1.5,
-        stroke: '#94a3b8',
+        strokeWidth: 2,
+        stroke: '#3B82F6',
       }}
     />
   );

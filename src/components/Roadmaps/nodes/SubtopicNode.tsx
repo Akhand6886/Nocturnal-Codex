@@ -24,9 +24,9 @@ const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
   return (
     <div
       style={{
-        background: '#FFF',
+        background: '#FEFCE8',
         border: '2px solid #000',
-        borderRadius: 4,
+        borderRadius: 8,
         minWidth: 110,
         padding: '4px 12px',
         textAlign: 'center',

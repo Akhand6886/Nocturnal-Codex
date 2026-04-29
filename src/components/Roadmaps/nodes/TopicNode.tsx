@@ -27,7 +27,7 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
       style={{
         background: '#FEF015',
         border: '2px solid #000',
-        borderRadius: 4,
+        borderRadius: 8,
         minWidth: 140,
         padding: '6px 16px',
         textAlign: 'center',
