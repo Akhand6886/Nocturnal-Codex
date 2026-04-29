@@ -5,8 +5,6 @@ import React, { FC, useEffect, useState, useCallback } from 'react';
 import {
   ReactFlow,
   Background,
-  Controls,
-  MiniMap,
   type Node,
   type Edge,
   ReactFlowProvider,
@@ -60,32 +58,27 @@ const Legend: FC = () => (
   <div
     style={{
       position: 'absolute',
-      top: 12,
-      left: 12,
+      top: 24,
+      left: 24,
       zIndex: 10,
-      background: 'white',
-      border: '1px solid #e2e8f0',
-      borderRadius: 8,
-      padding: '10px 14px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
       display: 'flex',
       flexDirection: 'column',
-      gap: 6,
+      gap: 8,
     }}
   >
     {LEGEND.map(({ color, label }) => (
-      <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <span
           style={{
-            width: 12,
-            height: 12,
+            width: 14,
+            height: 14,
             borderRadius: '50%',
             background: color,
-            border: '1.5px solid #1a1a1a',
+            border: '2px solid #000',
             flexShrink: 0,
           }}
         />
-        <span className="roadmap-font text-[11px] font-medium text-slate-600">{label}</span>
+        <span className="roadmap-font text-[13px] font-semibold text-slate-700">{label}</span>
       </div>
     ))}
   </div>
@@ -186,25 +179,11 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
           style={{ background: '#fafaf9' }}
         >
           <Legend />
-          <Controls
-            showInteractive={false}
-            style={{ bottom: 12, right: 12 }}
-            className="rounded-md shadow-md bg-white border border-slate-200"
-          />
-          <MiniMap
-            nodeColor={(node) => {
-              if (node.type === 'blue') return '#3b82f6';
-              if (node.type === 'section' || node.type === 'label' || node.type === 'info') return 'transparent';
-              return '#fef08a';
-            }}
-            maskColor="rgba(250,250,249,0.7)"
-            className="rounded-md border border-slate-200 shadow-md"
-          />
           <Background
-            gap={20}
-            size={1}
+            gap={24}
+            size={1.5}
             variant={BackgroundVariant.Dots}
-            color="#d1d5db"
+            color="#cbd5e1"
           />
           <FitViewUpdater />
         </ReactFlow>
