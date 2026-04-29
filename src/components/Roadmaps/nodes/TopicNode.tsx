@@ -1,61 +1,68 @@
 import { Handle, Position, NodeProps, Node } from '@xyflow/react';
 import { memo } from 'react';
 
+export type NodeStatus = 'recommended' | 'alternative' | 'not-required' | 'done' | 'in-progress' | 'skip';
+
 type TopicNodeData = {
   label: string;
-  status?: 'done' | 'learning' | 'pending';
+  status?: NodeStatus;
 };
 
 type TopicNodeType = Node<TopicNodeData, 'topic'>;
 
-const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
-  let bgClass = "bg-[hsl(var(--rm-topic-bg))]";
-  let borderClass = "border-[2px] border-[hsl(var(--rm-topic-border))]";
-  let textClass = "text-[hsl(var(--rm-topic-text))]";
+const STATUS_BADGE: Record<string, { bg: string; border: string; label: string }> = {
+  recommended:  { bg: '#a855f7', border: '#7e22ce', label: 'Recommended' },
+  alternative:  { bg: '#22c55e', border: '#15803d', label: 'Alternative' },
+  'not-required': { bg: '#94a3b8', border: '#64748b', label: 'Not Required' },
+  done:         { bg: '#a855f7', border: '#7e22ce', label: 'Done' },
+  'in-progress':{ bg: '#f59e0b', border: '#d97706', label: 'In Progress' },
+  skip:         { bg: '#94a3b8', border: '#64748b', label: 'Skip' },
+};
 
-  if (data.status === 'done') {
-    bgClass = "bg-[hsl(var(--rm-subtopic-bg))]";
-  }
+const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
+  const badge = data.status ? STATUS_BADGE[data.status] : null;
 
   return (
-    <div className={`
-      relative px-6 py-2.5 min-w-[150px] text-center
-      rounded-[4px]
-      transition-transform duration-200 hover:-translate-y-0.5
-      ${bgClass} ${borderClass} ${selected ? 'ring-2 ring-primary ring-offset-2' : ''}
-    `}>
-      <Handle 
-        type="target" 
-        position={Position.Top} 
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      
-      <div className={`roadmap-font font-bold text-sm tracking-wide ${textClass}`}>
-        {data.label}
-      </div>
+    <div
+      style={{
+        background: '#fefce8',
+        border: '2px solid #1a1a1a',
+        borderRadius: 6,
+        minWidth: 140,
+        padding: '6px 16px',
+        textAlign: 'center',
+        cursor: 'pointer',
+        boxShadow: selected ? '0 0 0 2px #3b82f6' : 'none',
+        position: 'relative',
+        transition: 'transform 0.15s ease',
+      }}
+      className="hover:-translate-y-px"
+    >
+      {badge && (
+        <span
+          style={{
+            position: 'absolute',
+            top: -7,
+            left: -7,
+            width: 14,
+            height: 14,
+            borderRadius: '50%',
+            background: badge.bg,
+            border: `1.5px solid ${badge.border}`,
+            display: 'block',
+          }}
+        />
+      )}
 
-      <Handle 
-        type="source" 
-        position={Position.Bottom} 
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      {/* For horizontal connections, also add left/right handles */}
-      <Handle 
-        type="source" 
-        position={Position.Right} 
-        id="right"
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      <Handle 
-        type="target" 
-        position={Position.Left} 
-        id="left"
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
+      <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
+      <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
+
+      <span className="roadmap-font font-bold text-[13px] text-[#1a1a1a] leading-tight">
+        {data.label}
+      </span>
+
+      <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} isConnectable={false} />
+      <Handle type="source" position={Position.Right} id="right" style={{ opacity: 0 }} isConnectable={false} />
     </div>
   );
 };
