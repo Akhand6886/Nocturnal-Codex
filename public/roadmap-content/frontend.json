@@ -1,7 +1,7 @@
 {
   "nodes": [
     {
-      "id": "header",
+      "id": "sec-Front-end",
       "type": "section",
       "position": {
         "x": 440,
@@ -16,7 +16,7 @@
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 90
+        "y": 80
       },
       "data": {
         "label": "Internet",
@@ -28,7 +28,7 @@
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 60
+        "y": -70
       },
       "data": {
         "label": "How does the internet work?",
@@ -40,7 +40,7 @@
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 105
+        "y": -10
       },
       "data": {
         "label": "What is HTTP?",
@@ -52,7 +52,7 @@
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 150
+        "y": 50
       },
       "data": {
         "label": "What is Domain Name?",
@@ -64,7 +64,7 @@
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 195
+        "y": 110
       },
       "data": {
         "label": "What is hosting?",
@@ -76,7 +76,7 @@
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 240
+        "y": 170
       },
       "data": {
         "label": "DNS and how it works?",
@@ -88,7 +88,7 @@
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 285
+        "y": 230
       },
       "data": {
         "label": "Browsers and how they work?",
@@ -100,7 +100,7 @@
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 195
+        "y": 460
       },
       "data": {
         "label": "HTML",
@@ -108,11 +108,22 @@
       }
     },
     {
+      "id": "info-html",
+      "type": "info",
+      "position": {
+        "x": 130,
+        "y": 460
+      },
+      "data": {
+        "label": "Learn the basics"
+      }
+    },
+    {
       "id": "css",
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 290
+        "y": 540
       },
       "data": {
         "label": "CSS",
@@ -120,22 +131,11 @@
       }
     },
     {
-      "id": "info-html-css",
-      "type": "info",
-      "position": {
-        "x": 130,
-        "y": 220
-      },
-      "data": {
-        "label": "HTML, CSS and JavaScript are the backbone of web development. Make sure to practice by building lots of projects."
-      }
-    },
-    {
-      "id": "javascript",
+      "id": "js",
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 385
+        "y": 620
       },
       "data": {
         "label": "JavaScript",
@@ -147,7 +147,7 @@
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 480
+        "y": 700
       },
       "data": {
         "label": "Version Control",
@@ -158,8 +158,8 @@
       "id": "git",
       "type": "subtopic",
       "position": {
-        "x": 190,
-        "y": 455
+        "x": 180,
+        "y": 640
       },
       "data": {
         "label": "Git",
@@ -167,23 +167,11 @@
       }
     },
     {
-      "id": "gitlab",
-      "type": "subtopic",
-      "position": {
-        "x": 130,
-        "y": 510
-      },
-      "data": {
-        "label": "GitLab",
-        "status": "alternative"
-      }
-    },
-    {
       "id": "github",
       "type": "subtopic",
       "position": {
-        "x": 250,
-        "y": 510
+        "x": 180,
+        "y": 700
       },
       "data": {
         "label": "GitHub",
@@ -195,7 +183,7 @@
       "type": "topic",
       "position": {
         "x": 720,
-        "y": 455
+        "y": 640
       },
       "data": {
         "label": "Package Managers"
@@ -205,8 +193,8 @@
       "id": "npm",
       "type": "subtopic",
       "position": {
-        "x": 660,
-        "y": 510
+        "x": 720,
+        "y": 700
       },
       "data": {
         "label": "npm",
@@ -217,8 +205,8 @@
       "id": "yarn",
       "type": "subtopic",
       "position": {
-        "x": 760,
-        "y": 510
+        "x": 720,
+        "y": 760
       },
       "data": {
         "label": "yarn",
@@ -226,69 +214,11 @@
       }
     },
     {
-      "id": "pnpm",
-      "type": "subtopic",
-      "position": {
-        "x": 660,
-        "y": 555
-      },
-      "data": {
-        "label": "pnpm",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "bun",
-      "type": "subtopic",
-      "position": {
-        "x": 760,
-        "y": 555
-      },
-      "data": {
-        "label": "Bun",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "info-beginner",
-      "type": "info",
-      "position": {
-        "x": 130,
-        "y": 600
-      },
-      "data": {
-        "label": "At this point, you should be able to build modern vanilla JS frontend applications."
-      }
-    },
-    {
-      "id": "css-fw",
-      "type": "topic",
-      "position": {
-        "x": 720,
-        "y": 620
-      },
-      "data": {
-        "label": "CSS Frameworks"
-      }
-    },
-    {
-      "id": "tailwind",
-      "type": "subtopic",
-      "position": {
-        "x": 720,
-        "y": 680
-      },
-      "data": {
-        "label": "Tailwind",
-        "status": "recommended"
-      }
-    },
-    {
       "id": "framework",
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 660
+        "y": 900
       },
       "data": {
         "label": "Learn a Framework",
@@ -299,8 +229,8 @@
       "id": "react",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 660
+        "x": 180,
+        "y": 870
       },
       "data": {
         "label": "React",
@@ -308,11 +238,11 @@
       }
     },
     {
-      "id": "vuejs",
+      "id": "vue",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 705
+        "x": 180,
+        "y": 930
       },
       "data": {
         "label": "Vue.js",
@@ -320,50 +250,26 @@
       }
     },
     {
-      "id": "angular",
-      "type": "subtopic",
+      "id": "css-fw",
+      "type": "topic",
       "position": {
-        "x": 170,
-        "y": 750
+        "x": 720,
+        "y": 870
       },
       "data": {
-        "label": "Angular",
-        "status": "alternative"
+        "label": "CSS Frameworks"
       }
     },
     {
-      "id": "svelte",
+      "id": "tailwind",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 795
+        "x": 720,
+        "y": 930
       },
       "data": {
-        "label": "Svelte",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "solidjs",
-      "type": "subtopic",
-      "position": {
-        "x": 170,
-        "y": 840
-      },
-      "data": {
-        "label": "Solid JS",
-        "not-required": true
-      }
-    },
-    {
-      "id": "lbl-ai",
-      "type": "label",
-      "position": {
-        "x": 590,
-        "y": 668
-      },
-      "data": {
-        "label": "AI in Development"
+        "label": "Tailwind",
+        "status": "recommended"
       }
     },
     {
@@ -371,18 +277,19 @@
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 770
+        "y": 1040
       },
       "data": {
-        "label": "AI Assisted Coding"
+        "label": "AI Assisted Coding",
+        "status": "recommended"
       }
     },
     {
-      "id": "claude-code",
+      "id": "claude",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 900
+        "x": 180,
+        "y": 980
       },
       "data": {
         "label": "Claude Code",
@@ -393,8 +300,8 @@
       "id": "cursor",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 945
+        "x": 180,
+        "y": 1040
       },
       "data": {
         "label": "Cursor",
@@ -405,8 +312,8 @@
       "id": "copilot",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 990
+        "x": 180,
+        "y": 1100
       },
       "data": {
         "label": "Copilot",
@@ -414,56 +321,11 @@
       }
     },
     {
-      "id": "antigravity-node",
-      "type": "subtopic",
-      "position": {
-        "x": 170,
-        "y": 1035
-      },
-      "data": {
-        "label": "Antigravity",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "prompt-eng-lbl",
-      "type": "blue",
-      "position": {
-        "x": 170,
-        "y": 1090
-      },
-      "data": {
-        "label": "Prompt Engineering"
-      }
-    },
-    {
-      "id": "prompt-tech",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 1050
-      },
-      "data": {
-        "label": "Prompting Techniques"
-      }
-    },
-    {
-      "id": "ai-agents-rm",
-      "type": "blue",
-      "position": {
-        "x": 720,
-        "y": 770
-      },
-      "data": {
-        "label": "Learn the Basics"
-      }
-    },
-    {
       "id": "how-llms",
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 820
+        "y": 980
       },
       "data": {
         "label": "How LLMs work",
@@ -471,26 +333,14 @@
       }
     },
     {
-      "id": "ai-vs-trad",
+      "id": "ai-vs",
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 865
+        "y": 1040
       },
       "data": {
-        "label": "AI vs Traditional Coding",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "applications",
-      "type": "subtopic",
-      "position": {
-        "x": 720,
-        "y": 910
-      },
-      "data": {
-        "label": "Applications",
+        "label": "AI vs Traditional",
         "status": "recommended"
       }
     },
@@ -499,40 +349,19 @@
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 1140
+        "y": 1240
       },
       "data": {
-        "label": "Agents"
-      }
-    },
-    {
-      "id": "mcp",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 1230
-      },
-      "data": {
-        "label": "MCP"
-      }
-    },
-    {
-      "id": "skills",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 1320
-      },
-      "data": {
-        "label": "Skills"
+        "label": "Agents",
+        "status": "recommended"
       }
     },
     {
       "id": "gemini",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 1175
+        "x": 180,
+        "y": 1210
       },
       "data": {
         "label": "Gemini",
@@ -540,11 +369,11 @@
       }
     },
     {
-      "id": "openai-nd",
+      "id": "openai",
       "type": "subtopic",
       "position": {
-        "x": 170,
-        "y": 1220
+        "x": 180,
+        "y": 1270
       },
       "data": {
         "label": "OpenAI",
@@ -552,23 +381,11 @@
       }
     },
     {
-      "id": "anthropic",
-      "type": "subtopic",
-      "position": {
-        "x": 170,
-        "y": 1265
-      },
-      "data": {
-        "label": "Anthropic",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "code-reviews",
+      "id": "code-rev",
       "type": "subtopic",
       "position": {
         "x": 720,
-        "y": 1000
+        "y": 1210
       },
       "data": {
         "label": "Code Reviews",
@@ -576,69 +393,23 @@
       }
     },
     {
-      "id": "refactoring",
-      "type": "subtopic",
-      "position": {
-        "x": 720,
-        "y": 1045
-      },
-      "data": {
-        "label": "Refactoring",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "doc-gen",
-      "type": "subtopic",
-      "position": {
-        "x": 720,
-        "y": 1090
-      },
-      "data": {
-        "label": "Doc Generation",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "impl-ai",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 1410
-      },
-      "data": {
-        "label": "Implementing AI",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "lbl-adv",
-      "type": "label",
-      "position": {
-        "x": 590,
-        "y": 1140
-      },
-      "data": {
-        "label": "Advanced Frontend"
-      }
-    },
-    {
       "id": "bundlers",
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 1500
+        "y": 1380
       },
       "data": {
-        "label": "Module Bundlers"
+        "label": "Module Bundlers",
+        "status": "recommended"
       }
     },
     {
       "id": "vite",
       "type": "subtopic",
       "position": {
-        "x": 390,
-        "y": 1570
+        "x": 180,
+        "y": 1320
       },
       "data": {
         "label": "Vite",
@@ -646,23 +417,11 @@
       }
     },
     {
-      "id": "esbuild",
-      "type": "subtopic",
-      "position": {
-        "x": 460,
-        "y": 1570
-      },
-      "data": {
-        "label": "esbuild",
-        "status": "alternative"
-      }
-    },
-    {
       "id": "webpack",
       "type": "subtopic",
       "position": {
-        "x": 390,
-        "y": 1615
+        "x": 180,
+        "y": 1380
       },
       "data": {
         "label": "Webpack",
@@ -670,57 +429,22 @@
       }
     },
     {
-      "id": "rolldown",
-      "type": "subtopic",
-      "position": {
-        "x": 460,
-        "y": 1615
-      },
-      "data": {
-        "label": "Rolldown",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "parcel",
-      "type": "subtopic",
-      "position": {
-        "x": 425,
-        "y": 1660
-      },
-      "data": {
-        "label": "Parcel",
-        "status": "not-required"
-      }
-    },
-    {
-      "id": "auth",
-      "type": "topic",
-      "position": {
-        "x": 170,
-        "y": 1500
-      },
-      "data": {
-        "label": "Auth Strategies"
-      }
-    },
-    {
       "id": "linters",
       "type": "topic",
       "position": {
         "x": 720,
-        "y": 1500
+        "y": 1320
       },
       "data": {
-        "label": "Linters & Formatters"
+        "label": "Linters"
       }
     },
     {
       "id": "biome",
       "type": "subtopic",
       "position": {
-        "x": 660,
-        "y": 1570
+        "x": 720,
+        "y": 1380
       },
       "data": {
         "label": "Biome",
@@ -728,23 +452,11 @@
       }
     },
     {
-      "id": "prettier",
-      "type": "subtopic",
-      "position": {
-        "x": 760,
-        "y": 1570
-      },
-      "data": {
-        "label": "Prettier",
-        "status": "alternative"
-      }
-    },
-    {
       "id": "eslint",
       "type": "subtopic",
       "position": {
-        "x": 710,
-        "y": 1615
+        "x": 720,
+        "y": 1440
       },
       "data": {
         "label": "ESLint",
@@ -755,19 +467,20 @@
       "id": "testing",
       "type": "topic",
       "position": {
-        "x": 170,
-        "y": 1720
+        "x": 440,
+        "y": 1580
       },
       "data": {
-        "label": "Testing"
+        "label": "Testing",
+        "status": "recommended"
       }
     },
     {
       "id": "vitest",
       "type": "subtopic",
       "position": {
-        "x": 80,
-        "y": 1790
+        "x": 180,
+        "y": 1550
       },
       "data": {
         "label": "Vitest",
@@ -779,364 +492,265 @@
       "type": "subtopic",
       "position": {
         "x": 180,
-        "y": 1790
+        "y": 1610
       },
       "data": {
         "label": "Playwright",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "cypress",
-      "type": "subtopic",
-      "position": {
-        "x": 80,
-        "y": 1835
-      },
-      "data": {
-        "label": "Cypress",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "jest",
-      "type": "subtopic",
-      "position": {
-        "x": 180,
-        "y": 1835
-      },
-      "data": {
-        "label": "Jest",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "webapis",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 1720
-      },
-      "data": {
-        "label": "Web APIs"
-      }
-    },
-    {
-      "id": "angular2",
-      "type": "subtopic",
-      "position": {
-        "x": 370,
-        "y": 1790
-      },
-      "data": {
-        "label": "Angular",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "react2",
-      "type": "subtopic",
-      "position": {
-        "x": 460,
-        "y": 1790
-      },
-      "data": {
-        "label": "React",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "vuejs2",
-      "type": "subtopic",
-      "position": {
-        "x": 370,
-        "y": 1835
-      },
-      "data": {
-        "label": "Nuxt.js",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "svelte2",
-      "type": "subtopic",
-      "position": {
-        "x": 460,
-        "y": 1835
-      },
-      "data": {
-        "label": "TanStack Start",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "solid2",
-      "type": "subtopic",
-      "position": {
-        "x": 370,
-        "y": 1880
-      },
-      "data": {
-        "label": "Astro",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "rmix",
-      "type": "subtopic",
-      "position": {
-        "x": 460,
-        "y": 1880
-      },
-      "data": {
-        "label": "react-router",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "web-sec",
-      "type": "topic",
-      "position": {
-        "x": 720,
-        "y": 1720
-      },
-      "data": {
-        "label": "Web Security"
-      }
-    },
-    {
-      "id": "cors",
-      "type": "subtopic",
-      "position": {
-        "x": 660,
-        "y": 1790
-      },
-      "data": {
-        "label": "CORS",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "https",
-      "type": "subtopic",
-      "position": {
-        "x": 760,
-        "y": 1790
-      },
-      "data": {
-        "label": "HTTPS",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "csp",
-      "type": "subtopic",
-      "position": {
-        "x": 660,
-        "y": 1835
-      },
-      "data": {
-        "label": "CSP",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "owasp",
-      "type": "subtopic",
-      "position": {
-        "x": 760,
-        "y": 1835
-      },
-      "data": {
-        "label": "OWASP Risks",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "deployment",
-      "type": "topic",
-      "position": {
-        "x": 170,
-        "y": 1940
-      },
-      "data": {
-        "label": "Deployment"
-      }
-    },
-    {
-      "id": "gh-pages",
-      "type": "subtopic",
-      "position": {
-        "x": 80,
-        "y": 2010
-      },
-      "data": {
-        "label": "GitHub Pages",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "vercel",
-      "type": "subtopic",
-      "position": {
-        "x": 180,
-        "y": 2010
-      },
-      "data": {
-        "label": "Vercel",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "netlify",
-      "type": "subtopic",
-      "position": {
-        "x": 80,
-        "y": 2055
-      },
-      "data": {
-        "label": "Netlify",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "cloudflare",
-      "type": "subtopic",
-      "position": {
-        "x": 180,
-        "y": 2055
-      },
-      "data": {
-        "label": "Cloudflare",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "railway",
-      "type": "subtopic",
-      "position": {
-        "x": 80,
-        "y": 2100
-      },
-      "data": {
-        "label": "Railway",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "render",
-      "type": "subtopic",
-      "position": {
-        "x": 180,
-        "y": 2100
-      },
-      "data": {
-        "label": "Render",
-        "status": "alternative"
-      }
-    },
-    {
-      "id": "type-check",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 1940
-      },
-      "data": {
-        "label": "Type Checkers"
-      }
-    },
-    {
-      "id": "typescript",
-      "type": "blue",
-      "position": {
-        "x": 440,
-        "y": 2010
-      },
-      "data": {
-        "label": "TypeScript"
-      }
-    },
-    {
-      "id": "ssr",
-      "type": "topic",
-      "position": {
-        "x": 720,
-        "y": 1940
-      },
-      "data": {
-        "label": "SSR"
-      }
-    },
-    {
-      "id": "astro2",
-      "type": "subtopic",
-      "position": {
-        "x": 660,
-        "y": 2010
-      },
-      "data": {
-        "label": "Astro",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "nextjs",
-      "type": "subtopic",
-      "position": {
-        "x": 760,
-        "y": 2010
-      },
-      "data": {
-        "label": "Next.js",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "design-sys",
-      "type": "topic",
-      "position": {
-        "x": 170,
-        "y": 2155
-      },
-      "data": {
-        "label": "Design Systems"
-      }
-    },
-    {
-      "id": "astro3",
-      "type": "subtopic",
-      "position": {
-        "x": 80,
-        "y": 2225
-      },
-      "data": {
-        "label": "Astro",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "nextjs2",
-      "type": "subtopic",
-      "position": {
-        "x": 180,
-        "y": 2225
-      },
-      "data": {
-        "label": "Next.js",
         "status": "recommended"
       }
     }
   ],
   "edges": [
     {
-      "id": "e-hdr-net",
-      "source": "header",
-      "target": "internet",
-      "type": "roadmap"
+      "id": "d-internet-how-internet",
+      "source": "internet",
+      "target": "how-internet",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
     },
     {
-      "id": "e-net-html",
+      "id": "d-internet-what-http",
+      "source": "internet",
+      "target": "what-http",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-internet-what-domain",
+      "source": "internet",
+      "target": "what-domain",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-internet-what-hosting",
+      "source": "internet",
+      "target": "what-hosting",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-internet-dns",
+      "source": "internet",
+      "target": "dns",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-internet-browsers",
+      "source": "internet",
+      "target": "browsers",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-html-info-html",
+      "source": "html",
+      "target": "info-html",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-vc-git",
+      "source": "vc",
+      "target": "git",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-vc-github",
+      "source": "vc",
+      "target": "github",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-vc-pkg-mgr",
+      "source": "vc",
+      "target": "pkg-mgr",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-vc-npm",
+      "source": "vc",
+      "target": "npm",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-vc-yarn",
+      "source": "vc",
+      "target": "yarn",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-framework-react",
+      "source": "framework",
+      "target": "react",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-framework-vue",
+      "source": "framework",
+      "target": "vue",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-framework-css-fw",
+      "source": "framework",
+      "target": "css-fw",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-framework-tailwind",
+      "source": "framework",
+      "target": "tailwind",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-ai-coding-claude",
+      "source": "ai-coding",
+      "target": "claude",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-ai-coding-cursor",
+      "source": "ai-coding",
+      "target": "cursor",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-ai-coding-copilot",
+      "source": "ai-coding",
+      "target": "copilot",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-ai-coding-how-llms",
+      "source": "ai-coding",
+      "target": "how-llms",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-ai-coding-ai-vs",
+      "source": "ai-coding",
+      "target": "ai-vs",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-agents-gemini",
+      "source": "agents",
+      "target": "gemini",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-agents-openai",
+      "source": "agents",
+      "target": "openai",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-agents-code-rev",
+      "source": "agents",
+      "target": "code-rev",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-bundlers-vite",
+      "source": "bundlers",
+      "target": "vite",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-bundlers-webpack",
+      "source": "bundlers",
+      "target": "webpack",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-bundlers-linters",
+      "source": "bundlers",
+      "target": "linters",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-bundlers-biome",
+      "source": "bundlers",
+      "target": "biome",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-bundlers-eslint",
+      "source": "bundlers",
+      "target": "eslint",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "d-testing-vitest",
+      "source": "testing",
+      "target": "vitest",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "d-testing-playwright",
+      "source": "testing",
+      "target": "playwright",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "e-internet-html",
       "source": "internet",
       "target": "html",
       "type": "roadmap"
@@ -1150,533 +764,41 @@
     {
       "id": "e-css-js",
       "source": "css",
-      "target": "javascript",
+      "target": "js",
       "type": "roadmap"
     },
     {
       "id": "e-js-vc",
-      "source": "javascript",
+      "source": "js",
       "target": "vc",
       "type": "roadmap"
     },
     {
-      "id": "e-vc-fw",
+      "id": "e-vc-framework",
       "source": "vc",
       "target": "framework",
       "type": "roadmap"
     },
     {
-      "id": "e-fw-ai",
+      "id": "e-framework-ai-coding",
       "source": "framework",
       "target": "ai-coding",
       "type": "roadmap"
     },
     {
-      "id": "e-ai-pt",
+      "id": "e-ai-coding-agents",
       "source": "ai-coding",
-      "target": "prompt-tech",
-      "type": "roadmap"
-    },
-    {
-      "id": "e-pt-ag",
-      "source": "prompt-tech",
       "target": "agents",
       "type": "roadmap"
     },
     {
-      "id": "e-ag-mcp",
+      "id": "e-agents-bundlers",
       "source": "agents",
-      "target": "mcp",
-      "type": "roadmap"
-    },
-    {
-      "id": "e-mcp-sk",
-      "source": "mcp",
-      "target": "skills",
-      "type": "roadmap"
-    },
-    {
-      "id": "e-sk-impl",
-      "source": "skills",
-      "target": "impl-ai",
-      "type": "roadmap"
-    },
-    {
-      "id": "e-impl-bnd",
-      "source": "impl-ai",
       "target": "bundlers",
       "type": "roadmap"
     },
     {
-      "id": "e-bnd-web",
-      "source": "bundlers",
-      "target": "webapis",
-      "type": "roadmap"
-    },
-    {
-      "id": "e-web-tc",
-      "source": "webapis",
-      "target": "type-check",
-      "type": "roadmap"
-    },
-    {
-      "id": "e-tc-ds",
-      "source": "type-check",
-      "target": "design-sys",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-vc-pkg",
-      "source": "vc",
-      "target": "pkg-mgr",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-fw-cssfw",
-      "source": "framework",
-      "target": "css-fw",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-bnd-lint",
-      "source": "bundlers",
-      "target": "linters",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-test-web",
-      "source": "testing",
-      "target": "webapis",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-web-wsec",
-      "source": "webapis",
-      "target": "web-sec",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-dep-tc",
-      "source": "deployment",
-      "target": "type-check",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-tc-ssr",
-      "source": "type-check",
-      "target": "ssr",
-      "type": "roadmap"
-    },
-    {
-      "id": "d-net-hw",
-      "source": "internet",
-      "target": "how-internet",
-      "type": "dotted"
-    },
-    {
-      "id": "d-net-hh",
-      "source": "internet",
-      "target": "what-http",
-      "type": "dotted"
-    },
-    {
-      "id": "d-net-dn",
-      "source": "internet",
-      "target": "what-domain",
-      "type": "dotted"
-    },
-    {
-      "id": "d-net-wh",
-      "source": "internet",
-      "target": "what-hosting",
-      "type": "dotted"
-    },
-    {
-      "id": "d-net-dns",
-      "source": "internet",
-      "target": "dns",
-      "type": "dotted"
-    },
-    {
-      "id": "d-net-br",
-      "source": "internet",
-      "target": "browsers",
-      "type": "dotted"
-    },
-    {
-      "id": "d-vc-git",
-      "source": "vc",
-      "target": "git",
-      "type": "dotted"
-    },
-    {
-      "id": "d-git-gl",
-      "source": "git",
-      "target": "gitlab",
-      "type": "dotted"
-    },
-    {
-      "id": "d-git-gh",
-      "source": "git",
-      "target": "github",
-      "type": "dotted"
-    },
-    {
-      "id": "d-pm-npm",
-      "source": "pkg-mgr",
-      "target": "npm",
-      "type": "dotted"
-    },
-    {
-      "id": "d-pm-yarn",
-      "source": "pkg-mgr",
-      "target": "yarn",
-      "type": "dotted"
-    },
-    {
-      "id": "d-pm-pnpm",
-      "source": "pkg-mgr",
-      "target": "pnpm",
-      "type": "dotted"
-    },
-    {
-      "id": "d-pm-bun",
-      "source": "pkg-mgr",
-      "target": "bun",
-      "type": "dotted"
-    },
-    {
-      "id": "d-cssfw-tw",
-      "source": "css-fw",
-      "target": "tailwind",
-      "type": "dotted"
-    },
-    {
-      "id": "d-fw-react",
-      "source": "framework",
-      "target": "react",
-      "type": "dotted"
-    },
-    {
-      "id": "d-fw-vue",
-      "source": "framework",
-      "target": "vuejs",
-      "type": "dotted"
-    },
-    {
-      "id": "d-fw-ang",
-      "source": "framework",
-      "target": "angular",
-      "type": "dotted"
-    },
-    {
-      "id": "d-fw-svl",
-      "source": "framework",
-      "target": "svelte",
-      "type": "dotted"
-    },
-    {
-      "id": "d-fw-sol",
-      "source": "framework",
-      "target": "solidjs",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-cc",
-      "source": "ai-coding",
-      "target": "claude-code",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-cur",
-      "source": "ai-coding",
-      "target": "cursor",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-cop",
-      "source": "ai-coding",
-      "target": "copilot",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-ag",
-      "source": "ai-coding",
-      "target": "antigravity-node",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-pe",
-      "source": "prompt-tech",
-      "target": "prompt-eng-lbl",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-rm",
-      "source": "ai-coding",
-      "target": "ai-agents-rm",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-ll",
-      "source": "ai-coding",
-      "target": "how-llms",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-vs",
-      "source": "ai-coding",
-      "target": "ai-vs-trad",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ai-app",
-      "source": "ai-coding",
-      "target": "applications",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ag-gm",
-      "source": "agents",
-      "target": "gemini",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ag-oa",
-      "source": "agents",
-      "target": "openai-nd",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ag-an",
-      "source": "agents",
-      "target": "anthropic",
-      "type": "dotted"
-    },
-    {
-      "id": "d-adv-cr",
-      "source": "impl-ai",
-      "target": "code-reviews",
-      "type": "dotted"
-    },
-    {
-      "id": "d-adv-rf",
-      "source": "impl-ai",
-      "target": "refactoring",
-      "type": "dotted"
-    },
-    {
-      "id": "d-adv-dg",
-      "source": "impl-ai",
-      "target": "doc-gen",
-      "type": "dotted"
-    },
-    {
-      "id": "d-bnd-vt",
-      "source": "bundlers",
-      "target": "vite",
-      "type": "dotted"
-    },
-    {
-      "id": "d-bnd-es",
-      "source": "bundlers",
-      "target": "esbuild",
-      "type": "dotted"
-    },
-    {
-      "id": "d-bnd-wp",
-      "source": "bundlers",
-      "target": "webpack",
-      "type": "dotted"
-    },
-    {
-      "id": "d-bnd-rd",
-      "source": "bundlers",
-      "target": "rolldown",
-      "type": "dotted"
-    },
-    {
-      "id": "d-bnd-pc",
-      "source": "bundlers",
-      "target": "parcel",
-      "type": "dotted"
-    },
-    {
-      "id": "d-lint-bm",
-      "source": "linters",
-      "target": "biome",
-      "type": "dotted"
-    },
-    {
-      "id": "d-lint-pr",
-      "source": "linters",
-      "target": "prettier",
-      "type": "dotted"
-    },
-    {
-      "id": "d-lint-es",
-      "source": "linters",
-      "target": "eslint",
-      "type": "dotted"
-    },
-    {
-      "id": "d-test-vi",
-      "source": "testing",
-      "target": "vitest",
-      "type": "dotted"
-    },
-    {
-      "id": "d-test-pw",
-      "source": "testing",
-      "target": "playwright",
-      "type": "dotted"
-    },
-    {
-      "id": "d-test-cy",
-      "source": "testing",
-      "target": "cypress",
-      "type": "dotted"
-    },
-    {
-      "id": "d-test-je",
-      "source": "testing",
-      "target": "jest",
-      "type": "dotted"
-    },
-    {
-      "id": "d-web-ang",
-      "source": "webapis",
-      "target": "angular2",
-      "type": "dotted"
-    },
-    {
-      "id": "d-web-re",
-      "source": "webapis",
-      "target": "react2",
-      "type": "dotted"
-    },
-    {
-      "id": "d-web-vj",
-      "source": "webapis",
-      "target": "vuejs2",
-      "type": "dotted"
-    },
-    {
-      "id": "d-web-sv",
-      "source": "webapis",
-      "target": "svelte2",
-      "type": "dotted"
-    },
-    {
-      "id": "d-web-so",
-      "source": "webapis",
-      "target": "solid2",
-      "type": "dotted"
-    },
-    {
-      "id": "d-web-rm",
-      "source": "webapis",
-      "target": "rmix",
-      "type": "dotted"
-    },
-    {
-      "id": "d-sec-cors",
-      "source": "web-sec",
-      "target": "cors",
-      "type": "dotted"
-    },
-    {
-      "id": "d-sec-https",
-      "source": "web-sec",
-      "target": "https",
-      "type": "dotted"
-    },
-    {
-      "id": "d-sec-csp",
-      "source": "web-sec",
-      "target": "csp",
-      "type": "dotted"
-    },
-    {
-      "id": "d-sec-ow",
-      "source": "web-sec",
-      "target": "owasp",
-      "type": "dotted"
-    },
-    {
-      "id": "d-dep-ghp",
-      "source": "deployment",
-      "target": "gh-pages",
-      "type": "dotted"
-    },
-    {
-      "id": "d-dep-vc",
-      "source": "deployment",
-      "target": "vercel",
-      "type": "dotted"
-    },
-    {
-      "id": "d-dep-nl",
-      "source": "deployment",
-      "target": "netlify",
-      "type": "dotted"
-    },
-    {
-      "id": "d-dep-cf",
-      "source": "deployment",
-      "target": "cloudflare",
-      "type": "dotted"
-    },
-    {
-      "id": "d-dep-rw",
-      "source": "deployment",
-      "target": "railway",
-      "type": "dotted"
-    },
-    {
-      "id": "d-dep-rn",
-      "source": "deployment",
-      "target": "render",
-      "type": "dotted"
-    },
-    {
-      "id": "d-tc-ts",
-      "source": "type-check",
-      "target": "typescript",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ssr-as",
-      "source": "ssr",
-      "target": "astro2",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ssr-nj",
-      "source": "ssr",
-      "target": "nextjs",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ds-as",
-      "source": "design-sys",
-      "target": "astro3",
-      "type": "dotted"
-    },
-    {
-      "id": "d-ds-nj",
-      "source": "design-sys",
-      "target": "nextjs2",
-      "type": "dotted"
-    },
-    {
-      "id": "eh-bnd-dep",
-      "source": "bundlers",
-      "target": "deployment",
-      "type": "roadmap"
-    },
-    {
-      "id": "eh-bnd-test",
+      "id": "e-bundlers-testing",
       "source": "bundlers",
       "target": "testing",
       "type": "roadmap"
