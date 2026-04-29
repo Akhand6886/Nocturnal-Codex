@@ -162,7 +162,7 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
 
   return (
     <div
-      style={{ height: 'calc(100vh - 180px)' }}
+      style={{ height: 2600 }}
       className="w-full rounded-xl overflow-hidden relative border border-border/40 shadow-sm"
     >
       <ReactFlowProvider>
@@ -173,10 +173,12 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
           edgeTypes={edgeTypes}
           onNodeClick={onNodeClick}
           fitView
-          minZoom={0.15}
-          maxZoom={2}
-          zoomOnScroll
-          panOnDrag
+          zoomOnScroll={false}
+          zoomOnPinch={false}
+          zoomOnDoubleClick={false}
+          panOnDrag={false}
+          panOnScroll={false}
+          preventScrolling={false}
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={true}
