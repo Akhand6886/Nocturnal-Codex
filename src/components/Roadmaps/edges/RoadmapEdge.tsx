@@ -18,22 +18,19 @@ export default function RoadmapEdge({
     targetX,
     targetY,
     targetPosition,
-    borderRadius: 8, // Smaller border radius for sharper lines like the image
+    borderRadius: 10,
   });
 
   return (
-    <>
-      <BaseEdge
-        id={id}
-        path={edgePath}
-        markerEnd={markerEnd}
-        style={{
-          ...style,
-          strokeWidth: 2,
-          stroke: 'hsl(var(--rm-edge))',
-        }}
-        className="roadmap-edge-path transition-all duration-300 hover:stroke-[3px]"
-      />
-    </>
+    <BaseEdge
+      id={id}
+      path={edgePath}
+      markerEnd={markerEnd}
+      style={{
+        ...style,
+        strokeWidth: 1.5,
+        stroke: '#94a3b8',
+      }}
+    />
   );
 }
