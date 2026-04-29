@@ -7,44 +7,29 @@ type SectionNodeData = {
 
 type SectionNodeType = Node<SectionNodeData, 'section'>;
 
-const SectionNode = ({ data, selected }: NodeProps<SectionNodeType>) => {
+const SectionNode = ({ data }: NodeProps<SectionNodeType>) => {
   return (
-    <div className={`
-      relative px-8 py-2 min-w-[200px] text-center
-      bg-transparent border-none
-      transition-transform duration-200
-    `}>
-      <Handle 
-        type="target" 
-        position={Position.Top} 
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      
-      <div className="roadmap-font font-extrabold text-2xl tracking-wide text-[hsl(var(--rm-section-text))]">
-        {data.label}
-      </div>
+    <div
+      style={{
+        background: 'transparent',
+        border: 'none',
+        textAlign: 'center',
+        pointerEvents: 'none',
+        userSelect: 'none',
+      }}
+    >
+      <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
+      <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <Handle 
-        type="source" 
-        position={Position.Bottom} 
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      <Handle 
-        type="source" 
-        position={Position.Right} 
-        id="right"
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
-      <Handle 
-        type="target" 
-        position={Position.Left} 
-        id="left"
-        className="w-2 h-2 !bg-[hsl(var(--rm-edge))] border-none rounded-full" 
-        isConnectable={false}
-      />
+      <span
+        className="roadmap-font font-extrabold text-[#1a1a1a] dark:text-white"
+        style={{ fontSize: 28, letterSpacing: '-0.5px' }}
+      >
+        {data.label}
+      </span>
+
+      <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} isConnectable={false} />
+      <Handle type="source" position={Position.Right} id="right" style={{ opacity: 0 }} isConnectable={false} />
     </div>
   );
 };
