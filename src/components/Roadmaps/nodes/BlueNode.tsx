@@ -12,13 +12,13 @@ const BlueNode = ({ data, selected }: NodeProps<BlueNodeType>) => {
     <div
       style={{
         background: '#3b82f6',
-        border: '2px solid #1a1a1a',
-        borderRadius: 6,
+        border: '2px solid #000',
+        borderRadius: 4,
         minWidth: 110,
         padding: '5px 14px',
         textAlign: 'center',
         cursor: 'pointer',
-        boxShadow: selected ? '0 0 0 2px #f59e0b' : 'none',
+        boxShadow: selected ? '0 0 0 2px #f59e0b' : '4px 4px 0px #000',
         transition: 'transform 0.15s ease',
       }}
       className="hover:-translate-y-px"
@@ -26,7 +26,7 @@ const BlueNode = ({ data, selected }: NodeProps<BlueNodeType>) => {
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-bold text-[12px] text-white leading-tight">
+      <span className="roadmap-font font-bold text-[13px] text-white leading-tight">
         {data.label}
       </span>
 

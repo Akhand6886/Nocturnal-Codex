@@ -25,14 +25,14 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
   return (
     <div
       style={{
-        background: '#fefce8',
-        border: '2px solid #1a1a1a',
-        borderRadius: 6,
+        background: '#FEF015',
+        border: '2px solid #000',
+        borderRadius: 4,
         minWidth: 140,
         padding: '6px 16px',
         textAlign: 'center',
         cursor: 'pointer',
-        boxShadow: selected ? '0 0 0 2px #3b82f6' : 'none',
+        boxShadow: selected ? '0 0 0 2px #3b82f6' : '4px 4px 0px #000',
         position: 'relative',
         transition: 'transform 0.15s ease',
       }}
@@ -57,7 +57,7 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-bold text-[13px] text-[#1a1a1a] leading-tight">
+      <span className="roadmap-font font-bold text-[14px] text-[#000] leading-tight">
         {data.label}
       </span>
 

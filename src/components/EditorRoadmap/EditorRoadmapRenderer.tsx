@@ -161,11 +161,12 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
   }
 
   return (
-    <div
-      style={{ height: 2600 }}
-      className="w-full rounded-xl overflow-hidden relative border border-border/40 shadow-sm"
-    >
-      <ReactFlowProvider>
+    <div className="w-full overflow-x-auto bg-[#fafaf9]">
+      <div
+        style={{ height: 2600, minWidth: 1000 }}
+        className="w-full max-w-[1000px] mx-auto relative border-x border-border/10 shadow-sm"
+      >
+        <ReactFlowProvider>
         <ReactFlow
           nodes={roadmapData.nodes}
           edges={roadmapData.edges}
@@ -209,11 +210,12 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
         </ReactFlow>
       </ReactFlowProvider>
 
-      <RoadmapDrawer
-        open={drawerOpen}
-        onOpenChange={setDrawerOpen}
-        data={selectedNode}
-      />
+        <RoadmapDrawer
+          open={drawerOpen}
+          onOpenChange={setDrawerOpen}
+          data={selectedNode}
+        />
+      </div>
     </div>
   );
 };

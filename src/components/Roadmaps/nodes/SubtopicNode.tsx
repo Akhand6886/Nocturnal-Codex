@@ -24,14 +24,14 @@ const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
   return (
     <div
       style={{
-        background: '#fefce8',
-        border: '2px solid #1a1a1a',
-        borderRadius: 6,
+        background: '#FFF',
+        border: '2px solid #000',
+        borderRadius: 4,
         minWidth: 110,
         padding: '4px 12px',
         textAlign: 'center',
         cursor: 'pointer',
-        boxShadow: selected ? '0 0 0 2px #3b82f6' : 'none',
+        boxShadow: selected ? '0 0 0 2px #3b82f6' : '2px 2px 0px #000',
         position: 'relative',
         transition: 'transform 0.15s ease',
       }}
@@ -56,7 +56,7 @@ const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-semibold text-[12px] text-[#1a1a1a] leading-tight">
+      <span className="roadmap-font font-semibold text-[13px] text-[#000] leading-tight">
         {data.label}
       </span>
 
