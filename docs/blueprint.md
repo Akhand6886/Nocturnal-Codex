@@ -2,17 +2,29 @@
 
 ## Core Features:
 
-- Topic Navigation: Topic Explorer: Browse curated content tiles organized by computer science domain.
-- Admin-Only Blog: Chronological Admin Blog: Display posts from an admin, featuring a dark-themed design and a clear Markdown-rendered structure for enhanced readability.
-- Wiki Reference: Wiki: Offer a clean, reference articles.
-- Research Articles: Think Tank: Display in-depth articles with support for LaTeX math formatting, figures, and clear layouts for complex ideas.
-- Fact Generator: Random Theory Drop: Each page load will display a randomly selected fun fact.
+- **Roadmap System**: Interactive yet static-first learning paths (Frontend, Backend, DevOps, etc.) utilizing a Neo-Brutalist design system. Supports custom node types (Topics, Subtopics, Sections) and rich edge connectors.
+- **Topic Navigation**: Topic Explorer: Browse curated content tiles organized by computer science domain.
+- **Admin-Blog & Think Tank**: Integrated with Contentful CMS for real-time publishing.
+    - **Blog**: Chronological posts with Markdown/Rich-Text support.
+    - **Think Tank**: Scholarly research articles supporting Series, Disciplines, Citations, and PDF downloads.
+- **Wiki Reference**: Wiki: Offer clean, reference articles for deep-dive language learning.
+- **Random Theory Drop**: Each page load displays a randomly selected fun fact or theory.
+- **Advanced CMS Pipeline**: On-Demand ISR via Webhooks and Draft Mode for instant content updates and secure previews.
 
 ## Style Guidelines:
 
-- Background: Very dark desaturated blue (#0A0E14) to provide a deep, calming backdrop.
-- Primary: A vibrant purple (#A78BFA) to guide users and provide visual interest against the dark background. Derived from the aura of knowledge and forward thinking.
-- Accent: Light blue (#7DD3FC) to draw attention to interactive elements.
-- Prioritize a clean, monospaced font for code snippets and general readability.
-- Use grid layouts to arrange topics and content.
-- Incorporate minimalist icons to aid navigation.
+### Design Language: Neo-Brutalist
+- **Core Aesthetic**: High contrast, bold borders (2px black), and sharp drop shadows (4px/2px).
+- **Color Palette**:
+    - **Background**: Stone-based neutrals (#fafaf9) for content areas; deep desaturated blues (#0A0E14) for core UI.
+    - **Primary**: Vibrant Purple (#A78BFA) for accents and branding.
+    - **Roadmap Specific**: Bright Yellow (#FEF015) for main topics, Cream (#FEFCE8) for subtopics, and Solid Blue (#3B82F6) for edge connectors.
+- **Typography**: Modern sans-serif (Inter/Outfit) paired with high-readability monospaced fonts for code snippets.
+- **Layout**: Grid-based topic explorers and a centered 1000px-fixed column for roadmap viewing to ensure "poster-like" visual fidelity.
+
+## Technical Architecture:
+- **Framework**: Next.js 15 (App Router) with Turbopack.
+- **CMS**: Contentful (Rich Text & Assets).
+- **Graph Engine**: React Flow (configured for static-viewing/non-interactive precision).
+- **Styling**: Tailwind CSS with custom Neo-Brutalist utility classes.
+- **Performance**: On-Demand ISR for sub-second content refresh upon CMS publishing.
