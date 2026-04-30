@@ -5,24 +5,30 @@ import type { Document } from '@contentful/rich-text-types';
 
 const SPACE = process.env.CONTENTFUL_SPACE_ID;
 const TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+const PREVIEW_TOKEN = process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
 
-if (!SPACE || !TOKEN) {
+if (!SPACE || (!TOKEN && !PREVIEW_TOKEN)) {
   console.warn("Contentful environment variables (CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN) are not set. API calls will be disabled.");
 }
 
-const BASE_URL = `https://cdn.contentful.com/spaces/${SPACE}/environments/master`;
-
 // Generic fetch function for Contentful with Next.js caching
-async function cfFetch<T>(endpoint: string, ttl = 60): Promise<T | null> {
-  if (!SPACE || !TOKEN) {
+async function cfFetch<T>(endpoint: string, preview = false): Promise<T | null> {
+  const activeToken = preview ? PREVIEW_TOKEN : TOKEN;
+  if (!SPACE || !activeToken) {
     return null; // Return null if Contentful is not configured
   }
   
-  const url = `${BASE_URL}${endpoint}`;
+  const baseUrl = preview 
+    ? `https://preview.contentful.com/spaces/${SPACE}/environments/master`
+    : `https://cdn.contentful.com/spaces/${SPACE}/environments/master`;
+    
+  const url = `${baseUrl}${endpoint}`;
   try {
     const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${TOKEN}` },
-      next: { revalidate: ttl },
+      headers: { Authorization: `Bearer ${activeToken}` },
+      // Use tags for On-Demand ISR. Cache indefinitely until webhook triggers revalidation.
+      // If preview is true, bypass cache.
+      ...(preview ? { cache: 'no-store' } : { next: { tags: ['contentful'] } }),
     });
 
     if (!res.ok) {
@@ -98,12 +104,12 @@ function parseBlogPost(item: any, linkedAssets: Record<string, ContentfulImage>)
 }
 
 
-export async function fetchBlogPosts(options?: { limit?: number; featured?: boolean }): Promise<BlogPost[]> {
+export async function fetchBlogPosts(options?: { limit?: number; featured?: boolean; preview?: boolean }): Promise<BlogPost[]> {
     let query = `/entries?content_type=blog&order=-fields.date&include=2`;
     if (options?.limit) query += `&limit=${options.limit}`;
     if (typeof options?.featured === 'boolean') query += `&fields.featured=${options.featured}`;
     
-    const data = await cfFetch<any>(query);
+    const data = await cfFetch<any>(query, options?.preview);
 
     if (!data || !data.items) return [];
 
@@ -112,9 +118,9 @@ export async function fetchBlogPosts(options?: { limit?: number; featured?: bool
 }
 
 
-export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function fetchBlogPostBySlug(slug: string, preview = false): Promise<BlogPost | null> {
     const query = `/entries?content_type=blog&fields.slug=${slug}&limit=1&include=2`;
-    const data = await cfFetch<any>(query);
+    const data = await cfFetch<any>(query, preview);
 
     if (!data || !data.items || data.items.length === 0) return null;
 
@@ -144,11 +150,11 @@ function parseThinkTankArticle(item: any, linkedAssets: Record<string, Contentfu
 }
 
 
-export async function fetchThinkTankArticles(options?: { limit?: number }): Promise<ThinkTankArticle[]> {
+export async function fetchThinkTankArticles(options?: { limit?: number; preview?: boolean }): Promise<ThinkTankArticle[]> {
     let query = `/entries?content_type=thinkTankArticle&order=-fields.date&include=2`;
     if (options?.limit) query += `&limit=${options.limit}`;
 
-    const data = await cfFetch<any>(query);
+    const data = await cfFetch<any>(query, options?.preview);
     if (!data || !data.items) return [];
 
     const linkedAssets = parseLinkedAssets(data);
@@ -156,9 +162,9 @@ export async function fetchThinkTankArticles(options?: { limit?: number }): Prom
 }
 
 
-export async function fetchThinkTankArticleBySlug(slug: string): Promise<ThinkTankArticle | null> {
+export async function fetchThinkTankArticleBySlug(slug: string, preview = false): Promise<ThinkTankArticle | null> {
     const query = `/entries?content_type=thinkTankArticle&fields.slug=${slug}&limit=1&include=2`;
-    const data = await cfFetch<any>(query);
+    const data = await cfFetch<any>(query, preview);
 
     if (!data || !data.items || data.items.length === 0) return null;
 
