@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { fetchBlogPosts } from "@/lib/contentful";
 import type { BlogPost } from "@/types";
 
-export const revalidate = 60; 
+import { draftMode } from 'next/headers'; 
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultLogoUrl = `${siteUrl}/images/logo.png`;
@@ -27,7 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogPage() {
-  const posts: BlogPost[] = await fetchBlogPosts();
+  const { isEnabled } = await draftMode();
+  const posts: BlogPost[] = await fetchBlogPosts({ preview: isEnabled });
 
   const blogPageJsonLd = {
     "@context": "https://schema.org",
