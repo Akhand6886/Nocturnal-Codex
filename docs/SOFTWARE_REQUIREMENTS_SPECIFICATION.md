@@ -1,11 +1,11 @@
 # Software Requirements Specification (SRS)
 **Project:** Nocturnal Codex
 
-This document details the functional and technical requirements of the Nocturnal Codex platform, specifically detailing *how* the underlying technologies are utilized to achieve the project's goals.
+This document details the technical requirements, constraints, and specific implementation rules for the Nocturnal Codex platform. It serves as a strict technical blueprint for how technologies must be applied within the codebase.
 
 ## 1. System Overview
 
-Nocturnal Codex is a modern web application designed for developers to explore programming languages, theoretical concepts, and structured learning roadmaps. It prioritizes a fast, static-first architecture combined with dynamic client-side rendering for complex interactive elements.
+Nocturnal Codex is a highly interactive, content-driven educational platform for software engineering. The system is designed to provide instantaneous page loads via Next.js server-rendering while delivering complex, app-like interactive features via React Flow on the client side.
 
 ## 2. Technology Stack & Usage
 
