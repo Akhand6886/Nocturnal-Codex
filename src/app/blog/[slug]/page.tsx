@@ -5,9 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { fetchBlogPosts, fetchBlogPostBySlug } from "@/lib/contentful";
 import { ContentfulRichTextRenderer } from "@/components/contentful/rich-text-renderer";
-
-export const revalidate = 60; 
-
+import { draftMode } from 'next/headers';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
@@ -33,7 +31,8 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 // Page component - no await on params
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = await fetchBlogPostBySlug(slug);
+  const { isEnabled } = await draftMode();
+  const post = await fetchBlogPostBySlug(slug, isEnabled);
   
   if (!post) {
     notFound();
@@ -67,7 +66,8 @@ export default async function PostPage({ params }: PageProps) {
 // generateMetadata - no await on params
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await fetchBlogPostBySlug(slug);
+  const { isEnabled } = await draftMode();
+  const post = await fetchBlogPostBySlug(slug, isEnabled);
 
   if (!post) {
     return { 
