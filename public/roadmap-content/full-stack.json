@@ -1,505 +1,167 @@
 {
   "nodes": [
     {
-      "id": "fs-header",
+      "id": "h",
       "type": "section",
       "position": {
-        "x": 400,
-        "y": 0
+        "x": 440,
+        "y": 20
       },
       "data": {
-        "label": "Full Stack Development",
-        "description": "Complete roadmap to becoming a full-stack developer.",
-        "resources": []
-      },
-      "className": "section-header"
+        "label": "Full Stack Developer"
+      }
     },
     {
-      "id": "internet",
+      "id": "fe",
       "type": "topic",
       "position": {
-        "x": 400,
+        "x": 440,
         "y": 100
       },
       "data": {
-        "label": "Internet Fundamentals",
-        "description": "DNS, HTTP/HTTPS, TCP/IP, and how browsers work.",
-        "resources": [
-          {
-            "title": "MDN: How the Web Works",
-            "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Frontend Basics",
+        "status": "recommended"
+      }
     },
     {
-      "id": "html",
+      "id": "be",
       "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 200
+      },
+      "data": {
+        "label": "Backend Basics",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "db",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 300
+      },
+      "data": {
+        "label": "Databases",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "auth",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 400
+      },
+      "data": {
+        "label": "Authentication",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "deployment",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 500
+      },
+      "data": {
+        "label": "Deployment",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "react",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 100
+      },
+      "data": {
+        "label": "React",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "node",
+      "type": "subtopic",
       "position": {
         "x": 200,
         "y": 200
       },
       "data": {
-        "label": "HTML",
-        "description": "Semantic HTML5, forms, and accessibility.",
-        "resources": [
-          {
-            "title": "HTML Guide",
-            "url": "/languages/html",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Node.js",
+        "status": "recommended"
+      }
     },
     {
-      "id": "css",
-      "type": "topic",
-      "position": {
-        "x": 400,
-        "y": 200
-      },
-      "data": {
-        "label": "CSS",
-        "description": "Flexbox, Grid, responsive design, and animations.",
-        "resources": [
-          {
-            "title": "CSS Guide",
-            "url": "/languages/css",
-            "type": "article"
-          },
-          {
-            "title": "Flexbox",
-            "url": "/languages/css/flexbox",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "js",
-      "type": "topic",
-      "position": {
-        "x": 600,
-        "y": 200
-      },
-      "data": {
-        "label": "JavaScript",
-        "description": "ES6+, DOM manipulation, async programming.",
-        "resources": [
-          {
-            "title": "JS Guide",
-            "url": "/languages/javascript",
-            "type": "article"
-          },
-          {
-            "title": "Async/Await",
-            "url": "/languages/javascript/async-await",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "git",
+      "id": "pg",
       "type": "subtopic",
       "position": {
-        "x": 400,
-        "y": 310
+        "x": 700,
+        "y": 300
       },
       "data": {
-        "label": "Git & GitHub",
-        "description": "Version control, branching, and collaboration.",
-        "resources": [
-          {
-            "title": "Pro Git Book",
-            "url": "https://git-scm.com/book/en/v2",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "typescript",
-      "type": "topic",
-      "position": {
-        "x": 400,
-        "y": 410
-      },
-      "data": {
-        "label": "TypeScript",
-        "description": "Type safety, interfaces, generics for production apps.",
-        "resources": [
-          {
-            "title": "TypeScript Guide",
-            "url": "/languages/typescript",
-            "type": "article"
-          },
-          {
-            "title": "Generics",
-            "url": "/languages/typescript/generics",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "fe-header",
-      "type": "section",
-      "position": {
-        "x": 150,
-        "y": 520
-      },
-      "data": {
-        "label": "Frontend Track",
-        "description": "Build beautiful, interactive user interfaces.",
-        "resources": []
-      },
-      "className": "section-header"
-    },
-    {
-      "id": "be-header",
-      "type": "section",
-      "position": {
-        "x": 650,
-        "y": 520
-      },
-      "data": {
-        "label": "Backend Track",
-        "description": "Build APIs, handle data, and server logic.",
-        "resources": []
-      },
-      "className": "section-header"
-    },
-    {
-      "id": "react",
-      "type": "topic",
-      "position": {
-        "x": 150,
-        "y": 630
-      },
-      "data": {
-        "label": "React",
-        "description": "Components, hooks, state management, and routing.",
-        "resources": [
-          {
-            "title": "React Docs",
-            "url": "https://react.dev/learn",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "backend-lang",
-      "type": "topic",
-      "position": {
-        "x": 650,
-        "y": 630
-      },
-      "data": {
-        "label": "Backend Language",
-        "description": "Node.js, Python (Django/FastAPI), or Go.",
-        "resources": [
-          {
-            "title": "Python Guide",
-            "url": "/languages/python",
-            "type": "article"
-          },
-          {
-            "title": "Go Guide",
-            "url": "/languages/go",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "nextjs",
-      "type": "topic",
-      "position": {
-        "x": 150,
-        "y": 740
-      },
-      "data": {
-        "label": "Next.js",
-        "description": "SSR, SSG, API routes, and full-stack React.",
-        "resources": [
-          {
-            "title": "Next.js Docs",
-            "url": "https://nextjs.org/docs",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "databases",
-      "type": "topic",
-      "position": {
-        "x": 650,
-        "y": 740
-      },
-      "data": {
-        "label": "Databases",
-        "description": "SQL (PostgreSQL) and NoSQL (MongoDB, Redis).",
-        "resources": [
-          {
-            "title": "SQL Guide",
-            "url": "/languages/sql",
-            "type": "article"
-          },
-          {
-            "title": "Joins",
-            "url": "/languages/sql/joins",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "rest-apis",
-      "type": "topic",
-      "position": {
-        "x": 400,
-        "y": 850
-      },
-      "data": {
-        "label": "REST APIs & GraphQL",
-        "description": "Designing, building, and consuming APIs.",
-        "resources": [
-          {
-            "title": "REST Best Practices",
-            "url": "https://restfulapi.net/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "auth",
-      "type": "subtopic",
-      "position": {
-        "x": 150,
-        "y": 960
-      },
-      "data": {
-        "label": "Authentication",
-        "description": "JWT, OAuth 2.0, sessions, NextAuth.js.",
-        "resources": [
-          {
-            "title": "JWT.io",
-            "url": "https://jwt.io/introduction",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "docker",
-      "type": "subtopic",
-      "position": {
-        "x": 400,
-        "y": 960
-      },
-      "data": {
-        "label": "Docker & DevOps",
-        "description": "Containers, CI/CD pipelines, and deployment.",
-        "resources": [
-          {
-            "title": "Docker Docs",
-            "url": "https://docs.docker.com/get-started/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "testing",
-      "type": "subtopic",
-      "position": {
-        "x": 650,
-        "y": 960
-      },
-      "data": {
-        "label": "Testing",
-        "description": "Unit, integration, E2E — Jest, Vitest, Playwright.",
-        "resources": [
-          {
-            "title": "Vitest",
-            "url": "https://vitest.dev/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "deploy",
-      "type": "topic",
-      "position": {
-        "x": 400,
-        "y": 1070
-      },
-      "data": {
-        "label": "Deployment",
-        "description": "Vercel, AWS, GCP — production deployment and monitoring.",
-        "resources": [
-          {
-            "title": "Vercel Docs",
-            "url": "https://vercel.com/docs",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "PostgreSQL",
+        "status": "recommended"
+      }
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "source": "fs-header",
-      "target": "internet",
+      "source": "h",
+      "target": "fe",
       "type": "roadmap"
     },
     {
       "id": "e2",
-      "source": "internet",
-      "target": "html",
+      "source": "fe",
+      "target": "be",
       "type": "roadmap"
     },
     {
       "id": "e3",
-      "source": "internet",
-      "target": "css",
+      "source": "be",
+      "target": "db",
       "type": "roadmap"
     },
     {
       "id": "e4",
-      "source": "internet",
-      "target": "js",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "html",
-      "target": "git",
-      "type": "roadmap"
-    },
-    {
-      "id": "e6",
-      "source": "css",
-      "target": "git",
-      "type": "roadmap"
-    },
-    {
-      "id": "e7",
-      "source": "js",
-      "target": "git",
-      "type": "roadmap"
-    },
-    {
-      "id": "e8",
-      "source": "git",
-      "target": "typescript",
-      "type": "roadmap"
-    },
-    {
-      "id": "e9",
-      "source": "typescript",
-      "target": "fe-header",
-      "type": "roadmap"
-    },
-    {
-      "id": "e10",
-      "source": "typescript",
-      "target": "be-header",
-      "type": "roadmap"
-    },
-    {
-      "id": "e11",
-      "source": "fe-header",
-      "target": "react",
-      "type": "roadmap"
-    },
-    {
-      "id": "e12",
-      "source": "be-header",
-      "target": "backend-lang",
-      "type": "roadmap"
-    },
-    {
-      "id": "e13",
-      "source": "react",
-      "target": "nextjs",
-      "type": "roadmap"
-    },
-    {
-      "id": "e14",
-      "source": "backend-lang",
-      "target": "databases",
-      "type": "roadmap"
-    },
-    {
-      "id": "e15",
-      "source": "nextjs",
-      "target": "rest-apis",
-      "type": "roadmap"
-    },
-    {
-      "id": "e16",
-      "source": "databases",
-      "target": "rest-apis",
-      "type": "roadmap"
-    },
-    {
-      "id": "e17",
-      "source": "rest-apis",
+      "source": "db",
       "target": "auth",
       "type": "roadmap"
     },
     {
-      "id": "e18",
-      "source": "rest-apis",
-      "target": "docker",
-      "type": "roadmap"
-    },
-    {
-      "id": "e19",
-      "source": "rest-apis",
-      "target": "testing",
-      "type": "roadmap"
-    },
-    {
-      "id": "e20",
+      "id": "e5",
       "source": "auth",
-      "target": "deploy",
+      "target": "deployment",
       "type": "roadmap"
     },
     {
-      "id": "e21",
-      "source": "docker",
-      "target": "deploy",
-      "type": "roadmap"
+      "id": "ed1",
+      "source": "fe",
+      "target": "react",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
     },
     {
-      "id": "e22",
-      "source": "testing",
-      "target": "deploy",
-      "type": "roadmap"
+      "id": "ed2",
+      "source": "be",
+      "target": "node",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed3",
+      "source": "db",
+      "target": "pg",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
     }
   ]
 }

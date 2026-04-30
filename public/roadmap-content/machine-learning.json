@@ -1,123 +1,141 @@
 {
   "nodes": [
     {
-      "id": "ml-intro",
+      "id": "h",
       "type": "section",
       "position": {
-        "x": 400,
-        "y": 50
+        "x": 440,
+        "y": 20
       },
       "data": {
-        "label": "Machine Learning",
-        "description": "Machine Learning is a subset of AI focused on building systems that learn from data.",
-        "resources": []
-      },
-      "className": "section-header"
-    },
-    {
-      "id": "intro",
-      "type": "topic",
-      "position": {
-        "x": 400,
-        "y": 150
-      },
-      "data": {
-        "label": "Introduction",
-        "description": "Get started with machine learning fundamentals",
-        "resources": [
-          {
-            "title": "What is an ML Engineer?",
-            "url": "https://example.com",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "calculus",
-      "type": "topic",
-      "position": {
-        "x": 150,
-        "y": 250
-      },
-      "data": {
-        "label": "Calculus",
-        "description": "Learn differential and integral calculus",
-        "resources": [
-          {
-            "title": "Calculus Tutorial",
-            "url": "https://example.com",
-            "type": "video"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "linear-algebra",
-      "type": "subtopic",
-      "position": {
-        "x": 400,
-        "y": 250
-      },
-      "data": {
-        "label": "Linear Algebra",
-        "description": "Master vectors, matrices, and linear transformations",
-        "resources": [
-          {
-            "title": "Linear Algebra Course",
-            "url": "https://example.com",
-            "type": "course"
-          }
-        ]
-      },
-      "className": ""
+        "label": "ML Engineer"
+      }
     },
     {
       "id": "python",
       "type": "topic",
       "position": {
-        "x": 650,
-        "y": 250
+        "x": 440,
+        "y": 100
       },
       "data": {
-        "label": "Python",
-        "description": "Learn Python programming fundamentals",
-        "resources": [
-          {
-            "title": "Python for ML",
-            "url": "https://example.com",
-            "type": "article"
-          }
-        ]
+        "label": "Python for Data Science",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "math",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 200
       },
-      "className": "highlight"
+      "data": {
+        "label": "Mathematics",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "analysis",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 300
+      },
+      "data": {
+        "label": "Data Analysis",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "sup",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 400
+      },
+      "data": {
+        "label": "Supervised Learning",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "unsup",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 500
+      },
+      "data": {
+        "label": "Unsupervised Learning",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "deep",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 600
+      },
+      "data": {
+        "label": "Deep Learning",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "mlops",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 700
+      },
+      "data": {
+        "label": "MLOps"
+      }
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "source": "ml-intro",
-      "target": "intro",
+      "source": "h",
+      "target": "python",
       "type": "roadmap"
     },
     {
       "id": "e2",
-      "source": "intro",
-      "target": "calculus",
+      "source": "python",
+      "target": "math",
       "type": "roadmap"
     },
     {
       "id": "e3",
-      "source": "intro",
-      "target": "linear-algebra",
+      "source": "math",
+      "target": "analysis",
       "type": "roadmap"
     },
     {
       "id": "e4",
-      "source": "intro",
-      "target": "python",
+      "source": "analysis",
+      "target": "sup",
+      "type": "roadmap"
+    },
+    {
+      "id": "e5",
+      "source": "sup",
+      "target": "unsup",
+      "type": "roadmap"
+    },
+    {
+      "id": "e6",
+      "source": "unsup",
+      "target": "deep",
+      "type": "roadmap"
+    },
+    {
+      "id": "e7",
+      "source": "deep",
+      "target": "mlops",
       "type": "roadmap"
     }
   ]

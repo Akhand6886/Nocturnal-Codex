@@ -1,488 +1,123 @@
 {
   "nodes": [
     {
-      "id": "cyber-header",
+      "id": "h",
       "type": "section",
       "position": {
-        "x": 400,
-        "y": 0
+        "x": 440,
+        "y": 20
       },
       "data": {
-        "label": "Cybersecurity",
-        "description": "Complete roadmap to becoming a cybersecurity professional.",
-        "resources": []
-      },
-      "className": "section-header"
+        "label": "Cybersecurity Specialist"
+      }
     },
     {
-      "id": "networking",
+      "id": "net",
       "type": "topic",
       "position": {
-        "x": 400,
+        "x": 440,
         "y": 100
       },
       "data": {
-        "label": "Networking Fundamentals",
-        "description": "TCP/IP, OSI model, DNS, DHCP, subnetting, and protocols.",
-        "resources": [
-          {
-            "title": "Networking Basics",
-            "url": "https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Networking Basics",
+        "status": "recommended"
+      }
     },
     {
       "id": "linux",
       "type": "topic",
       "position": {
-        "x": 200,
-        "y": 210
+        "x": 440,
+        "y": 200
       },
       "data": {
-        "label": "Linux",
-        "description": "File system, permissions, processes, and shell commands.",
-        "resources": [
-          {
-            "title": "Shell Guide",
-            "url": "/languages/shell",
-            "type": "article"
-          },
-          {
-            "title": "Shell Fundamentals",
-            "url": "/languages/shell/shell-fundamentals",
-            "type": "article"
-          },
-          {
-            "title": "Process Management",
-            "url": "/languages/shell/process-management",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "windows",
-      "type": "subtopic",
-      "position": {
-        "x": 600,
-        "y": 210
-      },
-      "data": {
-        "label": "Windows",
-        "description": "Active Directory, PowerShell, Group Policy, and Windows security.",
-        "resources": [
-          {
-            "title": "PowerShell Docs",
-            "url": "https://learn.microsoft.com/en-us/powershell/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "programming",
-      "type": "section",
-      "position": {
-        "x": 400,
-        "y": 320
-      },
-      "data": {
-        "label": "Programming",
-        "description": "Python, C, and shell scripting for security tools and automation.",
-        "resources": []
-      },
-      "className": "section-header"
-    },
-    {
-      "id": "python",
-      "type": "topic",
-      "position": {
-        "x": 150,
-        "y": 420
-      },
-      "data": {
-        "label": "Python",
-        "description": "Scripting, automation, exploit development, and security tools.",
-        "resources": [
-          {
-            "title": "Python Guide",
-            "url": "/languages/python",
-            "type": "article"
-          },
-          {
-            "title": "Modules & Packages",
-            "url": "/languages/python/modules-packages",
-            "type": "article"
-          },
-          {
-            "title": "Concurrency",
-            "url": "/languages/python/concurrency",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "c-lang",
-      "type": "topic",
-      "position": {
-        "x": 400,
-        "y": 420
-      },
-      "data": {
-        "label": "C",
-        "description": "Memory management, buffer overflows, and low-level exploitation.",
-        "resources": [
-          {
-            "title": "C Guide",
-            "url": "/languages/c",
-            "type": "article"
-          },
-          {
-            "title": "Pointers",
-            "url": "/languages/c/pointers",
-            "type": "article"
-          },
-          {
-            "title": "Memory Layout",
-            "url": "/languages/c/memory-layout",
-            "type": "article"
-          },
-          {
-            "title": "Buffer Overflows",
-            "url": "/languages/c/dynamic-allocation",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "shell",
-      "type": "subtopic",
-      "position": {
-        "x": 650,
-        "y": 420
-      },
-      "data": {
-        "label": "Shell Scripting",
-        "description": "Automation, log analysis, and system administration.",
-        "resources": [
-          {
-            "title": "Shell Scripting",
-            "url": "/languages/shell",
-            "type": "article"
-          },
-          {
-            "title": "grep & Regex",
-            "url": "/languages/shell/grep-regular-expressions",
-            "type": "article"
-          },
-          {
-            "title": "sed & awk",
-            "url": "/languages/shell/sed-awk",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Linux Proficiency",
+        "status": "recommended"
+      }
     },
     {
       "id": "crypto",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 540
+        "x": 440,
+        "y": 300
       },
       "data": {
         "label": "Cryptography",
-        "description": "Symmetric/asymmetric encryption, hashing, TLS/SSL, and PKI.",
-        "resources": [
-          {
-            "title": "Crypto 101",
-            "url": "https://www.crypto101.io/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "status": "recommended"
+      }
     },
     {
-      "id": "web-sec",
+      "id": "web",
       "type": "topic",
       "position": {
-        "x": 150,
-        "y": 650
+        "x": 440,
+        "y": 400
       },
       "data": {
         "label": "Web Security",
-        "description": "OWASP Top 10, XSS, CSRF, SQL injection, and secure coding.",
-        "resources": [
-          {
-            "title": "OWASP Top 10",
-            "url": "https://owasp.org/www-project-top-ten/",
-            "type": "article"
-          },
-          {
-            "title": "SQL Injection",
-            "url": "/languages/sql/subqueries",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "status": "recommended"
+      }
     },
     {
-      "id": "net-sec",
-      "type": "subtopic",
-      "position": {
-        "x": 650,
-        "y": 650
-      },
-      "data": {
-        "label": "Network Security",
-        "description": "Firewalls, IDS/IPS, VPN, packet analysis with Wireshark.",
-        "resources": [
-          {
-            "title": "Wireshark Docs",
-            "url": "https://www.wireshark.org/docs/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "vuln-assess",
-      "type": "subtopic",
-      "position": {
-        "x": 400,
-        "y": 760
-      },
-      "data": {
-        "label": "Vulnerability Assessment",
-        "description": "Nmap, Nessus, vulnerability scanning, and CVE databases.",
-        "resources": [
-          {
-            "title": "Nmap Docs",
-            "url": "https://nmap.org/docs.html",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "pentesting",
+      "id": "offensive",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 870
+        "x": 440,
+        "y": 500
       },
       "data": {
-        "label": "Penetration Testing",
-        "description": "Metasploit, Burp Suite, Kali Linux, and exploit development.",
-        "resources": [
-          {
-            "title": "C Socket Programming",
-            "url": "/languages/c/socket-programming",
-            "type": "article"
-          },
-          {
-            "title": "C Signals",
-            "url": "/languages/c/signals",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Offensive Security",
+        "status": "recommended"
+      }
     },
     {
-      "id": "incident",
-      "type": "subtopic",
-      "position": {
-        "x": 150,
-        "y": 980
-      },
-      "data": {
-        "label": "Incident Response",
-        "description": "SIEM, forensics, malware analysis, and threat hunting.",
-        "resources": [
-          {
-            "title": "SANS IR Guide",
-            "url": "https://www.sans.org/incident-response/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "compliance",
-      "type": "subtopic",
-      "position": {
-        "x": 650,
-        "y": 980
-      },
-      "data": {
-        "label": "Compliance & Governance",
-        "description": "ISO 27001, NIST, GDPR, SOC 2, and risk management.",
-        "resources": [
-          {
-            "title": "NIST Framework",
-            "url": "https://www.nist.gov/cyberframework",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "certs",
+      "id": "defensive",
       "type": "topic",
       "position": {
-        "x": 400,
-        "y": 1090
+        "x": 440,
+        "y": 600
       },
       "data": {
-        "label": "Certifications",
-        "description": "CompTIA Security+, CEH, OSCP, CISSP — career milestones.",
-        "resources": [
-          {
-            "title": "CompTIA Security+",
-            "url": "https://www.comptia.org/certifications/security",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Defensive Security"
+      }
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "source": "cyber-header",
-      "target": "networking",
+      "source": "h",
+      "target": "net",
       "type": "roadmap"
     },
     {
       "id": "e2",
-      "source": "networking",
+      "source": "net",
       "target": "linux",
       "type": "roadmap"
     },
     {
       "id": "e3",
-      "source": "networking",
-      "target": "windows",
+      "source": "linux",
+      "target": "crypto",
       "type": "roadmap"
     },
     {
       "id": "e4",
-      "source": "linux",
-      "target": "programming",
+      "source": "crypto",
+      "target": "web",
       "type": "roadmap"
     },
     {
       "id": "e5",
-      "source": "windows",
-      "target": "programming",
+      "source": "web",
+      "target": "offensive",
       "type": "roadmap"
     },
     {
       "id": "e6",
-      "source": "programming",
-      "target": "python",
-      "type": "roadmap"
-    },
-    {
-      "id": "e7",
-      "source": "programming",
-      "target": "c-lang",
-      "type": "roadmap"
-    },
-    {
-      "id": "e8",
-      "source": "programming",
-      "target": "shell",
-      "type": "roadmap"
-    },
-    {
-      "id": "e9",
-      "source": "python",
-      "target": "crypto",
-      "type": "roadmap"
-    },
-    {
-      "id": "e10",
-      "source": "c-lang",
-      "target": "crypto",
-      "type": "roadmap"
-    },
-    {
-      "id": "e11",
-      "source": "shell",
-      "target": "crypto",
-      "type": "roadmap"
-    },
-    {
-      "id": "e12",
-      "source": "crypto",
-      "target": "web-sec",
-      "type": "roadmap"
-    },
-    {
-      "id": "e13",
-      "source": "crypto",
-      "target": "net-sec",
-      "type": "roadmap"
-    },
-    {
-      "id": "e14",
-      "source": "web-sec",
-      "target": "vuln-assess",
-      "type": "roadmap"
-    },
-    {
-      "id": "e15",
-      "source": "net-sec",
-      "target": "vuln-assess",
-      "type": "roadmap"
-    },
-    {
-      "id": "e16",
-      "source": "vuln-assess",
-      "target": "pentesting",
-      "type": "roadmap"
-    },
-    {
-      "id": "e17",
-      "source": "pentesting",
-      "target": "incident",
-      "type": "roadmap"
-    },
-    {
-      "id": "e18",
-      "source": "pentesting",
-      "target": "compliance",
-      "type": "roadmap"
-    },
-    {
-      "id": "e19",
-      "source": "incident",
-      "target": "certs",
-      "type": "roadmap"
-    },
-    {
-      "id": "e20",
-      "source": "compliance",
-      "target": "certs",
+      "source": "offensive",
+      "target": "defensive",
       "type": "roadmap"
     }
   ]

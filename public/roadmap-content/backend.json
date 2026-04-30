@@ -1,562 +1,346 @@
 {
   "nodes": [
     {
-      "id": "be-header",
+      "id": "h",
       "type": "section",
       "position": {
-        "x": 400,
-        "y": 0
+        "x": 440,
+        "y": 20
       },
       "data": {
-        "label": "Backend Development",
-        "description": "Complete roadmap to becoming a modern backend developer.",
-        "resources": []
-      },
-      "className": "section-header"
+        "label": "Backend Developer"
+      }
     },
     {
       "id": "internet",
       "type": "topic",
       "position": {
-        "x": 400,
+        "x": 440,
         "y": 100
       },
       "data": {
-        "label": "How the Internet Works",
-        "description": "DNS, HTTP/HTTPS, TCP/IP, domain names, and web servers.",
-        "resources": [
-          {
-            "title": "MDN: HTTP Overview",
-            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Internet",
+        "status": "recommended"
+      }
     },
     {
-      "id": "pick-lang",
-      "type": "section",
+      "id": "lang",
+      "type": "topic",
       "position": {
-        "x": 400,
+        "x": 440,
         "y": 200
       },
       "data": {
         "label": "Pick a Language",
-        "description": "Choose your primary backend language: Python, Java, Go, C#, or others.",
-        "resources": []
-      },
-      "className": "section-header"
+        "status": "recommended"
+      }
     },
     {
-      "id": "python",
+      "id": "vcs",
       "type": "topic",
       "position": {
-        "x": 100,
-        "y": 310
+        "x": 440,
+        "y": 300
       },
       "data": {
-        "label": "Python",
-        "description": "Django, Flask, FastAPI — versatile and beginner-friendly.",
-        "resources": [
-          {
-            "title": "Python Guide",
-            "url": "/languages/python",
-            "type": "article"
-          },
-          {
-            "title": "Functions",
-            "url": "/languages/python/functions",
-            "type": "article"
-          },
-          {
-            "title": "Decorators",
-            "url": "/languages/python/decorators",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Version Control",
+        "status": "recommended"
+      }
     },
     {
-      "id": "java",
+      "id": "db",
       "type": "topic",
       "position": {
-        "x": 320,
-        "y": 310
+        "x": 440,
+        "y": 400
       },
       "data": {
-        "label": "Java",
-        "description": "Spring Boot, enterprise-grade applications.",
-        "resources": [
-          {
-            "title": "Java Guide",
-            "url": "/languages/java",
-            "type": "article"
-          },
-          {
-            "title": "Spring Boot",
-            "url": "/languages/java/spring-boot",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Databases",
+        "status": "recommended"
+      }
     },
     {
-      "id": "go",
+      "id": "api",
       "type": "topic",
       "position": {
-        "x": 520,
-        "y": 310
-      },
-      "data": {
-        "label": "Go",
-        "description": "Fast, concurrent, and great for microservices.",
-        "resources": [
-          {
-            "title": "Go Guide",
-            "url": "/languages/go",
-            "type": "article"
-          },
-          {
-            "title": "Goroutines",
-            "url": "/languages/go/goroutines",
-            "type": "article"
-          },
-          {
-            "title": "Channels",
-            "url": "/languages/go/channels",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "csharp",
-      "type": "topic",
-      "position": {
-        "x": 720,
-        "y": 310
-      },
-      "data": {
-        "label": "C#",
-        "description": "ASP.NET Core — robust and performant.",
-        "resources": [
-          {
-            "title": "C# Guide",
-            "url": "/languages/csharp",
-            "type": "article"
-          },
-          {
-            "title": "ASP.NET Core",
-            "url": "/languages/csharp/asp-net-core",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "git",
-      "type": "subtopic",
-      "position": {
-        "x": 400,
-        "y": 420
-      },
-      "data": {
-        "label": "Version Control (Git)",
-        "description": "Commits, branches, merging, rebasing, and collaboration workflows.",
-        "resources": [
-          {
-            "title": "Pro Git Book",
-            "url": "https://git-scm.com/book/en/v2",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "sql-db",
-      "type": "topic",
-      "position": {
-        "x": 200,
-        "y": 530
-      },
-      "data": {
-        "label": "Relational Databases",
-        "description": "PostgreSQL, MySQL — SQL queries, joins, indexes, and normalization.",
-        "resources": [
-          {
-            "title": "SQL Guide",
-            "url": "/languages/sql",
-            "type": "article"
-          },
-          {
-            "title": "SELECT Queries",
-            "url": "/languages/sql/select-queries",
-            "type": "article"
-          },
-          {
-            "title": "Joins",
-            "url": "/languages/sql/joins",
-            "type": "article"
-          },
-          {
-            "title": "Window Functions",
-            "url": "/languages/sql/window-functions",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
-    },
-    {
-      "id": "nosql-db",
-      "type": "subtopic",
-      "position": {
-        "x": 600,
-        "y": 530
-      },
-      "data": {
-        "label": "NoSQL Databases",
-        "description": "MongoDB, Redis, DynamoDB — document stores, key-value, and caching.",
-        "resources": [
-          {
-            "title": "MongoDB University",
-            "url": "https://university.mongodb.com/",
-            "type": "course"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "apis",
-      "type": "topic",
-      "position": {
-        "x": 400,
-        "y": 640
+        "x": 440,
+        "y": 500
       },
       "data": {
         "label": "APIs",
-        "description": "REST, GraphQL, gRPC — designing, building, and documenting APIs.",
-        "resources": [
-          {
-            "title": "REST API Best Practices",
-            "url": "https://restfulapi.net/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "status": "recommended"
+      }
     },
     {
-      "id": "auth",
-      "type": "subtopic",
-      "position": {
-        "x": 150,
-        "y": 750
-      },
-      "data": {
-        "label": "Authentication",
-        "description": "JWT, OAuth 2.0, sessions, cookies, and SSO.",
-        "resources": [
-          {
-            "title": "JWT.io",
-            "url": "https://jwt.io/introduction",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "caching",
-      "type": "subtopic",
-      "position": {
-        "x": 400,
-        "y": 750
-      },
-      "data": {
-        "label": "Caching",
-        "description": "Redis, Memcached, CDN caching, and HTTP cache headers.",
-        "resources": [
-          {
-            "title": "Redis Docs",
-            "url": "https://redis.io/docs/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "testing",
-      "type": "subtopic",
-      "position": {
-        "x": 650,
-        "y": 750
-      },
-      "data": {
-        "label": "Testing",
-        "description": "Unit, integration, E2E testing, TDD, and mocking.",
-        "resources": [
-          {
-            "title": "Python Testing",
-            "url": "/languages/python/unit-testing",
-            "type": "article"
-          },
-          {
-            "title": "Java Testing",
-            "url": "/languages/java/spring-boot",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
-    },
-    {
-      "id": "docker",
+      "id": "cache",
       "type": "topic",
       "position": {
-        "x": 200,
-        "y": 860
+        "x": 440,
+        "y": 600
       },
       "data": {
-        "label": "Docker",
-        "description": "Containers, images, Dockerfile, docker-compose, and container orchestration.",
-        "resources": [
-          {
-            "title": "Docker Docs",
-            "url": "https://docs.docker.com/get-started/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": "highlight"
+        "label": "Caching"
+      }
     },
     {
-      "id": "web-servers",
-      "type": "subtopic",
+      "id": "sec",
+      "type": "topic",
       "position": {
-        "x": 600,
-        "y": 860
+        "x": 440,
+        "y": 700
       },
       "data": {
-        "label": "Web Servers",
-        "description": "Nginx, Apache, Caddy — reverse proxy, load balancing, and SSL.",
-        "resources": [
-          {
-            "title": "Nginx Docs",
-            "url": "https://nginx.org/en/docs/",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Security"
+      }
     },
     {
-      "id": "ci-cd",
+      "id": "test",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 800
+      },
+      "data": {
+        "label": "Testing"
+      }
+    },
+    {
+      "id": "cicd",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 900
+      },
+      "data": {
+        "label": "CI/CD"
+      }
+    },
+    {
+      "id": "node",
       "type": "subtopic",
       "position": {
         "x": 200,
-        "y": 970
+        "y": 200
       },
       "data": {
-        "label": "CI/CD",
-        "description": "GitHub Actions, Jenkins, GitLab CI — automated testing and deployment.",
-        "resources": [
-          {
-            "title": "GitHub Actions Docs",
-            "url": "https://docs.github.com/en/actions",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Node.js",
+        "status": "recommended"
+      }
     },
     {
-      "id": "architecture",
+      "id": "python",
       "type": "subtopic",
       "position": {
-        "x": 600,
-        "y": 970
+        "x": 200,
+        "y": 245
       },
       "data": {
-        "label": "Architecture Patterns",
-        "description": "Monolith vs Microservices, MVC, event-driven, and message queues.",
-        "resources": [
-          {
-            "title": "Ruby MVC",
-            "url": "/languages/ruby/mvc-architecture",
-            "type": "article"
-          }
-        ]
-      },
-      "className": ""
+        "label": "Python",
+        "status": "alternative"
+      }
     },
     {
-      "id": "cloud",
-      "type": "topic",
+      "id": "go",
+      "type": "subtopic",
       "position": {
-        "x": 400,
-        "y": 1080
+        "x": 200,
+        "y": 290
       },
       "data": {
-        "label": "Cloud Providers",
-        "description": "AWS, GCP, Azure — serverless, managed databases, and deployment.",
-        "resources": [
-          {
-            "title": "AWS Getting Started",
-            "url": "https://aws.amazon.com/getting-started/",
-            "type": "article"
-          }
-        ]
+        "label": "Go",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "sql",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 400
       },
-      "className": "highlight"
+      "data": {
+        "label": "Relational (PostgreSQL)",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "nosql",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 445
+      },
+      "data": {
+        "label": "NoSQL (MongoDB)",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "rest",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 500
+      },
+      "data": {
+        "label": "REST",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "graphql",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 545
+      },
+      "data": {
+        "label": "GraphQL",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "grpc",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 590
+      },
+      "data": {
+        "label": "gRPC",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "info-db",
+      "type": "info",
+      "position": {
+        "x": 700,
+        "y": 550
+      },
+      "data": {
+        "label": "Start with a Relational Database like PostgreSQL or MySQL."
+      }
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "source": "be-header",
+      "source": "h",
       "target": "internet",
       "type": "roadmap"
     },
     {
       "id": "e2",
       "source": "internet",
-      "target": "pick-lang",
+      "target": "lang",
       "type": "roadmap"
     },
     {
       "id": "e3",
-      "source": "pick-lang",
-      "target": "python",
+      "source": "lang",
+      "target": "vcs",
       "type": "roadmap"
     },
     {
       "id": "e4",
-      "source": "pick-lang",
-      "target": "java",
+      "source": "vcs",
+      "target": "db",
       "type": "roadmap"
     },
     {
       "id": "e5",
-      "source": "pick-lang",
-      "target": "go",
+      "source": "db",
+      "target": "api",
       "type": "roadmap"
     },
     {
       "id": "e6",
-      "source": "pick-lang",
-      "target": "csharp",
+      "source": "api",
+      "target": "cache",
       "type": "roadmap"
     },
     {
       "id": "e7",
-      "source": "python",
-      "target": "git",
+      "source": "cache",
+      "target": "sec",
       "type": "roadmap"
     },
     {
       "id": "e8",
-      "source": "java",
-      "target": "git",
+      "source": "sec",
+      "target": "test",
       "type": "roadmap"
     },
     {
       "id": "e9",
-      "source": "go",
-      "target": "git",
+      "source": "test",
+      "target": "cicd",
       "type": "roadmap"
     },
     {
-      "id": "e10",
-      "source": "csharp",
-      "target": "git",
-      "type": "roadmap"
+      "id": "ed1",
+      "source": "lang",
+      "target": "node",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
     },
     {
-      "id": "e11",
-      "source": "git",
-      "target": "sql-db",
-      "type": "roadmap"
+      "id": "ed2",
+      "source": "lang",
+      "target": "python",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
     },
     {
-      "id": "e12",
-      "source": "git",
-      "target": "nosql-db",
-      "type": "roadmap"
+      "id": "ed3",
+      "source": "lang",
+      "target": "go",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
     },
     {
-      "id": "e13",
-      "source": "sql-db",
-      "target": "apis",
-      "type": "roadmap"
+      "id": "ed4",
+      "source": "db",
+      "target": "sql",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
     },
     {
-      "id": "e14",
-      "source": "nosql-db",
-      "target": "apis",
-      "type": "roadmap"
+      "id": "ed5",
+      "source": "db",
+      "target": "nosql",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
     },
     {
-      "id": "e15",
-      "source": "apis",
-      "target": "auth",
-      "type": "roadmap"
+      "id": "ed6",
+      "source": "api",
+      "target": "rest",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
     },
     {
-      "id": "e16",
-      "source": "apis",
-      "target": "caching",
-      "type": "roadmap"
+      "id": "ed7",
+      "source": "api",
+      "target": "graphql",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
     },
     {
-      "id": "e17",
-      "source": "apis",
-      "target": "testing",
-      "type": "roadmap"
-    },
-    {
-      "id": "e18",
-      "source": "auth",
-      "target": "docker",
-      "type": "roadmap"
-    },
-    {
-      "id": "e19",
-      "source": "caching",
-      "target": "web-servers",
-      "type": "roadmap"
-    },
-    {
-      "id": "e20",
-      "source": "docker",
-      "target": "ci-cd",
-      "type": "roadmap"
-    },
-    {
-      "id": "e21",
-      "source": "web-servers",
-      "target": "architecture",
-      "type": "roadmap"
-    },
-    {
-      "id": "e22",
-      "source": "ci-cd",
-      "target": "cloud",
-      "type": "roadmap"
-    },
-    {
-      "id": "e23",
-      "source": "architecture",
-      "target": "cloud",
-      "type": "roadmap"
+      "id": "ed8",
+      "source": "api",
+      "target": "grpc",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
     }
   ]
 }
