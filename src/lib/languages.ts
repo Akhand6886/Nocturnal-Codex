@@ -42,7 +42,7 @@ export interface TopicContent {
   content: string;
 }
 
-const languagesDirectory = path.join(process.cwd(), 'content/languages');
+const languagesDirectory = path.join(process.cwd(), 'src/content/languages');
 
 let allLanguagesCache: Language[];
 

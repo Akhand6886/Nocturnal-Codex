@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const contentDir = path.join(process.cwd(), 'content', 'languages');
+const contentDir = path.join(process.cwd(), 'src', 'content', 'languages');
 
 function slugify(text) {
   return text

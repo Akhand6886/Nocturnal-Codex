@@ -17,7 +17,7 @@ export interface Roadmap {
   imageUrl?: string;
 }
 
-const roadmapsDirectory = path.join(process.cwd(), 'content/roadmaps');
+const roadmapsDirectory = path.join(process.cwd(), 'src/content/roadmaps');
 
 let allRoadmapsCache: Roadmap[];
 
