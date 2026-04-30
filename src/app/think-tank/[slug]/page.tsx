@@ -4,9 +4,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from 'next';
 import { format } from 'date-fns';
-import { Users, CalendarDays, Tag as TagIcon, FileText, Link as LinkIconLucide } from "lucide-react";
+import { Users, CalendarDays, Tag as TagIcon, FileText, Link as LinkIconLucide, GraduationCap, Layers, Quote, Download } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/layout/breadcrumbs";
 import { RelatedArticleCard, type RelatedArticle } from '@/components/content/related-article-card';
 import { fetchThinkTankArticles, fetchThinkTankArticleBySlug, fetchBlogPosts } from "@/lib/contentful";
@@ -90,15 +91,37 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
               <CalendarDays className="h-4 w-4" />
               <span>Published: {format(new Date(article.date), "MMMM d, yyyy")}</span>
             </div>
+            {article.discipline && (
+              <div className="flex items-center space-x-1.5">
+                <GraduationCap className="h-4 w-4" />
+                <span>{article.discipline}</span>
+              </div>
+            )}
+            {article.series && (
+              <div className="flex items-center space-x-1.5">
+                <Layers className="h-4 w-4" />
+                <span>Series: {article.series}</span>
+              </div>
+            )}
           </div>
-           {article.tags && article.tags.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <TagIcon className="h-4 w-4 text-muted-foreground" />
-              {article.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
-              ))}
-            </div>
-          )}
+          <div className="flex flex-wrap items-center gap-2 pt-2">
+            {article.tags && article.tags.length > 0 && (
+              <>
+                <TagIcon className="h-4 w-4 text-muted-foreground" />
+                {article.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="text-[10px] uppercase tracking-wider">{tag}</Badge>
+                ))}
+              </>
+            )}
+            {article.pdfUrl && (
+              <Button variant="outline" size="sm" asChild className="ml-auto h-8 gap-2">
+                <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer">
+                  <Download className="h-3.5 w-3.5" />
+                  Download PDF
+                </a>
+              </Button>
+            )}
+          </div>
         </header>
 
         {article.featuredImage && (
@@ -115,17 +138,30 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
           </div>
         )}
         
-        <Card className="bg-card shadow-md">
+        <Card className="bg-card shadow-md border-primary/10">
           <CardHeader>
-            <CardTitle className="flex items-center text-xl"><FileText className="mr-2 h-5 w-5 text-primary"/>Abstract</CardTitle>
+            <CardTitle className="flex items-center text-xl tracking-tight"><FileText className="mr-2 h-5 w-5 text-primary"/>Abstract</CardTitle>
           </CardHeader>
           <CardContent>
             {article.abstract && <ContentfulRichTextRenderer content={article.abstract} />}
           </CardContent>
         </Card>
 
-        {article.content && <ContentfulRichTextRenderer content={article.content} />}
+        <div className="prose prose-slate dark:prose-invert max-w-none">
+          {article.content && <ContentfulRichTextRenderer content={article.content} />}
+        </div>
 
+        {article.citations && (
+          <section className="mt-12 p-6 bg-muted/30 rounded-lg border border-border/50">
+            <h2 className="text-lg font-bold flex items-center mb-4">
+              <Quote className="mr-2 h-5 w-5 text-primary" />
+              Citations & References
+            </h2>
+            <div className="text-sm text-muted-foreground leading-relaxed">
+              <ContentfulRichTextRenderer content={article.citations} />
+            </div>
+          </section>
+        )}
       </article>
 
       {relatedArticles.length > 0 && (
@@ -154,14 +190,15 @@ export async function generateMetadata({ params }: ThinkTankArticlePageProps): P
     return { title: "Article Not Found | Nocturnal Codex" };
   }
 
-  const plainTextDescription = richTextToPlainText(article.abstract);
+  const seoTitle = article.metaTitle || `${article.title} | Think Tank | Nocturnal Codex`;
+  const seoDescription = article.metaDescription || richTextToPlainText(article.abstract);
 
   return {
-    title: `${article.title} | Think Tank | Nocturnal Codex`,
-    description: plainTextDescription,
+    title: seoTitle,
+    description: seoDescription,
     openGraph: {
       title: article.title,
-      description: plainTextDescription,
+      description: seoDescription,
       images: article.featuredImage ? [{ url: article.featuredImage.url, width: article.featuredImage.width, height: article.featuredImage.height, alt: article.featuredImage.alt }] : [],
     },
     twitter: {

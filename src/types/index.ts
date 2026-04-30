@@ -34,5 +34,11 @@ export interface ThinkTankArticle {
   featuredImage: ContentfulImage | null;
   authors: string[];
   tags: string[];
+  discipline?: string;
+  citations?: Document;
+  pdfUrl?: string;
+  series?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   url: string;
 }

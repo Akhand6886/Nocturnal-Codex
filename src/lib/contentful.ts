@@ -134,6 +134,13 @@ export async function fetchBlogPostBySlug(slug: string, preview = false): Promis
 function parseThinkTankArticle(item: any, linkedAssets: Record<string, ContentfulImage>): ThinkTankArticle {
     const fields = item.fields;
     const featuredImageId = fields.featuredImage?.sys?.id;
+    const pdfDownloadId = fields.pdfDownload?.sys?.id;
+    
+    // Authors are references, extract their names
+    const authors: string[] = (fields.authors as any[])?.map(author => author?.fields?.name || author?.fields?.title || 'Unknown Author') || ['The Nocturnist'];
+    
+    // Series is a reference
+    const seriesName = fields.series?.fields?.title || fields.series?.fields?.name || null;
 
     return {
         id: item.sys.id,
@@ -143,8 +150,14 @@ function parseThinkTankArticle(item: any, linkedAssets: Record<string, Contentfu
         abstract: fields.abstract as Document || null,
         content: fields.content as Document || null,
         featuredImage: featuredImageId ? linkedAssets[featuredImageId] : null,
-        authors: (fields.authors as string[]) || ['The Nocturnist'],
+        authors: authors,
         tags: (fields.tags as string[]) || [],
+        discipline: fields.discipline || '',
+        citations: fields.citations as Document || null,
+        pdfUrl: pdfDownloadId ? (item.includes?.Asset?.find((a: any) => a.sys.id === pdfDownloadId)?.fields?.file?.url) : null,
+        series: seriesName,
+        metaTitle: fields.metaTitle || '',
+        metaDescription: fields.metaDescription || '',
         url: `/think-tank/${fields.slug || ''}`,
     };
 }
