@@ -4,7 +4,7 @@ import { BrainCircuit } from "lucide-react";
 import { fetchThinkTankArticles } from "@/lib/contentful";
 import type { Metadata } from 'next';
 
-export const revalidate = 60; // Revalidate every 60 seconds
+import { draftMode } from 'next/headers';
 
 export const metadata: Metadata = {
   title: "Think Tank | Nocturnal Codex",
@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function ThinkTankPage() {
-  const articles = await fetchThinkTankArticles();
+  const { isEnabled } = await draftMode();
+  const articles = await fetchThinkTankArticles({ preview: isEnabled });
 
   return (
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-10">
