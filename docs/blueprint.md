@@ -7,7 +7,7 @@
 - **Admin-Blog & Think Tank**: Integrated with Contentful CMS for real-time publishing.
     - **Blog**: Chronological posts with Markdown/Rich-Text support.
     - **Think Tank**: Scholarly research articles supporting Series, Disciplines, Citations, and PDF downloads.
-- **Wiki Reference**: Wiki: Offer clean, reference articles for deep-dive language learning.
+- **Programming Languages**: Offer clean, reference articles for deep-dive language learning.
 - **Random Theory Drop**: Each page load displays a randomly selected fun fact or theory.
 - **Advanced CMS Pipeline**: On-Demand ISR via Webhooks and Draft Mode for instant content updates and secure previews.
 
