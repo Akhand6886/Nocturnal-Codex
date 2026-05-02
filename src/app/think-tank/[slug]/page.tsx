@@ -204,7 +204,7 @@ export async function generateMetadata({ params }: ThinkTankArticlePageProps): P
     twitter: {
       card: 'summary_large_image',
       title: article.title,
-      description: plainTextDescription,
+      description: seoDescription,
       images: article.featuredImage ? [article.featuredImage.url] : [],
     }
   };
