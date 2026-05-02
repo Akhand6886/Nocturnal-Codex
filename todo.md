@@ -34,8 +34,11 @@
 - [x] SQL (100% Complete)
 - [x] C# (100% Complete)
 - [x] Kotlin (100% Complete)
-- [ ] C (Review and Polish)
-- [ ] Python (Audit and Polish)
+- [x] C (Polished)
+- [x] Python (Polished)
+- [x] Elixir (100% Complete)
+- [x] Zig (100% Complete)
+- [x] Solidity (100% Complete)
 
 ## UI/UX & Roadmap
 - [ ] Transition to `roadmap-revamp` branch for React Flow integration.
