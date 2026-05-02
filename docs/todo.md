@@ -5,6 +5,6 @@
   - [x] Create content/projects/ directory and index.md
   - [x] Add language-specific guides with contribution tips
   - [x] Link 'Good First Issues' for all recommended repositories
-- [ ] Finish Java advanced content (if any remaining)
-- [ ] Complete TypeScript mastery modules
+- [x] Finish Java advanced content (if any remaining)
+- [x] Complete TypeScript mastery modules
 - [ ] Integrate interactive roadmap into the main UI
