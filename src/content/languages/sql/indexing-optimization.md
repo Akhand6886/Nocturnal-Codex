@@ -45,9 +45,19 @@ Look for these key terms in the output:
 2.  **Covering Indexes**: If an index includes ALL the columns requested in the `SELECT`, the database doesn't even need to touch the main table!
 3.  **Avoid Functions on Indexed Columns**: `WHERE YEAR(date) = 2023` will **not** use an index on the `date` column. Use `WHERE date >= '2023-01-01'` instead.
 
-## Summary Checklist
-- [x] Indexes speed up reads but slow down writes.
-- [x] Use `B-Tree` (default) for range queries and `Hash` for exact matches.
-- [x] Use `EXPLAIN` to audit your query performance.
-- [x] Index the columns you filter and join on.
-- [x] Monitor and remove unused indexes to save space and performance.
+## Summary
+
+| Term | Description |
+| :--- | :--- |
+| **Index** | A data structure that speeds up data retrieval |
+| **B-Tree** | The most common index type (supports range queries) |
+| **Hash Index** | Best for exact equality matches |
+| **Composite** | An index on multiple columns |
+| **EXPLAIN** | Command to analyze the execution plan of a query |
+| **Scan** | Reading the entire table (Slow!) |
+| **Seek** | Using an index to find specific rows (Fast!) |
+| **Cardinality** | The uniqueness of values in a column |
+| **Overhead** | Every index makes `INSERT` and `UPDATE` slightly slower |
+| **Logic** | Trade-off: Faster reads vs. Slower writes |
+| **Modern** | Databases use statistics to decide when to use an index |
+| **Standard** | `UNIQUE` constraints automatically create an index |
