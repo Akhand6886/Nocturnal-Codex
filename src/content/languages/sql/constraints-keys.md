@@ -1,65 +1,60 @@
 ---
 title: "Constraints & Keys"
-description: "Ensuring data integrity and defining relationships"
+description: "PRIMARY KEY, FOREIGN KEY, NOT NULL, UNIQUE, and CHECK"
 ---
 
 ## What are Constraints?
 
-**Constraints** are rules applied to columns in a table. They prevent invalid data from being entered, ensuring the accuracy and reliability of your database.
+**Constraints** are rules applied to columns in a table. They are used to limit the type of data that can go into a table, ensuring the **integrity** and accuracy of your data.
 
-## 1. Primary Key (PK)
-A **Primary Key** uniquely identifies each row in a table. It must contain unique values and cannot be `NULL`.
+## The Most Common Constraints
+
+1.  **NOT NULL**: Ensures that a column cannot have a `NULL` value.
+2.  **UNIQUE**: Ensures that all values in a column are different.
+3.  **CHECK**: Ensures that all values in a column satisfy a specific condition (e.g., `age >= 18`).
+4.  **DEFAULT**: Provides a default value for a column if none is specified.
 
 ```sql
-CREATE TABLE users (
-    user_id INT PRIMARY KEY,
-    username VARCHAR(50)
+CREATE TABLE employees (
+    id INT UNIQUE NOT NULL,
+    age INT CHECK (age >= 18),
+    department VARCHAR(50) DEFAULT 'General'
 );
 ```
 
-## 2. Foreign Key (FK)
-A **Foreign Key** is a column that references the Primary Key of another table. It defines the relationship between tables (e.g., one-to-many).
+## Primary Keys (`PRIMARY KEY`)
+
+The **Primary Key** is a column (or group of columns) that uniquely identifies each row in a table. 
+-   It must contain unique values.
+-   It cannot contain `NULL` values.
+-   A table can have only one primary key.
+
+## Foreign Keys (`FOREIGN KEY`)
+
+A **Foreign Key** is a column that points to the Primary Key of **another table**. This creates a relationship between the two tables and ensures **Referential Integrity**.
 
 ```sql
 CREATE TABLE orders (
-    order_id INT PRIMARY KEY,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-```
-
-## 3. Core Constraints
-
-| Constraint | Description |
-| :--- | :--- |
-| **NOT NULL** | Ensures that a column cannot have a `NULL` value. |
-| **UNIQUE** | Ensures that all values in a column are different. |
-| **CHECK** | Ensures that the values in a column satisfy a specific condition (e.g., `age >= 18`). |
-| **DEFAULT** | Sets a default value for a column if no value is specified. |
-
-### Example with multiple constraints:
-
-```sql
-CREATE TABLE products (
     id INT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    sku VARCHAR(20) UNIQUE,
-    price DECIMAL(10,2) CHECK (price > 0),
-    stock INT DEFAULT 0
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 ```
 
----
+Wait! If you try to delete a user who has active orders, the database will block the deletion because it would break the foreign key relationship.
 
-## Data Integrity Rules
+## Summary
 
-1.  **Entity Integrity**: Every table must have a Primary Key.
-2.  **Referential Integrity**: Every Foreign Key value must exist as a Primary Key in the parent table. 
-3.  **Domain Integrity**: Data must match the defined data types and constraints (e.g., a "date" column must contain a date).
-
-## Summary Checklist
-- [x] Constraints enforce "Business Rules" at the database level.
-- [x] **Primary Keys** must be unique and non-null.
-- [x] **Foreign Keys** link tables together.
-- [x] Use **CHECK** constraints to prevent invalid values (like negative prices).
-- [x] Constraints are safer than enforcing rules only in application code!
+| Constraint | Purpose |
+| :--- | :--- |
+| **PRIMARY KEY**| Unique identifier for the row |
+| **FOREIGN KEY**| Linking to another table's primary key |
+| **NOT NULL** | Forcing a value to be present |
+| **UNIQUE** | Preventing duplicate values |
+| **CHECK** | Custom validation logic |
+| **DEFAULT** | Fallback value for missing data |
+| **Integrity** | Ensuring data stays consistent across relationships |
+| **Validation** | Catching bad data BEFORE it enters the database |
+| **Performance**| Keys are automatically indexed for fast searching |
+| **Modern** | "Garbage in, garbage out"—Constraints prevent garbage! |
+| **Standard** | Use `SERIAL` or `AUTO_INCREMENT` for numeric primary keys |
