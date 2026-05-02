@@ -2,16 +2,16 @@
 
 ## Open Source Contribution Section
 - [ ] Research and curate a list of high-quality open-source projects for each language:
-    - [ ] Python (3 projects)
-    - [ ] JavaScript/TypeScript (3 projects)
-    - [ ] C++ (3 projects)
-    - [ ] Java (3 projects)
-    - [ ] Rust (3 projects)
-    - [ ] Go (3 projects)
-    - [ ] PHP (3 projects)
-    - [ ] Ruby (3 projects)
-    - [ ] Swift (3 projects)
-    - [ ] Dart (3 projects)
+    - [x] Python (3 projects)
+    - [x] JavaScript/TypeScript (3 projects)
+    - [x] C++ (3 projects)
+    - [x] Java (3 projects)
+    - [x] Rust (3 projects)
+    - [x] Go (3 projects)
+    - [x] PHP (3 projects)
+    - [x] Ruby (3 projects)
+    - [x] Swift (3 projects)
+    - [x] Dart (3 projects)
 - [ ] Create contribution guides for each curated project in `content/projects/`.
 - [ ] Integrate the projects list into the main navigation or roadmap UI.
 
