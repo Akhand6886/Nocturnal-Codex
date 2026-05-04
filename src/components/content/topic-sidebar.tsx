@@ -15,7 +15,7 @@ export function TopicSidebar({ topics, langSlug, activeTopicSlug }: TopicSidebar
     section.items.some(item => item.slug === activeTopicSlug)
   );
   
-  const defaultExpanded = activeSectionIndex >= 0 ? `section-${activeSectionIndex}` : "section-0";
+  const allExpanded = topics.map((_, i) => `section-${i}`);
 
   return (
     <nav className="sticky top-24 w-full border border-border/50 bg-card/30 backdrop-blur-xl shadow-sm rounded-xl p-4 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
@@ -24,7 +24,7 @@ export function TopicSidebar({ topics, langSlug, activeTopicSlug }: TopicSidebar
         Curriculum
       </h3>
       
-      <Accordion type="single" collapsible defaultValue={defaultExpanded} className="w-full">
+      <Accordion type="multiple" defaultValue={allExpanded} className="w-full">
         {topics.map((section, sectionIdx) => (
           <AccordionItem key={sectionIdx} value={`section-${sectionIdx}`} className="border-border/40 last:border-0 border-b">
             <AccordionTrigger className="text-sm font-semibold hover:no-underline py-3 px-2 rounded-lg hover:bg-secondary/50 transition-colors">
