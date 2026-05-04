@@ -18,7 +18,7 @@ export function TopicSidebar({ topics, langSlug, activeTopicSlug }: TopicSidebar
   const defaultExpanded = activeSectionIndex >= 0 ? `section-${activeSectionIndex}` : "section-0";
 
   return (
-    <nav className="sticky top-24 w-full border border-border/50 bg-card/30 rounded-xl p-4 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
+    <nav className="sticky top-24 w-full border border-border/50 bg-card/30 backdrop-blur-xl shadow-sm rounded-xl p-4 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
       <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
         <List className="h-3.5 w-3.5" />
         Curriculum
