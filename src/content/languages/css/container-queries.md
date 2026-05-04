@@ -1,57 +1,66 @@
 ---
 title: "Container Queries"
-description: "The modern alternative to Media Queries"
+description: "Designing components that respond to their container size, not the viewport"
 ---
 
-## The Problem with Media Queries
+## The Problem: Viewport Dependency
 
-**Media Queries** look at the width of the whole screen. But what if you have a "Card" component that is in a narrow sidebar on some pages and a wide main column on others? A Media Query won't know the difference.
+For over a decade, Responsive Web Design has relied on **Media Queries** (`@media`). However, media queries only check the **Viewport** (the browser window size). This becomes a problem when a component (like a Card) needs to look different depending on whether it's in a narrow sidebar or a wide main content area.
 
-## What are Container Queries?
+## The Solution: Container Queries
 
-**Container Queries** allow you to style an element based on the size of its **parent container**, not the whole screen. This is the "Holy Grail" of component-based design.
+**Container Queries** (`@container`) allow an element to query its parent's size. This enables "Intrinsically Responsive" components that are truly modular and reusable anywhere in your layout.
 
-## 1. Defining the Container
+## 1. Setting up the Container
 
-First, you must tell CSS which element is the "Container" you want to watch.
+To use container queries, you must first define a "containment context" on a parent element using the `container-type` property.
 
 ```css
-.card-container {
-  container-type: inline-size;
+.card-wrapper {
+  container-type: inline-size; /* Queries based on width */
+  container-name: sidebar-card; /* Optional: specific name */
 }
 ```
 
-## 2. Querying the Container
+## 2. Writing the Query
 
-Now, you can use **`@container`** (instead of `@media`) to change the card's layout based on its own width!
+Once the container is defined, child elements can query it.
 
 ```css
+/* If the container is wider than 400px, change the layout */
 @container (min-width: 400px) {
   .card {
-    display: flex; /* Turn into a horizontal layout if there is space */
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
   }
 }
 ```
 
-## Why use them?
+## 3. Container Query Units
 
-Wait! Container queries allow you to build "Self-Responsive" components. You can design a card once, and it will automatically adjust its layout wherever you drop it on the page.
+You can also use special units that are relative to the container size:
+- `cqw`: 1% of the container's width.
+- `cqh`: 1% of the container's height.
+- `cqi`: 1% of the container's inline size.
+- `cqb`: 1% of the container's block size.
 
-1.  **Truly Modular**: Components become independent of their surroundings.
-2.  **Reusable**: Drop a component into a sidebar, a grid, or a full-width section—it just works.
-3.  **Modern Layouts**: Perfect for complex dashboard designs.
+```css
+.card-title {
+  font-size: clamp(1rem, 5cqw, 2rem);
+}
+```
 
-## Summary
+## 4. Why use Container Queries?
 
-| Term | Description |
-| :--- | :--- |
-| **@container** | The rule to query a parent container |
-| **container-type**| Defines which element is the container |
-| **inline-size** | Watching the width of the container |
-| **cqw / cqh** | Container Query Width/Height units |
-| **Best For** | Component libraries and complex, reusable UI |
-| **Logic** | "Component-aware responsiveness" |
-| **Safety** | Check browser support (all modern evergreen browsers) |
-| **Modern** | The single biggest improvement to CSS in the last decade |
-| **Standard** | Part of the new "CSS Container Queries" specification |
-| **Identity** | Makes the "Mobile-First" vs "Desktop-First" debate less important |
+1.  **True Modularity**: Drop a component anywhere, and it adjusts itself.
+2.  **Cleaner Code**: No more complex media query overrides for different sections of the page.
+3.  **Better UX**: Components always have the optimal layout for the space they occupy.
+
+## Summary Checklist
+- [x] Use `container-type: inline-size` on the parent.
+- [x] Use `@container` to style children based on that parent.
+- [x] Use `cqw` and `cqi` units for responsive typography.
+- [x] Supported in all modern browsers (Chrome 105+, Safari 16+, Firefox 110+).
+- [x] Combine with CSS Grid and Flexbox for maximum layout power.
+---
