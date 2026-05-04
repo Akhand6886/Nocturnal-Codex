@@ -1,69 +1,80 @@
 ---
 title: "Coroutines (C++20)"
-description: "Suspension, co_yield, co_await, and co_return"
+description: "Mastering high-performance cooperative multitasking and lazy generators"
 ---
 
-## What are C++ Coroutines?
+## What are Coroutines?
 
-Introduced in **C++20**, **Coroutines** are a massive update to the **C++** language. They are special functions that can **suspend** their execution at a certain point and **resume** it later, while still remembering all their local variables and state.
+A **Coroutine** is a function that can suspend its execution and be resumed later. Unlike regular functions (which run until they return or throw), coroutines can "pause" their state, return control to the caller, and pick up exactly where they left off.
 
-Unlike normal functions (which either run to completion or throw an error), a coroutine is "stateful." This makes it the perfect tool for **Asynchronous Programming** and **Generator Functions**.
+In C++, coroutines are **stackless**, meaning they don't have their own call stack, making them extremely lightweight.
+
+## 1. The Three New Keywords
+
+- `co_yield`: Suspends execution and returns a value to the caller (used for Generators).
+- `co_await`: Suspends execution until an asynchronous task is complete.
+- `co_return`: Finishes the coroutine and returns a final result.
+
+## 2. Example: A Simple Generator
+
+Generators allow you to produce values lazily. You can define an infinite sequence without using infinite memory.
 
 ```cpp
 #include <coroutine>
+#include <iostream>
 
-// A coroutine returns a special 'handle' or object!
-Generator<int> count() {
-    int val = 0;
-    while (true) {
-        co_yield val++; // SUSPEND: Return val and stop!
+// This is a simplified "Return Type" boiler plate required for coroutines
+struct Generator {
+    struct promise_type {
+        int current_value;
+        Generator get_return_object() { return Generator{handle_type::from_promise(*this)}; }
+        std::suspend_always initial_suspend() { return {}; }
+        std::suspend_always final_suspend() noexcept { return {}; }
+        std::suspend_always yield_value(int value) {
+            current_value = value;
+            return {};
+        }
+        void unhandled_exception() { std::terminate(); }
+        void return_void() {}
+    };
+
+    using handle_type = std::coroutine_handle<promise_type>;
+    handle_type handle;
+
+    bool next() { handle.resume(); return !handle.done(); }
+    int value() { return handle.promise().current_value; }
+};
+
+Generator counter(int start, int end) {
+    for (int i = start; i <= end; ++i) {
+        co_yield i; // Pauses here and returns 'i'
     }
 }
 ```
 
-## Comparisons: Normal Functions vs. Coroutines
+## 3. Asynchronous Tasks
 
-| Feature | Function | Coroutine |
-| :--- | :--- | :--- |
-| **Logic** | Runs to the end (or `return`) | Can pause (`co_yield`) and restart. |
-| **State** | Lost when it returns | Kept in a special "Coroutine Frame" on the heap. |
-| **Stack** | Uses the system Stack | Stackless (Managed by the Coroutine Frame). |
+Coroutines are the foundation for high-performance networking and I/O. Instead of using callbacks or threads, you can "await" a result.
 
-## The Three New Keywords
+```cpp
+Task fetchData() {
+    auto data = co_await network.get("https://api.example.com");
+    process(data);
+    co_return;
+}
+```
 
-Coroutines use three unique keywords to control their flow:
+## 4. Why use Coroutines?
 
-1.  **`co_yield`**: Returns a value to the caller and **pauses** the coroutine.
-2.  **`co_await`**: Pauses the coroutine until an asynchronous task (like a file read or network request) is finished.
-3.  **`co_return`**: Returns a final result and **ends** the coroutine.
+1.  **Efficiency**: Millions of coroutines can run on a single thread.
+2.  **Readability**: Asynchronous code looks like clean, sequential synchronous code.
+3.  **State Management**: The compiler handles saving and restoring local variables for you.
+4.  **No Overhead**: No context switching between OS threads.
 
-## Why Use Coroutines?
-
-1.  **Infinite Generators**: Produce values one-by-one without storing them all in memory (like a never-ending list of numbers).
-2.  **Modern Async**: Write asynchronous code (like fetching data) that looks exactly like normal, synchronous code. No more "callback hell"!
-3.  **Performance**: Much more efficient than building a massive system of threads.
-
-## Summary
-
-| Feature | Key / Syntax | Purpose |
-| :--- | :--- | :--- |
-| **Pause & Return**| `co_yield x` | A "Generator" step |
-| **Wait** | `co_await f()` | Asynchronous "Wait" |
-| **End** | `co_return res` | Final result |
-| **Best For** | Generators, Async APIs, Event loops |
-| **Modern** | C++20 required! |
-| **Memory** | O(1) space (Doesn't store the whole result!) |
-| **Frame** | The hidden object that stores the coroutine's state |
-| **Promise** | The internal object that manages the coroutine's logic |
-| **Handle** | The object you use to resume the coroutine from outside |
-| **Library** | Coroutines are "Low-level" — usually you'll use a library! |
-| **Efficiency** | Avoids the overhead of creating and joining threads |
-| **Recursion** | Coroutines can even call themselves! |
-| **Suspend** | The coroutine stops EXACTLY at the current line |
-| **Resume** | The coroutine starts EXACTLY where it left off |
-| **Awaiter** | The underlying object that `co_await` interacts with |
-| **Standard** | C++23 added `std::generator` (Official generator support!) |
-| **System** | Perfect for high-performance network servers |
-| **Future** | Replacing older callback-based architectures |
-| **Check** | Verify support in your compiler (Clang/GCC/MSVC) |
-| **Complex** | Hard to write from scratch; easy to use via libraries! |
+## Summary Checklist
+- [x] Coroutines are functions that can pause (`co_yield` / `co_await`).
+- [x] They are stackless and extremely memory-efficient.
+- [x] Perfect for **Generators** (lazy sequences) and **Async I/O**.
+- [x] The compiler generates the state-saving code for you.
+- [x] Use `co_return` to finish the execution.
+---
