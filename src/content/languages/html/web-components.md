@@ -1,53 +1,81 @@
 ---
 title: "Web Components"
-description: "Creating your own custom, reusable HTML tags"
+description: "Building reusable, encapsulated, and framework-agnostic elements"
 ---
 
 ## What are Web Components?
 
-**Web Components** allow you to create your own custom HTML tags that are fully encapsulated and reusable. This is a "Native" alternative to framework-based components like those in React or Vue.
+**Web Components** are a set of browser APIs that allow you to create new custom, reusable, encapsulated HTML tags. They work in any framework (React, Vue, Svelte) or even with no framework at all.
 
-```html
-<user-card name="Alpha" avatar="image.jpg"></user-card>
-```
+They consist of three main technologies:
+1.  **Custom Elements**
+2.  **Shadow DOM**
+3.  **HTML Templates**
 
-## The Three Pillars
+## 1. Custom Elements
 
-1.  **Custom Elements**: A set of JavaScript APIs that allow you to define new HTML tags.
-2.  **Shadow DOM**: A private, isolated version of the DOM. This ensures that the CSS inside your component doesn't "Leak" out and affect the rest of the page.
-3.  **HTML Templates**: Using `<template>` and `<slot>` to define how the markup should look.
-
-## Creating a Component
-
-Wait! You define a component using a JavaScript class that extends `HTMLElement`.
+You can define a new tag by extending the `HTMLElement` class and registering it with the browser.
 
 ```javascript
-class UserCard extends HTMLElement {
+class MyButton extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = `<h3>${this.getAttribute('name')}</h3>`;
+    this.innerHTML = `<button>Click Me!</button>`;
   }
 }
 
-customElements.define('user-card', UserCard);
+customElements.define('my-button', MyButton);
+```
+*Usage:* `<my-button></my-button>`
+
+## 2. Shadow DOM (Encapsulation)
+
+Shadow DOM allows you to attach a separate, hidden DOM tree to an element. This ensures that the styles inside your component don't "leak out" and affect the rest of the page, and external styles don't "leak in."
+
+```javascript
+class ShadowCard extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: 'open' });
+    shadow.innerHTML = `
+      <style>
+        .card { border: 1px solid black; padding: 10px; }
+      </style>
+      <div class="card">
+        <slot></slot> <!-- Where content goes -->
+      </div>
+    `;
+  }
+}
 ```
 
-## Why use them?
+## 3. HTML Templates and Slots
 
--   **Reusable**: Use them in any project, whether it's plain HTML or a framework like React.
--   **Encapsulated**: No more "CSS Class Conflicts." Your styles stay inside your component.
--   **Future-Proof**: They are part of the web platform itself, so they will work forever.
+The `<template>` tag allows you to define HTML that is not rendered until you instantiate it. `<slot>` is used to create placeholders for dynamic content.
 
-## Summary
+```html
+<template id="user-template">
+  <div class="user-profile">
+    <h2><slot name="username">Default Name</slot></h2>
+  </div>
+</template>
+```
 
-| Term | Description |
-| :--- | :--- |
-| **Shadow DOM** | Encapsulated DOM and Styles |
-| **Custom Element**| Your new tag (e.g., `<my-button>`) |
-| **Slot** | A placeholder inside your component template |
-| **connectedCallb.**| Runs when the component is added to the page |
-| **Best For** | Building reusable UI libraries and design systems |
-| **Logic** | "Native component encapsulation" |
-| **Safety** | Prevents "Style Bleed" across your application |
-| **Modern** | Highly used by companies like Adobe, Salesforce, and Google |
-| **Standard** | Part of the W3C Web Components specification |
-| **Identity** | Bringing "Component Architecture" to native HTML |
+## 4. Lifecycle Callbacks
+
+- `connectedCallback`: Called when the element is added to the DOM.
+- `disconnectedCallback`: Called when removed from the DOM.
+- `attributeChangedCallback`: Called when an attribute (like `id` or `src`) changes.
+
+## 5. Why use them?
+
+1.  **Interoperability**: Build a UI library that works in any environment.
+2.  **Encapsulation**: No more CSS naming collisions.
+3.  **Future-proof**: Native browser support means no dependencies to update.
+
+## Summary Checklist
+- [x] Extend `HTMLElement` to create a Custom Element.
+- [x] Use `customElements.define` to register the tag.
+- [x] Use `attachShadow` for style and DOM isolation.
+- [x] Use `<slot>` for content projection.
+- [x] Native support in 100% of modern browsers.
+---
