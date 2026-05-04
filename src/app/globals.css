@@ -22,18 +22,18 @@
     --input: 240 8% 88%;
 
     /* 10% - Accent/Action (Primary signals, Buttons, Highlights) */
-    --primary: 245 75% 55%; /* Rich Indigo */
+    --primary: 180 100% 30%; /* Deep Vibrant Teal */
     --primary-foreground: 0 0% 100%;
-    --accent: 25 95% 55%; /* Warm Amber */
-    --accent-foreground: 25 25% 10%;
+    --accent: 45 90% 48%; /* Refined Gold */
+    --accent-foreground: 45 25% 10%;
     
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 245 75% 55%;
+    --ring: 180 100% 30%;
     --radius: 0.75rem;
 
-    --chart-1: 245 75% 55%;
-    --chart-2: 25 95% 55%;
+    --chart-1: 180 100% 30%;
+    --chart-2: 45 90% 48%;
     --chart-3: 210 90% 50%;
     --chart-4: 0 70% 60%;
     --chart-5: 280 60% 60%;
