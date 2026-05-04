@@ -1,31 +1,52 @@
-
 import { cn } from "@/lib/utils";
+import { Terminal } from "lucide-react";
+import {
+  SiC, SiCplusplus, SiCsharp, SiCss3, SiDart, SiElixir, SiGo, SiHaskell, SiHtml5, SiJava, SiJavascript, SiKotlin, SiPython, SiR, SiRuby, SiRust, SiScala, SiSwift, SiTypescript, SiZig, SiPhp, SiPerl, SiSolidity, SiGnubash, SiMysql, SiApple
+} from 'react-icons/si';
 
-interface SimpleIconProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface SimpleIconProps extends React.SVGProps<SVGSVGElement> {
   iconName: string;
 }
 
-// A component to render an SVG icon from simple-icons
-// It constructs the URL and uses an <img /> tag for simplicity.
+const iconMap: Record<string, React.ElementType> = {
+  "c": SiC,
+  "c++": SiCplusplus,
+  "cplusplus": SiCplusplus,
+  "c#": SiCsharp,
+  "csharp": SiCsharp,
+  "css": SiCss3,
+  "dart": SiDart,
+  "elixir": SiElixir,
+  "go": SiGo,
+  "haskell": SiHaskell,
+  "html": SiHtml5,
+  "java": SiJava,
+  "javascript": SiJavascript,
+  "kotlin": SiKotlin,
+  "python": SiPython,
+  "r": SiR,
+  "ruby": SiRuby,
+  "rust": SiRust,
+  "scala": SiScala,
+  "swift": SiSwift,
+  "typescript": SiTypescript,
+  "zig": SiZig,
+  "php": SiPhp,
+  "perl": SiPerl,
+  "solidity": SiSolidity,
+  "sql": SiMysql,
+  "shell": SiGnubash,
+  "bash": SiGnubash,
+  "objective-c": SiApple,
+};
+
 export function SimpleIcon({ iconName, className, ...props }: SimpleIconProps) {
-  const formattedIconName = iconName
-    .toLowerCase()
-    .replace(/ /g, '')
-    .replace(/[#,+]/g, (char) => {
-        const replacements: { [key: string]: string } = { '#': 'sharp', '+': 'plus', ',': '' };
-        return replacements[char] || '';
-    });
-  
-  const iconUrl = `https://cdn.simpleicons.org/${formattedIconName}/white`;
+  const normalizedName = iconName.toLowerCase().trim();
+  const IconComponent = iconMap[normalizedName] || Terminal;
 
   return (
-    <img 
-      src={iconUrl} 
-      alt={`${iconName} icon`} 
-      className={cn("w-6 h-6", className)}
-      // Simple trick to try to make the svg inherit the color. 
-      // This won't work for all SVGs, but works for simple-icons.
-      style={{ filter: 'brightness(0) saturate(100%) invert(var(--icon-invert-value, 1))' }}
+    <IconComponent 
+      className={cn("w-6 h-6", className)} 
       {...props} 
     />
   );
