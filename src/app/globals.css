@@ -4,61 +4,61 @@
 
 @layer base {
   :root {
-    /* 60% - Dominant Neutral (Background & large surfaces) */
-    --background: 180 50% 98%; 
-    --foreground: 180 25% 15%; 
-    --surface: 180 20% 96%; /* Subtle hero/section tint — stays in the 60% zone */
+    /* 60% - Dominant Neutral (Warm, clean background) */
+    --background: 40 30% 98%;
+    --foreground: 240 15% 12%;
+    --surface: 40 20% 96%;
 
     /* 30% - Secondary/Support (Cards, Muted surfaces, Borders) */
-    --card: 180 30% 94%;
-    --card-foreground: 180 25% 10%;
-    --popover: 180 30% 94%;
-    --popover-foreground: 180 25% 10%;
-    --secondary: 180 15% 90%;
-    --secondary-foreground: 180 25% 20%;
-    --muted: 180 15% 90%;
-    --muted-foreground: 180 15% 40%;
-    --border: 180 15% 85%;
-    --input: 180 15% 85%;
+    --card: 40 20% 99%;
+    --card-foreground: 240 15% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 15% 10%;
+    --secondary: 240 10% 94%;
+    --secondary-foreground: 240 15% 20%;
+    --muted: 240 10% 93%;
+    --muted-foreground: 240 8% 38%;
+    --border: 240 8% 88%;
+    --input: 240 8% 88%;
 
     /* 10% - Accent/Action (Primary signals, Buttons, Highlights) */
-    --primary: 180 100% 30%; /* Deep vibrant teal */
-    --primary-foreground: 180 50% 98%;
-    --accent: 45 90% 45%; /* Sophisticated gold */
-    --accent-foreground: 45 25% 10%;
+    --primary: 245 75% 55%; /* Rich Indigo */
+    --primary-foreground: 0 0% 100%;
+    --accent: 25 95% 55%; /* Warm Amber */
+    --accent-foreground: 25 25% 10%;
     
-    --destructive: 0 70% 50%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 180 100% 30%;
+    --ring: 245 75% 55%;
     --radius: 0.75rem;
 
-    --chart-1: 180 100% 30%;
-    --chart-2: 45 90% 45%;
+    --chart-1: 245 75% 55%;
+    --chart-2: 25 95% 55%;
     --chart-3: 210 90% 50%;
     --chart-4: 0 70% 60%;
     --chart-5: 280 60% 60%;
 
     /* Roadmap UI specific colors */
-    --rm-topic-bg: 54 99% 54%; /* #FEF015 Bright Yellow */
-    --rm-topic-border: 0 0% 0%; /* Black */
-    --rm-topic-text: 0 0% 0%; /* Black */
+    --rm-topic-bg: 54 99% 54%;
+    --rm-topic-border: 0 0% 0%;
+    --rm-topic-text: 0 0% 0%;
     
-    --rm-subtopic-bg: 58 100% 88%; /* #FFFDC4 Pale Yellow/Beige */
+    --rm-subtopic-bg: 58 100% 88%;
     --rm-subtopic-border: 0 0% 0%;
     --rm-subtopic-text: 0 0% 0%;
     
     --rm-section-text: 0 0% 0%;
     
-    --rm-blue-bg: 217 91% 60%; /* #3b82f6 Tailwind Blue 500 */
-    --rm-blue-text: 0 0% 100%; /* White */
+    --rm-blue-bg: 217 91% 60%;
+    --rm-blue-text: 0 0% 100%;
     
-    --rm-info-bg: 210 20% 98%; /* #f8fafc Light Gray/Slate */
-    --rm-info-text: 215 25% 27%; /* Slate 700 */
+    --rm-info-bg: 210 20% 98%;
+    --rm-info-text: 215 25% 27%;
     
-    --rm-edge: 217 91% 60%; /* Blue 500 */
+    --rm-edge: 217 91% 60%;
     
-    --rm-done-icon: 260 100% 65%; /* Purple status */
-    --rm-learning-icon: 142 71% 45%; /* Green status */
+    --rm-done-icon: 260 100% 65%;
+    --rm-learning-icon: 142 71% 45%;
   }
 
   .dark {
