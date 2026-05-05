@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Terminal } from "lucide-react";
 import {
-  SiC, SiCplusplus, SiCss3, SiDart, SiElixir, SiGo, SiHaskell, SiHtml5, SiJava, SiJavascript, SiKotlin, SiPython, SiR, SiRuby, SiRust, SiScala, SiSwift, SiTypescript, SiZig, SiPhp, SiPerl, SiSolidity, SiGnubash, SiMysql, SiApple, SiDotnet
+  SiC, SiCplusplus, SiCss, SiDart, SiElixir, SiGo, SiHaskell, SiHtml5, SiOpenjdk, SiJavascript, SiKotlin, SiPython, SiR, SiRuby, SiRust, SiScala, SiSwift, SiTypescript, SiZig, SiPhp, SiPerl, SiSolidity, SiGnubash, SiMysql, SiApple, SiDotnet
 } from 'react-icons/si';
 
 interface SimpleIconProps extends React.SVGProps<SVGSVGElement> {
@@ -14,13 +14,13 @@ const iconMap: Record<string, React.ElementType> = {
   "cplusplus": SiCplusplus,
   "c#": SiDotnet,
   "csharp": SiDotnet,
-  "css": SiCss3,
+  "css": SiCss,
   "dart": SiDart,
   "elixir": SiElixir,
   "go": SiGo,
   "haskell": SiHaskell,
   "html": SiHtml5,
-  "java": SiJava,
+  "java": SiOpenjdk,
   "javascript": SiJavascript,
   "kotlin": SiKotlin,
   "python": SiPython,
