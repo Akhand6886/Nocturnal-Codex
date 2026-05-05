@@ -4,39 +4,39 @@
 
 @layer base {
   :root {
-    /* 60% - Dominant Neutral (Warm, clean background) */
-    --background: 40 30% 98%;
-    --foreground: 240 15% 12%;
-    --surface: 40 20% 96%;
+    /* 60% — Soft Cool-White Canvas */
+    --background: 210 18% 95%;
+    --foreground: 222 47% 11%;
+    --surface: 210 16% 93%;
 
-    /* 30% - Secondary/Support (Cards, Muted surfaces, Borders) */
-    --card: 40 20% 99%;
-    --card-foreground: 240 15% 10%;
+    /* 30% — Cool-Gray Support Surfaces */
+    --card: 210 14% 97%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 15% 10%;
-    --secondary: 240 10% 94%;
-    --secondary-foreground: 240 15% 20%;
-    --muted: 240 10% 93%;
-    --muted-foreground: 240 8% 38%;
-    --border: 240 8% 88%;
-    --input: 240 8% 88%;
+    --popover-foreground: 222 47% 11%;
+    --secondary: 210 15% 95%;
+    --secondary-foreground: 222 47% 15%;
+    --muted: 210 12% 93%;
+    --muted-foreground: 215 16% 47%;
+    --border: 214 14% 89%;
+    --input: 214 14% 89%;
 
-    /* 10% - Accent/Action (Primary signals, Buttons, Highlights) */
-    --primary: 180 100% 30%; /* Deep Vibrant Teal */
+    /* 10% — Premium Teal & Amber Accents */
+    --primary: 174 84% 32%;
     --primary-foreground: 0 0% 100%;
-    --accent: 45 90% 48%; /* Refined Gold */
-    --accent-foreground: 45 25% 10%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 38 25% 10%;
     
-    --destructive: 0 72% 51%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 180 100% 30%;
+    --ring: 174 84% 32%;
     --radius: 0.75rem;
 
-    --chart-1: 180 100% 30%;
-    --chart-2: 45 90% 48%;
-    --chart-3: 210 90% 50%;
+    --chart-1: 174 84% 32%;
+    --chart-2: 38 92% 50%;
+    --chart-3: 217 91% 60%;
     --chart-4: 0 70% 60%;
-    --chart-5: 280 60% 60%;
+    --chart-5: 270 60% 60%;
 
     /* Roadmap UI specific colors */
     --rm-topic-bg: 54 99% 54%;
@@ -52,41 +52,45 @@
     --rm-blue-bg: 217 91% 60%;
     --rm-blue-text: 0 0% 100%;
     
-    --rm-info-bg: 210 20% 98%;
+    --rm-info-bg: 210 20% 97%;
     --rm-info-text: 215 25% 27%;
     
     --rm-edge: 217 91% 60%;
     
     --rm-done-icon: 260 100% 65%;
-    --rm-learning-icon: 142 71% 45%;
+    --rm-learning-icon: 152 76% 42%;
   }
 
   .dark {
-    /* 60% - Dominant Neutral (Deep Space) */
-    --background: 220 20% 4%; 
-    --foreground: 0 0% 98%;
-    --surface: 220 18% 6%; /* Subtle hero/section tint — stays in the 60% zone */
+    /* Premium OLED-style Dark Mode */
+    --background: 0 0% 0%; /* Pure pitch black */
+    --foreground: 0 0% 98%; /* High contrast off-white */
+    --surface: 0 0% 3%; /* Very subtle elevation */
 
-    /* 30% - Secondary/Support (Surfaces) */
-    --card: 220 15% 8%;
-    --card-foreground: 0 0% 95%;
-    --popover: 220 15% 8%;
-    --popover-foreground: 0 0% 95%;
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 10% 65%;
-    --border: 220 15% 15%;
-    --input: 220 15% 15%;
+    /* Cards & Popovers */
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Secondary & Muted */
+    --secondary: 0 0% 9%; 
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 60%;
+    
+    /* Borders & Inputs */
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
 
-    /* 10% - Accent/Action (Glowing signals) */
-    --primary: 180 100% 45%; /* Electric Teal */
-    --primary-foreground: 220 20% 4%;
-    --accent: 45 100% 55%; /* Bright Gold */
-    --accent-foreground: 220 20% 4%;
+    /* Brand Accents (Glowing Electric Teal & Gold) */
+    --primary: 180 100% 45%; 
+    --primary-foreground: 0 0% 0%;
+    --accent: 45 100% 55%; 
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 65% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
     --ring: 180 100% 45%;
 
     --chart-1: 180 100% 45%;
@@ -96,7 +100,7 @@
     --chart-5: 280 60% 70%;
 
     /* Dark mode Roadmap UI specific colors */
-    --rm-topic-bg: 54 99% 54%; /* Keep yellow bright in dark mode for contrast like roadmap.sh */
+    --rm-topic-bg: 54 99% 54%;
     --rm-topic-border: 0 0% 0%;
     --rm-topic-text: 0 0% 0%;
     
@@ -104,13 +108,13 @@
     --rm-subtopic-border: 0 0% 0%;
     --rm-subtopic-text: 0 0% 0%;
     
-    --rm-section-text: 0 0% 100%; /* White text in dark mode for section headers */
+    --rm-section-text: 0 0% 100%;
     
     --rm-blue-bg: 217 91% 60%; 
     --rm-blue-text: 0 0% 100%;
     
-    --rm-info-bg: 215 28% 17%; /* Slate 800 */
-    --rm-info-text: 210 40% 98%; /* Slate 50 */
+    --rm-info-bg: 0 0% 9%;
+    --rm-info-text: 0 0% 98%;
     
     --rm-edge: 217 91% 60%;
     
