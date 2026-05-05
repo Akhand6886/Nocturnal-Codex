@@ -5,6 +5,7 @@ export const NAV_ITEMS: NavItemType[] = [
   { label: "Roadmaps", href: "/roadmaps" },
   { label: "Projects", href: "/projects" },
   { label: "Languages", href: "/languages" },
+  { label: "Mathematics", href: "/mathematics" },
   { label: "Blog", href: "/blog" },
   { label: "Think Tank", href: "/think-tank" },
   { label: "About", href: "/about" },
