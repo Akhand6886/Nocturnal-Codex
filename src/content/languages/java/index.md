@@ -115,6 +115,24 @@ topics:
       - title: Spring Boot
         description: 'Dependency injection, REST APIs, and production-ready services'
         slug: spring-boot
+  - section: Advanced Java & Ecosystem
+    description: Enterprise-level features and framework internals.
+    items:
+      - title: Reflection & Annotations
+        description: 'Metadata, custom annotations, and framework internals'
+        slug: reflection-annotations
+      - title: JDBC & JPA/Hibernate
+        description: 'Database connectivity and Object-Relational Mapping (ORM)'
+        slug: data-persistence
+      - title: Reactive Java
+        description: 'Non-blocking I/O with Spring WebFlux and Project Reactor'
+        slug: reactive-java
+      - title: Spring Security
+        description: 'Authentication, Authorization, and JWT/OAuth2'
+        slug: spring-security
+      - title: JNI & Performance
+        description: 'Native interface and JVM performance tuning'
+        slug: jni-performance
 ---
 
 ## Overview
