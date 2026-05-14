@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { BookOpen, ExternalLink } from "lucide-react";
-import type { TopicSection } from "@/lib/languages";
+import type { TopicSection } from "@/types/curriculum";
 
 interface LearningPathProps {
   topics: TopicSection[];
   langSlug: string;
+  isMath?: boolean;
 }
 
-export function LearningPath({ topics, langSlug }: LearningPathProps) {
+export function LearningPath({ topics, langSlug, isMath }: LearningPathProps) {
+  const baseUrl = isMath ? 'mathematics' : 'languages';
   return (
     <div className="space-y-10">
       {topics.map((section, sectionIdx) => (
@@ -41,7 +43,7 @@ export function LearningPath({ topics, langSlug }: LearningPathProps) {
                     </a>
                   ) : item.slug ? (
                     <Link
-                      href={`/languages/${langSlug}/${item.slug}`}
+                      href={`/${baseUrl}/${langSlug}/${item.slug}`}
                       className="font-medium text-foreground hover:text-primary transition-colors"
                     >
                       {item.title}
