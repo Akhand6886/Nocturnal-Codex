@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { TopicSection, TopicContent } from '@/types/curriculum';
 
 export interface MathDomain {
   title: string;
@@ -9,6 +10,7 @@ export interface MathDomain {
   iconName: string;
   content: string;
   url: string;
+  topics?: TopicSection[];
 }
 
 const mathematicsDirectory = path.join(process.cwd(), 'src/content/mathematics');
