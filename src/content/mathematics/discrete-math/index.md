@@ -3,6 +3,28 @@ title: "Discrete Mathematics"
 slug: "discrete-math"
 description: "The study of mathematical structures that are fundamentally distinct and separable. The bedrock of algorithms, logic, and computation theory."
 iconName: "math"
+topics:
+  - section: Foundations of Logic
+    description: The rules of formal reasoning and mathematical statements.
+    items:
+      - title: Propositional Logic
+        description: Logical connectives, truth tables, and tautologies.
+        slug: propositional-logic
+      - title: Predicate Logic
+        description: Quantifiers, variables, and nested predicates.
+        slug: predicate-logic
+      - title: Logical Equivalences
+        description: De Morgan's laws, distributive laws, and conditional identities.
+        slug: logical-equivalences
+  - section: Proof Techniques
+    description: Strategies for proving mathematical theorems and claims.
+    items:
+      - title: Proof Techniques
+        description: Direct proof, contraposition, and proof by contradiction.
+        slug: proof-techniques
+      - title: Mathematical Induction
+        description: Proving statements for all natural numbers.
+        slug: mathematical-induction
 ---
 
 ## Introduction to Discrete Mathematics
