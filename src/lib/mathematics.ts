@@ -64,3 +64,22 @@ export function getAllMathDomains(): MathDomain[] {
 export function getMathDomainBySlug(slug: string): MathDomain | undefined {
   return fetchAllMathDomains().find(domain => domain.slug === slug);
 }
+
+export function getMathTopic(domainSlug: string, topicSlug: string): TopicContent | null {
+  try {
+    const fullPath = path.join(mathematicsDirectory, domainSlug, `${topicSlug}.md`);
+    if (!fs.existsSync(fullPath)) return null;
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const matterResult = matter(fileContents);
+
+    return {
+      title: matterResult.data.title || topicSlug,
+      description: matterResult.data.description,
+      content: matterResult.content,
+    };
+  } catch (error) {
+    console.error(`Could not read topic ${topicSlug} for domain ${domainSlug}:`, error);
+    return null;
+  }
+}
