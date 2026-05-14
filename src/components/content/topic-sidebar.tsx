@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { List, ChevronRight } from "lucide-react";
-import type { TopicSection } from "@/lib/languages";
+import type { TopicSection } from "@/types/curriculum";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 interface TopicSidebarProps {
   topics: TopicSection[];
   langSlug: string;
   activeTopicSlug: string;
+  isMath?: boolean;
 }
 
-export function TopicSidebar({ topics, langSlug, activeTopicSlug }: TopicSidebarProps) {
+export function TopicSidebar({ topics, langSlug, activeTopicSlug, isMath }: TopicSidebarProps) {
+  const baseUrl = isMath ? 'mathematics' : 'languages';
   // Find which section contains the active topic
   const activeSectionIndex = topics.findIndex(section => 
     section.items.some(item => item.slug === activeTopicSlug)
@@ -55,7 +57,7 @@ export function TopicSidebar({ topics, langSlug, activeTopicSlug }: TopicSidebar
                         </a>
                       ) : item.slug ? (
                         <Link
-                          href={`/languages/${langSlug}/${item.slug}`}
+                          href={`/${baseUrl}/${langSlug}/${item.slug}`}
                           className={`group flex items-center gap-1.5 py-1 text-sm transition-all duration-200 ${
                             isActive
                               ? "text-primary font-medium"

@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { TopicSection } from "@/lib/languages";
+import type { TopicSection } from "@/types/curriculum";
 
 interface TopicPaginationProps {
   topics: TopicSection[];
   langSlug: string;
   activeTopicSlug: string;
+  isMath?: boolean;
 }
 
-export function TopicPagination({ topics, langSlug, activeTopicSlug }: TopicPaginationProps) {
+export function TopicPagination({ topics, langSlug, activeTopicSlug, isMath }: TopicPaginationProps) {
+  const baseUrl = isMath ? 'mathematics' : 'languages';
   // Flatten topics to find previous and next easily
   const flatTopics = topics.flatMap((section) => section.items);
   
@@ -24,7 +26,7 @@ export function TopicPagination({ topics, langSlug, activeTopicSlug }: TopicPagi
       <div className="w-full sm:w-1/2">
         {prevTopic && prevTopic.slug && (
           <Link
-            href={`/languages/${langSlug}/${prevTopic.slug}`}
+            href={`/${baseUrl}/${langSlug}/${prevTopic.slug}`}
             className="group flex flex-col items-start p-4 rounded-xl border border-border/50 bg-card/30 hover:bg-card/80 transition-all duration-200"
           >
             <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5 mb-1.5 group-hover:text-foreground transition-colors">
@@ -39,7 +41,7 @@ export function TopicPagination({ topics, langSlug, activeTopicSlug }: TopicPagi
       <div className="w-full sm:w-1/2 flex justify-end">
         {nextTopic && nextTopic.slug && (
           <Link
-            href={`/languages/${langSlug}/${nextTopic.slug}`}
+            href={`/${baseUrl}/${langSlug}/${nextTopic.slug}`}
             className="group flex flex-col items-end text-right p-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-200"
           >
             <span className="text-xs font-semibold uppercase tracking-wider text-primary flex items-center gap-1.5 mb-1.5">
