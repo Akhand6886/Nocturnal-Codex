@@ -51,12 +51,56 @@ export default async function MathTopicDetailPage({ params }: { params: Promise<
   const topic = getMathTopic(slug, topicSlug);
   if (!topic) notFound();
 
-  // Temporary scaffold
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1>{topic.title}</h1>
-      <p>{topic.description}</p>
-      <MarkdownRenderer content={topic.content} />
+      <Breadcrumbs items={[
+        { label: 'Home', href: '/' },
+        { label: 'Mathematics', href: '/mathematics' },
+        { label: domain.title, href: `/mathematics/${domain.slug}` },
+        { label: topic.title }
+      ]} />
+
+      <div className="grid gap-8 lg:grid-cols-[260px_1fr] xl:grid-cols-[260px_1fr_240px] mt-6">
+        {/* Left: Curriculum Nav */}
+        <aside className="hidden lg:block">
+          {domain.topics && (
+            <TopicSidebar topics={domain.topics} langSlug={domain.slug} activeTopicSlug={topicSlug} isMath />
+          )}
+        </aside>
+
+        {/* Center: Main Content */}
+        <main className="min-w-0 pb-16">
+          <header className="mb-8 pb-6 border-b border-border/50">
+            <div className="flex items-center gap-3 text-muted-foreground mb-3">
+               <Calculator className="w-5 h-5 text-primary" />
+               <span className="text-sm font-medium">{domain.title} Module</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground flex items-center gap-3">
+              <BookOpen className="h-8 w-8 text-primary opacity-80" />
+              {topic.title}
+            </h1>
+            {topic.description && (
+              <p className="text-lg text-muted-foreground mt-4 leading-relaxed">
+                {topic.description}
+              </p>
+            )}
+          </header>
+
+          <article>
+            <MarkdownRenderer content={topic.content} />
+          </article>
+
+          {/* Next & Previous Pagination */}
+          {domain.topics && (
+            <TopicPagination topics={domain.topics} langSlug={domain.slug} activeTopicSlug={topicSlug} isMath />
+          )}
+        </main>
+
+        {/* Right: Local Table of Contents */}
+        <aside className="hidden xl:block">
+          <TableOfContents content={topic.content} />
+        </aside>
+      </div>
     </div>
   );
 }
