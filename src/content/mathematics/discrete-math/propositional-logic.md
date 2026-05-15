@@ -32,3 +32,15 @@ A truth table lists all possible combinations of truth values for a set of propo
 
 *   A **tautology** is a compound proposition that is always true, regardless of the truth values of the individual propositions (e.g., $p \lor \neg p$).
 *   A **contradiction** is a compound proposition that is always false (e.g., $p \land \neg p$).
+*   A **contingency** is a proposition that is neither a tautology nor a contradiction — its truth value depends on the assignment.
+
+### Well-Formed Formulas (WFFs)
+
+Not every string of logical symbols is meaningful. A **Well-Formed Formula** is a syntactically valid expression in propositional logic, defined recursively:
+
+1.  Every propositional variable ($p$, $q$, $r$, ...) is a WFF.
+2.  If $\alpha$ is a WFF, then $\neg \alpha$ is a WFF.
+3.  If $\alpha$ and $\beta$ are WFFs, then $(\alpha \land \beta)$, $(\alpha \lor \beta)$, $(\alpha \rightarrow \beta)$, and $(\alpha \leftrightarrow \beta)$ are WFFs.
+4.  Nothing else is a WFF.
+
+This recursive definition is the foundation for **parsing logical expressions** in compilers and automated theorem provers.
