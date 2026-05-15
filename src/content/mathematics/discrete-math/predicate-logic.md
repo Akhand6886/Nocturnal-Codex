@@ -34,11 +34,19 @@ Quantifiers allow us to express how many objects in a domain satisfy a predicate
 
 1.  **Universal Quantifier ($\forall x P(x)$)**: "$P(x)$ is true for **all** $x$ in the domain."
 2.  **Existential Quantifier ($\exists x P(x)$)**: "There **exists** at least one $x$ in the domain such that $P(x)$ is true."
+3.  **Uniqueness Quantifier ($\exists! x P(x)$)**: "There exists **exactly one** $x$ in the domain such that $P(x)$ is true." This can be expressed as: $\exists x (P(x) \land \forall y (P(y) \rightarrow y = x))$.
 
 ### Nested Quantifiers
 
 Statements can involve multiple quantifiers. For example:
 $\forall x \exists y (x + y = 0)$ means "For every $x$, there exists a $y$ such that $x + y = 0$."
+
+**The order of quantifiers matters.** Consider these two statements over the integers:
+
+*   $\forall x \exists y (x + y = 0)$ — **True.** For every integer, its negation exists.
+*   $\exists y \forall x (x + y = 0)$ — **False.** No single integer is the negation of every integer.
+
+Swapping quantifiers of the same type is safe ($\forall x \forall y$ is the same as $\forall y \forall x$), but swapping different quantifiers changes meaning.
 
 ### Negating Quantified Statements (De Morgan's Laws for Quantifiers)
 
