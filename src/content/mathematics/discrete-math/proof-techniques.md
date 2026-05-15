@@ -93,3 +93,29 @@ To prove $\exists! x P(x)$ (there exists a **unique** $x$), you must show two th
 
 1.  **Existence**: $\exists x P(x)$ — at least one such $x$ exists.
 2.  **Uniqueness**: If $P(a)$ and $P(b)$, then $a = b$ — no two different objects satisfy $P$.
+
+### Choosing the Right Technique
+
+| Proof Goal | Best Technique |
+| :--- | :--- |
+| Prove $p \rightarrow q$ and both sides are "concrete" | **Direct Proof** |
+| Prove $p \rightarrow q$ but $q$ is hard to start from | **Contraposition** |
+| Prove something is impossible or infinite | **Contradiction** |
+| Prove $\forall n$ where $n$ can be categorized | **Proof by Cases** |
+| Prove $\forall n \in \mathbb{N}$, $P(n)$ | **Mathematical Induction** (next topic) |
+| Prove $\exists x P(x)$ | **Constructive Proof** |
+
+### Proofs in Computer Science
+
+Proof techniques are not just theoretical — they are directly applicable in software engineering:
+
+*   **Correctness proofs**: Showing that a sorting algorithm actually sorts (often by induction).
+*   **Termination proofs**: Proving that a loop or recursive function always terminates (usually by finding a decreasing measure).
+*   **Security proofs**: Showing that a cryptographic protocol is secure under certain assumptions (often by contradiction — "if someone could break the protocol, they could solve an impossibly hard problem").
+*   **Type system soundness**: Proving that "well-typed programs don't go wrong" (structural induction on the type derivation).
+
+---
+
+### Key Takeaway
+
+A proof is a program for convincing yourself and others that a statement is true. The techniques here — Direct, Contraposition, Contradiction, Cases, Construction — are your complete toolkit. Every mathematical argument, no matter how complex, is built from these building blocks.
