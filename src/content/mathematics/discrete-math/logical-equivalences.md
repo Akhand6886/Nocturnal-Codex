@@ -43,3 +43,29 @@ These equivalences form the complete toolkit for manipulating propositional form
 *   $\neg (p \lor q) \equiv \neg p \land \neg q$
 
 De Morgan's Laws are arguably the most important equivalences in all of logic. They describe how negation distributes over conjunction and disjunction, and they appear everywhere — from circuit design to database query optimization to programming language semantics.
+
+#### Absorption Laws
+*   $p \lor (p \land q) \equiv p$
+*   $p \land (p \lor q) \equiv p$
+
+#### Conditional Identities
+*   $p \rightarrow q \equiv \neg p \lor q$ (Material Conditional)
+*   $p \rightarrow q \equiv \neg q \rightarrow \neg p$ (Contrapositive)
+*   $p \leftrightarrow q \equiv (p \rightarrow q) \land (q \rightarrow p)$
+
+The **contrapositive** equivalence is especially important — it is the foundation of **proof by contraposition**, one of the most powerful proof techniques.
+
+### Proving Equivalences: A Worked Example
+
+**Claim**: $\neg (p \rightarrow q) \equiv p \land \neg q$
+
+**Proof by equivalence chain**:
+
+| Step | Formula | Justification |
+| :--- | :--- | :--- |
+| 1 | $\neg (p \rightarrow q)$ | Given |
+| 2 | $\neg (\neg p \lor q)$ | Material Conditional |
+| 3 | $\neg (\neg p) \land \neg q$ | De Morgan's Law |
+| 4 | $p \land \neg q$ | Double Negation |
+
+This tells us: "The negation of 'if p then q' is 'p is true and q is false'" — which is exactly when a conditional statement fails.
