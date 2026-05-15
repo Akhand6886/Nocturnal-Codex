@@ -5,11 +5,28 @@ description: "Extending propositional logic with variables and quantifiers to ha
 
 ## Introduction to Predicate Logic
 
-While propositional logic deals with simple statements, **Predicate Logic** allows us to reason about objects and their properties.
+While propositional logic deals with simple statements, **Predicate Logic** (also called **First-Order Logic**) allows us to reason about objects, their properties, and relationships between them. It is strictly more expressive than propositional logic.
+
+### The Domain of Discourse
+
+Every predicate logic statement is interpreted relative to a **domain of discourse** (or **universe**) — the set of all objects we are reasoning about.
+
+*   If the domain is the integers, $\forall x (x^2 \geq 0)$ is true.
+*   If the domain is the complex numbers, the same statement is false (e.g., $i^2 = -1$).
+
+The domain must always be explicitly stated or clearly understood from context.
 
 ### Predicates
 
 A **predicate** is a statement that contains one or more variables. For example, $P(x)$ might mean "$x$ is greater than 3". The predicate itself has no truth value until a value is assigned to $x$.
+
+**Multi-place predicates** describe relationships: $R(x, y)$ might mean "$x$ is the parent of $y$", turning the predicate into a relation.
+
+### Bound and Free Variables
+
+*   A variable is **bound** if it is governed by a quantifier: in $\forall x P(x)$, $x$ is bound.
+*   A variable is **free** if it is not governed by a quantifier: in $P(x) \land \forall y Q(y)$, $x$ is free and $y$ is bound.
+*   A formula with no free variables is called a **sentence** and has a definite truth value.
 
 ### Quantifiers
 
