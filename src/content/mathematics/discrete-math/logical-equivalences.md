@@ -69,3 +69,36 @@ The **contrapositive** equivalence is especially important — it is the foundat
 | 4 | $p \land \neg q$ | Double Negation |
 
 This tells us: "The negation of 'if p then q' is 'p is true and q is false'" — which is exactly when a conditional statement fails.
+
+### Connection to Boolean Algebra
+
+Logical equivalences are not just theoretical — they are the axioms of **Boolean Algebra**, the mathematical system underlying all digital computation.
+
+| Logic | Boolean Algebra | Programming |
+| :--- | :--- | :--- |
+| $\land$ (AND) | $\cdot$ (multiply) | `&&` or `&` |
+| $\lor$ (OR) | $+$ (add) | `\|\|` or `\|` |
+| $\neg$ (NOT) | $\bar{x}$ (complement) | `!` or `~` |
+
+Every logical equivalence corresponds to a circuit simplification. For example, De Morgan's Law tells hardware engineers that a NAND gate ($\neg (p \land q)$) is equivalent to an OR gate with inverted inputs ($\neg p \lor \neg q$).
+
+### Applications in Programming
+
+Logical equivalences show up directly in code optimization:
+
+```javascript
+// De Morgan's Law in action
+// Before:
+if (!(isAdmin && isVerified)) { ... }
+
+// After (equivalent):
+if (!isAdmin || !isVerified) { ... }
+```
+
+Compilers use these equivalences internally to simplify boolean expressions in branch conditions, reducing the number of instructions generated.
+
+---
+
+### Key Takeaway
+
+Logical equivalences are the "arithmetic rules" of true and false. They let you simplify complex conditions, optimize circuits, and prove that two logical statements mean the same thing — a skill that transfers directly to writing cleaner, more correct code.
