@@ -26,3 +26,19 @@ The most straightforward technique. To prove $p \rightarrow q$, you assume $p$ i
 $a + b = 2k + 2m = 2(k + m)$
 
 Since $k + m$ is an integer, $a + b$ is even by definition. $\square$
+
+### 2. Proof by Contraposition
+
+Instead of proving $p \rightarrow q$ directly, we prove its **contrapositive**: $\neg q \rightarrow \neg p$. Since a statement and its contrapositive are logically equivalent, this is a valid proof strategy.
+
+**When to use it**: When the conclusion $q$ is hard to work with directly, but $\neg q$ gives you something concrete to start from.
+
+**Example**: Prove that if $n^2$ is even, then $n$ is even.
+
+**Proof (by contraposition)**: We prove the contrapositive: "If $n$ is odd, then $n^2$ is odd."
+
+Assume $n$ is odd. Then $n = 2k + 1$ for some integer $k$.
+
+$n^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$
+
+Since $2k^2 + 2k$ is an integer, $n^2$ is odd by definition. $\square$
