@@ -54,3 +54,42 @@ Swapping quantifiers of the same type is safe ($\forall x \forall y$ is the same
 *   $\neg (\exists x P(x)) \equiv \forall x \neg P(x)$
 
 This means that if a statement is not true for all $x$, then there must be at least one $x$ for which it is false.
+
+### Prenex Normal Form
+
+A formula is in **Prenex Normal Form** if it is of the form:
+
+$Q_1 x_1 \, Q_2 x_2 \, \ldots \, Q_n x_n \, \phi(x_1, x_2, \ldots, x_n)$
+
+where each $Q_i$ is either $\forall$ or $\exists$, and $\phi$ is quantifier-free. Any first-order formula can be converted to Prenex Normal Form by:
+
+1.  Eliminating biconditionals and implications.
+2.  Moving negations inward using De Morgan's Laws.
+3.  Renaming bound variables to avoid conflicts.
+4.  Moving all quantifiers to the front.
+
+### Translating English to Logic
+
+A critical skill is translating natural language into predicate logic:
+
+| English | Predicate Logic |
+| :--- | :--- |
+| "Every student passed the exam." | $\forall x (Student(x) \rightarrow Passed(x))$ |
+| "Some students failed." | $\exists x (Student(x) \land Failed(x))$ |
+| "No cat likes water." | $\forall x (Cat(x) \rightarrow \neg Likes(x, water))$ |
+| "There is exactly one winner." | $\exists! x Winner(x)$ |
+
+**Note**: Universal statements use $\rightarrow$ (implication), while existential statements use $\land$ (conjunction). Mixing these up is one of the most common errors.
+
+### Applications in Computer Science
+
+*   **Type Systems**: Type inference in languages like Haskell and Rust uses first-order unification.
+*   **Databases**: SQL queries are essentially predicate logic statements over relational tables.
+*   **Program Specifications**: Pre/post-conditions and loop invariants are expressed in predicate logic (e.g., Hoare Logic).
+*   **Automated Theorem Proving**: Proof assistants like Coq and Lean operate in higher-order extensions of predicate logic.
+
+---
+
+### Key Takeaway
+
+Predicate logic is the language in which all of mathematics is written. For computer scientists, it bridges the gap between informal requirements ("every user must have a unique email") and formal specifications that can be verified by machines.
