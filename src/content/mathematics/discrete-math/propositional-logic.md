@@ -44,3 +44,24 @@ Not every string of logical symbols is meaningful. A **Well-Formed Formula** is 
 4.  Nothing else is a WFF.
 
 This recursive definition is the foundation for **parsing logical expressions** in compilers and automated theorem provers.
+
+### Logical Equivalence
+
+Two propositions $p$ and $q$ are **logically equivalent** (written $p \equiv q$) if they have the same truth value for every possible assignment of truth values to their variables.
+
+To prove logical equivalence, you can:
+1.  Construct truth tables for both sides and verify they match.
+2.  Apply known equivalences (identities, De Morgan's laws, etc.) to algebraically transform one into the other.
+
+### Satisfiability
+
+A compound proposition is **satisfiable** if there is at least one assignment of truth values that makes it true. A proposition is **unsatisfiable** if no such assignment exists (i.e., it is a contradiction).
+
+The **Boolean Satisfiability Problem (SAT)** — determining whether a given formula is satisfiable — is one of the most important problems in computer science. It was the first problem proven to be **NP-complete** (Cook-Levin Theorem, 1971), meaning every problem in NP can be reduced to SAT in polynomial time.
+
+### Applications in Computer Science
+
+*   **Circuit Design**: Every digital circuit is a physical implementation of propositional logic.
+*   **Software Verification**: SAT solvers are used to verify that programs meet their specifications.
+*   **Database Query Optimization**: WHERE clauses in SQL are propositional formulas that the query planner optimizes.
+*   **AI and Constraint Satisfaction**: Many AI planning and scheduling problems are solved by encoding them as SAT instances.
