@@ -42,3 +42,23 @@ Assume $n$ is odd. Then $n = 2k + 1$ for some integer $k$.
 $n^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$
 
 Since $2k^2 + 2k$ is an integer, $n^2$ is odd by definition. $\square$
+
+### 3. Proof by Contradiction
+
+To prove a statement $p$, assume $\neg p$ and show this leads to a **logical contradiction** (a statement that is always false). Since $\neg p$ leads to an impossibility, $p$ must be true.
+
+**When to use it**: When you need to prove something exists or something is impossible, and direct construction is not feasible.
+
+**Example**: Prove that $\sqrt{2}$ is irrational.
+
+**Proof (by contradiction)**: Assume, for the sake of contradiction, that $\sqrt{2}$ is rational. Then $\sqrt{2} = \frac{a}{b}$ where $a, b$ are integers with no common factors (i.e., the fraction is in lowest terms).
+
+Squaring both sides: $2 = \frac{a^2}{b^2}$, so $a^2 = 2b^2$.
+
+This means $a^2$ is even, so $a$ is even (proven by contraposition above). Let $a = 2c$.
+
+Then $4c^2 = 2b^2$, so $b^2 = 2c^2$, which means $b$ is also even.
+
+But if both $a$ and $b$ are even, they share a common factor of 2 — contradicting our assumption that the fraction was in lowest terms. $\square$
+
+This is one of the most famous proofs in all of mathematics, first attributed to the ancient Greeks.
