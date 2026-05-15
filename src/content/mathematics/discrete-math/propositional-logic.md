@@ -65,3 +65,26 @@ The **Boolean Satisfiability Problem (SAT)** — determining whether a given for
 *   **Software Verification**: SAT solvers are used to verify that programs meet their specifications.
 *   **Database Query Optimization**: WHERE clauses in SQL are propositional formulas that the query planner optimizes.
 *   **AI and Constraint Satisfaction**: Many AI planning and scheduling problems are solved by encoding them as SAT instances.
+
+### Normal Forms
+
+Any propositional formula can be converted to a standard form, which simplifies analysis and computation.
+
+**Conjunctive Normal Form (CNF)**: A conjunction of disjunctions (AND of ORs). Example:
+
+$(p \lor q) \land (\neg p \lor r) \land (q \lor \neg r)$
+
+**Disjunctive Normal Form (DNF)**: A disjunction of conjunctions (OR of ANDs). Example:
+
+$(p \land q) \lor (\neg p \land r) \lor (q \land \neg r)$
+
+Every propositional formula can be converted to CNF or DNF. SAT solvers typically work with CNF because:
+
+*   Unit propagation and resolution are efficient on clauses.
+*   The DPLL and CDCL algorithms are designed for CNF input.
+
+---
+
+### Key Takeaway
+
+Propositional logic is the simplest formal system, but it underpins everything from hardware design to software verification. Mastering truth tables, equivalences, and normal forms gives you the vocabulary to reason about correctness in every area of computing.
