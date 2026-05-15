@@ -50,3 +50,36 @@ Since either $k$ or $k+1$ is even, $k(k+1)$ is always even, so $3k(k+1)$ is divi
 1.  **Forgetting the base case**: Without it, the inductive step proves nothing. Consider: "All horses are the same color" — the inductive step seems valid, but the base case fails at $n = 2$.
 2.  **Not using the inductive hypothesis**: If your inductive step doesn't actually use the assumption that $P(k)$ is true, you're probably doing a direct proof, not induction.
 3.  **Wrong base case**: Make sure you prove the base case for the correct starting value, especially when the claim says "for all $n \geq 2$" instead of "for all $n \geq 1$".
+
+### Strong Induction
+
+In **strong induction** (also called **complete induction**), the inductive hypothesis assumes $P(n_0), P(n_0 + 1), \ldots, P(k)$ are all true (not just $P(k)$), and you prove $P(k+1)$.
+
+Strong induction is equivalent in power to ordinary induction, but it's sometimes more natural.
+
+**Example**: Prove that every integer $n \geq 2$ can be written as a product of primes.
+
+**Base Case** ($n = 2$): 2 is prime, and a prime is a product of one prime. ✓
+
+**Inductive Step**: Assume every integer from 2 to $k$ can be written as a product of primes. Consider $k + 1$:
+
+*   If $k + 1$ is prime, we're done.
+*   If $k + 1$ is composite, then $k + 1 = a \cdot b$ where $2 \leq a, b \leq k$. By the inductive hypothesis, both $a$ and $b$ can be written as products of primes. Therefore $k + 1 = a \cdot b$ is also a product of primes. $\square$
+
+This is the **Fundamental Theorem of Arithmetic** (existence part).
+
+### Structural Induction
+
+**Structural induction** extends induction to recursively defined data structures (trees, lists, formulas). Instead of inducting on natural numbers, you induct on the **structure** of the object.
+
+**The Principle**: To prove $P(x)$ for all elements $x$ of a recursively defined set:
+
+1.  **Base Case**: Prove $P$ for each base element.
+2.  **Inductive Step**: For each recursive constructor, assume $P$ holds for the sub-components and prove $P$ for the constructed element.
+
+**Example**: Prove that the number of nodes in a full binary tree is always odd.
+
+*   **Base Case**: A single leaf has 1 node. 1 is odd. ✓
+*   **Inductive Step**: A tree formed by joining two subtrees $T_1$ and $T_2$ with a new root has $|T_1| + |T_2| + 1$ nodes. By the inductive hypothesis, $|T_1|$ and $|T_2|$ are both odd. The sum of two odd numbers is even, and adding 1 gives an odd number. $\square$
+
+Structural induction is the bread and butter of **programming language theory** and **compiler verification**.
