@@ -62,3 +62,34 @@ Then $4c^2 = 2b^2$, so $b^2 = 2c^2$, which means $b$ is also even.
 But if both $a$ and $b$ are even, they share a common factor of 2 — contradicting our assumption that the fraction was in lowest terms. $\square$
 
 This is one of the most famous proofs in all of mathematics, first attributed to the ancient Greeks.
+
+### 4. Proof by Cases (Exhaustion)
+
+When the domain of discourse can be divided into a finite number of cases, we prove the statement separately for each case.
+
+**Example**: Prove that $n^2 + n$ is even for all integers $n$.
+
+**Proof**: Consider two cases:
+
+*   **Case 1** ($n$ is even): $n = 2k$. Then $n^2 + n = 4k^2 + 2k = 2(2k^2 + k)$, which is even.
+*   **Case 2** ($n$ is odd): $n = 2k + 1$. Then $n^2 + n = (2k+1)^2 + (2k+1) = 4k^2 + 4k + 2 = 2(2k^2 + 2k + 1)$, which is even.
+
+Since $n$ must be either even or odd, and the result holds in both cases, $n^2 + n$ is always even. $\square$
+
+### 5. Constructive vs. Non-Constructive Existence Proofs
+
+*   A **constructive proof** of $\exists x P(x)$ explicitly exhibits an object $a$ and shows $P(a)$ is true.
+*   A **non-constructive proof** shows that the existence of such an object must follow logically, without producing a specific example.
+
+**Constructive example**: "There exists an irrational number." Proof: $\sqrt{2}$ is irrational (proven above).
+
+**Non-constructive example**: "There exist irrational numbers $a$ and $b$ such that $a^b$ is rational."
+
+Consider $\sqrt{2}^{\sqrt{2}}$. If it's rational, we're done ($a = b = \sqrt{2}$). If it's irrational, let $a = \sqrt{2}^{\sqrt{2}}$ and $b = \sqrt{2}$. Then $a^b = (\sqrt{2}^{\sqrt{2}})^{\sqrt{2}} = \sqrt{2}^2 = 2$, which is rational. Either way, such $a, b$ exist — but we haven't determined which case is actually true.
+
+### 6. Uniqueness Proofs
+
+To prove $\exists! x P(x)$ (there exists a **unique** $x$), you must show two things:
+
+1.  **Existence**: $\exists x P(x)$ — at least one such $x$ exists.
+2.  **Uniqueness**: If $P(a)$ and $P(b)$, then $a = b$ — no two different objects satisfy $P$.
