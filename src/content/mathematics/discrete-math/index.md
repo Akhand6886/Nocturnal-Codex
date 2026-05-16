@@ -25,6 +25,30 @@ topics:
       - title: Mathematical Induction
         description: Proving statements for all natural numbers.
         slug: mathematical-induction
+  - section: Discrete Structures
+    description: The fundamental building blocks of discrete mathematics.
+    items:
+      - title: Set Theory
+        description: Operations, subsets, and infinite sets.
+        slug: set-theory
+      - title: Functions & Mappings
+        description: Injective, surjective, and bijective functions.
+        slug: functions-mappings
+      - title: Relations
+        description: Properties, equivalence relations, and partial orders.
+        slug: relations
+  - section: Combinatorics
+    description: The mathematics of counting and arrangement.
+    items:
+      - title: Counting Principles
+        description: The Rule of Sum, Rule of Product, and Inclusion-Exclusion.
+        slug: counting-principles
+      - title: Permutations & Combinations
+        description: Arrangements and selections, with and without replacement.
+        slug: permutations-combinations
+      - title: The Pigeonhole Principle
+        description: A simple but powerful tool for proving existence.
+        slug: pigeonhole-principle
 ---
 
 ## Introduction to Discrete Mathematics
