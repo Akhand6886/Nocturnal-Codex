@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     // However, revalidateTag('contentful') clears any fetch that used next: { tags: ['contentful'] }
     // which is very efficient and ensures all lists and slugs are perfectly up-to-date instantly.
     
-    revalidateTag('contentful');
+    revalidateTag('contentful', 'default');
     
     console.log(`Revalidated contentful tag due to webhook for entry: ${body?.sys?.id}`);
     
