@@ -25,6 +25,7 @@ import { RoadmapDrawer, SelectedNodeData } from '../Roadmaps/RoadmapDrawer';
 
 interface EditorRoadmapRendererProps {
   roadmapId: string;
+  initialRoadmapData?: RoadmapData | null;
 }
 
 interface RoadmapData {
@@ -93,14 +94,22 @@ const FitViewUpdater: FC = () => {
   return null;
 };
 
-export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapId }) => {
-  const [roadmapData, setRoadmapData] = useState<RoadmapData | null>(null);
-  const [loading, setLoading] = useState(true);
+export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapId, initialRoadmapData }) => {
+  const [roadmapData, setRoadmapData] = useState<RoadmapData | null>(() => {
+    if (!initialRoadmapData) return null;
+    return {
+      ...initialRoadmapData,
+      edges: initialRoadmapData.edges.map(edge => ({ ...edge, type: edge.type || 'roadmap' })),
+    };
+  });
+  const [loading, setLoading] = useState(!initialRoadmapData);
   const [error, setError] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedNode, setSelectedNode] = useState<SelectedNodeData | null>(null);
 
   useEffect(() => {
+    if (initialRoadmapData) return;
+
     async function fetchRoadmapData() {
       try {
         setLoading(true);
@@ -118,7 +127,7 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
       }
     }
     fetchRoadmapData();
-  }, [roadmapId]);
+  }, [roadmapId, initialRoadmapData]);
 
   const onNodeClick = useCallback((event: React.MouseEvent, node: Node) => {
     // Skip non-interactive nodes

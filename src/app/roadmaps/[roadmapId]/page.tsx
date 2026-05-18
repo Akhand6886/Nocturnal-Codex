@@ -1,6 +1,8 @@
 
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import fs from 'fs';
+import path from 'path';
 import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
 import { getAllRoadmaps, getRoadmapBySlug } from '@/lib/roadmaps';
 
@@ -39,10 +41,20 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
   const { roadmapId } = await params;
   const roadmapMeta = getRoadmapBySlug(roadmapId);
 
-  // The roadmap *data* (nodes/edges) is fetched on the client by the renderer
-  // But we need the *metadata* to exist to render the page header.
   if (!roadmapMeta) {
     notFound();
+  }
+
+  // Read roadmap data on the server side for SSG/SEO and instant client hydration
+  let roadmapData = null;
+  try {
+    const filePath = path.join(process.cwd(), 'public', 'roadmap-content', `${roadmapId}.json`);
+    if (fs.existsSync(filePath)) {
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      roadmapData = JSON.parse(fileContents);
+    }
+  } catch (e) {
+    console.error(`Error reading roadmap file for ${roadmapId}:`, e);
   }
 
   return (
@@ -55,7 +67,37 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
           {roadmapMeta.description}
         </p>
       </header>
-      <EditorRoadmapRenderer roadmapId={roadmapId} />
+
+      {/* SEO Semantic Content Block - Rendered on the Server at Build Time */}
+      {roadmapData && roadmapData.nodes && (
+        <div className="sr-only">
+          <h2>Curriculum Topics for {roadmapMeta.title}</h2>
+          {roadmapData.nodes.map((node: any) => {
+            const label = node.data?.label;
+            const description = node.data?.description;
+            const resources = node.data?.resources;
+            if (!label) return null;
+
+            return (
+              <article key={node.id}>
+                <h3>{label}</h3>
+                {description && <p>{description}</p>}
+                {resources && Array.isArray(resources) && resources.length > 0 && (
+                  <ul>
+                    {resources.map((res: any, idx: number) => (
+                      <li key={idx}>
+                        <a href={res.url}>{res.title}</a> {res.type ? `(${res.type})` : ''}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      )}
+
+      <EditorRoadmapRenderer roadmapId={roadmapId} initialRoadmapData={roadmapData} />
     </div>
   );
 }

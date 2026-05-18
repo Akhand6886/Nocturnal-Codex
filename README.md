@@ -80,10 +80,12 @@ The site uses a hybrid approach for content, sourcing it from a Headless CMS and
     -   `src/lib/languages.ts` uses Node.js `fs` and the `gray-matter` library to read and parse the markdown files located in the `content/languages/` directory.
     -   `src/lib/roadmaps.ts` uses the same technique for markdown files in `content/roadmaps/`.
 
-### Static JSON (Developer Roadmaps)
+### Static JSON (Developer Roadmaps) & Hybrid SEO Rendering
 
--   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps.
--   **Implementation**: The `EditorRoadmapRenderer` component in `src/components/EditorRoadmap/EditorRoadmapRenderer.tsx` fetches the corresponding JSON file (e.g., `frontend.json`) from the `public/roadmap-content/` directory and renders it using `@xyflow/react`.
+-   **Purpose**: Manages the complex, structured data required for the interactive developer roadmaps while ensuring 100% search engine indexability (SEO).
+-   **Implementation**: 
+    -   **Server-Side Pre-reading & SEO Tree**: `src/app/roadmaps/[roadmapId]/page.tsx` reads the static JSON file (e.g., `frontend.json`) from `public/roadmap-content/` at build time using `fs.readFileSync`. It renders an invisible, highly semantic HTML tree (`<h2>`, `<h3>`, `<p>`, `<a>`) styled with `sr-only` directly into the server HTML response. This guarantees search engine crawlers instantly index the entire curriculum without executing JavaScript.
+    -   **Client Canvas Hydration**: The pre-parsed JSON is passed as `initialRoadmapData` to `EditorRoadmapRenderer` (`src/components/EditorRoadmap/EditorRoadmapRenderer.tsx`), eliminating client-side network fetches and loading spinners so the interactive `@xyflow/react` canvas mounts instantly for human visitors upon hydration.
 
 ## 5. Static Site Generation (SSG) & Incremental Static Regeneration (ISR)
 
