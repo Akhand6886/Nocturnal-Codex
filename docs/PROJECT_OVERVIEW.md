@@ -98,9 +98,15 @@ The core data models are defined in `src/types/index.ts` to ensure type safety.
       url: string;
     }
     ```
--   **`Roadmap`**: The roadmap data is split into two parts:
-    1.  **Metadata**: An object containing `title`, `description`, `category`, `difficulty`, etc. This is currently hardcoded in the page components but will be migrated to a more robust system.
-    2.  **Graph Data**: An object with `nodes` and `edges` arrays, conforming to the `@xyflow/react` library's structure. This is stored in JSON files.
+-   **`Roadmap`**: The roadmap data is split into two layers:
+    1.  **Metadata (Manifest Layer)**: Stored in YAML frontmatter within `src/content/roadmaps/*.md` (Title, Description, Category, Difficulty, Featured status, Order, and Related Languages).
+    2.  **Graph Data (Canvas Layer)**: Stored in static JSON files within `public/roadmap-content/*.json`, conforming to the `@xyflow/react` library's structure (`nodes` and `edges`).
+
+#### Roadmap Ecosystem Status & Known Issues (Technical Audit)
+An ecosystem audit identified the following data gaps and enhancement opportunities:
+1.  **Missing Canvas JSON Files**: `embedded-systems.md`, `game-development.md`, and `mobile-development.md` have active markdown manifests but lack corresponding JSON canvas files in `public/roadmap-content/`. Navigating to these routes results in a 404 client fetch error on the canvas.
+2.  **Metadata & Resource Underutilization**: While `frontend.json` is extremely rich (137 nodes, 87 edges, 1 resource link), the remaining active JSON canvases (`backend`, `devops`, `full-stack`, `machine-learning`, `cybersecurity`) have `0` descriptions and `0` resources populated in `node.data`. Symmetrical population is recommended to maximize educational value and SEO keyword density under the hybrid rendering pattern.
+3.  **Legacy Layout Nodes**: `frontend.json` contains legacy export node types (`paragraph` and `legend`). Because `nodeTypes` in `EditorRoadmapRenderer.tsx` lacks explicit handlers for these, React Flow falls back to `TopicNode`, rendering empty boxes.
 
 ### Component Structure and Data Flow
 
