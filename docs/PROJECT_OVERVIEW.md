@@ -148,30 +148,24 @@ The website is highly optimized for performance by leveraging Next.js's renderin
 -   **Static Generation**: Most pages are pre-rendered into static HTML at build time. This is achieved using the `generateStaticParams()` function in dynamic route pages (e.g., `src/app/blog/[slug]/page.tsx`). This function tells Next.js which pages to pre-build based on the available slugs from the data sources.
 -   **Incremental Static Regeneration (ISR)**: To ensure content remains fresh without requiring a full site rebuild, ISR is used. The `export const revalidate = 60;` line in page components tells Next.js to re-generate the page in the background at most once every 60 seconds if a new request comes in. This provides the benefits of static sites (speed, reliability) with the flexibility of dynamic content.
 
-## 6. How to Run Locally
+## 6. Local Testing & Verification
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository-url>
-    cd <repository-directory>
-    ```
+This project is architected for automated cloud deployment (e.g., Vercel) and is not intended to be run as a persistent local service. Local execution is reserved strictly for build testing and pre-deployment verification.
 
-2.  **Install dependencies:**
+1.  **Install Dependencies:**
     ```bash
     npm install
     ```
 
-3.  **Set up environment variables:**
-    -   Create a file named `.env` in the root of the project.
-    -   Add your Contentful credentials to this file for the blog and think tank to work:
-        ```
-        CONTENTFUL_SPACE_ID=your_space_id
-        CONTENTFUL_ACCESS_TOKEN=your_delivery_api_token
-        ```
-
-4.  **Run the development server:**
+2.  **Verify Production Build:**
+    Ensure you are using Node.js 20+ before running the build test:
     ```bash
-    npm run dev
+    nvm use 20
+    npm run build
     ```
 
-5.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  **Temporary Preview Server (Optional):**
+    To verify static output locally before pushing to remote:
+    ```bash
+    npm run start
+    ```
