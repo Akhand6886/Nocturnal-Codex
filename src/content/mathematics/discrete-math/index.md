@@ -49,6 +49,27 @@ topics:
       - title: The Pigeonhole Principle
         description: A simple but powerful tool for proving existence.
         slug: pigeonhole-principle
+  - section: Graph Theory & Trees
+    description: The science of connectivity, networks, and hierarchical structures.
+    items:
+      - title: Introduction to Graph Theory
+        description: Vertices, edges, degrees, and graph representations.
+        slug: graph-theory-intro
+      - title: Trees & Hierarchies
+        description: Rooted trees, spanning trees, and ASTs.
+        slug: trees-hierarchies
+      - title: Graph Algorithms
+        description: BFS, DFS, Dijkstra's, and Minimum Spanning Trees.
+        slug: graph-algorithms
+  - section: Formal Languages & Automata
+    description: Mathematical models of computation and grammar.
+    items:
+      - title: Finite Automata
+        description: DFAs, NFAs, regular expressions, and state machines.
+        slug: finite-automata
+      - title: Turing Machines
+        description: The universal model of computation and computability limits.
+        slug: turing-machines
 ---
 
 ## Introduction to Discrete Mathematics
