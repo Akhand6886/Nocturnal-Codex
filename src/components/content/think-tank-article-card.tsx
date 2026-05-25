@@ -14,7 +14,7 @@ interface ThinkTankArticleCardProps {
 }
 
 export function ThinkTankArticleCard({ article }: ThinkTankArticleCardProps) {
-  const imageUrl = article.featuredImage?.url || "https://placehold.co/800x450.png";
+  const imageUrl = article.featuredImage?.url || "/images/default-post-card.png";
   const imageAlt = article.featuredImage?.alt || article.title;
   const dataAiHint = article.featuredImage?.dataAiHint || "research image";
   
