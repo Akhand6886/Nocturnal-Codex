@@ -30,7 +30,7 @@ export default function ContactPage() {
         "name": "Nocturnal Codex",
         "logo": {
             "@type": "ImageObject",
-            "url": `${siteUrl}/images/logo.png` // Replace with your actual logo URL
+            "url": `${siteUrl}/images/logo.png`
         }
     }
   };
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
         <section className="max-w-2xl mx-auto">
           <p className="text-center text-muted-foreground mb-8">
-              Alternatively, you can email us directly at <a href="mailto:contact@nocturnalcortex.dev" className="text-primary hover:underline">contact@nocturnalcortex.dev</a>.
+              Alternatively, you can email us directly at <a href="mailto:contact@nocturnalcodex.dev" className="text-primary hover:underline">contact@nocturnalcodex.dev</a>.
           </p>
           <ContactForm />
         </section>
