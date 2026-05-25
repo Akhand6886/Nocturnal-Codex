@@ -14,7 +14,7 @@ interface BlogPostCardProps {
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
   const postSlug = post.slug;
-  const imageUrl = post.featuredImage?.url || "https://placehold.co/400x300.png";
+  const imageUrl = post.featuredImage?.url || "/images/default-post-card.png";
   const imageAlt = post.featuredImage?.alt || post.title;
   const dataAiHint = post.featuredImage?.dataAiHint || "blog image";
 
