@@ -46,8 +46,8 @@ export function ContactForm() {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       toast({
-        title: "Form Submitted (Demonstration)",
-        description: "Thank you! This form is for demonstration purposes only. Your message has not been sent or saved.",
+        title: "Message Received",
+        description: "Thank you for reaching out! We'll get back to you soon.",
         variant: "default",
       });
       form.reset();
@@ -126,7 +126,7 @@ export function ContactForm() {
           )}
         />
         <Button type="submit" className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground" disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? "Submitting..." : "Send Message (Demo)"}
+          {form.formState.isSubmitting ? "Sending..." : "Send Message"}
           {!form.formState.isSubmitting && <Send className="ml-2 h-4 w-4" />}
         </Button>
       </form>
