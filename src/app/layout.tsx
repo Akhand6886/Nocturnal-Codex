@@ -79,9 +79,8 @@ export const metadata: Metadata = {
   // alternates: { // Already handled by sitemap.ts for the most part
   //   canonical: '/', 
   // },
-  icons: { // Add if you have favicons
-    // icon: '/favicon.ico',
-    // apple: '/apple-touch-icon.png',
+  icons: {
+    icon: '/favicon.ico',
   }
 };
 
@@ -95,10 +94,9 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Nocturnal Codex",
     "url": siteUrl,
-    "logo": `${siteUrl}/images/logo.png`, // Replace with your actual logo URL
-    "sameAs": [ // Optional: Add social media links
-      // "https://twitter.com/yourtwitterhandle",
-      // "https://github.com/yourgithubhandle"
+    "logo": `${siteUrl}/images/logo.png`,
+    "sameAs": [
+      "https://github.com/Akhand6886/Nocturnal-Codex"
     ]
   };
 
@@ -107,11 +105,6 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "Nocturnal Codex",
     "url": siteUrl,
-    "potentialAction": { // Optional: if you have site search
-      "@type": "SearchAction",
-      "target": `${siteUrl}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
   };
 
   return (
