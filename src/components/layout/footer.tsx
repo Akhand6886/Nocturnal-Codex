@@ -41,7 +41,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Nocturnal Codex. All rights reserved. Built by The Nocturnist.
           </p>
           <div className="flex items-center space-x-4">
-            <Link href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub Repository" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="https://github.com/Akhand6886/Nocturnal-Codex" target="_blank" rel="noreferrer" aria-label="GitHub Repository" className="text-muted-foreground hover:text-primary transition-colors">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
