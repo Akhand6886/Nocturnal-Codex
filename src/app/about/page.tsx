@@ -36,7 +36,7 @@ export default function AboutPage() {
         "name": "Nocturnal Codex",
         "logo": {
             "@type": "ImageObject",
-            "url": `${siteUrl}/images/logo.png` // Replace with your actual logo URL
+            "url": `${siteUrl}/images/logo.png`
         }
     }
   };
@@ -92,12 +92,11 @@ export default function AboutPage() {
           </div>
           <div className="relative h-80 md:h-[450px] w-full rounded-lg overflow-hidden shadow-2xl">
               <Image 
-                src="https://placehold.co/600x450.png" 
-                alt="Abstract representation of knowledge" 
+                src="/images/about-hero.png" 
+                alt="Abstract representation of knowledge and code" 
                 width={600}
                 height={450}
                 className="object-cover w-full h-full"
-                data-ai-hint="abstract library"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           </div>
@@ -111,7 +110,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-center text-muted-foreground mb-8">
               Have a question, a correction, or a profound theory to share? Use the form below. Responses are not guaranteed but all coherent signals are processed.
-              Alternatively, reach out via <a href="mailto:contact@nocturnalcortex.dev" className="text-primary hover:underline">contact@nocturnalcortex.dev</a>.
+              Alternatively, reach out via <a href="mailto:contact@nocturnalcodex.dev" className="text-primary hover:underline">contact@nocturnalcodex.dev</a>.
             </p>
             <ContactForm />
           </div>
