@@ -56,30 +56,14 @@ const LEGEND = [
 ];
 
 const Legend: FC = () => (
-  <div
-    style={{
-      position: 'absolute',
-      top: 24,
-      left: 24,
-      zIndex: 10,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 8,
-    }}
-  >
+  <div className="absolute top-6 left-6 z-10 flex flex-col gap-2.5 p-4 rounded-xl border border-border/40 bg-card/75 backdrop-blur-md shadow-lg">
     {LEGEND.map(({ color, label }) => (
-      <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div key={label} className="flex items-center gap-2.5">
         <span
-          style={{
-            width: 14,
-            height: 14,
-            borderRadius: '50%',
-            background: color,
-            border: '2px solid #000',
-            flexShrink: 0,
-          }}
+          className="w-3.5 h-3.5 rounded-full border border-black/10 dark:border-white/10 flex-shrink-0 shadow-sm"
+          style={{ background: color }}
         />
-        <span className="roadmap-font text-[13px] font-semibold text-slate-700">{label}</span>
+        <span className="roadmap-font text-xs font-bold text-muted-foreground">{label}</span>
       </div>
     ))}
   </div>
@@ -163,10 +147,10 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
   }
 
   return (
-    <div className="w-full overflow-x-auto bg-[#fafaf9]">
+    <div className="w-full overflow-x-auto bg-[#fafaf9] dark:bg-black transition-colors duration-300">
       <div
         style={{ height: 2600, minWidth: 1000 }}
-        className="w-full max-w-[1000px] mx-auto relative border-x border-border/10 shadow-sm"
+        className="w-full max-w-[1000px] mx-auto relative border-x border-border/10 shadow-sm bg-transparent"
       >
         <ReactFlowProvider>
         <ReactFlow
@@ -185,14 +169,13 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={true}
-          style={{ background: '#fafaf9' }}
+          style={{ background: 'transparent' }}
         >
           <Legend />
           <Background
             gap={24}
             size={1.5}
             variant={BackgroundVariant.Dots}
-            color="#cbd5e1"
           />
           <FitViewUpdater />
         </ReactFlow>
