@@ -28,8 +28,8 @@ export default function DottedEdge({
       style={{
         ...style,
         strokeWidth: 2,
-        stroke: '#3B82F6',
-        strokeDasharray: '5 4',
+        stroke: 'hsl(var(--primary) / 0.6)',
+        strokeDasharray: '6 4',
       }}
     />
   );
