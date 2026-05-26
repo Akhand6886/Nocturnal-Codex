@@ -66,4 +66,22 @@ svg text tspan {
   svg .skipped rect {
     fill: #496b69 !important;
   }
-  
+
+/* Theme responsive ReactFlow Background Dots */
+.react-flow__background {
+  background-color: #fafaf9;
+  transition: background-color 0.3s ease;
+}
+
+.dark .react-flow__background {
+  background-color: #000000 !important;
+}
+
+.react-flow__background-pattern {
+  stroke: #cbd5e1;
+  transition: stroke 0.3s ease;
+}
+
+.dark .react-flow__background-pattern {
+  stroke: #27272a !important;
+}
