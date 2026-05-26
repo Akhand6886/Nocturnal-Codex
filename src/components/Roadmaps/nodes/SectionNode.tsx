@@ -22,8 +22,7 @@ const SectionNode = ({ data }: NodeProps<SectionNodeType>) => {
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
       <span
-        className="roadmap-font font-extrabold text-[#1a1a1a] dark:text-white"
-        style={{ fontSize: 28, letterSpacing: '-0.5px' }}
+        className="roadmap-font font-extrabold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent text-[26px] block"
       >
         {data.label}
       </span>
