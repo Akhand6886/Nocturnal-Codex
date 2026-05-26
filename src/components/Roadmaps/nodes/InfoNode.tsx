@@ -10,23 +10,16 @@ type InfoNodeType = Node<InfoNodeData, 'info'>;
 const InfoNode = ({ data }: NodeProps<InfoNodeType>) => {
   return (
     <div
-      style={{
-        background: '#f8fafc',
-        border: '1px solid #e2e8f0',
-        borderRadius: 8,
-        maxWidth: 220,
-        padding: '10px 14px',
-        textAlign: 'left',
-        pointerEvents: 'none',
-      }}
+      className="
+        max-w-[220px] p-3.5 rounded-xl border text-left pointer-events-none select-none shadow-sm
+        bg-slate-55/75 text-slate-700 border-slate-200/80
+        dark:bg-zinc-900/60 dark:text-zinc-300 dark:border-zinc-800/80
+      "
     >
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span
-        className="font-sans text-[11px] leading-relaxed"
-        style={{ color: '#475569' }}
-      >
+      <span className="font-sans text-[11px] leading-relaxed block">
         {data.label}
       </span>
 
