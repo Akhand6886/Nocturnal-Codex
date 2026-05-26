@@ -23,32 +23,20 @@ const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
 
   return (
     <div
-      style={{
-        background: '#FEFCE8',
-        border: '2px solid #000',
-        borderRadius: 8,
-        minWidth: 110,
-        padding: '4px 12px',
-        textAlign: 'center',
-        cursor: 'pointer',
-        boxShadow: selected ? '0 0 0 2px #3b82f6' : '2px 2px 0px #000',
-        position: 'relative',
-        transition: 'transform 0.15s ease',
-      }}
-      className="hover:-translate-y-px"
+      className={`
+        min-w-[110px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
+        border-2
+        bg-yellow-50/95 text-stone-800 border-stone-950 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5
+        dark:bg-yellow-500/5 dark:text-yellow-100/90 dark:border-yellow-600/40 dark:shadow-[0_0_10px_rgba(234,179,8,0.04)] dark:hover:shadow-[0_0_15px_rgba(234,179,8,0.18)] dark:hover:border-yellow-500/80
+        ${selected ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}
+      `}
     >
       {badge && (
         <span
+          className="absolute -top-1.5 -left-1.5 w-3 h-3 rounded-full border shadow-sm"
           style={{
-            position: 'absolute',
-            top: -6,
-            left: -6,
-            width: 12,
-            height: 12,
-            borderRadius: '50%',
             background: badge.bg,
-            border: `1.5px solid ${badge.border}`,
-            display: 'block',
+            borderColor: badge.border,
           }}
         />
       )}
@@ -56,7 +44,7 @@ const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-semibold text-[13px] text-[#000] leading-tight">
+      <span className="roadmap-font font-semibold text-xs leading-tight block">
         {data.label}
       </span>
 
