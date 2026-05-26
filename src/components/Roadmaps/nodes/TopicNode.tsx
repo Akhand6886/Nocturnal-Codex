@@ -24,40 +24,29 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
 
   return (
     <div
-      style={{
-        background: '#FEF015',
-        border: '2px solid #000',
-        borderRadius: 8,
-        minWidth: 140,
-        padding: '6px 16px',
-        textAlign: 'center',
-        cursor: 'pointer',
-        boxShadow: selected ? '0 0 0 2px #3b82f6' : '4px 4px 0px #000',
-        position: 'relative',
-        transition: 'transform 0.15s ease',
-      }}
-      className="hover:-translate-y-px"
+      className={`
+        min-w-[140px] px-4 py-2.5 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
+        border-2
+        bg-amber-100/90 text-stone-900 border-stone-950 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5
+        dark:bg-amber-500/10 dark:text-amber-200 dark:border-amber-500/50 dark:shadow-[0_0_15px_rgba(245,158,11,0.08)] dark:hover:shadow-[0_0_25px_rgba(245,158,11,0.25)] dark:hover:border-amber-400
+        ${selected ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}
+      `}
     >
       {badge && (
         <span
+          className="absolute -top-1.5 -left-1.5 w-3.5 h-3.5 rounded-full border shadow-sm"
           style={{
-            position: 'absolute',
-            top: -7,
-            left: -7,
-            width: 14,
-            height: 14,
-            borderRadius: '50%',
             background: badge.bg,
-            border: `1.5px solid ${badge.border}`,
-            display: 'block',
+            borderColor: badge.border,
           }}
+          title={badge.label}
         />
       )}
 
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-bold text-[14px] text-[#000] leading-tight">
+      <span className="roadmap-font font-bold text-xs tracking-wide leading-tight uppercase block">
         {data.label}
       </span>
 
