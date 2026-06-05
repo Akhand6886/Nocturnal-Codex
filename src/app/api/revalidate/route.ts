@@ -1,4 +1,4 @@
-import { revalidateTag } from 'next/cache';
+import { revalidateTag, revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -16,8 +16,9 @@ export async function POST(request: Request) {
     // which is very efficient and ensures all lists and slugs are perfectly up-to-date instantly.
     
     revalidateTag('contentful', 'default');
+    revalidatePath('/', 'layout');
     
-    console.log(`Revalidated contentful tag due to webhook for entry: ${body?.sys?.id}`);
+    console.log(`Revalidated contentful tag and layout path due to webhook for entry: ${body?.sys?.id}`);
     
     return NextResponse.json({ revalidated: true, now: Date.now() });
   } catch (err) {
