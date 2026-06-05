@@ -1,0 +1,200 @@
+{
+  "nodes": [
+    {
+      "id": "h",
+      "type": "section",
+      "position": {
+        "x": 440,
+        "y": 20
+      },
+      "data": {
+        "label": "Game Developer"
+      }
+    },
+    {
+      "id": "lang",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 100
+      },
+      "data": {
+        "label": "Language Selection",
+        "status": "recommended",
+        "description": "Learn the languages powering modern game engines: C++ (high-performance AAA games) or C# (versatile indie games).",
+        "resources": [
+          { "title": "C++ for Game Dev", "url": "https://www.youtube.com/watch?v=18c3MTX0PK0", "type": "video" },
+          { "title": "C# Fundamentals", "url": "https://learn.microsoft.com/en-us/dotnet/csharp/", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "engines",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 200
+      },
+      "data": {
+        "label": "Choose Your Engine",
+        "status": "recommended",
+        "description": "Select an engine that suits your game scope. Unity is great for 2D/3D & mobile, Unreal for high-end graphics, and Godot for open-source simplicity.",
+        "resources": [
+          { "title": "Unity Learning Paths", "url": "https://learn.unity.com/", "type": "course" },
+          { "title": "Unreal Engine Docs", "url": "https://docs.unrealengine.com/", "type": "docs" },
+          { "title": "Godot Engine Docs", "url": "https://docs.godotengine.org/", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "game_loop",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 300
+      },
+      "data": {
+        "label": "Game Loop & Input",
+        "status": "recommended",
+        "description": "Understand core real-time application mechanics: mapping inputs, processing gameplay logic, and updating frames.",
+        "resources": [
+          { "title": "Game Programming Patterns - Game Loop", "url": "https://gameprogrammingpatterns.com/game-loop.html", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "math",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 400
+      },
+      "data": {
+        "label": "Math & Physics",
+        "status": "recommended",
+        "description": "Master trigonometry, linear algebra (vectors, matrices, quaternions), rigidbodies, and collision detection formulas.",
+        "resources": [
+          { "title": "Mathematics for Game Developers", "url": "https://www.youtube.com/playlist?list=PLW3Zl3wyJwWOpDHHPvcjDWKdiFQWDxssR", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "graphics",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 500
+      },
+      "data": {
+        "label": "Graphics & Shaders",
+        "status": "recommended",
+        "description": "Learn rendering pipelines, lighting nodes, post-processing materials, and how to write shaders (HLSL/GLSL).",
+        "resources": [
+          { "title": "The Book of Shaders", "url": "https://thebookofshaders.com/", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "opt",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 600
+      },
+      "data": {
+        "label": "Optimization",
+        "description": "Use object pooling, asset optimization, dynamic batching, and code profiling tools to sustain target frame rates.",
+        "resources": [
+          { "title": "Unity Optimization Guide", "url": "https://unity.com/resources/ultimate-guide-to-profiling-unity-games", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "unreal",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 150
+      },
+      "data": {
+        "label": "Unreal Engine (C++)",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "unity",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 200
+      },
+      "data": {
+        "label": "Unity Engine (C#)",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "godot",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 250
+      },
+      "data": {
+        "label": "Godot Engine",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "vectors",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 380
+      },
+      "data": {
+        "label": "Vectors & Trigonometry",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "raycast",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 425
+      },
+      "data": {
+        "label": "Collisions & Raycasting",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "shaders",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 500
+      },
+      "data": {
+        "label": "HLSL / GLSL Shaders",
+        "status": "recommended"
+      }
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "h", "target": "lang", "type": "roadmap" },
+    { "id": "e2", "source": "lang", "target": "engines", "type": "roadmap" },
+    { "id": "e3", "source": "engines", "target": "game_loop", "type": "roadmap" },
+    { "id": "e4", "source": "game_loop", "target": "math", "type": "roadmap" },
+    { "id": "e5", "source": "math", "target": "graphics", "type": "roadmap" },
+    { "id": "e6", "source": "graphics", "target": "opt", "type": "roadmap" },
+
+    { "id": "ed1", "source": "engines", "target": "unreal", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed2", "source": "engines", "target": "unity", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed3", "source": "engines", "target": "godot", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed4", "source": "math", "target": "vectors", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    { "id": "ed5", "source": "math", "target": "raycast", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    { "id": "ed6", "source": "graphics", "target": "shaders", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" }
+  ]
+}
