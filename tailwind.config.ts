@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-quicksand)'], 
         mono: ['var(--font-inconsolata)'], 
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
       },
   		colors: {
         'gradient-start': 'hsl(var(--primary))',
