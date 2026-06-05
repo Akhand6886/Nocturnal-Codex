@@ -1,0 +1,197 @@
+{
+  "nodes": [
+    {
+      "id": "h",
+      "type": "section",
+      "position": {
+        "x": 440,
+        "y": 20
+      },
+      "data": {
+        "label": "Embedded Systems Specialist"
+      }
+    },
+    {
+      "id": "c_lang",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 100
+      },
+      "data": {
+        "label": "C/C++ Foundation",
+        "status": "recommended",
+        "description": "Master the C language, pointers, structures, and direct memory alignment which are foundational for writing firmware.",
+        "resources": [
+          { "title": "Modern Embedded Systems Programming Course", "url": "https://www.youtube.com/playlist?list=PLPW88idYB9yr87gGTW1S_3u2NupXfcoS0", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "bitwise",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 200
+      },
+      "data": {
+        "label": "Bitwise & Registers",
+        "status": "recommended",
+        "description": "Learn to manipulate individual hardware pins, registers, and memory-mapped I/O using bitwise operators.",
+        "resources": [
+          { "title": "Bitwise Operators in C", "url": "https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "mcu",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 300
+      },
+      "data": {
+        "label": "Microcontrollers",
+        "status": "recommended",
+        "description": "Understand core microcontroller architectures, clock trees, interrupts, and datasheet parsing.",
+        "resources": [
+          { "title": "ARM Cortex-M Architecture", "url": "https://developer.arm.com/architectures/cpu-architecture/cortex-m", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "protocols",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 400
+      },
+      "data": {
+        "label": "Hardware Protocols",
+        "status": "recommended",
+        "description": "Master communication interfaces that connect controllers to sensors, displays, and transceiver ICs.",
+        "resources": [
+          { "title": "Serial Protocols Overview (UART, SPI, I2C)", "url": "https://learn.sparkfun.com/tutorials/serial-communication", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "rtos",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 500
+      },
+      "data": {
+        "label": "Real-Time OS (RTOS)",
+        "status": "recommended",
+        "description": "Learn multitasking, task prioritization, scheduling, mutexes, semaphores, and queue-based message sharing.",
+        "resources": [
+          { "title": "FreeRTOS Quick Start Guide", "url": "https://www.freertos.org/FreeRTOS-quick-start-guide.html", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "safety",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 600
+      },
+      "data": {
+        "label": "Safety & Rust",
+        "description": "Adopt safety standards like MISRA C and modern alternatives like Embedded Rust for memory safety.",
+        "resources": [
+          { "title": "The Embedded Rust Book", "url": "https://docs.rust-embedded.org/book/", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "pointers",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 100
+      },
+      "data": {
+        "label": "Pointers & Memory",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "stm32",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 300
+      },
+      "data": {
+        "label": "STM32 / ARM Cortex",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "esp32",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 345
+      },
+      "data": {
+        "label": "ESP32 & IoT",
+        "status": "alternative"
+      }
+    },
+    {
+      "id": "uart",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 400
+      },
+      "data": {
+        "label": "UART / Serial",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "i2c_spi",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 445
+      },
+      "data": {
+        "label": "I2C & SPI",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "rust_emb",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 600
+      },
+      "data": {
+        "label": "Rust for Embedded",
+        "status": "recommended"
+      }
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "h", "target": "c_lang", "type": "roadmap" },
+    { "id": "e2", "source": "c_lang", "target": "bitwise", "type": "roadmap" },
+    { "id": "e3", "source": "bitwise", "target": "mcu", "type": "roadmap" },
+    { "id": "e4", "source": "mcu", "target": "protocols", "type": "roadmap" },
+    { "id": "e5", "source": "protocols", "target": "rtos", "type": "roadmap" },
+    { "id": "e6", "source": "rtos", "target": "safety", "type": "roadmap" },
+
+    { "id": "ed1", "source": "c_lang", "target": "pointers", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed2", "source": "mcu", "target": "stm32", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed3", "source": "mcu", "target": "esp32", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed4", "source": "protocols", "target": "uart", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    { "id": "ed5", "source": "protocols", "target": "i2c_spi", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    { "id": "ed6", "source": "safety", "target": "rust_emb", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" }
+  ]
+}
