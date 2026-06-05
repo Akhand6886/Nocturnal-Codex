@@ -50,20 +50,25 @@ const edgeTypes = {
 };
 
 const LEGEND = [
-  { color: '#a855f7', label: 'Personal Recommendation' },
-  { color: '#22c55e', label: 'Alternative Option' },
-  { color: '#94a3b8', label: 'Order and avoid on roadmap' },
+  { color: '#a855f7', border: '#7e22ce', label: 'Personal Recommendation', icon: '★' },
+  { color: '#22c55e', border: '#15803d', label: 'Alternative Option', icon: '◆' },
+  { color: '#94a3b8', border: '#64748b', label: 'Order / Avoid on roadmap', icon: '○' },
 ];
 
 const Legend: FC = () => (
-  <div className="absolute top-6 left-6 z-10 flex flex-col gap-2.5 p-4 rounded-xl border border-border/40 bg-card/75 backdrop-blur-md shadow-lg">
-    {LEGEND.map(({ color, label }) => (
-      <div key={label} className="flex items-center gap-2.5">
+  <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5 p-3.5 rounded-xl border border-border/30 bg-card/80 backdrop-blur-xl shadow-lg dark:bg-card/60">
+    <span className="roadmap-font text-[10px] font-bold text-muted-foreground/70 uppercase tracking-widest mb-1 px-0.5">
+      Legend
+    </span>
+    {LEGEND.map(({ color, border, label, icon }) => (
+      <div key={label} className="flex items-center gap-2.5 group">
         <span
-          className="w-3.5 h-3.5 rounded-full border border-black/10 dark:border-white/10 flex-shrink-0 shadow-sm"
-          style={{ background: color }}
+          className="w-3 h-3 rounded-full flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10 shadow-sm transition-transform group-hover:scale-125"
+          style={{ background: color, borderColor: border }}
         />
-        <span className="roadmap-font text-xs font-bold text-muted-foreground">{label}</span>
+        <span className="roadmap-font text-[11px] font-semibold text-muted-foreground/80 group-hover:text-foreground transition-colors">
+          {label}
+        </span>
       </div>
     ))}
   </div>
@@ -130,9 +135,16 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
   if (loading) {
     return (
       <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
-          <Spinner className="text-primary w-7 h-7" />
-          <p className="text-sm text-muted-foreground animate-pulse">Loading roadmap…</p>
+        <div className="flex flex-col items-center gap-4">
+          <div className="relative">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Spinner className="text-primary w-6 h-6" />
+            </div>
+          </div>
+          <div className="text-center">
+            <p className="text-sm font-medium text-foreground">Loading roadmap</p>
+            <p className="text-xs text-muted-foreground mt-0.5 animate-pulse">Preparing your learning path…</p>
+          </div>
         </div>
       </div>
     );
@@ -140,8 +152,14 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
 
   if (error || !roadmapData) {
     return (
-      <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center text-destructive">
-        <p className="font-semibold">Error: {error || 'Data could not be loaded.'}</p>
+      <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center">
+        <div className="text-center max-w-md px-6">
+          <div className="w-16 h-16 rounded-2xl bg-destructive/10 flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl">⚠️</span>
+          </div>
+          <p className="font-semibold text-foreground mb-2">Failed to load roadmap</p>
+          <p className="text-sm text-muted-foreground">{error || 'Data could not be loaded. Please try refreshing the page.'}</p>
+        </div>
       </div>
     );
   }
