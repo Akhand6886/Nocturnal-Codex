@@ -164,10 +164,15 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
     );
   }
 
+  const maxNodeY = roadmapData?.nodes.reduce((max, node) => {
+    return Math.max(max, node.position.y);
+  }, 0) || 600;
+  const canvasHeight = maxNodeY + 140;
+
   return (
     <div className="w-full overflow-x-auto bg-[#fafaf9] dark:bg-black transition-colors duration-300">
       <div
-        style={{ height: 2600, minWidth: 1000 }}
+        style={{ height: canvasHeight, minWidth: 1000 }}
         className="w-full max-w-[1000px] mx-auto relative border-x border-border/10 shadow-sm bg-transparent"
       >
         <ReactFlowProvider>
