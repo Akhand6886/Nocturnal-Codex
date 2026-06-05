@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Quicksand, Inconsolata, Balsamiq_Sans } from 'next/font/google';
+import { Quicksand, Inconsolata, Balsamiq_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Navbar } from '@/components/layout/navbar';
@@ -21,6 +21,12 @@ const inconsolata = Inconsolata({
 const balsamiqSans = Balsamiq_Sans({
   weight: ['400', '700'],
   variable: '--font-balsamiq',
+  subsets: ['latin'],
+});
+
+const playfairDisplay = Playfair_Display({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-playfair',
   subsets: ['latin'],
 });
 
@@ -119,7 +125,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className={`${quicksand.variable} ${inconsolata.variable} ${balsamiqSans.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
+      <body className={`${quicksand.variable} ${inconsolata.variable} ${balsamiqSans.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <ThemeProvider>
           <div className="flex-grow">
             <Navbar />
