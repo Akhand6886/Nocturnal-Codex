@@ -1,0 +1,158 @@
+{
+  "nodes": [
+    {
+      "id": "h",
+      "type": "section",
+      "position": {
+        "x": 440,
+        "y": 20
+      },
+      "data": {
+        "label": "Mobile Developer"
+      }
+    },
+    {
+      "id": "choice",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 100
+      },
+      "data": {
+        "label": "Choose Your Path",
+        "status": "recommended",
+        "description": "Choose between platform-native development (Swift for iOS, Kotlin for Android) or cross-platform framework development (Flutter or React Native).",
+        "resources": [
+          { "title": "SwiftUI Tutorials", "url": "https://developer.apple.com/tutorials/swiftui", "type": "course" },
+          { "title": "Android Developer Guides", "url": "https://developer.android.com/courses", "type": "course" },
+          { "title": "Flutter Documentation", "url": "https://docs.flutter.dev/", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "ui",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 200
+      },
+      "data": {
+        "label": "Mobile UI & Navigation",
+        "status": "recommended",
+        "description": "Master stack-based, tab-bar, and drawer navigation patterns. Learn gesture recognizers and mobile screen layout rules.",
+        "resources": [
+          { "title": "Apple Human Interface Guidelines", "url": "https://developer.apple.com/design/human-interface-guidelines/", "type": "docs" },
+          { "title": "Google Material Design for Mobile", "url": "https://m3.material.io/", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "data",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 300
+      },
+      "data": {
+        "label": "Data & Offline Storage",
+        "status": "recommended",
+        "description": "Handle JSON web requests. Cache and synchronize local datasets using lightweight databases (SQLite, Room, Hive).",
+        "resources": [
+          { "title": "Local Storage & Caching Overview", "url": "https://developer.android.com/training/data-storage", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "hardware",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 400
+      },
+      "data": {
+        "label": "Hardware Integration",
+        "status": "recommended",
+        "description": "Access device-specific functionalities such as Camera feed, GPS location telemetry, Biometrics, and local file storage folders.",
+        "resources": [
+          { "title": "Accessing Device Sensors & Hardware", "url": "https://reactnative.dev/docs/permissions", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "stores",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 500
+      },
+      "data": {
+        "label": "App Store Deployment",
+        "description": "Understand code signing certificates, TestFlight beta staging, App Store Connect requirements, and Google Play console publishing steps.",
+        "resources": [
+          { "title": "Publishing iOS Apps Guide", "url": "https://developer.apple.com/support/app-store/", "type": "docs" },
+          { "title": "Publishing Android Apps Guide", "url": "https://developer.android.com/studio/publish", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "ios",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 80
+      },
+      "data": {
+        "label": "Native iOS (Swift)",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "android",
+      "type": "subtopic",
+      "position": {
+        "x": 200,
+        "y": 125
+      },
+      "data": {
+        "label": "Native Android (Kotlin)",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "flutter",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 80
+      },
+      "data": {
+        "label": "Flutter (Dart)",
+        "status": "recommended"
+      }
+    },
+    {
+      "id": "rn",
+      "type": "subtopic",
+      "position": {
+        "x": 700,
+        "y": 125
+      },
+      "data": {
+        "label": "React Native (JS/TS)",
+        "status": "alternative"
+      }
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "h", "target": "choice", "type": "roadmap" },
+    { "id": "e2", "source": "choice", "target": "ui", "type": "roadmap" },
+    { "id": "e3", "source": "ui", "target": "data", "type": "roadmap" },
+    { "id": "e4", "source": "data", "target": "hardware", "type": "roadmap" },
+    { "id": "e5", "source": "hardware", "target": "stores", "type": "roadmap" },
+
+    { "id": "ed1", "source": "choice", "target": "ios", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed2", "source": "choice", "target": "android", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed3", "source": "choice", "target": "flutter", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    { "id": "ed4", "source": "choice", "target": "rn", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" }
+  ]
+}
