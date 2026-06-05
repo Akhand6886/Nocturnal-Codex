@@ -6,6 +6,10 @@ import { notFound } from "next/navigation";
 import { fetchBlogPosts, fetchBlogPostBySlug } from "@/lib/contentful";
 import { ContentfulRichTextRenderer } from "@/components/contentful/rich-text-renderer";
 import { draftMode } from 'next/headers';
+import { format } from 'date-fns';
+import { ArrowLeft } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const defaultOgImage = `${siteUrl}/images/og-default.png`; 
 
@@ -28,7 +32,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-// Page component - no await on params
+// Page component
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
   const { isEnabled } = await draftMode();
@@ -38,32 +42,79 @@ export default async function PostPage({ params }: PageProps) {
     notFound();
   }
 
+  const formattedDate = post.date ? format(new Date(post.date), "MMMM d, yyyy") : null;
+
   return (
-    <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
-      <Link href="/blog" className="hover:underline text-primary"> 
-        ← Back to posts
-      </Link>
-      {post.featuredImage && (
-        <div className="relative aspect-video w-full overflow-hidden rounded-xl">
-            <Image
-            src={post.featuredImage.url}
-            alt={post.featuredImage.alt}
-            width={post.featuredImage.width}
-            height={post.featuredImage.height}
-            className="object-cover"
-            data-ai-hint={post.featuredImage.dataAiHint || "blog banner"}
-            priority
-            />
+    <main className="min-h-screen">
+      <article className="editorial-article">
+        {/* Back link */}
+        <Link href="/blog" className="editorial-back-link">
+          <ArrowLeft className="h-4 w-4" />
+          Back to posts
+        </Link>
+
+        {/* Category breadcrumb */}
+        {post.category && (
+          <div className="editorial-breadcrumb">
+            <span>Blog</span>
+            <span className="separator">·</span>
+            <span>{post.category}</span>
+          </div>
+        )}
+
+        {/* Headline */}
+        <h1 className="editorial-headline">{post.title}</h1>
+
+        {/* Deck / subtitle */}
+        {post.shortDescription && (
+          <p className="editorial-deck">{post.shortDescription}</p>
+        )}
+
+        {/* Meta: author + date */}
+        <div className="editorial-meta">
+          {post.author && <span className="author">{post.author}</span>}
+          {post.author && formattedDate && <span className="separator-dot" />}
+          {formattedDate && <time dateTime={post.date}>{formattedDate}</time>}
         </div>
-      )}
-      <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-      <p className="text-sm text-muted-foreground mb-4">Published: {new Date(post.date).toLocaleDateString()}</p>
-      {post.content && <ContentfulRichTextRenderer content={post.content} />}
+
+        {/* Featured image */}
+        {post.featuredImage && (
+          <div className="editorial-hero-image">
+            <Image
+              src={post.featuredImage.url}
+              alt={post.featuredImage.alt}
+              width={post.featuredImage.width}
+              height={post.featuredImage.height}
+              className="object-cover w-full"
+              data-ai-hint={post.featuredImage.dataAiHint || "blog banner"}
+              priority
+            />
+          </div>
+        )}
+
+        {/* Article body */}
+        {post.content && (
+          <div className="editorial-body">
+            <ContentfulRichTextRenderer content={post.content} />
+          </div>
+        )}
+
+        {/* Tags */}
+        {post.tags && post.tags.length > 0 && (
+          <div className="editorial-tags">
+            {post.tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-xs font-semibold px-3 py-1">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )}
+      </article>
     </main>
   );
 }
 
-// generateMetadata - no await on params
+// generateMetadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const { isEnabled } = await draftMode();
