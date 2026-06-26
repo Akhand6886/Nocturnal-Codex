@@ -40,10 +40,17 @@ export function ContactForm() {
   });
 
   async function onSubmit(data: ContactFormValues) {
-    console.log("Form submitted (demonstration only):", data);
     try {
-      // Simulate a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Failed to send message');
+      }
 
       toast({
         title: "Message Received",
@@ -51,15 +58,13 @@ export function ContactForm() {
         variant: "default",
       });
       form.reset();
-    } catch (error) {
-      console.error("Error in form submission simulation: ", error);
+    } catch (error: any) {
+      console.error("Contact form error:", error);
       toast({
         title: "Error",
-        description: "Something went wrong during the form submission simulation.",
+        description: error.message || "Something went wrong. Please try again.",
         variant: "destructive",
       });
-    } finally {
-       // isSubmitting state handles disabling automatically
     }
   }
 
