@@ -4,7 +4,7 @@ description: "Step-by-step guide to becoming a modern frontend developer."
 category: "Core"
 difficulty: "Beginner"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 2
 relatedLanguages:
   - html
