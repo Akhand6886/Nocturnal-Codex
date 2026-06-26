@@ -4,7 +4,7 @@ description: "Building native and cross-platform apps for iOS and Android."
 category: "Core"
 difficulty: "Intermediate"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 8
 relatedLanguages:
   - swift
