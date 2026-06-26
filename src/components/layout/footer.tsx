@@ -20,8 +20,10 @@ export function Footer() {
             <ul className="space-y-2">
               <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
               <li><Link href="/roadmaps" className="text-sm text-muted-foreground hover:text-primary transition-colors">Roadmaps</Link></li>
-              <li><Link href="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
+              <li><Link href="/projects" className="text-sm text-muted-foreground hover:text-primary transition-colors">Projects</Link></li>
               <li><Link href="/languages" className="text-sm text-muted-foreground hover:text-primary transition-colors">Languages</Link></li>
+              <li><Link href="/mathematics" className="text-sm text-muted-foreground hover:text-primary transition-colors">Mathematics</Link></li>
+              <li><Link href="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
             </ul>
           </div>
 
@@ -30,6 +32,8 @@ export function Footer() {
             <h4 className="text-md font-semibold text-foreground mb-3">Reference</h4>
             <ul className="space-y-2">
               <li><Link href="/think-tank" className="text-sm text-muted-foreground hover:text-primary transition-colors">Think Tank</Link></li>
+              <li><Link href="/categories" className="text-sm text-muted-foreground hover:text-primary transition-colors">Categories</Link></li>
+              <li><Link href="/tags" className="text-sm text-muted-foreground hover:text-primary transition-colors">Tags</Link></li>
               <li><Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About</Link></li>
               <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
             </ul>
