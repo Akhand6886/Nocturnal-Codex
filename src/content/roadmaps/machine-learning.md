@@ -4,7 +4,7 @@ description: "Master the algorithms and data science techniques powering AI."
 category: "Specialized"
 difficulty: "Advanced"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 4
 relatedLanguages:
   - python
