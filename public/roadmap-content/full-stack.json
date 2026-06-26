@@ -3,165 +3,123 @@
     {
       "id": "h",
       "type": "section",
-      "position": {
-        "x": 440,
-        "y": 20
-      },
+      "position": { "x": 440, "y": 20 },
+      "data": { "label": "Full Stack Developer" }
+    },
+    {
+      "id": "frontend",
+      "type": "topic",
+      "position": { "x": 440, "y": 100 },
       "data": {
-        "label": "Full Stack Developer"
+        "label": "Frontend Foundation",
+        "status": "recommended",
+        "description": "Master HTML, CSS, and JavaScript. Learn a modern framework like React or Vue.",
+        "resources": [
+          { "title": "MDN Web Docs", "url": "https://developer.mozilla.org/en-US/", "type": "docs" },
+          { "title": "React Documentation", "url": "https://react.dev/", "type": "docs" }
+        ]
       }
     },
     {
-      "id": "fe",
+      "id": "backend",
       "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 100
-      },
+      "position": { "x": 440, "y": 200 },
       "data": {
-        "label": "Frontend Basics",
-        "status": "recommended"
-      }
-    },
-    {
-      "id": "be",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 200
-      },
-      "data": {
-        "label": "Backend Basics",
-        "status": "recommended"
+        "label": "Backend Foundation",
+        "status": "recommended",
+        "description": "Learn a backend language and framework (e.g., Node.js + Express, Python + Django).",
+        "resources": [
+          { "title": "Node.js Guide", "url": "https://nodejs.org/en/docs/guides/", "type": "docs" }
+        ]
       }
     },
     {
       "id": "db",
       "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 300
-      },
+      "position": { "x": 440, "y": 300 },
       "data": {
         "label": "Databases",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "Understand Relational (PostgreSQL, MySQL) and NoSQL (MongoDB) databases.",
+        "resources": [
+          { "title": "Prisma Data Guide", "url": "https://www.prisma.io/dataguide/", "type": "article" }
+        ]
+      }
+    },
+    {
+      "id": "api",
+      "type": "topic",
+      "position": { "x": 440, "y": 400 },
+      "data": {
+        "label": "APIs (REST/GraphQL)",
+        "status": "recommended",
+        "description": "Learn how to connect the frontend to the backend via APIs.",
+        "resources": [
+          { "title": "How to GraphQL", "url": "https://www.howtographql.com/", "type": "course" }
+        ]
       }
     },
     {
       "id": "auth",
       "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 400
-      },
+      "position": { "x": 440, "y": 500 },
       "data": {
         "label": "Authentication",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "Implement user login and registration securely using JWT, OAuth, or sessions.",
+        "resources": [
+          { "title": "Auth0 Documentation", "url": "https://auth0.com/docs", "type": "docs" }
+        ]
       }
     },
     {
       "id": "deployment",
       "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 500
-      },
+      "position": { "x": 440, "y": 600 },
       "data": {
         "label": "Deployment",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "Deploy your full-stack applications using platforms like Vercel, Heroku, or AWS.",
+        "resources": [
+          { "title": "Vercel Docs", "url": "https://vercel.com/docs", "type": "docs" }
+        ]
       }
     },
     {
       "id": "react",
       "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 100
-      },
-      "data": {
-        "label": "React",
-        "status": "recommended"
-      }
+      "position": { "x": 200, "y": 100 },
+      "data": { "label": "React", "status": "recommended" }
     },
     {
       "id": "node",
       "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 200
-      },
-      "data": {
-        "label": "Node.js",
-        "status": "recommended"
-      }
+      "position": { "x": 700, "y": 200 },
+      "data": { "label": "Node.js", "status": "recommended" }
     },
     {
-      "id": "pg",
+      "id": "postgres",
       "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 300
-      },
-      "data": {
-        "label": "PostgreSQL",
-        "status": "recommended"
-      }
+      "position": { "x": 200, "y": 300 },
+      "data": { "label": "PostgreSQL", "status": "recommended" }
+    },
+    {
+      "id": "mongo",
+      "type": "subtopic",
+      "position": { "x": 200, "y": 345 },
+      "data": { "label": "MongoDB", "status": "alternative" }
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "fe",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "fe",
-      "target": "be",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "be",
-      "target": "db",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "db",
-      "target": "auth",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "auth",
-      "target": "deployment",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "fe",
-      "target": "react",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "be",
-      "target": "node",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed3",
-      "source": "db",
-      "target": "pg",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    }
+    { "id": "e1", "source": "h", "target": "frontend", "type": "roadmap" },
+    { "id": "e2", "source": "frontend", "target": "backend", "type": "roadmap" },
+    { "id": "e3", "source": "backend", "target": "db", "type": "roadmap" },
+    { "id": "e4", "source": "db", "target": "api", "type": "roadmap" },
+    { "id": "e5", "source": "api", "target": "auth", "type": "roadmap" },
+    { "id": "e6", "source": "auth", "target": "deployment", "type": "roadmap" },
+    { "id": "ed1", "source": "frontend", "target": "react", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed2", "source": "backend", "target": "node", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    { "id": "ed3", "source": "db", "target": "postgres", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed4", "source": "db", "target": "mongo", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" }
   ]
 }
