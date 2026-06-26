@@ -3,170 +3,451 @@
     {
       "id": "h",
       "type": "section",
-      "position": { "x": 440, "y": 20 },
-      "data": { "label": "DevOps Engineer" }
+      "position": {
+        "x": 440,
+        "y": 20
+      },
+      "data": {
+        "label": "DevOps Engineer"
+      }
     },
     {
       "id": "os",
       "type": "topic",
-      "position": { "x": 440, "y": 100 },
+      "position": {
+        "x": 440,
+        "y": 100
+      },
       "data": {
         "label": "Operating Systems",
         "status": "recommended",
         "description": "Understand Linux administration, process management, file systems, and system calls. Linux is the backbone of DevOps.",
         "resources": [
-          { "title": "Linux Administration Handbook", "url": "https://www.oreilly.com/library/view/unix-and-linux/9780134278308/", "type": "docs" },
-          { "title": "Linux Journey", "url": "https://linuxjourney.com/", "type": "course" }
+          {
+            "title": "Linux Administration Handbook",
+            "url": "https://www.oreilly.com/library/view/unix-and-linux/9780134278308/",
+            "type": "docs"
+          },
+          {
+            "title": "Linux Journey",
+            "url": "https://linuxjourney.com/",
+            "type": "course"
+          }
         ]
       }
     },
     {
       "id": "shell",
       "type": "topic",
-      "position": { "x": 440, "y": 200 },
+      "position": {
+        "x": 440,
+        "y": 200
+      },
       "data": {
         "label": "Shell Scripting",
         "status": "recommended",
         "description": "Automate repetitive tasks with Bash scripting. Learn variables, loops, conditionals, pipes, and cron jobs.",
         "resources": [
-          { "title": "Bash Scripting Tutorial", "url": "https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/", "type": "article" }
+          {
+            "title": "Bash Scripting Tutorial",
+            "url": "https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/",
+            "type": "article"
+          }
         ]
       }
     },
     {
       "id": "net",
       "type": "topic",
-      "position": { "x": 440, "y": 300 },
+      "position": {
+        "x": 440,
+        "y": 300
+      },
       "data": {
         "label": "Networking & Security",
         "status": "recommended",
         "description": "Learn DNS, HTTP/S, firewalls, VPNs, load balancers, reverse proxies (Nginx), and SSL certificate management.",
         "resources": [
-          { "title": "Nginx Documentation", "url": "https://nginx.org/en/docs/", "type": "docs" },
-          { "title": "Networking Basics for DevOps", "url": "https://www.youtube.com/watch?v=IPvYjXCsTg8", "type": "video" }
+          {
+            "title": "Nginx Documentation",
+            "url": "https://nginx.org/en/docs/",
+            "type": "docs"
+          },
+          {
+            "title": "Networking Basics for DevOps",
+            "url": "https://www.youtube.com/watch?v=IPvYjXCsTg8",
+            "type": "video"
+          }
         ]
       }
     },
     {
       "id": "setup",
       "type": "topic",
-      "position": { "x": 440, "y": 400 },
+      "position": {
+        "x": 440,
+        "y": 400
+      },
       "data": {
         "label": "Server Setup",
         "status": "recommended",
         "description": "Provision and configure web servers, set up SSH, manage users, configure firewalls (UFW/iptables), and deploy applications.",
         "resources": [
-          { "title": "DigitalOcean Server Setup Guides", "url": "https://www.digitalocean.com/community/tutorials", "type": "article" }
+          {
+            "title": "DigitalOcean Server Setup Guides",
+            "url": "https://www.digitalocean.com/community/tutorials",
+            "type": "article"
+          }
         ]
       }
     },
     {
       "id": "cicd",
       "type": "topic",
-      "position": { "x": 440, "y": 500 },
+      "position": {
+        "x": 440,
+        "y": 500
+      },
       "data": {
         "label": "CI/CD",
         "status": "recommended",
         "description": "Build automated pipelines for testing, building, and deploying code using GitHub Actions, Jenkins, or GitLab CI.",
         "resources": [
-          { "title": "GitHub Actions Documentation", "url": "https://docs.github.com/en/actions", "type": "docs" },
-          { "title": "Jenkins Getting Started", "url": "https://www.jenkins.io/doc/book/getting-started/", "type": "docs" }
+          {
+            "title": "GitHub Actions Documentation",
+            "url": "https://docs.github.com/en/actions",
+            "type": "docs"
+          },
+          {
+            "title": "Jenkins Getting Started",
+            "url": "https://www.jenkins.io/doc/book/getting-started/",
+            "type": "docs"
+          }
         ]
       }
     },
     {
       "id": "iac",
       "type": "topic",
-      "position": { "x": 440, "y": 600 },
+      "position": {
+        "x": 440,
+        "y": 600
+      },
       "data": {
         "label": "Infrastructure as Code",
         "status": "recommended",
         "description": "Define and manage infrastructure programmatically using Terraform for provisioning and Ansible for configuration management.",
         "resources": [
-          { "title": "Terraform Getting Started", "url": "https://developer.hashicorp.com/terraform/tutorials", "type": "course" },
-          { "title": "Ansible Documentation", "url": "https://docs.ansible.com/", "type": "docs" }
+          {
+            "title": "Terraform Getting Started",
+            "url": "https://developer.hashicorp.com/terraform/tutorials",
+            "type": "course"
+          },
+          {
+            "title": "Ansible Documentation",
+            "url": "https://docs.ansible.com/",
+            "type": "docs"
+          }
         ]
       }
     },
     {
       "id": "containers",
       "type": "topic",
-      "position": { "x": 440, "y": 700 },
+      "position": {
+        "x": 440,
+        "y": 700
+      },
       "data": {
         "label": "Containers",
         "status": "recommended",
         "description": "Package applications in lightweight, portable containers with Docker. Learn images, volumes, networks, and Docker Compose.",
         "resources": [
-          { "title": "Docker Getting Started", "url": "https://docs.docker.com/get-started/", "type": "docs" },
-          { "title": "Docker Mastery Course", "url": "https://www.udemy.com/course/docker-mastery/", "type": "course" }
+          {
+            "title": "Docker Getting Started",
+            "url": "https://docs.docker.com/get-started/",
+            "type": "docs"
+          },
+          {
+            "title": "Docker Mastery Course",
+            "url": "https://www.udemy.com/course/docker-mastery/",
+            "type": "course"
+          }
         ]
       }
     },
     {
       "id": "orch",
       "type": "topic",
-      "position": { "x": 440, "y": 800 },
+      "position": {
+        "x": 440,
+        "y": 800
+      },
       "data": {
         "label": "Orchestration",
         "status": "recommended",
         "description": "Deploy and manage containers at scale with Kubernetes. Learn pods, services, deployments, ingress, and Helm charts.",
         "resources": [
-          { "title": "Kubernetes Documentation", "url": "https://kubernetes.io/docs/home/", "type": "docs" },
-          { "title": "KodeKloud - Kubernetes for Beginners", "url": "https://kodekloud.com/courses/kubernetes-for-the-absolute-beginners/", "type": "course" }
+          {
+            "title": "Kubernetes Documentation",
+            "url": "https://kubernetes.io/docs/home/",
+            "type": "docs"
+          },
+          {
+            "title": "KodeKloud - Kubernetes for Beginners",
+            "url": "https://kodekloud.com/courses/kubernetes-for-the-absolute-beginners/",
+            "type": "course"
+          }
         ]
       }
     },
     {
       "id": "linux",
       "type": "subtopic",
-      "position": { "x": 200, "y": 100 },
-      "data": { "label": "Linux", "status": "recommended" }
+      "position": {
+        "x": 200,
+        "y": 100
+      },
+      "data": {
+        "label": "Linux",
+        "status": "recommended",
+        "description": "The open-source Unix-like operating system kernel that serves as the foundation for modern cloud and server infrastructure.",
+        "resources": [
+          {
+            "title": "Linux Journey",
+            "url": "https://linuxjourney.com/",
+            "type": "course"
+          },
+          {
+            "title": "The Linux Command Line (PDF)",
+            "url": "https://linuxcommand.org/tlcl.php",
+            "type": "docs"
+          }
+        ]
+      }
     },
     {
       "id": "bash",
       "type": "subtopic",
-      "position": { "x": 200, "y": 200 },
-      "data": { "label": "Bash", "status": "recommended" }
+      "position": {
+        "x": 200,
+        "y": 200
+      },
+      "data": {
+        "label": "Bash",
+        "status": "recommended",
+        "description": "The Bourne Again SHell, a Unix shell and command language used as the default command interpreter on most Linux systems.",
+        "resources": [
+          {
+            "title": "Bash Scripting Guide for Beginners",
+            "url": "https://tldp.org/LDP/Bash-Beginners-Guide/html/",
+            "type": "docs"
+          },
+          {
+            "title": "Learn Bash Scripting - FreeCodeCamp",
+            "url": "https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/",
+            "type": "article"
+          }
+        ]
+      }
     },
     {
       "id": "docker",
       "type": "subtopic",
-      "position": { "x": 200, "y": 700 },
-      "data": { "label": "Docker", "status": "recommended" }
+      "position": {
+        "x": 200,
+        "y": 700
+      },
+      "data": {
+        "label": "Docker",
+        "status": "recommended",
+        "description": "A platform for developing, shipping, and running applications inside lightweight, isolated software containers.",
+        "resources": [
+          {
+            "title": "Docker Getting Started",
+            "url": "https://docs.docker.com/get-started/",
+            "type": "docs"
+          },
+          {
+            "title": "Docker Labs",
+            "url": "https://github.com/docker/labs",
+            "type": "github"
+          }
+        ]
+      }
     },
     {
       "id": "k8s",
       "type": "subtopic",
-      "position": { "x": 200, "y": 800 },
-      "data": { "label": "Kubernetes", "status": "recommended" }
+      "position": {
+        "x": 200,
+        "y": 800
+      },
+      "data": {
+        "label": "Kubernetes",
+        "status": "recommended",
+        "description": "An open-source container orchestration system for automating software deployment, scaling, and management.",
+        "resources": [
+          {
+            "title": "Kubernetes Interactive Tutorials",
+            "url": "https://kubernetes.io/docs/tutorials/",
+            "type": "course"
+          },
+          {
+            "title": "KubeAcademy by VMware",
+            "url": "https://kube.academy/",
+            "type": "course"
+          }
+        ]
+      }
     },
     {
       "id": "terraform",
       "type": "subtopic",
-      "position": { "x": 700, "y": 600 },
-      "data": { "label": "Terraform", "status": "recommended" }
+      "position": {
+        "x": 700,
+        "y": 600
+      },
+      "data": {
+        "label": "Terraform",
+        "status": "recommended",
+        "description": "An open-source infrastructure as code software tool created by HashiCorp to define and provision cloud infrastructure.",
+        "resources": [
+          {
+            "title": "Terraform Tutorials on Developer Portal",
+            "url": "https://developer.hashicorp.com/terraform/tutorials",
+            "type": "course"
+          },
+          {
+            "title": "Terraform Registry",
+            "url": "https://registry.terraform.io/",
+            "type": "docs"
+          }
+        ]
+      }
     },
     {
       "id": "ansible",
       "type": "subtopic",
-      "position": { "x": 700, "y": 645 },
-      "data": { "label": "Ansible", "status": "alternative" }
+      "position": {
+        "x": 700,
+        "y": 645
+      },
+      "data": {
+        "label": "Ansible",
+        "status": "alternative",
+        "description": "An open-source IT automation engine that automates provisioning, configuration management, application deployment, and orchestration.",
+        "resources": [
+          {
+            "title": "Ansible Getting Started",
+            "url": "https://docs.ansible.com/ansible/latest/getting_started/index.html",
+            "type": "docs"
+          },
+          {
+            "title": "Ansible Galaxy",
+            "url": "https://galaxy.ansible.com/",
+            "type": "tool"
+          }
+        ]
+      }
     }
   ],
   "edges": [
-    { "id": "e1", "source": "h", "target": "os", "type": "roadmap" },
-    { "id": "e2", "source": "os", "target": "shell", "type": "roadmap" },
-    { "id": "e3", "source": "shell", "target": "net", "type": "roadmap" },
-    { "id": "e4", "source": "net", "target": "setup", "type": "roadmap" },
-    { "id": "e5", "source": "setup", "target": "cicd", "type": "roadmap" },
-    { "id": "e6", "source": "cicd", "target": "iac", "type": "roadmap" },
-    { "id": "e7", "source": "iac", "target": "containers", "type": "roadmap" },
-    { "id": "e8", "source": "containers", "target": "orch", "type": "roadmap" },
-    { "id": "ed1", "source": "os", "target": "linux", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed2", "source": "shell", "target": "bash", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed3", "source": "containers", "target": "docker", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed4", "source": "orch", "target": "k8s", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed5", "source": "iac", "target": "terraform", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
-    { "id": "ed6", "source": "iac", "target": "ansible", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" }
+    {
+      "id": "e1",
+      "source": "h",
+      "target": "os",
+      "type": "roadmap"
+    },
+    {
+      "id": "e2",
+      "source": "os",
+      "target": "shell",
+      "type": "roadmap"
+    },
+    {
+      "id": "e3",
+      "source": "shell",
+      "target": "net",
+      "type": "roadmap"
+    },
+    {
+      "id": "e4",
+      "source": "net",
+      "target": "setup",
+      "type": "roadmap"
+    },
+    {
+      "id": "e5",
+      "source": "setup",
+      "target": "cicd",
+      "type": "roadmap"
+    },
+    {
+      "id": "e6",
+      "source": "cicd",
+      "target": "iac",
+      "type": "roadmap"
+    },
+    {
+      "id": "e7",
+      "source": "iac",
+      "target": "containers",
+      "type": "roadmap"
+    },
+    {
+      "id": "e8",
+      "source": "containers",
+      "target": "orch",
+      "type": "roadmap"
+    },
+    {
+      "id": "ed1",
+      "source": "os",
+      "target": "linux",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed2",
+      "source": "shell",
+      "target": "bash",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed3",
+      "source": "containers",
+      "target": "docker",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed4",
+      "source": "orch",
+      "target": "k8s",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed5",
+      "source": "iac",
+      "target": "terraform",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "ed6",
+      "source": "iac",
+      "target": "ansible",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    }
   ]
 }

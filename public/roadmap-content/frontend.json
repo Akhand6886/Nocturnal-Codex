@@ -23,8 +23,16 @@
         "status": "recommended",
         "description": "Learn the skeleton of the web: semantic markup, SEO, forms, and accessibility.",
         "resources": [
-          { "title": "MDN Web Docs - HTML Basics", "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML", "type": "docs" },
-          { "title": "HTML Full Course for Beginners", "url": "https://www.youtube.com/watch?v=kUMe1FH4CHE", "type": "video" }
+          {
+            "title": "MDN Web Docs - HTML Basics",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML",
+            "type": "docs"
+          },
+          {
+            "title": "HTML Full Course for Beginners",
+            "url": "https://www.youtube.com/watch?v=kUMe1FH4CHE",
+            "type": "video"
+          }
         ]
       }
     },
@@ -40,8 +48,16 @@
         "status": "recommended",
         "description": "Style your web pages. Master selectors, layout models, colors, typography, and response design.",
         "resources": [
-          { "title": "MDN Web Docs - CSS First Steps", "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps", "type": "docs" },
-          { "title": "CSS Grid Guide", "url": "https://css-tricks.com/snippets/css/complete-guide-grid/", "type": "article" }
+          {
+            "title": "MDN Web Docs - CSS First Steps",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps",
+            "type": "docs"
+          },
+          {
+            "title": "CSS Grid Guide",
+            "url": "https://css-tricks.com/snippets/css/complete-guide-grid/",
+            "type": "article"
+          }
         ]
       }
     },
@@ -57,8 +73,16 @@
         "status": "recommended",
         "description": "The logic behind dynamic web applications. Learn syntax, DOM, arrays, and async programming.",
         "resources": [
-          { "title": "JavaScript.info", "url": "https://javascript.info/", "type": "docs" },
-          { "title": "JS Arrays Complete Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array", "type": "docs" }
+          {
+            "title": "JavaScript.info",
+            "url": "https://javascript.info/",
+            "type": "docs"
+          },
+          {
+            "title": "JS Arrays Complete Guide",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+            "type": "docs"
+          }
         ]
       }
     },
@@ -74,8 +98,16 @@
         "status": "recommended",
         "description": "Track changes, manage codebase history, and collaborate using GitHub.",
         "resources": [
-          { "title": "Git Book", "url": "https://git-scm.com/book/en/v2", "type": "docs" },
-          { "title": "GitHub Foundations", "url": "https://github.com/github/training-kit", "type": "course" }
+          {
+            "title": "Git Book",
+            "url": "https://git-scm.com/book/en/v2",
+            "type": "docs"
+          },
+          {
+            "title": "GitHub Foundations",
+            "url": "https://github.com/github/training-kit",
+            "type": "course"
+          }
         ]
       }
     },
@@ -91,8 +123,16 @@
         "status": "recommended",
         "description": "Manage third-party code libraries using npm, yarn, or pnpm.",
         "resources": [
-          { "title": "pnpm Introduction", "url": "https://pnpm.io/motivation", "type": "docs" },
-          { "title": "npm Docs", "url": "https://docs.npmjs.com/", "type": "docs" }
+          {
+            "title": "pnpm Introduction",
+            "url": "https://pnpm.io/motivation",
+            "type": "docs"
+          },
+          {
+            "title": "npm Docs",
+            "url": "https://docs.npmjs.com/",
+            "type": "docs"
+          }
         ]
       }
     },
@@ -108,7 +148,11 @@
         "status": "recommended",
         "description": "Learn to bundle, transpile, and optimize frontend assets for deployment.",
         "resources": [
-          { "title": "Vite Guide", "url": "https://vite.dev/guide/", "type": "docs" }
+          {
+            "title": "Vite Guide",
+            "url": "https://vite.dev/guide/",
+            "type": "docs"
+          }
         ]
       }
     },
@@ -124,8 +168,16 @@
         "status": "recommended",
         "description": "Build component-driven user interfaces. Learn Hooks, State, Effects, and the React architecture.",
         "resources": [
-          { "title": "React Documentation", "url": "https://react.dev/", "type": "docs" },
-          { "title": "React Clean Code Guide", "url": "https://github.com/alan2207/bulletproof-react", "type": "github" }
+          {
+            "title": "React Documentation",
+            "url": "https://react.dev/",
+            "type": "docs"
+          },
+          {
+            "title": "React Clean Code Guide",
+            "url": "https://github.com/alan2207/bulletproof-react",
+            "type": "github"
+          }
         ]
       }
     },
@@ -141,7 +193,11 @@
         "status": "recommended",
         "description": "Add static type checking to JavaScript to catch bugs early and improve developer productivity.",
         "resources": [
-          { "title": "TS Handbook", "url": "https://www.typescriptlang.org/docs/handbook/intro.html", "type": "docs" }
+          {
+            "title": "TS Handbook",
+            "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "type": "docs"
+          }
         ]
       }
     },
@@ -157,8 +213,16 @@
         "status": "recommended",
         "description": "Coordinate data flow between remote API servers and multi-nested frontend UI views.",
         "resources": [
-          { "title": "Zustand State Manager", "url": "https://github.com/pmndrs/zustand", "type": "github" },
-          { "title": "TanStack Query Docs", "url": "https://tanstack.com/query/latest", "type": "docs" }
+          {
+            "title": "Zustand State Manager",
+            "url": "https://github.com/pmndrs/zustand",
+            "type": "github"
+          },
+          {
+            "title": "TanStack Query Docs",
+            "url": "https://tanstack.com/query/latest",
+            "type": "docs"
+          }
         ]
       }
     },
@@ -173,7 +237,11 @@
         "label": "Performance & SEO",
         "description": "Optimize for Core Web Vitals, code-splitting, lazy loading, and semantic meta tags.",
         "resources": [
-          { "title": "web.dev - Core Web Vitals", "url": "https://web.dev/vitals/", "type": "article" }
+          {
+            "title": "web.dev - Core Web Vitals",
+            "url": "https://web.dev/vitals/",
+            "type": "article"
+          }
         ]
       }
     },
@@ -188,8 +256,16 @@
         "label": "Testing (Vitest & Playwright)",
         "description": "Ensure reliability by writing unit tests for functions and End-to-End tests for full user workflows.",
         "resources": [
-          { "title": "Vitest Guide", "url": "https://vitest.dev/guide/", "type": "docs" },
-          { "title": "Playwright Docs", "url": "https://playwright.dev/", "type": "docs" }
+          {
+            "title": "Vitest Guide",
+            "url": "https://vitest.dev/guide/",
+            "type": "docs"
+          },
+          {
+            "title": "Playwright Docs",
+            "url": "https://playwright.dev/",
+            "type": "docs"
+          }
         ]
       }
     },
@@ -202,7 +278,20 @@
       },
       "data": {
         "label": "Semantic HTML",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "HTML tags that introduce meaning to the web page structure rather than just presentation (e.g., article, section, header, nav).",
+        "resources": [
+          {
+            "title": "MDN - Semantic HTML",
+            "url": "https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html",
+            "type": "docs"
+          },
+          {
+            "title": "Semantic HTML Guide",
+            "url": "https://web.dev/learn/html/semantic-html/",
+            "type": "article"
+          }
+        ]
       }
     },
     {
@@ -214,7 +303,20 @@
       },
       "data": {
         "label": "Flexbox & Grid",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "Modern CSS layout systems: Flexbox for 1-dimensional layouts, CSS Grid for 2-dimensional layouts.",
+        "resources": [
+          {
+            "title": "Complete Guide to Flexbox",
+            "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+            "type": "article"
+          },
+          {
+            "title": "Complete Guide to Grid",
+            "url": "https://css-tricks.com/snippets/css/complete-guide-grid/",
+            "type": "article"
+          }
+        ]
       }
     },
     {
@@ -226,7 +328,20 @@
       },
       "data": {
         "label": "Responsive Layouts",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "The practice of creating web pages that adapt dynamically to different screen sizes, resolutions, and devices using media queries.",
+        "resources": [
+          {
+            "title": "MDN - Responsive Design",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design",
+            "type": "docs"
+          },
+          {
+            "title": "Responsive Web Design Fundamentals",
+            "url": "https://web.dev/responsive-web-design-basics/",
+            "type": "article"
+          }
+        ]
       }
     },
     {
@@ -238,7 +353,20 @@
       },
       "data": {
         "label": "DOM Manipulation",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "Using Javascript to dynamically update the Document Object Model (DOM), modifying content, structure, and styles.",
+        "resources": [
+          {
+            "title": "MDN - Manipulating Documents",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents",
+            "type": "docs"
+          },
+          {
+            "title": "DOM Manipulation Tutorial",
+            "url": "https://javascript.info/document",
+            "type": "course"
+          }
+        ]
       }
     },
     {
@@ -250,7 +378,20 @@
       },
       "data": {
         "label": "Fetch API & Promises",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "Asynchronous Javascript features used to request network resources and manage parallel/delayed code execution.",
+        "resources": [
+          {
+            "title": "MDN - Using Fetch",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
+            "type": "docs"
+          },
+          {
+            "title": "JavaScript Promises: An Introduction",
+            "url": "https://web.dev/promises/",
+            "type": "article"
+          }
+        ]
       }
     },
     {
@@ -262,7 +403,20 @@
       },
       "data": {
         "label": "Next.js Framework",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "A React framework for building full-stack web applications with server-side rendering, routing, and optimization built-in.",
+        "resources": [
+          {
+            "title": "Next.js Documentation",
+            "url": "https://nextjs.org/docs",
+            "type": "docs"
+          },
+          {
+            "title": "Next.js Foundations Course",
+            "url": "https://nextjs.org/learn",
+            "type": "course"
+          }
+        ]
       }
     },
     {
@@ -274,7 +428,20 @@
       },
       "data": {
         "label": "Zustand",
-        "status": "recommended"
+        "status": "recommended",
+        "description": "A small, fast, and scalable bear-necessity state-management solution using simplified React Hooks.",
+        "resources": [
+          {
+            "title": "Zustand GitHub Repository",
+            "url": "https://github.com/pmndrs/zustand",
+            "type": "github"
+          },
+          {
+            "title": "State Management with Zustand",
+            "url": "https://blog.logrocket.com/managing-state-react-zustand/",
+            "type": "article"
+          }
+        ]
       }
     },
     {
@@ -286,30 +453,148 @@
       },
       "data": {
         "label": "Redux Toolkit",
-        "status": "alternative"
+        "status": "alternative",
+        "description": "The official, opinionated, batteries-included toolset for efficient Redux state development.",
+        "resources": [
+          {
+            "title": "Redux Toolkit Quick Start",
+            "url": "https://redux-toolkit.js.org/tutorials/quick-start",
+            "type": "docs"
+          }
+        ]
       }
     }
   ],
   "edges": [
-    { "id": "e1", "source": "h", "target": "html", "type": "roadmap" },
-    { "id": "e2", "source": "html", "target": "css", "type": "roadmap" },
-    { "id": "e3", "source": "css", "target": "js", "type": "roadmap" },
-    { "id": "e4", "source": "js", "target": "git", "type": "roadmap" },
-    { "id": "e5", "source": "git", "target": "package", "type": "roadmap" },
-    { "id": "e6", "source": "package", "target": "build", "type": "roadmap" },
-    { "id": "e7", "source": "build", "target": "react", "type": "roadmap" },
-    { "id": "e8", "source": "react", "target": "typescript", "type": "roadmap" },
-    { "id": "e9", "source": "typescript", "target": "state", "type": "roadmap" },
-    { "id": "e10", "source": "state", "target": "perf", "type": "roadmap" },
-    { "id": "e11", "source": "perf", "target": "testing", "type": "roadmap" },
-
-    { "id": "ed1", "source": "html", "target": "semantic", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed2", "source": "css", "target": "flexbox", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
-    { "id": "ed3", "source": "css", "target": "responsive", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
-    { "id": "ed4", "source": "js", "target": "dom", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed5", "source": "js", "target": "fetch", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed6", "source": "react", "target": "nextjs", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
-    { "id": "ed7", "source": "state", "target": "zustand", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
-    { "id": "ed8", "source": "state", "target": "redux", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" }
+    {
+      "id": "e1",
+      "source": "h",
+      "target": "html",
+      "type": "roadmap"
+    },
+    {
+      "id": "e2",
+      "source": "html",
+      "target": "css",
+      "type": "roadmap"
+    },
+    {
+      "id": "e3",
+      "source": "css",
+      "target": "js",
+      "type": "roadmap"
+    },
+    {
+      "id": "e4",
+      "source": "js",
+      "target": "git",
+      "type": "roadmap"
+    },
+    {
+      "id": "e5",
+      "source": "git",
+      "target": "package",
+      "type": "roadmap"
+    },
+    {
+      "id": "e6",
+      "source": "package",
+      "target": "build",
+      "type": "roadmap"
+    },
+    {
+      "id": "e7",
+      "source": "build",
+      "target": "react",
+      "type": "roadmap"
+    },
+    {
+      "id": "e8",
+      "source": "react",
+      "target": "typescript",
+      "type": "roadmap"
+    },
+    {
+      "id": "e9",
+      "source": "typescript",
+      "target": "state",
+      "type": "roadmap"
+    },
+    {
+      "id": "e10",
+      "source": "state",
+      "target": "perf",
+      "type": "roadmap"
+    },
+    {
+      "id": "e11",
+      "source": "perf",
+      "target": "testing",
+      "type": "roadmap"
+    },
+    {
+      "id": "ed1",
+      "source": "html",
+      "target": "semantic",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed2",
+      "source": "css",
+      "target": "flexbox",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "ed3",
+      "source": "css",
+      "target": "responsive",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "ed4",
+      "source": "js",
+      "target": "dom",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed5",
+      "source": "js",
+      "target": "fetch",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed6",
+      "source": "react",
+      "target": "nextjs",
+      "type": "dotted",
+      "sourcePosition": "left",
+      "targetPosition": "right"
+    },
+    {
+      "id": "ed7",
+      "source": "state",
+      "target": "zustand",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "ed8",
+      "source": "state",
+      "target": "redux",
+      "type": "dotted",
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    }
   ]
 }
