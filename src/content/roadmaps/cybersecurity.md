@@ -4,7 +4,7 @@ description: "Protecting the digital world through offensive and defensive secur
 category: "Specialized"
 difficulty: "Advanced"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 5
 relatedLanguages:
   - python
