@@ -4,7 +4,7 @@ description: "Bridge the gap between development and operations."
 category: "Specialized"
 difficulty: "Intermediate"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 6
 relatedLanguages:
   - shell
