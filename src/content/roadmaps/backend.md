@@ -4,7 +4,7 @@ description: "Master server-side logic, databases, and API architecture."
 category: "Core"
 difficulty: "Intermediate"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 3
 relatedLanguages:
   - java
