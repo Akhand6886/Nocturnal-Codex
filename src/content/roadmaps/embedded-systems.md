@@ -4,7 +4,7 @@ description: "Coding for hardware: Microcontrollers, RTOS, and low-level systems
 category: "Specialized"
 difficulty: "Advanced"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 9
 relatedLanguages:
   - c
