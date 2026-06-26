@@ -4,7 +4,7 @@ description: "Master both the Frontend and the Backend to build complete product
 category: "Core"
 difficulty: "Advanced"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 1
 relatedLanguages:
   - typescript
