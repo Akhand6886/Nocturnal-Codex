@@ -4,7 +4,7 @@ description: "Master the engines, physics, and logic behind the world's greatest
 category: "Specialized"
 difficulty: "Advanced"
 featured: true
-imageUrl: "/placeholder.png"
+imageUrl: ""
 order: 7
 relatedLanguages:
   - cplusplus
