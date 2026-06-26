@@ -22,11 +22,7 @@ export interface NavItem {
   children?: NavItem[];
 }
 
-interface NavbarProps {
-    // No longer needs roadmaps prop
-}
-
-export function Navbar({}: NavbarProps) {
+export function Navbar() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
