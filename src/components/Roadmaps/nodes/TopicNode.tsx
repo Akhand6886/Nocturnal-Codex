@@ -25,7 +25,7 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
   return (
     <div
       className={`
-        min-w-[140px] px-4 py-2.5 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
+        relative min-w-[140px] px-4 py-2.5 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
         border bg-card/85 backdrop-blur-md text-foreground border-border/70 shadow-sm
         hover:shadow-md hover:shadow-primary/5 hover:border-primary/50 hover:-translate-y-1
         dark:bg-zinc-900/85 dark:border-zinc-800/80 dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]
