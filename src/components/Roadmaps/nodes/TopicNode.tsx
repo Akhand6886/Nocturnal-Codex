@@ -26,27 +26,33 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
     <div
       className={`
         min-w-[140px] px-4 py-2.5 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
-        border-2
-        bg-amber-100/90 text-stone-900 border-stone-950 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5
-        dark:bg-amber-500/10 dark:text-amber-200 dark:border-amber-500/50 dark:shadow-[0_0_15px_rgba(245,158,11,0.08)] dark:hover:shadow-[0_0_25px_rgba(245,158,11,0.25)] dark:hover:border-amber-400
+        border bg-card/85 backdrop-blur-md text-foreground border-border/70 shadow-sm
+        hover:shadow-md hover:shadow-primary/5 hover:border-primary/50 hover:-translate-y-1
+        dark:bg-zinc-900/85 dark:border-zinc-800/80 dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]
+        dark:hover:border-primary/50 dark:hover:shadow-[0_4px_25px_rgba(168,85,247,0.15)]
         ${selected ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}
       `}
     >
       {badge && (
-        <span
-          className="absolute -top-1.5 -left-1.5 w-3.5 h-3.5 rounded-full border shadow-sm"
-          style={{
-            background: badge.bg,
-            borderColor: badge.border,
-          }}
-          title={badge.label}
-        />
+        <span className="absolute -top-1.5 -left-1.5 flex h-3.5 w-3.5" title={badge.label}>
+          <span
+            className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+            style={{ backgroundColor: badge.bg }}
+          />
+          <span
+            className="relative inline-flex rounded-full h-3.5 w-3.5 border shadow-sm"
+            style={{
+              backgroundColor: badge.bg,
+              borderColor: badge.border,
+            }}
+          />
+        </span>
       )}
 
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-bold text-xs tracking-wide leading-tight uppercase block">
+      <span className="roadmap-font font-bold text-xs tracking-wider leading-tight uppercase block text-card-foreground">
         {data.label}
       </span>
 
