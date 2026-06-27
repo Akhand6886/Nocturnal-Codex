@@ -24,7 +24,7 @@ const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
   return (
     <div
       className={`
-        min-w-[110px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
+        relative min-w-[110px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
         border bg-card/75 backdrop-blur-md text-foreground/90 border-border/60 shadow-sm
         hover:shadow hover:shadow-primary/5 hover:border-primary/40 hover:-translate-y-0.5
         dark:bg-zinc-900/75 dark:border-zinc-800/70 dark:shadow-[0_3px_15px_rgba(0,0,0,0.25)]
