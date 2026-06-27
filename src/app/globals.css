@@ -4,22 +4,22 @@
 
 @layer base {
   :root {
-    /* 60% — Soft Cool-White Canvas */
-    --background: 210 18% 95%;
+    /* 60% — Premium Cool-White Canvas */
+    --background: 210 20% 98%;
     --foreground: 222 47% 11%;
-    --surface: 210 16% 93%;
+    --surface: 210 16% 94%;
 
-    /* 30% — Cool-Gray Support Surfaces */
-    --card: 210 14% 97%;
+    /* 30% — Crisp Support Surfaces */
+    --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --secondary: 210 15% 95%;
-    --secondary-foreground: 222 47% 15%;
-    --muted: 210 12% 93%;
-    --muted-foreground: 215 16% 47%;
-    --border: 214 14% 89%;
-    --input: 214 14% 89%;
+    --secondary: 210 12% 95%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 12% 95%;
+    --muted-foreground: 215 20% 36%;
+    --border: 214 16% 92%;
+    --input: 214 16% 92%;
 
     /* 10% — Premium Teal & Amber Accents */
     --primary: 174 84% 32%;
