@@ -45,8 +45,8 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
   return (
     <Link href={roadmap.url} className="group block h-full">
       <Card className={`
-        h-full flex flex-col justify-between overflow-hidden transition-all duration-300 ease-out
-        transform hover:-translate-y-1.5 rounded-2xl
+        h-full flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out
+        transform hover:-translate-y-1 rounded-2xl
         bg-card border border-border/50 hover:border-primary/40
         shadow-sm hover:shadow-xl hover:shadow-primary/5
         ${featured ? 'ring-1 ring-accent/20' : ''}
