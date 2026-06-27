@@ -34,17 +34,24 @@ export default async function HomePage() {
     <div className="container mx-auto px-4 py-10 md:py-12 space-y-16">
       <HeroTextGradientStyle />
       {/* Hero Section */}
-      <section className="text-center py-20 md:py-28 bg-gradient-to-br from-background via-secondary/30 to-muted/20 rounded-xl shadow-2xl overflow-hidden">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end animate-text-gradient-flow">
-            For Hackers, Theorists, Builders, Learners.
+      <section className="relative text-center py-20 md:py-28 bg-gradient-to-br from-background via-secondary/25 to-muted/15 rounded-2xl shadow-xl overflow-hidden border border-border/50">
+        {/* Fine engineering pattern background */}
+        <div className="absolute inset-0 bg-[radial-gradient(#00000003_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-80" />
+        
+        {/* Ambient glowing blurry blobs */}
+        <div className="absolute top-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px] -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
+
+        <div className="relative container mx-auto px-4 z-10">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-foreground dark:text-white">
+            For <span className="font-serif italic font-semibold text-primary">Hackers</span>, <span className="font-serif italic font-semibold text-primary">Theorists</span>, <span className="font-serif italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Builders</span>, & Learners.
           </h1>
-          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
-            Welcome to Nocturnal Codex, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world. Explore, learn, and contribute to the collective intellect.
+          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10 leading-relaxed font-sans">
+            Welcome to <span className="font-serif italic font-medium">Nocturnal Codex</span>, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world. Explore, learn, and contribute to the collective intellect.
           </p>
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-primary/40 transform hover:scale-105 transition-all duration-300 ease-in-out rounded-lg">
-            <Link href="/roadmaps">
-              Explore Roadmaps <ArrowRight className="ml-2 h-5 w-5" />
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/95 text-primary-foreground shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5 transition-all duration-300 ease-out rounded-xl px-8">
+            <Link href="/roadmaps" className="flex items-center gap-2">
+              Explore Roadmaps <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>
         </div>
