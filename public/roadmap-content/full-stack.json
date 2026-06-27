@@ -3,308 +3,304 @@
     {
       "id": "h",
       "type": "section",
-      "position": {
-        "x": 440,
-        "y": 20
-      },
-      "data": {
-        "label": "Full Stack Developer"
-      }
+      "position": { "x": 440, "y": 20 },
+      "data": { "label": "Full Stack Developer" }
     },
     {
       "id": "frontend",
       "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 100
-      },
+      "position": { "x": 440, "y": 120 },
       "data": {
         "label": "Frontend Foundation",
         "status": "recommended",
-        "description": "Master HTML, CSS, and JavaScript. Learn a modern framework like React or Vue.",
+        "description": "Master HTML5, CSS3, and modern JavaScript to build structured and dynamic interface modules.",
         "resources": [
-          {
-            "title": "MDN Web Docs",
-            "url": "https://developer.mozilla.org/en-US/",
-            "type": "docs"
-          },
-          {
-            "title": "React Documentation",
-            "url": "https://react.dev/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "backend",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 200
-      },
-      "data": {
-        "label": "Backend Foundation",
-        "status": "recommended",
-        "description": "Learn a backend language and framework (e.g., Node.js + Express, Python + Django).",
-        "resources": [
-          {
-            "title": "Node.js Guide",
-            "url": "https://nodejs.org/en/docs/guides/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "db",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 300
-      },
-      "data": {
-        "label": "Databases",
-        "status": "recommended",
-        "description": "Understand Relational (PostgreSQL, MySQL) and NoSQL (MongoDB) databases.",
-        "resources": [
-          {
-            "title": "Prisma Data Guide",
-            "url": "https://www.prisma.io/dataguide/",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "api",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 400
-      },
-      "data": {
-        "label": "APIs (REST/GraphQL)",
-        "status": "recommended",
-        "description": "Learn how to connect the frontend to the backend via APIs.",
-        "resources": [
-          {
-            "title": "How to GraphQL",
-            "url": "https://www.howtographql.com/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "auth",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 500
-      },
-      "data": {
-        "label": "Authentication",
-        "status": "recommended",
-        "description": "Implement user login and registration securely using JWT, OAuth, or sessions.",
-        "resources": [
-          {
-            "title": "Auth0 Documentation",
-            "url": "https://auth0.com/docs",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "deployment",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 600
-      },
-      "data": {
-        "label": "Deployment",
-        "status": "recommended",
-        "description": "Deploy your full-stack applications using platforms like Vercel, Heroku, or AWS.",
-        "resources": [
-          {
-            "title": "Vercel Docs",
-            "url": "https://vercel.com/docs",
-            "type": "docs"
-          }
+          { "title": "MDN Web Docs", "url": "https://developer.mozilla.org/en-US/", "type": "docs" }
         ]
       }
     },
     {
       "id": "react",
       "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 100
-      },
+      "position": { "x": 200, "y": 120 },
       "data": {
         "label": "React",
         "status": "recommended",
         "description": "A popular, component-based frontend library for building modern and interactive web user interfaces.",
         "resources": [
-          {
-            "title": "React Documentation",
-            "url": "https://react.dev/",
-            "type": "docs"
-          },
-          {
-            "title": "Scrimba Free React Course",
-            "url": "https://scrimba.com/learn/learnreact",
-            "type": "course"
-          }
+          { "title": "React Documentation", "url": "https://react.dev/", "type": "docs" },
+          { "title": "Scrimba Free React Course", "url": "https://scrimba.com/learn/learnreact", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "tailwind",
+      "type": "subtopic",
+      "position": { "x": 680, "y": 120 },
+      "data": {
+        "label": "Tailwind CSS",
+        "status": "recommended",
+        "description": "A utility-first CSS framework for rapidly building custom user interfaces without leaving your HTML.",
+        "resources": [
+          { "title": "Tailwind CSS Documentation", "url": "https://tailwindcss.com/docs", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "backend",
+      "type": "topic",
+      "position": { "x": 440, "y": 240 },
+      "data": {
+        "label": "Backend Foundation",
+        "status": "recommended",
+        "description": "Learn server-side programming to build microservices, manage server business logic, and handle HTTP routing operations.",
+        "resources": [
+          { "title": "Node.js Guide", "url": "https://nodejs.org/en/docs/guides/", "type": "docs" }
         ]
       }
     },
     {
       "id": "node",
       "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 200
-      },
+      "position": { "x": 200, "y": 240 },
       "data": {
         "label": "Node.js",
         "status": "recommended",
         "description": "An open-source, cross-platform JavaScript runtime environment for executing JavaScript code server-side.",
         "resources": [
-          {
-            "title": "Node.js Official Docs",
-            "url": "https://nodejs.org/docs/",
-            "type": "docs"
-          },
-          {
-            "title": "Node.js Guide - W3Schools",
-            "url": "https://www.w3schools.com/nodejs/",
-            "type": "course"
-          }
+          { "title": "Node.js Official Docs", "url": "https://nodejs.org/docs/", "type": "docs" },
+          { "title": "Node.js Guide - W3Schools", "url": "https://www.w3schools.com/nodejs/", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "python_go",
+      "type": "subtopic",
+      "position": { "x": 680, "y": 240 },
+      "data": {
+        "label": "Go",
+        "status": "recommended",
+        "description": "A statically typed, compiled programming language designed at Google for extreme concurrency and network service performance.",
+        "resources": [
+          { "title": "A Tour of Go", "url": "https://go.dev/tour/", "type": "course" },
+          { "title": "Effective Go", "url": "https://go.dev/doc/effective_go", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "db",
+      "type": "topic",
+      "position": { "x": 440, "y": 360 },
+      "data": {
+        "label": "Databases & ORMs",
+        "status": "recommended",
+        "description": "Master structured query languages, relational models, and document storage databases, as well as modern type-safe ORMs.",
+        "resources": [
+          { "title": "Prisma Data Guide", "url": "https://www.prisma.io/dataguide/", "type": "article" }
         ]
       }
     },
     {
       "id": "postgres",
       "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 300
-      },
+      "position": { "x": 200, "y": 360 },
       "data": {
         "label": "PostgreSQL",
         "status": "recommended",
         "description": "A high-performance SQL relational database system with extensive features, reliable ACID transactions, and active community support.",
         "resources": [
-          {
-            "title": "PostgreSQL Tutorial",
-            "url": "https://www.postgresqltutorial.com/",
-            "type": "course"
-          },
-          {
-            "title": "Postgres Guide",
-            "url": "https://www.postgresguide.com/",
-            "type": "docs"
-          }
+          { "title": "PostgreSQL Tutorial", "url": "https://www.postgresqltutorial.com/", "type": "course" },
+          { "title": "Postgres Guide", "url": "https://www.postgresguide.com/", "type": "docs" }
         ]
       }
     },
     {
       "id": "mongo",
       "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 345
-      },
+      "position": { "x": 680, "y": 360 },
       "data": {
         "label": "MongoDB",
         "status": "alternative",
         "description": "A scalable document-based NoSQL database using binary JSON-like documents to manage unstructured data.",
         "resources": [
-          {
-            "title": "MongoDB Manual",
-            "url": "https://www.mongodb.com/docs/manual/",
-            "type": "docs"
-          },
-          {
-            "title": "MongoDB Developer Center",
-            "url": "https://www.mongodb.com/developer/",
-            "type": "docs"
-          }
+          { "title": "MongoDB Manual", "url": "https://www.mongodb.com/docs/manual/", "type": "docs" },
+          { "title": "MongoDB Developer Center", "url": "https://www.mongodb.com/developer/", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "prisma",
+      "type": "subtopic",
+      "position": { "x": 200, "y": 420 },
+      "data": {
+        "label": "Prisma ORM",
+        "status": "recommended",
+        "description": "A next-generation Node.js and TypeScript ORM to interact with databases with complete type safety.",
+        "resources": [
+          { "title": "Prisma Quickstart Guide", "url": "https://www.prisma.io/docs/getting-started/quickstart", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "drizzle",
+      "type": "subtopic",
+      "position": { "x": 680, "y": 420 },
+      "data": {
+        "label": "Drizzle ORM",
+        "status": "alternative",
+        "description": "A lightweight, high-performance TypeScript ORM that lets you write SQL query-like code with type-safety.",
+        "resources": [
+          { "title": "Drizzle ORM Documentation", "url": "https://orm.drizzle.team/docs/overview", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "api",
+      "type": "topic",
+      "position": { "x": 440, "y": 540 },
+      "data": {
+        "label": "APIs (REST/GraphQL)",
+        "status": "recommended",
+        "description": "Learn to design scalable, predictable interfaces to connect frontend modules to backend database services.",
+        "resources": [
+          { "title": "How to GraphQL", "url": "https://www.howtographql.com/", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "rest",
+      "type": "subtopic",
+      "position": { "x": 200, "y": 540 },
+      "data": {
+        "label": "REST",
+        "status": "recommended",
+        "description": "Representational State Transfer (REST) is an architectural style for distributed hypermedia systems like web APIs.",
+        "resources": [
+          { "title": "REST API Tutorial", "url": "https://restfulapi.net/", "type": "article" },
+          { "title": "MDN - HTTP APIs", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "graphql",
+      "type": "subtopic",
+      "position": { "x": 680, "y": 540 },
+      "data": {
+        "label": "GraphQL",
+        "status": "alternative",
+        "description": "A query language for APIs and a runtime for fulfilling those queries with your existing data, allowing clients to request exactly what they need.",
+        "resources": [
+          { "title": "GraphQL Official Introduction", "url": "https://graphql.org/learn/", "type": "docs" },
+          { "title": "How to GraphQL", "url": "https://www.howtographql.com/", "type": "course" }
+        ]
+      }
+    },
+    {
+      "id": "auth",
+      "type": "topic",
+      "position": { "x": 440, "y": 660 },
+      "data": {
+        "label": "Authentication",
+        "status": "recommended",
+        "description": "Implement user login, sign-ups, session tracking, and user profile management securely using tokens or federated sign-ins.",
+        "resources": [
+          { "title": "Auth0 Documentation", "url": "https://auth0.com/docs", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "jwt",
+      "type": "subtopic",
+      "position": { "x": 200, "y": 660 },
+      "data": {
+        "label": "JWT & Sessions",
+        "status": "recommended",
+        "description": "Learn stateless authentication with JSON Web Tokens or stateful user tracking with server sessions.",
+        "resources": [
+          { "title": "Introduction to JSON Web Tokens", "url": "https://jwt.io/introduction", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "oauth",
+      "type": "subtopic",
+      "position": { "x": 680, "y": 660 },
+      "data": {
+        "label": "OAuth (Clerk/Auth0)",
+        "status": "alternative",
+        "description": "Integrate professional, secure social logins (Google, GitHub) using Clerk, Auth0, or NextAuth.",
+        "resources": [
+          { "title": "Clerk Authentication Quickstart", "url": "https://clerk.com/docs/quickstarts/nextjs", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "deployment",
+      "type": "topic",
+      "position": { "x": 440, "y": 780 },
+      "data": {
+        "label": "Deployment & DevOps",
+        "status": "recommended",
+        "description": "Deploy your full-stack applications to public web servers and configure containers for consistent running conditions.",
+        "resources": [
+          { "title": "Vercel Docs", "url": "https://vercel.com/docs", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "vercel_railway",
+      "type": "subtopic",
+      "position": { "x": 200, "y": 780 },
+      "data": {
+        "label": "Vercel & Railway",
+        "status": "recommended",
+        "description": "Easily deploy full-stack apps: Vercel for frontend/Next.js hosting, Railway for databases and backend servers.",
+        "resources": [
+          { "title": "Vercel Deployment Guide", "url": "https://vercel.com/docs/deployments/overview", "type": "docs" }
+        ]
+      }
+    },
+    {
+      "id": "docker",
+      "type": "subtopic",
+      "position": { "x": 680, "y": 780 },
+      "data": {
+        "label": "Docker",
+        "status": "recommended",
+        "description": "A platform for developing, shipping, and running applications inside lightweight, isolated software containers.",
+        "resources": [
+          { "title": "Docker Getting Started", "url": "https://docs.docker.com/get-started/", "type": "docs" },
+          { "title": "Docker Labs", "url": "https://github.com/docker/labs", "type": "github" }
         ]
       }
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "frontend",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "frontend",
-      "target": "backend",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "backend",
-      "target": "db",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "db",
-      "target": "api",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "api",
-      "target": "auth",
-      "type": "roadmap"
-    },
-    {
-      "id": "e6",
-      "source": "auth",
-      "target": "deployment",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "frontend",
-      "target": "react",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "backend",
-      "target": "node",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed3",
-      "source": "db",
-      "target": "postgres",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed4",
-      "source": "db",
-      "target": "mongo",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    }
+    { "id": "e1", "source": "h", "target": "frontend", "type": "roadmap" },
+    { "id": "e2", "source": "frontend", "target": "backend", "type": "roadmap" },
+    { "id": "e3", "source": "backend", "target": "db", "type": "roadmap" },
+    { "id": "e4", "source": "db", "target": "api", "type": "roadmap" },
+    { "id": "e5", "source": "api", "target": "auth", "type": "roadmap" },
+    { "id": "e6", "source": "auth", "target": "deployment", "type": "roadmap" },
+    
+    { "id": "ed1", "source": "frontend", "target": "react", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed2", "source": "frontend", "target": "tailwind", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    
+    { "id": "ed3", "source": "backend", "target": "node", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed4", "source": "backend", "target": "python_go", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    
+    { "id": "ed5", "source": "db", "target": "postgres", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed6", "source": "db", "target": "mongo", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    { "id": "ed7", "source": "db", "target": "prisma", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed8", "source": "db", "target": "drizzle", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    
+    { "id": "ed9", "source": "api", "target": "rest", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed10", "source": "api", "target": "graphql", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    
+    { "id": "ed11", "source": "auth", "target": "jwt", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed12", "source": "auth", "target": "oauth", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" },
+    
+    { "id": "ed13", "source": "deployment", "target": "vercel_railway", "type": "dotted", "sourcePosition": "left", "targetPosition": "right" },
+    { "id": "ed14", "source": "deployment", "target": "docker", "type": "dotted", "sourcePosition": "right", "targetPosition": "left" }
   ]
 }
