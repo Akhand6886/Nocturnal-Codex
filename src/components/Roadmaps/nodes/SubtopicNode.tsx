@@ -25,26 +25,33 @@ const SubtopicNode = ({ data, selected }: NodeProps<SubtopicNodeType>) => {
     <div
       className={`
         min-w-[110px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
-        border-2
-        bg-yellow-50/95 text-stone-800 border-stone-950 shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5
-        dark:bg-yellow-500/5 dark:text-yellow-100/90 dark:border-yellow-600/40 dark:shadow-[0_0_10px_rgba(234,179,8,0.04)] dark:hover:shadow-[0_0_15px_rgba(234,179,8,0.18)] dark:hover:border-yellow-500/80
+        border bg-card/75 backdrop-blur-md text-foreground/90 border-border/60 shadow-sm
+        hover:shadow hover:shadow-primary/5 hover:border-primary/40 hover:-translate-y-0.5
+        dark:bg-zinc-900/75 dark:border-zinc-800/70 dark:shadow-[0_3px_15px_rgba(0,0,0,0.25)]
+        dark:hover:border-primary/45 dark:hover:shadow-[0_3px_20px_rgba(168,85,247,0.1)]
         ${selected ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}
       `}
     >
       {badge && (
-        <span
-          className="absolute -top-1.5 -left-1.5 w-3 h-3 rounded-full border shadow-sm"
-          style={{
-            background: badge.bg,
-            borderColor: badge.border,
-          }}
-        />
+        <span className="absolute -top-1 -left-1 flex h-3 w-3">
+          <span
+            className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+            style={{ backgroundColor: badge.bg }}
+          />
+          <span
+            className="relative inline-flex rounded-full h-3 w-3 border shadow-sm"
+            style={{
+              backgroundColor: badge.bg,
+              borderColor: badge.border,
+            }}
+          />
+        </span>
       )}
 
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-semibold text-xs leading-tight block">
+      <span className="roadmap-font font-semibold text-xs leading-tight block text-card-foreground/90">
         {data.label}
       </span>
 
