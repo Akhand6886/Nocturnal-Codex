@@ -6,18 +6,18 @@
   :root {
     /* 60% — Premium Warm-Beige Canvas */
     --background: 36 28% 95%;
-    --foreground: 30 15% 15%;
+    --foreground: 0 0% 0%;
     --surface: 36 24% 93%;
 
     /* 30% — Elevated Soft-Cream Surfaces */
     --card: 30 25% 99%;
-    --card-foreground: 30 15% 15%;
+    --card-foreground: 0 0% 0%;
     --popover: 30 25% 99%;
-    --popover-foreground: 30 15% 15%;
+    --popover-foreground: 0 0% 0%;
     --secondary: 36 20% 92%;
-    --secondary-foreground: 30 15% 15%;
+    --secondary-foreground: 0 0% 0%;
     --muted: 36 20% 92%;
-    --muted-foreground: 30 10% 40%;
+    --muted-foreground: 0 0% 20%;
     --border: 36 15% 88%;
     --input: 36 15% 88%;
 
@@ -145,12 +145,12 @@
   .markdown-content h1 { @apply text-3xl tracking-tight; } 
   .markdown-content h2 { @apply text-2xl tracking-tight; }
   .markdown-content h3 { @apply text-xl tracking-tight; }
-  .markdown-content p { @apply mb-5 leading-relaxed text-foreground/90; } 
+  .markdown-content p { @apply mb-5 leading-relaxed text-foreground; } 
   .markdown-content ul,
   .markdown-content ol { @apply mb-5 ml-5; } 
   .markdown-content ul { @apply list-disc; }
   .markdown-content ol { @apply list-decimal; }
-  .markdown-content li { @apply mb-1.5; }
+  .markdown-content li { @apply mb-1.5 text-foreground; }
   .markdown-content blockquote { @apply p-4 my-5 border-l-4 border-primary bg-muted/30 text-muted-foreground italic rounded-r-md shadow-sm; } 
   .markdown-content code { @apply px-1.5 py-1 bg-muted/50 text-foreground/90 rounded-md font-mono text-[0.9em]; } 
   .markdown-content pre { @apply p-4 my-5 bg-muted/20 rounded-lg overflow-x-auto shadow-md; } 
@@ -303,7 +303,7 @@
 .editorial-body p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: hsl(var(--foreground) / 0.88);
+  color: hsl(var(--foreground));
   margin-bottom: 1.5rem;
 }
 
@@ -319,7 +319,7 @@
 .editorial-body li {
   font-size: 1.05rem;
   line-height: 1.75;
-  color: hsl(var(--foreground) / 0.88);
+  color: hsl(var(--foreground));
   margin-bottom: 0.5rem;
   padding-left: 0.25rem;
 }
