@@ -43,8 +43,8 @@ export default async function HomePage() {
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
         <div className="relative container mx-auto px-4 z-10">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-foreground dark:text-white">
-            For <span className="font-serif italic font-semibold text-primary">Hackers</span>, <span className="font-serif italic font-semibold text-primary">Theorists</span>, <span className="font-serif italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Builders</span>, & Learners.
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end animate-text-gradient-flow">
+            For <span className="font-serif italic font-semibold">Hackers</span>, <span className="font-serif italic font-semibold">Theorists</span>, <span className="font-serif italic font-semibold">Builders</span>, & Learners.
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10 leading-relaxed font-sans">
             Welcome to <span className="font-serif italic font-medium">Nocturnal Codex</span>, a curated sanctuary for deep dives into computer science, mathematics, and the theories that shape our digital world. Explore, learn, and contribute to the collective intellect.
