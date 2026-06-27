@@ -92,7 +92,7 @@ export default async function LanguageDetailPage({ params }: { params: Promise<{
         {/* CENTER: Main Content */}
         <main className="min-w-0">
           {/* Overview & Markdown Content */}
-          <div className="prose prose-invert max-w-none mb-10
+          <div className="prose dark:prose-invert max-w-none mb-10
             prose-headings:text-foreground prose-headings:font-semibold
             prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-border/30
             prose-p:text-muted-foreground prose-p:leading-relaxed
