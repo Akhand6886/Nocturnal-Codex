@@ -11,7 +11,7 @@ const BlueNode = ({ data, selected }: NodeProps<BlueNodeType>) => {
   return (
     <div
       className={`
-        min-w-[110px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
+        relative min-w-[110px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-300 ease-out select-none
         border bg-gradient-to-br from-blue-500 to-indigo-600 text-white border-border/40 shadow-sm
         hover:shadow-md hover:shadow-indigo-500/10 hover:border-indigo-400/80 hover:-translate-y-0.5
         dark:from-blue-950/80 dark:to-indigo-950/80 dark:text-blue-100 dark:border-indigo-900/60 dark:shadow-[0_3px_15px_rgba(0,0,0,0.3)]
