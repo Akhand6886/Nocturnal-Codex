@@ -65,7 +65,7 @@ export default async function MathematicsDetailPage({ params }: { params: Promis
 
         {/* CENTER: Main Content */}
         <main className="min-w-0">
-          <div className="prose prose-invert max-w-none mb-10
+          <div className="prose dark:prose-invert max-w-none mb-10
             prose-headings:text-foreground prose-headings:font-semibold
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-border/30
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
