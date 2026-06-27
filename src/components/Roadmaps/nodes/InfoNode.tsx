@@ -11,9 +11,9 @@ const InfoNode = ({ data }: NodeProps<InfoNodeType>) => {
   return (
     <div
       className="
-        max-w-[220px] p-3.5 rounded-xl border text-left pointer-events-none select-none shadow-sm
-        bg-slate-55/75 text-slate-700 border-slate-200/80
-        dark:bg-zinc-900/60 dark:text-zinc-300 dark:border-zinc-800/80
+        max-w-[220px] p-3.5 rounded-xl border text-left pointer-events-none select-none shadow-sm backdrop-blur-md
+        bg-muted/40 text-muted-foreground border-border/50
+        dark:bg-zinc-900/40 dark:text-zinc-400 dark:border-zinc-800/40
       "
     >
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
