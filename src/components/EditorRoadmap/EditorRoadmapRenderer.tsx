@@ -56,17 +56,26 @@ const LEGEND = [
 ];
 
 const Legend: FC = () => (
-  <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5 p-3.5 rounded-xl border border-border/30 bg-card/80 backdrop-blur-xl shadow-lg dark:bg-card/60">
+  <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 p-3.5 rounded-xl border border-border/30 bg-card/80 backdrop-blur-xl shadow-lg dark:bg-card/60">
     <span className="roadmap-font text-[10px] font-bold text-muted-foreground/70 uppercase tracking-widest mb-1 px-0.5">
       Legend
     </span>
-    {LEGEND.map(({ color, border, label, icon }) => (
-      <div key={label} className="flex items-center gap-2.5 group">
-        <span
-          className="w-3 h-3 rounded-full flex-shrink-0 ring-1 ring-black/5 dark:ring-white/10 shadow-sm transition-transform group-hover:scale-125"
-          style={{ background: color, borderColor: border }}
-        />
-        <span className="roadmap-font text-[11px] font-semibold text-muted-foreground/80 group-hover:text-foreground transition-colors">
+    {LEGEND.map(({ color, border, label }) => (
+      <div key={label} className="flex items-center gap-3 group">
+        <span className="relative flex h-3 w-3 flex-shrink-0">
+          <span
+            className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+            style={{ backgroundColor: color }}
+          />
+          <span
+            className="relative inline-flex rounded-full h-3 w-3 border shadow-sm"
+            style={{
+              backgroundColor: color,
+              borderColor: border,
+            }}
+          />
+        </span>
+        <span className="roadmap-font text-[11px] font-semibold text-muted-foreground/85 group-hover:text-foreground transition-colors">
           {label}
         </span>
       </div>
