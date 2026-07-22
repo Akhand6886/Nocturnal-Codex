@@ -189,6 +189,7 @@ export default function PythonAscensionPage() {
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [executionSuccess, setExecutionSuccess] = useState<boolean | null>(null);
   const [showRankUpModal, setShowRankUpModal] = useState<boolean>(false);
+  const [showMonarchModal, setShowMonarchModal] = useState<boolean>(false);
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
   const [isShaking, setIsShaking] = useState<boolean>(false);
 
@@ -381,15 +382,14 @@ export default function PythonAscensionPage() {
     if (!ctx) return;
 
     try {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
       const now = ctx.currentTime;
       const effectiveVol = isMuted ? 0 : volume;
 
       if (type === "click") {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
         osc.type = "sine";
         osc.frequency.setValueAtTime(400, now);
         osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
@@ -398,6 +398,10 @@ export default function PythonAscensionPage() {
         osc.start(now);
         osc.stop(now + 0.05);
       } else if (type === "success") {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
         osc.type = "triangle";
         osc.frequency.setValueAtTime(523.25, now);
         osc.frequency.setValueAtTime(659.25, now + 0.1);
@@ -408,6 +412,10 @@ export default function PythonAscensionPage() {
         osc.start(now);
         osc.stop(now + 0.4);
       } else if (type === "fail") {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
         osc.type = "sawtooth";
         osc.frequency.setValueAtTime(300, now);
         osc.frequency.linearRampToValueAtTime(140, now + 0.25);
@@ -416,6 +424,10 @@ export default function PythonAscensionPage() {
         osc.start(now);
         osc.stop(now + 0.25);
       } else if (type === "levelUp") {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
         osc.type = "sine";
         osc.frequency.setValueAtTime(440, now);
         osc.frequency.setValueAtTime(554.37, now + 0.12);
@@ -426,13 +438,39 @@ export default function PythonAscensionPage() {
         osc.start(now);
         osc.stop(now + 0.5);
       } else if (type === "monarchArise") {
-        osc.type = "sawtooth";
-        osc.frequency.setValueAtTime(110, now);
-        osc.frequency.exponentialRampToValueAtTime(880, now + 1.2);
-        gain.gain.setValueAtTime(0.3 * effectiveVol, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
-        osc.start(now);
-        osc.stop(now + 1.5);
+        // Multi-oscillator dimensional roar & ascending monarch chord
+        const subOsc = ctx.createOscillator();
+        const leadOsc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const filter = ctx.createBiquadFilter();
+
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(400, now);
+        filter.frequency.exponentialRampToValueAtTime(3000, now + 1.5);
+
+        subOsc.connect(filter);
+        leadOsc.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+
+        subOsc.type = "sawtooth";
+        subOsc.frequency.setValueAtTime(55, now); // A1 bass
+        subOsc.frequency.exponentialRampToValueAtTime(220, now + 1.8);
+
+        leadOsc.type = "square";
+        leadOsc.frequency.setValueAtTime(220, now);
+        leadOsc.frequency.setValueAtTime(277.18, now + 0.3); // C#
+        leadOsc.frequency.setValueAtTime(329.63, now + 0.6); // E
+        leadOsc.frequency.setValueAtTime(440, now + 0.9);    // A
+        leadOsc.frequency.setValueAtTime(880, now + 1.2);    // High A
+
+        gain.gain.setValueAtTime(0.35 * effectiveVol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 2.2);
+
+        subOsc.start(now);
+        leadOsc.start(now);
+        subOsc.stop(now + 2.2);
+        leadOsc.stop(now + 2.2);
       }
     } catch (e) {
       // Audio fallback catch
@@ -652,7 +690,7 @@ export default function PythonAscensionPage() {
     playSound("monarchArise");
     setTimeout(() => {
       setIsShaking(false);
-    }, 2500);
+    }, 3000);
   };
 
   const handleRunCode = () => {
@@ -718,9 +756,10 @@ export default function PythonAscensionPage() {
             const newXp = state.xp + calculatedXp;
             const newRank = getRankInfo(newDungeons.length).rank;
 
-            // Trigger Screen Shake for Dungeon 11 Monarch Ascension
+            // Trigger Refined Screen Shake & Dedicated Monarch Proclamation Modal for Dungeon 11
             if (activeDungeon.id === 11) {
               triggerScreenShake();
+              setShowMonarchModal(true);
             } else {
               playSound("success");
             }
@@ -739,7 +778,7 @@ export default function PythonAscensionPage() {
               unlockedAchievements: updatedAchievements
             });
 
-            if (newRank !== oldRank) {
+            if (newRank !== oldRank && activeDungeon.id !== 11) {
               setPreviousRank(oldRank);
               setShowRankUpModal(true);
             }
@@ -803,7 +842,7 @@ export default function PythonAscensionPage() {
   };
 
   return (
-    <div className={cn("min-h-screen bg-slate-950 text-slate-100 font-sans pb-20 selection:bg-cyan-500 selection:text-slate-950 transition-transform duration-100", isShaking && "animate-shake")}>
+    <div className={cn("min-h-screen bg-slate-950 text-slate-100 font-sans pb-20 selection:bg-cyan-500 selection:text-slate-950 transition-transform duration-100", isShaking && "animate-monarch-shake")}>
       {/* Background Cyber Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-25" />
 
@@ -1893,8 +1932,57 @@ export default function PythonAscensionPage() {
         </div>
       )}
 
+      {/* Refined Dedicated Shadow Monarch Ascension Proclamation Overlay Modal */}
+      {showMonarchModal && (
+        <div className="fixed inset-0 z-50 bg-purple-950/95 backdrop-blur-2xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-500">
+          <div className="bg-slate-950 border-2 border-amber-400 rounded-3xl max-w-2xl w-full p-8 text-center space-y-6 shadow-[0_0_80px_rgba(168,85,247,0.6)] relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.25),transparent_70%)] pointer-events-none" />
+
+            <div className="space-y-2 relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono bg-purple-900/80 text-amber-300 border border-amber-400/40 animate-pulse">
+                👑 SYSTEM CLASS OVERRIDE COMPLETE
+              </div>
+              <CrownIcon className="w-20 h-20 text-amber-400 mx-auto animate-bounce drop-shadow-[0_0_20px_rgba(245,158,11,0.8)]" />
+              <h2 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-purple-300 to-amber-400">
+                ARISE! SHADOW MONARCH
+              </h2>
+              <p className="text-purple-200 text-sm max-w-md mx-auto leading-relaxed pt-1">
+                Humanity's E-Rank Hunter has transcended all 11 Dimensional Gates. <strong className="text-amber-400">Akhanda</strong> now holds absolute command over the Shadow Army!
+              </p>
+            </div>
+
+            {/* Awakened Shadow Army Companions */}
+            <div className="relative z-10 space-y-2">
+              <div className="text-xs font-mono text-amber-300">AWAKENED SHADOW ARMY COMMANDERS:</div>
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                {[
+                  { name: "Igris", role: "Red Knight", icon: "🗡️" },
+                  { name: "Beru", role: "Insect King", icon: "🐜" },
+                  { name: "Iron", role: "Shield Tank", icon: "🛡️" },
+                  { name: "Tank", role: "Ice Bear", icon: "🐻" },
+                  { name: "Bellion", role: "Grand Marshal", icon: "👑" }
+                ].map((shadow) => (
+                  <div key={shadow.name} className="p-2 rounded-xl bg-purple-950/80 border border-purple-500/40 text-center space-y-0.5">
+                    <div className="text-xl">{shadow.icon}</div>
+                    <div className="font-bold text-xs text-white">{shadow.name}</div>
+                    <div className="text-[9px] text-purple-300 font-mono">{shadow.role}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Button
+              onClick={() => { playSound("click"); setShowMonarchModal(false); setState((prev) => ({ ...prev, selectedAura: "purple" })); }}
+              className="relative z-10 w-full bg-gradient-to-r from-amber-400 via-amber-500 to-purple-600 hover:from-amber-300 hover:to-purple-500 text-slate-950 font-black text-base rounded-2xl py-4 shadow-xl shadow-amber-500/30"
+            >
+              👑 Claim Crown of the Monarch (Level 999)
+            </Button>
+          </div>
+        </div>
+      )}
+
       {/* Rank Promotion Modal Notification */}
-      {showRankUpModal && (
+      {showRankUpModal && !showMonarchModal && (
         <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
           <div className="bg-slate-900 border-2 border-amber-500 rounded-2xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
             <Sparkles className="w-16 h-16 text-amber-400 mx-auto animate-bounce" />
