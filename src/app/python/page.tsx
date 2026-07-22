@@ -517,20 +517,32 @@ export default function PythonAscensionPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (!audioElementRef.current) {
-        audioElementRef.current = new Audio(TRACKS[currentTrack].src);
-        audioElementRef.current.loop = true;
-      } else {
-        audioElementRef.current.src = TRACKS[currentTrack].src;
-        audioElementRef.current.loop = true;
+        audioElementRef.current = new Audio();
       }
-      audioElementRef.current.volume = isMuted ? 0 : volume;
 
-      if (musicPlaying) {
-        audioElementRef.current.play().catch((err) => {
-          console.log("Autoplay waiting for user interaction", err);
-        });
+      const audio = audioElementRef.current;
+      audio.volume = isMuted ? 0 : volume;
+
+      const trackUrl = TRACKS[currentTrack].src;
+      const fullTrackUrl = new URL(trackUrl, window.location.href).href;
+
+      if (audio.src !== fullTrackUrl && audio.src !== trackUrl) {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.src = trackUrl;
+        audio.loop = true;
+        audio.load();
+      }
+
+      if (musicPlaying && !isMuted) {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((err) => {
+            console.log("Autoplay waiting for user interaction", err);
+          });
+        }
       } else {
-        audioElementRef.current.pause();
+        audio.pause();
       }
     }
   }, [currentTrack, musicPlaying, isMuted, volume]);
@@ -1043,7 +1055,14 @@ except Exception as e:
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => { playSound("click"); setCurrentTrack((prev) => (prev + 1) % TRACKS.length); }}
+                  onClick={() => {
+                    playSound("click");
+                    if (audioElementRef.current) {
+                      audioElementRef.current.pause();
+                      audioElementRef.current.currentTime = 0;
+                    }
+                    setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
+                  }}
                   className="h-7 text-[10px] font-mono border-slate-800 text-slate-300 hover:border-cyan-400 rounded-lg px-2"
                 >
                   Next
