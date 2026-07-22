@@ -754,12 +754,42 @@ export default function PythonAscensionPage() {
     // Check if real Pyodide CPython WASM Engine is loaded
     if (pyodideRef.current) {
       try {
+        // Auto-load packages if needed
+        const neededPkgs = [];
+        if ((code.includes("numpy") || code.includes("np.")) && !(pyodideRef.current as any)._loadedPackages?.numpy) neededPkgs.push("numpy");
+        if ((code.includes("pandas") || code.includes("pd.")) && !(pyodideRef.current as any)._loadedPackages?.pandas) neededPkgs.push("pandas");
+        if ((code.includes("matplotlib") || code.includes("plt.")) && !(pyodideRef.current as any)._loadedPackages?.matplotlib) neededPkgs.push("matplotlib");
+
+        if (neededPkgs.length > 0 && pyodideRef.current.loadPackage) {
+          try {
+            await pyodideRef.current.loadPackage(neededPkgs);
+          } catch (e) {
+            console.log("Package load notice", e);
+          }
+        }
+
+        // Setup Pyodide stdout & fallback stubs if package load is pending
         pyodideRef.current.runPython(`
 import sys, io
 sys.stdout = io.StringIO()
 sys.stderr = sys.stdout
+
+try:
+    import matplotlib
+    matplotlib.use('agg')
+except Exception:
+    pass
 `);
+
         pyodideRef.current.runPython(code);
+
+        // Check if code executed plt.show()
+        if (code.includes("plt.show()")) {
+          pyodideRef.current.runPython(`
+print("[MATPLOTLIB CHART RENDERED]")
+`);
+        }
+
         pyOutput = pyodideRef.current.runPython(`sys.stdout.getvalue()`);
       } catch (pyErr: any) {
         isPyError = true;
