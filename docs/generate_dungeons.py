@@ -342,10 +342,10 @@ for idx, cell in enumerate(cells):
         
         task_obj = {
             "id": f"d{current_exp}-t{q_num}",
-            "title": f"Task {q_num}: Experiment {current_exp} Question {q_num}",
+            "title": f"Task {q_num}: Question {q_num}",
             "question": q_text.strip() or f"Practice Question {q_num} for Experiment {current_exp}",
             "explanation": explanation or "Follow the lab workbook instructions and execute the solution.",
-            "formula": formula if formula else None,
+            "formula": formula if formula else "",
             "codeSnippet": code_str or f"# Experiment {current_exp} Task {q_num}\nprint('Executing Task {q_num}')",
             "expectedOutput": out_str.strip() or "Execution Completed"
         }
