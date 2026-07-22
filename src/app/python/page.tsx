@@ -1273,7 +1273,7 @@ sys.stderr = sys.stdout
                     </tbody>
                   </table>
                 </div>
-              CardContent>
+              </CardContent>
             </Card>
           </div>
         )}
