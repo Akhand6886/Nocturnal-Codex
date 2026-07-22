@@ -289,11 +289,51 @@ dungeons_meta = [
             "description": "Glowing celestial sphere visualizing real-time metrics.",
             "icon": "🔮"
         }
+    },
+    {
+        "id": 11,
+        "slug": "dungeon-11",
+        "codexNumber": "Codex XI",
+        "codexTitle": "Throne of the Shadow Monarch",
+        "dungeonName": "Secret Gate: Throne of the Monarch",
+        "subtitle": "Ascend human limits, awaken shadow extraction, and claim the Monarch Class.",
+        "difficultyStars": 5,
+        "xpReward": 9999,
+        "skillUnlock": "Shadow Monarch Class (Level 999)",
+        "bossName": "The Monarch Anomaly / System Sovereign",
+        "description": "The dimensional space cracks open. Beyond the 10th Gate lies the Throne of the Monarch. Cast the ultimate Shadow Extraction spell ('ARISE!') to claim your crown and ascend.",
+        "missionObjective": "Instantiate the ShadowMonarch class and invoke monarch.arise() to awaken the shadow army.",
+        "initialCode": "# Codex XI - Throne of the Monarch\n# Mission: Invoke the ultimate Shadow Extraction spell\n\nclass ShadowMonarch:\n    def __init__(self, hunter_name):\n        self.name = hunter_name\n        self.shadows = [\"Igris\", \"Tank\", \"Iron\", \"Beru\", \"Bellion\"]\n        \n    def arise(self):\n        return f\"ARISE! {self.name} has ascended to the SHADOW MONARCH CLASS!\"\n\nmonarch = ShadowMonarch(\"Akhand\")\nprint(monarch.arise())\n",
+        "expectedKeywordOrOutput": "SHADOW MONARCH CLASS",
+        "solutionHint": "Use print(monarch.arise()) to invoke the Shadow Extraction spell.",
+        "theoryNotes": [
+            "The Shadow Monarch Class is the highest evolutionary rank in the Nocturnal Codex System.",
+            "Shadow Extraction: Converts defeated anomalies into loyal shadow soldiers.",
+            "Level 999 unlocks total command over digital dungeons and infinite system mana."
+        ],
+        "inventoryReward": {
+            "id": "monarch-crown",
+            "name": "Crown of the Shadow Monarch",
+            "description": "Sovereign emblem granting absolute dominion over all Python dungeons (+999 Stats).",
+            "icon": "👑"
+        }
     }
 ]
 
 # Extract all 77 tasks mapped to their experiment numbers
-exp_tasks = {i: [] for i in range(1, 11)}
+exp_tasks = {i: [] for i in range(1, 12)}
+
+exp_tasks[11] = [
+    {
+        "id": "d11-t1",
+        "title": "Task 1: Shadow Extraction Incantation",
+        "question": "Define the ShadowMonarch class and invoke the arise() method to extract shadow soldiers.",
+        "explanation": "Object-Oriented class definition returning the Shadow Monarch ascension proclamation.",
+        "formula": "Arise() -> Shadow Monarch",
+        "codeSnippet": "class ShadowMonarch:\n    def __init__(self, name):\n        self.name = name\n    def arise(self):\n        return f\"ARISE! {self.name} is the SHADOW MONARCH!\"\n\nm = ShadowMonarch(\"Akhand\")\nprint(m.arise())",
+        "expectedOutput": "ARISE! Akhand is the SHADOW MONARCH!"
+    }
+]
 
 exp_title_re = re.compile(r"PYTHON LAB · EXPERIMENT (\d+)")
 current_exp = 0
