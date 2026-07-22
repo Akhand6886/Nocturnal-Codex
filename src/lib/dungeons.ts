@@ -661,7 +661,7 @@ export const DUNGEONS: Dungeon[] = [
     "bossName": "Collection Guardian",
     "description": "The treasure room of the Digital Dungeon holds legendary weapons stored in arrays, sets, and dictionary caches.",
     "missionObjective": "Build inventory dictionary, perform frequency counts, and unpack tuple coordinates.",
-    "initialCode": "word = \"NOCTURNAL\"\nfreq = {}\nfor ch in word:\n    freq[ch] = freq.get(ch, 0) + 1\nprint(\"Character Frequency:\", freq)\n\nhunter_inventory = {\"name\": \"Akhand\", \"weapons\": [\"Shadow Dagger\", \"Mana Staff\"]}\nprint(\"Primary Weapon:\", hunter_inventory[\"weapons\"][0])\n",
+    "initialCode": "word = \"NOCTURNAL\"\nfreq = {}\nfor ch in word:\n    freq[ch] = freq.get(ch, 0) + 1\nprint(\"Character Frequency:\", freq)\n\nhunter_inventory = {\"name\": \"Akhanda\", \"weapons\": [\"Shadow Dagger\", \"Mana Staff\"]}\nprint(\"Primary Weapon:\", hunter_inventory[\"weapons\"][0])\n",
     "expectedKeywordOrOutput": "Shadow Dagger",
     "solutionHint": "Access dictionary keys and append list elements.",
     "theoryNotes": [
@@ -1071,7 +1071,7 @@ export const DUNGEONS: Dungeon[] = [
     "bossName": "The Monarch Anomaly / System Sovereign",
     "description": "The dimensional space cracks open. Beyond the 10th Gate lies the Throne of the Monarch. Cast the ultimate Shadow Extraction spell ('ARISE!') to claim your crown and ascend.",
     "missionObjective": "Instantiate the ShadowMonarch class and invoke monarch.arise() to awaken the shadow army.",
-    "initialCode": "# Codex XI - Throne of the Monarch\n# Mission: Invoke the ultimate Shadow Extraction spell\n\nclass ShadowMonarch:\n    def __init__(self, hunter_name):\n        self.name = hunter_name\n        self.shadows = [\"Igris\", \"Tank\", \"Iron\", \"Beru\", \"Bellion\"]\n        \n    def arise(self):\n        return f\"ARISE! {self.name} has ascended to the SHADOW MONARCH CLASS!\"\n\nmonarch = ShadowMonarch(\"Akhand\")\nprint(monarch.arise())\n",
+    "initialCode": "# Codex XI - Throne of the Monarch\n# Mission: Invoke the ultimate Shadow Extraction spell\n\nclass ShadowMonarch:\n    def __init__(self, hunter_name):\n        self.name = hunter_name\n        self.shadows = [\"Igris\", \"Tank\", \"Iron\", \"Beru\", \"Bellion\"]\n        \n    def arise(self):\n        return f\"ARISE! {self.name} has ascended to the SHADOW MONARCH CLASS!\"\n\nmonarch = ShadowMonarch(\"Akhanda\")\nprint(monarch.arise())\n",
     "expectedKeywordOrOutput": "SHADOW MONARCH CLASS",
     "solutionHint": "Use print(monarch.arise()) to invoke the Shadow Extraction spell.",
     "theoryNotes": [
@@ -1092,8 +1092,8 @@ export const DUNGEONS: Dungeon[] = [
         "question": "Define the ShadowMonarch class and invoke the arise() method to extract shadow soldiers.",
         "explanation": "Object-Oriented class definition returning the Shadow Monarch ascension proclamation.",
         "formula": "Arise() -> Shadow Monarch",
-        "codeSnippet": "class ShadowMonarch:\n    def __init__(self, name):\n        self.name = name\n    def arise(self):\n        return f\"ARISE! {self.name} is the SHADOW MONARCH!\"\n\nm = ShadowMonarch(\"Akhand\")\nprint(m.arise())",
-        "expectedOutput": "ARISE! Akhand is the SHADOW MONARCH!"
+        "codeSnippet": "class ShadowMonarch:\n    def __init__(self, name):\n        self.name = name\n    def arise(self):\n        return f\"ARISE! {self.name} is the SHADOW MONARCH!\"\n\nm = ShadowMonarch(\"Akhanda\")\nprint(m.arise())",
+        "expectedOutput": "ARISE! Akhanda is the SHADOW MONARCH!"
       }
     ]
   }
