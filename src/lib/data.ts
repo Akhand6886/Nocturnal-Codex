@@ -2,7 +2,7 @@ import type { NavItem as NavItemType } from '@/components/layout/navbar';
 
 export const NAV_ITEMS: NavItemType[] = [
   { label: "Home", href: "/" },
-  { label: "Roadmaps", href: "/roadmaps" },
+  { label: "Python", href: "/python" },
   { label: "Projects", href: "/projects" },
   { label: "Languages", href: "/languages" },
   { label: "Mathematics", href: "/mathematics" },
