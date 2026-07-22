@@ -664,8 +664,25 @@ export default function PythonAscensionPage() {
     setExecutionSuccess(null);
   };
 
+  // Enforce Strict Progression: Cannot switch to Boss without completing all Small Practice Missions!
   const handleSwitchToBoss = () => {
     if (!activeDungeon) return;
+
+    const totalTasks = activeDungeon.tasks.length;
+    const isDungeonAlreadyCleared = state.completedDungeons.includes(activeDungeon.id);
+    const allTasksCompleted = completedTasksInDungeon.length >= totalTasks || isDungeonAlreadyCleared;
+
+    if (!allTasksCompleted && totalTasks > 0) {
+      playSound("fail");
+      setTerminalOutput(
+        `🔒 [BOSS GATE SEALED!]\n` +
+        `[SYSTEM RESTRICTION]: You cannot challenge Phase 2 (Boss Battle) until ALL Phase 1 Small Practice Missions are cleared!\n` +
+        `[PROGRESS]: ${completedTasksInDungeon.length} / ${totalTasks} Small Missions Cleared.\n` +
+        `Complete all ${totalTasks} practice missions below to break the Boss Seal.`
+      );
+      return;
+    }
+
     playSound("click");
     setDungeonMode("boss");
     setSelectedTask(null);
@@ -1647,14 +1664,31 @@ export default function PythonAscensionPage() {
                   >
                     <Target className="w-3.5 h-3.5" /> 1. Small Missions ({completedTasksInDungeon.length}/{activeDungeon.tasks.length})
                   </Button>
-                  <Button
-                    size="sm"
-                    variant={dungeonMode === "boss" ? "default" : "ghost"}
-                    onClick={handleSwitchToBoss}
-                    className={cn("h-7 text-xs font-semibold rounded-lg gap-1.5", dungeonMode === "boss" && "bg-red-500 text-white font-bold")}
-                  >
-                    <Skull className="w-3.5 h-3.5 text-amber-300" /> 2. Final Boss Battle
-                  </Button>
+                  
+                  {/* Phase 2 Boss Button with strict progression lock */}
+                  {(() => {
+                    const isBossUnlocked = completedTasksInDungeon.length >= activeDungeon.tasks.length || state.completedDungeons.includes(activeDungeon.id);
+                    return (
+                      <Button
+                        size="sm"
+                        variant={dungeonMode === "boss" ? "default" : "ghost"}
+                        onClick={handleSwitchToBoss}
+                        className={cn(
+                          "h-7 text-xs font-semibold rounded-lg gap-1.5 transition-all",
+                          dungeonMode === "boss"
+                            ? "bg-red-500 text-white font-bold"
+                            : isBossUnlocked
+                              ? "text-red-400 hover:text-white"
+                              : "text-slate-500 opacity-70"
+                        )}
+                        title={isBossUnlocked ? "Challenge Final Boss" : "Complete all Small Practice Missions to unlock Boss Battle!"}
+                      >
+                        {isBossUnlocked ? <Skull className="w-3.5 h-3.5 text-amber-300" /> : <Lock className="w-3.5 h-3.5 text-slate-500" />}
+                        2. Final Boss Battle {isBossUnlocked ? "" : "🔒"}
+                      </Button>
+                    );
+                  })()}
+
                   <Button
                     size="sm"
                     variant={dungeonMode === "theory" ? "default" : "ghost"}
@@ -1719,13 +1753,27 @@ export default function PythonAscensionPage() {
                 </div>
 
                 {dungeonMode === "tasks" ? (
-                  <Button
-                    size="sm"
-                    onClick={handleSwitchToBoss}
-                    className="bg-red-600 hover:bg-red-500 text-white font-bold text-xs gap-1.5 rounded-lg shadow-lg shadow-red-600/20"
-                  >
-                    Proceed to Boss Battle <ArrowRight className="w-3.5 h-3.5" />
-                  </Button>
+                  (() => {
+                    const isBossUnlocked = completedTasksInDungeon.length >= activeDungeon.tasks.length || state.completedDungeons.includes(activeDungeon.id);
+                    return (
+                      <Button
+                        size="sm"
+                        onClick={handleSwitchToBoss}
+                        className={cn(
+                          "font-bold text-xs gap-1.5 rounded-lg shadow-lg transition-all",
+                          isBossUnlocked
+                            ? "bg-red-600 hover:bg-red-500 text-white shadow-red-600/20"
+                            : "bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700"
+                        )}
+                      >
+                        {isBossUnlocked ? (
+                          <>Proceed to Boss Battle <ArrowRight className="w-3.5 h-3.5" /></>
+                        ) : (
+                          <>🔒 Clear Small Missions First ({completedTasksInDungeon.length}/{activeDungeon.tasks.length})</>
+                        )}
+                      </Button>
+                    );
+                  })()
                 ) : (
                   <Button
                     size="sm"
