@@ -49,7 +49,11 @@ import {
   Target,
   ArrowRight,
   Flame as FlameIcon,
-  AlertTriangle
+  AlertTriangle,
+  Download,
+  Timer,
+  Siren,
+  FileCheck
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -81,6 +85,31 @@ function getModeCode(originalCode: string, mode: "easy" | "hard" | "hell"): stri
   return `# HARD MODE: Fix the syntax bugs in this code!\n${corrupted}`;
 }
 
+// Penalty Zone Challenges
+const PENALTY_CHALLENGES = [
+  {
+    id: 1,
+    title: "Survival Challenge 1: Infinite Loop Escape",
+    prompt: "Fix the infinite while loop by incrementing the count variable inside the loop!",
+    initialCode: "count = 0\nwhile count < 5:\n    print('Fleeing Giant Centipede step:', count)\n    # BUG: Add count += 1 here to escape!\n",
+    expectedKeyword: "count += 1"
+  },
+  {
+    id: 2,
+    title: "Survival Challenge 2: Index Out of Bounds Repair",
+    prompt: "Access the last element of the centipede_parts list without causing IndexError!",
+    initialCode: "parts = ['head', 'thorax', 'abdomen', 'tail']\n# BUG: Fix index to access 'tail' safely\nlast_part = parts[-1]\nprint('Targeting:', last_part)",
+    expectedKeyword: "parts[-1]"
+  },
+  {
+    id: 3,
+    title: "Survival Challenge 3: Emergency Teleport Spell",
+    prompt: "Define function teleport_out() that returns 'TELEPORT_SUCCESS' to return to reality!",
+    initialCode: "def teleport_out():\n    return 'TELEPORT_SUCCESS'\n\nprint(teleport_out())",
+    expectedKeyword: "TELEPORT_SUCCESS"
+  }
+];
+
 export default function PythonAscensionPage() {
   const [state, setState] = useState<HunterState>({
     completedDungeons: [],
@@ -103,6 +132,14 @@ export default function PythonAscensionPage() {
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
   const [isShaking, setIsShaking] = useState<boolean>(false);
 
+  // Failure tracking & Penalty Zone States
+  const [consecutiveFailures, setConsecutiveFailures] = useState<number>(0);
+  const [inPenaltyZone, setInPenaltyZone] = useState<boolean>(false);
+  const [penaltyTimer, setPenaltyTimer] = useState<number>(60);
+  const [penaltyStep, setPenaltyStep] = useState<number>(0);
+  const [penaltyCode, setPenaltyCode] = useState<string>(PENALTY_CHALLENGES[0].initialCode);
+  const [penaltyOutput, setPenaltyOutput] = useState<string>("");
+
   // Audio & Music Engine States (Music ON by default)
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [musicPlaying, setMusicPlaying] = useState<boolean>(true);
@@ -111,6 +148,7 @@ export default function PythonAscensionPage() {
 
   const audioCtxRef = useRef<AudioContext | null>(null);
   const musicIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const penaltyTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Solo Leveling Soundtracks (Procedural Web Audio API OST Engine)
   const TRACKS = [
@@ -149,6 +187,132 @@ export default function PythonAscensionPage() {
       window.removeEventListener("keydown", handleFirstInteraction);
     };
   }, []);
+
+  // Penalty Zone Timer Loop
+  useEffect(() => {
+    if (inPenaltyZone) {
+      penaltyTimerRef.current = setInterval(() => {
+        setPenaltyTimer((prev) => {
+          if (prev <= 1) {
+            clearInterval(penaltyTimerRef.current as NodeJS.Timeout);
+            handlePenaltyTimeOut();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      if (penaltyTimerRef.current) clearInterval(penaltyTimerRef.current);
+    }
+    return () => {
+      if (penaltyTimerRef.current) clearInterval(penaltyTimerRef.current);
+    };
+  }, [inPenaltyZone]);
+
+  const handlePenaltyTimeOut = () => {
+    playSound("fail");
+    setInPenaltyZone(false);
+    setConsecutiveFailures(0);
+    setState((prev) => ({ ...prev, xp: Math.max(0, prev.xp - 50) }));
+    alert("🚨 PENALTY ZONE TIME EXPIRED! You failed to escape the Desert of Giant Centipedes (-50 XP Penalty). Teleported back to safety.");
+  };
+
+  const triggerPenaltyZone = () => {
+    playSound("fail");
+    setIsShaking(true);
+    setTimeout(() => setIsShaking(false), 2000);
+    setInPenaltyZone(true);
+    setPenaltyTimer(60);
+    setPenaltyStep(0);
+    setPenaltyCode(PENALTY_CHALLENGES[0].initialCode);
+    setPenaltyOutput("🚨 SYSTEM PENALTY ZONE ACTIVATED!\nYou are trapped in the Desert of Giant Centipedes!\nSolve 3 survival coding challenges before time expires to escape!");
+  };
+
+  const handleRunPenaltyCode = () => {
+    playSound("click");
+    const currentChallenge = PENALTY_CHALLENGES[penaltyStep];
+    const isPassed = penaltyCode.includes(currentChallenge.expectedKeyword) || penaltyCode.toLowerCase().includes("teleport_success");
+
+    if (isPassed) {
+      playSound("success");
+      if (penaltyStep >= 2) {
+        // All 3 survival challenges cleared!
+        playSound("levelUp");
+        setInPenaltyZone(false);
+        setConsecutiveFailures(0);
+        setState((prev) => ({ ...prev, xp: prev.xp + 200 }));
+        alert("🎉 SURVIVAL SUCCESSFUL! You escaped the Penalty Zone and earned +200 System XP!");
+      } else {
+        const nextStep = penaltyStep + 1;
+        setPenaltyStep(nextStep);
+        setPenaltyCode(PENALTY_CHALLENGES[nextStep].initialCode);
+        setPenaltyOutput(`>>> SURVIVAL CHALLENGE ${penaltyStep + 1} CLEARED! <<<\nAdvancing to Challenge ${nextStep + 1}...`);
+      }
+    } else {
+      playSound("fail");
+      setPenaltyOutput(`[ERROR]: Survival criteria missing!\nPrompt: ${currentChallenge.prompt}`);
+    }
+  };
+
+  // 1-Click Official Hunter Lab Assignment Exporter (Markdown format)
+  const exportLabReport = () => {
+    playSound("click");
+    const dateStr = new Date().toLocaleDateString();
+    const rankInfo = getRankInfo(state.completedDungeons.length);
+
+    let md = `# NOCTURNAL CODEX — OFFICIAL PYTHON LAB ASSIGNMENT REPORT\n`;
+    md += `**Classification:** Restricted Academic Submission  \n`;
+    md += `**Date:** ${dateStr}  \n`;
+    md += `**Hunter Name:** Akhand (Hunter ID #041)  \n`;
+    md += `**System Rank:** ${rankInfo.rank} (Level ${rankInfo.level})  \n`;
+    md += `**Total System Experience:** ${state.xp} XP  \n`;
+    md += `**Dungeons Cleared:** ${state.completedDungeons.length} / 11  \n\n`;
+
+    md += `---  \n\n`;
+    md += `## 📊 LAB EXPERIMENT SUMMARY TABLE\n\n`;
+    md += `| Experiment | Title | Practice Tasks | Status |\n`;
+    md += `| :--- | :--- | :--- | :--- |\n`;
+
+    DUNGEONS.slice(0, 10).forEach((d) => {
+      const isCleared = state.completedDungeons.includes(d.id);
+      md += `| **Experiment ${d.id}** | ${d.dungeonName} | ${d.tasks.length} Tasks | ${isCleared ? "✅ CLEARED" : "⏳ IN PROGRESS"} |\n`;
+    });
+
+    md += `\n---\n\n## 📝 DETAILED EXPERIMENT CODE LOGS\n\n`;
+
+    DUNGEONS.slice(0, 10).forEach((d) => {
+      md += `### Experiment ${d.id}: ${d.dungeonName}\n`;
+      md += `**Objective:** ${d.missionObjective}  \n\n`;
+
+      d.tasks.forEach((t, idx) => {
+        md += `#### Task ${idx + 1}: ${t.title}\n`;
+        md += `**Question:** ${t.question}  \n`;
+        if (t.formula) md += `**Formula:** \`${t.formula}\`  \n`;
+        md += `\`\`\`python\n${t.codeSnippet}\n\`\`\`\n`;
+        md += `**Expected Output:** \`${t.expectedOutput}\`  \n\n`;
+      });
+      md += `\n`;
+    });
+
+    md += `---\n\n## 👨‍🏫 PROFESSOR EVALUATION & SIGNATURE BLOCK\n\n`;
+    md += `| Evaluation Criteria | Score / Status |\n`;
+    md += `| :--- | :--- |\n`;
+    md += `| **Lab Execution & Output Accuracy** | 100 / 100 |\n`;
+    md += `| **Code Optimization & Styling** | Pass |\n`;
+    md += `| **System Hunter Level Verification** | ${rankInfo.title} (Level ${rankInfo.level}) |\n\n`;
+    md += `**Professor Signature:** ___________________________  \n`;
+    md += `**Grade Assigned:** A+ (S-Rank Distinction)  \n`;
+
+    // Trigger download
+    const blob = new Blob([md], { type: "text/markdown;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `Python_Lab_Assignment_Report_Hunter_041.md`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Sound FX Generator
   const playSound = (type: "click" | "success" | "fail" | "levelUp" | "monarchArise") => {
@@ -440,6 +604,7 @@ export default function PythonAscensionPage() {
 
       if (isSuccess) {
         setExecutionSuccess(true);
+        setConsecutiveFailures(0); // Reset failures on success
 
         if (isTaskMode && selectedTask) {
           playSound("success");
@@ -494,11 +659,21 @@ export default function PythonAscensionPage() {
       } else {
         playSound("fail");
         setExecutionSuccess(false);
-        setTerminalOutput((prev) =>
-          prev + "\n\n[ERROR]: Execution completed with syntax error or missing criteria.\n" +
-          (hasCorruptedBugs ? "[SYSTEM ERROR]: Syntax bugs remaining in code! Fix function/print keywords and missing colons.\n" : "") +
-          `[HINT]: ${activeDungeon.solutionHint}`
-        );
+
+        // Track consecutive failures for Penalty Zone trigger
+        const nextFailures = consecutiveFailures + 1;
+        setConsecutiveFailures(nextFailures);
+
+        if (nextFailures >= 3) {
+          triggerPenaltyZone();
+        } else {
+          setTerminalOutput((prev) =>
+            prev + `\n\n[ERROR]: Execution completed with syntax error or missing criteria. (Failure ${nextFailures}/3)\n` +
+            (hasCorruptedBugs ? "[SYSTEM ERROR]: Syntax bugs remaining in code! Fix function/print keywords and missing colons.\n" : "") +
+            `[WARNING]: 3 consecutive failures will trigger System Penalty Zone!\n` +
+            `[HINT]: ${activeDungeon.solutionHint}`
+          );
+        }
       }
     }, 1000);
   };
@@ -557,8 +732,25 @@ export default function PythonAscensionPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Choose your difficulty mode (Easy, Hard, Hell) and ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
+                Humanity has discovered mysterious Gates. Master Python, avoid System Penalty Zones, and export your official Lab Report to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
               </p>
+              
+              <div className="flex flex-wrap items-center gap-3 mt-4">
+                <Button
+                  onClick={exportLabReport}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold gap-2 text-xs rounded-xl shadow-lg shadow-emerald-500/20"
+                >
+                  <Download className="w-4 h-4" /> 📄 Export Official Lab Report (.md)
+                </Button>
+
+                <Button
+                  variant="outline"
+                  onClick={triggerPenaltyZone}
+                  className="border-red-500/40 text-red-400 hover:bg-red-950/60 font-mono text-xs gap-1.5 rounded-xl"
+                >
+                  <Siren className="w-3.5 h-3.5 text-red-400 animate-pulse" /> Test Penalty Zone
+                </Button>
+              </div>
             </div>
 
             {/* Solo Leveling OST Music Player HUD */}
@@ -1141,7 +1333,7 @@ export default function PythonAscensionPage() {
       </div>
 
       {/* Interactive Dungeon Modal Simulator */}
-      {activeDungeon && (
+      {activeDungeon && !inPenaltyZone && (
         <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4">
           <div className="bg-slate-900 border border-cyan-500/50 rounded-2xl max-w-5xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl">
             {/* Modal Header */}
@@ -1384,6 +1576,68 @@ export default function PythonAscensionPage() {
                   </Button>
                 </div>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* System Penalty Zone Full-Screen Alarm Modal */}
+      {inPenaltyZone && (
+        <div className="fixed inset-0 z-50 bg-red-950/95 backdrop-blur-2xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
+          <div className="bg-slate-950 border-2 border-red-500 rounded-2xl max-w-4xl w-full p-6 space-y-6 shadow-2xl relative overflow-hidden">
+            <div className="flex items-center justify-between border-b border-red-900/60 pb-4">
+              <div className="flex items-center gap-3">
+                <Siren className="w-8 h-8 text-red-500 animate-bounce" />
+                <div>
+                  <h3 className="text-xl font-extrabold text-white tracking-wide">🚨 SYSTEM PENALTY ZONE: DESERT OF GIANT CENTIPEDES</h3>
+                  <p className="text-xs text-red-400 font-mono">Solve 3 survival debug challenges to return to reality!</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 bg-red-950 p-2.5 rounded-xl border border-red-500/40">
+                <Timer className="w-5 h-5 text-amber-400 animate-pulse" />
+                <span className="font-mono font-bold text-xl text-amber-400">{penaltyTimer}s</span>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-900 border border-red-900/50 space-y-2">
+              <div className="flex justify-between items-center text-xs font-mono text-amber-400">
+                <span>{PENALTY_CHALLENGES[penaltyStep].title}</span>
+                <span>STEP {penaltyStep + 1} / 3</span>
+              </div>
+              <p className="text-xs text-slate-300">{PENALTY_CHALLENGES[penaltyStep].prompt}</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <div className="text-xs font-mono text-red-400">Survival Code Editor</div>
+                <textarea
+                  value={penaltyCode}
+                  onChange={(e) => setPenaltyCode(e.target.value)}
+                  rows={8}
+                  className="w-full font-mono text-xs p-4 rounded-xl bg-slate-900 border border-red-900/80 text-amber-300 focus:outline-none focus:border-red-500 transition-all resize-none"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-xs font-mono text-red-400">Penalty Terminal Output</div>
+                <pre className="w-full h-[160px] font-mono text-xs p-4 rounded-xl bg-black border border-red-900/80 text-slate-300 overflow-y-auto whitespace-pre-wrap">
+                  {penaltyOutput}
+                </pre>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-center pt-2">
+              <Button variant="ghost" onClick={() => setPenaltyCode(PENALTY_CHALLENGES[penaltyStep].initialCode)} className="text-xs text-slate-400 hover:text-white">
+                <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Survival Code
+              </Button>
+
+              <Button
+                onClick={handleRunPenaltyCode}
+                className="bg-red-600 hover:bg-red-500 text-white font-extrabold gap-2 px-8 rounded-xl shadow-lg shadow-red-600/30"
+              >
+                <Shield className="w-4 h-4" /> Execute Survival Fix
+              </Button>
             </div>
           </div>
         </div>
