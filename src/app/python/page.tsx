@@ -1638,12 +1638,12 @@ export default function PythonAscensionPage() {
         )}
       </div>
 
-      {/* Interactive Dungeon Modal Simulator */}
+      {/* Interactive Split-Screen Pro IDE Dungeon Modal Simulator */}
       {activeDungeon && !inPenaltyZone && (
-        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-cyan-500/50 rounded-2xl max-w-5xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl">
-            {/* Modal Header */}
-            <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
+        <div className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-3 md:p-6">
+          <div className="bg-slate-900 border border-cyan-500/50 rounded-2xl max-w-6xl w-full max-h-[95vh] flex flex-col overflow-hidden shadow-2xl">
+            {/* Modal Top Header */}
+            <div className="p-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-950/80">
               <div className="flex items-center gap-3">
                 <Badge className="bg-cyan-950 text-cyan-300 font-mono border-cyan-500/30">
                   {activeDungeon.codexNumber}
@@ -1662,7 +1662,7 @@ export default function PythonAscensionPage() {
                     onClick={() => setDungeonMode("tasks")}
                     className={cn("h-7 text-xs font-semibold rounded-lg gap-1.5", dungeonMode === "tasks" && "bg-amber-500 text-slate-950 font-bold")}
                   >
-                    <Target className="w-3.5 h-3.5" /> 1. Small Missions ({completedTasksInDungeon.length}/{activeDungeon.tasks.length})
+                    <Target className="w-3.5 h-3.5" /> 1. Practice Missions ({completedTasksInDungeon.length}/{activeDungeon.tasks.length})
                   </Button>
                   
                   {/* Phase 2 Boss Button with strict progression lock */}
@@ -1695,7 +1695,32 @@ export default function PythonAscensionPage() {
                     onClick={() => setDungeonMode("theory")}
                     className={cn("h-7 text-xs font-semibold rounded-lg gap-1.5", dungeonMode === "theory" && "bg-cyan-500 text-slate-950 font-bold")}
                   >
-                    <Lightbulb className="w-3.5 h-3.5" /> Codex Theory
+                    <Lightbulb className="w-3.5 h-3.5" /> Theory
+                  </Button>
+                </div>
+
+                {/* Difficulty Mode Selector */}
+                <div className="hidden sm:flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                  <Button
+                    size="sm"
+                    onClick={() => handleDifficultyModeChange("easy")}
+                    className={cn("h-7 text-[10px] font-bold rounded-lg px-2", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950" : "text-slate-400")}
+                  >
+                    EASY
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={() => handleDifficultyModeChange("hard")}
+                    className={cn("h-7 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hard" ? "bg-amber-500 text-slate-950" : "text-slate-400")}
+                  >
+                    HARD
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={() => handleDifficultyModeChange("hell")}
+                    className={cn("h-7 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hell" ? "bg-red-600 text-white animate-pulse" : "text-slate-400")}
+                  >
+                    HELL
                   </Button>
                 </div>
 
@@ -1705,195 +1730,144 @@ export default function PythonAscensionPage() {
               </div>
             </div>
 
-            {/* Modal Body */}
-            <div className="p-6 overflow-y-auto space-y-6 flex-1">
-              {/* Difficulty Mode Selector HUD Bar */}
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
-                  <FlameIcon className="w-4 h-4 text-amber-400" />
-                  <span>SELECT DIFFICULTY MODE:</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button
-                    size="sm"
-                    onClick={() => handleDifficultyModeChange("easy")}
-                    className={cn("h-7 text-xs font-bold rounded-lg gap-1", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950" : "bg-slate-900 border border-slate-800 text-slate-400")}
-                  >
-                    🟢 EASY (1.0x XP)
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => handleDifficultyModeChange("hard")}
-                    className={cn("h-7 text-xs font-bold rounded-lg gap-1", difficultyMode === "hard" ? "bg-amber-500 text-slate-950" : "bg-slate-900 border border-slate-800 text-slate-400")}
-                  >
-                    🟡 HARD (1.5x XP - Syntax Bugs)
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => handleDifficultyModeChange("hell")}
-                    className={cn("h-7 text-xs font-bold rounded-lg gap-1", difficultyMode === "hell" ? "bg-red-600 text-white animate-pulse" : "bg-slate-900 border border-slate-800 text-slate-400")}
-                  >
-                    🔴 HELL (2.0x XP - From Scratch)
-                  </Button>
-                </div>
-              </div>
-
-              {/* Progress Banner for 2-Phase Progression */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-amber-950/60 border border-amber-500/30 text-amber-400">
-                    {dungeonMode === "tasks" ? <Target className="w-5 h-5" /> : <Skull className="w-5 h-5 text-red-400" />}
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-slate-400">DUNGEON PROGRESSION FLOW</div>
-                    <div className="text-sm font-bold text-white">
-                      {dungeonMode === "tasks" ? "PHASE 1: Complete Small Practice Missions" : "PHASE 2: Defeat Dungeon Boss Anomaly"}
-                    </div>
-                  </div>
-                </div>
-
-                {dungeonMode === "tasks" ? (
-                  (() => {
-                    const isBossUnlocked = completedTasksInDungeon.length >= activeDungeon.tasks.length || state.completedDungeons.includes(activeDungeon.id);
-                    return (
-                      <Button
-                        size="sm"
-                        onClick={handleSwitchToBoss}
-                        className={cn(
-                          "font-bold text-xs gap-1.5 rounded-lg shadow-lg transition-all",
-                          isBossUnlocked
-                            ? "bg-red-600 hover:bg-red-500 text-white shadow-red-600/20"
-                            : "bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700"
-                        )}
-                      >
-                        {isBossUnlocked ? (
-                          <>Proceed to Boss Battle <ArrowRight className="w-3.5 h-3.5" /></>
-                        ) : (
-                          <>🔒 Clear Small Missions First ({completedTasksInDungeon.length}/{activeDungeon.tasks.length})</>
-                        )}
-                      </Button>
-                    );
-                  })()
-                ) : (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => setDungeonMode("tasks")}
-                    className="text-xs font-mono border-slate-800 text-slate-300 hover:border-amber-400"
-                  >
-                    Review Small Missions ({activeDungeon.tasks.length})
-                  </Button>
-                )}
-              </div>
-
+            {/* Split-Screen Modal Content Body */}
+            <div className="p-4 md:p-6 overflow-y-auto flex-1">
               {dungeonMode === "theory" ? (
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                    <h4 className="font-bold text-cyan-300 text-sm mb-2 flex items-center gap-2">
-                      <Lightbulb className="w-4 h-4 text-amber-400" /> Codex Theory & Formulas
-                    </h4>
-                    <ul className="space-y-2 text-xs text-slate-300">
-                      {activeDungeon.theoryNotes.map((note, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="text-cyan-400">•</span>
-                          <span>{note}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ) : dungeonMode === "tasks" ? (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {activeDungeon.tasks.map((task) => {
-                      const isTaskDone = completedTasksInDungeon.includes(task.id);
-                      const isSelected = selectedTask?.id === task.id;
-
-                      return (
-                        <div
-                          key={task.id}
-                          onClick={() => handleSelectTask(task)}
-                          className={cn(
-                            "p-3.5 rounded-xl border cursor-pointer transition-all space-y-1.5 relative",
-                            isSelected
-                              ? "bg-cyan-950/40 border-cyan-500 text-cyan-200"
-                              : isTaskDone
-                                ? "bg-emerald-950/20 border-emerald-500/40 text-emerald-200"
-                                : "bg-slate-950/60 border-slate-800 hover:border-slate-700 text-slate-300"
-                          )}
-                        >
-                          {isTaskDone && (
-                            <div className="absolute top-2 right-2 text-emerald-400">
-                              <CheckCircle2 className="w-4 h-4" />
-                            </div>
-                          )}
-                          <div className="font-bold text-xs flex items-center justify-between pr-5">
-                            <span>{task.title}</span>
-                            {task.formula && <Badge variant="outline" className="text-[10px] text-amber-400 border-amber-500/30">{task.formula}</Badge>}
-                          </div>
-                          <p className="text-[11px] text-slate-400 line-clamp-2">{task.question}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {selectedTask && (
-                    <div className="p-3.5 rounded-xl bg-slate-950 border border-cyan-500/30 text-xs text-slate-300 space-y-1">
-                      <strong className="text-cyan-400">Small Mission Task Objective:</strong> {selectedTask.question}
-                      <div className="text-slate-400 pt-1">{selectedTask.explanation}</div>
-                    </div>
-                  )}
+                <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
+                  <h4 className="font-bold text-cyan-300 text-sm flex items-center gap-2">
+                    <Lightbulb className="w-4 h-4 text-amber-400" /> Codex Theory & Formulas
+                  </h4>
+                  <ul className="space-y-2 text-xs text-slate-300">
+                    {activeDungeon.theoryNotes.map((note, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-cyan-400">•</span>
+                        <span>{note}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ) : (
-                <div className="p-4 rounded-xl bg-slate-950 border border-red-500/40 text-xs text-slate-300 leading-relaxed space-y-3">
-                  <div className="flex items-center gap-2 text-red-400 font-bold font-mono text-sm">
-                    <Skull className="w-5 h-5 animate-pulse" /> BOSS ENCOUNTER: {activeDungeon.bossName || "Dungeon Anomaly"}
-                  </div>
-                  <div>{activeDungeon.description}</div>
-                  <div className="pt-3 border-t border-slate-800 font-mono text-emerald-400">
-                    <strong>FINAL MISSION OBJECTIVE:</strong> {activeDungeon.missionObjective}
-                  </div>
-                </div>
-              )}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                  {/* Left Column (Task Navigator & Mission Detail) */}
+                  <div className="lg:col-span-5 space-y-4">
+                    {dungeonMode === "tasks" ? (
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between text-xs font-mono">
+                          <span className="text-amber-400 font-bold flex items-center gap-1.5">
+                            <Target className="w-4 h-4" /> SELECT PRACTICE TASK:
+                          </span>
+                          <span className="text-slate-400">
+                            {completedTasksInDungeon.length}/{activeDungeon.tasks.length} Cleared
+                          </span>
+                        </div>
 
-              {/* Code Editor & Terminal */}
-              {dungeonMode !== "theory" && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  {/* Editor */}
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                      <span className="flex items-center gap-1.5"><TerminalIcon className="w-3.5 h-3.5 text-cyan-400" /> Python Code Editor</span>
-                      <Badge variant="outline" className={cn("text-[10px]", difficultyMode === "easy" ? "border-emerald-500/40 text-emerald-300" : difficultyMode === "hard" ? "border-amber-500/40 text-amber-300" : "border-red-500/40 text-red-400")}>
-                        MODE: {difficultyMode.toUpperCase()}
-                      </Badge>
-                    </div>
-                    <textarea
-                      value={code}
-                      onChange={(e) => setCode(e.target.value)}
-                      rows={10}
-                      className="w-full font-mono text-xs p-4 rounded-xl bg-slate-950 border border-slate-800 text-cyan-300 focus:outline-none focus:border-cyan-500 transition-all resize-none"
-                    />
+                        {/* Compact Scrollable Task List */}
+                        <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1">
+                          {activeDungeon.tasks.map((task, idx) => {
+                            const isTaskDone = completedTasksInDungeon.includes(task.id);
+                            const isSelected = selectedTask?.id === task.id;
+
+                            return (
+                              <div
+                                key={task.id}
+                                onClick={() => handleSelectTask(task)}
+                                className={cn(
+                                  "p-2.5 rounded-xl border cursor-pointer transition-all flex items-center justify-between text-xs relative",
+                                  isSelected
+                                    ? "bg-cyan-950/60 border-cyan-500 text-cyan-200 shadow-md ring-1 ring-cyan-500/50"
+                                    : isTaskDone
+                                      ? "bg-emerald-950/20 border-emerald-500/30 text-emerald-300"
+                                      : "bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-300"
+                                )}
+                              >
+                                <div className="flex items-center gap-2 truncate">
+                                  <Badge variant="outline" className={cn("text-[9px] font-mono px-1.5 py-0.5", isTaskDone ? "border-emerald-500/40 text-emerald-400" : "border-slate-800 text-slate-400")}>
+                                    Task {idx + 1}
+                                  </Badge>
+                                  <span className="font-semibold truncate">{task.title}</span>
+                                </div>
+
+                                {isTaskDone ? (
+                                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 ml-2" />
+                                ) : isSelected ? (
+                                  <ChevronRight className="w-4 h-4 text-cyan-400 flex-shrink-0 ml-2 animate-pulse" />
+                                ) : null}
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        {/* Selected Task Details Card */}
+                        {selectedTask && (
+                          <div className="p-4 rounded-xl bg-slate-950 border border-cyan-500/30 text-xs space-y-2">
+                            <div className="flex items-center justify-between text-cyan-400 font-bold border-b border-slate-800 pb-2">
+                              <span>Mission Objective</span>
+                              {selectedTask.formula && (
+                                <Badge variant="outline" className="text-[10px] text-amber-400 border-amber-500/30">
+                                  {selectedTask.formula}
+                                </Badge>
+                              )}
+                            </div>
+                            <p className="text-slate-200 leading-relaxed">{selectedTask.question}</p>
+                            <p className="text-slate-400 text-[11px] leading-relaxed pt-1 border-t border-slate-900">{selectedTask.explanation}</p>
+                            <div className="text-[11px] font-mono text-emerald-400 pt-1">
+                              Expected Output: <code className="bg-slate-900 px-1.5 py-0.5 rounded text-amber-300">{selectedTask.expectedOutput}</code>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      /* Boss Battle Card */
+                      <div className="p-5 rounded-2xl bg-red-950/40 border-2 border-red-500/50 space-y-3">
+                        <div className="flex items-center gap-2 text-red-400 font-bold font-mono text-sm">
+                          <Skull className="w-5 h-5 animate-pulse text-amber-400" /> BOSS ENCOUNTER: {activeDungeon.bossName || "Dungeon Core Anomaly"}
+                        </div>
+                        <p className="text-xs text-slate-300 leading-relaxed">{activeDungeon.description}</p>
+                        <div className="pt-3 border-t border-red-900/60 font-mono text-xs text-emerald-400">
+                          <strong>FINAL MISSION OBJECTIVE:</strong> {activeDungeon.missionObjective}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Terminal Output */}
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                      <span>System Terminal Output</span>
-                      {executionSuccess !== null && (
-                        <span className={executionSuccess ? "text-emerald-400" : "text-red-400"}>
-                          {executionSuccess ? "STATUS: PASSED" : "STATUS: FAILED"}
-                        </span>
-                      )}
+                  {/* Right Column (Code Editor & Terminal Output Workspace) */}
+                  <div className="lg:col-span-7 space-y-4">
+                    {/* Code Editor */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span className="flex items-center gap-1.5"><TerminalIcon className="w-3.5 h-3.5 text-cyan-400" /> Python Code Editor</span>
+                        <Badge variant="outline" className={cn("text-[10px]", difficultyMode === "easy" ? "border-emerald-500/40 text-emerald-300" : difficultyMode === "hard" ? "border-amber-500/40 text-amber-300" : "border-red-500/40 text-red-400")}>
+                          MODE: {difficultyMode.toUpperCase()}
+                        </Badge>
+                      </div>
+                      <textarea
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                        rows={11}
+                        className="w-full font-mono text-xs p-4 rounded-xl bg-slate-950 border border-slate-800 text-cyan-300 focus:outline-none focus:border-cyan-500 transition-all resize-none shadow-inner"
+                      />
                     </div>
-                    <pre className="w-full h-[200px] lg:h-[225px] font-mono text-xs p-4 rounded-xl bg-black border border-slate-800 text-slate-300 overflow-y-auto whitespace-pre-wrap">
-                      {terminalOutput || "# Click 'Run Python Program' to execute script..."}
-                    </pre>
+
+                    {/* Terminal Output */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>System Terminal Output</span>
+                        {executionSuccess !== null && (
+                          <span className={executionSuccess ? "text-emerald-400 font-bold" : "text-red-400 font-bold"}>
+                            {executionSuccess ? "STATUS: PASSED ✅" : "STATUS: FAILED ❌"}
+                          </span>
+                        )}
+                      </div>
+                      <pre className="w-full h-[150px] font-mono text-xs p-3.5 rounded-xl bg-black border border-slate-800 text-slate-300 overflow-y-auto whitespace-pre-wrap">
+                        {terminalOutput || "# Click 'Run Python Program' to execute script..."}
+                      </pre>
+                    </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Modal Footer */}
+            {/* Modal Bottom Action Footer */}
             <div className="p-4 border-t border-slate-800 bg-slate-950 flex items-center justify-between">
               <Button variant="ghost" onClick={() => setCode(getModeCode(dungeonMode === "boss" ? activeDungeon.initialCode : (selectedTask ? selectedTask.codeSnippet : ""), difficultyMode))} className="text-xs text-slate-400 hover:text-white">
                 <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Code
@@ -1905,7 +1879,7 @@ export default function PythonAscensionPage() {
                     disabled={isRunning}
                     onClick={handleRunCode}
                     className={cn(
-                      "font-bold gap-2 px-6 rounded-xl shadow-lg transition-all",
+                      "font-bold gap-2 px-6 rounded-xl shadow-lg transition-all text-xs py-2.5",
                       dungeonMode === "boss" ? "bg-red-600 hover:bg-red-500 text-white shadow-red-600/20" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-cyan-500/20"
                     )}
                   >
