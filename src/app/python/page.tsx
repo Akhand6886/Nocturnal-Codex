@@ -905,36 +905,38 @@ print("[MATPLOTLIB CHART RENDERED]")
 
       <div className="container mx-auto px-4 pt-8 relative z-10 max-w-7xl">
         {/* System Archives Header Banner */}
-        <div className="mb-8 p-6 md:p-8 rounded-3xl bg-gradient-to-r from-slate-900/95 via-slate-950/95 to-purple-950/90 border-2 border-cyan-500/50 shadow-[0_0_50px_rgba(6,182,212,0.25)] backdrop-blur-2xl relative overflow-hidden group">
+        <div className="mb-8 p-6 md:p-8 rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/95 border-2 border-cyan-500/60 shadow-[0_0_60px_rgba(6,182,212,0.3)] backdrop-blur-2xl relative overflow-hidden group">
           {/* Animated Background Energy Aura Grid & Glow Blur */}
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/25 transition-all duration-700" />
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-600/30 transition-all duration-700" />
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/30 transition-all duration-700" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/25 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-600/40 transition-all duration-700" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
-            <div className="space-y-3">
-              <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-slate-950/90 text-cyan-300 border border-cyan-500/40 shadow-inner">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-spin" />
-                <span>NOCTURNAL CODEX DIGITAL ARCHIVES ENTRY #001</span>
+            <div className="space-y-4">
+              <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-mono bg-slate-950/95 text-cyan-300 border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.25)]">
+                <Sparkles className="w-4 h-4 text-cyan-400 animate-spin" />
+                <span className="font-bold tracking-wider">NOCTURNAL CODEX DIGITAL ARCHIVES ENTRY #001</span>
                 <span className="text-slate-600">|</span>
                 <span className="text-emerald-400 font-bold flex items-center gap-1.5">
-                  <CpuIcon className="w-3.5 h-3.5 text-emerald-400 animate-pulse" /> REAL CPYTHON 3.12 WASM ENGINE
+                  <CpuIcon className="w-4 h-4 text-emerald-400 animate-pulse" /> REAL CPYTHON 3.12 WASM ENGINE
                 </span>
               </div>
 
               <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white flex items-center gap-3">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                <Crown className="w-9 h-9 text-amber-400 animate-bounce flex-shrink-0" />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-teal-200 to-purple-400 drop-shadow-[0_0_25px_rgba(6,182,212,0.5)]">
                   THE SYSTEM: PYTHON ASCENSION
                 </span>
               </h1>
 
               <p className="text-slate-300 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Powered by live <strong className="text-emerald-400 font-mono">CPython 3.12 WebAssembly</strong> in your browser! Complete lab experiments to ascend to the <strong className="text-amber-400 font-bold">SHADOW MONARCH CLASS (LV. 999)</strong>!
+                Humanity has discovered mysterious Gates. Powered by live <strong className="text-emerald-400 font-mono">CPython 3.12 WebAssembly</strong> in your browser! Complete lab experiments to ascend to the <strong className="text-amber-400 font-bold drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]">SHADOW MONARCH CLASS (LV. 999)</strong>!
               </p>
               
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 <Button
                   onClick={exportLabReport}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black gap-2 text-xs rounded-xl px-5 py-2.5 shadow-lg shadow-emerald-500/30 transition-all hover:scale-105"
+                  className="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black gap-2 text-xs rounded-xl px-5 py-3 shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all hover:scale-105"
                 >
                   <Download className="w-4 h-4" /> 📄 Export Official Lab Report (.md)
                 </Button>
@@ -942,7 +944,7 @@ print("[MATPLOTLIB CHART RENDERED]")
                 <Button
                   variant="outline"
                   onClick={triggerPenaltyZone}
-                  className="border-red-500/50 text-red-400 hover:bg-red-950/80 font-mono text-xs gap-1.5 rounded-xl px-4 py-2.5 shadow-md shadow-red-500/10 hover:border-red-400"
+                  className="border-2 border-red-500/60 text-red-400 hover:bg-red-950/90 font-mono text-xs gap-2 rounded-xl px-4 py-3 shadow-[0_0_20px_rgba(239,68,68,0.25)] hover:border-red-400 hover:scale-105 transition-all"
                 >
                   <Siren className="w-4 h-4 text-red-400 animate-pulse" /> Test Penalty Zone
                 </Button>
@@ -950,27 +952,43 @@ print("[MATPLOTLIB CHART RENDERED]")
             </div>
 
             {/* Solo Leveling OST Music Player HUD */}
-            <div className="p-4 rounded-2xl bg-slate-950/90 border-2 border-cyan-500/50 shadow-[0_0_30px_rgba(6,182,212,0.2)] w-full lg:w-80 space-y-3 backdrop-blur-md">
+            <div className="p-5 rounded-3xl bg-slate-950/95 border-2 border-cyan-500/60 shadow-[0_0_35px_rgba(6,182,212,0.3)] w-full lg:w-84 space-y-3.5 backdrop-blur-xl relative overflow-hidden group">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
                   <Radio className={cn("w-4 h-4", musicPlaying && !isMuted && "animate-pulse text-emerald-400")} />
                   <span>SOLO LEVELING OST PLAYER</span>
                 </div>
-                <Badge variant="outline" className={cn("text-[10px] font-mono font-bold", musicPlaying && !isMuted ? "border-emerald-500/50 text-emerald-300 bg-emerald-950/70" : "border-slate-800 text-slate-500")}>
+                <Badge variant="outline" className={cn("text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border-2", musicPlaying && !isMuted ? "border-emerald-500/60 text-emerald-300 bg-emerald-950/80 shadow-[0_0_10px_rgba(16,185,129,0.3)]" : "border-slate-800 text-slate-500")}>
                   {isMuted ? "MUTED" : musicPlaying ? "PLAYING" : "PAUSED"}
                 </Badge>
               </div>
 
-              <div className="text-xs font-bold text-white truncate flex items-center gap-2 bg-slate-900/90 p-2.5 rounded-xl border border-slate-800">
-                <Music className="w-4 h-4 text-amber-400 flex-shrink-0 animate-bounce" />
-                <span className="truncate">{TRACKS[currentTrack].title}</span>
+              {/* Dynamic Audio Equalizer Bars Visualizer */}
+              <div className="flex items-center justify-between gap-3 bg-slate-900/90 p-3 rounded-2xl border border-slate-800">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <Music className="w-4 h-4 text-amber-400 flex-shrink-0 animate-bounce" />
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-white truncate">{TRACKS[currentTrack].title}</div>
+                    <div className="text-[10px] text-slate-400 font-mono truncate">{TRACKS[currentTrack].artist}</div>
+                  </div>
+                </div>
+
+                {/* Animated EQ Bars */}
+                {musicPlaying && !isMuted && (
+                  <div className="flex items-end gap-1 h-5 flex-shrink-0">
+                    <span className="w-1 bg-cyan-400 rounded-full animate-eq-1" />
+                    <span className="w-1 bg-emerald-400 rounded-full animate-eq-2" />
+                    <span className="w-1 bg-purple-400 rounded-full animate-eq-3" />
+                    <span className="w-1 bg-amber-400 rounded-full animate-eq-4" />
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center justify-between gap-2 pt-1">
                 <Button
                   size="sm"
                   onClick={toggleMusic}
-                  className={cn("h-8 flex-1 gap-1.5 text-xs font-bold rounded-xl shadow-md", musicPlaying && !isMuted ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-emerald-500/20" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-cyan-500/20")}
+                  className={cn("h-9 flex-1 gap-1.5 text-xs font-bold rounded-xl shadow-lg transition-all hover:scale-105", musicPlaying && !isMuted ? "bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 shadow-emerald-500/30" : "bg-gradient-to-r from-cyan-500 to-teal-400 hover:from-cyan-400 hover:to-teal-300 text-slate-950 shadow-cyan-500/30")}
                 >
                   {musicPlaying ? <Pause className="w-3.5 h-3.5 fill-slate-950" /> : <Play className="w-3.5 h-3.5 fill-slate-950" />}
                   {musicPlaying ? "Pause OST" : "Play OST"}
@@ -980,7 +998,7 @@ print("[MATPLOTLIB CHART RENDERED]")
                   size="sm"
                   variant="outline"
                   onClick={() => { playSound("click"); setCurrentTrack((prev) => (prev + 1) % TRACKS.length); }}
-                  className="h-8 text-xs font-mono border-slate-800 text-slate-300 hover:border-cyan-400 rounded-xl"
+                  className="h-9 text-xs font-mono border-2 border-slate-800 text-slate-300 hover:border-cyan-400 hover:text-white rounded-xl transition-all"
                 >
                   Next Track
                 </Button>
@@ -989,7 +1007,7 @@ print("[MATPLOTLIB CHART RENDERED]")
                   size="icon"
                   variant={isMuted ? "destructive" : "ghost"}
                   onClick={toggleMute}
-                  className={cn("h-8 w-8 transition-colors rounded-xl", isMuted ? "bg-red-950 text-red-400 border border-red-500/50" : "text-cyan-400 hover:text-white")}
+                  className={cn("h-9 w-9 transition-all rounded-xl border-2", isMuted ? "bg-red-950/90 text-red-400 border-red-500/60 shadow-[0_0_15px_rgba(239,68,68,0.3)]" : "border-slate-800 text-cyan-400 hover:text-white hover:border-cyan-400")}
                   title={isMuted ? "Unmute Audio" : "Mute Audio"}
                 >
                   {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
@@ -1001,87 +1019,89 @@ print("[MATPLOTLIB CHART RENDERED]")
 
         {/* Hunter Identity HUD Card Banner & Global Mode Controls */}
         <div className={cn(
-          "mb-8 p-5 rounded-2xl backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 border",
+          "mb-8 p-6 rounded-3xl backdrop-blur-xl flex flex-col md:flex-row items-center justify-between gap-5 transition-all duration-500 border-2",
           state.selectedAura === "purple"
-            ? "border-purple-500/80 shadow-2xl shadow-purple-500/30 bg-gradient-to-r from-purple-950/80 via-slate-900 to-indigo-950/80"
+            ? "border-purple-500/80 aura-purple-pulse bg-gradient-to-r from-purple-950/90 via-slate-950 to-indigo-950/90"
             : state.selectedAura === "gold"
-              ? "border-amber-400/80 shadow-2xl shadow-amber-500/30 bg-gradient-to-r from-amber-950/80 via-slate-900 to-yellow-950/80"
-              : "border-cyan-400/80 shadow-2xl shadow-cyan-500/30 bg-gradient-to-r from-cyan-950/80 via-slate-900 to-slate-950"
+              ? "border-amber-400/80 aura-gold-glow bg-gradient-to-r from-amber-950/90 via-slate-950 to-yellow-950/90"
+              : "border-cyan-400/80 aura-cyber-grid bg-gradient-to-r from-cyan-950/90 via-slate-950 to-slate-900"
         )}>
-          <div className="flex items-center gap-4">
-            <div className="p-3 rounded-xl bg-slate-950 border border-cyan-500/30">
-              <Shield className="w-8 h-8 text-cyan-400 animate-pulse" />
+          <div className="flex items-center gap-4 w-full md:w-auto">
+            <div className="p-3.5 rounded-2xl bg-slate-950 border-2 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.3)] relative group">
+              <Shield className="w-9 h-9 text-cyan-400 animate-pulse" />
+              <Crown className="w-4 h-4 text-amber-400 absolute -top-1.5 -right-1.5 animate-bounce" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-slate-400">Akhanda (ID #041)</span>
+            <div className="space-y-1">
+              <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span className="text-slate-300 font-bold">Akhanda (ID #041)</span>
                 <span className="text-slate-600">|</span>
-                <span className="text-xs font-mono text-cyan-300 font-bold">Lv. {currentRank.level}</span>
+                <span className="text-cyan-300 font-black px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">Lv. {currentRank.level}</span>
                 <span className="text-slate-600">|</span>
-                <span className="text-xs font-mono text-purple-400 font-bold">{userGuild.badge} {userGuild.name}</span>
+                <span className="text-purple-300 font-bold px-2 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40">{userGuild.badge} {userGuild.name}</span>
               </div>
-              <div className="font-bold text-lg text-white mt-0.5">{currentRank.rank}</div>
+              <div className="font-black text-xl text-white tracking-wide flex items-center gap-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                <span>{currentRank.rank}</span>
+                <Badge className="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-[10px]">S-RANK</Badge>
+              </div>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
             {/* Global Difficulty Mode Selector Bar */}
-            <div className="flex items-center gap-1 bg-slate-950/90 p-1.5 rounded-xl border border-slate-800">
-              <span className="text-[10px] font-mono text-slate-400 px-2 flex items-center gap-1">
-                <FlameIcon className="w-3 h-3 text-amber-400" /> GLOBAL MODE:
+            <div className="flex items-center gap-1.5 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner">
+              <span className="text-[11px] font-mono text-slate-300 px-2 font-bold flex items-center gap-1">
+                <FlameIcon className="w-3.5 h-3.5 text-amber-400" /> GLOBAL MODE:
               </span>
               <Button
                 size="sm"
                 onClick={() => handleGlobalDifficultyModeChange("easy")}
-                className={cn("h-6 text-[10px] font-bold rounded-lg px-2", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+                className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950 font-black shadow-[0_0_12px_rgba(16,185,129,0.4)]" : "bg-slate-900 text-slate-400 hover:text-white")}
               >
                 🟢 Easy (1.0x)
               </Button>
               <Button
                 size="sm"
                 onClick={() => handleGlobalDifficultyModeChange("hard")}
-                className={cn("h-6 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hard" ? "bg-amber-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+                className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "hard" ? "bg-amber-500 text-slate-950 font-black shadow-[0_0_12px_rgba(245,158,11,0.4)]" : "bg-slate-900 text-slate-400 hover:text-white")}
               >
                 🟡 Hard (1.5x)
               </Button>
               <Button
                 size="sm"
                 onClick={() => handleGlobalDifficultyModeChange("hell")}
-                className={cn("h-6 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hell" ? "bg-red-600 text-white font-bold animate-pulse" : "bg-slate-900 text-slate-400")}
+                className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "hell" ? "bg-red-600 text-white font-black animate-pulse shadow-[0_0_12px_rgba(239,68,68,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
               >
                 🔴 Hell (2.0x)
               </Button>
             </div>
 
             {/* System Aura Theme Selector */}
-            <div className="flex items-center gap-1 bg-slate-950/90 p-1.5 rounded-xl border border-slate-800">
-              <span className="text-[10px] font-mono text-slate-400 px-2 flex items-center gap-1">
-                <Wand2 className="w-3 h-3 text-purple-400" /> AURA:
+            <div className="flex items-center gap-1.5 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner">
+              <span className="text-[11px] font-mono text-slate-300 px-2 font-bold flex items-center gap-1">
+                <Wand2 className="w-3.5 h-3.5 text-purple-400" /> AURA:
               </span>
               <Button
                 size="sm"
                 onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "purple" })); }}
-                className={cn("h-6 text-[10px] font-mono rounded-lg px-2", state.selectedAura === "purple" ? "bg-purple-600 text-white font-bold" : "bg-slate-900 text-slate-400")}
+                className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "purple" ? "bg-purple-600 text-white font-bold shadow-[0_0_12px_rgba(168,85,247,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
               >
                 🟣 Purple
               </Button>
               <Button
                 size="sm"
                 onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "gold" })); }}
-                className={cn("h-6 text-[10px] font-mono rounded-lg px-2", state.selectedAura === "gold" ? "bg-amber-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+                className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "gold" ? "bg-amber-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(245,158,11,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
               >
                 🟡 Gold
               </Button>
               <Button
                 size="sm"
                 onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "cyan" })); }}
-                className={cn("h-6 text-[10px] font-mono rounded-lg px-2", state.selectedAura === "cyan" ? "bg-cyan-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+                className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "cyan" ? "bg-cyan-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(6,182,212,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
               >
                 🔵 Cyber
               </Button>
             </div>
-
-            <div className="text-center">
               <div className="text-xs text-slate-400 font-mono">Dungeons Cleared</div>
               <div className="text-xl font-bold text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
             </div>
