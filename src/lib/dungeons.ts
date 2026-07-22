@@ -423,13 +423,13 @@ export const DUNGEONS: Dungeon[] = [
         "expectedOutput": "Sample Gradesheet\nName: Rohit Sharma\nRoll Number: R17234512 SAPID: 50005673\nSem: 1 Course: B.Tech. CSE AI & ML\nSubject name: Marks\nPDS: 70\nPython: 80\nChemistry: 90\nEnglish: 60\nPhysics: 65\nPercentage: 73.00%\nCGPA: 7.3\nGrade: A"
       },
       {
-        "id": "d3-t1",
-        "title": "Task 1: Question 1",
+        "id": "d3-t9",
+        "title": "Task 9: Question 9",
         "question": "Find factorial of a given number using a loop.",
         "explanation": "Follow the lab workbook instructions and execute the solution.",
         "formula": "",
-        "codeSnippet": "# Experiment 3 Task 1\nprint('Executing Task 1')",
-        "expectedOutput": "Execution Completed"
+        "codeSnippet": "n = 5\nfact = 1\nfor i in range(1, n + 1):\n    fact *= i\nprint(f\"Factorial of {n} is {fact}\")",
+        "expectedOutput": "Factorial of 5 is 120"
       }
     ]
   },
@@ -463,6 +463,15 @@ export const DUNGEONS: Dungeon[] = [
       "icon": "\ud83d\udd04"
     },
     "tasks": [
+      {
+        "id": "d4-t1",
+        "title": "Task 1: Question 1",
+        "question": "Find factorial of a number using a loop.",
+        "explanation": "Follow the lab workbook instructions and execute the solution.",
+        "formula": "",
+        "codeSnippet": "n = 5\nfact = 1\nfor i in range(1, n + 1):\n    fact *= i\nprint(f\"Factorial of {n} is {fact}\")",
+        "expectedOutput": "Factorial of 5 is 120"
+      },
       {
         "id": "d4-t2",
         "title": "Task 2: Question 2",
