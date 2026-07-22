@@ -330,8 +330,8 @@ exp_tasks[11] = [
         "question": "Define the ShadowMonarch class and invoke the arise() method to extract shadow soldiers.",
         "explanation": "Object-Oriented class definition returning the Shadow Monarch ascension proclamation.",
         "formula": "Arise() -> Shadow Monarch",
-        "codeSnippet": "class ShadowMonarch:\n    def __init__(self, name):\n        self.name = name\n    def arise(self):\n        return f\"ARISE! {self.name} is the SHADOW MONARCH!\"\n\nm = ShadowMonarch(\"Akhand\")\nprint(m.arise())",
-        "expectedOutput": "ARISE! Akhand is the SHADOW MONARCH!"
+        "codeSnippet": "class ShadowMonarch:\n    def __init__(self, name):\n        self.name = name\n    def arise(self):\n        return f\"ARISE! {self.name} is the SHADOW MONARCH!\"\n\nm = ShadowMonarch(\"Akhanda\")\nprint(m.arise())",
+        "expectedOutput": "ARISE! Akhanda is the SHADOW MONARCH!"
     }
 ]
 
