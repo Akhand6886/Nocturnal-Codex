@@ -164,7 +164,7 @@ dungeons_meta = [
         "bossName": "Collection Guardian",
         "description": "The treasure room of the Digital Dungeon holds legendary weapons stored in arrays, sets, and dictionary caches.",
         "missionObjective": "Build inventory dictionary, perform frequency counts, and unpack tuple coordinates.",
-        "initialCode": "word = \"NOCTURNAL\"\nfreq = {}\nfor ch in word:\n    freq[ch] = freq.get(ch, 0) + 1\nprint(\"Character Frequency:\", freq)\n\nhunter_inventory = {\"name\": \"Akhand\", \"weapons\": [\"Shadow Dagger\", \"Mana Staff\"]}\nprint(\"Primary Weapon:\", hunter_inventory[\"weapons\"][0])\n",
+        "initialCode": "word = \"NOCTURNAL\"\nfreq = {}\nfor ch in word:\n    freq[ch] = freq.get(ch, 0) + 1\nprint(\"Character Frequency:\", freq)\n\nhunter_inventory = {\"name\": \"Akhanda\", \"weapons\": [\"Shadow Dagger\", \"Mana Staff\"]}\nprint(\"Primary Weapon:\", hunter_inventory[\"weapons\"][0])\n",
         "expectedKeywordOrOutput": "Shadow Dagger",
         "solutionHint": "Access dictionary keys and append list elements.",
         "theoryNotes": [
