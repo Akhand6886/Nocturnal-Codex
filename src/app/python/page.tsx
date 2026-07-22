@@ -187,6 +187,7 @@ export default function PythonAscensionPage() {
   const [completedTasksInDungeon, setCompletedTasksInDungeon] = useState<string[]>([]);
   const [code, setCode] = useState<string>("");
   const [terminalOutput, setTerminalOutput] = useState<string>("");
+  const [renderedChartImage, setRenderedChartImage] = useState<string | null>(null);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [executionSuccess, setExecutionSuccess] = useState<boolean | null>(null);
   const [showRankUpModal, setShowRankUpModal] = useState<boolean>(false);
