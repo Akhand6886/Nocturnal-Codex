@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   DUNGEONS,
@@ -24,6 +24,7 @@ import {
   CheckCircle2,
   Terminal as TerminalIcon,
   Play,
+  Pause,
   RotateCcw,
   Sparkles,
   Lock,
@@ -38,11 +39,13 @@ import {
   UserCheck,
   Volume2,
   VolumeX,
+  Music,
   Code2,
   FileCode,
   HelpCircle,
   BarChart3,
-  Lightbulb
+  Lightbulb,
+  Radio
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -72,15 +75,43 @@ export default function PythonAscensionPage() {
   const [showRankUpModal, setShowRankUpModal] = useState<boolean>(false);
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
 
-  // Audio Synth Sound Effects
+  // Audio & Music Engine States
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+  const [musicPlaying, setMusicPlaying] = useState<boolean>(false);
+  const [currentTrack, setCurrentTrack] = useState<number>(0);
+  const [volume, setVolume] = useState<number>(0.3);
 
-  const playSound = (type: "click" | "success" | "fail" | "levelUp") => {
-    if (!soundEnabled || typeof window === "undefined") return;
-    try {
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const musicIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Solo Leveling Soundtracks (Procedural Web Audio API OST Engine)
+  const TRACKS = [
+    { title: "System Gate Awakening (Dark OST)", tempo: 130, scale: [146.83, 174.61, 220.00, 261.63, 293.66, 349.23, 440.00] }, // D minor dark
+    { title: "Monarch's Domain (Boss Theme)", tempo: 140, scale: [130.81, 155.56, 196.00, 233.08, 261.63, 311.13, 392.00] }, // C minor epic
+    { title: "Shadow Extraction (Battle Pulse)", tempo: 150, scale: [164.81, 196.00, 246.94, 293.66, 329.63, 392.00, 493.88] } // E minor intense
+  ];
+
+  // Initialize Web Audio Context
+  const getAudioContext = () => {
+    if (!audioCtxRef.current && typeof window !== "undefined") {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      if (AudioCtx) {
+        audioCtxRef.current = new AudioCtx();
+      }
+    }
+    if (audioCtxRef.current && audioCtxRef.current.state === "suspended") {
+      audioCtxRef.current.resume();
+    }
+    return audioCtxRef.current;
+  };
+
+  // Sound FX Generator
+  const playSound = (type: "click" | "success" | "fail" | "levelUp") => {
+    if (!soundEnabled) return;
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    try {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.connect(gain);
@@ -91,43 +122,124 @@ export default function PythonAscensionPage() {
         osc.type = "sine";
         osc.frequency.setValueAtTime(400, now);
         osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
-        gain.gain.setValueAtTime(0.1, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+        gain.gain.setValueAtTime(0.08 * volume, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
         osc.start(now);
         osc.stop(now + 0.05);
       } else if (type === "success") {
         osc.type = "triangle";
-        osc.frequency.setValueAtTime(523.25, now); // C5
-        osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
-        osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
-        osc.frequency.setValueAtTime(1046.50, now + 0.3); // C6
-        gain.gain.setValueAtTime(0.15, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.1);
+        osc.frequency.setValueAtTime(783.99, now + 0.2);
+        osc.frequency.setValueAtTime(1046.50, now + 0.3);
+        gain.gain.setValueAtTime(0.12 * volume, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
         osc.start(now);
         osc.stop(now + 0.4);
       } else if (type === "fail") {
         osc.type = "sawtooth";
         osc.frequency.setValueAtTime(300, now);
-        osc.frequency.linearRampToValueAtTime(150, now + 0.2);
-        gain.gain.setValueAtTime(0.15, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+        osc.frequency.linearRampToValueAtTime(140, now + 0.25);
+        gain.gain.setValueAtTime(0.12 * volume, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
         osc.start(now);
-        osc.stop(now + 0.2);
+        osc.stop(now + 0.25);
       } else if (type === "levelUp") {
         osc.type = "sine";
         osc.frequency.setValueAtTime(440, now);
         osc.frequency.setValueAtTime(554.37, now + 0.12);
         osc.frequency.setValueAtTime(659.25, now + 0.24);
         osc.frequency.setValueAtTime(880, now + 0.36);
-        gain.gain.setValueAtTime(0.2, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+        gain.gain.setValueAtTime(0.2 * volume, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
         osc.start(now);
         osc.stop(now + 0.5);
       }
     } catch (e) {
-      // Audio context fallback catch
+      // Audio fallback catch
     }
   };
+
+  // Solo Leveling Procedural Music Sequencer Loop
+  const startMusic = () => {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
+
+    const track = TRACKS[currentTrack];
+    const stepTime = (60 / track.tempo) * 250; // 16th note timing in ms
+    let step = 0;
+
+    musicIntervalRef.current = setInterval(() => {
+      if (!musicPlaying) return;
+      try {
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const subOsc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const filter = ctx.createBiquadFilter();
+
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(1200 + Math.sin(step / 4) * 800, now);
+
+        osc.connect(filter);
+        subOsc.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+
+        // Scale arpeggiator notes
+        const noteIndex = step % track.scale.length;
+        const freq = track.scale[noteIndex];
+
+        osc.type = step % 4 === 0 ? "sawtooth" : "square";
+        osc.frequency.setValueAtTime(freq * (step % 2 === 0 ? 1 : 2), now);
+
+        // Deep Bass Pulse on quarter beats
+        if (step % 4 === 0) {
+          subOsc.type = "sine";
+          subOsc.frequency.setValueAtTime(track.scale[0] / 2, now);
+          gain.gain.setValueAtTime(0.12 * volume, now);
+        } else {
+          gain.gain.setValueAtTime(0.04 * volume, now);
+        }
+
+        gain.gain.exponentialRampToValueAtTime(0.001, now + (stepTime / 1000) * 0.9);
+
+        osc.start(now);
+        subOsc.start(now);
+        osc.stop(now + (stepTime / 1000) * 0.9);
+        subOsc.stop(now + (stepTime / 1000) * 0.9);
+
+        step++;
+      } catch (e) {
+        // Audio error handling
+      }
+    }, stepTime);
+  };
+
+  // Toggle Background Music
+  const toggleMusic = () => {
+    playSound("click");
+    if (musicPlaying) {
+      setMusicPlaying(false);
+      if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
+    } else {
+      setMusicPlaying(true);
+    }
+  };
+
+  // Restart Music on track change or toggle
+  useEffect(() => {
+    if (musicPlaying) {
+      startMusic();
+    } else {
+      if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
+    }
+    return () => {
+      if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
+    };
+  }, [musicPlaying, currentTrack, volume]);
 
   // Load state from local storage on client mount
   useEffect(() => {
@@ -215,8 +327,8 @@ export default function PythonAscensionPage() {
 
       const isTaskMode = dungeonMode === "tasks" && selectedTask;
       const expectedTarget = isTaskMode ? selectedTask.expectedOutput : activeDungeon.expectedKeywordOrOutput;
-      
-      const isSuccess = code.toLowerCase().includes(expectedTarget.toLowerCase()) || 
+
+      const isSuccess = code.toLowerCase().includes(expectedTarget.toLowerCase()) ||
         code.includes("print") || code.includes("def") || code.includes("class");
 
       if (isSuccess) {
@@ -306,22 +418,6 @@ export default function PythonAscensionPage() {
       <div className="container mx-auto px-4 pt-8 relative z-10 max-w-7xl">
         {/* System Archives Header Banner */}
         <div className="mb-8 p-6 md:p-8 rounded-2xl bg-slate-900/90 border border-cyan-500/40 shadow-2xl backdrop-blur-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSoundEnabled(!soundEnabled)}
-              className="text-slate-400 hover:text-cyan-300 h-8 w-8"
-              title={soundEnabled ? "Mute Audio FX" : "Enable Audio FX"}
-            >
-              {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
-            </Button>
-            <div className="text-xs font-mono text-cyan-400/60 uppercase tracking-widest hidden sm:flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              System Status: ONLINE
-            </div>
-          </div>
-
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 mb-3">
@@ -339,42 +435,86 @@ export default function PythonAscensionPage() {
               </p>
             </div>
 
-            {/* Hunter Identity Card HUD */}
-            <div className={cn("p-5 rounded-xl border backdrop-blur-md transition-all duration-300 w-full lg:w-80 shadow-lg", currentRank.color)}>
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">Hunter ID #041</span>
-                <Badge variant="outline" className="font-mono text-xs border-cyan-400/50 text-cyan-300">
-                  Lv. {currentRank.level}
+            {/* Solo Leveling OST Music Player HUD */}
+            <div className="p-4 rounded-xl bg-slate-950/90 border border-cyan-500/40 shadow-lg w-full lg:w-80 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
+                  <Radio className={cn("w-4 h-4", musicPlaying && "animate-pulse text-emerald-400")} />
+                  <span>SOLO LEVELING OST PLAYER</span>
+                </div>
+                <Badge variant="outline" className={cn("text-[10px] font-mono", musicPlaying ? "border-emerald-500/40 text-emerald-300 bg-emerald-950/50" : "border-slate-800 text-slate-500")}>
+                  {musicPlaying ? "PLAYING" : "PAUSED"}
                 </Badge>
               </div>
 
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 rounded-lg bg-slate-950/70 border border-cyan-500/30">
-                  <Shield className="w-7 h-7 text-cyan-400 animate-pulse" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 font-medium">Current Rank</div>
-                  <div className="font-bold text-lg leading-none mt-0.5">{currentRank.rank}</div>
-                </div>
+              <div className="text-xs font-bold text-white truncate flex items-center gap-2 bg-slate-900 p-2 rounded-lg border border-slate-800">
+                <Music className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                <span className="truncate">{TRACKS[currentTrack].title}</span>
               </div>
 
-              {/* Progress & XP Bar */}
-              <div className="space-y-1.5">
-                <div className="flex justify-between text-xs font-mono">
-                  <span className="text-slate-400">Completed Dungeons</span>
-                  <span className="text-cyan-300 font-bold">{dungeonsClearedCount} / 10</span>
-                </div>
-                <div className="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                  <div
-                    className="h-full bg-gradient-to-r from-cyan-500 to-emerald-400 rounded-full transition-all duration-500"
-                    style={{ width: `${(dungeonsClearedCount / 10) * 100}%` }}
-                  />
-                </div>
-                <div className="flex justify-between text-[11px] font-mono text-slate-400 pt-1">
-                  <span>Mana: <strong className="text-emerald-400">100%</strong></span>
-                  <span>XP: <strong className="text-cyan-300">{state.xp} XP</strong></span>
-                </div>
+              <div className="flex items-center justify-between gap-2 pt-1">
+                <Button
+                  size="sm"
+                  onClick={toggleMusic}
+                  className={cn("h-8 flex-1 gap-1.5 text-xs font-bold rounded-lg", musicPlaying ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950")}
+                >
+                  {musicPlaying ? <Pause className="w-3.5 h-3.5 fill-slate-950" /> : <Play className="w-3.5 h-3.5 fill-slate-950" />}
+                  {musicPlaying ? "Pause OST" : "Play OST"}
+                </Button>
+
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => { playSound("click"); setCurrentTrack((prev) => (prev + 1) % TRACKS.length); }}
+                  className="h-8 text-xs font-mono border-slate-800 text-slate-300 hover:border-cyan-400"
+                >
+                  Next Track
+                </Button>
+
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  onClick={() => setSoundEnabled(!soundEnabled)}
+                  className="h-8 w-8 text-slate-400 hover:text-white"
+                  title={soundEnabled ? "Mute FX" : "Enable FX"}
+                >
+                  {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+                </Button>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Hunter Identity HUD Card Banner */}
+        <div className="mb-8 p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="p-3 rounded-xl bg-slate-950 border border-cyan-500/30">
+              <Shield className="w-8 h-8 text-cyan-400 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono text-slate-400">Hunter ID #041</span>
+                <span className="text-slate-600">|</span>
+                <span className="text-xs font-mono text-cyan-300 font-bold">Lv. {currentRank.level}</span>
+              </div>
+              <div className="font-bold text-lg text-white mt-0.5">{currentRank.rank}</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-6 w-full md:w-auto">
+            <div className="text-center">
+              <div className="text-xs text-slate-400 font-mono">Dungeons Cleared</div>
+              <div className="text-xl font-bold text-cyan-300 font-mono">{dungeonsClearedCount} / 10</div>
+            </div>
+
+            <div className="text-center">
+              <div className="text-xs text-slate-400 font-mono">Current Mana</div>
+              <div className="text-xl font-bold text-emerald-400 font-mono">100%</div>
+            </div>
+
+            <div className="text-center">
+              <div className="text-xs text-slate-400 font-mono">System Experience</div>
+              <div className="text-xl font-bold text-amber-400 font-mono">{state.xp} XP</div>
             </div>
           </div>
         </div>
@@ -513,9 +653,9 @@ export default function PythonAscensionPage() {
                         onClick={() => handleOpenDungeon(dungeon)}
                         className={cn(
                           "w-full rounded-xl gap-2 font-semibold transition-all mt-2",
-                          isCleared 
+                          isCleared
                             ? "bg-slate-800 hover:bg-slate-700 text-slate-200"
-                            : isLocked 
+                            : isLocked
                               ? "bg-slate-950 text-slate-600 border border-slate-800"
                               : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20"
                         )}
@@ -865,7 +1005,7 @@ export default function PythonAscensionPage() {
                   <p className="text-xs text-slate-400">{activeDungeon.codexTitle}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
                   <Button
