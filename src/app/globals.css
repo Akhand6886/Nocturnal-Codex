@@ -514,3 +514,32 @@ html {
 .animate-shake, .animate-monarch-shake {
   animation: monarchRiftShake 0.6s cubic-bezier(.36,.07,.19,.97) infinite;
 }
+
+@keyframes monarchEqBar {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+@keyframes monarchGoldGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3), inset 0 0 15px rgba(245, 158, 11, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6), inset 0 0 25px rgba(245, 158, 11, 0.2); }
+}
+
+@keyframes monarchPurplePulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.3), inset 0 0 15px rgba(168, 85, 247, 0.1); }
+  50% { box-shadow: 0 0 45px rgba(168, 85, 247, 0.65), inset 0 0 30px rgba(168, 85, 247, 0.25); }
+}
+
+@keyframes monarchCyberGrid {
+  0%, 100% { box-shadow: 0 0 25px rgba(6, 182, 212, 0.35), inset 0 0 15px rgba(6, 182, 212, 0.1); }
+  50% { box-shadow: 0 0 50px rgba(6, 182, 212, 0.7), inset 0 0 30px rgba(6, 182, 212, 0.25); }
+}
+
+.animate-eq-1 { animation: monarchEqBar 0.7s ease-in-out infinite; }
+.animate-eq-2 { animation: monarchEqBar 0.5s ease-in-out infinite 0.2s; }
+.animate-eq-3 { animation: monarchEqBar 0.9s ease-in-out infinite 0.4s; }
+.animate-eq-4 { animation: monarchEqBar 0.6s ease-in-out infinite 0.1s; }
+
+.aura-purple-pulse { animation: monarchPurplePulse 3s ease-in-out infinite; }
+.aura-gold-glow { animation: monarchGoldGlow 3s ease-in-out infinite; }
+.aura-cyber-grid { animation: monarchCyberGrid 3s ease-in-out infinite; }
