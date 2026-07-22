@@ -979,66 +979,64 @@ except Exception as e:
               </div>
             </div>
 
-            {/* Solo Leveling OST Music Player HUD */}
-            <div className="p-5 rounded-3xl bg-slate-950/95 border-2 border-cyan-500/60 shadow-[0_0_35px_rgba(6,182,212,0.3)] w-full lg:w-84 space-y-3.5 backdrop-blur-xl relative overflow-hidden group">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
-                  <Radio className={cn("w-4 h-4", musicPlaying && !isMuted && "animate-pulse text-emerald-400")} />
-                  <span>SOLO LEVELING OST PLAYER</span>
+            {/* Solo Leveling OST Music Player HUD - Compact Corner Widget */}
+            <div className="p-3.5 rounded-2xl bg-slate-950/95 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.25)] w-full lg:w-64 space-y-2.5 backdrop-blur-xl relative overflow-hidden group flex-shrink-0">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-cyan-400 font-bold truncate">
+                  <Radio className={cn("w-3.5 h-3.5 flex-shrink-0", musicPlaying && !isMuted && "animate-pulse text-emerald-400")} />
+                  <span className="truncate">SOLO LEVELING OST</span>
                 </div>
-                <Badge variant="outline" className={cn("text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border-2", musicPlaying && !isMuted ? "border-emerald-500/60 text-emerald-300 bg-emerald-950/80 shadow-[0_0_10px_rgba(16,185,129,0.3)]" : "border-slate-800 text-slate-500")}>
+                <Badge variant="outline" className={cn("text-[9px] font-mono font-bold px-1.5 py-0 rounded-full border", musicPlaying && !isMuted ? "border-emerald-500/60 text-emerald-300 bg-emerald-950/80" : "border-slate-800 text-slate-500")}>
                   {isMuted ? "MUTED" : musicPlaying ? "PLAYING" : "PAUSED"}
                 </Badge>
               </div>
 
-              {/* Dynamic Audio Equalizer Bars Visualizer */}
-              <div className="flex items-center justify-between gap-3 bg-slate-900/90 p-3 rounded-2xl border border-slate-800">
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <Music className="w-4 h-4 text-amber-400 flex-shrink-0 animate-bounce" />
+              {/* Dynamic Audio Equalizer Bars Visualizer - Compact */}
+              <div className="flex items-center justify-between gap-2 bg-slate-900/90 p-2 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-2 min-w-0">
+                  <Music className="w-3.5 h-3.5 text-amber-400 flex-shrink-0 animate-bounce" />
                   <div className="min-w-0">
-                    <div className="text-xs font-bold text-white truncate">{TRACKS[currentTrack].title}</div>
-                    <div className="text-[10px] text-slate-400 font-mono truncate">{TRACKS[currentTrack].artist}</div>
+                    <div className="text-[11px] font-bold text-white truncate">{TRACKS[currentTrack].title}</div>
                   </div>
                 </div>
 
                 {/* Animated EQ Bars */}
                 {musicPlaying && !isMuted && (
-                  <div className="flex items-end gap-1 h-5 flex-shrink-0">
-                    <span className="w-1 bg-cyan-400 rounded-full animate-eq-1" />
-                    <span className="w-1 bg-emerald-400 rounded-full animate-eq-2" />
-                    <span className="w-1 bg-purple-400 rounded-full animate-eq-3" />
-                    <span className="w-1 bg-amber-400 rounded-full animate-eq-4" />
+                  <div className="flex items-end gap-0.5 h-3.5 flex-shrink-0">
+                    <span className="w-0.5 bg-cyan-400 rounded-full animate-eq-1" />
+                    <span className="w-0.5 bg-emerald-400 rounded-full animate-eq-2" />
+                    <span className="w-0.5 bg-purple-400 rounded-full animate-eq-3" />
                   </div>
                 )}
               </div>
 
-              <div className="flex items-center justify-between gap-2 pt-1">
+              <div className="flex items-center justify-between gap-1.5 pt-0.5">
                 <Button
                   size="sm"
                   onClick={toggleMusic}
-                  className={cn("h-9 flex-1 gap-1.5 text-xs font-bold rounded-xl shadow-lg transition-all hover:scale-105", musicPlaying && !isMuted ? "bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 shadow-emerald-500/30" : "bg-gradient-to-r from-cyan-500 to-teal-400 hover:from-cyan-400 hover:to-teal-300 text-slate-950 shadow-cyan-500/30")}
+                  className={cn("h-7 flex-1 gap-1 text-[10px] font-bold rounded-lg transition-all", musicPlaying && !isMuted ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950")}
                 >
-                  {musicPlaying ? <Pause className="w-3.5 h-3.5 fill-slate-950" /> : <Play className="w-3.5 h-3.5 fill-slate-950" />}
-                  {musicPlaying ? "Pause OST" : "Play OST"}
+                  {musicPlaying ? <Pause className="w-3 h-3 fill-slate-950" /> : <Play className="w-3 h-3 fill-slate-950" />}
+                  {musicPlaying ? "Pause" : "Play"}
                 </Button>
 
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => { playSound("click"); setCurrentTrack((prev) => (prev + 1) % TRACKS.length); }}
-                  className="h-9 text-xs font-mono border-2 border-slate-800 text-slate-300 hover:border-cyan-400 hover:text-white rounded-xl transition-all"
+                  className="h-7 text-[10px] font-mono border-slate-800 text-slate-300 hover:border-cyan-400 rounded-lg px-2"
                 >
-                  Next Track
+                  Next
                 </Button>
 
                 <Button
                   size="icon"
                   variant={isMuted ? "destructive" : "ghost"}
                   onClick={toggleMute}
-                  className={cn("h-9 w-9 transition-all rounded-xl border-2", isMuted ? "bg-red-950/90 text-red-400 border-red-500/60 shadow-[0_0_15px_rgba(239,68,68,0.3)]" : "border-slate-800 text-cyan-400 hover:text-white hover:border-cyan-400")}
+                  className={cn("h-7 w-7 transition-all rounded-lg border", isMuted ? "bg-red-950/90 text-red-400 border-red-500/60" : "border-slate-800 text-cyan-400 hover:text-white")}
                   title={isMuted ? "Unmute Audio" : "Mute Audio"}
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
+                  {isMuted ? <VolumeX className="w-3 h-3 text-red-400" /> : <Volume2 className="w-3 h-3 text-cyan-400" />}
                 </Button>
               </div>
             </div>
