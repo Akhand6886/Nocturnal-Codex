@@ -762,10 +762,10 @@ except Exception as e:
 
         // Extract image URI if present
         if (pyOutput.includes("__MATPLOTLIB_IMG_START__")) {
-          const match = pyOutput.match(/__MATPLOTLIB_IMG_START__(.*?)__MATPLOTLIB_IMG_END__/s);
+          const match = pyOutput.match(/__MATPLOTLIB_IMG_START__([\s\S]*?)__MATPLOTLIB_IMG_END__/);
           if (match && match[1]) {
             setRenderedChartImage(match[1]);
-            pyOutput = pyOutput.replace(/__MATPLOTLIB_IMG_START__.*?__MATPLOTLIB_IMG_END__/s, "").trim();
+            pyOutput = pyOutput.replace(/__MATPLOTLIB_IMG_START__[\s\S]*?__MATPLOTLIB_IMG_END__/, "").trim();
           }
         }
 
