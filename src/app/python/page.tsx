@@ -9,7 +9,8 @@ import {
   INITIAL_ACHIEVEMENTS,
   Dungeon,
   Quest,
-  Achievement
+  Achievement,
+  PracticeTask
 } from "@/lib/dungeons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -34,7 +35,14 @@ import {
   Briefcase,
   Star,
   Skull,
-  UserCheck
+  UserCheck,
+  Volume2,
+  VolumeX,
+  Code2,
+  FileCode,
+  HelpCircle,
+  BarChart3,
+  Lightbulb
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -53,14 +61,73 @@ export default function PythonAscensionPage() {
     unlockedAchievements: ["ach-1"]
   });
 
-  const [activeTab, setActiveTab] = useState<"dungeons" | "skills" | "inventory" | "quests" | "achievements">("dungeons");
+  const [activeTab, setActiveTab] = useState<"dungeons" | "skills" | "inventory" | "quests" | "achievements" | "sandbox">("dungeons");
   const [activeDungeon, setActiveDungeon] = useState<Dungeon | null>(null);
+  const [dungeonMode, setDungeonMode] = useState<"boss" | "tasks" | "theory">("boss");
+  const [selectedTask, setSelectedTask] = useState<PracticeTask | null>(null);
   const [code, setCode] = useState<string>("");
   const [terminalOutput, setTerminalOutput] = useState<string>("");
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [executionSuccess, setExecutionSuccess] = useState<boolean | null>(null);
   const [showRankUpModal, setShowRankUpModal] = useState<boolean>(false);
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
+
+  // Audio Synth Sound Effects
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+
+  const playSound = (type: "click" | "success" | "fail" | "levelUp") => {
+    if (!soundEnabled || typeof window === "undefined") return;
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      const now = ctx.currentTime;
+      if (type === "click") {
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
+      } else if (type === "success") {
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(523.25, now); // C5
+        osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+        osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+        osc.frequency.setValueAtTime(1046.50, now + 0.3); // C6
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+        osc.start(now);
+        osc.stop(now + 0.4);
+      } else if (type === "fail") {
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(300, now);
+        osc.frequency.linearRampToValueAtTime(150, now + 0.2);
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+        osc.start(now);
+        osc.stop(now + 0.2);
+      } else if (type === "levelUp") {
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.setValueAtTime(554.37, now + 0.12);
+        osc.frequency.setValueAtTime(659.25, now + 0.24);
+        osc.frequency.setValueAtTime(880, now + 0.36);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+        osc.start(now);
+        osc.stop(now + 0.5);
+      }
+    } catch (e) {
+      // Audio context fallback catch
+    }
+  };
 
   // Load state from local storage on client mount
   useEffect(() => {
@@ -86,7 +153,7 @@ export default function PythonAscensionPage() {
 
   // Derived Hunter Statistics
   const dungeonsClearedCount = state.completedDungeons.length;
-  
+
   const getRankInfo = (cleared: number) => {
     if (cleared >= 10) return { rank: "S-Class Programmer", level: 100, title: "Shadow Programmer", color: "text-purple-400 border-purple-500 bg-purple-950/40 shadow-purple-500/30" };
     if (cleared >= 8) return { rank: "A-Class Programmer", level: 75, title: "Data Alchemist", color: "text-amber-400 border-amber-500 bg-amber-950/40 shadow-amber-500/30" };
@@ -100,32 +167,63 @@ export default function PythonAscensionPage() {
 
   // Dynamic Hunter Stats based on progress
   const hunterStats = {
-    strength: 10 + dungeonsClearedCount * 12,
-    intelligence: 20 + dungeonsClearedCount * 18,
-    coding: 15 + dungeonsClearedCount * 25,
-    creativity: 10 + dungeonsClearedCount * 15,
+    strength: 10 + dungeonsClearedCount * 12 + state.completedQuests.length * 3,
+    intelligence: 20 + dungeonsClearedCount * 18 + state.completedQuests.length * 5,
+    coding: 15 + dungeonsClearedCount * 25 + state.completedQuests.length * 7,
+    creativity: 10 + dungeonsClearedCount * 15 + state.completedQuests.length * 4,
   };
 
   const handleOpenDungeon = (dungeon: Dungeon) => {
+    playSound("click");
     setActiveDungeon(dungeon);
+    setDungeonMode("boss");
     setCode(dungeon.initialCode);
+    setSelectedTask(null);
     setTerminalOutput("");
     setExecutionSuccess(null);
   };
 
+  const handleSelectTask = (task: PracticeTask) => {
+    playSound("click");
+    setSelectedTask(task);
+    setCode(task.codeSnippet);
+    setTerminalOutput(`[TASK SELECTED]: ${task.title}\nPress 'Run Code' to test implementation.`);
+    setExecutionSuccess(null);
+  };
+
   const handleRunCode = () => {
-    if (!activeDungeon) return;
+    if (!activeDungeon && activeTab !== "sandbox") return;
+    playSound("click");
     setIsRunning(true);
-    setTerminalOutput("Initializing System Python Interpreter v3.11...\nExecuting script...");
+    setTerminalOutput("Initializing System Python Interpreter v3.13...\nExecuting script...");
 
     setTimeout(() => {
       setIsRunning(false);
-      const isSuccess = code.includes(activeDungeon.expectedKeywordOrOutput);
+
+      if (activeTab === "sandbox") {
+        setTerminalOutput((prev) =>
+          prev + "\n\n>>> SCRIPT EXECUTED SUCCESSFULLY <<<\n" +
+          "[OUTPUT]: Script ran cleanly in System Sandbox.\n\n" +
+          "Process finished with exit code 0."
+        );
+        playSound("success");
+        setExecutionSuccess(true);
+        return;
+      }
+
+      if (!activeDungeon) return;
+
+      const isTaskMode = dungeonMode === "tasks" && selectedTask;
+      const expectedTarget = isTaskMode ? selectedTask.expectedOutput : activeDungeon.expectedKeywordOrOutput;
+      
+      const isSuccess = code.toLowerCase().includes(expectedTarget.toLowerCase()) || 
+        code.includes("print") || code.includes("def") || code.includes("class");
 
       if (isSuccess) {
+        playSound("success");
         setExecutionSuccess(true);
-        setTerminalOutput((prev) => 
-          prev + "\n\n>>> EXECUTION SUCCESSFUL <<<\n[SYSTEM]: Code criteria validated.\nOutput returned cleanly.\n" + 
+        setTerminalOutput((prev) =>
+          prev + "\n\n>>> EXECUTION SUCCESSFUL <<<\n[SYSTEM]: Code criteria validated.\nOutput returned cleanly.\n" +
           `[REWARD]: +${activeDungeon.xpReward} XP Gained!`
         );
 
@@ -151,21 +249,24 @@ export default function PythonAscensionPage() {
           });
 
           if (newRank !== oldRank) {
+            playSound("levelUp");
             setPreviousRank(oldRank);
             setShowRankUpModal(true);
           }
         }
       } else {
+        playSound("fail");
         setExecutionSuccess(false);
-        setTerminalOutput((prev) => 
+        setTerminalOutput((prev) =>
           prev + "\n\n[ERROR]: Execution completed with missing criteria.\n" +
           `[HINT]: ${activeDungeon.solutionHint}`
         );
       }
-    }, 1200);
+    }, 1000);
   };
 
   const toggleQuest = (questId: string, rewardXp: number) => {
+    playSound("click");
     const isCompleted = state.completedQuests.includes(questId);
     if (isCompleted) {
       setState({
@@ -174,6 +275,7 @@ export default function PythonAscensionPage() {
         xp: Math.max(0, state.xp - rewardXp)
       });
     } else {
+      playSound("success");
       setState({
         ...state,
         completedQuests: [...state.completedQuests, questId],
@@ -183,6 +285,7 @@ export default function PythonAscensionPage() {
   };
 
   const resetProgress = () => {
+    playSound("click");
     if (confirm("Are you sure you want to reset all Python Ascension progress?")) {
       const initial = {
         completedDungeons: [],
@@ -203,9 +306,20 @@ export default function PythonAscensionPage() {
       <div className="container mx-auto px-4 pt-8 relative z-10 max-w-7xl">
         {/* System Archives Header Banner */}
         <div className="mb-8 p-6 md:p-8 rounded-2xl bg-slate-900/90 border border-cyan-500/40 shadow-2xl backdrop-blur-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 text-xs font-mono text-cyan-400/60 uppercase tracking-widest flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            System Status: ONLINE
+          <div className="absolute top-0 right-0 p-4 flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSoundEnabled(!soundEnabled)}
+              className="text-slate-400 hover:text-cyan-300 h-8 w-8"
+              title={soundEnabled ? "Mute Audio FX" : "Enable Audio FX"}
+            >
+              {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+            </Button>
+            <div className="text-xs font-mono text-cyan-400/60 uppercase tracking-widest hidden sm:flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              System Status: ONLINE
+            </div>
           </div>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
@@ -270,38 +384,45 @@ export default function PythonAscensionPage() {
           <div className="flex flex-wrap items-center gap-2">
             <Button
               variant={activeTab === "dungeons" ? "default" : "outline"}
-              onClick={() => setActiveTab("dungeons")}
+              onClick={() => { playSound("click"); setActiveTab("dungeons"); }}
               className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "dungeons" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
             >
               <Sword className="w-4 h-4" /> Dungeons ({dungeonsClearedCount}/10)
             </Button>
             <Button
               variant={activeTab === "skills" ? "default" : "outline"}
-              onClick={() => setActiveTab("skills")}
+              onClick={() => { playSound("click"); setActiveTab("skills"); }}
               className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "skills" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
             >
               <Zap className="w-4 h-4" /> Stats & Skill Tree
             </Button>
             <Button
               variant={activeTab === "inventory" ? "default" : "outline"}
-              onClick={() => setActiveTab("inventory")}
+              onClick={() => { playSound("click"); setActiveTab("inventory"); }}
               className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "inventory" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
             >
               <Briefcase className="w-4 h-4" /> Inventory ({state.completedDungeons.length})
             </Button>
             <Button
               variant={activeTab === "quests" ? "default" : "outline"}
-              onClick={() => setActiveTab("quests")}
+              onClick={() => { playSound("click"); setActiveTab("quests"); }}
               className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "quests" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
             >
               <Scroll className="w-4 h-4" /> Quest Log ({state.completedQuests.length}/{QUESTS.length})
             </Button>
             <Button
               variant={activeTab === "achievements" ? "default" : "outline"}
-              onClick={() => setActiveTab("achievements")}
+              onClick={() => { playSound("click"); setActiveTab("achievements"); }}
               className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "achievements" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
             >
               <Trophy className="w-4 h-4" /> Achievements ({state.unlockedAchievements.length})
+            </Button>
+            <Button
+              variant={activeTab === "sandbox" ? "default" : "outline"}
+              onClick={() => { playSound("click"); setActiveTab("sandbox"); }}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all border-amber-500/40 text-amber-300", activeTab === "sandbox" && "bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg shadow-amber-500/25")}
+            >
+              <Code2 className="w-4 h-4" /> System Sandbox
             </Button>
           </div>
 
@@ -378,6 +499,10 @@ export default function PythonAscensionPage() {
                           <span className="text-cyan-300 font-mono font-bold">+{dungeon.xpReward} XP</span>
                         </div>
                         <div className="flex justify-between">
+                          <span className="text-slate-500">Tasks Included:</span>
+                          <span className="text-amber-400 font-mono font-bold">{dungeon.tasks.length} Practice Tasks</span>
+                        </div>
+                        <div className="flex justify-between">
                           <span className="text-slate-500">Skill Unlock:</span>
                           <span className="text-emerald-400 font-mono">{dungeon.skillUnlock}</span>
                         </div>
@@ -427,7 +552,7 @@ export default function PythonAscensionPage() {
                   <UserCheck className="w-5 h-5 text-cyan-400" /> Hunter Attributes
                 </CardTitle>
                 <CardDescription className="text-xs text-slate-400">
-                  Stats increase as you conquer Python Dungeons.
+                  Stats increase as you conquer Python Dungeons and complete Quests.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-5">
@@ -437,7 +562,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-cyan-300">{hunterStats.coding} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-cyan-500 rounded-full" style={{ width: `${Math.min(100, (hunterStats.coding / 265) * 100)}%` }} />
+                    <div className="h-full bg-cyan-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.coding / 300) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -447,7 +572,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-emerald-400">{hunterStats.intelligence} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${Math.min(100, (hunterStats.intelligence / 200) * 100)}%` }} />
+                    <div className="h-full bg-emerald-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.intelligence / 250) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -457,7 +582,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-amber-400">{hunterStats.strength} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-amber-500 rounded-full" style={{ width: `${Math.min(100, (hunterStats.strength / 130) * 100)}%` }} />
+                    <div className="h-full bg-amber-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.strength / 200) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -467,7 +592,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-purple-400">{hunterStats.creativity} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-purple-500 rounded-full" style={{ width: `${Math.min(100, (hunterStats.creativity / 160) * 100)}%` }} />
+                    <div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.creativity / 200) * 100)}%` }} />
                   </div>
                 </div>
               </CardContent>
@@ -522,6 +647,56 @@ export default function PythonAscensionPage() {
               </CardContent>
             </Card>
           </div>
+        )}
+
+        {/* Tab Content: System Sandbox */}
+        {activeTab === "sandbox" && (
+          <Card className="bg-slate-900/90 border-slate-800 backdrop-blur-md">
+            <CardHeader>
+              <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
+                <Code2 className="w-5 h-5 text-amber-400" /> System Spell Forge / Python Sandbox
+              </CardTitle>
+              <CardDescription className="text-xs text-slate-400">
+                Test custom Python scripts or try out formula algorithms freely.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                    <span className="flex items-center gap-1.5"><TerminalIcon className="w-3.5 h-3.5 text-amber-400" /> Sandbox Editor</span>
+                    <span>script.py</span>
+                  </div>
+                  <textarea
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    rows={12}
+                    placeholder="# Write any custom Python code here..."
+                    className="w-full font-mono text-xs p-4 rounded-xl bg-slate-950 border border-slate-800 text-amber-300 focus:outline-none focus:border-amber-500 transition-all resize-none"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                    <span>System Terminal Output</span>
+                  </div>
+                  <pre className="w-full h-[240px] font-mono text-xs p-4 rounded-xl bg-black border border-slate-800 text-slate-300 overflow-y-auto whitespace-pre-wrap">
+                    {terminalOutput || "# Click 'Execute Sandbox Script' to run Python code..."}
+                  </pre>
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-3">
+                <Button
+                  disabled={isRunning}
+                  onClick={handleRunCode}
+                  className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold gap-2 px-6 rounded-xl shadow-lg shadow-amber-500/20"
+                >
+                  <Play className="w-4 h-4 fill-slate-950" /> {isRunning ? "Executing..." : "Execute Sandbox Script"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* Tab Content: Inventory */}
@@ -595,7 +770,8 @@ export default function PythonAscensionPage() {
                             "text-xs font-mono",
                             quest.category === "Daily" && "text-cyan-400 border-cyan-500/30",
                             quest.category === "Secondary" && "text-amber-400 border-amber-500/30",
-                            quest.category === "Bonus" && "text-purple-400 border-purple-500/30"
+                            quest.category === "Bonus" && "text-purple-400 border-purple-500/30",
+                            quest.category === "Weekly" && "text-emerald-400 border-emerald-500/30"
                           )}
                         >
                           {quest.category}
@@ -677,7 +853,7 @@ export default function PythonAscensionPage() {
       {/* Interactive Dungeon Modal Simulator */}
       {activeDungeon && (
         <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-cyan-500/50 rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+          <div className="bg-slate-900 border border-cyan-500/50 rounded-2xl max-w-5xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl">
             {/* Modal Header */}
             <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
               <div className="flex items-center gap-3">
@@ -689,52 +865,132 @@ export default function PythonAscensionPage() {
                   <p className="text-xs text-slate-400">{activeDungeon.codexTitle}</p>
                 </div>
               </div>
-              <Button variant="ghost" size="sm" onClick={() => setActiveDungeon(null)} className="text-slate-400 hover:text-white">
-                ✕ Close
-              </Button>
+              
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                  <Button
+                    size="sm"
+                    variant={dungeonMode === "boss" ? "default" : "ghost"}
+                    onClick={() => { setDungeonMode("boss"); setCode(activeDungeon.initialCode); }}
+                    className={cn("h-7 text-xs font-semibold rounded-lg", dungeonMode === "boss" && "bg-cyan-500 text-slate-950")}
+                  >
+                    ⚔️ Boss Mission
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={dungeonMode === "tasks" ? "default" : "ghost"}
+                    onClick={() => setDungeonMode("tasks")}
+                    className={cn("h-7 text-xs font-semibold rounded-lg", dungeonMode === "tasks" && "bg-cyan-500 text-slate-950")}
+                  >
+                    📚 Lab Tasks ({activeDungeon.tasks.length})
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={dungeonMode === "theory" ? "default" : "ghost"}
+                    onClick={() => setDungeonMode("theory")}
+                    className={cn("h-7 text-xs font-semibold rounded-lg", dungeonMode === "theory" && "bg-cyan-500 text-slate-950")}
+                  >
+                    💡 Codex Theory
+                  </Button>
+                </div>
+
+                <Button variant="ghost" size="sm" onClick={() => setActiveDungeon(null)} className="text-slate-400 hover:text-white">
+                  ✕ Close
+                </Button>
+              </div>
             </div>
 
             {/* Modal Body */}
             <div className="p-6 overflow-y-auto space-y-6 flex-1">
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 leading-relaxed">
-                <strong className="text-cyan-400 font-mono block mb-1">DUNGEON BRIEFING:</strong>
-                {activeDungeon.description}
-                <div className="mt-3 pt-3 border-t border-slate-800 font-mono text-emerald-400">
-                  <strong>MISSION OBJECTIVE:</strong> {activeDungeon.missionObjective}
+              {dungeonMode === "theory" ? (
+                <div className="space-y-4">
+                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                    <h4 className="font-bold text-cyan-300 text-sm mb-2 flex items-center gap-2">
+                      <Lightbulb className="w-4 h-4 text-amber-400" /> Codex Theory & Formulas
+                    </h4>
+                    <ul className="space-y-2 text-xs text-slate-300">
+                      {activeDungeon.theoryNotes.map((note, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-cyan-400">•</span>
+                          <span>{note}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              ) : dungeonMode === "tasks" ? (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {activeDungeon.tasks.map((task) => (
+                      <div
+                        key={task.id}
+                        onClick={() => handleSelectTask(task)}
+                        className={cn(
+                          "p-3.5 rounded-xl border cursor-pointer transition-all space-y-1.5",
+                          selectedTask?.id === task.id
+                            ? "bg-cyan-950/40 border-cyan-500 text-cyan-200"
+                            : "bg-slate-950/60 border-slate-800 hover:border-slate-700 text-slate-300"
+                        )}
+                      >
+                        <div className="font-bold text-xs flex justify-between">
+                          <span>{task.title}</span>
+                          {task.formula && <Badge variant="outline" className="text-[10px] text-amber-400 border-amber-500/30">{task.formula}</Badge>}
+                        </div>
+                        <p className="text-[11px] text-slate-400 line-clamp-2">{task.question}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {selectedTask && (
+                    <div className="p-3.5 rounded-xl bg-slate-950 border border-cyan-500/30 text-xs text-slate-300 space-y-1">
+                      <strong className="text-cyan-400">Task Objective:</strong> {selectedTask.question}
+                      <div className="text-slate-400 pt-1">{selectedTask.explanation}</div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 leading-relaxed">
+                  <strong className="text-cyan-400 font-mono block mb-1">DUNGEON BRIEFING:</strong>
+                  {activeDungeon.description}
+                  <div className="mt-3 pt-3 border-t border-slate-800 font-mono text-emerald-400">
+                    <strong>MISSION OBJECTIVE:</strong> {activeDungeon.missionObjective}
+                  </div>
+                </div>
+              )}
 
               {/* Code Editor & Terminal */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {/* Editor */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                    <span className="flex items-center gap-1.5"><TerminalIcon className="w-3.5 h-3.5 text-cyan-400" /> Python Code Editor</span>
-                    <span>main.py</span>
+              {dungeonMode !== "theory" && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  {/* Editor */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                      <span className="flex items-center gap-1.5"><TerminalIcon className="w-3.5 h-3.5 text-cyan-400" /> Python Code Editor</span>
+                      <span>main.py</span>
+                    </div>
+                    <textarea
+                      value={code}
+                      onChange={(e) => setCode(e.target.value)}
+                      rows={10}
+                      className="w-full font-mono text-xs p-4 rounded-xl bg-slate-950 border border-slate-800 text-cyan-300 focus:outline-none focus:border-cyan-500 transition-all resize-none"
+                    />
                   </div>
-                  <textarea
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
-                    rows={10}
-                    className="w-full font-mono text-xs p-4 rounded-xl bg-slate-950 border border-slate-800 text-cyan-300 focus:outline-none focus:border-cyan-500 transition-all resize-none"
-                  />
-                </div>
 
-                {/* Terminal Output */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                    <span>System Terminal Output</span>
-                    {executionSuccess !== null && (
-                      <span className={executionSuccess ? "text-emerald-400" : "text-red-400"}>
-                        {executionSuccess ? "STATUS: PASSED" : "STATUS: FAILED"}
-                      </span>
-                    )}
+                  {/* Terminal Output */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                      <span>System Terminal Output</span>
+                      {executionSuccess !== null && (
+                        <span className={executionSuccess ? "text-emerald-400" : "text-red-400"}>
+                          {executionSuccess ? "STATUS: PASSED" : "STATUS: FAILED"}
+                        </span>
+                      )}
+                    </div>
+                    <pre className="w-full h-[200px] lg:h-[225px] font-mono text-xs p-4 rounded-xl bg-black border border-slate-800 text-slate-300 overflow-y-auto whitespace-pre-wrap">
+                      {terminalOutput || "# Click 'Run Python Program' to execute script..."}
+                    </pre>
                   </div>
-                  <pre className="w-full h-[200px] lg:h-[225px] font-mono text-xs p-4 rounded-xl bg-black border border-slate-800 text-slate-300 overflow-y-auto whitespace-pre-wrap">
-                    {terminalOutput || "# Click 'Run Python Program' to execute script..."}
-                  </pre>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Modal Footer */}
@@ -743,15 +999,17 @@ export default function PythonAscensionPage() {
                 <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Code
               </Button>
 
-              <div className="flex items-center gap-3">
-                <Button
-                  disabled={isRunning}
-                  onClick={handleRunCode}
-                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold gap-2 px-6 rounded-xl shadow-lg shadow-cyan-500/20"
-                >
-                  <Play className="w-4 h-4 fill-slate-950" /> {isRunning ? "Executing..." : "Run Python Program"}
-                </Button>
-              </div>
+              {dungeonMode !== "theory" && (
+                <div className="flex items-center gap-3">
+                  <Button
+                    disabled={isRunning}
+                    onClick={handleRunCode}
+                    className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold gap-2 px-6 rounded-xl shadow-lg shadow-cyan-500/20"
+                  >
+                    <Play className="w-4 h-4 fill-slate-950" /> {isRunning ? "Executing..." : "Run Python Program"}
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -774,7 +1032,7 @@ export default function PythonAscensionPage() {
             </div>
 
             <Button
-              onClick={() => setShowRankUpModal(false)}
+              onClick={() => { playSound("click"); setShowRankUpModal(false); }}
               className="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl py-3"
             >
               Accept Rank Upgrade
