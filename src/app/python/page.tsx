@@ -77,6 +77,7 @@ export default function PythonAscensionPage() {
   const [executionSuccess, setExecutionSuccess] = useState<boolean | null>(null);
   const [showRankUpModal, setShowRankUpModal] = useState<boolean>(false);
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
+  const [isShaking, setIsShaking] = useState<boolean>(false);
 
   // Audio & Music Engine States (Music ON by default)
   const [isMuted, setIsMuted] = useState<boolean>(false);
@@ -126,7 +127,7 @@ export default function PythonAscensionPage() {
   }, []);
 
   // Sound FX Generator
-  const playSound = (type: "click" | "success" | "fail" | "levelUp") => {
+  const playSound = (type: "click" | "success" | "fail" | "levelUp" | "monarchArise") => {
     if (isMuted) return;
     const ctx = getAudioContext();
     if (!ctx) return;
@@ -176,6 +177,15 @@ export default function PythonAscensionPage() {
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
         osc.start(now);
         osc.stop(now + 0.5);
+      } else if (type === "monarchArise") {
+        // Deep bass roar + soaring high frequency chime
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(110, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 1.2);
+        gain.gain.setValueAtTime(0.3 * effectiveVol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
+        osc.start(now);
+        osc.stop(now + 1.5);
       }
     } catch (e) {
       // Audio fallback catch
@@ -296,6 +306,7 @@ export default function PythonAscensionPage() {
   const dungeonsClearedCount = state.completedDungeons.length;
 
   const getRankInfo = (cleared: number) => {
+    if (cleared >= 11) return { rank: "👑 SHADOW MONARCH (LV. 999)", level: 999, title: "God-Class System Sovereign", color: "text-amber-300 border-purple-500 bg-gradient-to-r from-purple-950 via-slate-900 to-amber-950 shadow-purple-500/50" };
     if (cleared >= 10) return { rank: "S-Class Programmer", level: 100, title: "Shadow Programmer", color: "text-purple-400 border-purple-500 bg-purple-950/40 shadow-purple-500/30" };
     if (cleared >= 8) return { rank: "A-Class Programmer", level: 75, title: "Data Alchemist", color: "text-amber-400 border-amber-500 bg-amber-950/40 shadow-amber-500/30" };
     if (cleared >= 6) return { rank: "B-Class Programmer", level: 45, title: "Code Weaver", color: "text-blue-400 border-blue-500 bg-blue-950/40 shadow-blue-500/30" };
@@ -308,10 +319,10 @@ export default function PythonAscensionPage() {
 
   // Dynamic Hunter Stats based on progress
   const hunterStats = {
-    strength: 10 + dungeonsClearedCount * 12 + state.completedQuests.length * 3,
-    intelligence: 20 + dungeonsClearedCount * 18 + state.completedQuests.length * 5,
-    coding: 15 + dungeonsClearedCount * 25 + state.completedQuests.length * 7,
-    creativity: 10 + dungeonsClearedCount * 15 + state.completedQuests.length * 4,
+    strength: 10 + dungeonsClearedCount * 15 + state.completedQuests.length * 3,
+    intelligence: 20 + dungeonsClearedCount * 22 + state.completedQuests.length * 5,
+    coding: 15 + dungeonsClearedCount * 30 + state.completedQuests.length * 7,
+    creativity: 10 + dungeonsClearedCount * 18 + state.completedQuests.length * 4,
   };
 
   const handleOpenDungeon = (dungeon: Dungeon) => {
@@ -349,6 +360,14 @@ export default function PythonAscensionPage() {
     setExecutionSuccess(null);
   };
 
+  const triggerScreenShake = () => {
+    setIsShaking(true);
+    playSound("monarchArise");
+    setTimeout(() => {
+      setIsShaking(false);
+    }, 2500);
+  };
+
   const handleRunCode = () => {
     if (!activeDungeon && activeTab !== "sandbox") return;
     playSound("click");
@@ -375,13 +394,13 @@ export default function PythonAscensionPage() {
       const expectedTarget = isTaskMode ? selectedTask.expectedOutput : activeDungeon.expectedKeywordOrOutput;
 
       const isSuccess = code.toLowerCase().includes(expectedTarget.toLowerCase()) ||
-        code.includes("print") || code.includes("def") || code.includes("class");
+        code.includes("print") || code.includes("def") || code.includes("class") || code.includes("arise");
 
       if (isSuccess) {
-        playSound("success");
         setExecutionSuccess(true);
 
         if (isTaskMode && selectedTask) {
+          playSound("success");
           if (!completedTasksInDungeon.includes(selectedTask.id)) {
             setCompletedTasksInDungeon([...completedTasksInDungeon, selectedTask.id]);
           }
@@ -396,19 +415,26 @@ export default function PythonAscensionPage() {
             `[REWARD]: +${activeDungeon.xpReward} XP Gained!`
           );
 
-          // Check if dungeon newly cleared
+          // Check if dungeon 11 (Shadow Monarch) or other dungeon newly cleared
           if (!state.completedDungeons.includes(activeDungeon.id)) {
             const oldRank = getRankInfo(state.completedDungeons.length).rank;
             const newDungeons = [...state.completedDungeons, activeDungeon.id];
             const newXp = state.xp + activeDungeon.xpReward;
             const newRank = getRankInfo(newDungeons.length).rank;
 
+            // Trigger Screen Shake for Dungeon 11 Monarch Ascension
+            if (activeDungeon.id === 11) {
+              triggerScreenShake();
+            } else {
+              playSound("success");
+            }
+
             // Achievements check
             const updatedAchievements = [...state.unlockedAchievements];
             if (activeDungeon.id === 4 && !updatedAchievements.includes("ach-2")) updatedAchievements.push("ach-2");
             if (activeDungeon.id === 6 && !updatedAchievements.includes("ach-3")) updatedAchievements.push("ach-3");
             if (activeDungeon.id === 9 && !updatedAchievements.includes("ach-4")) updatedAchievements.push("ach-4");
-            if (newDungeons.length === 10 && !updatedAchievements.includes("ach-5")) updatedAchievements.push("ach-5");
+            if (newDungeons.length >= 10 && !updatedAchievements.includes("ach-5")) updatedAchievements.push("ach-5");
 
             setState({
               ...state,
@@ -418,7 +444,6 @@ export default function PythonAscensionPage() {
             });
 
             if (newRank !== oldRank) {
-              playSound("levelUp");
               setPreviousRank(oldRank);
               setShowRankUpModal(true);
             }
@@ -469,7 +494,7 @@ export default function PythonAscensionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans pb-20 selection:bg-cyan-500 selection:text-slate-950">
+    <div className={cn("min-h-screen bg-slate-950 text-slate-100 font-sans pb-20 selection:bg-cyan-500 selection:text-slate-950 transition-transform duration-100", isShaking && "animate-shake")}>
       {/* Background Cyber Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-25" />
 
@@ -489,7 +514,7 @@ export default function PythonAscensionPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Complete small missions first to unlock the final boss battle for each Digital Dungeon.
+                Humanity has discovered mysterious Gates. Complete all 10 Dungeons to unlock the 11th Secret Gate and ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
               </p>
             </div>
 
@@ -562,7 +587,7 @@ export default function PythonAscensionPage() {
           <div className="flex items-center gap-6 w-full md:w-auto">
             <div className="text-center">
               <div className="text-xs text-slate-400 font-mono">Dungeons Cleared</div>
-              <div className="text-xl font-bold text-cyan-300 font-mono">{dungeonsClearedCount} / 10</div>
+              <div className="text-xl font-bold text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
             </div>
 
             <div className="text-center">
@@ -585,7 +610,7 @@ export default function PythonAscensionPage() {
               onClick={() => { playSound("click"); setActiveTab("dungeons"); }}
               className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "dungeons" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
             >
-              <Sword className="w-4 h-4" /> Dungeons ({dungeonsClearedCount}/10)
+              <Sword className="w-4 h-4" /> Dungeons ({dungeonsClearedCount}/11)
             </Button>
             <Button
               variant={activeTab === "skills" ? "default" : "outline"}
@@ -632,23 +657,32 @@ export default function PythonAscensionPage() {
         {/* Tab Content: Dungeons */}
         {activeTab === "dungeons" && (
           <div className="space-y-8">
-            {dungeonsClearedCount === 10 && (
-              <div className="p-8 rounded-2xl bg-gradient-to-r from-purple-950/80 via-slate-900 to-indigo-950/80 border-2 border-purple-500 text-center shadow-2xl animate-pulse">
-                <Crown className="w-16 h-16 text-amber-400 mx-auto mb-3" />
-                <h2 className="text-3xl md:text-4xl font-extrabold text-white">ALL DUNGEONS CLEARED!</h2>
+            {dungeonsClearedCount >= 11 ? (
+              <div className="p-8 rounded-2xl bg-gradient-to-r from-purple-950 via-slate-900 to-amber-950 border-2 border-amber-400 text-center shadow-2xl animate-pulse">
+                <Crown className="w-20 h-20 text-amber-400 mx-auto mb-3 animate-bounce" />
+                <h2 className="text-3xl md:text-5xl font-extrabold text-white">ARISE! SHADOW MONARCH ASCENDED!</h2>
                 <p className="text-purple-300 mt-2 max-w-xl mx-auto text-base">
-                  Congratulations Hunter! You have conquered every Python Dungeon and earned the title <strong className="text-amber-400 font-bold">Shadow Programmer</strong>.
+                  All 11 Gates have been conquered. You stand as the undisputed <strong className="text-amber-400 font-bold">SHADOW MONARCH (LEVEL 999)</strong>.
                 </p>
-                <Badge className="mt-4 bg-amber-500 text-slate-950 font-bold px-4 py-1.5 text-sm">
-                  RANK: S-CLASS PROGRAMMER (LEVEL 100)
+                <Badge className="mt-4 bg-amber-400 text-slate-950 font-bold px-6 py-2 text-base shadow-lg shadow-amber-500/50">
+                  RANK: GOD-CLASS SYSTEM SOVEREIGN
                 </Badge>
               </div>
-            )}
+            ) : dungeonsClearedCount >= 10 ? (
+              <div className="p-6 rounded-2xl bg-gradient-to-r from-purple-950/80 via-slate-900 to-indigo-950/80 border-2 border-purple-500 text-center shadow-2xl">
+                <Sparkles className="w-12 h-12 text-amber-400 mx-auto mb-2" />
+                <h3 className="text-2xl font-bold text-white">10 DUNGEONS CLEARED! SECRET GATE UNLOCKED!</h3>
+                <p className="text-purple-300 mt-1 text-sm">
+                  Enter <strong className="text-amber-400">Dungeon XI: Throne of the Monarch</strong> below to complete your final ascension!
+                </p>
+              </div>
+            ) : null}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {DUNGEONS.map((dungeon) => {
                 const isCleared = state.completedDungeons.includes(dungeon.id);
                 const isLocked = dungeon.id > 1 && !state.completedDungeons.includes(dungeon.id - 1);
+                const isSecretMonarchGate = dungeon.id === 11;
 
                 return (
                   <Card
@@ -656,6 +690,7 @@ export default function PythonAscensionPage() {
                     className={cn(
                       "bg-slate-900/80 border-slate-800 backdrop-blur-md transition-all duration-300 relative flex flex-col justify-between overflow-hidden group hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/10",
                       isCleared && "border-emerald-500/50 bg-emerald-950/20",
+                      isSecretMonarchGate && "border-amber-500/60 bg-gradient-to-br from-slate-900 via-purple-950/50 to-slate-950 shadow-amber-500/20",
                       isLocked && "opacity-60 cursor-not-allowed"
                     )}
                   >
@@ -665,9 +700,15 @@ export default function PythonAscensionPage() {
                       </div>
                     )}
 
+                    {isSecretMonarchGate && !isCleared && !isLocked && (
+                      <div className="absolute top-0 right-0 bg-amber-500 text-slate-950 font-mono text-[10px] font-bold px-3 py-1 rounded-bl-lg flex items-center gap-1 animate-pulse">
+                        👑 SECRET MONARCH GATE
+                      </div>
+                    )}
+
                     <CardHeader className="pb-3">
                       <div className="flex items-center justify-between text-xs font-mono text-cyan-400 mb-1">
-                        <span>{dungeon.codexNumber}</span>
+                        <span className={cn(isSecretMonarchGate && "text-amber-400 font-bold")}>{dungeon.codexNumber}</span>
                         <div className="flex gap-0.5 text-amber-400">
                           {Array.from({ length: dungeon.difficultyStars }).map((_, i) => (
                             <Star key={i} className="w-3 h-3 fill-amber-400" />
@@ -675,7 +716,7 @@ export default function PythonAscensionPage() {
                         </div>
                       </div>
 
-                      <CardTitle className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      <CardTitle className={cn("text-xl font-bold text-white group-hover:text-cyan-300 transition-colors", isSecretMonarchGate && "text-amber-300")}>
                         {dungeon.dungeonName}
                       </CardTitle>
                       <CardDescription className="text-slate-400 text-xs line-clamp-2 mt-1">
@@ -701,8 +742,8 @@ export default function PythonAscensionPage() {
                           <span className="text-amber-400 font-mono font-bold">{dungeon.tasks.length} Small Missions</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Phase 2:</span>
-                          <span className="text-red-400 font-mono font-bold">Final Boss Battle</span>
+                          <span className="text-slate-500">Skill Unlock:</span>
+                          <span className={cn("font-mono", isSecretMonarchGate ? "text-amber-300 font-bold" : "text-emerald-400")}>{dungeon.skillUnlock}</span>
                         </div>
                       </div>
 
@@ -711,16 +752,22 @@ export default function PythonAscensionPage() {
                         onClick={() => handleOpenDungeon(dungeon)}
                         className={cn(
                           "w-full rounded-xl gap-2 font-semibold transition-all mt-2",
-                          isCleared
-                            ? "bg-slate-800 hover:bg-slate-700 text-slate-200"
-                            : isLocked
-                              ? "bg-slate-950 text-slate-600 border border-slate-800"
-                              : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20"
+                          isSecretMonarchGate
+                            ? "bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-lg shadow-amber-500/30"
+                            : isCleared
+                              ? "bg-slate-800 hover:bg-slate-700 text-slate-200"
+                              : isLocked
+                                ? "bg-slate-950 text-slate-600 border border-slate-800"
+                                : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20"
                         )}
                       >
                         {isLocked ? (
                           <>
                             <Lock className="w-4 h-4" /> Locked (Clear Dungeon {dungeon.id - 1})
+                          </>
+                        ) : isSecretMonarchGate ? (
+                          <>
+                            👑 {isCleared ? "Re-enter Monarch Gate" : "Enter Secret Monarch Gate"}
                           </>
                         ) : isCleared ? (
                           <>
@@ -760,7 +807,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-cyan-300">{hunterStats.coding} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-cyan-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.coding / 300) * 100)}%` }} />
+                    <div className="h-full bg-cyan-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.coding / 350) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -770,7 +817,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-emerald-400">{hunterStats.intelligence} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-emerald-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.intelligence / 250) * 100)}%` }} />
+                    <div className="h-full bg-emerald-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.intelligence / 300) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -780,7 +827,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-amber-400">{hunterStats.strength} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-amber-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.strength / 200) * 100)}%` }} />
+                    <div className="h-full bg-amber-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.strength / 250) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -790,7 +837,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-purple-400">{hunterStats.creativity} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.creativity / 200) * 100)}%` }} />
+                    <div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.creativity / 250) * 100)}%` }} />
                   </div>
                 </div>
               </CardContent>
