@@ -45,7 +45,9 @@ import {
   HelpCircle,
   BarChart3,
   Lightbulb,
-  Radio
+  Radio,
+  Target,
+  ArrowRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -66,8 +68,9 @@ export default function PythonAscensionPage() {
 
   const [activeTab, setActiveTab] = useState<"dungeons" | "skills" | "inventory" | "quests" | "achievements" | "sandbox">("dungeons");
   const [activeDungeon, setActiveDungeon] = useState<Dungeon | null>(null);
-  const [dungeonMode, setDungeonMode] = useState<"boss" | "tasks" | "theory">("boss");
+  const [dungeonMode, setDungeonMode] = useState<"tasks" | "boss" | "theory">("tasks");
   const [selectedTask, setSelectedTask] = useState<PracticeTask | null>(null);
+  const [completedTasksInDungeon, setCompletedTasksInDungeon] = useState<string[]>([]);
   const [code, setCode] = useState<string>("");
   const [terminalOutput, setTerminalOutput] = useState<string>("");
   const [isRunning, setIsRunning] = useState<boolean>(false);
@@ -314,10 +317,17 @@ export default function PythonAscensionPage() {
   const handleOpenDungeon = (dungeon: Dungeon) => {
     playSound("click");
     setActiveDungeon(dungeon);
-    setDungeonMode("boss");
-    setCode(dungeon.initialCode);
-    setSelectedTask(null);
-    setTerminalOutput("");
+    setDungeonMode("tasks"); // Start on Phase 1: Small Missions
+    setCompletedTasksInDungeon([]);
+
+    if (dungeon.tasks.length > 0) {
+      setSelectedTask(dungeon.tasks[0]);
+      setCode(dungeon.tasks[0].codeSnippet);
+      setTerminalOutput(`[PHASE 1: SMALL MISSIONS]\nTask 1: ${dungeon.tasks[0].title}\nClick 'Run Python Program' to execute task code.`);
+    } else {
+      setSelectedTask(null);
+      setCode(dungeon.initialCode);
+    }
     setExecutionSuccess(null);
   };
 
@@ -325,7 +335,17 @@ export default function PythonAscensionPage() {
     playSound("click");
     setSelectedTask(task);
     setCode(task.codeSnippet);
-    setTerminalOutput(`[TASK SELECTED]: ${task.title}\nPress 'Run Code' to test implementation.`);
+    setTerminalOutput(`[SMALL MISSION SELECTED]: ${task.title}\nPress 'Run Python Program' to test implementation.`);
+    setExecutionSuccess(null);
+  };
+
+  const handleSwitchToBoss = () => {
+    if (!activeDungeon) return;
+    playSound("click");
+    setDungeonMode("boss");
+    setSelectedTask(null);
+    setCode(activeDungeon.initialCode);
+    setTerminalOutput(`[PHASE 2: FINAL BOSS BATTLE]\nBoss: ${activeDungeon.bossName || "Dungeon Core Anomaly"}\nObjective: ${activeDungeon.missionObjective}\nRun code to defeat the boss!`);
     setExecutionSuccess(null);
   };
 
@@ -360,36 +380,48 @@ export default function PythonAscensionPage() {
       if (isSuccess) {
         playSound("success");
         setExecutionSuccess(true);
-        setTerminalOutput((prev) =>
-          prev + "\n\n>>> EXECUTION SUCCESSFUL <<<\n[SYSTEM]: Code criteria validated.\nOutput returned cleanly.\n" +
-          `[REWARD]: +${activeDungeon.xpReward} XP Gained!`
-        );
 
-        // Check if dungeon newly cleared
-        if (!state.completedDungeons.includes(activeDungeon.id)) {
-          const oldRank = getRankInfo(state.completedDungeons.length).rank;
-          const newDungeons = [...state.completedDungeons, activeDungeon.id];
-          const newXp = state.xp + activeDungeon.xpReward;
-          const newRank = getRankInfo(newDungeons.length).rank;
+        if (isTaskMode && selectedTask) {
+          if (!completedTasksInDungeon.includes(selectedTask.id)) {
+            setCompletedTasksInDungeon([...completedTasksInDungeon, selectedTask.id]);
+          }
+          setTerminalOutput((prev) =>
+            prev + "\n\n>>> SMALL MISSION PASSED <<<\n[SYSTEM]: Code criteria validated.\n" +
+            `[PROGRESS]: ${completedTasksInDungeon.length + 1} / ${activeDungeon.tasks.length} Small Missions Cleared!`
+          );
+        } else {
+          // Boss Battle Cleared!
+          setTerminalOutput((prev) =>
+            prev + "\n\n>>> BOSS DEFEATED! DUNGEON CLEARED! <<<\n[SYSTEM]: Critical hit! Boss anomaly eliminated.\n" +
+            `[REWARD]: +${activeDungeon.xpReward} XP Gained!`
+          );
 
-          // Achievements check
-          const updatedAchievements = [...state.unlockedAchievements];
-          if (activeDungeon.id === 4 && !updatedAchievements.includes("ach-2")) updatedAchievements.push("ach-2");
-          if (activeDungeon.id === 6 && !updatedAchievements.includes("ach-3")) updatedAchievements.push("ach-3");
-          if (activeDungeon.id === 9 && !updatedAchievements.includes("ach-4")) updatedAchievements.push("ach-4");
-          if (newDungeons.length === 10 && !updatedAchievements.includes("ach-5")) updatedAchievements.push("ach-5");
+          // Check if dungeon newly cleared
+          if (!state.completedDungeons.includes(activeDungeon.id)) {
+            const oldRank = getRankInfo(state.completedDungeons.length).rank;
+            const newDungeons = [...state.completedDungeons, activeDungeon.id];
+            const newXp = state.xp + activeDungeon.xpReward;
+            const newRank = getRankInfo(newDungeons.length).rank;
 
-          setState({
-            ...state,
-            completedDungeons: newDungeons,
-            xp: newXp,
-            unlockedAchievements: updatedAchievements
-          });
+            // Achievements check
+            const updatedAchievements = [...state.unlockedAchievements];
+            if (activeDungeon.id === 4 && !updatedAchievements.includes("ach-2")) updatedAchievements.push("ach-2");
+            if (activeDungeon.id === 6 && !updatedAchievements.includes("ach-3")) updatedAchievements.push("ach-3");
+            if (activeDungeon.id === 9 && !updatedAchievements.includes("ach-4")) updatedAchievements.push("ach-4");
+            if (newDungeons.length === 10 && !updatedAchievements.includes("ach-5")) updatedAchievements.push("ach-5");
 
-          if (newRank !== oldRank) {
-            playSound("levelUp");
-            setPreviousRank(oldRank);
-            setShowRankUpModal(true);
+            setState({
+              ...state,
+              completedDungeons: newDungeons,
+              xp: newXp,
+              unlockedAchievements: updatedAchievements
+            });
+
+            if (newRank !== oldRank) {
+              playSound("levelUp");
+              setPreviousRank(oldRank);
+              setShowRankUpModal(true);
+            }
           }
         }
       } else {
@@ -457,7 +489,7 @@ export default function PythonAscensionPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Only those who master Python can become System Programmers capable of controlling the Digital Dungeon.
+                Humanity has discovered mysterious Gates. Complete small missions first to unlock the final boss battle for each Digital Dungeon.
               </p>
             </div>
 
@@ -665,12 +697,12 @@ export default function PythonAscensionPage() {
                           <span className="text-cyan-300 font-mono font-bold">+{dungeon.xpReward} XP</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Tasks Included:</span>
-                          <span className="text-amber-400 font-mono font-bold">{dungeon.tasks.length} Practice Tasks</span>
+                          <span className="text-slate-500">Phase 1:</span>
+                          <span className="text-amber-400 font-mono font-bold">{dungeon.tasks.length} Small Missions</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Skill Unlock:</span>
-                          <span className="text-emerald-400 font-mono">{dungeon.skillUnlock}</span>
+                          <span className="text-slate-500">Phase 2:</span>
+                          <span className="text-red-400 font-mono font-bold">Final Boss Battle</span>
                         </div>
                       </div>
 
@@ -696,7 +728,7 @@ export default function PythonAscensionPage() {
                           </>
                         ) : (
                           <>
-                            <Play className="w-4 h-4" /> Enter Dungeon {dungeon.id}
+                            <Play className="w-4 h-4" /> Start Dungeon {dungeon.id}
                           </>
                         )}
                       </Button>
@@ -1036,27 +1068,27 @@ export default function PythonAscensionPage() {
                 <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
                   <Button
                     size="sm"
-                    variant={dungeonMode === "boss" ? "default" : "ghost"}
-                    onClick={() => { setDungeonMode("boss"); setCode(activeDungeon.initialCode); }}
-                    className={cn("h-7 text-xs font-semibold rounded-lg", dungeonMode === "boss" && "bg-cyan-500 text-slate-950")}
+                    variant={dungeonMode === "tasks" ? "default" : "ghost"}
+                    onClick={() => setDungeonMode("tasks")}
+                    className={cn("h-7 text-xs font-semibold rounded-lg gap-1.5", dungeonMode === "tasks" && "bg-amber-500 text-slate-950 font-bold")}
                   >
-                    ⚔️ Boss Mission
+                    <Target className="w-3.5 h-3.5" /> 1. Small Missions ({completedTasksInDungeon.length}/{activeDungeon.tasks.length})
                   </Button>
                   <Button
                     size="sm"
-                    variant={dungeonMode === "tasks" ? "default" : "ghost"}
-                    onClick={() => setDungeonMode("tasks")}
-                    className={cn("h-7 text-xs font-semibold rounded-lg", dungeonMode === "tasks" && "bg-cyan-500 text-slate-950")}
+                    variant={dungeonMode === "boss" ? "default" : "ghost"}
+                    onClick={handleSwitchToBoss}
+                    className={cn("h-7 text-xs font-semibold rounded-lg gap-1.5", dungeonMode === "boss" && "bg-red-500 text-white font-bold")}
                   >
-                    📚 Lab Tasks ({activeDungeon.tasks.length})
+                    <Skull className="w-3.5 h-3.5 text-amber-300" /> 2. Final Boss Battle
                   </Button>
                   <Button
                     size="sm"
                     variant={dungeonMode === "theory" ? "default" : "ghost"}
                     onClick={() => setDungeonMode("theory")}
-                    className={cn("h-7 text-xs font-semibold rounded-lg", dungeonMode === "theory" && "bg-cyan-500 text-slate-950")}
+                    className={cn("h-7 text-xs font-semibold rounded-lg gap-1.5", dungeonMode === "theory" && "bg-cyan-500 text-slate-950 font-bold")}
                   >
-                    💡 Codex Theory
+                    <Lightbulb className="w-3.5 h-3.5" /> Codex Theory
                   </Button>
                 </div>
 
@@ -1068,6 +1100,40 @@ export default function PythonAscensionPage() {
 
             {/* Modal Body */}
             <div className="p-6 overflow-y-auto space-y-6 flex-1">
+              {/* Progress Banner for 2-Phase Progression */}
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-amber-950/60 border border-amber-500/30 text-amber-400">
+                    {dungeonMode === "tasks" ? <Target className="w-5 h-5" /> : <Skull className="w-5 h-5 text-red-400" />}
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono text-slate-400">DUNGEON PROGRESSION FLOW</div>
+                    <div className="text-sm font-bold text-white">
+                      {dungeonMode === "tasks" ? "PHASE 1: Complete Small Practice Missions" : "PHASE 2: Defeat Dungeon Boss Anomaly"}
+                    </div>
+                  </div>
+                </div>
+
+                {dungeonMode === "tasks" ? (
+                  <Button
+                    size="sm"
+                    onClick={handleSwitchToBoss}
+                    className="bg-red-600 hover:bg-red-500 text-white font-bold text-xs gap-1.5 rounded-lg shadow-lg shadow-red-600/20"
+                  >
+                    Proceed to Boss Battle <ArrowRight className="w-3.5 h-3.5" />
+                  </Button>
+                ) : (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setDungeonMode("tasks")}
+                    className="text-xs font-mono border-slate-800 text-slate-300 hover:border-amber-400"
+                  >
+                    Review Small Missions ({activeDungeon.tasks.length})
+                  </Button>
+                )}
+              </div>
+
               {dungeonMode === "theory" ? (
                 <div className="space-y-4">
                   <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
@@ -1087,39 +1153,53 @@ export default function PythonAscensionPage() {
               ) : dungeonMode === "tasks" ? (
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {activeDungeon.tasks.map((task) => (
-                      <div
-                        key={task.id}
-                        onClick={() => handleSelectTask(task)}
-                        className={cn(
-                          "p-3.5 rounded-xl border cursor-pointer transition-all space-y-1.5",
-                          selectedTask?.id === task.id
-                            ? "bg-cyan-950/40 border-cyan-500 text-cyan-200"
-                            : "bg-slate-950/60 border-slate-800 hover:border-slate-700 text-slate-300"
-                        )}
-                      >
-                        <div className="font-bold text-xs flex justify-between">
-                          <span>{task.title}</span>
-                          {task.formula && <Badge variant="outline" className="text-[10px] text-amber-400 border-amber-500/30">{task.formula}</Badge>}
+                    {activeDungeon.tasks.map((task) => {
+                      const isTaskDone = completedTasksInDungeon.includes(task.id);
+                      const isSelected = selectedTask?.id === task.id;
+
+                      return (
+                        <div
+                          key={task.id}
+                          onClick={() => handleSelectTask(task)}
+                          className={cn(
+                            "p-3.5 rounded-xl border cursor-pointer transition-all space-y-1.5 relative",
+                            isSelected
+                              ? "bg-cyan-950/40 border-cyan-500 text-cyan-200"
+                              : isTaskDone
+                                ? "bg-emerald-950/20 border-emerald-500/40 text-emerald-200"
+                                : "bg-slate-950/60 border-slate-800 hover:border-slate-700 text-slate-300"
+                          )}
+                        >
+                          {isTaskDone && (
+                            <div className="absolute top-2 right-2 text-emerald-400">
+                              <CheckCircle2 className="w-4 h-4" />
+                            </div>
+                          )}
+                          <div className="font-bold text-xs flex items-center justify-between pr-5">
+                            <span>{task.title}</span>
+                            {task.formula && <Badge variant="outline" className="text-[10px] text-amber-400 border-amber-500/30">{task.formula}</Badge>}
+                          </div>
+                          <p className="text-[11px] text-slate-400 line-clamp-2">{task.question}</p>
                         </div>
-                        <p className="text-[11px] text-slate-400 line-clamp-2">{task.question}</p>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
 
                   {selectedTask && (
                     <div className="p-3.5 rounded-xl bg-slate-950 border border-cyan-500/30 text-xs text-slate-300 space-y-1">
-                      <strong className="text-cyan-400">Task Objective:</strong> {selectedTask.question}
+                      <strong className="text-cyan-400">Small Mission Task Objective:</strong> {selectedTask.question}
                       <div className="text-slate-400 pt-1">{selectedTask.explanation}</div>
                     </div>
                   )}
                 </div>
               ) : (
-                <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 leading-relaxed">
-                  <strong className="text-cyan-400 font-mono block mb-1">DUNGEON BRIEFING:</strong>
-                  {activeDungeon.description}
-                  <div className="mt-3 pt-3 border-t border-slate-800 font-mono text-emerald-400">
-                    <strong>MISSION OBJECTIVE:</strong> {activeDungeon.missionObjective}
+                <div className="p-4 rounded-xl bg-slate-950 border border-red-500/40 text-xs text-slate-300 leading-relaxed space-y-3">
+                  <div className="flex items-center gap-2 text-red-400 font-bold font-mono text-sm">
+                    <Skull className="w-5 h-5 animate-pulse" /> BOSS ENCOUNTER: {activeDungeon.bossName || "Dungeon Anomaly"}
+                  </div>
+                  <div>{activeDungeon.description}</div>
+                  <div className="pt-3 border-t border-slate-800 font-mono text-emerald-400">
+                    <strong>FINAL MISSION OBJECTIVE:</strong> {activeDungeon.missionObjective}
                   </div>
                 </div>
               )}
@@ -1161,7 +1241,7 @@ export default function PythonAscensionPage() {
 
             {/* Modal Footer */}
             <div className="p-4 border-t border-slate-800 bg-slate-950 flex items-center justify-between">
-              <Button variant="ghost" onClick={() => setCode(activeDungeon.initialCode)} className="text-xs text-slate-400 hover:text-white">
+              <Button variant="ghost" onClick={() => setCode(dungeonMode === "boss" ? activeDungeon.initialCode : (selectedTask ? selectedTask.codeSnippet : ""))} className="text-xs text-slate-400 hover:text-white">
                 <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Code
               </Button>
 
@@ -1170,9 +1250,12 @@ export default function PythonAscensionPage() {
                   <Button
                     disabled={isRunning}
                     onClick={handleRunCode}
-                    className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold gap-2 px-6 rounded-xl shadow-lg shadow-cyan-500/20"
+                    className={cn(
+                      "font-bold gap-2 px-6 rounded-xl shadow-lg transition-all",
+                      dungeonMode === "boss" ? "bg-red-600 hover:bg-red-500 text-white shadow-red-600/20" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-cyan-500/20"
+                    )}
                   >
-                    <Play className="w-4 h-4 fill-slate-950" /> {isRunning ? "Executing..." : "Run Python Program"}
+                    <Play className="w-4 h-4 fill-current" /> {isRunning ? "Executing..." : (dungeonMode === "boss" ? "Attack Boss Anomaly" : "Run Python Program")}
                   </Button>
                 </div>
               )}
