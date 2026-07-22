@@ -303,7 +303,7 @@ dungeons_meta = [
         "bossName": "The Monarch Anomaly / System Sovereign",
         "description": "The dimensional space cracks open. Beyond the 10th Gate lies the Throne of the Monarch. Cast the ultimate Shadow Extraction spell ('ARISE!') to claim your crown and ascend.",
         "missionObjective": "Instantiate the ShadowMonarch class and invoke monarch.arise() to awaken the shadow army.",
-        "initialCode": "# Codex XI - Throne of the Monarch\n# Mission: Invoke the ultimate Shadow Extraction spell\n\nclass ShadowMonarch:\n    def __init__(self, hunter_name):\n        self.name = hunter_name\n        self.shadows = [\"Igris\", \"Tank\", \"Iron\", \"Beru\", \"Bellion\"]\n        \n    def arise(self):\n        return f\"ARISE! {self.name} has ascended to the SHADOW MONARCH CLASS!\"\n\nmonarch = ShadowMonarch(\"Akhand\")\nprint(monarch.arise())\n",
+        "initialCode": "# Codex XI - Throne of the Monarch\n# Mission: Invoke the ultimate Shadow Extraction spell\n\nclass ShadowMonarch:\n    def __init__(self, hunter_name):\n        self.name = hunter_name\n        self.shadows = [\"Igris\", \"Tank\", \"Iron\", \"Beru\", \"Bellion\"]\n        \n    def arise(self):\n        return f\"ARISE! {self.name} has ascended to the SHADOW MONARCH CLASS!\"\n\nmonarch = ShadowMonarch(\"Akhanda\")\nprint(monarch.arise())\n",
         "expectedKeywordOrOutput": "SHADOW MONARCH CLASS",
         "solutionHint": "Use print(monarch.arise()) to invoke the Shadow Extraction spell.",
         "theoryNotes": [

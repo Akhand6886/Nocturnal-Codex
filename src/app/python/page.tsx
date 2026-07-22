@@ -53,7 +53,10 @@ import {
   Download,
   Timer,
   Siren,
-  FileCheck
+  FileCheck,
+  Users,
+  Medal,
+  Crown as CrownIcon
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -62,7 +65,58 @@ interface HunterState {
   xp: number;
   completedQuests: string[]; // quest ids
   unlockedAchievements: string[];
+  selectedGuild: string;
 }
+
+// Guild System Definitions
+interface Guild {
+  id: string;
+  name: string;
+  leader: string;
+  badge: string;
+  buff: string;
+  description: string;
+  color: string;
+}
+
+const GUILDS: Guild[] = [
+  {
+    id: "ahjin",
+    name: "Ahjin Guild",
+    leader: "Sung Jin-Woo / Monarch Akhand",
+    badge: "👑",
+    buff: "+15% Shadow Mana & XP Boost",
+    description: "The supreme guild founded by the Shadow Monarch. Master of shadow extractions.",
+    color: "border-purple-500/60 bg-purple-950/40 text-purple-300"
+  },
+  {
+    id: "white-tiger",
+    name: "White Tiger Guild",
+    leader: "Baek Yoon-Ho",
+    badge: "🐅",
+    buff: "+10% Logical Strength",
+    description: "Elite guild specializing in fierce brute-force algorithm optimization.",
+    color: "border-amber-500/60 bg-amber-950/40 text-amber-300"
+  },
+  {
+    id: "fame",
+    name: "Scavenger Guild",
+    leader: "Thomas Andre",
+    badge: "🦅",
+    buff: "+10% Raw Coding Power",
+    description: "Top American guild wielding massive computational power and data structures.",
+    color: "border-cyan-500/60 bg-cyan-950/40 text-cyan-300"
+  },
+  {
+    id: "hunters",
+    name: "Hunters Guild",
+    leader: "Choi Jong-In & Cha Hae-In",
+    badge: "🗡️",
+    buff: "+10% Intelligence",
+    description: "Korea's largest guild known for precision spellcasting and clean architecture.",
+    color: "border-emerald-500/60 bg-emerald-950/40 text-emerald-300"
+  }
+];
 
 // Difficulty Mode Code Corruptor & Generator
 function getModeCode(originalCode: string, mode: "easy" | "hard" | "hell"): string {
@@ -115,10 +169,11 @@ export default function PythonAscensionPage() {
     completedDungeons: [],
     xp: 0,
     completedQuests: [],
-    unlockedAchievements: ["ach-1"]
+    unlockedAchievements: ["ach-1"],
+    selectedGuild: "ahjin"
   });
 
-  const [activeTab, setActiveTab] = useState<"dungeons" | "skills" | "inventory" | "quests" | "achievements" | "sandbox">("dungeons");
+  const [activeTab, setActiveTab] = useState<"dungeons" | "skills" | "inventory" | "quests" | "achievements" | "sandbox" | "guilds">("dungeons");
   const [activeDungeon, setActiveDungeon] = useState<Dungeon | null>(null);
   const [dungeonMode, setDungeonMode] = useState<"tasks" | "boss" | "theory">("tasks");
   const [difficultyMode, setDifficultyMode] = useState<"easy" | "hard" | "hell">("easy");
@@ -504,6 +559,35 @@ export default function PythonAscensionPage() {
 
   const currentRank = getRankInfo(dungeonsClearedCount);
 
+  // Guild dynamic information
+  const userGuild = GUILDS.find((g) => g.id === state.selectedGuild) || GUILDS[0];
+
+  // Dynamic Leaderboard list
+  const getLeaderboardData = () => {
+    const userEntry = {
+      rank: dungeonsClearedCount >= 11 ? 1 : dungeonsClearedCount >= 10 ? 2 : 4,
+      name: "Akhand (You)",
+      guild: userGuild.name,
+      hunterRank: currentRank.rank,
+      level: currentRank.level,
+      xp: state.xp,
+      isUser: true
+    };
+
+    const legendaryHunters = [
+      { rank: dungeonsClearedCount >= 11 ? 2 : 1, name: "Sung Jin-Woo", guild: "Ahjin Guild", hunterRank: "Shadow Monarch", level: 100, xp: 25000, isUser: false },
+      { rank: 3, name: "Thomas Andre", guild: "Scavenger Guild", hunterRank: "National Level Hunter", level: 98, xp: 22400, isUser: false },
+      { rank: 5, name: "Liu Zhigang", guild: "China Association", hunterRank: "National Level Hunter", level: 95, xp: 21000, isUser: false },
+      { rank: 6, name: "Cha Hae-In", guild: "Hunters Guild", hunterRank: "S-Rank Master", level: 92, xp: 19500, isUser: false },
+      { rank: 7, name: "Baek Yoon-Ho", guild: "White Tiger Guild", hunterRank: "S-Rank Beastmaster", level: 88, xp: 18200, isUser: false },
+      { rank: 8, name: "Choi Jong-In", guild: "Hunters Guild", hunterRank: "S-Rank Mage", level: 85, xp: 17100, isUser: false },
+      { rank: 9, name: "Go Gun-Hee", guild: "Korean Association", hunterRank: "S-Rank Chairman", level: 82, xp: 16000, isUser: false }
+    ];
+
+    const all = [userEntry, ...legendaryHunters].sort((a, b) => b.level - a.level || b.xp - a.xp);
+    return all.map((entry, idx) => ({ ...entry, rank: idx + 1 }));
+  };
+
   // Dynamic Hunter Stats based on progress
   const hunterStats = {
     strength: 10 + dungeonsClearedCount * 15 + state.completedQuests.length * 3,
@@ -704,7 +788,8 @@ export default function PythonAscensionPage() {
         completedDungeons: [],
         xp: 0,
         completedQuests: [],
-        unlockedAchievements: ["ach-1"]
+        unlockedAchievements: ["ach-1"],
+        selectedGuild: "ahjin"
       };
       setState(initial);
       localStorage.setItem("python_ascension_state", JSON.stringify(initial));
@@ -732,7 +817,7 @@ export default function PythonAscensionPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Master Python, avoid System Penalty Zones, and export your official Lab Report to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
+                Humanity has discovered mysterious Gates. Join Hunter Guilds, compete on the Monarch Leaderboard, and export your lab report to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
               </p>
               
               <div className="flex flex-wrap items-center gap-3 mt-4">
@@ -814,6 +899,8 @@ export default function PythonAscensionPage() {
                 <span className="text-xs font-mono text-slate-400">Hunter ID #041</span>
                 <span className="text-slate-600">|</span>
                 <span className="text-xs font-mono text-cyan-300 font-bold">Lv. {currentRank.level}</span>
+                <span className="text-slate-600">|</span>
+                <span className="text-xs font-mono text-purple-400 font-bold">{userGuild.badge} {userGuild.name}</span>
               </div>
               <div className="font-bold text-lg text-white mt-0.5">{currentRank.rank}</div>
             </div>
@@ -848,6 +935,13 @@ export default function PythonAscensionPage() {
               className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "dungeons" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
             >
               <Sword className="w-4 h-4" /> Dungeons ({dungeonsClearedCount}/11)
+            </Button>
+            <Button
+              variant={activeTab === "guilds" ? "default" : "outline"}
+              onClick={() => { playSound("click"); setActiveTab("guilds"); }}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all border-purple-500/40 text-purple-300", activeTab === "guilds" && "bg-purple-600 hover:bg-purple-500 text-white shadow-lg shadow-purple-500/25")}
+            >
+              <Users className="w-4 h-4" /> Guilds & Leaderboard
             </Button>
             <Button
               variant={activeTab === "skills" ? "default" : "outline"}
@@ -890,6 +984,121 @@ export default function PythonAscensionPage() {
             <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Progress
           </Button>
         </div>
+
+        {/* Tab Content: Hunter Guilds & Global Leaderboard */}
+        {activeTab === "guilds" && (
+          <div className="space-y-8">
+            {/* Guild Selection Section */}
+            <Card className="bg-slate-900/90 border-slate-800 backdrop-blur-md">
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
+                  <Users className="w-5 h-5 text-purple-400" /> Hunter Guild Affiliations
+                </CardTitle>
+                <CardDescription className="text-xs text-slate-400">
+                  Pledge allegiance to an elite Hunter Guild to gain passive stat multipliers.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {GUILDS.map((guild) => {
+                    const isSelected = state.selectedGuild === guild.id;
+
+                    return (
+                      <div
+                        key={guild.id}
+                        onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedGuild: guild.id })); }}
+                        className={cn(
+                          "p-4 rounded-xl border cursor-pointer transition-all space-y-2 relative flex flex-col justify-between",
+                          isSelected
+                            ? `${guild.color} shadow-lg ring-2 ring-purple-500`
+                            : "bg-slate-950/60 border-slate-800 hover:border-slate-700 text-slate-400"
+                        )}
+                      >
+                        {isSelected && (
+                          <Badge className="absolute top-2 right-2 bg-purple-500 text-white font-mono text-[9px]">
+                            ACTIVE GUILD
+                          </Badge>
+                        )}
+                        <div>
+                          <div className="text-3xl mb-1">{guild.badge}</div>
+                          <h4 className="font-bold text-white text-base">{guild.name}</h4>
+                          <div className="text-xs font-mono text-cyan-300 mt-0.5">Leader: {guild.leader}</div>
+                          <p className="text-xs text-slate-400 mt-2 leading-relaxed">{guild.description}</p>
+                        </div>
+                        <Badge variant="outline" className="mt-3 text-[10px] font-mono text-amber-400 border-amber-500/30">
+                          {guild.buff}
+                        </Badge>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Global Monarch Leaderboard Table */}
+            <Card className="bg-slate-900/90 border-slate-800 backdrop-blur-md">
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                  <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-amber-400" /> Global Monarch Leaderboard
+                  </CardTitle>
+                  <CardDescription className="text-xs text-slate-400">
+                    Live system ranking of the world's most powerful System Programmers.
+                  </CardDescription>
+                </div>
+                <Badge className="bg-amber-500 text-slate-950 font-bold font-mono">
+                  SEASON 1 RANKINGS
+                </Badge>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead>
+                      <tr className="border-b border-slate-800 text-slate-400 uppercase">
+                        <th className="py-3 px-4">Rank</th>
+                        <th className="py-3 px-4">Hunter Name</th>
+                        <th className="py-3 px-4">Guild</th>
+                        <th className="py-3 px-4">Class Rank</th>
+                        <th className="py-3 px-4 text-right">System Level</th>
+                        <th className="py-3 px-4 text-right">Total XP</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800/60">
+                      {getLeaderboardData().map((hunter) => (
+                        <tr
+                          key={hunter.name}
+                          className={cn(
+                            "transition-colors",
+                            hunter.isUser ? "bg-purple-950/50 text-amber-300 font-bold border-l-4 border-l-amber-400" : "hover:bg-slate-950/50 text-slate-300"
+                          )}
+                        >
+                          <td className="py-3 px-4 flex items-center gap-2">
+                            {hunter.rank === 1 ? (
+                              <CrownIcon className="w-4 h-4 text-amber-400 fill-amber-400" />
+                            ) : hunter.rank === 2 ? (
+                              <Medal className="w-4 h-4 text-slate-300" />
+                            ) : hunter.rank === 3 ? (
+                              <Medal className="w-4 h-4 text-amber-600" />
+                            ) : (
+                              <span className="text-slate-500">#{hunter.rank}</span>
+                            )}
+                          </td>
+                          <td className="py-3 px-4 font-bold">
+                            {hunter.name} {hunter.isUser && <Badge className="ml-2 bg-amber-400 text-slate-950 text-[9px]">YOU</Badge>}
+                          </td>
+                          <td className="py-3 px-4 text-slate-400">{hunter.guild}</td>
+                          <td className="py-3 px-4 text-cyan-300">{hunter.hunterRank}</td>
+                          <td className="py-3 px-4 text-right font-bold text-amber-400">Lv. {hunter.level}</td>
+                          <td className="py-3 px-4 text-right text-emerald-400 font-bold">{hunter.xp.toLocaleString()} XP</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
 
         {/* Tab Content: Dungeons */}
         {activeTab === "dungeons" && (
