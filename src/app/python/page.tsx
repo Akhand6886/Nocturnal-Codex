@@ -512,93 +512,38 @@ export default function PythonAscensionPage() {
     }
   };
 
-  // Solo Leveling Procedural Music Sequencer Loop
-  const startMusic = () => {
-    const ctx = getAudioContext();
-    if (!ctx) return;
-
-    if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
-
-    const track = TRACKS[currentTrack];
-    const stepTime = (60 / track.tempo) * 250; // 16th note timing in ms
-    let step = 0;
-
-    musicIntervalRef.current = setInterval(() => {
-      if (!musicPlaying) return;
-      try {
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const subOsc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        const filter = ctx.createBiquadFilter();
-
-        filter.type = "lowpass";
-        filter.frequency.setValueAtTime(1200 + Math.sin(step / 4) * 800, now);
-
-        osc.connect(filter);
-        subOsc.connect(filter);
-        filter.connect(gain);
-        gain.connect(ctx.destination);
-
-        const effectiveVol = isMuted ? 0 : volume;
-
-        // Scale arpeggiator notes
-        const noteIndex = step % track.scale.length;
-        const freq = track.scale[noteIndex];
-
-        osc.type = step % 4 === 0 ? "sawtooth" : "square";
-        osc.frequency.setValueAtTime(freq * (step % 2 === 0 ? 1 : 2), now);
-
-        // Deep Bass Pulse on quarter beats
-        if (step % 4 === 0) {
-          subOsc.type = "sine";
-          subOsc.frequency.setValueAtTime(track.scale[0] / 2, now);
-          gain.gain.setValueAtTime(0.12 * effectiveVol, now);
-        } else {
-          gain.gain.setValueAtTime(0.04 * effectiveVol, now);
-        }
-
-        gain.gain.exponentialRampToValueAtTime(0.001, now + (stepTime / 1000) * 0.9);
-
-        osc.start(now);
-        subOsc.start(now);
-        osc.stop(now + (stepTime / 1000) * 0.9);
-        subOsc.stop(now + (stepTime / 1000) * 0.9);
-
-        step++;
-      } catch (e) {
-        // Audio error handling
+  // Solo Leveling Real MP3 Music Player Effect
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!audioElementRef.current) {
+        audioElementRef.current = new Audio(TRACKS[currentTrack].src);
+        audioElementRef.current.loop = true;
+      } else {
+        audioElementRef.current.src = TRACKS[currentTrack].src;
+        audioElementRef.current.loop = true;
       }
-    }, stepTime);
-  };
+      audioElementRef.current.volume = isMuted ? 0 : volume;
+
+      if (musicPlaying) {
+        audioElementRef.current.play().catch((err) => {
+          console.log("Autoplay waiting for user interaction", err);
+        });
+      } else {
+        audioElementRef.current.pause();
+      }
+    }
+  }, [currentTrack, musicPlaying, isMuted, volume]);
 
   // Toggle Background Music
   const toggleMusic = () => {
     playSound("click");
-    if (musicPlaying) {
-      setMusicPlaying(false);
-      if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
-    } else {
-      setMusicPlaying(true);
-    }
+    setMusicPlaying((prev) => !prev);
   };
 
   // Toggle Mute (Mutes both OST and Sound FX)
   const toggleMute = () => {
     setIsMuted((prev) => !prev);
   };
-
-  // Restart Music on track change, toggle, or mute change
-  useEffect(() => {
-    if (musicPlaying) {
-      startMusic();
-    } else {
-      if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
-    }
-    return () => {
-      if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
-    };
-  }, [musicPlaying, currentTrack, volume, isMuted]);
 
   // Load state from local storage on client mount
   useEffect(() => {
