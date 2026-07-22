@@ -75,11 +75,11 @@ export default function PythonAscensionPage() {
   const [showRankUpModal, setShowRankUpModal] = useState<boolean>(false);
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
 
-  // Audio & Music Engine States
-  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
-  const [musicPlaying, setMusicPlaying] = useState<boolean>(false);
+  // Audio & Music Engine States (Music ON by default)
+  const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [musicPlaying, setMusicPlaying] = useState<boolean>(true);
   const [currentTrack, setCurrentTrack] = useState<number>(0);
-  const [volume, setVolume] = useState<number>(0.3);
+  const [volume, setVolume] = useState<number>(0.35);
 
   const audioCtxRef = useRef<AudioContext | null>(null);
   const musicIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -105,9 +105,26 @@ export default function PythonAscensionPage() {
     return audioCtxRef.current;
   };
 
+  // User interaction listener to resume audio context & enable default playback
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      const ctx = getAudioContext();
+      if (ctx && ctx.state === "suspended") {
+        ctx.resume();
+      }
+    };
+
+    window.addEventListener("pointerdown", handleFirstInteraction);
+    window.addEventListener("keydown", handleFirstInteraction);
+    return () => {
+      window.removeEventListener("pointerdown", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+    };
+  }, []);
+
   // Sound FX Generator
   const playSound = (type: "click" | "success" | "fail" | "levelUp") => {
-    if (!soundEnabled) return;
+    if (isMuted) return;
     const ctx = getAudioContext();
     if (!ctx) return;
 
@@ -118,11 +135,13 @@ export default function PythonAscensionPage() {
       gain.connect(ctx.destination);
 
       const now = ctx.currentTime;
+      const effectiveVol = isMuted ? 0 : volume;
+
       if (type === "click") {
         osc.type = "sine";
         osc.frequency.setValueAtTime(400, now);
         osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
-        gain.gain.setValueAtTime(0.08 * volume, now);
+        gain.gain.setValueAtTime(0.08 * effectiveVol, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
         osc.start(now);
         osc.stop(now + 0.05);
@@ -132,7 +151,7 @@ export default function PythonAscensionPage() {
         osc.frequency.setValueAtTime(659.25, now + 0.1);
         osc.frequency.setValueAtTime(783.99, now + 0.2);
         osc.frequency.setValueAtTime(1046.50, now + 0.3);
-        gain.gain.setValueAtTime(0.12 * volume, now);
+        gain.gain.setValueAtTime(0.12 * effectiveVol, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
         osc.start(now);
         osc.stop(now + 0.4);
@@ -140,7 +159,7 @@ export default function PythonAscensionPage() {
         osc.type = "sawtooth";
         osc.frequency.setValueAtTime(300, now);
         osc.frequency.linearRampToValueAtTime(140, now + 0.25);
-        gain.gain.setValueAtTime(0.12 * volume, now);
+        gain.gain.setValueAtTime(0.12 * effectiveVol, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
         osc.start(now);
         osc.stop(now + 0.25);
@@ -150,7 +169,7 @@ export default function PythonAscensionPage() {
         osc.frequency.setValueAtTime(554.37, now + 0.12);
         osc.frequency.setValueAtTime(659.25, now + 0.24);
         osc.frequency.setValueAtTime(880, now + 0.36);
-        gain.gain.setValueAtTime(0.2 * volume, now);
+        gain.gain.setValueAtTime(0.2 * effectiveVol, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
         osc.start(now);
         osc.stop(now + 0.5);
@@ -188,6 +207,8 @@ export default function PythonAscensionPage() {
         filter.connect(gain);
         gain.connect(ctx.destination);
 
+        const effectiveVol = isMuted ? 0 : volume;
+
         // Scale arpeggiator notes
         const noteIndex = step % track.scale.length;
         const freq = track.scale[noteIndex];
@@ -199,9 +220,9 @@ export default function PythonAscensionPage() {
         if (step % 4 === 0) {
           subOsc.type = "sine";
           subOsc.frequency.setValueAtTime(track.scale[0] / 2, now);
-          gain.gain.setValueAtTime(0.12 * volume, now);
+          gain.gain.setValueAtTime(0.12 * effectiveVol, now);
         } else {
-          gain.gain.setValueAtTime(0.04 * volume, now);
+          gain.gain.setValueAtTime(0.04 * effectiveVol, now);
         }
 
         gain.gain.exponentialRampToValueAtTime(0.001, now + (stepTime / 1000) * 0.9);
@@ -229,7 +250,12 @@ export default function PythonAscensionPage() {
     }
   };
 
-  // Restart Music on track change or toggle
+  // Toggle Mute (Mutes both OST and Sound FX)
+  const toggleMute = () => {
+    setIsMuted((prev) => !prev);
+  };
+
+  // Restart Music on track change, toggle, or mute change
   useEffect(() => {
     if (musicPlaying) {
       startMusic();
@@ -239,7 +265,7 @@ export default function PythonAscensionPage() {
     return () => {
       if (musicIntervalRef.current) clearInterval(musicIntervalRef.current);
     };
-  }, [musicPlaying, currentTrack, volume]);
+  }, [musicPlaying, currentTrack, volume, isMuted]);
 
   // Load state from local storage on client mount
   useEffect(() => {
@@ -439,11 +465,11 @@ export default function PythonAscensionPage() {
             <div className="p-4 rounded-xl bg-slate-950/90 border border-cyan-500/40 shadow-lg w-full lg:w-80 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
-                  <Radio className={cn("w-4 h-4", musicPlaying && "animate-pulse text-emerald-400")} />
+                  <Radio className={cn("w-4 h-4", musicPlaying && !isMuted && "animate-pulse text-emerald-400")} />
                   <span>SOLO LEVELING OST PLAYER</span>
                 </div>
-                <Badge variant="outline" className={cn("text-[10px] font-mono", musicPlaying ? "border-emerald-500/40 text-emerald-300 bg-emerald-950/50" : "border-slate-800 text-slate-500")}>
-                  {musicPlaying ? "PLAYING" : "PAUSED"}
+                <Badge variant="outline" className={cn("text-[10px] font-mono", musicPlaying && !isMuted ? "border-emerald-500/40 text-emerald-300 bg-emerald-950/50" : "border-slate-800 text-slate-500")}>
+                  {isMuted ? "MUTED" : musicPlaying ? "PLAYING" : "PAUSED"}
                 </Badge>
               </div>
 
@@ -456,7 +482,7 @@ export default function PythonAscensionPage() {
                 <Button
                   size="sm"
                   onClick={toggleMusic}
-                  className={cn("h-8 flex-1 gap-1.5 text-xs font-bold rounded-lg", musicPlaying ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950")}
+                  className={cn("h-8 flex-1 gap-1.5 text-xs font-bold rounded-lg", musicPlaying && !isMuted ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950")}
                 >
                   {musicPlaying ? <Pause className="w-3.5 h-3.5 fill-slate-950" /> : <Play className="w-3.5 h-3.5 fill-slate-950" />}
                   {musicPlaying ? "Pause OST" : "Play OST"}
@@ -473,12 +499,12 @@ export default function PythonAscensionPage() {
 
                 <Button
                   size="icon"
-                  variant="ghost"
-                  onClick={() => setSoundEnabled(!soundEnabled)}
-                  className="h-8 w-8 text-slate-400 hover:text-white"
-                  title={soundEnabled ? "Mute FX" : "Enable FX"}
+                  variant={isMuted ? "destructive" : "ghost"}
+                  onClick={toggleMute}
+                  className={cn("h-8 w-8 transition-colors", isMuted ? "bg-red-950 text-red-400 border border-red-500/40" : "text-cyan-400 hover:text-white")}
+                  title={isMuted ? "Unmute Audio" : "Mute Audio"}
                 >
-                  {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+                  {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
                 </Button>
               </div>
             </div>
