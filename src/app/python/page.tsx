@@ -213,14 +213,21 @@ export default function PythonAscensionPage() {
   const [volume, setVolume] = useState<number>(0.35);
 
   const audioCtxRef = useRef<AudioContext | null>(null);
-  const musicIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const audioElementRef = useRef<HTMLAudioElement | null>(null);
   const penaltyTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Solo Leveling Soundtracks (Procedural Web Audio API OST Engine)
+  // Solo Leveling Soundtracks from docs/music
   const TRACKS = [
-    { title: "System Gate Awakening (Dark OST)", tempo: 130, scale: [146.83, 174.61, 220.00, 261.63, 293.66, 349.23, 440.00] }, // D minor dark
-    { title: "Monarch's Domain (Boss Theme)", tempo: 140, scale: [130.81, 155.56, 196.00, 233.08, 261.63, 311.13, 392.00] }, // C minor epic
-    { title: "Shadow Extraction (Battle Pulse)", tempo: 150, scale: [164.81, 196.00, 246.94, 293.66, 329.63, 392.00, 493.88] } // E minor intense
+    {
+      title: "Solo Leveling Symphonic Suite Lv.6 (Official OST)",
+      src: "/music/[Solo-Leveling] SymphonicSuite-Lv.6.mp3",
+      artist: "Hiroyuki Sawano"
+    },
+    {
+      title: "Aikari — Dark Monarch Pulse (OST)",
+      src: "/music/aikari.mp3",
+      artist: "Solo Leveling Official Soundtrack"
+    }
   ];
 
   // Dynamically load Real Pyodide CPython WebAssembly Engine in Browser
