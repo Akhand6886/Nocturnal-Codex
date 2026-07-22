@@ -1005,65 +1005,65 @@ export const DUNGEONS: Dungeon[] = [
       {
         "id": "d10-t1",
         "title": "Task 1: Question 1",
-        "question": "Create an array dataset and find the sum of all elements.",
-        "explanation": "Compute the total sum over all dataset elements.",
-        "formula": "`total_sum = sum(arr)`",
-        "codeSnippet": "arr = [12, 25, 7, 30, 16]\ntotal_sum = sum(arr)\n\nprint(\"Array:\", arr)\nprint(\"Sum of all elements:\", total_sum)",
-        "expectedOutput": "Array: [12, 25, 7, 30, 16]\nSum of all elements: 90"
+        "question": "Create a NumPy array and find the sum of all elements.",
+        "explanation": "`np.sum()` computes the total quickly over all array elements.",
+        "formula": "",
+        "codeSnippet": "import numpy as np\n\narr = np.array([12, 25, 7, 30, 16])\nprint(\"Array:\", arr)\nprint(\"Sum of all elements:\", np.sum(arr))",
+        "expectedOutput": "Array: [12 25  7 30 16]\nSum of all elements: 90"
       },
       {
         "id": "d10-t2",
         "title": "Task 2: Question 2",
-        "question": "Create a 3x3 matrix. Find row sums, column sums, and 2nd maximum element.",
-        "explanation": "Compute sums along rows and columns, and sort unique elements to find 2nd maximum.",
+        "question": "Create a (3, 3) NumPy array. Find: - Sum of each row - Sum of each column - 2nd maximum element in the array",
+        "explanation": "Axis-wise sum gives row/column totals. Flattening and sorting unique values helps find the second maximum.",
         "formula": "",
-        "codeSnippet": "matrix = [\n    [12, 5, 8],\n    [7, 25, 14],\n    [3, 19, 11]\n]\n\nrow_sums = [sum(row) for row in matrix]\ncol_sums = [sum(matrix[r][c] for r in range(3)) for c in range(3)]\nflat_vals = sorted(list(set(val for row in matrix for val in row)))\nsecond_max = flat_vals[-2]\n\nprint(\"Row sums:\", row_sums)\nprint(\"Column sums:\", col_sums)\nprint(\"Second maximum element:\", second_max)",
-        "expectedOutput": "Row sums: [25, 46, 33]\nColumn sums: [22, 49, 33]\nSecond maximum element: 19"
+        "codeSnippet": "import numpy as np\n\nmatrix_3x3 = np.array(\n    [\n    [12, 5, 8],\n    [7, 25, 14],\n    [3, 19, 11],\n])\n\nrow_sums = np.sum(matrix_3x3, axis=1)\ncolumn_sums = np.sum(matrix_3x3, axis=0)\nsecond_max = np.unique(matrix_3x3.flatten())[-2]\n\nprint(\"3x3 Matrix:\", matrix_3x3)\nprint(\"Row sums:\", row_sums)\nprint(\"Column sums:\", column_sums)\nprint(\"Second maximum element:\", second_max)",
+        "expectedOutput": "3x3 Matrix: [[12  5  8]\n [ 7 25 14]\n [ 3 19 11]]\nRow sums: [25 46 33]\nColumn sums: [22 49 33]\nSecond maximum element: 19"
       },
       {
         "id": "d10-t3",
         "title": "Task 3: Question 3",
-        "question": "Perform matrix multiplication of two 2x2 matrices.",
-        "explanation": "Multiply row elements by column elements.",
-        "formula": "`C[i][j] = sum(A[i][k] * B[k][j])`",
-        "codeSnippet": "matrix_a = [[1, 2], [3, 4]]\nmatrix_b = [[5, 6], [7, 8]]\n\nproduct = [\n    [matrix_a[0][0]*matrix_b[0][0] + matrix_a[0][1]*matrix_b[1][0], matrix_a[0][0]*matrix_b[0][1] + matrix_a[0][1]*matrix_b[1][1]],\n    [matrix_a[1][0]*matrix_b[0][0] + matrix_a[1][1]*matrix_b[1][0], matrix_a[1][0]*matrix_b[0][1] + matrix_a[1][1]*matrix_b[1][1]]\n]\n\nprint(\"Matrix A:\", matrix_a)\nprint(\"Matrix B:\", matrix_b)\nprint(\"A x B Product:\", product)",
-        "expectedOutput": "A x B Product: [[19, 22], [43, 50]]"
+        "question": "Perform matrix multiplication of any two n x n matrices.",
+        "explanation": "NumPy supports matrix multiplication using the `@` operator (or `np.matmul`).",
+        "formula": "",
+        "codeSnippet": "import numpy as np\n\nmatrix_a = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9],\n])\n\nmatrix_b = np.array([\n    [9, 8, 7],\n    [6, 5, 4],\n    [3, 2, 1],\n])\n\nproduct = matrix_a @ matrix_b\n\nprint(\"Matrix A:\", matrix_a)\nprint(\"Matrix B:\", matrix_b)\nprint(\"A x B:\", product)",
+        "expectedOutput": "Matrix A: [[1 2 3]\n [4 5 6]\n [7 8 9]]\nMatrix B: [[9 8 7]\n [6 5 4]\n [3 2 1]]\nA x B: [[ 30  24  18]\n [ 84  69  54]\n [138 114  90]]"
       },
       {
         "id": "d10-t4",
         "title": "Task 4: Question 4",
-        "question": "Compute element-wise exponentiation of base values raised to power values.",
-        "explanation": "Applies exponentiation index-by-index.",
-        "formula": "`result[i] = base[i] ** power[i]`",
-        "codeSnippet": "base_values = [0, 1, 2, 3, 4]\npower_values = [1, 2, 3, 2, 1]\npowered_values = [b ** p for b, p in zip(base_values, power_values)]\n\nprint(\"Base values:\", base_values)\nprint(\"Power values:\", power_values)\nprint(\"Element-wise powers:\", powered_values)",
-        "expectedOutput": "Base values: [0, 1, 2, 3, 4]\nPower values: [1, 2, 3, 2, 1]\nElement-wise powers: [0, 1, 8, 9, 4]"
+        "question": "Write a Pandas program to get the powers of array values element-wise.",
+        "explanation": "`Series.pow()` applies exponentiation index-by-index.",
+        "formula": "",
+        "codeSnippet": "import pandas as pd\n\nbase_values = pd.Series([0, 1, 2, 3, 4], name=\"base\")\npower_values = pd.Series([1, 2, 3, 2, 1], name=\"power\")\npowered_values = base_values.pow(power_values)\n\nprint(\"Base values:\")\nprint(base_values)\nprint(\"Power values:\")\nprint(power_values)\nprint(\"Element-wise powers:\")\nprint(powered_values)",
+        "expectedOutput": "Base values:\n0    0\n1    1\n2    2\n3    3\n4    4\nName: base, dtype: int64\nPower values:\n0    1\n1    2\n2    3\n3    2\n4    1\nName: power, dtype: int64\nElement-wise powers:\n0    0\n1    1\n2    8\n3    9\n4    4\ndtype: int64"
       },
       {
         "id": "d10-t5",
         "title": "Task 5: Question 5",
-        "question": "Fetch the first 3 rows of a dataset stream table.",
-        "explanation": "Slice the dataset list to retrieve the first three entries.",
+        "question": "Write a Pandas program to get the first 3 rows of the given DataFrame.",
+        "explanation": "Create a DataFrame with custom labels and use `.head(3)` to fetch the first three rows.",
         "formula": "",
-        "codeSnippet": "exam_data = [\n    {\"name\": \"Anastasia\", \"score\": 12.5, \"qualify\": \"yes\"},\n    {\"name\": \"Dima\", \"score\": 9.0, \"qualify\": \"no\"},\n    {\"name\": \"Katherine\", \"score\": 16.5, \"qualify\": \"yes\"},\n    {\"name\": \"James\", \"score\": None, \"qualify\": \"no\"},\n    {\"name\": \"Emily\", \"score\": 9.0, \"qualify\": \"no\"}\n]\n\nfirst_three = exam_data[:3]\nprint(\"First three rows:\")\nfor row in first_three:\n    print(row)",
-        "expectedOutput": "First three rows:\n{'name': 'Anastasia', 'score': 12.5, 'qualify': 'yes'}\n{'name': 'Dima', 'score': 9.0, 'qualify': 'no'}\n{'name': 'Katherine', 'score': 16.5, 'qualify': 'yes'}"
+        "codeSnippet": "import pandas as pd\nimport numpy as np\n\nexam_data = {\n    \"name\": [\"Anastasia\", \"Dima\", \"Katherine\", \"James\", \"Emily\", \"Michael\", \"Matthew\", \"Laura\", \"Kevin\", \"Jonas\"],\n    \"score\": [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],\n    \"attempts\": [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],\n    \"qualify\": [\"yes\", \"no\", \"yes\", \"no\", \"no\", \"yes\", \"yes\", \"no\", \"no\", \"yes\"],\n}\nlabels = [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\"]\n\nexam_df = pd.DataFrame(exam_data, index=labels)\n\nprint(\"Complete DataFrame:\")\nprint(exam_df)\nprint(\"First three rows:\")\nprint(exam_df.head(3))",
+        "expectedOutput": "Complete DataFrame:\n        name  score  attempts qualify\na  Anastasia   12.5         1     yes\nb       Dima    9.0         3      no\nc  Katherine   16.5         2     yes\nd      James    NaN         3      no\ne      Emily    9.0         2      no\nf    Michael   20.0         3     yes\ng    Matthew   14.5         1     yes\nh      Laura    NaN         1      no\ni      Kevin    8.0         2      no\nj      Jonas   19.0         1     yes\nFirst three rows:\n        name  score  attempts qualify\na  Anastasia   12.5         1     yes\nb       Dima    9.0         3      no\nc  Katherine   16.5         2     yes"
       },
       {
         "id": "d10-t6",
         "title": "Task 6: Question 6",
-        "question": "Find and replace missing values in a dataset stream with column average.",
-        "explanation": "Replace missing score values using the average score.",
+        "question": "Write a Pandas program to find and replace missing values in the DataFrame.",
+        "explanation": "We replace missing score values using the column mean so numeric analysis can continue without null values.",
         "formula": "",
-        "codeSnippet": "scores = [12.5, 9.0, 16.5, 9.0, 20.0, 14.5, 8.0, 19.0]\navg_score = sum(scores) / len(scores)\n\nraw_stream = [12.5, 9.0, 16.5, None, 9.0, 20.0, 14.5, None, 8.0, 19.0]\nfilled_stream = [s if s is not None else round(avg_score, 2) for s in raw_stream]\n\nprint(\"Filled Scores Stream:\", filled_stream)",
-        "expectedOutput": "Filled Scores Stream: [12.5, 9.0, 16.5, 13.56, 9.0, 20.0, 14.5, 13.56, 8.0, 19.0]"
+        "codeSnippet": "import pandas as pd\nimport numpy as np\n\nexam_data = {\n    \"name\": [\"Anastasia\", \"Dima\", \"Katherine\", \"James\", \"Emily\", \"Michael\", \"Matthew\", \"Laura\", \"Kevin\", \"Jonas\"],\n    \"score\": [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],\n    \"attempts\": [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],\n    \"qualify\": [\"yes\", \"no\", \"yes\", \"no\", \"no\", \"yes\", \"yes\", \"no\", \"no\", \"yes\"],\n}\nlabels = [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\"]\n\nexam_df = pd.DataFrame(exam_data, index=labels)\n\nfilled_df = exam_df.copy()\nfilled_df[\"score\"] = filled_df[\"score\"].fillna(filled_df[\"score\"].mean())\n\nprint(\"DataFrame after replacing missing score values:\")\nprint(filled_df)",
+        "expectedOutput": "DataFrame after replacing missing score values:\n        name    score  attempts qualify\na  Anastasia  12.5000         1     yes\nb       Dima   9.0000         3      no\nc  Katherine  16.5000         2     yes\nd      James  13.5625         3      no\ne      Emily   9.0000         2      no\nf    Michael  20.0000         3     yes\ng    Matthew  14.5000         1     yes\nh      Laura  13.5625         1      no\ni      Kevin   8.0000         2      no\nj      Jonas  19.0000         1     yes"
       },
       {
         "id": "d10-t7",
         "title": "Task 7: Question 7",
-        "question": "Process monthly sales streams and print analytical bar chart & metrics summary.",
-        "explanation": "Visualize monthly sales data using ASCII bar charts and calculate average monthly sales.",
+        "question": "Create a program to demonstrate different visual forms using Matplotlib.",
+        "explanation": "This example shows line, bar, scatter, and pie charts in one figure to compare different visualization styles.",
         "formula": "",
-        "codeSnippet": "months = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\"]\nsales = [120, 140, 135, 160, 175, 190]\navg_sales = sum(sales) / len(sales)\n\nprint(\"Monthly Sales Stream Chart:\")\nfor m, s in zip(months, sales):\n    print(f\"{m}: {'█' * (s // 15)} ({s})\")\n\nprint(f\"Average Monthly Sales: {avg_sales:.2f}\")\nprint(\"Data Observatory Stream Processed!\")",
-        "expectedOutput": "Data Observatory Stream Processed!"
+        "codeSnippet": "import matplotlib.pyplot as plt\n\nmonths = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\"]\nsales = [120, 140, 135, 160, 175, 190]\nexpenses = [95, 105, 102, 110, 120, 130]\n\ncategories = [\"Rent\", \"Food\", \"Transport\", \"Others\"]\nshare = [35, 25, 20, 20]\n\nfig, axes = plt.subplots(2, 2, figsize=(12, 8))\n\naxes[0, 0].plot(months, sales, marker=\"o\", color=\"teal\")\naxes[0, 0].set_title(\"Line Chart: Monthly Sales\")\naxes[0, 0].set_ylabel(\"Sales\")\naxes[0, 0].grid(True, linestyle=\"--\", alpha=0.5)\n\naxes[0, 1].bar(months, expenses, color=\"orange\")\naxes[0, 1].set_title(\"Bar Chart: Monthly Expenses\")\naxes[0, 1].set_ylabel(\"Expenses\")\n\naxes[1, 0].scatter(sales, expenses, color=\"crimson\")\naxes[1, 0].set_title(\"Scatter Plot: Sales vs Expenses\")\naxes[1, 0].set_xlabel(\"Sales\")\naxes[1, 0].set_ylabel(\"Expenses\")\n\naxes[1, 1].pie(share, labels=categories, autopct=\"%1.1f%%\", startangle=90)\naxes[1, 1].set_title(\"Pie Chart: Expense Distribution\")\n\nplt.tight_layout()\nplt.show()",
+        "expectedOutput": "[MATPLOTLIB CHART RENDERED]"
       }
     ]
   },
