@@ -699,6 +699,7 @@ export default function PythonAscensionPage() {
     if (!activeDungeon && activeTab !== "sandbox") return;
     playSound("click");
     setIsRunning(true);
+    setRenderedChartImage(null);
     setTerminalOutput("Initializing System Pyodide CPython 3.12 WebAssembly Engine...\nExecuting Python script in real-time...");
 
     let pyOutput = "";
@@ -730,20 +731,46 @@ sys.stderr = sys.stdout
 try:
     import matplotlib
     matplotlib.use('agg')
+    import warnings
+    warnings.filterwarnings('ignore', category=UserWarning)
 except Exception:
     pass
 `);
 
         pyodideRef.current.runPython(code);
 
-        // Check if code executed plt.show()
-        if (code.includes("plt.show()")) {
+        // Capture Matplotlib Figure Image if created
+        if (code.includes("plt.") || code.includes("matplotlib")) {
           pyodideRef.current.runPython(`
-print("[MATPLOTLIB CHART RENDERED]")
+try:
+    import io, base64
+    import matplotlib.pyplot as plt
+    fig = plt.gcf()
+    if fig and len(fig.axes) > 0:
+        buf = io.BytesIO()
+        fig.savefig(buf, format='png', bbox_inches='tight', dpi=100)
+        buf.seek(0)
+        img_b64 = base64.b64encode(buf.read()).decode('utf-8')
+        plt.close('all')
+        print("__MATPLOTLIB_IMG_START__data:image/png;base64," + img_b64 + "__MATPLOTLIB_IMG_END__")
+except Exception as e:
+    pass
 `);
         }
 
         pyOutput = pyodideRef.current.runPython(`sys.stdout.getvalue()`);
+
+        // Extract image URI if present
+        if (pyOutput.includes("__MATPLOTLIB_IMG_START__")) {
+          const match = pyOutput.match(/__MATPLOTLIB_IMG_START__(.*?)__MATPLOTLIB_IMG_END__/s);
+          if (match && match[1]) {
+            setRenderedChartImage(match[1]);
+            pyOutput = pyOutput.replace(/__MATPLOTLIB_IMG_START__.*?__MATPLOTLIB_IMG_END__/s, "").trim();
+          }
+        }
+
+        // Clean out UserWarning agg backend text lines
+        pyOutput = pyOutput.replace(/.*UserWarning: Matplotlib is currently using agg.*/g, "").trim();
       } catch (pyErr: any) {
         isPyError = true;
         pyOutput = `[CPYTHON TRACEBACK ERROR]:\n${pyErr.message || String(pyErr)}`;
