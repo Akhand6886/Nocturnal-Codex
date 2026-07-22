@@ -923,29 +923,36 @@ sys.stderr = sys.stdout
 
       <div className="container mx-auto px-4 pt-8 relative z-10 max-w-7xl">
         {/* System Archives Header Banner */}
-        <div className="mb-8 p-6 md:p-8 rounded-2xl bg-slate-900/90 border border-cyan-500/40 shadow-2xl backdrop-blur-xl relative overflow-hidden">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 mb-3">
+        <div className="mb-8 p-6 md:p-8 rounded-3xl bg-gradient-to-r from-slate-900/95 via-slate-950/95 to-purple-950/90 border-2 border-cyan-500/50 shadow-[0_0_50px_rgba(6,182,212,0.25)] backdrop-blur-2xl relative overflow-hidden group">
+          {/* Animated Background Energy Aura Grid & Glow Blur */}
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/25 transition-all duration-700" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-600/30 transition-all duration-700" />
+
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+            <div className="space-y-3">
+              <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-slate-950/90 text-cyan-300 border border-cyan-500/40 shadow-inner">
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-spin" />
                 <span>NOCTURNAL CODEX DIGITAL ARCHIVES ENTRY #001</span>
-                <span className="text-slate-500">|</span>
-                <span className="text-amber-400 font-bold flex items-center gap-1">
-                  <CpuIcon className="w-3 h-3 text-emerald-400 animate-pulse" /> REAL CPYTHON 3.12 WASM ENGINE ACTIVE
+                <span className="text-slate-600">|</span>
+                <span className="text-emerald-400 font-bold flex items-center gap-1.5">
+                  <CpuIcon className="w-3.5 h-3.5 text-emerald-400 animate-pulse" /> REAL CPYTHON 3.12 WASM ENGINE
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white flex items-center gap-3">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">
+
+              <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white flex items-center gap-3">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
                   THE SYSTEM: PYTHON ASCENSION
                 </span>
               </h1>
-              <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Powered by <strong className="text-emerald-400 font-mono">Real CPython 3.12 WebAssembly</strong> running live in your browser! Complete missions to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
+
+              <p className="text-slate-300 max-w-2xl text-sm md:text-base leading-relaxed">
+                Humanity has discovered mysterious Gates. Powered by live <strong className="text-emerald-400 font-mono">CPython 3.12 WebAssembly</strong> in your browser! Complete lab experiments to ascend to the <strong className="text-amber-400 font-bold">SHADOW MONARCH CLASS (LV. 999)</strong>!
               </p>
               
-              <div className="flex flex-wrap items-center gap-3 mt-4">
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Button
                   onClick={exportLabReport}
-                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold gap-2 text-xs rounded-xl shadow-lg shadow-emerald-500/20"
+                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black gap-2 text-xs rounded-xl px-5 py-2.5 shadow-lg shadow-emerald-500/30 transition-all hover:scale-105"
                 >
                   <Download className="w-4 h-4" /> 📄 Export Official Lab Report (.md)
                 </Button>
@@ -953,27 +960,27 @@ sys.stderr = sys.stdout
                 <Button
                   variant="outline"
                   onClick={triggerPenaltyZone}
-                  className="border-red-500/40 text-red-400 hover:bg-red-950/60 font-mono text-xs gap-1.5 rounded-xl"
+                  className="border-red-500/50 text-red-400 hover:bg-red-950/80 font-mono text-xs gap-1.5 rounded-xl px-4 py-2.5 shadow-md shadow-red-500/10 hover:border-red-400"
                 >
-                  <Siren className="w-3.5 h-3.5 text-red-400 animate-pulse" /> Test Penalty Zone
+                  <Siren className="w-4 h-4 text-red-400 animate-pulse" /> Test Penalty Zone
                 </Button>
               </div>
             </div>
 
             {/* Solo Leveling OST Music Player HUD */}
-            <div className="p-4 rounded-xl bg-slate-950/90 border border-cyan-500/40 shadow-lg w-full lg:w-80 space-y-3">
+            <div className="p-4 rounded-2xl bg-slate-950/90 border-2 border-cyan-500/50 shadow-[0_0_30px_rgba(6,182,212,0.2)] w-full lg:w-80 space-y-3 backdrop-blur-md">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
+                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
                   <Radio className={cn("w-4 h-4", musicPlaying && !isMuted && "animate-pulse text-emerald-400")} />
                   <span>SOLO LEVELING OST PLAYER</span>
                 </div>
-                <Badge variant="outline" className={cn("text-[10px] font-mono", musicPlaying && !isMuted ? "border-emerald-500/40 text-emerald-300 bg-emerald-950/50" : "border-slate-800 text-slate-500")}>
+                <Badge variant="outline" className={cn("text-[10px] font-mono font-bold", musicPlaying && !isMuted ? "border-emerald-500/50 text-emerald-300 bg-emerald-950/70" : "border-slate-800 text-slate-500")}>
                   {isMuted ? "MUTED" : musicPlaying ? "PLAYING" : "PAUSED"}
                 </Badge>
               </div>
 
-              <div className="text-xs font-bold text-white truncate flex items-center gap-2 bg-slate-900 p-2 rounded-lg border border-slate-800">
-                <Music className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+              <div className="text-xs font-bold text-white truncate flex items-center gap-2 bg-slate-900/90 p-2.5 rounded-xl border border-slate-800">
+                <Music className="w-4 h-4 text-amber-400 flex-shrink-0 animate-bounce" />
                 <span className="truncate">{TRACKS[currentTrack].title}</span>
               </div>
 
@@ -981,7 +988,7 @@ sys.stderr = sys.stdout
                 <Button
                   size="sm"
                   onClick={toggleMusic}
-                  className={cn("h-8 flex-1 gap-1.5 text-xs font-bold rounded-lg", musicPlaying && !isMuted ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950")}
+                  className={cn("h-8 flex-1 gap-1.5 text-xs font-bold rounded-xl shadow-md", musicPlaying && !isMuted ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-emerald-500/20" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-cyan-500/20")}
                 >
                   {musicPlaying ? <Pause className="w-3.5 h-3.5 fill-slate-950" /> : <Play className="w-3.5 h-3.5 fill-slate-950" />}
                   {musicPlaying ? "Pause OST" : "Play OST"}
@@ -991,7 +998,7 @@ sys.stderr = sys.stdout
                   size="sm"
                   variant="outline"
                   onClick={() => { playSound("click"); setCurrentTrack((prev) => (prev + 1) % TRACKS.length); }}
-                  className="h-8 text-xs font-mono border-slate-800 text-slate-300 hover:border-cyan-400"
+                  className="h-8 text-xs font-mono border-slate-800 text-slate-300 hover:border-cyan-400 rounded-xl"
                 >
                   Next Track
                 </Button>
@@ -1000,7 +1007,7 @@ sys.stderr = sys.stdout
                   size="icon"
                   variant={isMuted ? "destructive" : "ghost"}
                   onClick={toggleMute}
-                  className={cn("h-8 w-8 transition-colors", isMuted ? "bg-red-950 text-red-400 border border-red-500/40" : "text-cyan-400 hover:text-white")}
+                  className={cn("h-8 w-8 transition-colors rounded-xl", isMuted ? "bg-red-950 text-red-400 border border-red-500/50" : "text-cyan-400 hover:text-white")}
                   title={isMuted ? "Unmute Audio" : "Mute Audio"}
                 >
                   {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
