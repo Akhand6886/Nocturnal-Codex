@@ -691,15 +691,18 @@ export default function PythonAscensionPage() {
     setExecutionSuccess(null);
   };
 
-  const handleDifficultyModeChange = (mode: "easy" | "hard" | "hell") => {
+  // Global Difficulty Mode Switcher Handler
+  const handleGlobalDifficultyModeChange = (mode: "easy" | "hard" | "hell") => {
     playSound("click");
     setDifficultyMode(mode);
-    const targetCode = dungeonMode === "boss"
-      ? (activeDungeon ? activeDungeon.initialCode : "")
-      : (selectedTask ? selectedTask.codeSnippet : "");
+    if (activeDungeon) {
+      const targetCode = dungeonMode === "boss"
+        ? activeDungeon.initialCode
+        : (selectedTask ? selectedTask.codeSnippet : "");
 
-    setCode(getModeCode(targetCode, mode));
-    setTerminalOutput(`[DIFFICULTY CHANGED TO: ${mode.toUpperCase()}]\n${mode === "easy" ? "Code template provided." : mode === "hard" ? "Code provided with syntax bugs! Debug to fix." : "No code provided! Write from scratch."}`);
+      setCode(getModeCode(targetCode, mode));
+      setTerminalOutput(`[GLOBAL DIFFICULTY CHANGED TO: ${mode.toUpperCase()}]\n${mode === "easy" ? "Standard starter code provided for all dungeons." : mode === "hard" ? "Syntax bugs introduced for all dungeons! Debug to solve." : "Starter code removed! Solved from memory."}`);
+    }
   };
 
   const triggerScreenShake = () => {
@@ -879,7 +882,7 @@ export default function PythonAscensionPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Customize system aura themes, join Hunter Guilds, compete on the Monarch Leaderboard, and export your lab report to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
+                Humanity has discovered mysterious Gates. Select your global difficulty mode, join Hunter Guilds, compete on the Monarch Leaderboard, and export your lab report to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
               </p>
               
               <div className="flex flex-wrap items-center gap-3 mt-4">
@@ -950,7 +953,7 @@ export default function PythonAscensionPage() {
           </div>
         </div>
 
-        {/* Hunter Identity HUD Card Banner (with Toggleable System Auras) */}
+        {/* Hunter Identity HUD Card Banner & Global Mode Controls */}
         <div className={cn(
           "mb-8 p-5 rounded-2xl backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 border",
           state.selectedAura === "purple"
@@ -976,6 +979,34 @@ export default function PythonAscensionPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
+            {/* Global Difficulty Mode Selector Bar */}
+            <div className="flex items-center gap-1 bg-slate-950/90 p-1.5 rounded-xl border border-slate-800">
+              <span className="text-[10px] font-mono text-slate-400 px-2 flex items-center gap-1">
+                <FlameIcon className="w-3 h-3 text-amber-400" /> GLOBAL MODE:
+              </span>
+              <Button
+                size="sm"
+                onClick={() => handleGlobalDifficultyModeChange("easy")}
+                className={cn("h-6 text-[10px] font-bold rounded-lg px-2", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+              >
+                🟢 Easy (1.0x)
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => handleGlobalDifficultyModeChange("hard")}
+                className={cn("h-6 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hard" ? "bg-amber-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+              >
+                🟡 Hard (1.5x)
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => handleGlobalDifficultyModeChange("hell")}
+                className={cn("h-6 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hell" ? "bg-red-600 text-white font-bold animate-pulse" : "bg-slate-900 text-slate-400")}
+              >
+                🔴 Hell (2.0x)
+              </Button>
+            </div>
+
             {/* System Aura Theme Selector */}
             <div className="flex items-center gap-1 bg-slate-950/90 p-1.5 rounded-xl border border-slate-800">
               <span className="text-[10px] font-mono text-slate-400 px-2 flex items-center gap-1">
@@ -1007,13 +1038,6 @@ export default function PythonAscensionPage() {
             <div className="text-center">
               <div className="text-xs text-slate-400 font-mono">Dungeons Cleared</div>
               <div className="text-xl font-bold text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
-            </div>
-
-            <div className="text-center">
-              <div className="text-xs text-slate-400 font-mono">Difficulty Mode</div>
-              <Badge className={cn("mt-0.5 text-xs font-bold uppercase", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950" : difficultyMode === "hard" ? "bg-amber-500 text-slate-950" : "bg-red-600 text-white animate-pulse")}>
-                {difficultyMode} ({difficultyMode === "hell" ? "2.0x" : difficultyMode === "hard" ? "1.5x" : "1.0x"} XP)
-              </Badge>
             </div>
 
             <div className="text-center">
@@ -1699,30 +1723,9 @@ export default function PythonAscensionPage() {
                   </Button>
                 </div>
 
-                {/* Difficulty Mode Selector */}
-                <div className="hidden sm:flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-                  <Button
-                    size="sm"
-                    onClick={() => handleDifficultyModeChange("easy")}
-                    className={cn("h-7 text-[10px] font-bold rounded-lg px-2", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950" : "text-slate-400")}
-                  >
-                    EASY
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => handleDifficultyModeChange("hard")}
-                    className={cn("h-7 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hard" ? "bg-amber-500 text-slate-950" : "text-slate-400")}
-                  >
-                    HARD
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => handleDifficultyModeChange("hell")}
-                    className={cn("h-7 text-[10px] font-bold rounded-lg px-2", difficultyMode === "hell" ? "bg-red-600 text-white animate-pulse" : "text-slate-400")}
-                  >
-                    HELL
-                  </Button>
-                </div>
+                <Badge variant="outline" className={cn("text-xs font-mono uppercase px-2.5 py-1", difficultyMode === "easy" ? "border-emerald-500/40 text-emerald-300" : difficultyMode === "hard" ? "border-amber-500/40 text-amber-300" : "border-red-500/40 text-red-400 animate-pulse")}>
+                  MODE: {difficultyMode.toUpperCase()}
+                </Badge>
 
                 <Button variant="ghost" size="sm" onClick={() => setActiveDungeon(null)} className="text-slate-400 hover:text-white">
                   ✕ Close
