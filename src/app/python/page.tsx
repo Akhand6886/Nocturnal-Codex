@@ -1612,6 +1612,22 @@ except Exception as e:
                   <pre className="w-full h-[240px] font-mono text-xs p-4 rounded-xl bg-black border border-slate-800 text-slate-300 overflow-y-auto whitespace-pre-wrap">
                     {terminalOutput || "# Click 'Execute Sandbox Script' to run Python code..."}
                   </pre>
+
+                  {/* Matplotlib Interactive Graphical Canvas Figure Card */}
+                  {renderedChartImage && (
+                    <div className="mt-3 p-3.5 rounded-2xl bg-slate-950 border-2 border-amber-500/60 shadow-[0_0_25px_rgba(245,158,11,0.3)] space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-xs font-mono text-amber-300 font-bold">
+                          <BarChart3 className="w-4 h-4 text-amber-400 animate-pulse" />
+                          <span>CPYTHON MATPLOTLIB RENDERED GRAPHICAL FIGURE</span>
+                        </div>
+                        <Badge className="bg-emerald-500 text-slate-950 font-bold text-[10px]">GRAPHICAL CANVAS OUTPUT</Badge>
+                      </div>
+                      <div className="bg-white p-2 rounded-xl border border-slate-700 flex justify-center shadow-inner overflow-x-auto">
+                        <img src={renderedChartImage} alt="Matplotlib Rendered Figure" className="max-w-full h-auto rounded-lg shadow-md max-h-[350px]" />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -1983,6 +1999,22 @@ except Exception as e:
                       <pre className="w-full h-[150px] font-mono text-xs p-3.5 rounded-xl bg-black border border-slate-800 text-slate-300 overflow-y-auto whitespace-pre-wrap">
                         {terminalOutput || "# Click 'Run Python Program' to execute script..."}
                       </pre>
+
+                      {/* Matplotlib Interactive Graphical Canvas Figure Card */}
+                      {renderedChartImage && (
+                        <div className="mt-3 p-3.5 rounded-2xl bg-slate-950 border-2 border-cyan-500/60 shadow-[0_0_25px_rgba(6,182,212,0.3)] space-y-2">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 font-bold">
+                              <BarChart3 className="w-4 h-4 text-cyan-400 animate-pulse" />
+                              <span>REAL CPYTHON MATPLOTLIB VISUALIZATION FIGURE</span>
+                            </div>
+                            <Badge className="bg-emerald-500 text-slate-950 font-bold text-[10px]">GRAPHICAL CANVAS OUTPUT</Badge>
+                          </div>
+                          <div className="bg-white p-2 rounded-xl border border-slate-700 flex justify-center shadow-inner overflow-x-auto">
+                            <img src={renderedChartImage} alt="Matplotlib Rendered Figure" className="max-w-full h-auto rounded-lg shadow-md max-h-[300px]" />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
