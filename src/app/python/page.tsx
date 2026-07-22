@@ -1101,14 +1101,17 @@ print("[MATPLOTLIB CHART RENDERED]")
               >
                 🔵 Cyber
               </Button>
-            </div>
-              <div className="text-xs text-slate-400 font-mono">Dungeons Cleared</div>
-              <div className="text-xl font-bold text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
-            </div>
-
-            <div className="text-center">
-              <div className="text-xs text-slate-400 font-mono">System Experience</div>
-              <div className="text-xl font-bold text-amber-400 font-mono">{state.xp} XP</div>
+            {/* Dungeons Cleared & System Experience Counter */}
+            <div className="flex items-center gap-4 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner px-4">
+              <div className="text-center">
+                <div className="text-[10px] text-slate-400 font-mono">Dungeons Cleared</div>
+                <div className="text-base font-black text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
+              </div>
+              <div className="w-[1px] h-7 bg-slate-800" />
+              <div className="text-center">
+                <div className="text-[10px] text-slate-400 font-mono">System Experience</div>
+                <div className="text-base font-black text-amber-400 font-mono">{state.xp} XP</div>
+              </div>
             </div>
           </div>
         </div>
