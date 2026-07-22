@@ -1101,6 +1101,8 @@ print("[MATPLOTLIB CHART RENDERED]")
               >
                 🔵 Cyber
               </Button>
+            </div>
+
             {/* Dungeons Cleared & System Experience Counter */}
             <div className="flex items-center gap-4 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner px-4">
               <div className="text-center">
