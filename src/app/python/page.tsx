@@ -1019,101 +1019,119 @@ print("[MATPLOTLIB CHART RENDERED]")
 
         {/* Hunter Identity HUD Card Banner & Global Mode Controls */}
         <div className={cn(
-          "mb-8 p-6 rounded-3xl backdrop-blur-xl flex flex-col md:flex-row items-center justify-between gap-5 transition-all duration-500 border-2",
+          "mb-8 p-6 rounded-3xl backdrop-blur-xl flex flex-col justify-between gap-5 transition-all duration-500 border-2",
           state.selectedAura === "purple"
             ? "border-purple-500/80 aura-purple-pulse bg-gradient-to-r from-purple-950/90 via-slate-950 to-indigo-950/90"
             : state.selectedAura === "gold"
               ? "border-amber-400/80 aura-gold-glow bg-gradient-to-r from-amber-950/90 via-slate-950 to-yellow-950/90"
               : "border-cyan-400/80 aura-cyber-grid bg-gradient-to-r from-cyan-950/90 via-slate-950 to-slate-900"
         )}>
-          <div className="flex items-center gap-4 w-full md:w-auto">
-            <div className="p-3.5 rounded-2xl bg-slate-950 border-2 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.3)] relative group">
-              <Shield className="w-9 h-9 text-cyan-400 animate-pulse" />
-              <Crown className="w-4 h-4 text-amber-400 absolute -top-1.5 -right-1.5 animate-bounce" />
-            </div>
-            <div className="space-y-1">
-              <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-                <span className="text-slate-300 font-bold">Akhanda (ID #041)</span>
-                <span className="text-slate-600">|</span>
-                <span className="text-cyan-300 font-black px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">Lv. {currentRank.level}</span>
-                <span className="text-slate-600">|</span>
-                <span className="text-purple-300 font-bold px-2 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40">{userGuild.badge} {userGuild.name}</span>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5 w-full">
+            <div className="flex items-center gap-4 w-full md:w-auto">
+              <div className="p-3.5 rounded-2xl bg-slate-950 border-2 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.3)] relative group">
+                <Shield className="w-9 h-9 text-cyan-400 animate-pulse" />
+                <Crown className="w-4 h-4 text-amber-400 absolute -top-1.5 -right-1.5 animate-bounce" />
               </div>
-              <div className="font-black text-xl text-white tracking-wide flex items-center gap-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-                <span>{currentRank.rank}</span>
-                <Badge className="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-[10px]">S-RANK</Badge>
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+                  <span className="text-slate-300 font-bold">Akhanda (ID #041)</span>
+                  <span className="text-slate-600">|</span>
+                  <span className="text-cyan-300 font-black px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">Lv. {currentRank.level}</span>
+                  <span className="text-slate-600">|</span>
+                  <span className="text-purple-300 font-bold px-2 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40">{userGuild.badge} {userGuild.name}</span>
+                </div>
+                <div className="font-black text-xl text-white tracking-wide flex items-center gap-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                  <span>{currentRank.rank}</span>
+                  <Badge className="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-[10px]">S-RANK</Badge>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
+              {/* Global Difficulty Mode Selector Bar */}
+              <div className="flex items-center gap-1.5 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner">
+                <span className="text-[11px] font-mono text-slate-300 px-2 font-bold flex items-center gap-1">
+                  <FlameIcon className="w-3.5 h-3.5 text-amber-400" /> GLOBAL MODE:
+                </span>
+                <Button
+                  size="sm"
+                  onClick={() => handleGlobalDifficultyModeChange("easy")}
+                  className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950 font-black shadow-[0_0_12px_rgba(16,185,129,0.4)]" : "bg-slate-900 text-slate-400 hover:text-white")}
+                >
+                  🟢 Easy (1.0x)
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => handleGlobalDifficultyModeChange("hard")}
+                  className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "hard" ? "bg-amber-500 text-slate-950 font-black shadow-[0_0_12px_rgba(245,158,11,0.4)]" : "bg-slate-900 text-slate-400 hover:text-white")}
+                >
+                  🟡 Hard (1.5x)
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => handleGlobalDifficultyModeChange("hell")}
+                  className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "hell" ? "bg-red-600 text-white font-black animate-pulse shadow-[0_0_12px_rgba(239,68,68,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
+                >
+                  🔴 Hell (2.0x)
+                </Button>
+              </div>
+
+              {/* System Aura Theme Selector */}
+              <div className="flex items-center gap-1.5 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner">
+                <span className="text-[11px] font-mono text-slate-300 px-2 font-bold flex items-center gap-1">
+                  <Wand2 className="w-3.5 h-3.5 text-purple-400" /> AURA:
+                </span>
+                <Button
+                  size="sm"
+                  onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "purple" })); }}
+                  className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "purple" ? "bg-purple-600 text-white font-bold shadow-[0_0_12px_rgba(168,85,247,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
+                >
+                  🟣 Purple
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "gold" })); }}
+                  className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "gold" ? "bg-amber-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(245,158,11,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
+                >
+                  🟡 Gold
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "cyan" })); }}
+                  className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "cyan" ? "bg-cyan-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(6,182,212,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
+                >
+                  🔵 Cyber
+                </Button>
+              </div>
+
+              {/* Dungeons Cleared & System Experience Counter */}
+              <div className="flex items-center gap-4 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner px-4">
+                <div className="text-center">
+                  <div className="text-[10px] text-slate-400 font-mono">Dungeons Cleared</div>
+                  <div className="text-base font-black text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
+                </div>
+                <div className="w-[1px] h-7 bg-slate-800" />
+                <div className="text-center">
+                  <div className="text-[10px] text-slate-400 font-mono">System Experience</div>
+                  <div className="text-base font-black text-amber-400 font-mono">{state.xp} XP</div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
-            {/* Global Difficulty Mode Selector Bar */}
-            <div className="flex items-center gap-1.5 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner">
-              <span className="text-[11px] font-mono text-slate-300 px-2 font-bold flex items-center gap-1">
-                <FlameIcon className="w-3.5 h-3.5 text-amber-400" /> GLOBAL MODE:
+          {/* Monarch XP Ascension Fill Bar */}
+          <div className="w-full pt-2 border-t border-slate-800/80 space-y-1">
+            <div className="flex items-center justify-between text-[11px] font-mono">
+              <span className="text-slate-300 font-bold flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-amber-400 animate-bounce" /> SYSTEM MONARCH ASCENSION PROGRESS
               </span>
-              <Button
-                size="sm"
-                onClick={() => handleGlobalDifficultyModeChange("easy")}
-                className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950 font-black shadow-[0_0_12px_rgba(16,185,129,0.4)]" : "bg-slate-900 text-slate-400 hover:text-white")}
-              >
-                🟢 Easy (1.0x)
-              </Button>
-              <Button
-                size="sm"
-                onClick={() => handleGlobalDifficultyModeChange("hard")}
-                className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "hard" ? "bg-amber-500 text-slate-950 font-black shadow-[0_0_12px_rgba(245,158,11,0.4)]" : "bg-slate-900 text-slate-400 hover:text-white")}
-              >
-                🟡 Hard (1.5x)
-              </Button>
-              <Button
-                size="sm"
-                onClick={() => handleGlobalDifficultyModeChange("hell")}
-                className={cn("h-7 text-[11px] font-bold rounded-xl px-2.5 transition-all", difficultyMode === "hell" ? "bg-red-600 text-white font-black animate-pulse shadow-[0_0_12px_rgba(239,68,68,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
-              >
-                🔴 Hell (2.0x)
-              </Button>
+              <span className="text-cyan-300 font-black">{state.xp} / 15000 XP (LEVEL {currentRank.level})</span>
             </div>
-
-            {/* System Aura Theme Selector */}
-            <div className="flex items-center gap-1.5 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner">
-              <span className="text-[11px] font-mono text-slate-300 px-2 font-bold flex items-center gap-1">
-                <Wand2 className="w-3.5 h-3.5 text-purple-400" /> AURA:
-              </span>
-              <Button
-                size="sm"
-                onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "purple" })); }}
-                className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "purple" ? "bg-purple-600 text-white font-bold shadow-[0_0_12px_rgba(168,85,247,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
-              >
-                🟣 Purple
-              </Button>
-              <Button
-                size="sm"
-                onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "gold" })); }}
-                className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "gold" ? "bg-amber-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(245,158,11,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
-              >
-                🟡 Gold
-              </Button>
-              <Button
-                size="sm"
-                onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "cyan" })); }}
-                className={cn("h-7 text-[11px] font-mono rounded-xl px-2.5 transition-all", state.selectedAura === "cyan" ? "bg-cyan-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(6,182,212,0.5)]" : "bg-slate-900 text-slate-400 hover:text-white")}
-              >
-                🔵 Cyber
-              </Button>
-            </div>
-
-            {/* Dungeons Cleared & System Experience Counter */}
-            <div className="flex items-center gap-4 bg-slate-950/95 p-2 rounded-2xl border-2 border-slate-800 shadow-inner px-4">
-              <div className="text-center">
-                <div className="text-[10px] text-slate-400 font-mono">Dungeons Cleared</div>
-                <div className="text-base font-black text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
-              </div>
-              <div className="w-[1px] h-7 bg-slate-800" />
-              <div className="text-center">
-                <div className="text-[10px] text-slate-400 font-mono">System Experience</div>
-                <div className="text-base font-black text-amber-400 font-mono">{state.xp} XP</div>
-              </div>
+            <div className="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-cyan-500/40 p-0.5 shadow-inner">
+              <div 
+                className="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-amber-400 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-1000"
+                style={{ width: `${Math.min(100, (state.xp / 15000) * 100)}%` }}
+              />
             </div>
           </div>
         </div>
