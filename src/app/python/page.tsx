@@ -56,7 +56,10 @@ import {
   FileCheck,
   Users,
   Medal,
-  Crown as CrownIcon
+  Crown as CrownIcon,
+  Sun,
+  Moon,
+  Wand2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -66,6 +69,7 @@ interface HunterState {
   completedQuests: string[]; // quest ids
   unlockedAchievements: string[];
   selectedGuild: string;
+  selectedAura: "purple" | "gold" | "cyan";
 }
 
 // Guild System Definitions
@@ -83,7 +87,7 @@ const GUILDS: Guild[] = [
   {
     id: "ahjin",
     name: "Ahjin Guild",
-    leader: "Sung Jin-Woo / Monarch Akhand",
+    leader: "Sung Jin-Woo / Monarch Akhanda",
     badge: "👑",
     buff: "+15% Shadow Mana & XP Boost",
     description: "The supreme guild founded by the Shadow Monarch. Master of shadow extractions.",
@@ -170,7 +174,8 @@ export default function PythonAscensionPage() {
     xp: 0,
     completedQuests: [],
     unlockedAchievements: ["ach-1"],
-    selectedGuild: "ahjin"
+    selectedGuild: "ahjin",
+    selectedAura: "purple"
   });
 
   const [activeTab, setActiveTab] = useState<"dungeons" | "skills" | "inventory" | "quests" | "achievements" | "sandbox" | "guilds">("dungeons");
@@ -318,7 +323,7 @@ export default function PythonAscensionPage() {
     let md = `# NOCTURNAL CODEX — OFFICIAL PYTHON LAB ASSIGNMENT REPORT\n`;
     md += `**Classification:** Restricted Academic Submission  \n`;
     md += `**Date:** ${dateStr}  \n`;
-    md += `**Hunter Name:** Akhand (Hunter ID #041)  \n`;
+    md += `**Hunter Name:** Akhanda (Hunter ID #041)  \n`;
     md += `**System Rank:** ${rankInfo.rank} (Level ${rankInfo.level})  \n`;
     md += `**Total System Experience:** ${state.xp} XP  \n`;
     md += `**Dungeons Cleared:** ${state.completedDungeons.length} / 11  \n\n`;
@@ -566,7 +571,7 @@ export default function PythonAscensionPage() {
   const getLeaderboardData = () => {
     const userEntry = {
       rank: dungeonsClearedCount >= 11 ? 1 : dungeonsClearedCount >= 10 ? 2 : 4,
-      name: "Akhand (You)",
+      name: "Akhanda (You)",
       guild: userGuild.name,
       hunterRank: currentRank.rank,
       level: currentRank.level,
@@ -784,12 +789,13 @@ export default function PythonAscensionPage() {
   const resetProgress = () => {
     playSound("click");
     if (confirm("Are you sure you want to reset all Python Ascension progress?")) {
-      const initial = {
+      const initial: HunterState = {
         completedDungeons: [],
         xp: 0,
         completedQuests: [],
         unlockedAchievements: ["ach-1"],
-        selectedGuild: "ahjin"
+        selectedGuild: "ahjin",
+        selectedAura: "purple"
       };
       setState(initial);
       localStorage.setItem("python_ascension_state", JSON.stringify(initial));
@@ -817,7 +823,7 @@ export default function PythonAscensionPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Join Hunter Guilds, compete on the Monarch Leaderboard, and export your lab report to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
+                Humanity has discovered mysterious Gates. Customize system aura themes, join Hunter Guilds, compete on the Monarch Leaderboard, and export your lab report to ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
               </p>
               
               <div className="flex flex-wrap items-center gap-3 mt-4">
@@ -888,15 +894,22 @@ export default function PythonAscensionPage() {
           </div>
         </div>
 
-        {/* Hunter Identity HUD Card Banner */}
-        <div className="mb-8 p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Hunter Identity HUD Card Banner (with Toggleable System Auras) */}
+        <div className={cn(
+          "mb-8 p-5 rounded-2xl backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 border",
+          state.selectedAura === "purple"
+            ? "border-purple-500/80 shadow-2xl shadow-purple-500/30 bg-gradient-to-r from-purple-950/80 via-slate-900 to-indigo-950/80"
+            : state.selectedAura === "gold"
+              ? "border-amber-400/80 shadow-2xl shadow-amber-500/30 bg-gradient-to-r from-amber-950/80 via-slate-900 to-yellow-950/80"
+              : "border-cyan-400/80 shadow-2xl shadow-cyan-500/30 bg-gradient-to-r from-cyan-950/80 via-slate-900 to-slate-950"
+        )}>
           <div className="flex items-center gap-4">
             <div className="p-3 rounded-xl bg-slate-950 border border-cyan-500/30">
               <Shield className="w-8 h-8 text-cyan-400 animate-pulse" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-slate-400">Hunter ID #041</span>
+                <span className="text-xs font-mono text-slate-400">Akhanda (ID #041)</span>
                 <span className="text-slate-600">|</span>
                 <span className="text-xs font-mono text-cyan-300 font-bold">Lv. {currentRank.level}</span>
                 <span className="text-slate-600">|</span>
@@ -906,7 +919,35 @@ export default function PythonAscensionPage() {
             </div>
           </div>
 
-          <div className="flex items-center gap-6 w-full md:w-auto">
+          <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
+            {/* System Aura Theme Selector */}
+            <div className="flex items-center gap-1 bg-slate-950/90 p-1.5 rounded-xl border border-slate-800">
+              <span className="text-[10px] font-mono text-slate-400 px-2 flex items-center gap-1">
+                <Wand2 className="w-3 h-3 text-purple-400" /> AURA:
+              </span>
+              <Button
+                size="sm"
+                onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "purple" })); }}
+                className={cn("h-6 text-[10px] font-mono rounded-lg px-2", state.selectedAura === "purple" ? "bg-purple-600 text-white font-bold" : "bg-slate-900 text-slate-400")}
+              >
+                🟣 Purple
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "gold" })); }}
+                className={cn("h-6 text-[10px] font-mono rounded-lg px-2", state.selectedAura === "gold" ? "bg-amber-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+              >
+                🟡 Gold
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => { playSound("click"); setState((prev) => ({ ...prev, selectedAura: "cyan" })); }}
+                className={cn("h-6 text-[10px] font-mono rounded-lg px-2", state.selectedAura === "cyan" ? "bg-cyan-500 text-slate-950 font-bold" : "bg-slate-900 text-slate-400")}
+              >
+                🔵 Cyber
+              </Button>
+            </div>
+
             <div className="text-center">
               <div className="text-xs text-slate-400 font-mono">Dungeons Cleared</div>
               <div className="text-xl font-bold text-cyan-300 font-mono">{dungeonsClearedCount} / 11</div>
