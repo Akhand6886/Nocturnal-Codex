@@ -47,7 +47,9 @@ import {
   Lightbulb,
   Radio,
   Target,
-  ArrowRight
+  ArrowRight,
+  Flame as FlameIcon,
+  AlertTriangle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -56,6 +58,27 @@ interface HunterState {
   xp: number;
   completedQuests: string[]; // quest ids
   unlockedAchievements: string[];
+}
+
+// Difficulty Mode Code Corruptor & Generator
+function getModeCode(originalCode: string, mode: "easy" | "hard" | "hell"): string {
+  if (mode === "easy") return originalCode;
+  if (mode === "hell") return "# HELL MODE ACTIVATED: No starter code provided!\n# Write the Python solution from memory...\n\n";
+
+  // HARD MODE: Introduce realistic Python syntax errors for debugging challenge
+  let corrupted = originalCode;
+  if (corrupted.includes("def ")) {
+    corrupted = corrupted.replace("def ", "function "); // JS syntax mistake
+  } else if (corrupted.includes(":\n")) {
+    corrupted = corrupted.replace(/:\n/g, "\n"); // missing colons
+  } else if (corrupted.includes("print(")) {
+    corrupted = corrupted.replace("print(", "prnt("); // misspelled function
+  } else if (corrupted.includes(" = ")) {
+    corrupted = corrupted.replace(" = ", " == "); // assignment bug
+  } else {
+    corrupted = corrupted.replace("\n", "\n  # SYNTAX ERROR: Broken indentation or missing colon\n");
+  }
+  return `# HARD MODE: Fix the syntax bugs in this code!\n${corrupted}`;
 }
 
 export default function PythonAscensionPage() {
@@ -69,6 +92,7 @@ export default function PythonAscensionPage() {
   const [activeTab, setActiveTab] = useState<"dungeons" | "skills" | "inventory" | "quests" | "achievements" | "sandbox">("dungeons");
   const [activeDungeon, setActiveDungeon] = useState<Dungeon | null>(null);
   const [dungeonMode, setDungeonMode] = useState<"tasks" | "boss" | "theory">("tasks");
+  const [difficultyMode, setDifficultyMode] = useState<"easy" | "hard" | "hell">("easy");
   const [selectedTask, setSelectedTask] = useState<PracticeTask | null>(null);
   const [completedTasksInDungeon, setCompletedTasksInDungeon] = useState<string[]>([]);
   const [code, setCode] = useState<string>("");
@@ -178,7 +202,6 @@ export default function PythonAscensionPage() {
         osc.start(now);
         osc.stop(now + 0.5);
       } else if (type === "monarchArise") {
-        // Deep bass roar + soaring high frequency chime
         osc.type = "sawtooth";
         osc.frequency.setValueAtTime(110, now);
         osc.frequency.exponentialRampToValueAtTime(880, now + 1.2);
@@ -333,11 +356,11 @@ export default function PythonAscensionPage() {
 
     if (dungeon.tasks.length > 0) {
       setSelectedTask(dungeon.tasks[0]);
-      setCode(dungeon.tasks[0].codeSnippet);
-      setTerminalOutput(`[PHASE 1: SMALL MISSIONS]\nTask 1: ${dungeon.tasks[0].title}\nClick 'Run Python Program' to execute task code.`);
+      setCode(getModeCode(dungeon.tasks[0].codeSnippet, difficultyMode));
+      setTerminalOutput(`[PHASE 1: SMALL MISSIONS | MODE: ${difficultyMode.toUpperCase()}]\nTask 1: ${dungeon.tasks[0].title}\nClick 'Run Python Program' to execute task code.`);
     } else {
       setSelectedTask(null);
-      setCode(dungeon.initialCode);
+      setCode(getModeCode(dungeon.initialCode, difficultyMode));
     }
     setExecutionSuccess(null);
   };
@@ -345,8 +368,8 @@ export default function PythonAscensionPage() {
   const handleSelectTask = (task: PracticeTask) => {
     playSound("click");
     setSelectedTask(task);
-    setCode(task.codeSnippet);
-    setTerminalOutput(`[SMALL MISSION SELECTED]: ${task.title}\nPress 'Run Python Program' to test implementation.`);
+    setCode(getModeCode(task.codeSnippet, difficultyMode));
+    setTerminalOutput(`[SMALL MISSION SELECTED | MODE: ${difficultyMode.toUpperCase()}]: ${task.title}\nPress 'Run Python Program' to test implementation.`);
     setExecutionSuccess(null);
   };
 
@@ -355,9 +378,20 @@ export default function PythonAscensionPage() {
     playSound("click");
     setDungeonMode("boss");
     setSelectedTask(null);
-    setCode(activeDungeon.initialCode);
-    setTerminalOutput(`[PHASE 2: FINAL BOSS BATTLE]\nBoss: ${activeDungeon.bossName || "Dungeon Core Anomaly"}\nObjective: ${activeDungeon.missionObjective}\nRun code to defeat the boss!`);
+    setCode(getModeCode(activeDungeon.initialCode, difficultyMode));
+    setTerminalOutput(`[PHASE 2: FINAL BOSS BATTLE | MODE: ${difficultyMode.toUpperCase()}]\nBoss: ${activeDungeon.bossName || "Dungeon Core Anomaly"}\nObjective: ${activeDungeon.missionObjective}\nRun code to defeat the boss!`);
     setExecutionSuccess(null);
+  };
+
+  const handleDifficultyModeChange = (mode: "easy" | "hard" | "hell") => {
+    playSound("click");
+    setDifficultyMode(mode);
+    const targetCode = dungeonMode === "boss"
+      ? (activeDungeon ? activeDungeon.initialCode : "")
+      : (selectedTask ? selectedTask.codeSnippet : "");
+
+    setCode(getModeCode(targetCode, mode));
+    setTerminalOutput(`[DIFFICULTY CHANGED TO: ${mode.toUpperCase()}]\n${mode === "easy" ? "Code template provided." : mode === "hard" ? "Code provided with syntax bugs! Debug to fix." : "No code provided! Write from scratch."}`);
   };
 
   const triggerScreenShake = () => {
@@ -393,8 +427,16 @@ export default function PythonAscensionPage() {
       const isTaskMode = dungeonMode === "tasks" && selectedTask;
       const expectedTarget = isTaskMode ? selectedTask.expectedOutput : activeDungeon.expectedKeywordOrOutput;
 
-      const isSuccess = code.toLowerCase().includes(expectedTarget.toLowerCase()) ||
-        code.includes("print") || code.includes("def") || code.includes("class") || code.includes("arise");
+      // Ensure code does NOT contain corrupted markers in Hard Mode before passing
+      const hasCorruptedBugs = code.includes("function ") || code.includes("prnt(") || code.includes("HARD MODE: Fix");
+      const isSuccess = !hasCorruptedBugs && (
+        code.toLowerCase().includes(expectedTarget.toLowerCase()) ||
+        code.includes("print") || code.includes("def") || code.includes("class") || code.includes("arise")
+      );
+
+      // XP Multiplier based on Difficulty Mode
+      const multiplier = difficultyMode === "hell" ? 2.0 : difficultyMode === "hard" ? 1.5 : 1.0;
+      const calculatedXp = Math.round(activeDungeon.xpReward * multiplier);
 
       if (isSuccess) {
         setExecutionSuccess(true);
@@ -412,14 +454,14 @@ export default function PythonAscensionPage() {
           // Boss Battle Cleared!
           setTerminalOutput((prev) =>
             prev + "\n\n>>> BOSS DEFEATED! DUNGEON CLEARED! <<<\n[SYSTEM]: Critical hit! Boss anomaly eliminated.\n" +
-            `[REWARD]: +${activeDungeon.xpReward} XP Gained!`
+            `[REWARD (${difficultyMode.toUpperCase()} MODE ${multiplier}x)]: +${calculatedXp} XP Gained!`
           );
 
           // Check if dungeon 11 (Shadow Monarch) or other dungeon newly cleared
           if (!state.completedDungeons.includes(activeDungeon.id)) {
             const oldRank = getRankInfo(state.completedDungeons.length).rank;
             const newDungeons = [...state.completedDungeons, activeDungeon.id];
-            const newXp = state.xp + activeDungeon.xpReward;
+            const newXp = state.xp + calculatedXp;
             const newRank = getRankInfo(newDungeons.length).rank;
 
             // Trigger Screen Shake for Dungeon 11 Monarch Ascension
@@ -453,7 +495,8 @@ export default function PythonAscensionPage() {
         playSound("fail");
         setExecutionSuccess(false);
         setTerminalOutput((prev) =>
-          prev + "\n\n[ERROR]: Execution completed with missing criteria.\n" +
+          prev + "\n\n[ERROR]: Execution completed with syntax error or missing criteria.\n" +
+          (hasCorruptedBugs ? "[SYSTEM ERROR]: Syntax bugs remaining in code! Fix function/print keywords and missing colons.\n" : "") +
           `[HINT]: ${activeDungeon.solutionHint}`
         );
       }
@@ -514,7 +557,7 @@ export default function PythonAscensionPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-2 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Complete all 10 Dungeons to unlock the 11th Secret Gate and ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
+                Humanity has discovered mysterious Gates. Choose your difficulty mode (Easy, Hard, Hell) and ascend to the <strong className="text-amber-400">SHADOW MONARCH CLASS</strong>!
               </p>
             </div>
 
@@ -591,8 +634,10 @@ export default function PythonAscensionPage() {
             </div>
 
             <div className="text-center">
-              <div className="text-xs text-slate-400 font-mono">Current Mana</div>
-              <div className="text-xl font-bold text-emerald-400 font-mono">100%</div>
+              <div className="text-xs text-slate-400 font-mono">Difficulty Mode</div>
+              <Badge className={cn("mt-0.5 text-xs font-bold uppercase", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950" : difficultyMode === "hard" ? "bg-amber-500 text-slate-950" : "bg-red-600 text-white animate-pulse")}>
+                {difficultyMode} ({difficultyMode === "hell" ? "2.0x" : difficultyMode === "hard" ? "1.5x" : "1.0x"} XP)
+              </Badge>
             </div>
 
             <div className="text-center">
@@ -734,7 +779,7 @@ export default function PythonAscensionPage() {
 
                       <div className="space-y-1.5 text-xs text-slate-300">
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Reward:</span>
+                          <span className="text-slate-500">Base Reward:</span>
                           <span className="text-cyan-300 font-mono font-bold">+{dungeon.xpReward} XP</span>
                         </div>
                         <div className="flex justify-between">
@@ -807,7 +852,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-cyan-300">{hunterStats.coding} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-cyan-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.coding / 350) * 100)}%` }} />
+                    <div className="h-full bg-cyan-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.coding / 400) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -817,7 +862,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-emerald-400">{hunterStats.intelligence} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-emerald-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.intelligence / 300) * 100)}%` }} />
+                    <div className="h-full bg-emerald-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.intelligence / 350) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -827,7 +872,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-amber-400">{hunterStats.strength} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-amber-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.strength / 250) * 100)}%` }} />
+                    <div className="h-full bg-amber-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.strength / 300) * 100)}%` }} />
                   </div>
                 </div>
 
@@ -837,7 +882,7 @@ export default function PythonAscensionPage() {
                     <span className="font-mono font-bold text-purple-400">{hunterStats.creativity} pts</span>
                   </div>
                   <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.creativity / 250) * 100)}%` }} />
+                    <div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, (hunterStats.creativity / 300) * 100)}%` }} />
                   </div>
                 </div>
               </CardContent>
@@ -1147,6 +1192,37 @@ export default function PythonAscensionPage() {
 
             {/* Modal Body */}
             <div className="p-6 overflow-y-auto space-y-6 flex-1">
+              {/* Difficulty Mode Selector HUD Bar */}
+              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
+                  <FlameIcon className="w-4 h-4 text-amber-400" />
+                  <span>SELECT DIFFICULTY MODE:</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button
+                    size="sm"
+                    onClick={() => handleDifficultyModeChange("easy")}
+                    className={cn("h-7 text-xs font-bold rounded-lg gap-1", difficultyMode === "easy" ? "bg-emerald-500 text-slate-950" : "bg-slate-900 border border-slate-800 text-slate-400")}
+                  >
+                    🟢 EASY (1.0x XP)
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={() => handleDifficultyModeChange("hard")}
+                    className={cn("h-7 text-xs font-bold rounded-lg gap-1", difficultyMode === "hard" ? "bg-amber-500 text-slate-950" : "bg-slate-900 border border-slate-800 text-slate-400")}
+                  >
+                    🟡 HARD (1.5x XP - Syntax Bugs)
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={() => handleDifficultyModeChange("hell")}
+                    className={cn("h-7 text-xs font-bold rounded-lg gap-1", difficultyMode === "hell" ? "bg-red-600 text-white animate-pulse" : "bg-slate-900 border border-slate-800 text-slate-400")}
+                  >
+                    🔴 HELL (2.0x XP - From Scratch)
+                  </Button>
+                </div>
+              </div>
+
               {/* Progress Banner for 2-Phase Progression */}
               <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
@@ -1258,7 +1334,9 @@ export default function PythonAscensionPage() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs font-mono text-slate-400">
                       <span className="flex items-center gap-1.5"><TerminalIcon className="w-3.5 h-3.5 text-cyan-400" /> Python Code Editor</span>
-                      <span>main.py</span>
+                      <Badge variant="outline" className={cn("text-[10px]", difficultyMode === "easy" ? "border-emerald-500/40 text-emerald-300" : difficultyMode === "hard" ? "border-amber-500/40 text-amber-300" : "border-red-500/40 text-red-400")}>
+                        MODE: {difficultyMode.toUpperCase()}
+                      </Badge>
                     </div>
                     <textarea
                       value={code}
@@ -1288,7 +1366,7 @@ export default function PythonAscensionPage() {
 
             {/* Modal Footer */}
             <div className="p-4 border-t border-slate-800 bg-slate-950 flex items-center justify-between">
-              <Button variant="ghost" onClick={() => setCode(dungeonMode === "boss" ? activeDungeon.initialCode : (selectedTask ? selectedTask.codeSnippet : ""))} className="text-xs text-slate-400 hover:text-white">
+              <Button variant="ghost" onClick={() => setCode(getModeCode(dungeonMode === "boss" ? activeDungeon.initialCode : (selectedTask ? selectedTask.codeSnippet : ""), difficultyMode))} className="text-xs text-slate-400 hover:text-white">
                 <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Code
               </Button>
 
