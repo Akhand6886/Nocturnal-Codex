@@ -746,7 +746,7 @@ export default function PythonAscensionPage() {
     const userEntry = {
       rank: dungeonsClearedCount >= 11 ? 1 : dungeonsClearedCount >= 10 ? 2 : 4,
       name: `${activeHunterName} (You)`,
-      guild: userGuild.name,
+      guild: state.joinedClanName ? `${state.joinedClanName} (${state.joinedClanCode})` : userGuild.name,
       hunterRank: currentRank.rank,
       level: currentRank.level,
       xp: state.xp,
@@ -1262,7 +1262,7 @@ except Exception as e:
                   <span className="text-slate-600">|</span>
                   <span className="text-cyan-300 font-black px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">Lv. {currentRank.level}</span>
                   <span className="text-slate-600">|</span>
-                  <span className="text-purple-300 font-bold px-2 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40">{userGuild.badge} {userGuild.name}</span>
+                  <span className="text-purple-300 font-bold px-2 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40">{state.joinedClanCode ? `🛡️ ${state.joinedClanName} (${state.joinedClanCode})` : `${userGuild.badge} ${userGuild.name}`}</span>
                 </div>
                 <div className="font-black text-xl text-white tracking-wide flex items-center gap-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                   <span>{currentRank.rank}</span>
