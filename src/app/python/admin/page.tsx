@@ -483,8 +483,9 @@ export default function PythonAdminPage() {
         {activeTab === "clans" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
-            {/* Create Admin Clan Card */}
-            <Card className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 spac                <div className="flex items-center gap-2 text-sm font-mono text-purple-400 font-bold">
+            {/* Create Admin Guild Card */}
+            <Card className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 space-y-4">
+              <div className="flex items-center gap-2 text-sm font-mono text-purple-400 font-bold">
                 <PlusCircle className="w-4 h-4" />
                 <span>GENERATE NEW GUILD & CODE</span>
               </div>
@@ -545,7 +546,7 @@ export default function PythonAdminPage() {
               <div className="text-sm font-mono text-slate-300 font-bold flex items-center gap-2">
                 <Trophy className="w-4 h-4 text-amber-400" />
                 <span>GUILD COMPETITION LEADERBOARDS & CODES ({clans.length})</span>
-              </div>  </div>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {clans.map((clan, idx) => (
