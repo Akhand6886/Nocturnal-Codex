@@ -60,7 +60,9 @@ import {
   Sun,
   Moon,
   Wand2,
-  Cpu as CpuIcon
+  Cpu as CpuIcon,
+  PlusCircle,
+  KeyRound
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -72,6 +74,8 @@ interface HunterState {
   selectedGuild: string;
   selectedAura: "purple" | "gold" | "cyan";
   hunterName?: string;
+  joinedClanCode?: string;
+  joinedClanName?: string;
 }
 
 // Guild System Definitions
@@ -695,6 +699,21 @@ export default function PythonAscensionPage() {
     }
   }, [state]);
 
+  // Derived Hunter Statistics
+  const dungeonsClearedCount = state.completedDungeons.length;
+
+  const getRankInfo = (cleared: number) => {
+    if (cleared >= 11) return { rank: "👑 SHADOW MONARCH (LV. 999)", level: 999, title: "God-Class System Sovereign", color: "text-amber-300 border-purple-500 bg-gradient-to-r from-purple-950 via-slate-900 to-amber-950 shadow-purple-500/50" };
+    if (cleared >= 10) return { rank: "S-Class Programmer", level: 100, title: "Shadow Programmer", color: "text-purple-400 border-purple-500 bg-purple-950/40 shadow-purple-500/30" };
+    if (cleared >= 8) return { rank: "A-Class Programmer", level: 75, title: "Data Alchemist", color: "text-amber-400 border-amber-500 bg-amber-950/40 shadow-amber-500/30" };
+    if (cleared >= 6) return { rank: "B-Class Programmer", level: 45, title: "Code Weaver", color: "text-blue-400 border-blue-500 bg-blue-950/40 shadow-blue-500/30" };
+    if (cleared >= 3) return { rank: "C-Class Programmer", level: 18, title: "Logic Specialist", color: "text-emerald-400 border-emerald-500 bg-emerald-950/40 shadow-emerald-500/30" };
+    if (cleared >= 1) return { rank: "D-Class Programmer", level: 5, title: "Apprentice Hunter", color: "text-cyan-400 border-cyan-500 bg-cyan-950/40 shadow-cyan-500/30" };
+    return { rank: "E-Class Programmer", level: 1, title: "Novice Trainee", color: "text-slate-400 border-slate-600 bg-slate-900/60 shadow-slate-500/10" };
+  };
+
+  const currentRank = getRankInfo(dungeonsClearedCount);
+
   // Sync live student heartbeat telemetry to backend API (for Admin 100+ student tracking)
   useEffect(() => {
     if (activeHunterName) {
@@ -718,21 +737,6 @@ export default function PythonAscensionPage() {
       } catch (e) {}
     }
   }, [state, activeHunterName, inPenaltyZone, activeDungeon, dungeonMode, currentRank]);
-
-  // Derived Hunter Statistics
-  const dungeonsClearedCount = state.completedDungeons.length;
-
-  const getRankInfo = (cleared: number) => {
-    if (cleared >= 11) return { rank: "👑 SHADOW MONARCH (LV. 999)", level: 999, title: "God-Class System Sovereign", color: "text-amber-300 border-purple-500 bg-gradient-to-r from-purple-950 via-slate-900 to-amber-950 shadow-purple-500/50" };
-    if (cleared >= 10) return { rank: "S-Class Programmer", level: 100, title: "Shadow Programmer", color: "text-purple-400 border-purple-500 bg-purple-950/40 shadow-purple-500/30" };
-    if (cleared >= 8) return { rank: "A-Class Programmer", level: 75, title: "Data Alchemist", color: "text-amber-400 border-amber-500 bg-amber-950/40 shadow-amber-500/30" };
-    if (cleared >= 6) return { rank: "B-Class Programmer", level: 45, title: "Code Weaver", color: "text-blue-400 border-blue-500 bg-blue-950/40 shadow-blue-500/30" };
-    if (cleared >= 3) return { rank: "C-Class Programmer", level: 18, title: "Logic Specialist", color: "text-emerald-400 border-emerald-500 bg-emerald-950/40 shadow-emerald-500/30" };
-    if (cleared >= 1) return { rank: "D-Class Programmer", level: 5, title: "Apprentice Hunter", color: "text-cyan-400 border-cyan-500 bg-cyan-950/40 shadow-cyan-500/30" };
-    return { rank: "E-Class Programmer", level: 1, title: "Novice Trainee", color: "text-slate-400 border-slate-600 bg-slate-900/60 shadow-slate-500/10" };
-  };
-
-  const currentRank = getRankInfo(dungeonsClearedCount);
 
   // Guild dynamic information
   const userGuild = GUILDS.find((g) => g.id === state.selectedGuild) || GUILDS[0];
