@@ -2516,6 +2516,96 @@ except Exception as e:
           </div>
         </div>
       )}
+
+      {/* Create Clan Modal Overlay */}
+      {showCreateClanModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
+          <div className="bg-slate-900 border-2 border-purple-500/60 shadow-[0_0_50px_rgba(168,85,247,0.4)] rounded-3xl max-w-md w-full p-6 space-y-5 relative overflow-hidden">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-sm font-bold text-purple-300 font-mono">
+                <PlusCircle className="w-5 h-5 text-purple-400" /> CREATE NEW STUDENT CLAN
+              </div>
+              <Button size="sm" variant="ghost" onClick={() => setShowCreateClanModal(false)} className="text-slate-400 hover:text-white">✕</Button>
+            </div>
+
+            <form onSubmit={handleUserCreateClan} className="space-y-4 font-mono text-xs">
+              <div className="space-y-1">
+                <label className="text-slate-300 font-bold block">CLAN NAME:</label>
+                <input
+                  type="text"
+                  required
+                  value={newClanNameInput}
+                  onChange={(e) => setNewClanNameInput(e.target.value)}
+                  placeholder="e.g. Shadow Vanguard"
+                  className="w-full font-mono text-sm px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-500"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-slate-300 font-bold block">CLAN DESCRIPTION:</label>
+                <textarea
+                  rows={3}
+                  value={newClanDescInput}
+                  onChange={(e) => setNewClanDescInput(e.target.value)}
+                  placeholder="Describe your clan's goals & competition style..."
+                  className="w-full font-mono text-xs px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 focus:outline-none focus:border-purple-500 resize-none"
+                />
+              </div>
+
+              <p className="text-[11px] text-slate-400">
+                Creator / Leader: <strong className="text-cyan-300">{activeHunterName}</strong>
+              </p>
+
+              <Button
+                type="submit"
+                className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm py-3 rounded-xl shadow-lg shadow-purple-600/30"
+              >
+                🚀 Generate Clan & Code
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Join Clan via Code Modal Overlay */}
+      {showJoinClanModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
+          <div className="bg-slate-900 border-2 border-cyan-500/60 shadow-[0_0_50px_rgba(6,182,212,0.4)] rounded-3xl max-w-md w-full p-6 space-y-5 relative overflow-hidden">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-sm font-bold text-cyan-300 font-mono">
+                <KeyRound className="w-5 h-5 text-cyan-400" /> JOIN CLAN VIA CLAN CODE
+              </div>
+              <Button size="sm" variant="ghost" onClick={() => setShowJoinClanModal(false)} className="text-slate-400 hover:text-white">✕</Button>
+            </div>
+
+            <form onSubmit={handleUserJoinClan} className="space-y-4 font-mono text-xs">
+              <div className="space-y-1">
+                <label className="text-cyan-300 font-bold block">ENTER 6-CHARACTER CLAN CODE:</label>
+                <input
+                  type="text"
+                  required
+                  autoFocus
+                  value={joinClanCodeInput}
+                  onChange={(e) => setJoinClanCodeInput(e.target.value.toUpperCase())}
+                  placeholder="e.g. SHADOW-001, CLAN-8821"
+                  className="w-full font-mono text-center tracking-widest text-lg font-black px-4 py-3 rounded-xl bg-slate-950 border-2 border-cyan-500/50 text-white focus:outline-none focus:border-cyan-400"
+                />
+              </div>
+
+              <p className="text-[11px] text-slate-400 text-center">
+                Joining as: <strong className="text-amber-400">{activeHunterName}</strong>
+              </p>
+
+              <Button
+                type="submit"
+                className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-sm py-3 rounded-xl shadow-lg shadow-cyan-500/30"
+              >
+                ⚔️ Verify Code & Join Clan
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
