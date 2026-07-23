@@ -484,27 +484,26 @@ export default function PythonAdminPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
             {/* Create Admin Clan Card */}
-            <Card className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 space-y-4">
-              <div className="flex items-center gap-2 text-sm font-mono text-purple-400 font-bold">
+            <Card className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 spac                <div className="flex items-center gap-2 text-sm font-mono text-purple-400 font-bold">
                 <PlusCircle className="w-4 h-4" />
-                <span>GENERATE NEW CLAN & CODE</span>
+                <span>GENERATE NEW GUILD & CODE</span>
               </div>
 
               <form onSubmit={handleAdminCreateClan} className="space-y-3 font-mono text-xs">
                 <div>
-                  <label className="text-slate-400 block mb-1">Clan Name:</label>
+                  <label className="text-slate-400 block mb-1">Guild Name:</label>
                   <input
                     type="text"
                     required
                     value={newClanName}
                     onChange={(e) => setNewClanName(e.target.value)}
-                    placeholder="e.g. Shadow Vanguard"
+                    placeholder="e.g. Shadow Vanguard Guild"
                     className="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
 
                 <div>
-                  <label className="text-slate-400 block mb-1">Clan Leader / Creator:</label>
+                  <label className="text-slate-400 block mb-1">Guild Leader / Creator:</label>
                   <input
                     type="text"
                     required
@@ -521,7 +520,7 @@ export default function PythonAdminPage() {
                     type="text"
                     value={newClanDesc}
                     onChange={(e) => setNewClanDesc(e.target.value)}
-                    placeholder="e.g. Official Class Competition Clan"
+                    placeholder="e.g. Official Class Competition Guild"
                     className="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
@@ -530,7 +529,7 @@ export default function PythonAdminPage() {
                   type="submit"
                   className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl shadow-lg shadow-purple-600/20"
                 >
-                  Generate Clan & Code
+                  Generate Guild & Code
                 </Button>
 
                 {createdClanNotice && (
@@ -541,12 +540,12 @@ export default function PythonAdminPage() {
               </form>
             </Card>
 
-            {/* Clans Leaderboard Grid */}
+            {/* Guilds Leaderboard Grid */}
             <div className="lg:col-span-2 space-y-4">
               <div className="text-sm font-mono text-slate-300 font-bold flex items-center gap-2">
                 <Trophy className="w-4 h-4 text-amber-400" />
-                <span>CLAN COMPETITION LEADERBOARDS & CODES ({clans.length})</span>
-              </div>
+                <span>GUILD COMPETITION LEADERBOARDS & CODES ({clans.length})</span>
+              </div>  </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {clans.map((clan, idx) => (
