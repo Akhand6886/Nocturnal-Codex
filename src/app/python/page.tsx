@@ -198,6 +198,15 @@ export default function PythonAscensionPage() {
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
   const [isShaking, setIsShaking] = useState<boolean>(false);
 
+  // Clan Creation & Joining States
+  const [showCreateClanModal, setShowCreateClanModal] = useState<boolean>(false);
+  const [showJoinClanModal, setShowJoinClanModal] = useState<boolean>(false);
+  const [newClanNameInput, setNewClanNameInput] = useState<string>("");
+  const [newClanDescInput, setNewClanDescInput] = useState<string>("");
+  const [joinClanCodeInput, setJoinClanCodeInput] = useState<string>("");
+  const [clanNoticeMsg, setClanNoticeMsg] = useState<string>("");
+  const [liveClansList, setLiveClansList] = useState<any[]>([]);
+
   // Pyodide WebAssembly Real CPython Engine States
   const [pyodideReady, setPyodideReady] = useState<boolean>(false);
   const pyodideRef = useRef<any>(null);
@@ -571,6 +580,91 @@ export default function PythonAscensionPage() {
     setShowNamePromptModal(false);
   };
 
+  // Fetch live clans from backend API
+  const fetchClans = async () => {
+    try {
+      const res = await fetch("/api/python/clan");
+      const data = await res.json();
+      if (data.success) setLiveClansList(data.clans || []);
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    fetchClans();
+  }, [activeTab]);
+
+  // Create Clan Handler
+  const handleUserCreateClan = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newClanNameInput.trim()) return;
+
+    try {
+      const res = await fetch("/api/python/clan", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "create",
+          name: newClanNameInput.trim(),
+          creatorName: activeHunterName,
+          description: newClanDescInput.trim()
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        playSound("levelUp");
+        setState((prev) => ({
+          ...prev,
+          joinedClanCode: data.clan.code,
+          joinedClanName: data.clan.name
+        }));
+        setClanNoticeMsg(`✅ Clan Created! Your Clan Code: ${data.clan.code}`);
+        setNewClanNameInput("");
+        setNewClanDescInput("");
+        setShowCreateClanModal(false);
+        fetchClans();
+      } else {
+        setClanNoticeMsg(`❌ Error: ${data.error}`);
+      }
+    } catch (err: any) {
+      setClanNoticeMsg(`❌ Failed: ${err.message}`);
+    }
+  };
+
+  // Join Clan Handler
+  const handleUserJoinClan = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!joinClanCodeInput.trim()) return;
+
+    try {
+      const res = await fetch("/api/python/clan", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "join",
+          code: joinClanCodeInput.trim().toUpperCase(),
+          studentName: activeHunterName
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        playSound("levelUp");
+        setState((prev) => ({
+          ...prev,
+          joinedClanCode: data.clan.code,
+          joinedClanName: data.clan.name
+        }));
+        setClanNoticeMsg(`✅ Joined ${data.clan.name} (${data.clan.code})!`);
+        setJoinClanCodeInput("");
+        setShowJoinClanModal(false);
+        fetchClans();
+      } else {
+        setClanNoticeMsg(`❌ Error: ${data.error}`);
+      }
+    } catch (err: any) {
+      setClanNoticeMsg(`❌ Failed: ${err.message}`);
+    }
+  };
+
   // Load state from local storage on client mount
   useEffect(() => {
     try {
@@ -600,6 +694,30 @@ export default function PythonAscensionPage() {
       console.error("Failed to save state", e);
     }
   }, [state]);
+
+  // Sync live student heartbeat telemetry to backend API (for Admin 100+ student tracking)
+  useEffect(() => {
+    if (activeHunterName) {
+      try {
+        fetch("/api/python/telemetry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: `student-${activeHunterName}`,
+            name: activeHunterName,
+            xp: state.xp,
+            rank: currentRank.rank,
+            level: currentRank.level,
+            completedDungeons: state.completedDungeons,
+            currentTask: activeDungeon ? `${activeDungeon.dungeonName} (${dungeonMode})` : "System Dashboard",
+            inPenaltyZone,
+            clanCode: state.joinedClanCode || "",
+            clanName: state.joinedClanName || ""
+          })
+        }).catch(() => {});
+      } catch (e) {}
+    }
+  }, [state, activeHunterName, inPenaltyZone, activeDungeon, dungeonMode, currentRank]);
 
   // Derived Hunter Statistics
   const dungeonsClearedCount = state.completedDungeons.length;
@@ -1300,6 +1418,89 @@ except Exception as e:
         {/* Tab Content: Hunter Guilds & Global Leaderboard */}
         {activeTab === "guilds" && (
           <div className="space-y-8">
+            {/* Clan Competitions & Code System Card */}
+            <Card className="bg-slate-900/90 border-2 border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.2)] backdrop-blur-md">
+              <CardHeader className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                  <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-amber-400" /> Clan Competitions & Custom Clan Codes
+                  </CardTitle>
+                  <CardDescription className="text-xs text-slate-400">
+                    Create or join custom student Clans using unique Clan Codes (`CLAN-XXXX`) to compete in live XP battles.
+                  </CardDescription>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <Button
+                    onClick={() => setShowCreateClanModal(true)}
+                    className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs gap-1.5 rounded-xl shadow-lg shadow-purple-600/30"
+                  >
+                    <PlusCircle className="w-4 h-4" /> Create Custom Clan
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowJoinClanModal(true)}
+                    className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-950 font-bold text-xs gap-1.5 rounded-xl"
+                  >
+                    <KeyRound className="w-4 h-4 text-cyan-400" /> Join via Clan Code
+                  </Button>
+
+                  <Link href="/python/admin">
+                    <Button variant="ghost" className="text-xs font-mono text-slate-400 hover:text-cyan-300 gap-1 rounded-xl">
+                      <Lock className="w-3.5 h-3.5" /> Admin Terminal
+                    </Button>
+                  </Link>
+                </div>
+              </CardHeader>
+
+              <CardContent className="space-y-4">
+                {state.joinedClanCode && (
+                  <div className="p-4 rounded-2xl bg-purple-950/70 border border-purple-500/50 flex flex-wrap items-center justify-between gap-3 shadow-inner">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-slate-950 border border-purple-500/40 flex items-center justify-center text-xl">
+                        🛡️
+                      </div>
+                      <div>
+                        <div className="text-xs font-mono text-purple-300 font-bold">YOUR ACTIVE CLAN AFFILIATION</div>
+                        <div className="text-base font-black text-white">{state.joinedClanName}</div>
+                      </div>
+                    </div>
+                    <Badge className="bg-amber-400 text-slate-950 font-black font-mono text-xs px-3 py-1">
+                      CLAN CODE: {state.joinedClanCode}
+                    </Badge>
+                  </div>
+                )}
+
+                {clanNoticeMsg && (
+                  <div className="p-3 rounded-xl bg-slate-950 border border-cyan-500/40 text-cyan-300 text-xs font-mono">
+                    {clanNoticeMsg}
+                  </div>
+                )}
+
+                {/* Live Clans List */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                  {liveClansList.map((clan, idx) => (
+                    <div key={clan.code} className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2 hover:border-purple-500/40 transition-all">
+                      <div className="flex items-center justify-between">
+                        <div className="font-bold text-white text-sm flex items-center gap-2">
+                          <span className="text-amber-400 font-mono">#{idx + 1}</span> {clan.name}
+                        </div>
+                        <Badge variant="outline" className="text-[10px] font-mono text-purple-300 border-purple-500/40">
+                          {clan.code}
+                        </Badge>
+                      </div>
+                      <p className="text-xs text-slate-400">{clan.description}</p>
+                      <div className="flex items-center justify-between text-[11px] font-mono pt-1 text-slate-400">
+                        <span>Creator: {clan.creatorName}</span>
+                        <span className="text-amber-400 font-bold">{clan.totalXp?.toLocaleString() || 0} XP</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Guild Selection Section */}
             <Card className="bg-slate-900/90 border-slate-800 backdrop-blur-md">
               <CardHeader>
