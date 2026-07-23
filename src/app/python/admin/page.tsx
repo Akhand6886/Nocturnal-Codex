@@ -559,9 +559,24 @@ export default function PythonAdminPage() {
                           <div className="text-[10px] text-slate-400 font-mono">Leader: {clan.creatorName}</div>
                         </div>
                       </div>
-                      <Badge className="bg-purple-950 text-purple-300 border border-purple-500/40 font-mono text-xs px-2.5 py-1">
-                        CODE: {clan.code}
-                      </Badge>
+                      <div className="flex items-center gap-1.5">
+                        <Badge className="bg-purple-950 text-purple-300 border border-purple-500/40 font-mono text-xs px-2.5 py-1">
+                          CODE: {clan.code}
+                        </Badge>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          onClick={() => {
+                            if (navigator.clipboard) {
+                              navigator.clipboard.writeText(clan.code);
+                            }
+                          }}
+                          className="h-6 px-2 text-[10px] font-mono text-slate-400 hover:text-cyan-300"
+                          title="Copy Clan Code to Clipboard"
+                        >
+                          📋 Copy
+                        </Button>
+                      </div>
                     </div>
 
                     <p className="text-xs text-slate-400 leading-relaxed">{clan.description}</p>
