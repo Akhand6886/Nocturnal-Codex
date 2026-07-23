@@ -1466,32 +1466,32 @@ except Exception as e:
         {/* Tab Content: Hunter Guilds & Global Leaderboard */}
         {activeTab === "guilds" && (
           <div className="space-y-8">
-            {/* Clan Competitions & Code System Card */}
+            {/* Guild Competitions, Custom Codes & Raid Card */}
             <Card className="bg-slate-900/90 border-2 border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.2)] backdrop-blur-md">
               <CardHeader className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div>
                   <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-amber-400" /> Clan Competitions & Custom Clan Codes
+                    <Trophy className="w-5 h-5 text-amber-400" /> Guild Competitions & Custom Guild Codes
                   </CardTitle>
                   <CardDescription className="text-xs text-slate-400">
-                    Create or join custom student Clans using unique Clan Codes (`CLAN-XXXX`) to compete in live XP battles.
+                    Create or join custom student Guilds using unique Guild Codes (`GUILD-XXXX`) to compete in live XP battles and Red Gate Guild Raids.
                   </CardDescription>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
                   <Button
-                    onClick={() => setShowCreateClanModal(true)}
+                    onClick={() => setShowCreateGuildModal(true)}
                     className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs gap-1.5 rounded-xl shadow-lg shadow-purple-600/30"
                   >
-                    <PlusCircle className="w-4 h-4" /> Create Custom Clan
+                    <PlusCircle className="w-4 h-4" /> Create Custom Guild
                   </Button>
 
                   <Button
                     variant="outline"
-                    onClick={() => setShowJoinClanModal(true)}
+                    onClick={() => setShowJoinGuildModal(true)}
                     className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-950 font-bold text-xs gap-1.5 rounded-xl"
                   >
-                    <KeyRound className="w-4 h-4 text-cyan-400" /> Join via Clan Code
+                    <KeyRound className="w-4 h-4 text-cyan-400" /> Join via Guild Code
                   </Button>
 
                   <Link href="/python/admin">
@@ -1510,38 +1510,48 @@ except Exception as e:
                         🛡️
                       </div>
                       <div>
-                        <div className="text-xs font-mono text-purple-300 font-bold">YOUR ACTIVE CLAN AFFILIATION</div>
+                        <div className="text-xs font-mono text-purple-300 font-bold">YOUR ACTIVE GUILD AFFILIATION</div>
                         <div className="text-base font-black text-white">{state.joinedClanName}</div>
                       </div>
                     </div>
-                    <Badge className="bg-amber-400 text-slate-950 font-black font-mono text-xs px-3 py-1">
-                      CLAN CODE: {state.joinedClanCode}
-                    </Badge>
+
+                    <div className="flex items-center gap-3">
+                      <Badge className="bg-amber-400 text-slate-950 font-black font-mono text-xs px-3 py-1">
+                        GUILD CODE: {state.joinedClanCode}
+                      </Badge>
+
+                      <Button
+                        onClick={() => setShowGuildRaidModal(true)}
+                        className="bg-red-600 hover:bg-red-500 text-white font-bold text-xs gap-1.5 rounded-xl shadow-lg shadow-red-600/30 animate-pulse"
+                      >
+                        <Sword className="w-4 h-4" /> Ready for Guild Raid! ⚔️
+                      </Button>
+                    </div>
                   </div>
                 )}
 
-                {clanNoticeMsg && (
+                {guildNoticeMsg && (
                   <div className="p-3 rounded-xl bg-slate-950 border border-cyan-500/40 text-cyan-300 text-xs font-mono">
-                    {clanNoticeMsg}
+                    {guildNoticeMsg}
                   </div>
                 )}
 
-                {/* Live Clans List */}
+                {/* Live Guilds List */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                  {liveClansList.map((clan, idx) => (
-                    <div key={clan.code} className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2 hover:border-purple-500/40 transition-all">
+                  {liveGuildsList.map((guild, idx) => (
+                    <div key={guild.code} className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2 hover:border-purple-500/40 transition-all">
                       <div className="flex items-center justify-between">
                         <div className="font-bold text-white text-sm flex items-center gap-2">
-                          <span className="text-amber-400 font-mono">#{idx + 1}</span> {clan.name}
+                          <span className="text-amber-400 font-mono">#{idx + 1}</span> {guild.name}
                         </div>
                         <Badge variant="outline" className="text-[10px] font-mono text-purple-300 border-purple-500/40">
-                          {clan.code}
+                          {guild.code}
                         </Badge>
                       </div>
-                      <p className="text-xs text-slate-400">{clan.description}</p>
+                      <p className="text-xs text-slate-400">{guild.description}</p>
                       <div className="flex items-center justify-between text-[11px] font-mono pt-1 text-slate-400">
-                        <span>Creator: {clan.creatorName}</span>
-                        <span className="text-amber-400 font-bold">{clan.totalXp?.toLocaleString() || 0} XP</span>
+                        <span>Leader: {guild.creatorName}</span>
+                        <span className="text-amber-400 font-bold">{guild.totalXp?.toLocaleString() || 0} XP</span>
                       </div>
                     </div>
                   ))}
@@ -2565,37 +2575,37 @@ except Exception as e:
         </div>
       )}
 
-      {/* Create Clan Modal Overlay */}
-      {showCreateClanModal && (
+      {/* Create Guild Modal Overlay */}
+      {showCreateGuildModal && (
         <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
           <div className="bg-slate-900 border-2 border-purple-500/60 shadow-[0_0_50px_rgba(168,85,247,0.4)] rounded-3xl max-w-md w-full p-6 space-y-5 relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm font-bold text-purple-300 font-mono">
-                <PlusCircle className="w-5 h-5 text-purple-400" /> CREATE NEW STUDENT CLAN
+                <PlusCircle className="w-5 h-5 text-purple-400" /> CREATE NEW STUDENT GUILD
               </div>
-              <Button size="sm" variant="ghost" onClick={() => setShowCreateClanModal(false)} className="text-slate-400 hover:text-white">✕</Button>
+              <Button size="sm" variant="ghost" onClick={() => setShowCreateGuildModal(false)} className="text-slate-400 hover:text-white">✕</Button>
             </div>
 
-            <form onSubmit={handleUserCreateClan} className="space-y-4 font-mono text-xs">
+            <form onSubmit={handleUserCreateGuild} className="space-y-4 font-mono text-xs">
               <div className="space-y-1">
-                <label className="text-slate-300 font-bold block">CLAN NAME:</label>
+                <label className="text-slate-300 font-bold block">GUILD NAME:</label>
                 <input
                   type="text"
                   required
-                  value={newClanNameInput}
-                  onChange={(e) => setNewClanNameInput(e.target.value)}
-                  placeholder="e.g. Shadow Vanguard"
+                  value={newGuildNameInput}
+                  onChange={(e) => setNewGuildNameInput(e.target.value)}
+                  placeholder="e.g. Shadow Vanguard Guild"
                   className="w-full font-mono text-sm px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-purple-500"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-slate-300 font-bold block">CLAN DESCRIPTION:</label>
+                <label className="text-slate-300 font-bold block">GUILD DESCRIPTION:</label>
                 <textarea
                   rows={3}
-                  value={newClanDescInput}
-                  onChange={(e) => setNewClanDescInput(e.target.value)}
-                  placeholder="Describe your clan's goals & competition style..."
+                  value={newGuildDescInput}
+                  onChange={(e) => setNewGuildDescInput(e.target.value)}
+                  placeholder="Describe your guild's goals & competition style..."
                   className="w-full font-mono text-xs px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 focus:outline-none focus:border-purple-500 resize-none"
                 />
               </div>
@@ -2608,34 +2618,34 @@ except Exception as e:
                 type="submit"
                 className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm py-3 rounded-xl shadow-lg shadow-purple-600/30"
               >
-                🚀 Generate Clan & Code
+                🚀 Generate Guild & Code
               </Button>
             </form>
           </div>
         </div>
       )}
 
-      {/* Join Clan via Code Modal Overlay */}
-      {showJoinClanModal && (
+      {/* Join Guild via Code Modal Overlay */}
+      {showJoinGuildModal && (
         <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
           <div className="bg-slate-900 border-2 border-cyan-500/60 shadow-[0_0_50px_rgba(6,182,212,0.4)] rounded-3xl max-w-md w-full p-6 space-y-5 relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm font-bold text-cyan-300 font-mono">
-                <KeyRound className="w-5 h-5 text-cyan-400" /> JOIN CLAN VIA CLAN CODE
+                <KeyRound className="w-5 h-5 text-cyan-400" /> JOIN GUILD VIA GUILD CODE
               </div>
-              <Button size="sm" variant="ghost" onClick={() => setShowJoinClanModal(false)} className="text-slate-400 hover:text-white">✕</Button>
+              <Button size="sm" variant="ghost" onClick={() => setShowJoinGuildModal(false)} className="text-slate-400 hover:text-white">✕</Button>
             </div>
 
-            <form onSubmit={handleUserJoinClan} className="space-y-4 font-mono text-xs">
+            <form onSubmit={handleUserJoinGuild} className="space-y-4 font-mono text-xs">
               <div className="space-y-1">
-                <label className="text-cyan-300 font-bold block">ENTER 6-CHARACTER CLAN CODE:</label>
+                <label className="text-cyan-300 font-bold block">ENTER 6-CHARACTER GUILD CODE:</label>
                 <input
                   type="text"
                   required
                   autoFocus
-                  value={joinClanCodeInput}
-                  onChange={(e) => setJoinClanCodeInput(e.target.value.toUpperCase())}
-                  placeholder="e.g. SHADOW-001, CLAN-8821"
+                  value={joinGuildCodeInput}
+                  onChange={(e) => setJoinGuildCodeInput(e.target.value.toUpperCase())}
+                  placeholder="e.g. GUILD-AHJIN, GUILD-8821"
                   className="w-full font-mono text-center tracking-widest text-lg font-black px-4 py-3 rounded-xl bg-slate-950 border-2 border-cyan-500/50 text-white focus:outline-none focus:border-cyan-400"
                 />
               </div>
@@ -2648,9 +2658,78 @@ except Exception as e:
                 type="submit"
                 className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-sm py-3 rounded-xl shadow-lg shadow-cyan-500/30"
               >
-                ⚔️ Verify Code & Join Clan
+                ⚔️ Verify Code & Join Guild
               </Button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Ready for Guild Raid Coding Task Modal Overlay */}
+      {showGuildRaidModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-2xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
+          <div className="bg-slate-900 border-2 border-red-500/80 shadow-[0_0_80px_rgba(239,68,68,0.5)] rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-6 relative overflow-hidden">
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-red-600/20 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-2xl bg-red-950/80 border border-red-500/60 text-red-400">
+                  <Sword className="w-6 h-6 animate-pulse" />
+                </div>
+                <div>
+                  <Badge className="bg-red-950 text-red-300 border border-red-500/50 font-mono text-[10px] tracking-widest">
+                    RED GATE GUILD RAID ENGAGED
+                  </Badge>
+                  <h3 className="text-xl md:text-2xl font-black text-white tracking-tight">
+                    READY FOR GUILD RAID! ⚔️
+                  </h3>
+                </div>
+              </div>
+              <Button size="sm" variant="ghost" onClick={() => setShowGuildRaidModal(false)} className="text-slate-400 hover:text-white">✕</Button>
+            </div>
+
+            <div className="space-y-3 font-mono text-xs">
+              <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 leading-relaxed">
+                <p className="font-bold text-amber-300 mb-1">
+                  Guild: {state.joinedClanName || "Ahjin Shadow Army Guild"} ({state.joinedClanCode || "GUILD-AHJIN"})
+                </p>
+                Attention Hunter <strong className="text-cyan-300">{activeHunterName}</strong>! Your Guild has entered a Red Gate Raid! Execute your Guild Raid Python Spell below to defeat the Red Gate Boss Anomaly and claim <strong className="text-amber-400">+1,000 Guild Raid XP</strong> for your team!
+              </div>
+
+              {/* Raid Code Editor */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between text-slate-400 text-[11px]">
+                  <span>Guild Raid Python Code Editor</span>
+                  <span className="text-emerald-400 font-bold">Target: sum() & ARISE VICTORY</span>
+                </div>
+                <textarea
+                  value={raidCode}
+                  onChange={(e) => setRaidCode(e.target.value)}
+                  rows={8}
+                  className="w-full font-mono text-xs p-3.5 rounded-xl bg-slate-950 border border-red-500/40 text-amber-300 focus:outline-none focus:border-red-400 resize-none shadow-inner"
+                />
+              </div>
+
+              {/* Terminal Output */}
+              {raidOutput && (
+                <pre className="w-full p-3 rounded-xl bg-black border border-slate-800 text-xs font-mono whitespace-pre-wrap text-slate-200">
+                  {raidOutput}
+                </pre>
+              )}
+            </div>
+
+            <div className="flex items-center justify-between gap-3 pt-2">
+              <Button variant="ghost" onClick={() => setShowGuildRaidModal(false)} className="text-xs text-slate-400 hover:text-white">
+                Dismiss Raid
+              </Button>
+
+              <Button
+                onClick={handleRunRaidCode}
+                className="bg-gradient-to-r from-red-600 via-amber-500 to-red-500 hover:from-red-500 hover:to-amber-400 text-slate-950 font-black text-sm px-6 py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:scale-[1.02]"
+              >
+                ⚔️ EXECUTE GUILD RAID SPELL (+1000 XP)
+              </Button>
+            </div>
           </div>
         </div>
       )}
