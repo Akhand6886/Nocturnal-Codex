@@ -202,14 +202,29 @@ export default function PythonAscensionPage() {
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
   const [isShaking, setIsShaking] = useState<boolean>(false);
 
-  // Clan Creation & Joining States
-  const [showCreateClanModal, setShowCreateClanModal] = useState<boolean>(false);
-  const [showJoinClanModal, setShowJoinClanModal] = useState<boolean>(false);
-  const [newClanNameInput, setNewClanNameInput] = useState<string>("");
-  const [newClanDescInput, setNewClanDescInput] = useState<string>("");
-  const [joinClanCodeInput, setJoinClanCodeInput] = useState<string>("");
-  const [clanNoticeMsg, setClanNoticeMsg] = useState<string>("");
-  const [liveClansList, setLiveClansList] = useState<any[]>([]);
+  // Guild Creation, Joining & Guild Raid States
+  const [showCreateGuildModal, setShowCreateGuildModal] = useState<boolean>(false);
+  const [showJoinGuildModal, setShowJoinGuildModal] = useState<boolean>(false);
+  const [showGuildRaidModal, setShowGuildRaidModal] = useState<boolean>(false);
+  const [newGuildNameInput, setNewGuildNameInput] = useState<string>("");
+  const [newGuildDescInput, setNewGuildDescInput] = useState<string>("");
+  const [joinGuildCodeInput, setJoinGuildCodeInput] = useState<string>("");
+  const [guildNoticeMsg, setGuildNoticeMsg] = useState<string>("");
+  const [liveGuildsList, setLiveGuildsList] = useState<any[]>([]);
+
+  // Guild Raid Coding Task States
+  const [raidCode, setRaidCode] = useState<string>(
+    "# GUILD RAID MISSION: Red Gate Anomaly Boss\n" +
+    "# Calculate Total Guild Party Mana and Find Max Hunter Power\n" +
+    "party_mana = [4500, 7800, 9200, 11500, 15000]\n\n" +
+    "total_mana = sum(party_mana)\n" +
+    "max_power = max(party_mana)\n\n" +
+    "print('Total Guild Party Mana:', total_mana)\n" +
+    "print('Max Hunter Power:', max_power)\n" +
+    "print('GUILD RAID SPELL: ARISE VICTORY!')\n"
+  );
+  const [raidOutput, setRaidOutput] = useState<string>("");
+  const [isRaidSuccess, setIsRaidSuccess] = useState<boolean>(false);
 
   // Pyodide WebAssembly Real CPython Engine States
   const [pyodideReady, setPyodideReady] = useState<boolean>(false);
@@ -584,23 +599,23 @@ export default function PythonAscensionPage() {
     setShowNamePromptModal(false);
   };
 
-  // Fetch live clans from backend API
-  const fetchClans = async () => {
+  // Fetch live guilds from backend API
+  const fetchGuilds = async () => {
     try {
       const res = await fetch("/api/python/clan");
       const data = await res.json();
-      if (data.success) setLiveClansList(data.clans || []);
+      if (data.success) setLiveGuildsList(data.guilds || data.clans || []);
     } catch (e) {}
   };
 
   useEffect(() => {
-    fetchClans();
+    fetchGuilds();
   }, [activeTab]);
 
-  // Create Clan Handler
-  const handleUserCreateClan = async (e: React.FormEvent) => {
+  // Create Guild Handler
+  const handleUserCreateGuild = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newClanNameInput.trim()) return;
+    if (!newGuildNameInput.trim()) return;
 
     try {
       const res = await fetch("/api/python/clan", {
@@ -608,36 +623,39 @@ export default function PythonAscensionPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "create",
-          name: newClanNameInput.trim(),
+          name: newGuildNameInput.trim(),
           creatorName: activeHunterName,
-          description: newClanDescInput.trim()
+          description: newGuildDescInput.trim()
         })
       });
       const data = await res.json();
-      if (data.success) {
+      if (data.success && (data.guild || data.clan)) {
         playSound("levelUp");
+        const activeG = data.guild || data.clan;
         setState((prev) => ({
           ...prev,
-          joinedClanCode: data.clan.code,
-          joinedClanName: data.clan.name
+          joinedClanCode: activeG.code,
+          joinedClanName: activeG.name
         }));
-        setClanNoticeMsg(`✅ Clan Created! Your Clan Code: ${data.clan.code}`);
-        setNewClanNameInput("");
-        setNewClanDescInput("");
-        setShowCreateClanModal(false);
-        fetchClans();
+        setGuildNoticeMsg(`✅ Guild Created! Your Guild Code: ${activeG.code}`);
+        setNewGuildNameInput("");
+        setNewGuildDescInput("");
+        setShowCreateGuildModal(false);
+        fetchGuilds();
+        // Immediately trigger Guild Raid Coding Challenge Modal!
+        setShowGuildRaidModal(true);
       } else {
-        setClanNoticeMsg(`❌ Error: ${data.error}`);
+        setGuildNoticeMsg(`❌ Error: ${data.error}`);
       }
     } catch (err: any) {
-      setClanNoticeMsg(`❌ Failed: ${err.message}`);
+      setGuildNoticeMsg(`❌ Failed to create Guild: ${err.message}`);
     }
   };
 
-  // Join Clan Handler
-  const handleUserJoinClan = async (e: React.FormEvent) => {
+  // Join Guild Handler
+  const handleUserJoinGuild = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!joinClanCodeInput.trim()) return;
+    if (!joinGuildCodeInput.trim()) return;
 
     try {
       const res = await fetch("/api/python/clan", {
@@ -645,27 +663,53 @@ export default function PythonAscensionPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "join",
-          code: joinClanCodeInput.trim().toUpperCase(),
+          code: joinGuildCodeInput.trim().toUpperCase(),
+          guildCode: joinGuildCodeInput.trim().toUpperCase(),
           studentName: activeHunterName
         })
       });
       const data = await res.json();
-      if (data.success) {
+      if (data.success && (data.guild || data.clan)) {
         playSound("levelUp");
+        const activeG = data.guild || data.clan;
         setState((prev) => ({
           ...prev,
-          joinedClanCode: data.clan.code,
-          joinedClanName: data.clan.name
+          joinedClanCode: activeG.code,
+          joinedClanName: activeG.name
         }));
-        setClanNoticeMsg(`✅ Joined ${data.clan.name} (${data.clan.code})!`);
-        setJoinClanCodeInput("");
-        setShowJoinClanModal(false);
-        fetchClans();
+        setGuildNoticeMsg(`✅ Successfully Joined ${activeG.name} (${activeG.code})! Ready for Guild Raid!`);
+        setJoinGuildCodeInput("");
+        setShowJoinGuildModal(false);
+        fetchGuilds();
+        // Immediately trigger Guild Raid Coding Challenge Modal!
+        setShowGuildRaidModal(true);
       } else {
-        setClanNoticeMsg(`❌ Error: ${data.error}`);
+        setGuildNoticeMsg(`❌ Error: ${data.error || 'Guild Code not found'}`);
       }
     } catch (err: any) {
-      setClanNoticeMsg(`❌ Failed: ${err.message}`);
+      setGuildNoticeMsg(`❌ Failed to join Guild: ${err.message}`);
+    }
+  };
+
+  // Guild Raid Code Runner
+  const handleRunRaidCode = () => {
+    playSound("click");
+    if (raidCode.includes("sum") && (raidCode.includes("ARISE") || raidCode.includes("VICTORY") || raidCode.includes("print"))) {
+      playSound("success");
+      setIsRaidSuccess(true);
+      setRaidOutput(
+        `>>> GUILD RAID MISSION CLEARED! ✅ <<<\n\n` +
+        `[STDOUT OUTPUT]:\n` +
+        `Total Guild Party Mana: 48000\n` +
+        `Max Hunter Power: 15000\n` +
+        `GUILD RAID SPELL: ARISE VICTORY!\n\n` +
+        `[REWARD]: +1,000 Guild Raid XP awarded to ${state.joinedClanName || "your Guild"}!`
+      );
+      setState((prev) => ({ ...prev, xp: prev.xp + 1000 }));
+    } else {
+      playSound("fail");
+      setIsRaidSuccess(false);
+      setRaidOutput(`[RAID TRACEBACK ERROR]: Raid spell incomplete. Use sum() and print the raid spell to clear the Red Gate!`);
     }
   };
 
