@@ -71,6 +71,7 @@ interface HunterState {
   unlockedAchievements: string[];
   selectedGuild: string;
   selectedAura: "purple" | "gold" | "cyan";
+  hunterName?: string;
 }
 
 // Guild System Definitions
@@ -192,6 +193,8 @@ export default function PythonAscensionPage() {
   const [executionSuccess, setExecutionSuccess] = useState<boolean | null>(null);
   const [showRankUpModal, setShowRankUpModal] = useState<boolean>(false);
   const [showMonarchModal, setShowMonarchModal] = useState<boolean>(false);
+  const [showNamePromptModal, setShowNamePromptModal] = useState<boolean>(false);
+  const [hunterNameInput, setHunterNameInput] = useState<string>("");
   const [previousRank, setPreviousRank] = useState<string>("E-Class Programmer");
   const [isShaking, setIsShaking] = useState<boolean>(false);
 
@@ -360,7 +363,7 @@ export default function PythonAscensionPage() {
     let md = `# NOCTURNAL CODEX — OFFICIAL PYTHON LAB ASSIGNMENT REPORT\n`;
     md += `**Classification:** Restricted Academic Submission  \n`;
     md += `**Date:** ${dateStr}  \n`;
-    md += `**Hunter Name:** Akhanda (Hunter ID #041)  \n`;
+    md += `**Hunter Name:** ${activeHunterName} (Hunter ID #041)  \n`;
     md += `**System Rank:** ${rankInfo.rank} (Level ${rankInfo.level})  \n`;
     md += `**Total System Experience:** ${state.xp} XP  \n`;
     md += `**Dungeons Cleared:** ${state.completedDungeons.length} / 11  \n\n`;
@@ -558,6 +561,16 @@ export default function PythonAscensionPage() {
     setIsMuted((prev) => !prev);
   };
 
+  // Active Hunter Name helper
+  const activeHunterName = state.hunterName || "Akhanda";
+
+  const handleSaveHunterName = (customName?: string) => {
+    const nameToSave = (customName || hunterNameInput).trim() || "Akhanda";
+    playSound("levelUp");
+    setState((prev) => ({ ...prev, hunterName: nameToSave }));
+    setShowNamePromptModal(false);
+  };
+
   // Load state from local storage on client mount
   useEffect(() => {
     try {
@@ -565,9 +578,17 @@ export default function PythonAscensionPage() {
       if (saved) {
         const parsed = JSON.parse(saved);
         setState(parsed);
+        if (parsed.hunterName) {
+          setHunterNameInput(parsed.hunterName);
+        } else {
+          setShowNamePromptModal(true);
+        }
+      } else {
+        setShowNamePromptModal(true);
       }
     } catch (e) {
       console.error("Failed to load saved state", e);
+      setShowNamePromptModal(true);
     }
   }, []);
 
@@ -602,7 +623,7 @@ export default function PythonAscensionPage() {
   const getLeaderboardData = () => {
     const userEntry = {
       rank: dungeonsClearedCount >= 11 ? 1 : dungeonsClearedCount >= 10 ? 2 : 4,
-      name: "Akhanda (You)",
+      name: `${activeHunterName} (You)`,
       guild: userGuild.name,
       hunterRank: currentRank.rank,
       level: currentRank.level,
@@ -1106,7 +1127,16 @@ except Exception as e:
               </div>
               <div className="space-y-1">
                 <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-                  <span className="text-slate-300 font-bold">Akhanda (ID #041)</span>
+                  <span className="text-slate-300 font-bold">{activeHunterName} (ID #041)</span>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    onClick={() => { setHunterNameInput(activeHunterName); setShowNamePromptModal(true); }}
+                    className="h-5 w-5 text-slate-400 hover:text-cyan-300 transition-colors p-0 rounded-lg"
+                    title="Change Hunter Name"
+                  >
+                    <UserCheck className="w-3.5 h-3.5 text-cyan-400" />
+                  </Button>
                   <span className="text-slate-600">|</span>
                   <span className="text-cyan-300 font-black px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">Lv. {currentRank.level}</span>
                   <span className="text-slate-600">|</span>
@@ -2167,7 +2197,7 @@ except Exception as e:
                 ARISE! SHADOW MONARCH
               </h2>
               <p className="text-purple-200 text-sm max-w-md mx-auto leading-relaxed pt-1">
-                Humanity's E-Rank Hunter has transcended all 11 Dimensional Gates. <strong className="text-amber-400">Akhanda</strong> now holds absolute command over the Shadow Army!
+                Humanity's E-Rank Hunter has transcended all 11 Dimensional Gates. <strong className="text-amber-400">{activeHunterName}</strong> now holds absolute command over the Shadow Army!
               </p>
             </div>
 
@@ -2223,6 +2253,65 @@ except Exception as e:
             >
               Accept Rank Upgrade
             </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Hunter Registration / First-Time Name Prompt Modal */}
+      {showNamePromptModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in zoom-in duration-300">
+          <div className="bg-gradient-to-b from-slate-900 via-slate-950 to-purple-950 border-2 border-cyan-500/60 shadow-[0_0_60px_rgba(6,182,212,0.4)] rounded-3xl max-w-md w-full p-6 space-y-6 relative overflow-hidden">
+            <div className="absolute -top-16 -right-16 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="text-center space-y-3 relative z-10">
+              <div className="w-16 h-16 rounded-2xl bg-slate-950 border-2 border-cyan-500/50 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                <UserCheck className="w-8 h-8 text-cyan-400 animate-pulse" />
+              </div>
+              
+              <Badge className="bg-cyan-950 text-cyan-300 border border-cyan-500/40 font-mono text-[10px] uppercase tracking-widest px-3 py-1">
+                SYSTEM INITIALIZATION PROTOCOL
+              </Badge>
+
+              <h3 className="text-2xl font-black text-white tracking-tight">
+                REGISTER YOUR HUNTER IDENTITY
+              </h3>
+              
+              <p className="text-slate-300 text-xs leading-relaxed">
+                Welcome to <strong className="text-cyan-300">Nocturnal Codex</strong>! Enter your Hunter Name to register in the System Registry (Hunter ID #041).
+              </p>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSaveHunterName();
+              }}
+              className="space-y-4 relative z-10"
+            >
+              <div className="space-y-2">
+                <label className="text-xs font-mono text-cyan-300 font-bold flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" /> HUNTER CODENAME / NAME:
+                </label>
+                <input
+                  type="text"
+                  autoFocus
+                  value={hunterNameInput}
+                  onChange={(e) => setHunterNameInput(e.target.value)}
+                  placeholder="e.g. Akhanda, Jin-Woo, Shadow Monarch..."
+                  className="w-full font-mono text-sm px-4 py-3 rounded-xl bg-slate-950 border-2 border-cyan-500/50 text-white focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all"
+                />
+              </div>
+
+              <div className="flex items-center gap-2 pt-2">
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 hover:from-cyan-400 hover:to-emerald-300 text-slate-950 font-black text-sm py-3 rounded-xl shadow-lg shadow-cyan-500/30 transition-all hover:scale-[1.02]"
+                >
+                  🚀 CONFIRM HUNTER INITIALIZATION
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       )}
