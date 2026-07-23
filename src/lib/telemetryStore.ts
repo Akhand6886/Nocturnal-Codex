@@ -7,12 +7,14 @@ export interface StudentTelemetry {
   completedDungeons: number[];
   currentTask?: string;
   inPenaltyZone?: boolean;
-  clanCode?: string;
-  clanName?: string;
+  clanCode?: string; // Backwards compatible
+  clanName?: string; // Backwards compatible
+  guildCode?: string;
+  guildName?: string;
   lastActive: string;
 }
 
-export interface ClanData {
+export interface GuildData {
   code: string;
   name: string;
   creatorName: string;
@@ -23,15 +25,17 @@ export interface ClanData {
   members: string[];
 }
 
-// In-Memory Storage for 100+ Students and Clans (Persists across server lifetime)
-const studentStore = new Map<string, StudentTelemetry>();
-const clanStore = new Map<string, ClanData>();
+export type ClanData = GuildData; // Alias for compatibility
 
-// Pre-populate with default seed Clans if empty
-if (clanStore.size === 0) {
-  clanStore.set("SHADOW-001", {
-    code: "SHADOW-001",
-    name: "Ahjin Shadow Army",
+// In-Memory Storage for 100+ Students and Guilds
+const studentStore = new Map<string, StudentTelemetry>();
+const guildStore = new Map<string, GuildData>();
+
+// Pre-populate default seed Guilds if empty
+if (guildStore.size === 0) {
+  guildStore.set("GUILD-AHJIN", {
+    code: "GUILD-AHJIN",
+    name: "Ahjin Shadow Army Guild",
     creatorName: "Sung Jin-Woo",
     description: "Official Shadow Monarch Guild. Master of algorithm extractions.",
     createdAt: new Date().toISOString(),
@@ -40,9 +44,9 @@ if (clanStore.size === 0) {
     members: ["Sung Jin-Woo", "Igris", "Beru"]
   });
 
-  clanStore.set("TIGER-77", {
-    code: "TIGER-77",
-    name: "White Tiger Elite",
+  guildStore.set("GUILD-TIGER", {
+    code: "GUILD-TIGER",
+    name: "White Tiger Guild",
     creatorName: "Baek Yoon-Ho",
     description: "Brute-force optimization special forces.",
     createdAt: new Date().toISOString(),
@@ -52,7 +56,7 @@ if (clanStore.size === 0) {
   });
 }
 
-// Pre-populate with mock student telemetry to simulate 100+ active students out-of-the-box
+// Pre-populate mock student telemetry (100+ students)
 if (studentStore.size === 0) {
   const mockRanks = [
     { rank: "S-Class Programmer", level: 100, xp: 15000, cleared: [1,2,3,4,5,6,7,8,9,10] },
@@ -82,16 +86,25 @@ if (studentStore.size === 0) {
       completedDungeons: tier.cleared,
       currentTask: `Experiment ${Math.min(11, tier.cleared.length + 1)} Task ${((i % 4) + 1)}`,
       inPenaltyZone: isPenalty,
-      clanCode: i % 2 === 0 ? "SHADOW-001" : "TIGER-77",
-      clanName: i % 2 === 0 ? "Ahjin Shadow Army" : "White Tiger Elite",
+      clanCode: i % 2 === 0 ? "GUILD-AHJIN" : "GUILD-TIGER",
+      clanName: i % 2 === 0 ? "Ahjin Shadow Army Guild" : "White Tiger Guild",
+      guildCode: i % 2 === 0 ? "GUILD-AHJIN" : "GUILD-TIGER",
+      guildName: i % 2 === 0 ? "Ahjin Shadow Army Guild" : "White Tiger Guild",
       lastActive: new Date(Date.now() - (i * 120000)).toISOString()
     });
   }
 }
 
 export function saveStudentTelemetry(data: Omit<StudentTelemetry, "lastActive"> & { lastActive?: string }): StudentTelemetry {
+  const gCode = data.guildCode || data.clanCode || "";
+  const gName = data.guildName || data.clanName || "";
+
   const record: StudentTelemetry = {
     ...data,
+    clanCode: gCode,
+    clanName: gName,
+    guildCode: gCode,
+    guildName: gName,
     lastActive: data.lastActive || new Date().toISOString()
   };
   studentStore.set(data.id || data.name, record);
@@ -102,46 +115,73 @@ export function getAllStudentTelemetry(): StudentTelemetry[] {
   return Array.from(studentStore.values()).sort((a, b) => new Date(b.lastActive).getTime() - new Date(a.lastActive).getTime());
 }
 
-export function createClan(name: string, creatorName: string, description: string): ClanData {
+export function createClan(name: string, creatorName: string, description: string): GuildData {
+  return createGuild(name, creatorName, description);
+}
+
+export function createGuild(name: string, creatorName: string, description: string): GuildData {
   const randomNum = Math.floor(1000 + Math.random() * 9000);
-  const code = `CLAN-${randomNum}`;
-  const newClan: ClanData = {
+  const code = `GUILD-${randomNum}`;
+  const newGuild: GuildData = {
     code,
     name,
     creatorName,
-    description: description || "System Authorized Clan",
+    description: description || "System Authorized Guild",
     createdAt: new Date().toISOString(),
     membersCount: 1,
     totalXp: 0,
     members: [creatorName]
   };
-  clanStore.set(code, newClan);
-  return newClan;
+  guildStore.set(code, newGuild);
+  return newGuild;
 }
 
-export function joinClan(code: string, studentName: string): ClanData | null {
-  const clan = clanStore.get(code.toUpperCase().trim());
-  if (!clan) return null;
+export function joinClan(code: string, studentName: string): GuildData | null {
+  return joinGuild(code, studentName);
+}
 
-  if (!clan.members.includes(studentName)) {
-    clan.members.push(studentName);
-    clan.membersCount = clan.members.length;
+export function joinGuild(code: string, studentName: string): GuildData | null {
+  if (!code) return null;
+  const inputCode = code.toUpperCase().trim();
+
+  // Flexible matching (supports "GUILD-1234", "1234", "CLAN-1234")
+  let targetGuild: GuildData | undefined = guildStore.get(inputCode);
+
+  if (!targetGuild) {
+    const rawNumber = inputCode.replace(/^(GUILD-|CLAN-)/i, "");
+    for (const [key, value] of guildStore.entries()) {
+      const keyNumber = key.replace(/^(GUILD-|CLAN-)/i, "");
+      if (key === inputCode || keyNumber === rawNumber || value.name.toLowerCase() === inputCode.toLowerCase()) {
+        targetGuild = value;
+        break;
+      }
+    }
   }
-  return clan;
+
+  if (!targetGuild) return null;
+
+  if (!targetGuild.members.includes(studentName)) {
+    targetGuild.members.push(studentName);
+    targetGuild.membersCount = targetGuild.members.length;
+  }
+  return targetGuild;
 }
 
-export function getAllClans(): ClanData[] {
-  const clans = Array.from(clanStore.values());
+export function getAllClans(): GuildData[] {
+  return getAllGuilds();
+}
+
+export function getAllGuilds(): GuildData[] {
+  const guilds = Array.from(guildStore.values());
   const students = Array.from(studentStore.values());
 
-  // Calculate live total Clan XP dynamically
-  return clans.map((c) => {
-    const clanMembers = students.filter((s) => s.clanCode === c.code || c.members.includes(s.name));
-    const totalXp = clanMembers.reduce((sum, s) => sum + s.xp, 0);
+  return guilds.map((g) => {
+    const guildMembers = students.filter((s) => s.guildCode === g.code || s.clanCode === g.code || g.members.includes(s.name));
+    const totalXp = guildMembers.reduce((sum, s) => sum + s.xp, 0);
     return {
-      ...c,
-      totalXp: Math.max(c.totalXp, totalXp),
-      membersCount: Math.max(c.membersCount, clanMembers.length)
+      ...g,
+      totalXp: Math.max(g.totalXp, totalXp),
+      membersCount: Math.max(g.membersCount, guildMembers.length)
     };
   }).sort((a, b) => b.totalXp - a.totalXp);
 }
