@@ -149,12 +149,13 @@ export function joinGuild(code: string, studentName: string): GuildData | null {
 
   if (!targetGuild) {
     const rawNumber = inputCode.replace(/^(GUILD-|CLAN-)/i, "");
-    for (const [key, value] of guildStore.entries()) {
+    const allGuildEntries = Array.from(guildStore.entries());
+    const matched = allGuildEntries.find(([key, value]) => {
       const keyNumber = key.replace(/^(GUILD-|CLAN-)/i, "");
-      if (key === inputCode || keyNumber === rawNumber || value.name.toLowerCase() === inputCode.toLowerCase()) {
-        targetGuild = value;
-        break;
-      }
+      return key === inputCode || keyNumber === rawNumber || value.name.toLowerCase() === inputCode.toLowerCase();
+    });
+    if (matched) {
+      targetGuild = matched[1];
     }
   }
 
