@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { StudentTelemetry, ClanData } from "@/lib/telemetryStore";
+import { StudentTelemetry, ClanData, createGuild, getAllGuilds, getAllStudentTelemetry } from "@/lib/telemetryStore";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -59,25 +59,12 @@ export default function PythonAdminPage() {
     }
   }, []);
 
-  // Fetch telemetry and clans
-  const fetchLiveData = async () => {
+  // Static deployment: dashboard data is generated and maintained in the browser.
+  const fetchLiveData = () => {
     setIsLoading(true);
-    try {
-      const [resStudents, resClans] = await Promise.all([
-        fetch("/api/python/telemetry"),
-        fetch("/api/python/clan")
-      ]);
-
-      const dataStudents = await resStudents.json();
-      const dataClans = await resClans.json();
-
-      if (dataStudents.success) setStudents(dataStudents.students || []);
-      if (dataClans.success) setClans(dataClans.clans || []);
-    } catch (e) {
-      console.error("Failed to fetch admin data", e);
-    } finally {
-      setIsLoading(false);
-    }
+    setStudents(getAllStudentTelemetry());
+    setClans(getAllGuilds());
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -109,30 +96,12 @@ export default function PythonAdminPage() {
     e.preventDefault();
     if (!newClanName.trim() || !newClanLeader.trim()) return;
 
-    try {
-      const res = await fetch("/api/python/clan", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "create",
-          name: newClanName.trim(),
-          creatorName: newClanLeader.trim(),
-          description: newClanDesc.trim()
-        })
-      });
-      const data = await res.json();
-      if (data.success) {
-        setCreatedClanNotice(`✅ Clan Created! Unique Clan Code: ${data.clan.code}`);
-        setNewClanName("");
-        setNewClanLeader("");
-        setNewClanDesc("");
-        fetchLiveData();
-      } else {
-        setCreatedClanNotice(`❌ Error: ${data.error}`);
-      }
-    } catch (err: any) {
-      setCreatedClanNotice(`❌ Failed to create clan: ${err.message}`);
-    }
+    const clan = createGuild(newClanName.trim(), newClanLeader.trim(), newClanDesc.trim());
+    setCreatedClanNotice(`✅ Clan Created! Unique Clan Code: ${clan.code}`);
+    setNewClanName("");
+    setNewClanLeader("");
+    setNewClanDesc("");
+    fetchLiveData();
   };
 
   // Export CSV Report for 100+ Students
@@ -221,7 +190,7 @@ export default function PythonAdminPage() {
             </form>
 
             <div className="mt-6 text-center">
-              <Link href="/python" className="text-xs font-mono text-slate-400 hover:text-cyan-400 flex items-center justify-center gap-1.5 transition-colors">
+              <Link href="/" className="text-xs font-mono text-slate-400 hover:text-cyan-400 flex items-center justify-center gap-1.5 transition-colors">
                 <ArrowLeft className="w-3.5 h-3.5" /> Return to Python Ascension Page
               </Link>
             </div>

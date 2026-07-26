@@ -1084,7 +1084,7 @@ export const DUNGEONS: Dungeon[] = [
     "expectedKeywordOrOutput": "SHADOW MONARCH CLASS",
     "solutionHint": "Use print(monarch.arise()) to invoke the Shadow Extraction spell.",
     "theoryNotes": [
-      "The Shadow Monarch Class is the highest evolutionary rank in the Nocturnal Codex System.",
+      "The Shadow Monarch Class is the highest evolutionary rank in The System: Python Ascension Protocol.",
       "Shadow Extraction: Converts defeated anomalies into loyal shadow soldiers.",
       "Level 999 unlocks total command over digital dungeons and infinite system mana."
     ],
