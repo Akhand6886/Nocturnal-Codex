@@ -13,14 +13,13 @@ import { RelatedArticleCard, type RelatedArticle } from '@/components/content/re
 import { fetchThinkTankArticles, fetchThinkTankArticleBySlug, fetchBlogPosts } from "@/lib/contentful";
 import { ContentfulRichTextRenderer } from "@/components/contentful/rich-text-renderer";
 import { richTextToPlainText } from "@/lib/utils";
-import { draftMode } from 'next/headers';
 export async function generateStaticParams() {
   if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
     console.warn("Contentful env-vars missing at build-time – ISR paths for think tank articles will not be generated.");
-    return [];
+    return [{ slug: '__no-content__' }];
   }
   const articles = await fetchThinkTankArticles({ limit: 50 });
-  if (!articles) return [];
+  if (!articles.length) return [{ slug: '__no-content__' }];
   return articles.map((article) => ({
     slug: article.slug,
   }));
@@ -34,8 +33,7 @@ interface ThinkTankArticlePageProps {
 // Page component - no await on params
 export default async function ThinkTankArticlePage({ params }: ThinkTankArticlePageProps) {
   const { slug } = await params;
-  const { isEnabled } = await draftMode();
-  const article = await fetchThinkTankArticleBySlug(slug, isEnabled);
+  const article = await fetchThinkTankArticleBySlug(slug);
 
   if (!article) {
     notFound();
@@ -184,8 +182,7 @@ export default async function ThinkTankArticlePage({ params }: ThinkTankArticleP
 // generateMetadata - no await on params
 export async function generateMetadata({ params }: ThinkTankArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { isEnabled } = await draftMode();
-  const article = await fetchThinkTankArticleBySlug(slug, isEnabled);
+  const article = await fetchThinkTankArticleBySlug(slug);
   if (!article) {
     return { title: "Article Not Found | Nocturnal Codex" };
   }
