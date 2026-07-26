@@ -11,13 +11,14 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
-  if (!posts) return [];
+  if (!posts.length) return [{ tagSlug: '__no-content__' }];
   const tags = posts.flatMap(post => post.tags || []);
   const uniqueTags = Array.from(new Set(tags.filter(Boolean)));
   
-  return uniqueTags.map((tag) => ({
+  const params = uniqueTags.map((tag) => ({
     tagSlug: encodeURIComponent(tag.toLowerCase()),
   }));
+  return params.length ? params : [{ tagSlug: '__no-content__' }];
 }
 
 // Corrected interface - params is a plain object
