@@ -5,7 +5,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { fetchBlogPosts, fetchBlogPostBySlug } from "@/lib/contentful";
 import { ContentfulRichTextRenderer } from "@/components/contentful/rich-text-renderer";
-import { draftMode } from 'next/headers';
 import { format } from 'date-fns';
 import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -22,10 +21,10 @@ interface PageProps {
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
     console.warn("Contentful env-vars missing at build-time – ISR paths for blog posts will not be generated.");
-    return [];
+    return [{ slug: '__no-content__' }];
   }
   const posts = await fetchBlogPosts({ limit: 50 }); 
-  if (!posts) return [];
+  if (!posts.length) return [{ slug: '__no-content__' }];
   
   return posts.map((post) => ({
     slug: post.slug,
@@ -35,8 +34,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 // Page component
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
-  const { isEnabled } = await draftMode();
-  const post = await fetchBlogPostBySlug(slug, isEnabled);
+  const post = await fetchBlogPostBySlug(slug);
   
   if (!post) {
     notFound();
@@ -117,8 +115,7 @@ export default async function PostPage({ params }: PageProps) {
 // generateMetadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { isEnabled } = await draftMode();
-  const post = await fetchBlogPostBySlug(slug, isEnabled);
+  const post = await fetchBlogPostBySlug(slug);
 
   if (!post) {
     return { 
