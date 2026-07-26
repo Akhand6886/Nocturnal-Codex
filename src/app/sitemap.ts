@@ -1,95 +1,13 @@
-
-import { MetadataRoute } from 'next';
-import { fetchBlogPosts, fetchThinkTankArticles } from '@/lib/contentful';
-import { getAllLanguages } from '@/lib/languages';
-import { getAllRoadmaps } from '@/lib/roadmaps';
+import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.NEXT_PUBLIC_VERCEL_URL) return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return 'http://localhost:3000';
-};
-
-const BASE_URL = getBaseUrl();
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = [
-    '/',
-    '/about',
-    '/blog',
-    '/contact',
-    '/tags',
-    '/categories',
-    '/think-tank',
-    '/languages',
-    '/roadmaps'
-  ];
-
-  const staticPages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${BASE_URL}${route}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: route === '/' ? 'daily' : 'weekly',
-    priority: route === '/' ? 1 : 0.8,
-  }));
-
-  const blogPostsData = await fetchBlogPosts() || [];
-  const blogPosts: MetadataRoute.Sitemap = blogPostsData.map((post) => ({
-    url: `${BASE_URL}${post.url}`,
-    lastModified: new Date(post.date).toISOString(),
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  return ['/', '/admin'].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: 0.7,
+    priority: route === '/' ? 1 : 0.4,
   }));
-
-  const thinkTankArticlesData = (await fetchThinkTankArticles()) || [];
-  const thinkTankArticles: MetadataRoute.Sitemap = thinkTankArticlesData.map((article) => ({
-    url: `${BASE_URL}${article.url}`,
-    lastModified: new Date(article.date).toISOString(),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }));
-
-  const allLanguages = getAllLanguages();
-  const languagePages: MetadataRoute.Sitemap = allLanguages.map(lang => ({
-      url: `${BASE_URL}/languages/${lang.slug}`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-  }));
-  
-  const allRoadmaps = getAllRoadmaps();
-  const roadmapPages: MetadataRoute.Sitemap = allRoadmaps.map(roadmap => ({
-      url: `${BASE_URL}/roadmaps/${roadmap.slug}`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-  }));
-
-  const uniqueTags = Array.from(new Set(blogPostsData.flatMap(post => post.tags || []).filter(Boolean)));
-  const tagDetailPages: MetadataRoute.Sitemap = uniqueTags.map((tag) => ({
-    url: `${BASE_URL}/tags/${encodeURIComponent(tag.toLowerCase())}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'weekly',
-    priority: 0.5,
-  }));
-
-  const uniqueCategories = Array.from(new Set(blogPostsData.map(post => post.category).filter(Boolean)));
-  const categoryDetailPages: MetadataRoute.Sitemap = uniqueCategories.map((category) => ({
-    url: `${BASE_URL}/categories/${encodeURIComponent(category.toLowerCase().replace(/\s+/g, '-'))}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'weekly',
-    priority: 0.5,
-  }));
-
-  return [
-    ...staticPages,
-    ...blogPosts,
-    ...thinkTankArticles,
-    ...languagePages,
-    ...roadmapPages,
-    ...tagDetailPages,
-    ...categoryDetailPages,
-  ];
 }
