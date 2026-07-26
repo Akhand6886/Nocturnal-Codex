@@ -17,13 +17,14 @@ const deslugifyCategory = (slug: string) => {
 
 export async function generateStaticParams() {
   const posts = await fetchBlogPosts();
-  if (!posts) return [];
+  if (!posts.length) return [{ categorySlug: '__no-content__' }];
   const categories = posts.map(post => post.category);
   const uniqueCategories = Array.from(new Set(categories.filter(Boolean)));
   
-  return uniqueCategories.map((category) => ({
+  const params = uniqueCategories.map((category) => ({
     categorySlug: slugifyCategory(category),
   }));
+  return params.length ? params : [{ categorySlug: '__no-content__' }];
 }
 
 // Corrected interface - params is a plain object
