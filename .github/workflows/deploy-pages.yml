@@ -33,8 +33,6 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
           NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.origin }}/${{ github.event.repository.name }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
         run: npm run pages:build
       - uses: actions/upload-pages-artifact@v3
         with:
