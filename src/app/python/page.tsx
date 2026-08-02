@@ -238,11 +238,11 @@ export default function PythonAscensionPage() {
   const [penaltyCode, setPenaltyCode] = useState<string>(PENALTY_CHALLENGES[0].initialCode);
   const [penaltyOutput, setPenaltyOutput] = useState<string>("");
 
-  // Audio & Music Engine States (Music ON by default)
-  const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [musicPlaying, setMusicPlaying] = useState<boolean>(true);
+  // Audio & Music Engine States (Disabled by user request)
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [musicPlaying, setMusicPlaying] = useState<boolean>(false);
   const [currentTrack, setCurrentTrack] = useState<number>(0);
-  const [volume, setVolume] = useState<number>(0.35);
+  const [volume, setVolume] = useState<number>(0);
 
   const audioCtxRef = useRef<AudioContext | null>(null);
   const audioElementRef = useRef<HTMLAudioElement | null>(null);
@@ -261,6 +261,23 @@ export default function PythonAscensionPage() {
       artist: "Solo Leveling Official Soundtrack"
     }
   ];
+
+  // Next track helper
+  const handleNextTrack = () => {
+    if (audioElementRef.current) {
+      audioElementRef.current.pause();
+      audioElementRef.current.currentTime = 0;
+    }
+    setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
+  };
+
+  // Solo Leveling MP3 Music Player Effect - Disabled for now
+  useEffect(() => {
+    const audio = audioElementRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.volume = 0;
+  }, [currentTrack, musicPlaying, isMuted, volume]);
 
   // Dynamically load Real Pyodide CPython WebAssembly Engine in Browser
   useEffect(() => {

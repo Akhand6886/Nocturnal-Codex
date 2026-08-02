@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createGuild, joinGuild, getAllGuilds } from "@/lib/telemetryStore";
 
+export const dynamic = "force-static";
+
 // GET /api/python/clan - List all Guilds & Competition leaderboards
 export async function GET() {
   try {

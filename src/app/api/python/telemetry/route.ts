@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { saveStudentTelemetry, getAllStudentTelemetry } from "@/lib/telemetryStore";
 
+export const dynamic = "force-static";
+
 // GET /api/python/telemetry - Fetch all 100+ student telemetry for Admin Dashboard
 export async function GET() {
   try {

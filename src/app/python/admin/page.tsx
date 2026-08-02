@@ -68,11 +68,15 @@ export default function PythonAdminPage() {
         fetch("/api/python/clan")
       ]);
 
-      const dataStudents = await resStudents.json();
-      const dataClans = await resClans.json();
+      if (resStudents.ok && resStudents.headers.get("content-type")?.includes("application/json")) {
+        const dataStudents = await resStudents.json();
+        if (dataStudents.success) setStudents(dataStudents.students || []);
+      }
 
-      if (dataStudents.success) setStudents(dataStudents.students || []);
-      if (dataClans.success) setClans(dataClans.clans || []);
+      if (resClans.ok && resClans.headers.get("content-type")?.includes("application/json")) {
+        const dataClans = await resClans.json();
+        if (dataClans.success) setClans(dataClans.clans || []);
+      }
     } catch (e) {
       console.error("Failed to fetch admin data", e);
     } finally {
