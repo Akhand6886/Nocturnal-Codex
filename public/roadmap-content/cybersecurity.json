@@ -8,55 +8,54 @@
         "y": 20
       },
       "data": {
-        "label": "Cybersecurity Specialist"
+        "label": "Cybersecurity & Hacking Path"
       }
     },
     {
-      "id": "net",
+      "id": "networking",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 100
       },
       "data": {
-        "label": "Networking Basics",
+        "label": "Networking & Protocols (TCP/IP, OSI, DNS)",
         "status": "recommended",
-        "description": "Master TCP/IP, DNS, HTTP/S, subnetting, firewalls, and how data travels across networks. This is the absolute foundation.",
+        "description": "Understand the 7 layers of the OSI model, TCP 3-way handshake, Wireshark packet analysis, subnetting, and HTTP/HTTPS encryption.",
+        "codeSnippet": "# Scapy Packet Inspection in Python\nfrom scapy.all import sniff\n\ndef packet_callback(packet):\n    if packet.haslayer('IP'):\n        print(f\"[+] IP Packet: {packet['IP'].src} -> {packet['IP'].dst}\")\n\nsniff(filter=\"ip\", prn=packet_callback, count=10)",
+        "prerequisites": ["Computer Science Fundamentals"],
         "resources": [
           {
-            "title": "Computer Networking Full Course",
-            "url": "https://www.youtube.com/watch?v=qiQR5rTSshw",
-            "type": "video"
-          },
-          {
-            "title": "Networking Fundamentals - Cisco",
-            "url": "https://www.netacad.com/courses/networking",
-            "type": "course"
+            "title": "Wireshark Packet Analysis User Guide",
+            "url": "https://www.wireshark.org/docs/",
+            "type": "docs"
           }
         ]
       }
     },
     {
-      "id": "linux",
+      "id": "web-security",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 200
       },
       "data": {
-        "label": "Linux Proficiency",
+        "label": "Web Security & OWASP Top 10",
         "status": "recommended",
-        "description": "Learn Linux command line, file permissions, process management, and shell scripting. Most security tools run on Linux.",
+        "description": "Identify and defend against SQL Injection (SQLi), Cross-Site Scripting (XSS), CSRF, SSRF, IDOR, and Broken Access Control.",
+        "codeSnippet": "-- Vulnerable SQL Code (SQL Injection Hazard)\nSELECT * FROM users WHERE username = 'admin' OR '1'='1' --';\n\n-- Secure Parameterized Query\nSELECT * FROM users WHERE username = $1 AND password_hash = $2;",
+        "prerequisites": ["Networking & Protocols"],
         "resources": [
           {
-            "title": "Linux Journey",
-            "url": "https://linuxjourney.com/",
-            "type": "course"
+            "title": "OWASP Top 10 Vulnerabilities Guide",
+            "url": "https://owasp.org/www-project-top-ten/",
+            "type": "docs"
           },
           {
-            "title": "OverTheWire Bandit",
-            "url": "https://overthewire.org/wargames/bandit/",
-            "type": "tool"
+            "title": "PortSwigger Web Security Academy",
+            "url": "https://portswigger.net/web-security",
+            "type": "course"
           }
         ]
       }
@@ -69,217 +68,37 @@
         "y": 300
       },
       "data": {
-        "label": "Cryptography",
+        "label": "Cryptography & PKI (AES, RSA, ECC)",
         "status": "recommended",
-        "description": "Understand symmetric/asymmetric encryption, hashing algorithms, digital signatures, TLS/SSL, and PKI infrastructure.",
+        "description": "Master symmetric encryption (AES-256-GCM), asymmetric encryption (RSA, Elliptic Curve), HMAC signatures, and digital certificate chains.",
+        "codeSnippet": "# AES-GCM Encryption in Python Cryptography\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\nimport os\n\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = os.urandom(12)\nciphertext = aesgcm.encrypt(nonce, b\"Secret Payload\", None)",
+        "prerequisites": ["Web Security"],
         "resources": [
           {
-            "title": "Crypto101 - Free Cryptography Book",
-            "url": "https://www.crypto101.io/",
-            "type": "docs"
-          },
-          {
-            "title": "Khan Academy - Cryptography",
-            "url": "https://www.khanacademy.org/computing/computer-science/cryptography",
-            "type": "course"
+            "title": "Practical Cryptography for Developers",
+            "url": "https://cryptobook.nakov.com/",
+            "type": "article"
           }
         ]
       }
     },
     {
-      "id": "web",
+      "id": "pentesting",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 400
       },
       "data": {
-        "label": "Web Security",
+        "label": "Penetration Testing & Red Teaming (Nmap, Metasploit)",
         "status": "recommended",
-        "description": "Learn OWASP Top 10 vulnerabilities: XSS, SQL injection, CSRF, SSRF, and how to find and fix them in web applications.",
+        "description": "Ethical hacking methodology: reconnaissance, scanning ports with Nmap, vulnerability assessment, exploitation, and post-exploitation reporting.",
+        "codeSnippet": "# Nmap Stealth SYN Port Scan\nnmap -sS -sV -O -p 1-65535 -T4 target_ip",
+        "prerequisites": ["Cryptography & PKI"],
         "resources": [
           {
-            "title": "OWASP Top Ten",
-            "url": "https://owasp.org/www-project-top-ten/",
-            "type": "article"
-          },
-          {
-            "title": "PortSwigger Web Security Academy",
-            "url": "https://portswigger.net/web-security",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "offensive",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 500
-      },
-      "data": {
-        "label": "Offensive Security",
-        "status": "recommended",
-        "description": "Learn penetration testing methodology, vulnerability scanning, exploitation frameworks (Metasploit), and CTF competitions.",
-        "resources": [
-          {
-            "title": "TryHackMe",
+            "title": "TryHackMe — Hands-On Cyber Security Training",
             "url": "https://tryhackme.com/",
-            "type": "course"
-          },
-          {
-            "title": "Hack The Box",
-            "url": "https://www.hackthebox.com/",
-            "type": "tool"
-          }
-        ]
-      }
-    },
-    {
-      "id": "defensive",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 600
-      },
-      "data": {
-        "label": "Defensive Security",
-        "description": "Learn SIEM, intrusion detection, incident response, log analysis, and security operations center (SOC) workflows.",
-        "resources": [
-          {
-            "title": "Blue Team Labs Online",
-            "url": "https://blueteamlabs.online/",
-            "type": "course"
-          },
-          {
-            "title": "SANS Reading Room",
-            "url": "https://www.sans.org/white-papers/",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "nmap",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 100
-      },
-      "data": {
-        "label": "Wireshark & Nmap",
-        "status": "recommended",
-        "description": "Network analysis tools: Nmap for network discovery and security auditing, Wireshark for deep packet analysis.",
-        "resources": [
-          {
-            "title": "Nmap Official Guide",
-            "url": "https://nmap.org/book/toc.html",
-            "type": "docs"
-          },
-          {
-            "title": "Wireshark User Guide",
-            "url": "https://www.wireshark.org/docs/wsug_html_chunked/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "kali",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 200
-      },
-      "data": {
-        "label": "Kali Linux",
-        "status": "recommended",
-        "description": "A Debian-derived Linux distribution designed for digital forensics and penetration testing.",
-        "resources": [
-          {
-            "title": "Kali Linux Documentation",
-            "url": "https://www.kali.org/docs/",
-            "type": "docs"
-          },
-          {
-            "title": "Kali Linux Revealed Course",
-            "url": "https://www.kali.org/courses/kali-linux-revealed/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "burp",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 400
-      },
-      "data": {
-        "label": "Burp Suite",
-        "status": "recommended",
-        "description": "An integrated platform for performing security testing of web applications, containing proxy, scanner, and repeater tools.",
-        "resources": [
-          {
-            "title": "Burp Suite Support & Tutorials",
-            "url": "https://portswigger.net/burp/documentation/desktop",
-            "type": "docs"
-          },
-          {
-            "title": "Web Security Academy by PortSwigger",
-            "url": "https://portswigger.net/web-security",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "metasploit",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 500
-      },
-      "data": {
-        "label": "Metasploit Framework",
-        "status": "recommended",
-        "description": "A computer security project that provides information about security vulnerabilities and aids in penetration testing.",
-        "resources": [
-          {
-            "title": "Metasploit Unleashed",
-            "url": "https://www.offensive-security.com/metasploit-unleashed/",
-            "type": "course"
-          },
-          {
-            "title": "Metasploit Documentation",
-            "url": "https://docs.metasploit.com/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "ctf",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 500
-      },
-      "data": {
-        "label": "CTF Competitions",
-        "status": "alternative",
-        "description": "Capture the Flag (CTF) competitions are gamified cybersecurity exercises where participants solve security challenges to find hidden flags.",
-        "resources": [
-          {
-            "title": "CTF101 Guide",
-            "url": "https://ctf101.org/",
-            "type": "article"
-          },
-          {
-            "title": "picoCTF - Free Cybersecurity Education",
-            "url": "https://picoctf.org/",
             "type": "course"
           }
         ]
@@ -287,81 +106,8 @@
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "net",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "net",
-      "target": "linux",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "linux",
-      "target": "crypto",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "crypto",
-      "target": "web",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "web",
-      "target": "offensive",
-      "type": "roadmap"
-    },
-    {
-      "id": "e6",
-      "source": "offensive",
-      "target": "defensive",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "net",
-      "target": "nmap",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "linux",
-      "target": "kali",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed3",
-      "source": "web",
-      "target": "burp",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed4",
-      "source": "offensive",
-      "target": "metasploit",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed5",
-      "source": "offensive",
-      "target": "ctf",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    }
+    { "id": "e-net-sec", "source": "networking", "target": "web-security" },
+    { "id": "e-sec-cry", "source": "web-security", "target": "crypto" },
+    { "id": "e-cry-pen", "source": "crypto", "target": "pentesting" }
   ]
 }
