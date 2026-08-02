@@ -8,7 +8,7 @@
         "y": 20
       },
       "data": {
-        "label": "Machine Learning Engineer"
+        "label": "Machine Learning & AI Path"
       }
     },
     {
@@ -19,340 +19,123 @@
         "y": 100
       },
       "data": {
-        "label": "Mathematics",
+        "label": "Math Foundations: Linear Algebra & Calculus",
         "status": "recommended",
-        "description": "Linear algebra, calculus, probability, and statistics are the foundation of ML algorithms.",
+        "description": "Master vectors, matrices, dot products, eigenvalues, partial derivatives, gradient descent optimization, and probability distributions.",
+        "codeSnippet": "# Matrix Multiplication & Vector Dot Product in Python\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\nC = np.dot(A, B)\nprint('Matrix Product:\\n', C)",
+        "prerequisites": ["Basic Algebra"],
         "resources": [
           {
-            "title": "Mathematics for Machine Learning",
-            "url": "https://mml-book.github.io/",
-            "type": "docs"
+            "title": "Khan Academy — Linear Algebra & Multivariable Calculus",
+            "url": "https://www.khanacademy.org/math/linear-algebra",
+            "type": "course"
+          },
+          {
+            "title": "3Blue1Brown — Essence of Linear Algebra",
+            "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+            "type": "video"
           }
         ]
       }
     },
     {
-      "id": "python",
+      "id": "python-data",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 200
       },
       "data": {
-        "label": "Python & Libraries",
+        "label": "Python Data Analysis (NumPy, Pandas, Matplotlib)",
         "status": "recommended",
-        "description": "Master Python and essential data science libraries: NumPy, Pandas, and Matplotlib.",
+        "description": "Data wrangling, cleaning missing values, DataFrame manipulation, statistical distributions, and exploratory data analysis (EDA).",
+        "codeSnippet": "import pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv('dataset.csv')\ndf_clean = df.dropna().query('score > 80')\nprint(df_clean.describe())",
+        "prerequisites": ["Math Foundations"],
         "resources": [
           {
-            "title": "NumPy Quickstart",
-            "url": "https://numpy.org/doc/stable/user/quickstart.html",
-            "type": "docs"
-          },
-          {
-            "title": "Pandas Getting Started",
-            "url": "https://pandas.pydata.org/docs/getting_started/index.html",
+            "title": "Pandas Official User Guide & API Reference",
+            "url": "https://pandas.pydata.org/docs/user_guide/index.html",
             "type": "docs"
           }
         ]
       }
     },
     {
-      "id": "ml",
+      "id": "scikit-learn",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 300
       },
       "data": {
-        "label": "Machine Learning Basics",
+        "label": "Classical Machine Learning (Scikit-Learn)",
         "status": "recommended",
-        "description": "Understand supervised and unsupervised learning, regression, classification, clustering, and model evaluation using Scikit-Learn.",
+        "description": "Supervised & Unsupervised algorithms: Linear/Logistic Regression, Decision Trees, Random Forests, SVMs, K-Means clustering, and cross-validation.",
+        "codeSnippet": "from sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\nmodel = RandomForestClassifier(n_estimators=100)\nmodel.fit(X_train, y_train)\nprint('Accuracy:', model.score(X_test, y_test))",
+        "prerequisites": ["Python Data Analysis"],
         "resources": [
           {
-            "title": "Scikit-Learn Tutorials",
-            "url": "https://scikit-learn.org/stable/tutorial/index.html",
+            "title": "Scikit-Learn Official User Guide",
+            "url": "https://scikit-learn.org/stable/user_guide.html",
             "type": "docs"
-          },
-          {
-            "title": "Machine Learning by Andrew Ng",
-            "url": "https://www.coursera.org/specializations/machine-learning-introduction",
-            "type": "course"
           }
         ]
       }
     },
     {
-      "id": "dl",
+      "id": "deep-learning",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 400
       },
       "data": {
-        "label": "Deep Learning",
+        "label": "Deep Learning & Neural Networks (PyTorch)",
         "status": "recommended",
-        "description": "Learn neural networks, backpropagation, CNNs for computer vision, and RNNs/Transformers for NLP.",
+        "description": "Build Multilayer Perceptrons (MLP), Convolutional Neural Networks (CNN) for vision, and Recurrent Neural Networks (RNN) using PyTorch tensors.",
+        "codeSnippet": "import torch\nimport torch.nn as nn\n\nclass SimpleMLP(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc = nn.Sequential(\n            nn.Linear(784, 128),\n            nn.ReLU(),\n            nn.Linear(128, 10)\n        )\n    def forward(self, x):\n        return self.fc(x)",
+        "prerequisites": ["Classical Machine Learning"],
         "resources": [
           {
-            "title": "Deep Learning Book",
-            "url": "https://www.deeplearningbook.org/",
+            "title": "PyTorch Official Tutorials & Documentation",
+            "url": "https://pytorch.org/tutorials/",
             "type": "docs"
           },
           {
-            "title": "Fast.ai Practical Deep Learning",
-            "url": "https://course.fast.ai/",
+            "title": "Fast.ai — Practical Deep Learning for Coders",
+            "url": "https://www.fast.ai/",
             "type": "course"
           }
         ]
       }
     },
     {
-      "id": "frameworks",
+      "id": "transformers",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 500
       },
       "data": {
-        "label": "ML Frameworks",
+        "label": "LLMs, Transformers & GenAI (HuggingFace)",
         "status": "recommended",
-        "description": "Get hands-on with popular deep learning frameworks like TensorFlow/Keras or PyTorch.",
+        "description": "Understand Self-Attention mechanisms, Transformers (BERT, GPT), fine-tuning with LoRA/PEFT, Retrieval-Augmented Generation (RAG), and vector databases.",
+        "codeSnippet": "from transformers import pipeline\n\npipe = pipeline(\"text-generation\", model=\"gpt2\")\nresult = pipe(\"The future of artificial intelligence is\", max_length=50)\nprint(result[0]['generated_text'])",
+        "prerequisites": ["Deep Learning & Neural Networks"],
         "resources": [
           {
-            "title": "PyTorch Tutorials",
-            "url": "https://pytorch.org/tutorials/",
+            "title": "Hugging Face Course & NLP Documentation",
+            "url": "https://huggingface.co/course/",
             "type": "docs"
-          },
-          {
-            "title": "TensorFlow Tutorials",
-            "url": "https://www.tensorflow.org/tutorials",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "deployment",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 600
-      },
-      "data": {
-        "label": "MLOps & Deployment",
-        "status": "recommended",
-        "description": "Learn how to deploy models into production using Docker, FastAPI, and cloud platforms.",
-        "resources": [
-          {
-            "title": "Machine Learning Engineering in Action",
-            "url": "https://www.manning.com/books/machine-learning-engineering-in-action",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "stats",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 100
-      },
-      "data": {
-        "label": "Statistics",
-        "status": "recommended",
-        "description": "The mathematical study of data collection, analysis, interpretation, explanation, and organization.",
-        "resources": [
-          {
-            "title": "Intro to Statistics - Udacity",
-            "url": "https://www.udacity.com/course/intro-to-statistics--st101",
-            "type": "course"
-          },
-          {
-            "title": "StatQuest with Josh Starmer",
-            "url": "https://statquest.org/",
-            "type": "video"
-          }
-        ]
-      }
-    },
-    {
-      "id": "linalg",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 100
-      },
-      "data": {
-        "label": "Linear Algebra",
-        "status": "recommended",
-        "description": "The branch of mathematics concerning linear equations, linear maps, and their representations in vector spaces and matrices.",
-        "resources": [
-          {
-            "title": "Essence of Linear Algebra - 3Blue1Brown",
-            "url": "https://www.3blue1brown.com/topics/linear-algebra",
-            "type": "video"
-          },
-          {
-            "title": "MIT Linear Algebra Course",
-            "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "scikit",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 300
-      },
-      "data": {
-        "label": "Scikit-Learn",
-        "status": "recommended",
-        "description": "A free software machine learning library for the Python programming language, featuring classification, regression, and clustering algorithms.",
-        "resources": [
-          {
-            "title": "Scikit-Learn Tutorials",
-            "url": "https://scikit-learn.org/stable/tutorial/index.html",
-            "type": "docs"
-          },
-          {
-            "title": "Machine Learning with Scikit-Learn - FreeCodeCamp",
-            "url": "https://www.youtube.com/watch?v=0Lt9w-ROKFQ",
-            "type": "video"
-          }
-        ]
-      }
-    },
-    {
-      "id": "pytorch",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 500
-      },
-      "data": {
-        "label": "PyTorch",
-        "status": "recommended",
-        "description": "An open-source machine learning library based on the Torch library, developed by Meta's AI Research lab.",
-        "resources": [
-          {
-            "title": "PyTorch Tutorials",
-            "url": "https://pytorch.org/tutorials/",
-            "type": "docs"
-          },
-          {
-            "title": "Deep Learning with PyTorch - freeCodeCamp",
-            "url": "https://www.youtube.com/watch?v=GIsg-ZUy0MY",
-            "type": "video"
-          }
-        ]
-      }
-    },
-    {
-      "id": "tensorflow",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 500
-      },
-      "data": {
-        "label": "TensorFlow",
-        "status": "alternative",
-        "description": "A free and open-source software library for machine learning and artificial intelligence developed by Google.",
-        "resources": [
-          {
-            "title": "TensorFlow Tutorials",
-            "url": "https://www.tensorflow.org/tutorials",
-            "type": "docs"
-          },
-          {
-            "title": "TensorFlow Certification Course",
-            "url": "https://www.coursera.org/professional-certificates/tensorflow-in-practice",
-            "type": "course"
           }
         ]
       }
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "math",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "math",
-      "target": "python",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "python",
-      "target": "ml",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "ml",
-      "target": "dl",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "dl",
-      "target": "frameworks",
-      "type": "roadmap"
-    },
-    {
-      "id": "e6",
-      "source": "frameworks",
-      "target": "deployment",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "math",
-      "target": "stats",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "math",
-      "target": "linalg",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed3",
-      "source": "ml",
-      "target": "scikit",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed4",
-      "source": "frameworks",
-      "target": "pytorch",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed5",
-      "source": "frameworks",
-      "target": "tensorflow",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    }
+    { "id": "e-math-py", "source": "math", "target": "python-data" },
+    { "id": "e-py-skl", "source": "python-data", "target": "scikit-learn" },
+    { "id": "e-skl-dl", "source": "scikit-learn", "target": "deep-learning" },
+    { "id": "e-dl-tf", "source": "deep-learning", "target": "transformers" }
   ]
 }
