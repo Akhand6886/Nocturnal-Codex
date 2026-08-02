@@ -43,14 +43,17 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
   const categoryIcon = CATEGORY_ICONS[roadmap.category] || '📘';
 
   return (
-    <Link href={roadmap.url} className="group block h-full">
-      <Card className={`
+    <Link href={roadmap.url} className="group block h-full" suppressHydrationWarning>
+      <Card
+        suppressHydrationWarning
+        className={`
         h-full flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out
         transform hover:-translate-y-1 rounded-2xl
         bg-card border border-border/50 hover:border-primary/40
         shadow-sm hover:shadow-xl hover:shadow-primary/5
         ${featured ? 'ring-1 ring-accent/20' : ''}
-      `}>
+      `}
+      >
         {/* Top Accent Bar */}
         <div className={`h-1 w-full bg-gradient-to-r ${
           featured 
@@ -58,7 +61,7 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
             : 'from-primary/60 via-primary to-primary/60'
         }`} />
 
-        <CardHeader className="pb-3 pt-5 px-5">
+        <CardHeader className="pb-3 pt-5 px-5" suppressHydrationWarning>
           <div className="flex items-start justify-between gap-3 mb-3">
             <div className="flex items-center gap-3">
               <span className="text-2xl" role="img" aria-label={roadmap.category}>
@@ -81,13 +84,13 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
           )}
         </CardHeader>
 
-        <CardContent className="flex-grow flex flex-col justify-end pt-1 pb-5 px-5">
-          <div className="flex flex-wrap items-center gap-2 mb-4">
-            <Badge variant="secondary" className="text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-medium">
+        <CardContent className="flex-grow flex flex-col justify-end pt-1 pb-5 px-5" suppressHydrationWarning>
+          <div className="flex flex-wrap items-center gap-2 mb-4" suppressHydrationWarning>
+            <Badge variant="secondary" className="text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-medium" suppressHydrationWarning>
               <Layers className="h-3 w-3" />
               {roadmap.category}
             </Badge>
-            <Badge variant="outline" className={`text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-semibold ${difficultyClass}`}>
+            <Badge variant="outline" className={`text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-semibold ${difficultyClass}`} suppressHydrationWarning>
               {roadmap.difficulty}
             </Badge>
           </div>
