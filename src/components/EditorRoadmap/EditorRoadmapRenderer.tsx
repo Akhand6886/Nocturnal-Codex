@@ -51,40 +51,6 @@ const edgeTypes = {
   default: RoadmapEdge,
 };
 
-const LEGEND = [
-  { color: '#22c55e', border: '#15803d', label: 'Mastered Topic' },
-  { color: '#f59e0b', border: '#d97706', label: 'In Progress' },
-  { color: '#a855f7', border: '#7e22ce', label: 'Recommended Path' },
-];
-
-const Legend: FC = () => (
-  <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 p-3.5 rounded-xl border border-border/40 bg-card/90 backdrop-blur-xl shadow-lg dark:bg-card/70">
-    <span className="roadmap-font text-[10px] font-bold text-muted-foreground/70 uppercase tracking-widest mb-1 px-0.5">
-      Legend & Status
-    </span>
-    {LEGEND.map(({ color, border, label }) => (
-      <div key={label} className="flex items-center gap-3 group">
-        <span className="relative flex h-3 w-3 flex-shrink-0">
-          <span
-            className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-            style={{ backgroundColor: color }}
-          />
-          <span
-            className="relative inline-flex rounded-full h-3 w-3 border shadow-sm"
-            style={{
-              backgroundColor: color,
-              borderColor: border,
-            }}
-          />
-        </span>
-        <span className="roadmap-font text-[11px] font-semibold text-muted-foreground/85 group-hover:text-foreground transition-colors">
-          {label}
-        </span>
-      </div>
-    ))}
-  </div>
-);
-
 const FitViewUpdater: FC = () => {
   const { fitView } = useReactFlow();
   useEffect(() => {
@@ -228,7 +194,7 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
 
   return (
     <div className="w-full bg-[#fafaf9] dark:bg-black transition-colors duration-300">
-      {/* Top Filter Bar & Progress Meter */}
+      {/* Top Filter Bar & Progress Meter - Aligned perfectly with canvas */}
       <RoadmapControls
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
@@ -240,46 +206,48 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
         onResetProgress={resetProgress}
       />
 
-      <div
-        style={{ height: canvasHeight, minWidth: 1000 }}
-        className="w-full max-w-[1000px] mx-auto relative border-x border-border/10 shadow-sm bg-transparent"
-      >
-        <ReactFlowProvider>
-          <ReactFlow
-            nodes={processedNodes}
-            edges={roadmapData.edges}
-            nodeTypes={nodeTypes}
-            edgeTypes={edgeTypes}
-            onNodeClick={onNodeClick}
-            fitView
-            zoomOnScroll={false}
-            zoomOnPinch={false}
-            zoomOnDoubleClick={false}
-            panOnDrag={false}
-            panOnScroll={false}
-            preventScrolling={false}
-            nodesDraggable={false}
-            nodesConnectable={false}
-            elementsSelectable={true}
-            style={{ background: 'transparent' }}
-          >
-            <Legend />
-            <Background
-              gap={24}
-              size={1.5}
-              variant={BackgroundVariant.Dots}
-            />
-            <FitViewUpdater />
-          </ReactFlow>
-        </ReactFlowProvider>
-
-        <RoadmapDrawer
-          open={drawerOpen}
-          onOpenChange={setDrawerOpen}
-          data={selectedNode}
-          onStatusChange={handleStatusChange}
-        />
+      {/* Interactive Graph Canvas */}
+      <div className="w-full max-w-[1000px] mx-auto px-4 pb-12">
+        <div
+          style={{ height: canvasHeight }}
+          className="w-full relative rounded-2xl border border-border/60 shadow-sm bg-card/40 backdrop-blur-sm overflow-hidden"
+        >
+          <ReactFlowProvider>
+            <ReactFlow
+              nodes={processedNodes}
+              edges={roadmapData.edges}
+              nodeTypes={nodeTypes}
+              edgeTypes={edgeTypes}
+              onNodeClick={onNodeClick}
+              fitView
+              zoomOnScroll={false}
+              zoomOnPinch={false}
+              zoomOnDoubleClick={false}
+              panOnDrag={false}
+              panOnScroll={false}
+              preventScrolling={false}
+              nodesDraggable={false}
+              nodesConnectable={false}
+              elementsSelectable={true}
+              style={{ background: 'transparent' }}
+            >
+              <Background
+                gap={24}
+                size={1.5}
+                variant={BackgroundVariant.Dots}
+              />
+              <FitViewUpdater />
+            </ReactFlow>
+          </ReactFlowProvider>
+        </div>
       </div>
+
+      <RoadmapDrawer
+        open={drawerOpen}
+        onOpenChange={setDrawerOpen}
+        data={selectedNode}
+        onStatusChange={handleStatusChange}
+      />
     </div>
   );
 };
