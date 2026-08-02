@@ -8,33 +8,30 @@
         "y": 20
       },
       "data": {
-        "label": "Mobile Developer"
+        "label": "Mobile Application Developer Path"
       }
     },
     {
-      "id": "choice",
+      "id": "cross-platform",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 100
       },
       "data": {
-        "label": "Choose Your Path",
+        "label": "Cross-Platform Frameworks (React Native / Flutter)",
         "status": "recommended",
-        "description": "Choose between platform-native development (Swift for iOS, Kotlin for Android) or cross-platform framework development (Flutter or React Native).",
+        "description": "Build iOS and Android apps from a single codebase using React Native (JavaScript/TypeScript) or Flutter (Dart).",
+        "codeSnippet": "// React Native View & Text Component\nimport { View, Text, StyleSheet } from 'react-native';\n\nexport function MobileCard() {\n  return (\n    <View style={styles.card}>\n      <Text style={styles.title}>Cross Platform Mobile</Text>\n    </View>\n  );\n}",
+        "prerequisites": ["JavaScript / Dart Fundamentals"],
         "resources": [
           {
-            "title": "SwiftUI Tutorials",
-            "url": "https://developer.apple.com/tutorials/swiftui",
-            "type": "course"
+            "title": "React Native Official Documentation",
+            "url": "https://reactnative.dev/",
+            "type": "docs"
           },
           {
-            "title": "Android Developer Guides",
-            "url": "https://developer.android.com/courses",
-            "type": "course"
-          },
-          {
-            "title": "Flutter Documentation",
+            "title": "Flutter Official Documentation",
             "url": "https://docs.flutter.dev/",
             "type": "docs"
           }
@@ -42,257 +39,52 @@
       }
     },
     {
-      "id": "ui",
+      "id": "native-ios",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 200,
         "y": 200
       },
       "data": {
-        "label": "Mobile UI & Navigation",
-        "status": "recommended",
-        "description": "Master stack-based, tab-bar, and drawer navigation patterns. Learn gesture recognizers and mobile screen layout rules.",
-        "resources": [
-          {
-            "title": "Apple Human Interface Guidelines",
-            "url": "https://developer.apple.com/design/human-interface-guidelines/",
-            "type": "docs"
-          },
-          {
-            "title": "Google Material Design for Mobile",
-            "url": "https://m3.material.io/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "data",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 300
-      },
-      "data": {
-        "label": "Data & Offline Storage",
-        "status": "recommended",
-        "description": "Handle JSON web requests. Cache and synchronize local datasets using lightweight databases (SQLite, Room, Hive).",
-        "resources": [
-          {
-            "title": "Local Storage & Caching Overview",
-            "url": "https://developer.android.com/training/data-storage",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "hardware",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 400
-      },
-      "data": {
-        "label": "Hardware Integration",
-        "status": "recommended",
-        "description": "Access device-specific functionalities such as Camera feed, GPS location telemetry, Biometrics, and local file storage folders.",
-        "resources": [
-          {
-            "title": "Accessing Device Sensors & Hardware",
-            "url": "https://reactnative.dev/docs/permissions",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "stores",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 500
-      },
-      "data": {
-        "label": "App Store Deployment",
-        "description": "Understand code signing certificates, TestFlight beta staging, App Store Connect requirements, and Google Play console publishing steps.",
-        "resources": [
-          {
-            "title": "Publishing iOS Apps Guide",
-            "url": "https://developer.apple.com/support/app-store/",
-            "type": "docs"
-          },
-          {
-            "title": "Publishing Android Apps Guide",
-            "url": "https://developer.android.com/studio/publish",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "ios",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 80
-      },
-      "data": {
-        "label": "Native iOS (Swift)",
-        "status": "recommended",
-        "description": "Building native Apple iOS applications using the Swift language and SwiftUI or UIKit.",
-        "resources": [
-          {
-            "title": "SwiftUI Tutorials",
-            "url": "https://developer.apple.com/tutorials/swiftui/",
-            "type": "course"
-          },
-          {
-            "title": "100 Days of SwiftUI",
-            "url": "https://www.hackingwithswift.com/100/swiftui",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "android",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 125
-      },
-      "data": {
-        "label": "Native Android (Kotlin)",
-        "status": "recommended",
-        "description": "Building native Android applications using Kotlin and Jetpack Compose or XML layouts.",
-        "resources": [
-          {
-            "title": "Android Basics with Compose",
-            "url": "https://developer.android.com/courses/android-basics-compose/course",
-            "type": "course"
-          },
-          {
-            "title": "Android Developer Guides",
-            "url": "https://developer.android.com/guide",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "flutter",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 80
-      },
-      "data": {
-        "label": "Flutter (Dart)",
-        "status": "recommended",
-        "description": "Google's open-source UI software development kit for building cross-platform applications from a single codebase.",
-        "resources": [
-          {
-            "title": "Flutter Documentation",
-            "url": "https://docs.flutter.dev/",
-            "type": "docs"
-          },
-          {
-            "title": "Flutter Tutorials for Beginners",
-            "url": "https://flutter.dev/docs/reference/tutorials",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "rn",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 125
-      },
-      "data": {
-        "label": "React Native (JS/TS)",
+        "label": "Native iOS (Swift & SwiftUI)",
         "status": "alternative",
-        "description": "A popular cross-platform mobile framework using React and native platform UI capabilities.",
+        "description": "Master Swift 5, SwiftUI declarative layouts, Combine reactive framework, and CoreData persistence.",
+        "codeSnippet": "// SwiftUI Declarative View\nimport SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        VStack {\n            Image(systemName: \"globe\")\n            Text(\"Hello, iOS!\")\n        }\n    }\n}",
+        "prerequisites": ["Swift Basics"],
         "resources": [
           {
-            "title": "React Native Official Docs",
-            "url": "https://reactnative.dev/docs/getting-started",
+            "title": "Apple Developer — Swift & SwiftUI Tutorials",
+            "url": "https://developer.apple.com/xcode/swiftui/",
             "type": "docs"
-          },
+          }
+        ]
+      }
+    },
+    {
+      "id": "native-android",
+      "type": "topic",
+      "position": {
+        "x": 680,
+        "y": 200
+      },
+      "data": {
+        "label": "Native Android (Kotlin & Jetpack Compose)",
+        "status": "alternative",
+        "description": "Master Kotlin, Jetpack Compose declarative UI, Coroutines for async tasks, and Room database.",
+        "codeSnippet": "// Jetpack Compose Composable Function\n@Composable\nfunction Greeting(name: String) {\n    Text(text = \"Hello $name!\", modifier = Modifier.padding(16.dp))\n}",
+        "prerequisites": ["Kotlin Basics"],
+        "resources": [
           {
-            "title": "React Native Express",
-            "url": "https://www.reactnativeexpress.com/",
-            "type": "course"
+            "title": "Android Developers — Jetpack Compose Guide",
+            "url": "https://developer.android.com/jetpack/compose",
+            "type": "docs"
           }
         ]
       }
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "choice",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "choice",
-      "target": "ui",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "ui",
-      "target": "data",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "data",
-      "target": "hardware",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "hardware",
-      "target": "stores",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "choice",
-      "target": "ios",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "choice",
-      "target": "android",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed3",
-      "source": "choice",
-      "target": "flutter",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed4",
-      "source": "choice",
-      "target": "rn",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    }
+    { "id": "e-cross-ios", "source": "cross-platform", "target": "native-ios" },
+    { "id": "e-cross-android", "source": "cross-platform", "target": "native-android" }
   ]
 }

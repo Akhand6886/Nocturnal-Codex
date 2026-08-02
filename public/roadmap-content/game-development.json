@@ -8,278 +8,75 @@
         "y": 20
       },
       "data": {
-        "label": "Game Developer"
+        "label": "Game Development & Graphics Path"
       }
     },
     {
-      "id": "lang",
+      "id": "game-math",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 100
       },
       "data": {
-        "label": "Language Selection",
+        "label": "Game Math & Physics (Vectors, Quaternions, Collisions)",
         "status": "recommended",
-        "description": "Learn the languages powering modern game engines: C++ (high-performance AAA games) or C# (versatile indie games).",
+        "description": "Understand 3D vector arithmetic, dot/cross products, quaternions for rotation, raycasting, AABB bounding boxes, and rigid body dynamics.",
+        "codeSnippet": "// 3D Vector Normalization & Dot Product in C#\nVector3 direction = (targetPosition - transform.position).normalized;\nfloat dotProduct = Vector3.Dot(transform.forward, direction);\nif (dotProduct > 0.5f) {\n    Debug.Log(\"Target is in field of view!\");\n}",
+        "prerequisites": ["High School Math"],
         "resources": [
           {
-            "title": "C++ for Game Dev",
-            "url": "https://www.youtube.com/watch?v=18c3MTX0PK0",
-            "type": "video"
-          },
-          {
-            "title": "C# Fundamentals",
-            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/",
+            "title": "Mathematics for 3D Game Programming & Computer Graphics",
+            "url": "https://www.game-math.com/",
             "type": "docs"
           }
         ]
       }
     },
     {
-      "id": "engines",
+      "id": "game-engine",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 200
       },
       "data": {
-        "label": "Choose Your Engine",
+        "label": "Game Engines (Unity / Unreal Engine / Godot)",
         "status": "recommended",
-        "description": "Select an engine that suits your game scope. Unity is great for 2D/3D & mobile, Unreal for high-end graphics, and Godot for open-source simplicity.",
+        "description": "Master component architecture, scene graphs, particle systems, animation state machines, and audio managers in Unity (C#) or Unreal (C++).",
+        "codeSnippet": "// Unity C# Player Controller Script\nusing UnityEngine;\n\npublic class PlayerMovement : MonoBehaviour {\n    public float speed = 5.0f;\n    void Update() {\n        float h = Input.GetAxis(\"Horizontal\");\n        float v = Input.GetAxis(\"Vertical\");\n        transform.Translate(new Vector3(h, 0, v) * speed * Time.deltaTime);\n    }\n}",
+        "prerequisites": ["Game Math & Physics"],
         "resources": [
           {
-            "title": "Unity Learning Paths",
+            "title": "Unity Official Documentation & Learn Platform",
             "url": "https://learn.unity.com/",
             "type": "course"
           },
           {
-            "title": "Unreal Engine Docs",
-            "url": "https://docs.unrealengine.com/",
-            "type": "docs"
-          },
-          {
-            "title": "Godot Engine Docs",
-            "url": "https://docs.godotengine.org/",
+            "title": "Unreal Engine 5 Documentation",
+            "url": "https://docs.unrealengine.com/5.0/",
             "type": "docs"
           }
         ]
       }
     },
     {
-      "id": "game_loop",
+      "id": "graphics-shaders",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 300
       },
       "data": {
-        "label": "Game Loop & Input",
+        "label": "Graphics Programming & Shaders (HLSL / GLSL / WebGL)",
         "status": "recommended",
-        "description": "Understand core real-time application mechanics: mapping inputs, processing gameplay logic, and updating frames.",
+        "description": "Write vertex and fragment shaders for real-time rendering, PBR lighting, post-processing effects, and shadow mapping.",
+        "codeSnippet": "// Simple HLSL Fragment Shader\nfloat4 frag(v2f i) : SV_Target {\n    float4 col = tex2D(_MainTex, i.uv);\n    float lighting = saturate(dot(i.normal, _WorldSpaceLightPos0.xyz));\n    return col * lighting;\n}",
+        "prerequisites": ["Game Engines"],
         "resources": [
           {
-            "title": "Game Programming Patterns - Game Loop",
-            "url": "https://gameprogrammingpatterns.com/game-loop.html",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "math",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 400
-      },
-      "data": {
-        "label": "Math & Physics",
-        "status": "recommended",
-        "description": "Master trigonometry, linear algebra (vectors, matrices, quaternions), rigidbodies, and collision detection formulas.",
-        "resources": [
-          {
-            "title": "Mathematics for Game Developers",
-            "url": "https://www.youtube.com/playlist?list=PLW3Zl3wyJwWOpDHHPvcjDWKdiFQWDxssR",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "graphics",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 500
-      },
-      "data": {
-        "label": "Graphics & Shaders",
-        "status": "recommended",
-        "description": "Learn rendering pipelines, lighting nodes, post-processing materials, and how to write shaders (HLSL/GLSL).",
-        "resources": [
-          {
-            "title": "The Book of Shaders",
+            "title": "The Book of Shaders — Interactive Shader Guide",
             "url": "https://thebookofshaders.com/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "opt",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 600
-      },
-      "data": {
-        "label": "Optimization",
-        "description": "Use object pooling, asset optimization, dynamic batching, and code profiling tools to sustain target frame rates.",
-        "resources": [
-          {
-            "title": "Unity Optimization Guide",
-            "url": "https://unity.com/resources/ultimate-guide-to-profiling-unity-games",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "unreal",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 150
-      },
-      "data": {
-        "label": "Unreal Engine (C++)",
-        "status": "recommended",
-        "description": "Developing high-fidelity, performance-critical games in Unreal Engine using C++ and blueprints.",
-        "resources": [
-          {
-            "title": "Unreal Engine C++ Developer Course",
-            "url": "https://www.gamedev.tv/p/unreal-c-developer",
-            "type": "course"
-          },
-          {
-            "title": "Unreal Engine Documentation",
-            "url": "https://docs.unrealengine.com/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "unity",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 200
-      },
-      "data": {
-        "label": "Unity Engine (C#)",
-        "status": "recommended",
-        "description": "Developing cross-platform 2D/3D games in Unity Engine using C# scripting.",
-        "resources": [
-          {
-            "title": "Unity Learn platform",
-            "url": "https://learn.unity.com/",
-            "type": "course"
-          },
-          {
-            "title": "C# Scripting in Unity",
-            "url": "https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "godot",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 250
-      },
-      "data": {
-        "label": "Godot Engine",
-        "status": "alternative",
-        "description": "Using the lightweight, open-source 2D and 3D game engine Godot with GDScript or C#.",
-        "resources": [
-          {
-            "title": "Godot Engine Official Docs",
-            "url": "https://docs.godotengine.org/",
-            "type": "docs"
-          },
-          {
-            "title": "Godot Tutorials - FreeCodeCamp",
-            "url": "https://www.youtube.com/watch?v=LOhfqjmasI0",
-            "type": "video"
-          }
-        ]
-      }
-    },
-    {
-      "id": "vectors",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 380
-      },
-      "data": {
-        "label": "Vectors & Trigonometry",
-        "status": "recommended",
-        "description": "The math behind physics, translation, rotation, dot products, cross products, and geometry in game space.",
-        "resources": [
-          {
-            "title": "Math for Game Developers - Freya Holm\u00e9r",
-            "url": "https://www.youtube.com/watch?v=MOYiVLE9jhg",
-            "type": "video"
-          }
-        ]
-      }
-    },
-    {
-      "id": "raycast",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 425
-      },
-      "data": {
-        "label": "Collisions & Raycasting",
-        "status": "recommended",
-        "description": "Detecting overlaps, physical intersections, bounding boxes, grid alignment, and drawing line-of-sight laser queries (raycasts).",
-        "resources": [
-          {
-            "title": "Game Physics & Collisions",
-            "url": "https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "shaders",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 500
-      },
-      "data": {
-        "label": "HLSL / GLSL Shaders",
-        "status": "recommended",
-        "description": "High-Level Shading Language (DirectX) and OpenGL Shading Language, used to write custom rendering behaviors for the GPU.",
-        "resources": [
-          {
-            "title": "The Book of Shaders",
-            "url": "https://thebookofshaders.com/",
-            "type": "course"
-          },
-          {
-            "title": "Shaders in Unity Guide",
-            "url": "https://docs.unity3d.com/Manual/Shaders.html",
             "type": "docs"
           }
         ]
@@ -287,89 +84,7 @@
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "lang",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "lang",
-      "target": "engines",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "engines",
-      "target": "game_loop",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "game_loop",
-      "target": "math",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "math",
-      "target": "graphics",
-      "type": "roadmap"
-    },
-    {
-      "id": "e6",
-      "source": "graphics",
-      "target": "opt",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "engines",
-      "target": "unreal",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "engines",
-      "target": "unity",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed3",
-      "source": "engines",
-      "target": "godot",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed4",
-      "source": "math",
-      "target": "vectors",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed5",
-      "source": "math",
-      "target": "raycast",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed6",
-      "source": "graphics",
-      "target": "shaders",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    }
+    { "id": "e-math-eng", "source": "game-math", "target": "game-engine" },
+    { "id": "e-eng-shader", "source": "game-engine", "target": "graphics-shaders" }
   ]
 }

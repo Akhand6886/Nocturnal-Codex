@@ -8,64 +8,48 @@
         "y": 20
       },
       "data": {
-        "label": "Embedded Systems Specialist"
+        "label": "Embedded Systems & Hardware Path"
       }
     },
     {
-      "id": "c_lang",
+      "id": "c-programming",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 100
       },
       "data": {
-        "label": "C/C++ Foundation",
+        "label": "Embedded C & Assembly",
         "status": "recommended",
-        "description": "Master the C language, pointers, structures, and direct memory alignment which are foundational for writing firmware.",
+        "description": "Master bitwise manipulation, volatile pointers, memory-mapped I/O registers, interrupt service routines (ISR), and linker scripts.",
+        "codeSnippet": "// Memory-Mapped Register Bit Manipulation in C\n#define PORTB_DIR (*((volatile uint8_t *)0x24))\n#define PORTB_DATA (*((volatile uint8_t *)0x25))\n\nvoid init_gpio(void) {\n    PORTB_DIR |= (1 << 5);  // Set Pin 5 as output\n    PORTB_DATA |= (1 << 5); // Set Pin 5 HIGH\n}",
+        "prerequisites": ["C Fundamentals"],
         "resources": [
           {
-            "title": "Modern Embedded Systems Programming Course",
-            "url": "https://www.youtube.com/playlist?list=PLPW88idYB9yr87gGTW1S_3u2NupXfcoS0",
-            "type": "course"
+            "title": "Embedded C Programming & Memory Mapped I/O",
+            "url": "https://www.embedded.com/",
+            "type": "articles"
           }
         ]
       }
     },
     {
-      "id": "bitwise",
+      "id": "microcontrollers",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 200
       },
       "data": {
-        "label": "Bitwise & Registers",
+        "label": "Microcontroller Architecture (ARM Cortex-M, ESP32, STM32)",
         "status": "recommended",
-        "description": "Learn to manipulate individual hardware pins, registers, and memory-mapped I/O using bitwise operators.",
+        "description": "Understand NVIC nested interrupt controllers, DMA memory access, timers/counters, PWM, and low-power sleep modes.",
+        "codeSnippet": "// STM32 HAL Timer Interrupt Callback\nvoid HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {\n    if (htim->Instance == TIM2) {\n        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); // Toggle LED\n    }\n}",
+        "prerequisites": ["Embedded C"],
         "resources": [
           {
-            "title": "Bitwise Operators in C",
-            "url": "https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "mcu",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 300
-      },
-      "data": {
-        "label": "Microcontrollers",
-        "status": "recommended",
-        "description": "Understand core microcontroller architectures, clock trees, interrupts, and datasheet parsing.",
-        "resources": [
-          {
-            "title": "ARM Cortex-M Architecture",
-            "url": "https://developer.arm.com/architectures/cpu-architecture/cortex-m",
+            "title": "STMicroelectronics STM32 Cube HAL Documentation",
+            "url": "https://www.st.com/",
             "type": "docs"
           }
         ]
@@ -76,17 +60,19 @@
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 400
+        "y": 300
       },
       "data": {
-        "label": "Hardware Protocols",
+        "label": "Hardware Protocols (UART, SPI, I2C, CAN Bus)",
         "status": "recommended",
-        "description": "Master communication interfaces that connect controllers to sensors, displays, and transceiver ICs.",
+        "description": "Interface sensors, displays, and automotive networks using synchronous (SPI/I2C) and asynchronous (UART/CAN) serial buses.",
+        "codeSnippet": "// I2C Sensor Reading in C\nvoid read_sensor_data(uint8_t dev_addr, uint8_t reg_addr, uint8_t *buffer, uint16_t len) {\n    i2c_start();\n    i2c_write(dev_addr << 1);\n    i2c_write(reg_addr);\n    i2c_start();\n    i2c_write((dev_addr << 1) | 1);\n    for (int i = 0; i < len; i++) buffer[i] = i2c_read();\n    i2c_stop();\n}",
+        "prerequisites": ["Microcontroller Architecture"],
         "resources": [
           {
-            "title": "Serial Protocols Overview (UART, SPI, I2C)",
-            "url": "https://learn.sparkfun.com/tutorials/serial-communication",
-            "type": "article"
+            "title": "I2C & SPI Hardware Protocol Specification",
+            "url": "https://www.i2c-bus.org/",
+            "type": "docs"
           }
         ]
       }
@@ -96,265 +82,27 @@
       "type": "topic",
       "position": {
         "x": 440,
-        "y": 500
-      },
-      "data": {
-        "label": "Real-Time OS (RTOS)",
-        "status": "recommended",
-        "description": "Learn multitasking, task prioritization, scheduling, mutexes, semaphores, and queue-based message sharing.",
-        "resources": [
-          {
-            "title": "FreeRTOS Quick Start Guide",
-            "url": "https://www.freertos.org/FreeRTOS-quick-start-guide.html",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "safety",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 600
-      },
-      "data": {
-        "label": "Safety & Rust",
-        "description": "Adopt safety standards like MISRA C and modern alternatives like Embedded Rust for memory safety.",
-        "resources": [
-          {
-            "title": "The Embedded Rust Book",
-            "url": "https://docs.rust-embedded.org/book/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "pointers",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 100
-      },
-      "data": {
-        "label": "Pointers & Memory",
-        "status": "recommended",
-        "description": "Direct memory access, addressing, pointer arithmetic, stack vs. heap allocation, and safe memory management in low-level languages.",
-        "resources": [
-          {
-            "title": "C Pointers Tutorial",
-            "url": "https://www.geeksforgeeks.org/c-pointers/",
-            "type": "article"
-          },
-          {
-            "title": "C Memory Management",
-            "url": "https://www.tutorialspoint.com/cprogramming/c_memory_management.htm",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "stm32",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 300
-      },
-      "data": {
-        "label": "STM32 / ARM Cortex",
-        "status": "recommended",
-        "description": "Working with 32-bit ARM Cortex-M processors, configuring peripherals, timers, registers, and clock configurations.",
-        "resources": [
-          {
-            "title": "STM32 Beginners Guide",
-            "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html",
-            "type": "docs"
-          },
-          {
-            "title": "Embedded Systems Course - ARM",
-            "url": "https://www.edx.org/course/embedded-systems-shape-the-world-multi-threaded-interfacing",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "esp32",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 345
-      },
-      "data": {
-        "label": "ESP32 & IoT",
-        "status": "alternative",
-        "description": "Low-cost system on a chip microcontrollers with built-in Wi-Fi and dual-mode Bluetooth for Internet of Things applications.",
-        "resources": [
-          {
-            "title": "ESP32 Official Docs",
-            "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/",
-            "type": "docs"
-          },
-          {
-            "title": "ESP32 IoT Tutorials",
-            "url": "https://randomnerdtutorials.com/projects-esp32/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "uart",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
         "y": 400
       },
       "data": {
-        "label": "UART / Serial",
+        "label": "Real-Time Operating Systems (FreeRTOS / Zephyr)",
         "status": "recommended",
-        "description": "Universal Asynchronous Receiver-Transmitter, a basic hardware communication protocol for asynchronous serial communication.",
+        "description": "Preemptive task scheduling, semaphores, mutexes, message queues, and deterministic execution guarantees.",
+        "codeSnippet": "// FreeRTOS Task Creation\nvoid vTaskCode(void *pvParameters) {\n    for (;;) {\n        vTaskDelay(pdMS_TO_TICKS(1000));\n    }\n}\nxTaskCreate(vTaskCode, \"SensorTask\", 1024, NULL, 1, NULL);",
+        "prerequisites": ["Hardware Protocols"],
         "resources": [
           {
-            "title": "Basics of UART",
-            "url": "https://www.analog.com/en/analog-dialogue/articles/uart-a-hardware-communication-protocol.html",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "i2c_spi",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 445
-      },
-      "data": {
-        "label": "I2C & SPI",
-        "status": "recommended",
-        "description": "Inter-Integrated Circuit and Serial Peripheral Interface, synchronous bus protocols for connecting ICs over short distances.",
-        "resources": [
-          {
-            "title": "I2C and SPI Overview",
-            "url": "https://learn.sparkfun.com/tutorials/i2c",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "rust_emb",
-      "type": "subtopic",
-      "position": {
-        "x": 700,
-        "y": 600
-      },
-      "data": {
-        "label": "Rust for Embedded",
-        "status": "recommended",
-        "description": "Writing embedded firmware in Rust, utilizing memory safety, zero-cost abstractions, and the Embedded HAL.",
-        "resources": [
-          {
-            "title": "The Embedded Rust Book",
-            "url": "https://docs.rust-embedded.org/book/",
+            "title": "FreeRTOS Official Kernel Documentation",
+            "url": "https://www.freertos.org/",
             "type": "docs"
-          },
-          {
-            "title": "Rust Embedded Community",
-            "url": "https://github.com/rust-embedded",
-            "type": "github"
           }
         ]
       }
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "c_lang",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "c_lang",
-      "target": "bitwise",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "bitwise",
-      "target": "mcu",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "mcu",
-      "target": "protocols",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "protocols",
-      "target": "rtos",
-      "type": "roadmap"
-    },
-    {
-      "id": "e6",
-      "source": "rtos",
-      "target": "safety",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "c_lang",
-      "target": "pointers",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "mcu",
-      "target": "stm32",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed3",
-      "source": "mcu",
-      "target": "esp32",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed4",
-      "source": "protocols",
-      "target": "uart",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed5",
-      "source": "protocols",
-      "target": "i2c_spi",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed6",
-      "source": "safety",
-      "target": "rust_emb",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    }
+    { "id": "e-c-mcu", "source": "c-programming", "target": "microcontrollers" },
+    { "id": "e-mcu-proto", "source": "microcontrollers", "target": "protocols" },
+    { "id": "e-proto-rtos", "source": "protocols", "target": "rtos" }
   ]
 }

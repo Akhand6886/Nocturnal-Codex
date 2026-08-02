@@ -44,8 +44,7 @@
         "label": "Backend APIs & Microservices (Node / Python / Go)",
         "status": "recommended",
         "description": "Build high-throughput REST APIs, authentication services, rate limiting, and database ORM layer (Prisma, Drizzle, SQLAlchemy).",
-        "codeSnippet": "// Prisma ORM Query\nconst userWithPosts = await prisma.user.findUnique({\n  where: { email: 'hunter@example.com' },\n  include: { posts: true },
-});",
+        "codeSnippet": "// Prisma ORM Query\nconst userWithPosts = await prisma.user.findUnique({\n  where: { email: 'hunter@example.com' },\n  include: { posts: true },\n});",
         "prerequisites": ["Frontend Mastery"],
         "resources": [
           {
@@ -89,7 +88,7 @@
         "label": "Full-Stack Deployment & Cloud (Vercel, AWS, Docker)",
         "status": "recommended",
         "description": "Containerize apps with Docker, configure CI/CD pipelines, and deploy serverless functions to AWS or Vercel.",
-        "codeSnippet": "# Vercel / Cloud Deployment Config\n{\n  \"version\": 2,\n  \"builds\": [{ \"src\": \"next.config.js\", \"use\": \"@vercel/next\" }]\n}",
+        "codeSnippet": "/* Vercel / Cloud Deployment Config */\n{\n  \"version\": 2,\n  \"builds\": [{ \"src\": \"next.config.js\", \"use\": \"@vercel/next\" }]\n}",
         "prerequisites": ["Database Persistence"],
         "resources": [
           {

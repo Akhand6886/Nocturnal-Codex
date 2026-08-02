@@ -169,8 +169,7 @@
         "label": "System Design & Microservices (Kafka / RabbitMQ)",
         "status": "recommended",
         "description": "Event-driven architecture, message queues (RabbitMQ, Apache Kafka), distributed tracing, gRPC inter-service RPCs, and saga transactions.",
-        "codeSnippet": "// Kafka Event Producer\nawait producer.send({\n  topic: 'order-events',\n  messages: [{ key: 'order_101', value: JSON.stringify({ event: 'ORDER_CREATED', total: 99.50 }) }],
-});",
+        "codeSnippet": "// Kafka Event Producer\nawait producer.send({\n  topic: 'order-events',\n  messages: [{ key: 'order_101', value: JSON.stringify({ event: 'ORDER_CREATED', total: 99.50 }) }],\n});",
         "prerequisites": ["Caching & Memory Stores"],
         "resources": [
           {
