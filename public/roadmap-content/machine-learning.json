@@ -48,10 +48,16 @@
       "data": {
         "label": "Python Data Stack",
         "status": "recommended",
+        "relatedLanguage": "python",
         "description": "Data wrangling, cleaning missing values, DataFrame manipulation, statistical distributions, and exploratory data analysis (EDA).",
         "codeSnippet": "import pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv('dataset.csv')\ndf_clean = df.dropna().query('score > 80')\nprint(df_clean.describe())",
         "prerequisites": ["Math Foundations"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Python Guide & Ascension Playground",
+            "url": "/languages/python",
+            "type": "course"
+          },
           {
             "title": "Pandas Official User Guide & API Reference",
             "url": "https://pandas.pydata.org/docs/user_guide/index.html",
