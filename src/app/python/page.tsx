@@ -1415,51 +1415,51 @@ except Exception as e:
         <div className="flex flex-wrap items-center justify-between gap-3 mb-8 border-b border-slate-800 pb-4">
           <div className="flex flex-wrap items-center gap-2">
             <Button
-              variant={activeTab === "dungeons" ? "default" : "outline"}
+              variant="outline"
               onClick={() => { playSound("click"); setActiveTab("dungeons"); }}
-              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "dungeons" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800", activeTab === "dungeons" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-lg shadow-cyan-500/25")}
             >
               <Sword className="w-4 h-4" /> Dungeons ({dungeonsClearedCount}/11)
             </Button>
             <Button
-              variant={activeTab === "guilds" ? "default" : "outline"}
+              variant="outline"
               onClick={() => { playSound("click"); setActiveTab("guilds"); }}
-              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all border-purple-500/40 text-purple-300", activeTab === "guilds" && "bg-purple-600 hover:bg-purple-500 text-white shadow-lg shadow-purple-500/25")}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all bg-slate-900/90 border-purple-500/40 text-purple-300 hover:text-white hover:bg-purple-950/60", activeTab === "guilds" && "bg-purple-600 hover:bg-purple-500 text-white font-bold shadow-lg shadow-purple-500/25")}
             >
               <Users className="w-4 h-4" /> Guilds & Leaderboard
             </Button>
             <Button
-              variant={activeTab === "skills" ? "default" : "outline"}
+              variant="outline"
               onClick={() => { playSound("click"); setActiveTab("skills"); }}
-              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "skills" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800", activeTab === "skills" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-lg shadow-cyan-500/25")}
             >
               <Zap className="w-4 h-4" /> Stats & Skill Tree
             </Button>
             <Button
-              variant={activeTab === "inventory" ? "default" : "outline"}
+              variant="outline"
               onClick={() => { playSound("click"); setActiveTab("inventory"); }}
-              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "inventory" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800", activeTab === "inventory" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-lg shadow-cyan-500/25")}
             >
               <Briefcase className="w-4 h-4" /> Inventory ({state.completedDungeons.length})
             </Button>
             <Button
-              variant={activeTab === "quests" ? "default" : "outline"}
+              variant="outline"
               onClick={() => { playSound("click"); setActiveTab("quests"); }}
-              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "quests" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800", activeTab === "quests" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-lg shadow-cyan-500/25")}
             >
               <Scroll className="w-4 h-4" /> Quest Log ({state.completedQuests.length}/{QUESTS.length})
             </Button>
             <Button
-              variant={activeTab === "achievements" ? "default" : "outline"}
+              variant="outline"
               onClick={() => { playSound("click"); setActiveTab("achievements"); }}
-              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all", activeTab === "achievements" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25")}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800", activeTab === "achievements" && "bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-lg shadow-cyan-500/25")}
             >
               <Trophy className="w-4 h-4" /> Achievements ({state.unlockedAchievements.length})
             </Button>
             <Button
-              variant={activeTab === "sandbox" ? "default" : "outline"}
+              variant="outline"
               onClick={() => { playSound("click"); setActiveTab("sandbox"); }}
-              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all border-amber-500/40 text-amber-300", activeTab === "sandbox" && "bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg shadow-amber-500/25")}
+              className={cn("gap-2 rounded-xl text-sm font-semibold transition-all bg-slate-900/90 border-amber-500/40 text-amber-300 hover:text-white hover:bg-amber-950/60", activeTab === "sandbox" && "bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-lg shadow-amber-500/25")}
             >
               <Code2 className="w-4 h-4" /> System Sandbox
             </Button>
