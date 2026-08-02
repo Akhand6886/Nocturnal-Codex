@@ -576,7 +576,16 @@ export default function PythonAscensionPage() {
   const handleSaveHunterName = (customName?: string) => {
     const nameToSave = (customName || hunterNameInput).trim() || "Akhanda";
     playSound("levelUp");
-    setState((prev) => ({ ...prev, hunterName: nameToSave }));
+    try {
+      localStorage.setItem("python_hunter_name_asked", "true");
+    } catch (e) {}
+    setState((prev) => {
+      const updated = { ...prev, hunterName: nameToSave };
+      try {
+        localStorage.setItem("python_ascension_state", JSON.stringify(updated));
+      } catch (e) {}
+      return updated;
+    });
     setShowNamePromptModal(false);
   };
 
@@ -697,21 +706,21 @@ export default function PythonAscensionPage() {
   // Load state from local storage on client mount
   useEffect(() => {
     try {
+      const nameAsked = localStorage.getItem("python_hunter_name_asked") === "true";
       const saved = localStorage.getItem("python_ascension_state");
       if (saved) {
         const parsed = JSON.parse(saved);
         setState(parsed);
         if (parsed.hunterName) {
           setHunterNameInput(parsed.hunterName);
-        } else {
+        } else if (!nameAsked) {
           setShowNamePromptModal(true);
         }
-      } else {
+      } else if (!nameAsked) {
         setShowNamePromptModal(true);
       }
     } catch (e) {
       console.error("Failed to load saved state", e);
-      setShowNamePromptModal(true);
     }
   }, []);
 
