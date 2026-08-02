@@ -21,10 +21,21 @@
       "data": {
         "label": "Backend Programming",
         "status": "recommended",
-        "description": "Choose a core backend language: Node.js (TypeScript), Python (FastAPI/Django), Go, or Java (Spring Boot). Learn asynchronous concurrency, garbage collection, and memory management.",
-        "codeSnippet": "// Node.js HTTP Server with Express & TypeScript\nimport express from 'express';\nconst app = express();\napp.use(express.json());\n\napp.get('/health', (req, res) => {\n  res.json({ status: 'UP', timestamp: new Date().toISOString() });\n});\napp.listen(8080);",
+        "relatedLanguage": "python",
+        "description": "Choose a core backend language: Python (FastAPI/Django), Node.js (TypeScript), Go, or Java (Spring Boot). Learn asynchronous concurrency, garbage collection, and memory management.",
+        "codeSnippet": "# Python FastAPI High-Performance Async Endpoint\nfrom fastapi import FastAPI\napp = FastAPI()\n\n@app.get(\"/health\")\nasync def health_check():\n    return {\"status\": \"UP\", \"engine\": \"Python Pyodide / CPython\"}",
         "prerequisites": ["Programming Fundamentals"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Python Guide & Ascension Playground",
+            "url": "/languages/python",
+            "type": "course"
+          },
+          {
+            "title": "Nocturnal Codex — Go Backend Concurrency Guide",
+            "url": "/languages/go",
+            "type": "course"
+          },
           {
             "title": "Node.js Official Documentation",
             "url": "https://nodejs.org/docs/",
@@ -48,10 +59,16 @@
       "data": {
         "label": "Relational Databases",
         "status": "recommended",
+        "relatedLanguage": "sql",
         "description": "Master SQL querying, ACID transactions, relational schema normalization, B-Tree indexes, joins, foreign keys, and connection pooling.",
         "codeSnippet": "-- PostgreSQL Transaction with Row Locking\nBEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 'acc_1' AND balance >= 100;\nUPDATE accounts SET balance = balance + 100 WHERE id = 'acc_2';\nCOMMIT;",
         "prerequisites": ["Backend Languages"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Relational SQL Database Guide",
+            "url": "/languages/sql",
+            "type": "course"
+          },
           {
             "title": "PostgreSQL Official Documentation",
             "url": "https://www.postgresql.org/docs/",
