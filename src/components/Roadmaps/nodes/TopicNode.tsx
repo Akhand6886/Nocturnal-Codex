@@ -24,8 +24,8 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
   return (
     <div
       className={`
-        relative min-w-[160px] max-w-[220px] px-4 py-3 rounded-xl text-center cursor-pointer transition-all duration-200 ease-out select-none
-        border backdrop-blur-md text-foreground shadow-sm flex items-center justify-center gap-2
+        relative w-[220px] h-[56px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-200 ease-out select-none
+        border backdrop-blur-md text-foreground shadow-sm flex items-center justify-center gap-2 box-border overflow-hidden
         hover:shadow-md hover:border-primary/70 hover:-translate-y-0.5
         ${
           isDone
@@ -42,7 +42,7 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
     >
       {/* Recommended Pill Indicator */}
       {isRecommended && !isDone && !isLearning && (
-        <span className="absolute -top-1.5 left-3 px-1.5 py-0.2 bg-purple-600 text-[9px] font-mono font-bold text-white rounded-full uppercase tracking-wider shadow-sm">
+        <span className="absolute -top-1.5 left-3 px-1.5 py-0.2 bg-purple-600 text-[9px] font-mono font-bold text-white rounded-full uppercase tracking-wider shadow-sm z-10">
           Rec
         </span>
       )}
@@ -59,7 +59,7 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <span className="roadmap-font font-bold text-xs tracking-wider leading-snug uppercase block text-foreground truncate">
+      <span className="roadmap-font font-bold text-xs tracking-wider leading-tight uppercase block text-foreground truncate max-w-full px-1">
         {data.label}
       </span>
 
