@@ -15,6 +15,9 @@ export interface Roadmap {
   url: string;
   relatedLanguages?: string[];
   imageUrl?: string;
+  estimatedHours?: number;
+  topicCount?: number;
+  tags?: string[];
 }
 
 const roadmapsDirectory = path.join(process.cwd(), 'src/content/roadmaps');
