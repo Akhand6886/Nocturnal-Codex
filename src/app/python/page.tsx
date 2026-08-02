@@ -1503,7 +1503,7 @@ except Exception as e:
 
                   <Link href="/python/admin">
                     <Button variant="ghost" className="text-xs font-mono text-slate-400 hover:text-cyan-300 gap-1 rounded-xl">
-                      <Lock className="w-3.5 h-3.5" /> Admin Terminal
+                      <Lock className="w-3.5 h-3.5" /> Welcome Architect
                     </Button>
                   </Link>
                 </div>

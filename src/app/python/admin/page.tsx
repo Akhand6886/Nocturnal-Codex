@@ -179,11 +179,11 @@ export default function PythonAdminPage() {
             </div>
             
             <Badge className="bg-cyan-950 text-cyan-300 border border-cyan-500/40 font-mono text-[10px] uppercase tracking-widest px-3 py-1 mx-auto">
-              RESTRICTED ADMIN ACCESS
+              RESTRICTED ARCHITECT ACCESS
             </Badge>
 
             <CardTitle className="text-2xl font-black tracking-tight text-white">
-              ADMIN CONTROL CENTER
+              WELCOME ARCHITECT
             </CardTitle>
 
             <CardDescription className="text-slate-400 text-xs">
@@ -216,7 +216,7 @@ export default function PythonAdminPage() {
                 type="submit"
                 className="w-full bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 hover:from-cyan-400 hover:to-emerald-300 text-slate-950 font-black text-sm py-3.5 rounded-xl shadow-lg shadow-cyan-500/30 transition-all"
               >
-                <Unlock className="w-4 h-4 mr-2" /> UNLOCK ADMIN TERMINAL
+                <Unlock className="w-4 h-4 mr-2" /> ENTER ARCHITECT SANCTUARY
               </Button>
             </form>
 
@@ -253,7 +253,7 @@ export default function PythonAdminPage() {
                 <span className="text-emerald-400">100+ LIVE BACKING ONLINE</span>
               </div>
               <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-                PYTHON ASCENSION ADMIN DASHBOARD
+                WELCOME ARCHITECT — SYSTEM CONTROL CENTER
               </h1>
             </div>
           </div>
@@ -280,7 +280,7 @@ export default function PythonAdminPage() {
               onClick={handleLogout}
               className="text-xs text-red-400 hover:bg-red-950/60 rounded-xl px-3"
             >
-              <Lock className="w-3.5 h-3.5 mr-1" /> Lock Admin
+              <Lock className="w-3.5 h-3.5 mr-1" /> Exit Architect Mode
             </Button>
           </div>
         </div>
