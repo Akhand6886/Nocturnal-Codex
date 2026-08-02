@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   Sheet,
   SheetContent,
@@ -8,7 +9,7 @@ import {
   SheetClose
 } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { ExternalLink, BookOpen, CheckCircle, Clock, Circle, Sparkles, Code2, Play } from 'lucide-react';
+import { ExternalLink, BookOpen, CheckCircle, Clock, Circle, Sparkles, Code2, Play, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { NodeStatus } from '@/lib/roadmapProgress';
@@ -27,6 +28,70 @@ export interface SelectedNodeData {
   resources?: RoadmapResource[];
   codeSnippet?: string;
   prerequisites?: string[];
+  relatedLanguage?: string;
+}
+
+export interface SiteLanguageLink {
+  name: string;
+  slug: string;
+  url: string;
+  description: string;
+  icon: string;
+  hasPlayground?: boolean;
+}
+
+export const SITE_LANGUAGES_MAP: Record<string, SiteLanguageLink> = {
+  python: { name: "Python", slug: "python", url: "/languages/python", description: "Master Python syntax, data structures, OOP, async, & practice live in the Ascension Playground.", icon: "🐍", hasPlayground: true },
+  javascript: { name: "JavaScript", slug: "javascript", url: "/languages/javascript", description: "Master ES6+, async/await, DOM, closures, engines, and modern JS development.", icon: "🟨" },
+  typescript: { name: "TypeScript", slug: "typescript", url: "/languages/typescript", description: "Master static typing, generics, interfaces, and scalable application architecture.", icon: "🟦" },
+  html: { name: "HTML5", slug: "html", url: "/languages/html", description: "Learn modern semantic HTML5 markup, accessibility standards, and SEO metadata.", icon: "🌐" },
+  css: { name: "CSS3", slug: "css", url: "/languages/css", description: "Master Flexbox, CSS Grid, custom properties, animations, and design tokens.", icon: "🎨" },
+  sql: { name: "SQL & Databases", slug: "sql", url: "/languages/sql", description: "Master relational queries, JOINs, indexing, schema design, and optimizations.", icon: "🗄️" },
+  c: { name: "C Language", slug: "c", url: "/languages/c", description: "Low-level memory management, pointers, memory layout, and system programming.", icon: "⚙️" },
+  cplusplus: { name: "C++", slug: "cplusplus", url: "/languages/cplusplus", description: "High-performance OOP, pointers, STL algorithms, and low-latency optimization.", icon: "⚡" },
+  csharp: { name: "C# & .NET", slug: "csharp", url: "/languages/csharp", description: "Modern .NET core, LINQ queries, async tasks, and enterprise architectures.", icon: "🔷" },
+  java: { name: "Java", slug: "java", url: "/languages/java", description: "JVM internals, enterprise OOP patterns, multithreading, and Spring Boot.", icon: "☕" },
+  go: { name: "Go (Golang)", slug: "go", url: "/languages/go", description: "Goroutines, channels, microservices, and ultra-fast concurrent backend binaries.", icon: "🐹" },
+  rust: { name: "Rust", slug: "rust", url: "/languages/rust", description: "Compile-time memory safety, ownership borrow checker, and high-performance cargo.", icon: "🦀" },
+  kotlin: { name: "Kotlin", slug: "kotlin", url: "/languages/kotlin", description: "Concise type-safe language for Android development and modern JVM apps.", icon: "🎯" },
+  swift: { name: "Swift", slug: "swift", url: "/languages/swift", description: "Native iOS, iPadOS, and macOS development with type-safe modern Swift.", icon: "🕊️" },
+  dart: { name: "Dart", slug: "dart", url: "/languages/dart", description: "Multi-platform client-optimized language powering Flutter applications.", icon: "🎯" },
+  php: { name: "PHP", slug: "php", url: "/languages/php", description: "Server-side web development, Laravel framework, and RESTful API APIs.", icon: "🐘" },
+  ruby: { name: "Ruby", slug: "ruby", url: "/languages/ruby", description: "Dynamic object-oriented programming, metaprogramming, and Ruby on Rails.", icon: "💎" },
+  shell: { name: "Shell / Bash", slug: "shell", url: "/languages/shell", description: "Linux terminal commands, shell scripts, CLI automation, and pipes.", icon: "💻" },
+  solidity: { name: "Solidity", slug: "solidity", url: "/languages/solidity", description: "Smart contract development for Ethereum Virtual Machine (EVM) blockchains.", icon: "⯁" },
+  zig: { name: "Zig", slug: "zig", url: "/languages/zig", description: "Next-gen systems programming language for fast, maintainable software.", icon: "⚡" }
+};
+
+export function detectRelatedSiteLanguage(data: SelectedNodeData): SiteLanguageLink | null {
+  if (data.relatedLanguage && SITE_LANGUAGES_MAP[data.relatedLanguage.toLowerCase()]) {
+    return SITE_LANGUAGES_MAP[data.relatedLanguage.toLowerCase()];
+  }
+
+  const text = `${data.label} ${data.description || ''}`.toLowerCase();
+
+  if (text.includes("python")) return SITE_LANGUAGES_MAP.python;
+  if (text.includes("typescript") || text.includes(" ts ")) return SITE_LANGUAGES_MAP.typescript;
+  if (text.includes("javascript") || text.includes(" js ") || text.includes("ecmascript")) return SITE_LANGUAGES_MAP.javascript;
+  if (text.includes("html") || text.includes("semantic html")) return SITE_LANGUAGES_MAP.html;
+  if (text.includes("css") || text.includes("flexbox") || text.includes("grid")) return SITE_LANGUAGES_MAP.css;
+  if (text.includes("sql") || text.includes("postgresql") || text.includes("mysql") || text.includes("relational db")) return SITE_LANGUAGES_MAP.sql;
+  if (text.includes("c++") || text.includes("cpp")) return SITE_LANGUAGES_MAP.cplusplus;
+  if (text.includes("c#") || text.includes("csharp") || text.includes(".net")) return SITE_LANGUAGES_MAP.csharp;
+  if (text.includes("java") && !text.includes("javascript")) return SITE_LANGUAGES_MAP.java;
+  if (text.includes("golang") || text.includes(" go ") || text.includes("go language")) return SITE_LANGUAGES_MAP.go;
+  if (text.includes("rust")) return SITE_LANGUAGES_MAP.rust;
+  if (text.includes("kotlin")) return SITE_LANGUAGES_MAP.kotlin;
+  if (text.includes("swift")) return SITE_LANGUAGES_MAP.swift;
+  if (text.includes("dart") || text.includes("flutter")) return SITE_LANGUAGES_MAP.dart;
+  if (text.includes("php")) return SITE_LANGUAGES_MAP.php;
+  if (text.includes("ruby")) return SITE_LANGUAGES_MAP.ruby;
+  if (text.includes("bash") || text.includes("shell") || text.includes("terminal")) return SITE_LANGUAGES_MAP.shell;
+  if (text.includes("solidity") || text.includes("smart contract")) return SITE_LANGUAGES_MAP.solidity;
+  if (text.includes("zig")) return SITE_LANGUAGES_MAP.zig;
+  if (text.includes(" c ") || text.startsWith("c ")) return SITE_LANGUAGES_MAP.c;
+
+  return null;
 }
 
 interface RoadmapDrawerProps {
@@ -68,6 +133,7 @@ export function RoadmapDrawer({ open, onOpenChange, data, onStatusChange }: Road
 
   const currentStatus: NodeStatus = data.status || 'pending';
   const statusConfig = STATUS_CONFIG[currentStatus];
+  const relatedLang = detectRelatedSiteLanguage(data);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -129,6 +195,45 @@ export function RoadmapDrawer({ open, onOpenChange, data, onStatusChange }: Road
         
         {/* Content */}
         <ScrollArea className="flex-1 p-6 space-y-6">
+          {/* Featured In-House Language Codex Link Card */}
+          {relatedLang && (
+            <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-primary/10 via-accent/10 to-transparent border-2 border-primary/30 shadow-lg relative overflow-hidden">
+              <div className="flex items-start gap-3 mb-2">
+                <span className="text-2xl flex-shrink-0" role="img" aria-label={relatedLang.name}>{relatedLang.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h4 className="font-bold text-sm text-foreground">
+                      Learn {relatedLang.name} on Nocturnal Codex
+                    </h4>
+                    <Badge variant="secondary" className="text-[10px] px-2 py-0.5 bg-primary/20 text-primary font-mono font-bold">
+                      IN-HOUSE GUIDE
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                    {relatedLang.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 mt-3.5 pt-3 border-t border-border/40">
+                <Button asChild size="sm" className="h-8 text-xs font-bold rounded-lg gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm">
+                  <Link href={relatedLang.url}>
+                    <GraduationCap className="w-4 h-4" />
+                    Open {relatedLang.name} Codex Guide
+                  </Link>
+                </Button>
+
+                {relatedLang.hasPlayground && (
+                  <Button asChild size="sm" variant="outline" className="h-8 text-xs font-bold rounded-lg gap-1.5 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10">
+                    <Link href="/playground">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                      Launch Playground
+                    </Link>
+                  </Button>
+                )}
+              </div>
+            </div>
+          )}
           {/* Code Snippet Example Section */}
           {data.codeSnippet && (
             <div className="mb-6">

@@ -21,10 +21,16 @@
       "data": {
         "label": "HTML5 & Semantic Web",
         "status": "recommended",
+        "relatedLanguage": "html",
         "description": "Learn the skeleton of the modern web: semantic markup (<main>, <article>, <nav>), accessibility (ARIA), SEO meta tags, and structured forms.",
         "codeSnippet": "<!-- Semantic HTML5 & Accessibility -->\n<article aria-labelledby=\"title-1\">\n  <h2 id=\"title-1\">Semantic Web Architecture</h2>\n  <p>Use semantic tags for screen readers and SEO crawlers.</p>\n  <button aria-label=\"Submit Feedback\">Submit</button>\n</article>",
         "prerequisites": ["Internet Basics", "Web Browsers"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — HTML5 Comprehensive Guide",
+            "url": "/languages/html",
+            "type": "course"
+          },
           {
             "title": "MDN Web Docs — HTML5 Semantic Elements",
             "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML",
@@ -34,11 +40,6 @@
             "title": "W3C Web Accessibility Initiative (WAI-ARIA Guide)",
             "url": "https://www.w3.org/WAI/standards-guidelines/aria/",
             "type": "docs"
-          },
-          {
-            "title": "HTML Full Course for Beginners",
-            "url": "https://www.youtube.com/watch?v=kUMe1FH4CHE",
-            "type": "video"
           }
         ]
       }
@@ -53,10 +54,16 @@
       "data": {
         "label": "CSS3, Flexbox & Grid",
         "status": "recommended",
+        "relatedLanguage": "css",
         "description": "Master modern responsive design, Flexbox alignment, 2D Grid layouts, custom CSS variables, and fluid typography.",
         "codeSnippet": "/* Modern 2D CSS Grid Layout */\n.dashboard-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 1.5rem;\n  padding: 2rem;\n}",
         "prerequisites": ["HTML5 Basics"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — CSS3 Modern Design Guide",
+            "url": "/languages/css",
+            "type": "course"
+          },
           {
             "title": "MDN Web Docs — CSS Layout Guide",
             "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout",
@@ -80,10 +87,16 @@
       "data": {
         "label": "Modern JavaScript (ES6+)",
         "status": "recommended",
+        "relatedLanguage": "javascript",
         "description": "Understand closures, prototypal inheritance, promises, async/await, DOM manipulation, ES modules, and event loop concurrency.",
         "codeSnippet": "// Async Fetching with ES6 async/await\nasync function fetchUserData(userId) {\n  try {\n    const res = await fetch(`/api/users/${userId}`);\n    if (!res.ok) throw new Error('Network error');\n    const data = await res.json();\n    return data;\n  } catch (err) {\n    console.error('Fetch failed:', err);\n  }\n}",
         "prerequisites": ["HTML5", "CSS3"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Modern JavaScript Deep Dive",
+            "url": "/languages/javascript",
+            "type": "course"
+          },
           {
             "title": "JavaScript.info — The Modern JavaScript Tutorial",
             "url": "https://javascript.info/",
@@ -107,10 +120,16 @@
       "data": {
         "label": "Git & GitHub Control",
         "status": "recommended",
+        "relatedLanguage": "shell",
         "description": "Master branch management, pull requests, rebasing, merge conflict resolution, and collaborative workflow best practices.",
         "codeSnippet": "# Feature Branch Workflow\ngit checkout -b feature/user-auth\ngit add .\ngit commit -m \"feat: implement JWT token storage\"\ngit push origin feature/user-auth",
         "prerequisites": ["Command Line Basics"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Shell & Terminal CLI Guide",
+            "url": "/languages/shell",
+            "type": "course"
+          },
           {
             "title": "Git Official Documentation & Pro Git Book",
             "url": "https://git-scm.com/doc",
@@ -129,10 +148,16 @@
       "data": {
         "label": "TypeScript Type Safety",
         "status": "recommended",
+        "relatedLanguage": "typescript",
         "description": "Write bug-free frontend code using static type checking, generics, interface declaration, utility types, and discriminated unions.",
         "codeSnippet": "// Discriminated Union & Generic Response\ntype ApiResponse<T> =\n  | { status: 'success'; data: T }\n  | { status: 'error'; message: string };\n\ninterface User { id: string; name: string; }",
         "prerequisites": ["Modern JavaScript"],
         "resources": [
+          {
+            "title": "Nocturnal Codex — TypeScript Architecture Guide",
+            "url": "/languages/typescript",
+            "type": "course"
+          },
           {
             "title": "TypeScript Handbook & Official Documentation",
             "url": "https://www.typescriptlang.org/docs/",
