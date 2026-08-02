@@ -1299,7 +1299,9 @@ except Exception as e:
                 </div>
                 <div className="font-black text-xl text-white tracking-wide flex items-center gap-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                   <span>{currentRank.rank}</span>
-                  <Badge className="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-[10px]">S-RANK</Badge>
+                  <Badge className="bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 text-slate-950 font-black text-[11px] px-3 py-0.5 shadow-[0_0_15px_rgba(245,158,11,0.5)] border border-amber-300/80 tracking-wider">
+                    S-RANK
+                  </Badge>
                 </div>
               </div>
             </div>
