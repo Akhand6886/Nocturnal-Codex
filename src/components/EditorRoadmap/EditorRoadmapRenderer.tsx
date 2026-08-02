@@ -1,7 +1,7 @@
 'use client';
 
 import './EditorRoadmapRenderer.css';
-import React, { FC, useEffect, useState, useCallback } from 'react';
+import React, { FC, useEffect, useState, useCallback, useMemo } from 'react';
 import {
   ReactFlow,
   Background,
@@ -22,6 +22,8 @@ import LabelNode from '../Roadmaps/nodes/LabelNode';
 import RoadmapEdge from '../Roadmaps/edges/RoadmapEdge';
 import DottedEdge from '../Roadmaps/edges/DottedEdge';
 import { RoadmapDrawer, SelectedNodeData } from '../Roadmaps/RoadmapDrawer';
+import { RoadmapControls } from '../Roadmaps/RoadmapControls';
+import { useRoadmapProgress, NodeStatus } from '@/lib/roadmapProgress';
 
 interface EditorRoadmapRendererProps {
   roadmapId: string;
@@ -50,15 +52,15 @@ const edgeTypes = {
 };
 
 const LEGEND = [
-  { color: '#a855f7', border: '#7e22ce', label: 'Personal Recommendation', icon: '★' },
-  { color: '#22c55e', border: '#15803d', label: 'Alternative Option', icon: '◆' },
-  { color: '#94a3b8', border: '#64748b', label: 'Order / Avoid on roadmap', icon: '○' },
+  { color: '#22c55e', border: '#15803d', label: 'Mastered Topic' },
+  { color: '#f59e0b', border: '#d97706', label: 'In Progress' },
+  { color: '#a855f7', border: '#7e22ce', label: 'Recommended Path' },
 ];
 
 const Legend: FC = () => (
-  <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 p-3.5 rounded-xl border border-border/30 bg-card/80 backdrop-blur-xl shadow-lg dark:bg-card/60">
+  <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 p-3.5 rounded-xl border border-border/40 bg-card/90 backdrop-blur-xl shadow-lg dark:bg-card/70">
     <span className="roadmap-font text-[10px] font-bold text-muted-foreground/70 uppercase tracking-widest mb-1 px-0.5">
-      Legend
+      Legend & Status
     </span>
     {LEGEND.map(({ color, border, label }) => (
       <div key={label} className="flex items-center gap-3 group">
@@ -105,6 +107,13 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedNode, setSelectedNode] = useState<SelectedNodeData | null>(null);
 
+  // Search & Filter controls
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | NodeStatus>('all');
+
+  // Local progress persistence hook
+  const { progress, setNodeStatus, getNodeStatus, resetProgress } = useRoadmapProgress(roadmapId);
+
   useEffect(() => {
     if (initialRoadmapData) return;
 
@@ -114,7 +123,6 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
         const response = await fetch(`/roadmap-content/${roadmapId}.json`);
         if (!response.ok) throw new Error(`Failed to fetch roadmap data. Status: ${response.status}`);
         const data: RoadmapData = await response.json();
-        // Default edge type if not set
         data.edges = data.edges.map(edge => ({ ...edge, type: edge.type || 'roadmap' }));
         setRoadmapData(data);
       } catch (e: any) {
@@ -127,28 +135,70 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
     fetchRoadmapData();
   }, [roadmapId, initialRoadmapData]);
 
+  const interactiveNodes = useMemo(() => {
+    if (!roadmapData) return [];
+    return roadmapData.nodes.filter(
+      (node) => node.type !== 'section' && node.type !== 'info' && node.type !== 'label'
+    );
+  }, [roadmapData]);
+
+  // Synchronize user completion status & search highlighting into ReactFlow node definitions
+  const processedNodes = useMemo(() => {
+    if (!roadmapData) return [];
+    const query = searchQuery.trim().toLowerCase();
+
+    return roadmapData.nodes.map((node) => {
+      if (node.type === 'section' || node.type === 'info' || node.type === 'label') {
+        return node;
+      }
+
+      const userStatus = getNodeStatus(node.id);
+      const label = (node.data?.label as string) || '';
+      const matchesSearch = query.length > 0 && label.toLowerCase().includes(query);
+      const matchesFilter = statusFilter === 'all' || userStatus === statusFilter;
+
+      return {
+        ...node,
+        hidden: !matchesFilter,
+        data: {
+          ...node.data,
+          userStatus,
+          isHighlighted: matchesSearch,
+        },
+      };
+    });
+  }, [roadmapData, getNodeStatus, searchQuery, statusFilter]);
+
+  const handleStatusChange = (nodeId: string, status: NodeStatus) => {
+    setNodeStatus(nodeId, status);
+    if (selectedNode && selectedNode.id === nodeId) {
+      setSelectedNode((prev) => (prev ? { ...prev, status } : null));
+    }
+  };
+
   const onNodeClick = useCallback((event: React.MouseEvent, node: Node) => {
-    // Skip non-interactive nodes
     if (node.type === 'section' || node.type === 'info' || node.type === 'label') return;
     const nodeData = node.data as Record<string, unknown>;
+    const currentStatus = getNodeStatus(node.id);
+
     setSelectedNode({
       id: node.id,
       label: nodeData.label as string,
       description: nodeData.description as string | undefined,
-      status: nodeData.status as 'done' | 'learning' | 'pending' | undefined,
+      status: currentStatus,
       resources: nodeData.resources as any,
+      codeSnippet: nodeData.codeSnippet as string | undefined,
+      prerequisites: nodeData.prerequisites as string[] | undefined,
     });
     setDrawerOpen(true);
-  }, []);
+  }, [getNodeStatus]);
 
   if (loading) {
     return (
       <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="relative">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Spinner className="text-primary w-6 h-6" />
-            </div>
+          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <Spinner className="text-primary w-6 h-6" />
           </div>
           <div className="text-center">
             <p className="text-sm font-medium text-foreground">Loading roadmap</p>
@@ -173,50 +223,61 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
     );
   }
 
-  const maxNodeY = roadmapData?.nodes.reduce((max, node) => {
-    return Math.max(max, node.position.y);
-  }, 0) || 600;
+  const maxNodeY = processedNodes.reduce((max, node) => Math.max(max, node.position.y), 0) || 600;
   const canvasHeight = maxNodeY + 140;
 
   return (
-    <div className="w-full overflow-x-auto bg-[#fafaf9] dark:bg-black transition-colors duration-300">
+    <div className="w-full bg-[#fafaf9] dark:bg-black transition-colors duration-300">
+      {/* Top Filter Bar & Progress Meter */}
+      <RoadmapControls
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        statusFilter={statusFilter}
+        onStatusFilterChange={setStatusFilter}
+        totalTopics={interactiveNodes.length}
+        completedCount={progress.completedNodeIds.length}
+        learningCount={progress.learningNodeIds.length}
+        onResetProgress={resetProgress}
+      />
+
       <div
         style={{ height: canvasHeight, minWidth: 1000 }}
         className="w-full max-w-[1000px] mx-auto relative border-x border-border/10 shadow-sm bg-transparent"
       >
         <ReactFlowProvider>
-        <ReactFlow
-          nodes={roadmapData.nodes}
-          edges={roadmapData.edges}
-          nodeTypes={nodeTypes}
-          edgeTypes={edgeTypes}
-          onNodeClick={onNodeClick}
-          fitView
-          zoomOnScroll={false}
-          zoomOnPinch={false}
-          zoomOnDoubleClick={false}
-          panOnDrag={false}
-          panOnScroll={false}
-          preventScrolling={false}
-          nodesDraggable={false}
-          nodesConnectable={false}
-          elementsSelectable={true}
-          style={{ background: 'transparent' }}
-        >
-          <Legend />
-          <Background
-            gap={24}
-            size={1.5}
-            variant={BackgroundVariant.Dots}
-          />
-          <FitViewUpdater />
-        </ReactFlow>
-      </ReactFlowProvider>
+          <ReactFlow
+            nodes={processedNodes}
+            edges={roadmapData.edges}
+            nodeTypes={nodeTypes}
+            edgeTypes={edgeTypes}
+            onNodeClick={onNodeClick}
+            fitView
+            zoomOnScroll={false}
+            zoomOnPinch={false}
+            zoomOnDoubleClick={false}
+            panOnDrag={false}
+            panOnScroll={false}
+            preventScrolling={false}
+            nodesDraggable={false}
+            nodesConnectable={false}
+            elementsSelectable={true}
+            style={{ background: 'transparent' }}
+          >
+            <Legend />
+            <Background
+              gap={24}
+              size={1.5}
+              variant={BackgroundVariant.Dots}
+            />
+            <FitViewUpdater />
+          </ReactFlow>
+        </ReactFlowProvider>
 
         <RoadmapDrawer
           open={drawerOpen}
           onOpenChange={setDrawerOpen}
           data={selectedNode}
+          onStatusChange={handleStatusChange}
         />
       </div>
     </div>
