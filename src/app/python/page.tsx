@@ -566,22 +566,12 @@ export default function PythonAscensionPage() {
     setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
   };
 
-  // Solo Leveling Real MP3 Music Player Effect
+  // Solo Leveling Real MP3 Music Player Effect - Disabled
   useEffect(() => {
     const audio = audioElementRef.current;
-    if (!audio) return;
-
-    audio.volume = isMuted ? 0 : volume;
-
-    if (musicPlaying && !isMuted) {
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.log("Autoplay waiting for user interaction", err);
-        });
-      }
-    } else {
+    if (audio) {
       audio.pause();
+      audio.volume = 0;
     }
   }, [currentTrack, musicPlaying, isMuted, volume]);
 
