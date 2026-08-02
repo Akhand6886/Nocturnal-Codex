@@ -4,7 +4,7 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
@@ -15,11 +15,11 @@
       "id": "math",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Math Foundations: Linear Algebra & Calculus",
+        "label": "Linear Algebra & Calculus",
         "status": "recommended",
         "description": "Master vectors, matrices, dot products, eigenvalues, partial derivatives, gradient descent optimization, and probability distributions.",
         "codeSnippet": "# Matrix Multiplication & Vector Dot Product in Python\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\nC = np.dot(A, B)\nprint('Matrix Product:\\n', C)",
@@ -42,11 +42,11 @@
       "id": "python-data",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
-        "label": "Python Data Analysis (NumPy, Pandas, Matplotlib)",
+        "label": "Python Data Stack",
         "status": "recommended",
         "description": "Data wrangling, cleaning missing values, DataFrame manipulation, statistical distributions, and exploratory data analysis (EDA).",
         "codeSnippet": "import pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv('dataset.csv')\ndf_clean = df.dropna().query('score > 80')\nprint(df_clean.describe())",
@@ -64,11 +64,11 @@
       "id": "scikit-learn",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Classical Machine Learning (Scikit-Learn)",
+        "label": "Classical Machine Learning",
         "status": "recommended",
         "description": "Supervised & Unsupervised algorithms: Linear/Logistic Regression, Decision Trees, Random Forests, SVMs, K-Means clustering, and cross-validation.",
         "codeSnippet": "from sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\nmodel = RandomForestClassifier(n_estimators=100)\nmodel.fit(X_train, y_train)\nprint('Accuracy:', model.score(X_test, y_test))",
@@ -86,11 +86,11 @@
       "id": "deep-learning",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Deep Learning & Neural Networks (PyTorch)",
+        "label": "Deep Learning (PyTorch)",
         "status": "recommended",
         "description": "Build Multilayer Perceptrons (MLP), Convolutional Neural Networks (CNN) for vision, and Recurrent Neural Networks (RNN) using PyTorch tensors.",
         "codeSnippet": "import torch\nimport torch.nn as nn\n\nclass SimpleMLP(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc = nn.Sequential(\n            nn.Linear(784, 128),\n            nn.ReLU(),\n            nn.Linear(128, 10)\n        )\n    def forward(self, x):\n        return self.fc(x)",
@@ -113,11 +113,11 @@
       "id": "transformers",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 500
       },
       "data": {
-        "label": "LLMs, Transformers & GenAI (HuggingFace)",
+        "label": "LLMs & GenAI Transformers",
         "status": "recommended",
         "description": "Understand Self-Attention mechanisms, Transformers (BERT, GPT), fine-tuning with LoRA/PEFT, Retrieval-Augmented Generation (RAG), and vector databases.",
         "codeSnippet": "from transformers import pipeline\n\npipe = pipeline(\"text-generation\", model=\"gpt2\")\nresult = pipe(\"The future of artificial intelligence is\", max_length=50)\nprint(result[0]['generated_text'])",

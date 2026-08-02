@@ -4,22 +4,22 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
-        "label": "Embedded Systems & Hardware Path"
+        "label": "Embedded Systems Path"
       }
     },
     {
       "id": "c-programming",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Embedded C & Assembly",
+        "label": "Embedded C & Registers",
         "status": "recommended",
         "description": "Master bitwise manipulation, volatile pointers, memory-mapped I/O registers, interrupt service routines (ISR), and linker scripts.",
         "codeSnippet": "// Memory-Mapped Register Bit Manipulation in C\n#define PORTB_DIR (*((volatile uint8_t *)0x24))\n#define PORTB_DATA (*((volatile uint8_t *)0x25))\n\nvoid init_gpio(void) {\n    PORTB_DIR |= (1 << 5);  // Set Pin 5 as output\n    PORTB_DATA |= (1 << 5); // Set Pin 5 HIGH\n}",
@@ -37,11 +37,11 @@
       "id": "microcontrollers",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
-        "label": "Microcontroller Architecture (ARM Cortex-M, ESP32, STM32)",
+        "label": "Microcontrollers (STM32/ESP)",
         "status": "recommended",
         "description": "Understand NVIC nested interrupt controllers, DMA memory access, timers/counters, PWM, and low-power sleep modes.",
         "codeSnippet": "// STM32 HAL Timer Interrupt Callback\nvoid HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {\n    if (htim->Instance == TIM2) {\n        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); // Toggle LED\n    }\n}",
@@ -59,11 +59,11 @@
       "id": "protocols",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Hardware Protocols (UART, SPI, I2C, CAN Bus)",
+        "label": "Hardware Bus (I2C/SPI)",
         "status": "recommended",
         "description": "Interface sensors, displays, and automotive networks using synchronous (SPI/I2C) and asynchronous (UART/CAN) serial buses.",
         "codeSnippet": "// I2C Sensor Reading in C\nvoid read_sensor_data(uint8_t dev_addr, uint8_t reg_addr, uint8_t *buffer, uint16_t len) {\n    i2c_start();\n    i2c_write(dev_addr << 1);\n    i2c_write(reg_addr);\n    i2c_start();\n    i2c_write((dev_addr << 1) | 1);\n    for (int i = 0; i < len; i++) buffer[i] = i2c_read();\n    i2c_stop();\n}",
@@ -81,11 +81,11 @@
       "id": "rtos",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Real-Time Operating Systems (FreeRTOS / Zephyr)",
+        "label": "Real-Time OS (FreeRTOS)",
         "status": "recommended",
         "description": "Preemptive task scheduling, semaphores, mutexes, message queues, and deterministic execution guarantees.",
         "codeSnippet": "// FreeRTOS Task Creation\nvoid vTaskCode(void *pvParameters) {\n    for (;;) {\n        vTaskDelay(pdMS_TO_TICKS(1000));\n    }\n}\nxTaskCreate(vTaskCode, \"SensorTask\", 1024, NULL, 1, NULL);",

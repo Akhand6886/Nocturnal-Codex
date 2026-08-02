@@ -4,7 +4,7 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
@@ -15,11 +15,11 @@
       "id": "language",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Backend Programming Languages",
+        "label": "Backend Programming",
         "status": "recommended",
         "description": "Choose a core backend language: Node.js (TypeScript), Python (FastAPI/Django), Go, or Java (Spring Boot). Learn asynchronous concurrency, garbage collection, and memory management.",
         "codeSnippet": "// Node.js HTTP Server with Express & TypeScript\nimport express from 'express';\nconst app = express();\napp.use(express.json());\n\napp.get('/health', (req, res) => {\n  res.json({ status: 'UP', timestamp: new Date().toISOString() });\n});\napp.listen(8080);",
@@ -42,11 +42,11 @@
       "id": "relational-db",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
-        "label": "Relational Databases (PostgreSQL / MySQL)",
+        "label": "Relational Databases",
         "status": "recommended",
         "description": "Master SQL querying, ACID transactions, relational schema normalization, B-Tree indexes, joins, foreign keys, and connection pooling.",
         "codeSnippet": "-- PostgreSQL Transaction with Row Locking\nBEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 'acc_1' AND balance >= 100;\nUPDATE accounts SET balance = balance + 100 WHERE id = 'acc_2';\nCOMMIT;",
@@ -69,11 +69,11 @@
       "id": "nosql-db",
       "type": "topic",
       "position": {
-        "x": 200,
+        "x": 130,
         "y": 200
       },
       "data": {
-        "label": "NoSQL Databases (MongoDB / DynamoDB)",
+        "label": "NoSQL Databases",
         "status": "alternative",
         "description": "Document and key-value stores for unstructured or high-scale data. Understand eventual consistency, sharding, and aggregation pipelines.",
         "codeSnippet": "// MongoDB Aggregation Pipeline\ndb.orders.aggregate([\n  { $match: { status: 'completed' } },\n  { $group: { _id: '$customerId', totalSpent: { $sum: '$amount' } } }\n]);",
@@ -91,11 +91,11 @@
       "id": "api-design",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "RESTful APIs & GraphQL",
+        "label": "REST APIs & GraphQL",
         "status": "recommended",
         "description": "Design clean, scalable APIs. Understand HTTP status codes, CORS, idempotency, OpenAPI specifications, rate limiting, and GraphQL schemas.",
         "codeSnippet": "/* OpenAPI / Swagger REST Schema Definition */\n/api/v1/users/{id}:\n  get:\n    summary: Fetch User Details\n    parameters:\n      - name: id\n        in: path\n        required: true\n        schema: { type: string }",
@@ -118,11 +118,11 @@
       "id": "auth",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Authentication & Authorization (JWT, OAuth2)",
+        "label": "Auth & JWT Tokens",
         "status": "recommended",
         "description": "Secure API routes with JWT tokens, HTTP-only cookies, OAuth 2.0 / OpenID Connect, password hashing (Argon2 / bcrypt), and RBAC.",
         "codeSnippet": "// Password Hashing with Argon2 in Node.js\nimport argon2 from 'argon2';\n\nconst hash = await argon2.hash('hunterPassword123');\nconst isMatch = await argon2.verify(hash, 'hunterPassword123');",
@@ -140,11 +140,11 @@
       "id": "caching",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 500
       },
       "data": {
-        "label": "Caching & Memory Stores (Redis / Memcached)",
+        "label": "Redis Caching",
         "status": "recommended",
         "description": "In-memory caching strategies (Write-Through, Cache-Aside), TTL expiration, rate-limiting counters, and session storage with Redis.",
         "codeSnippet": "// Redis Cache-Aside Pattern in Node.js\nasync function getCachedUser(id) {\n  const cached = await redis.get(`user:${id}`);\n  if (cached) return JSON.parse(cached);\n  const user = await db.users.findUnique({ where: { id } });\n  await redis.setex(`user:${id}`, 300, JSON.stringify(user));\n  return user;\n}",
@@ -162,11 +162,11 @@
       "id": "microservices",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 600
       },
       "data": {
-        "label": "System Design & Microservices (Kafka / RabbitMQ)",
+        "label": "System Design & Queues",
         "status": "recommended",
         "description": "Event-driven architecture, message queues (RabbitMQ, Apache Kafka), distributed tracing, gRPC inter-service RPCs, and saga transactions.",
         "codeSnippet": "// Kafka Event Producer\nawait producer.send({\n  topic: 'order-events',\n  messages: [{ key: 'order_101', value: JSON.stringify({ event: 'ORDER_CREATED', total: 99.50 }) }],\n});",

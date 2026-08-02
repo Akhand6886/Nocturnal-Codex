@@ -4,7 +4,7 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
@@ -15,11 +15,11 @@
       "id": "linux",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Linux Administration & Bash Scripting",
+        "label": "Linux & Bash Admin",
         "status": "recommended",
         "description": "Master systemd services, SSH key management, process monitoring, file permissions (chmod/chown), cron jobs, and shell automation scripts.",
         "codeSnippet": "#!/bin/bash\n# System Backup Automation Script\nBACKUP_DIR=\"/var/backups/$(date +%Y%m%d)\"\nmkdir -p \"$BACKUP_DIR\"\ntar -czf \"$BACKUP_DIR/app.tar.gz\" /var/www/app\necho \"Backup completed successfully to $BACKUP_DIR\"",
@@ -37,7 +37,7 @@
       "id": "docker",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
@@ -59,11 +59,11 @@
       "id": "kubernetes",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Orchestration & Kubernetes (K8s)",
+        "label": "Kubernetes Orchestration",
         "status": "recommended",
         "description": "Orchestrate container clusters at scale. Understand Deployments, Pods, Services, Ingress controllers, Helm charts, and HPA autoscaling.",
         "codeSnippet": "# Kubernetes Deployment Manifest\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: web-api\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: web-api\n  template:\n    metadata:\n      labels:\n        app: web-api\n    spec:\n      containers:\n      - name: web-api\n        image: registry.example.com/api:v1.2.0\n        ports:\n        - containerPort: 8080",
@@ -81,11 +81,11 @@
       "id": "iac",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Infrastructure as Code (Terraform)",
+        "label": "Infrastructure (Terraform)",
         "status": "recommended",
         "description": "Provision cloud infrastructure declaratively using HashiCorp HCL. Manage state files, modules, and multi-cloud environments (AWS, GCP, Azure).",
         "codeSnippet": "# Terraform AWS EC2 Instance Definition\nresource \"aws_instance\" \"web_server\" {\n  ami           = \"ami-0c55b159cbfafe1f0\"\n  instance_type = \"t3.micro\"\n  tags = {\n    Name = \"Production-Web-Server\"\n  }\n}",
@@ -103,11 +103,11 @@
       "id": "cicd",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 500
       },
       "data": {
-        "label": "CI/CD Automation Pipelines (GitHub Actions / GitLab CI)",
+        "label": "CI/CD GitHub Actions",
         "status": "recommended",
         "description": "Automate linting, testing, Docker image building, security scanning, and zero-downtime deployment pipelines.",
         "codeSnippet": "# GitHub Actions CI Workflow\nname: Build & Test\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v3\n    - run: npm ci\n    - run: npm test\n    - run: npx tsc --noEmit",

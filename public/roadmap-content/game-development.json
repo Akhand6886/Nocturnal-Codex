@@ -4,22 +4,22 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
-        "label": "Game Development & Graphics Path"
+        "label": "Game Development Path"
       }
     },
     {
       "id": "game-math",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Game Math & Physics (Vectors, Quaternions, Collisions)",
+        "label": "3D Vectors & Physics",
         "status": "recommended",
         "description": "Understand 3D vector arithmetic, dot/cross products, quaternions for rotation, raycasting, AABB bounding boxes, and rigid body dynamics.",
         "codeSnippet": "// 3D Vector Normalization & Dot Product in C#\nVector3 direction = (targetPosition - transform.position).normalized;\nfloat dotProduct = Vector3.Dot(transform.forward, direction);\nif (dotProduct > 0.5f) {\n    Debug.Log(\"Target is in field of view!\");\n}",
@@ -37,11 +37,11 @@
       "id": "game-engine",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
-        "label": "Game Engines (Unity / Unreal Engine / Godot)",
+        "label": "Game Engine (Unity/Unreal)",
         "status": "recommended",
         "description": "Master component architecture, scene graphs, particle systems, animation state machines, and audio managers in Unity (C#) or Unreal (C++).",
         "codeSnippet": "// Unity C# Player Controller Script\nusing UnityEngine;\n\npublic class PlayerMovement : MonoBehaviour {\n    public float speed = 5.0f;\n    void Update() {\n        float h = Input.GetAxis(\"Horizontal\");\n        float v = Input.GetAxis(\"Vertical\");\n        transform.Translate(new Vector3(h, 0, v) * speed * Time.deltaTime);\n    }\n}",
@@ -64,11 +64,11 @@
       "id": "graphics-shaders",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Graphics Programming & Shaders (HLSL / GLSL / WebGL)",
+        "label": "Graphics & HLSL Shaders",
         "status": "recommended",
         "description": "Write vertex and fragment shaders for real-time rendering, PBR lighting, post-processing effects, and shadow mapping.",
         "codeSnippet": "// Simple HLSL Fragment Shader\nfloat4 frag(v2f i) : SV_Target {\n    float4 col = tex2D(_MainTex, i.uv);\n    float lighting = saturate(dot(i.normal, _WorldSpaceLightPos0.xyz));\n    return col * lighting;\n}",

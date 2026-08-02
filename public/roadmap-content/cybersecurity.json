@@ -4,7 +4,7 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
@@ -15,11 +15,11 @@
       "id": "networking",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Networking & Protocols (TCP/IP, OSI, DNS)",
+        "label": "Networking & Protocols",
         "status": "recommended",
         "description": "Understand the 7 layers of the OSI model, TCP 3-way handshake, Wireshark packet analysis, subnetting, and HTTP/HTTPS encryption.",
         "codeSnippet": "# Scapy Packet Inspection in Python\nfrom scapy.all import sniff\n\ndef packet_callback(packet):\n    if packet.haslayer('IP'):\n        print(f\"[+] IP Packet: {packet['IP'].src} -> {packet['IP'].dst}\")\n\nsniff(filter=\"ip\", prn=packet_callback, count=10)",
@@ -37,11 +37,11 @@
       "id": "web-security",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
-        "label": "Web Security & OWASP Top 10",
+        "label": "Web Security OWASP",
         "status": "recommended",
         "description": "Identify and defend against SQL Injection (SQLi), Cross-Site Scripting (XSS), CSRF, SSRF, IDOR, and Broken Access Control.",
         "codeSnippet": "-- Vulnerable SQL Code (SQL Injection Hazard)\nSELECT * FROM users WHERE username = 'admin' OR '1'='1' --';\n\n-- Secure Parameterized Query\nSELECT * FROM users WHERE username = $1 AND password_hash = $2;",
@@ -64,11 +64,11 @@
       "id": "crypto",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Cryptography & PKI (AES, RSA, ECC)",
+        "label": "Cryptography & PKI",
         "status": "recommended",
         "description": "Master symmetric encryption (AES-256-GCM), asymmetric encryption (RSA, Elliptic Curve), HMAC signatures, and digital certificate chains.",
         "codeSnippet": "# AES-GCM Encryption in Python Cryptography\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\nimport os\n\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = os.urandom(12)\nciphertext = aesgcm.encrypt(nonce, b\"Secret Payload\", None)",
@@ -86,11 +86,11 @@
       "id": "pentesting",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Penetration Testing & Red Teaming (Nmap, Metasploit)",
+        "label": "Penetration Testing",
         "status": "recommended",
         "description": "Ethical hacking methodology: reconnaissance, scanning ports with Nmap, vulnerability assessment, exploitation, and post-exploitation reporting.",
         "codeSnippet": "# Nmap Stealth SYN Port Scan\nnmap -sS -sV -O -p 1-65535 -T4 target_ip",

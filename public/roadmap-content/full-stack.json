@@ -4,7 +4,7 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
@@ -15,11 +15,11 @@
       "id": "frontend-core",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Frontend Mastery (React / TypeScript)",
+        "label": "Frontend (React / TS)",
         "status": "recommended",
         "description": "Component architecture, dynamic state, API integration, Tailwind CSS styling, and responsive UI design.",
         "codeSnippet": "export function UserProfile({ userId }: { userId: string }) {\n  const { data: user } = useQuery(['user', userId], () => fetchUser(userId));\n  return <div>{user ? <h1>{user.name}</h1> : <Spinner />}</div>;\n}",
@@ -37,11 +37,11 @@
       "id": "backend-core",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
-        "label": "Backend APIs & Microservices (Node / Python / Go)",
+        "label": "Backend APIs & Services",
         "status": "recommended",
         "description": "Build high-throughput REST APIs, authentication services, rate limiting, and database ORM layer (Prisma, Drizzle, SQLAlchemy).",
         "codeSnippet": "// Prisma ORM Query\nconst userWithPosts = await prisma.user.findUnique({\n  where: { email: 'hunter@example.com' },\n  include: { posts: true },\n});",
@@ -59,11 +59,11 @@
       "id": "database-architecture",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Database Persistence (SQL + NoSQL)",
+        "label": "Database Persistence",
         "status": "recommended",
         "description": "Manage PostgreSQL relational models alongside Redis caching layers for high scalability.",
         "codeSnippet": "-- Relational Schema with Foreign Key\nCREATE TABLE posts (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id UUID REFERENCES users(id) ON DELETE CASCADE,\n  title VARCHAR(255) NOT NULL\n);",
@@ -81,11 +81,11 @@
       "id": "deployment-devops",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Full-Stack Deployment & Cloud (Vercel, AWS, Docker)",
+        "label": "Full-Stack Cloud & DevOps",
         "status": "recommended",
         "description": "Containerize apps with Docker, configure CI/CD pipelines, and deploy serverless functions to AWS or Vercel.",
         "codeSnippet": "/* Vercel / Cloud Deployment Config */\n{\n  \"version\": 2,\n  \"builds\": [{ \"src\": \"next.config.js\", \"use\": \"@vercel/next\" }]\n}",

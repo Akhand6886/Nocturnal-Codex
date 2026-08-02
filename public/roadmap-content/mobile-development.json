@@ -4,22 +4,22 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
-        "label": "Mobile Application Developer Path"
+        "label": "Mobile App Developer Path"
       }
     },
     {
       "id": "cross-platform",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Cross-Platform Frameworks (React Native / Flutter)",
+        "label": "Cross-Platform Frameworks",
         "status": "recommended",
         "description": "Build iOS and Android apps from a single codebase using React Native (JavaScript/TypeScript) or Flutter (Dart).",
         "codeSnippet": "// React Native View & Text Component\nimport { View, Text, StyleSheet } from 'react-native';\n\nexport function MobileCard() {\n  return (\n    <View style={styles.card}>\n      <Text style={styles.title}>Cross Platform Mobile</Text>\n    </View>\n  );\n}",
@@ -42,11 +42,11 @@
       "id": "native-ios",
       "type": "topic",
       "position": {
-        "x": 200,
+        "x": 130,
         "y": 200
       },
       "data": {
-        "label": "Native iOS (Swift & SwiftUI)",
+        "label": "Native iOS (SwiftUI)",
         "status": "alternative",
         "description": "Master Swift 5, SwiftUI declarative layouts, Combine reactive framework, and CoreData persistence.",
         "codeSnippet": "// SwiftUI Declarative View\nimport SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        VStack {\n            Image(systemName: \"globe\")\n            Text(\"Hello, iOS!\")\n        }\n    }\n}",
@@ -64,11 +64,11 @@
       "id": "native-android",
       "type": "topic",
       "position": {
-        "x": 680,
+        "x": 650,
         "y": 200
       },
       "data": {
-        "label": "Native Android (Kotlin & Jetpack Compose)",
+        "label": "Native Android (Compose)",
         "status": "alternative",
         "description": "Master Kotlin, Jetpack Compose declarative UI, Coroutines for async tasks, and Room database.",
         "codeSnippet": "// Jetpack Compose Composable Function\n@Composable\nfunction Greeting(name: String) {\n    Text(text = \"Hello $name!\", modifier = Modifier.padding(16.dp))\n}",

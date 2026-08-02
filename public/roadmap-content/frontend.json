@@ -4,7 +4,7 @@
       "id": "h",
       "type": "section",
       "position": {
-        "x": 440,
+        "x": 300,
         "y": 20
       },
       "data": {
@@ -15,7 +15,7 @@
       "id": "html",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 100
       },
       "data": {
@@ -47,7 +47,7 @@
       "id": "css",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 200
       },
       "data": {
@@ -74,7 +74,7 @@
       "id": "javascript",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 300
       },
       "data": {
@@ -101,11 +101,11 @@
       "id": "git",
       "type": "topic",
       "position": {
-        "x": 200,
+        "x": 130,
         "y": 300
       },
       "data": {
-        "label": "Git & GitHub Version Control",
+        "label": "Git & GitHub Control",
         "status": "recommended",
         "description": "Master branch management, pull requests, rebasing, merge conflict resolution, and collaborative workflow best practices.",
         "codeSnippet": "# Feature Branch Workflow\ngit checkout -b feature/user-auth\ngit add .\ngit commit -m \"feat: implement JWT token storage\"\ngit push origin feature/user-auth",
@@ -123,7 +123,7 @@
       "id": "typescript",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 400
       },
       "data": {
@@ -145,7 +145,7 @@
       "id": "react",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 500
       },
       "data": {
@@ -167,11 +167,11 @@
       "id": "tailwind",
       "type": "topic",
       "position": {
-        "x": 200,
+        "x": 130,
         "y": 500
       },
       "data": {
-        "label": "Tailwind CSS & Design Tokens",
+        "label": "Tailwind CSS Tokens",
         "status": "alternative",
         "description": "Utility-first CSS framework for rapid UI development with responsive variants, dark mode support, and design system tokens.",
         "codeSnippet": "<button className=\"px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition-all\">\n  Button\n</button>",
@@ -186,36 +186,14 @@
       }
     },
     {
-      "id": "nextjs",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 600
-      },
-      "data": {
-        "label": "Next.js App Router & Full-Stack React",
-        "status": "recommended",
-        "description": "Server Components (RSC), Server Actions, SSG/SSR hydration, file-based routing, dynamic metadata, and API handlers.",
-        "codeSnippet": "// Next.js Server Component with SSG Data Fetching\nexport default async function Page() {\n  const res = await fetch('https://api.example.com/posts', { next: { revalidate: 60 } });\n  const posts = await res.json();\n  return <div>{posts.map(p => <h2 key={p.id}>{p.title}</h2>)}</div>;\n}",
-        "prerequisites": ["React.js Framework", "TypeScript"],
-        "resources": [
-          {
-            "title": "Next.js Documentation — App Router Guide",
-            "url": "https://nextjs.org/docs",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
       "id": "state-management",
       "type": "topic",
       "position": {
-        "x": 680,
+        "x": 650,
         "y": 500
       },
       "data": {
-        "label": "State Management (Zustand / Redux)",
+        "label": "State (Zustand/Redux)",
         "status": "recommended",
         "description": "Manage complex global state across client components using immutable stores, middleware, and devtools.",
         "codeSnippet": "import { create } from 'zustand';\n\nexport const useStore = create((set) => ({\n  bears: 0,\n  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),\n}));",
@@ -230,14 +208,36 @@
       }
     },
     {
+      "id": "nextjs",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 600
+      },
+      "data": {
+        "label": "Next.js App Router",
+        "status": "recommended",
+        "description": "Server Components (RSC), Server Actions, SSG/SSR hydration, file-based routing, dynamic metadata, and API handlers.",
+        "codeSnippet": "// Next.js Server Component with SSG Data Fetching\nexport default async function Page() {\n  const res = await fetch('https://api.example.com/posts', { next: { revalidate: 60 } });\n  const posts = await res.json();\n  return <div>{posts.map(p => <h2 key={p.id}>{p.title}</h2>)}</div>;\n}",
+        "prerequisites": ["React.js Framework", "TypeScript"],
+        "resources": [
+          {
+            "title": "Next.js Documentation — App Router Guide",
+            "url": "https://nextjs.org/docs",
+            "type": "docs"
+          }
+        ]
+      }
+    },
+    {
       "id": "testing",
       "type": "topic",
       "position": {
-        "x": 440,
+        "x": 390,
         "y": 700
       },
       "data": {
-        "label": "Testing (Vitest, Testing Library & Playwright)",
+        "label": "Vitest & Playwright",
         "status": "recommended",
         "description": "Write robust unit tests, component integration tests, and end-to-end browser automation scripts.",
         "codeSnippet": "import { render, screen } from '@testing-library/react';\nimport { Counter } from './Counter';\n\ntest('renders counter correctly', () => {\n  render(<Counter initial={5} />);\n  expect(screen.getByText(/Count: 5/i)).toBeInTheDocument();\n});",
