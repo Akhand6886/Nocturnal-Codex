@@ -262,22 +262,6 @@ export default function PythonAscensionPage() {
     }
   ];
 
-  // Next track helper
-  const handleNextTrack = () => {
-    if (audioElementRef.current) {
-      audioElementRef.current.pause();
-      audioElementRef.current.currentTime = 0;
-    }
-    setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
-  };
-
-  // Solo Leveling MP3 Music Player Effect - Disabled for now
-  useEffect(() => {
-    const audio = audioElementRef.current;
-    if (!audio) return;
-    audio.pause();
-    audio.volume = 0;
-  }, [currentTrack, musicPlaying, isMuted, volume]);
 
   // Dynamically load Real Pyodide CPython WebAssembly Engine in Browser
   useEffect(() => {
