@@ -729,12 +729,12 @@ export default function PythonAscensionPage() {
 
   const getRankInfo = (cleared: number) => {
     if (cleared >= 11) return { rank: "👑 SHADOW MONARCH (LV. 999)", level: 999, title: "God-Class System Sovereign", color: "text-amber-300 border-purple-500 bg-gradient-to-r from-purple-950 via-slate-900 to-amber-950 shadow-purple-500/50", badge: "MONARCH", badgeBg: "bg-gradient-to-r from-purple-500 via-purple-600 to-amber-400 text-white shadow-[0_0_15px_rgba(168,85,247,0.6)] border border-purple-300/80" };
-    if (cleared >= 10) return { rank: "S-Rank National Hunter", level: 100, title: "Shadow Mastermind", color: "text-purple-400 border-purple-500 bg-purple-950/40 shadow-purple-500/30", badge: "S-RANK", badgeBg: "bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 text-slate-950 shadow-[0_0_15px_rgba(245,158,11,0.5)] border border-amber-300/80" };
-    if (cleared >= 8) return { rank: "A-Rank Data Sovereign", level: 75, title: "Data Alchemist", color: "text-amber-400 border-amber-500 bg-amber-950/40 shadow-amber-500/30", badge: "A-RANK", badgeBg: "bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-[0_0_12px_rgba(245,158,11,0.5)] border border-amber-400/80" };
-    if (cleared >= 6) return { rank: "B-Rank Code Architect", level: 45, title: "Code Weaver", color: "text-blue-400 border-blue-500 bg-blue-950/40 shadow-blue-500/30", badge: "B-RANK", badgeBg: "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-[0_0_12px_rgba(37,99,235,0.5)] border border-blue-400/80" };
-    if (cleared >= 3) return { rank: "C-Rank Logic Specialist", level: 18, title: "Logic Specialist", color: "text-emerald-400 border-emerald-500 bg-emerald-950/40 shadow-emerald-500/30", badge: "C-RANK", badgeBg: "bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.5)] border border-emerald-400/80" };
-    if (cleared >= 1) return { rank: "D-Rank Apprentice Hunter", level: 5, title: "Apprentice Coder", color: "text-cyan-400 border-cyan-500 bg-cyan-950/40 shadow-cyan-500/30", badge: "D-RANK", badgeBg: "bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-[0_0_12px_rgba(6,182,212,0.5)] border border-cyan-400/80" };
-    return { rank: "E-Rank Novice Coder", level: 1, title: "Trainee Coder", color: "text-slate-400 border-slate-600 bg-slate-900/60 shadow-slate-500/10", badge: "E-RANK", badgeBg: "bg-slate-800 text-slate-200 border border-slate-700 shadow-sm" };
+    if (cleared >= 10) return { rank: "S-Class Programmer", level: 100, title: "Shadow Programmer", color: "text-purple-400 border-purple-500 bg-purple-950/40 shadow-purple-500/30", badge: "S-RANK", badgeBg: "bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 text-slate-950 shadow-[0_0_15px_rgba(245,158,11,0.5)] border border-amber-300/80" };
+    if (cleared >= 8) return { rank: "A-Class Programmer", level: 75, title: "Data Alchemist", color: "text-amber-400 border-amber-500 bg-amber-950/40 shadow-amber-500/30", badge: "A-RANK", badgeBg: "bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-[0_0_12px_rgba(245,158,11,0.5)] border border-amber-400/80" };
+    if (cleared >= 6) return { rank: "B-Class Programmer", level: 45, title: "Code Weaver", color: "text-blue-400 border-blue-500 bg-blue-950/40 shadow-blue-500/30", badge: "B-RANK", badgeBg: "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-[0_0_12px_rgba(37,99,235,0.5)] border border-blue-400/80" };
+    if (cleared >= 3) return { rank: "C-Class Programmer", level: 18, title: "Logic Specialist", color: "text-emerald-400 border-emerald-500 bg-emerald-950/40 shadow-emerald-500/30", badge: "C-RANK", badgeBg: "bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.5)] border border-emerald-400/80" };
+    if (cleared >= 1) return { rank: "D-Class Programmer", level: 5, title: "Apprentice Hunter", color: "text-cyan-400 border-cyan-500 bg-cyan-950/40 shadow-cyan-500/30", badge: "D-RANK", badgeBg: "bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-[0_0_12px_rgba(6,182,212,0.5)] border border-cyan-400/80" };
+    return { rank: "E-Class Programmer", level: 1, title: "Novice Trainee", color: "text-slate-400 border-slate-600 bg-slate-900/60 shadow-slate-500/10", badge: "E-RANK", badgeBg: "bg-slate-800 text-slate-200 border border-slate-700 shadow-sm" };
   };
 
   const currentRank = getRankInfo(dungeonsClearedCount);
@@ -1296,12 +1296,13 @@ except Exception as e:
                   <span className="text-cyan-300 font-black px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">Lv. {currentRank.level}</span>
                   <span className="text-slate-600">|</span>
                   <span className="text-purple-300 font-bold px-2 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40">{state.joinedClanCode ? `🛡️ ${state.joinedClanName} (${state.joinedClanCode})` : `${userGuild.badge} ${userGuild.name}`}</span>
-                </div>
-                <div className="font-black text-xl text-white tracking-wide flex items-center gap-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-                  <span>{currentRank.rank}</span>
-                  <Badge className={cn("font-black text-[11px] px-3 py-0.5 tracking-wider transition-all", currentRank.badgeBg)}>
+                <div className="flex flex-wrap items-center gap-2.5 pt-0.5">
+                  <span className="font-black text-xl md:text-2xl text-white tracking-wide leading-none drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                    {currentRank.rank}
+                  </span>
+                  <span className={cn("inline-flex items-center justify-center font-mono font-black text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full border leading-none shrink-0 self-center shadow-md transition-all", currentRank.badgeBg)}>
                     {currentRank.badge}
-                  </Badge>
+                  </span>
                 </div>
               </div>
             </div>
