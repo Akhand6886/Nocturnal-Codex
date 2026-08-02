@@ -316,33 +316,29 @@ export default function PythonAscensionPage() {
     };
   }, []);
 
-  // Penalty Zone Timer Loop
+  // Penalty Zone Countdown Timer Effect
   useEffect(() => {
-    if (inPenaltyZone) {
-      penaltyTimerRef.current = setInterval(() => {
-        setPenaltyTimer((prev) => {
-          if (prev <= 1) {
-            clearInterval(penaltyTimerRef.current as NodeJS.Timeout);
-            handlePenaltyTimeOut();
-            return 0;
-          }
-          return prev - 1;
-        });
+    let timerId: NodeJS.Timeout | null = null;
+    if (inPenaltyZone && penaltyTimer > 0) {
+      timerId = setInterval(() => {
+        setPenaltyTimer((prev) => prev - 1);
       }, 1000);
-    } else {
-      if (penaltyTimerRef.current) clearInterval(penaltyTimerRef.current);
+    } else if (inPenaltyZone && penaltyTimer === 0) {
+      playSound("fail");
+      setInPenaltyZone(false);
+      setConsecutiveFailures(0);
+      setState((prev) => ({ ...prev, xp: Math.max(0, prev.xp - 50) }));
     }
     return () => {
-      if (penaltyTimerRef.current) clearInterval(penaltyTimerRef.current);
+      if (timerId) clearInterval(timerId);
     };
-  }, [inPenaltyZone]);
+  }, [inPenaltyZone, penaltyTimer]);
 
   const handlePenaltyTimeOut = () => {
     playSound("fail");
     setInPenaltyZone(false);
     setConsecutiveFailures(0);
     setState((prev) => ({ ...prev, xp: Math.max(0, prev.xp - 50) }));
-    alert("🚨 PENALTY ZONE TIME EXPIRED! You failed to escape the Desert of Giant Centipedes (-50 XP Penalty). Teleported back to safety.");
   };
 
   const triggerPenaltyZone = () => {
