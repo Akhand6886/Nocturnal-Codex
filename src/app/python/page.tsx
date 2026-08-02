@@ -1166,38 +1166,40 @@ except Exception as e:
 
       <div className="container mx-auto px-4 pt-8 relative z-10 max-w-7xl">
         {/* System Archives Header Banner */}
-        <div className="mb-8 p-6 md:p-8 rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/95 border-2 border-cyan-500/60 shadow-[0_0_60px_rgba(6,182,212,0.3)] backdrop-blur-2xl relative overflow-hidden group">
-          {/* Animated Background Energy Aura Grid & Glow Blur */}
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/30 transition-all duration-700" />
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/25 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-600/40 transition-all duration-700" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="mb-8 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-slate-950 via-slate-900/95 to-purple-950/90 border-2 border-cyan-500/50 shadow-[0_0_70px_rgba(6,182,212,0.35)] backdrop-blur-3xl relative overflow-hidden group transition-all duration-500 hover:shadow-[0_0_90px_rgba(6,182,212,0.45)] hover:border-cyan-400/70">
+          {/* Animated Background Energy Aura Grid & Multi-layered Glow Blur */}
+          <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/25 rounded-full blur-[100px] pointer-events-none group-hover:bg-cyan-400/35 transition-all duration-700 animate-pulse" />
+          <div className="absolute -bottom-32 -right-32 w-[450px] h-[450px] bg-purple-600/30 rounded-full blur-[120px] pointer-events-none group-hover:bg-purple-500/45 transition-all duration-700" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
+          {/* Fine tech grid background texture */}
+          <div className="absolute inset-0 bg-[radial-gradient(#06b6d4_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-10" />
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
-            <div className="space-y-4">
-              <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-mono bg-slate-950/95 text-cyan-300 border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.25)]">
+            <div className="space-y-4 max-w-3xl">
+              <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-mono bg-slate-950/90 text-cyan-300 border border-cyan-500/60 shadow-[0_0_20px_rgba(6,182,212,0.3)] backdrop-blur-md">
                 <Sparkles className="w-4 h-4 text-cyan-400 animate-spin" />
-                <span className="font-bold tracking-wider">NOCTURNAL CODEX DIGITAL ARCHIVES ENTRY #001</span>
-                <span className="text-slate-600">|</span>
+                <span className="font-bold tracking-widest text-[11px]">NOCTURNAL CODEX DIGITAL ARCHIVES ENTRY #001</span>
+                <span className="text-cyan-600 font-bold">•</span>
                 <span className="text-emerald-400 font-bold flex items-center gap-1.5">
-                  <CpuIcon className="w-4 h-4 text-emerald-400 animate-pulse" /> REAL CPYTHON 3.12 WASM ENGINE
+                  <CpuIcon className="w-4 h-4 text-emerald-400 animate-pulse" /> CPYTHON 3.12 WEBASSEMBLY RUNTIME
                 </span>
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white flex items-center gap-3">
-                <Crown className="w-9 h-9 text-amber-400 animate-bounce flex-shrink-0" />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-teal-200 to-purple-400 drop-shadow-[0_0_25px_rgba(6,182,212,0.5)]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white flex items-center gap-3.5 leading-tight">
+                <Crown className="w-10 h-10 text-amber-400 animate-bounce flex-shrink-0 drop-shadow-[0_0_15px_rgba(245,158,11,0.8)]" />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-teal-200 to-purple-400 drop-shadow-[0_0_30px_rgba(6,182,212,0.6)]">
                   THE SYSTEM: PYTHON ASCENSION
                 </span>
               </h1>
 
-              <p className="text-slate-300 max-w-2xl text-sm md:text-base leading-relaxed">
-                Humanity has discovered mysterious Gates. Powered by live <strong className="text-emerald-400 font-mono">CPython 3.12 WebAssembly</strong> in your browser! Complete lab experiments to ascend to the <strong className="text-amber-400 font-bold drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]">SHADOW MONARCH CLASS (LV. 999)</strong>!
+              <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                Humanity has discovered mysterious Gates. Powered by live <strong className="text-emerald-400 font-mono">CPython 3.12 WebAssembly</strong> in your browser! Complete lab experiments to ascend to the <strong className="text-amber-400 font-bold drop-shadow-[0_0_12px_rgba(245,158,11,0.6)]">SHADOW MONARCH CLASS (LV. 999)</strong>!
               </p>
               
               <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 <Button
                   onClick={exportLabReport}
-                  className="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black gap-2 text-xs rounded-xl px-5 py-3 shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all hover:scale-105"
+                  className="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black gap-2 text-xs rounded-xl px-5 py-3 shadow-[0_0_25px_rgba(16,185,129,0.45)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_35px_rgba(16,185,129,0.6)]"
                 >
                   <Download className="w-4 h-4" /> 📄 Export Official Lab Report (.md)
                 </Button>
@@ -1205,7 +1207,7 @@ except Exception as e:
                 <Button
                   variant="outline"
                   onClick={triggerPenaltyZone}
-                  className="border-2 border-red-500/60 text-red-400 hover:bg-red-950/90 font-mono text-xs gap-2 rounded-xl px-4 py-3 shadow-[0_0_20px_rgba(239,68,68,0.25)] hover:border-red-400 hover:scale-105 transition-all"
+                  className="border-2 border-red-500/70 text-red-400 bg-slate-950/80 hover:bg-red-950/90 font-mono text-xs gap-2 rounded-xl px-4 py-3 shadow-[0_0_25px_rgba(239,68,68,0.3)] hover:border-red-400 hover:scale-105 transition-all duration-300"
                 >
                   <Siren className="w-4 h-4 text-red-400 animate-pulse" /> Test Penalty Zone
                 </Button>
@@ -1213,29 +1215,30 @@ except Exception as e:
             </div>
 
             {/* Solo Leveling OST Music Player HUD - Compact Corner Widget */}
-            <div className="p-3.5 rounded-2xl bg-slate-950/95 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.25)] w-full lg:w-64 space-y-2.5 backdrop-blur-xl relative overflow-hidden group flex-shrink-0">
-              <div className="flex items-center justify-between gap-2">
+            <div className="p-4 rounded-2xl bg-slate-950/95 border-2 border-cyan-500/60 shadow-[0_0_30px_rgba(6,182,212,0.35)] w-full lg:w-72 space-y-3 backdrop-blur-2xl relative overflow-hidden group flex-shrink-0 transition-all hover:border-cyan-400 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]">
+              <div className="flex items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
                 <div className="flex items-center gap-1.5 text-[11px] font-mono text-cyan-400 font-bold truncate">
                   <Radio className={cn("w-3.5 h-3.5 flex-shrink-0", musicPlaying && !isMuted && "animate-pulse text-emerald-400")} />
-                  <span className="truncate">SOLO LEVELING OST</span>
+                  <span className="truncate tracking-wider">SOLO LEVELING OST</span>
                 </div>
-                <Badge variant="outline" className={cn("text-[9px] font-mono font-bold px-1.5 py-0 rounded-full border", musicPlaying && !isMuted ? "border-emerald-500/60 text-emerald-300 bg-emerald-950/80" : "border-slate-800 text-slate-500")}>
+                <Badge variant="outline" className={cn("text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border transition-all", musicPlaying && !isMuted ? "border-emerald-500/70 text-emerald-300 bg-emerald-950/90 shadow-[0_0_10px_rgba(16,185,129,0.3)]" : "border-slate-800 text-slate-500 bg-slate-900")}>
                   {isMuted ? "MUTED" : musicPlaying ? "PLAYING" : "PAUSED"}
                 </Badge>
               </div>
 
               {/* Dynamic Audio Equalizer Bars Visualizer - Compact */}
-              <div className="flex items-center justify-between gap-2 bg-slate-900/90 p-2 rounded-xl border border-slate-800">
+              <div className="flex items-center justify-between gap-2.5 bg-slate-900/95 p-2.5 rounded-xl border border-slate-800/90 shadow-inner">
                 <div className="flex items-center gap-2 min-w-0">
-                  <Music className="w-3.5 h-3.5 text-amber-400 flex-shrink-0 animate-bounce" />
+                  <Music className="w-4 h-4 text-amber-400 flex-shrink-0 animate-bounce" />
                   <div className="min-w-0">
                     <div className="text-[11px] font-bold text-white truncate">{TRACKS[currentTrack].title}</div>
+                    <div className="text-[9px] font-mono text-slate-400 truncate">{TRACKS[currentTrack].artist}</div>
                   </div>
                 </div>
 
                 {/* Animated EQ Bars */}
                 {musicPlaying && !isMuted && (
-                  <div className="flex items-end gap-0.5 h-3.5 flex-shrink-0">
+                  <div className="flex items-end gap-0.5 h-4 flex-shrink-0 px-1">
                     <span className="w-0.5 bg-cyan-400 rounded-full animate-eq-1" />
                     <span className="w-0.5 bg-emerald-400 rounded-full animate-eq-2" />
                     <span className="w-0.5 bg-purple-400 rounded-full animate-eq-3" />
@@ -1247,9 +1250,9 @@ except Exception as e:
                 <Button
                   size="sm"
                   onClick={toggleMusic}
-                  className={cn("h-7 flex-1 gap-1 text-[10px] font-bold rounded-lg transition-all", musicPlaying && !isMuted ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950")}
+                  className={cn("h-8 flex-1 gap-1.5 text-[11px] font-bold rounded-xl transition-all shadow-md", musicPlaying && !isMuted ? "bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-emerald-500/25" : "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-cyan-500/25")}
                 >
-                  {musicPlaying ? <Pause className="w-3 h-3 fill-slate-950" /> : <Play className="w-3 h-3 fill-slate-950" />}
+                  {musicPlaying ? <Pause className="w-3.5 h-3.5 fill-slate-950" /> : <Play className="w-3.5 h-3.5 fill-slate-950" />}
                   {musicPlaying ? "Pause" : "Play"}
                 </Button>
 
@@ -1264,7 +1267,7 @@ except Exception as e:
                     }
                     setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
                   }}
-                  className="h-7 text-[10px] font-mono border-slate-800 text-slate-300 hover:border-cyan-400 rounded-lg px-2"
+                  className="h-8 text-[11px] font-mono bg-slate-900 border-slate-800 text-slate-200 hover:border-cyan-400 hover:text-white rounded-xl px-2.5"
                 >
                   Next
                 </Button>
@@ -1273,10 +1276,10 @@ except Exception as e:
                   size="icon"
                   variant={isMuted ? "destructive" : "ghost"}
                   onClick={toggleMute}
-                  className={cn("h-7 w-7 transition-all rounded-lg border", isMuted ? "bg-red-950/90 text-red-400 border-red-500/60" : "border-slate-800 text-cyan-400 hover:text-white")}
+                  className={cn("h-8 w-8 transition-all rounded-xl border", isMuted ? "bg-red-950/90 text-red-400 border-red-500/60" : "bg-slate-900 border-slate-800 text-cyan-400 hover:text-white")}
                   title={isMuted ? "Unmute Audio" : "Mute Audio"}
                 >
-                  {isMuted ? <VolumeX className="w-3 h-3 text-red-400" /> : <Volume2 className="w-3 h-3 text-cyan-400" />}
+                  {isMuted ? <VolumeX className="w-3.5 h-3.5 text-red-400" /> : <Volume2 className="w-3.5 h-3.5 text-cyan-400" />}
                 </Button>
               </div>
             </div>
