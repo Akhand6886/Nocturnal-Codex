@@ -8,334 +8,79 @@
         "y": 20
       },
       "data": {
-        "label": "Backend Developer"
+        "label": "Backend Developer Path"
       }
     },
     {
-      "id": "internet",
+      "id": "language",
       "type": "topic",
       "position": {
         "x": 440,
         "y": 100
       },
       "data": {
-        "label": "Internet",
+        "label": "Backend Programming Languages",
         "status": "recommended",
-        "description": "Understand how the internet works: HTTP/HTTPS protocols, DNS resolution, TCP/IP, and how data flows between client and server.",
+        "description": "Choose a core backend language: Node.js (TypeScript), Python (FastAPI/Django), Go, or Java (Spring Boot). Learn asynchronous concurrency, garbage collection, and memory management.",
+        "codeSnippet": "// Node.js HTTP Server with Express & TypeScript\nimport express from 'express';\nconst app = express();\napp.use(express.json());\n\napp.get('/health', (req, res) => {\n  res.json({ status: 'UP', timestamp: new Date().toISOString() });\n});\napp.listen(8080);",
+        "prerequisites": ["Programming Fundamentals"],
         "resources": [
           {
-            "title": "How Does the Internet Work?",
-            "url": "https://cs.fyi/guide/how-does-internet-work",
-            "type": "article"
-          },
-          {
-            "title": "MDN - HTTP Overview",
-            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "lang",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 200
-      },
-      "data": {
-        "label": "Pick a Language",
-        "status": "recommended",
-        "description": "Choose a backend language to master. Node.js (JavaScript) is great for full-stack, Python for simplicity, Go for performance.",
-        "resources": [
-          {
-            "title": "Node.js Official Docs",
-            "url": "https://nodejs.org/en/docs/",
-            "type": "docs"
-          },
-          {
-            "title": "Python Official Tutorial",
-            "url": "https://docs.python.org/3/tutorial/",
-            "type": "docs"
-          },
-          {
-            "title": "Go by Example",
-            "url": "https://gobyexample.com/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "vcs",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 300
-      },
-      "data": {
-        "label": "Version Control",
-        "status": "recommended",
-        "description": "Learn Git for tracking code changes, branching strategies, pull requests, and collaboration via GitHub or GitLab.",
-        "resources": [
-          {
-            "title": "Pro Git Book",
-            "url": "https://git-scm.com/book/en/v2",
-            "type": "docs"
-          },
-          {
-            "title": "GitHub Skills",
-            "url": "https://skills.github.com/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "db",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 400
-      },
-      "data": {
-        "label": "Databases",
-        "status": "recommended",
-        "description": "Learn relational databases (PostgreSQL, MySQL) for structured data and NoSQL (MongoDB, Redis) for flexible schemas.",
-        "resources": [
-          {
-            "title": "PostgreSQL Tutorial",
-            "url": "https://www.postgresqltutorial.com/",
-            "type": "course"
-          },
-          {
-            "title": "MongoDB University",
-            "url": "https://university.mongodb.com/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "api",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 500
-      },
-      "data": {
-        "label": "APIs",
-        "status": "recommended",
-        "description": "Design and build RESTful APIs, understand GraphQL for flexible queries, and learn gRPC for high-performance microservices.",
-        "resources": [
-          {
-            "title": "RESTful API Design Guide",
-            "url": "https://restfulapi.net/",
-            "type": "article"
-          },
-          {
-            "title": "GraphQL Official Docs",
-            "url": "https://graphql.org/learn/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "cache",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 600
-      },
-      "data": {
-        "label": "Caching",
-        "description": "Improve performance with caching strategies using Redis, Memcached, CDN caching, and HTTP cache headers.",
-        "resources": [
-          {
-            "title": "Redis Documentation",
-            "url": "https://redis.io/docs/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "sec",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 700
-      },
-      "data": {
-        "label": "Security",
-        "description": "Learn OWASP Top 10 vulnerabilities, authentication (JWT, OAuth), HTTPS, CORS, input validation, and secure coding practices.",
-        "resources": [
-          {
-            "title": "OWASP Top Ten",
-            "url": "https://owasp.org/www-project-top-ten/",
-            "type": "article"
-          }
-        ]
-      }
-    },
-    {
-      "id": "test",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 800
-      },
-      "data": {
-        "label": "Testing",
-        "description": "Write unit tests, integration tests, and end-to-end tests. Learn frameworks like Jest, Pytest, or Go's testing package.",
-        "resources": [
-          {
-            "title": "Testing JavaScript",
-            "url": "https://testingjavascript.com/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "cicd",
-      "type": "topic",
-      "position": {
-        "x": 440,
-        "y": 900
-      },
-      "data": {
-        "label": "CI/CD",
-        "description": "Automate testing and deployment pipelines using GitHub Actions, Jenkins, or GitLab CI for continuous integration and delivery.",
-        "resources": [
-          {
-            "title": "GitHub Actions Docs",
-            "url": "https://docs.github.com/en/actions",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "node",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 200
-      },
-      "data": {
-        "label": "Node.js",
-        "status": "recommended",
-        "description": "An open-source, cross-platform JavaScript runtime environment for executing JavaScript code server-side.",
-        "resources": [
-          {
-            "title": "Node.js Official Docs",
+            "title": "Node.js Official Documentation",
             "url": "https://nodejs.org/docs/",
             "type": "docs"
           },
           {
-            "title": "Node.js Guide - W3Schools",
-            "url": "https://www.w3schools.com/nodejs/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "python",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 245
-      },
-      "data": {
-        "label": "Python",
-        "status": "alternative",
-        "description": "An interpreted, high-level, general-purpose programming language renowned for its readability and simple syntax.",
-        "resources": [
-          {
-            "title": "Python Official Tutorial",
-            "url": "https://docs.python.org/3/tutorial/",
-            "type": "docs"
-          },
-          {
-            "title": "Real Python",
-            "url": "https://realpython.com/",
-            "type": "course"
-          }
-        ]
-      }
-    },
-    {
-      "id": "go",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 290
-      },
-      "data": {
-        "label": "Go",
-        "status": "alternative",
-        "description": "A statically typed, compiled programming language designed at Google for extreme concurrency and network service performance.",
-        "resources": [
-          {
-            "title": "A Tour of Go",
-            "url": "https://go.dev/tour/",
-            "type": "course"
-          },
-          {
-            "title": "Effective Go",
-            "url": "https://go.dev/doc/effective_go",
+            "title": "FastAPI Web Framework Guide",
+            "url": "https://fastapi.tiangolo.com/",
             "type": "docs"
           }
         ]
       }
     },
     {
-      "id": "sql",
-      "type": "subtopic",
+      "id": "relational-db",
+      "type": "topic",
       "position": {
-        "x": 700,
-        "y": 400
+        "x": 440,
+        "y": 200
       },
       "data": {
-        "label": "Relational (PostgreSQL)",
+        "label": "Relational Databases (PostgreSQL / MySQL)",
         "status": "recommended",
-        "description": "A powerful, open-source object-relational database system known for reliability, data integrity, and performance.",
+        "description": "Master SQL querying, ACID transactions, relational schema normalization, B-Tree indexes, joins, foreign keys, and connection pooling.",
+        "codeSnippet": "-- PostgreSQL Transaction with Row Locking\nBEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 'acc_1' AND balance >= 100;\nUPDATE accounts SET balance = balance + 100 WHERE id = 'acc_2';\nCOMMIT;",
+        "prerequisites": ["Backend Languages"],
         "resources": [
           {
-            "title": "PostgreSQL Tutorial",
-            "url": "https://www.postgresqltutorial.com/",
-            "type": "course"
-          },
-          {
-            "title": "PostgreSQL Documentation",
+            "title": "PostgreSQL Official Documentation",
             "url": "https://www.postgresql.org/docs/",
             "type": "docs"
+          },
+          {
+            "title": "SQL Bolt — Interactive SQL Lessons",
+            "url": "https://sqlbolt.com/",
+            "type": "course"
           }
         ]
       }
     },
     {
-      "id": "nosql",
-      "type": "subtopic",
+      "id": "nosql-db",
+      "type": "topic",
       "position": {
-        "x": 700,
-        "y": 445
+        "x": 200,
+        "y": 200
       },
       "data": {
-        "label": "NoSQL (MongoDB)",
+        "label": "NoSQL Databases (MongoDB / DynamoDB)",
         "status": "alternative",
-        "description": "A document database designed for ease of development and scaling, storing data in flexible JSON-like documents.",
+        "description": "Document and key-value stores for unstructured or high-scale data. Understand eventual consistency, sharding, and aggregation pipelines.",
+        "codeSnippet": "// MongoDB Aggregation Pipeline\ndb.orders.aggregate([\n  { $match: { status: 'completed' } },\n  { $group: { _id: '$customerId', totalSpent: { $sum: '$amount' } } }\n]);",
+        "prerequisites": ["Relational Databases"],
         "resources": [
           {
-            "title": "MongoDB University",
-            "url": "https://university.mongodb.com/",
-            "type": "course"
-          },
-          {
-            "title": "MongoDB Documentation",
+            "title": "MongoDB Manual & Aggregation Framework",
             "url": "https://www.mongodb.com/docs/manual/",
             "type": "docs"
           }
@@ -343,210 +88,106 @@
       }
     },
     {
-      "id": "rest",
-      "type": "subtopic",
+      "id": "api-design",
+      "type": "topic",
       "position": {
-        "x": 200,
-        "y": 500
+        "x": 440,
+        "y": 300
       },
       "data": {
-        "label": "REST",
+        "label": "RESTful APIs & GraphQL",
         "status": "recommended",
-        "description": "Representational State Transfer (REST) is an architectural style for distributed hypermedia systems like web APIs.",
+        "description": "Design clean, scalable APIs. Understand HTTP status codes, CORS, idempotency, OpenAPI specifications, rate limiting, and GraphQL schemas.",
+        "codeSnippet": "/* OpenAPI / Swagger REST Schema Definition */\n/api/v1/users/{id}:\n  get:\n    summary: Fetch User Details\n    parameters:\n      - name: id\n        in: path\n        required: true\n        schema: { type: string }",
+        "prerequisites": ["Backend Programming Languages"],
         "resources": [
           {
-            "title": "REST API Tutorial",
+            "title": "RESTful API Design Guidelines",
             "url": "https://restfulapi.net/",
             "type": "article"
           },
           {
-            "title": "MDN - HTTP APIs",
-            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "graphql",
-      "type": "subtopic",
-      "position": {
-        "x": 200,
-        "y": 545
-      },
-      "data": {
-        "label": "GraphQL",
-        "status": "alternative",
-        "description": "A query language for APIs and a runtime for fulfilling those queries with your existing data, allowing clients to request exactly what they need.",
-        "resources": [
-          {
-            "title": "GraphQL Official Introduction",
+            "title": "GraphQL Official Specification",
             "url": "https://graphql.org/learn/",
             "type": "docs"
-          },
-          {
-            "title": "How to GraphQL",
-            "url": "https://www.howtographql.com/",
-            "type": "course"
           }
         ]
       }
     },
     {
-      "id": "grpc",
-      "type": "subtopic",
+      "id": "auth",
+      "type": "topic",
       "position": {
-        "x": 200,
-        "y": 590
+        "x": 440,
+        "y": 400
       },
       "data": {
-        "label": "gRPC",
-        "status": "alternative",
-        "description": "A high-performance, open-source universal RPC framework developed by Google to connect microservices.",
+        "label": "Authentication & Authorization (JWT, OAuth2)",
+        "status": "recommended",
+        "description": "Secure API routes with JWT tokens, HTTP-only cookies, OAuth 2.0 / OpenID Connect, password hashing (Argon2 / bcrypt), and RBAC.",
+        "codeSnippet": "// Password Hashing with Argon2 in Node.js\nimport argon2 from 'argon2';\n\nconst hash = await argon2.hash('hunterPassword123');\nconst isMatch = await argon2.verify(hash, 'hunterPassword123');",
+        "prerequisites": ["RESTful APIs"],
         "resources": [
           {
-            "title": "gRPC Documentation",
-            "url": "https://grpc.io/docs/",
-            "type": "docs"
-          },
-          {
-            "title": "Introduction to Protocol Buffers",
-            "url": "https://protobuf.dev/overview/",
+            "title": "OWASP Authentication Cheat Sheet",
+            "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html",
             "type": "docs"
           }
         ]
       }
     },
     {
-      "id": "info-db",
-      "type": "info",
+      "id": "caching",
+      "type": "topic",
       "position": {
-        "x": 700,
-        "y": 550
+        "x": 440,
+        "y": 500
       },
       "data": {
-        "label": "Start with a Relational Database like PostgreSQL or MySQL."
+        "label": "Caching & Memory Stores (Redis / Memcached)",
+        "status": "recommended",
+        "description": "In-memory caching strategies (Write-Through, Cache-Aside), TTL expiration, rate-limiting counters, and session storage with Redis.",
+        "codeSnippet": "// Redis Cache-Aside Pattern in Node.js\nasync function getCachedUser(id) {\n  const cached = await redis.get(`user:${id}`);\n  if (cached) return JSON.parse(cached);\n  const user = await db.users.findUnique({ where: { id } });\n  await redis.setex(`user:${id}`, 300, JSON.stringify(user));\n  return user;\n}",
+        "prerequisites": ["Relational Databases"],
+        "resources": [
+          {
+            "title": "Redis Official Documentation & Data Types",
+            "url": "https://redis.io/docs/",
+            "type": "docs"
+          }
+        ]
+      }
+    },
+    {
+      "id": "microservices",
+      "type": "topic",
+      "position": {
+        "x": 440,
+        "y": 600
+      },
+      "data": {
+        "label": "System Design & Microservices (Kafka / RabbitMQ)",
+        "status": "recommended",
+        "description": "Event-driven architecture, message queues (RabbitMQ, Apache Kafka), distributed tracing, gRPC inter-service RPCs, and saga transactions.",
+        "codeSnippet": "// Kafka Event Producer\nawait producer.send({\n  topic: 'order-events',\n  messages: [{ key: 'order_101', value: JSON.stringify({ event: 'ORDER_CREATED', total: 99.50 }) }],
+});",
+        "prerequisites": ["Caching & Memory Stores"],
+        "resources": [
+          {
+            "title": "System Design Primer — High Scale Architecture",
+            "url": "https://github.com/donnemartin/system-design-primer",
+            "type": "github"
+          }
+        ]
       }
     }
   ],
   "edges": [
-    {
-      "id": "e1",
-      "source": "h",
-      "target": "internet",
-      "type": "roadmap"
-    },
-    {
-      "id": "e2",
-      "source": "internet",
-      "target": "lang",
-      "type": "roadmap"
-    },
-    {
-      "id": "e3",
-      "source": "lang",
-      "target": "vcs",
-      "type": "roadmap"
-    },
-    {
-      "id": "e4",
-      "source": "vcs",
-      "target": "db",
-      "type": "roadmap"
-    },
-    {
-      "id": "e5",
-      "source": "db",
-      "target": "api",
-      "type": "roadmap"
-    },
-    {
-      "id": "e6",
-      "source": "api",
-      "target": "cache",
-      "type": "roadmap"
-    },
-    {
-      "id": "e7",
-      "source": "cache",
-      "target": "sec",
-      "type": "roadmap"
-    },
-    {
-      "id": "e8",
-      "source": "sec",
-      "target": "test",
-      "type": "roadmap"
-    },
-    {
-      "id": "e9",
-      "source": "test",
-      "target": "cicd",
-      "type": "roadmap"
-    },
-    {
-      "id": "ed1",
-      "source": "lang",
-      "target": "node",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed2",
-      "source": "lang",
-      "target": "python",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed3",
-      "source": "lang",
-      "target": "go",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed4",
-      "source": "db",
-      "target": "sql",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed5",
-      "source": "db",
-      "target": "nosql",
-      "type": "dotted",
-      "sourcePosition": "right",
-      "targetPosition": "left"
-    },
-    {
-      "id": "ed6",
-      "source": "api",
-      "target": "rest",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed7",
-      "source": "api",
-      "target": "graphql",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    },
-    {
-      "id": "ed8",
-      "source": "api",
-      "target": "grpc",
-      "type": "dotted",
-      "sourcePosition": "left",
-      "targetPosition": "right"
-    }
+    { "id": "e-lang-rdb", "source": "language", "target": "relational-db" },
+    { "id": "e-rdb-nosql", "source": "relational-db", "target": "nosql-db" },
+    { "id": "e-lang-api", "source": "language", "target": "api-design" },
+    { "id": "e-api-auth", "source": "api-design", "target": "auth" },
+    { "id": "e-auth-cache", "source": "auth", "target": "caching" },
+    { "id": "e-cache-micro", "source": "caching", "target": "microservices" }
   ]
 }
