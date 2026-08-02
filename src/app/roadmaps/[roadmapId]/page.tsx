@@ -1,4 +1,3 @@
-
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import fs from 'fs';
@@ -6,12 +5,11 @@ import path from 'path';
 import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
 import { getAllRoadmaps, getRoadmapBySlug } from '@/lib/roadmaps';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Layers, BookMarked } from 'lucide-react';
+import { ArrowLeft, Layers, BookMarked, Compass } from 'lucide-react';
 import Link from 'next/link';
 
 export const revalidate = 3600; // Revalidate every hour
 
-// This tells Next.js which roadmap pages to build at build time
 export async function generateStaticParams() {
   const roadmaps = getAllRoadmaps();
   return roadmaps.map((roadmap) => ({
@@ -23,7 +21,6 @@ interface RoadmapDetailsPageProps {
   params: Promise<{ roadmapId: string }>;
 }
 
-// Function to generate metadata for the page
 export async function generateMetadata({ params }: RoadmapDetailsPageProps): Promise<Metadata> {
   const { roadmapId } = await params;
   const roadmapMeta = getRoadmapBySlug(roadmapId);
@@ -34,18 +31,17 @@ export async function generateMetadata({ params }: RoadmapDetailsPageProps): Pro
     };
   }
   return {
-    title: `${roadmapMeta.title} | Roadmaps`,
+    title: `${roadmapMeta.title} | Developer Roadmaps`,
     description: roadmapMeta.description,
   };
 }
 
 const DIFFICULTY_COLORS: Record<string, string> = {
-  Beginner: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/5',
-  Intermediate: 'text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/5',
-  Advanced: 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-500/5',
+  Beginner: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/10',
+  Intermediate: 'text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/10',
+  Advanced: 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-500/10',
 };
 
-// The main page component
 export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageProps) {
   const { roadmapId } = await params;
   const roadmapMeta = getRoadmapBySlug(roadmapId);
@@ -54,7 +50,6 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
     notFound();
   }
 
-  // Read roadmap data on the server side for SSG/SEO and instant client hydration
   let roadmapData = null;
   try {
     const filePath = path.join(process.cwd(), 'public', 'roadmap-content', `${roadmapId}.json`);
@@ -67,61 +62,60 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
   }
 
   const difficultyClass = DIFFICULTY_COLORS[roadmapMeta.difficulty] || '';
-  const nodeCount = roadmapData?.nodes?.length || 0;
+  const nodeCount = roadmapData?.nodes?.filter((n: any) => n.type === 'topic')?.length || 0;
 
   return (
-    <div>
-      {/* Premium Header */}
-      <header className="relative overflow-hidden border-b border-border">
-        {/* Subtle gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 dark:from-primary/3 dark:to-accent/3" />
-        
-        <div className="relative container mx-auto px-4 pt-8 pb-10">
-          {/* Back Navigation */}
+    <div className="min-h-screen bg-[#fafaf9] dark:bg-black text-foreground">
+      {/* Sleek Header Section */}
+      <header className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
+        <div className="max-w-[1000px] mx-auto px-4 py-8">
+          {/* Back Button */}
           <Link 
             href="/roadmaps" 
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mb-6 group"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-primary transition-colors mb-4 group"
           >
-            <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-            All Roadmaps
+            <ArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-1 transition-transform" />
+            Back to Roadmaps
           </Link>
 
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mb-4">
-              {roadmapMeta.title}
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-              {roadmapMeta.description}
-            </p>
-
-            {/* Metadata Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Badge variant="secondary" className="text-xs px-3 py-1.5 flex items-center gap-1.5 rounded-lg font-medium">
-                <Layers className="h-3.5 w-3.5" />
-                {roadmapMeta.category}
-              </Badge>
-              <Badge variant="outline" className={`text-xs px-3 py-1.5 flex items-center gap-1.5 rounded-lg font-semibold ${difficultyClass}`}>
-                {roadmapMeta.difficulty}
-              </Badge>
-              {nodeCount > 0 && (
-                <Badge variant="outline" className="text-xs px-3 py-1.5 flex items-center gap-1.5 rounded-lg font-medium text-muted-foreground">
-                  <BookMarked className="h-3.5 w-3.5" />
-                  {nodeCount} Topics
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full border-primary/30 text-primary">
+                  <Compass className="w-3 h-3 mr-1 inline" />
+                  INTERACTIVE ROADMAP
                 </Badge>
-              )}
+                <Badge variant="outline" className={`text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full ${difficultyClass}`}>
+                  {roadmapMeta.difficulty}
+                </Badge>
+              </div>
+
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-foreground">
+                {roadmapMeta.title}
+              </h1>
+              
+              <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
+                {roadmapMeta.description}
+              </p>
+            </div>
+
+            {/* Quick Metrics */}
+            <div className="flex items-center gap-3 self-start md:self-center flex-shrink-0 bg-muted/40 p-3 rounded-2xl border border-border/50">
+              <div className="flex items-center gap-2 text-xs font-medium">
+                <Layers className="h-4 w-4 text-primary" />
+                <span>{roadmapMeta.category}</span>
+              </div>
+              <span className="text-border">|</span>
+              <div className="flex items-center gap-1.5 text-xs font-semibold font-mono text-muted-foreground">
+                <BookMarked className="h-4 w-4 text-amber-500" />
+                <span>{nodeCount} Topics</span>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Instruction hint */}
-      <div className="container mx-auto px-4">
-        <p className="text-xs text-center text-muted-foreground py-3">
-          Click any topic node to view resources and details
-        </p>
-      </div>
-
-      {/* SEO Semantic Content Block - Rendered on the Server at Build Time */}
+      {/* SEO Semantic Content Block */}
       {roadmapData && roadmapData.nodes && (
         <div className="sr-only">
           <h2>Curriculum Topics for {roadmapMeta.title}</h2>
@@ -150,7 +144,10 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
         </div>
       )}
 
-      <EditorRoadmapRenderer roadmapId={roadmapId} initialRoadmapData={roadmapData} />
+      {/* Main Interactive Flow Graph */}
+      <main>
+        <EditorRoadmapRenderer roadmapId={roadmapId} initialRoadmapData={roadmapData} />
+      </main>
     </div>
   );
 }
