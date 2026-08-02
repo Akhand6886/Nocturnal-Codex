@@ -554,6 +554,11 @@ export default function PythonAscensionPage() {
       const audio = audioElementRef.current;
       audio.volume = isMuted ? 0 : volume;
 
+      // Automatically advance to the next track when current track finishes
+      audio.onended = () => {
+        setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
+      };
+
       const trackUrl = TRACKS[currentTrack].src;
       const fullTrackUrl = new URL(trackUrl, window.location.href).href;
 
@@ -561,7 +566,7 @@ export default function PythonAscensionPage() {
         audio.pause();
         audio.currentTime = 0;
         audio.src = trackUrl;
-        audio.loop = true;
+        audio.loop = false; // Disable single track loop so onended handles seamless playlist progression
         audio.load();
       }
 
@@ -576,6 +581,12 @@ export default function PythonAscensionPage() {
         audio.pause();
       }
     }
+
+    return () => {
+      if (audioElementRef.current) {
+        audioElementRef.current.onended = null;
+      }
+    };
   }, [currentTrack, musicPlaying, isMuted, volume]);
 
   // Toggle Background Music
