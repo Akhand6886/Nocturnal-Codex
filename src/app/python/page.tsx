@@ -1296,6 +1296,7 @@ except Exception as e:
                   <span className="text-cyan-300 font-black px-2 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40">Lv. {currentRank.level}</span>
                   <span className="text-slate-600">|</span>
                   <span className="text-purple-300 font-bold px-2 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40">{state.joinedClanCode ? `🛡️ ${state.joinedClanName} (${state.joinedClanCode})` : `${userGuild.badge} ${userGuild.name}`}</span>
+                </div>
                 <div className="flex flex-wrap items-center gap-2.5 pt-0.5">
                   <span className="font-black text-xl md:text-2xl text-white tracking-wide leading-none drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                     {currentRank.rank}
