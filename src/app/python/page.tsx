@@ -540,49 +540,32 @@ export default function PythonAscensionPage() {
     }
   };
 
+  // Next track helper
+  const handleNextTrack = () => {
+    if (audioElementRef.current) {
+      audioElementRef.current.pause();
+      audioElementRef.current.currentTime = 0;
+    }
+    setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
+  };
+
   // Solo Leveling Real MP3 Music Player Effect
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (!audioElementRef.current) {
-        audioElementRef.current = new Audio();
+    const audio = audioElementRef.current;
+    if (!audio) return;
+
+    audio.volume = isMuted ? 0 : volume;
+
+    if (musicPlaying && !isMuted) {
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.log("Autoplay waiting for user interaction", err);
+        });
       }
-
-      const audio = audioElementRef.current;
-      audio.volume = isMuted ? 0 : volume;
-
-      // Automatically advance to the next track when current track finishes
-      audio.onended = () => {
-        setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
-      };
-
-      const trackUrl = TRACKS[currentTrack].src;
-      const fullTrackUrl = new URL(trackUrl, window.location.href).href;
-
-      if (audio.src !== fullTrackUrl && audio.src !== trackUrl) {
-        audio.pause();
-        audio.currentTime = 0;
-        audio.src = trackUrl;
-        audio.loop = false; // Disable single track loop so onended handles seamless playlist progression
-        audio.load();
-      }
-
-      if (musicPlaying && !isMuted) {
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((err) => {
-            console.log("Autoplay waiting for user interaction", err);
-          });
-        }
-      } else {
-        audio.pause();
-      }
+    } else {
+      audio.pause();
     }
-
-    return () => {
-      if (audioElementRef.current) {
-        audioElementRef.current.onended = null;
-      }
-    };
   }, [currentTrack, musicPlaying, isMuted, volume]);
 
   // Toggle Background Music
@@ -1216,6 +1199,15 @@ except Exception as e:
 
             {/* Solo Leveling OST Music Player HUD - Compact Corner Widget */}
             <div className="p-4 rounded-2xl bg-slate-950/95 border-2 border-cyan-500/60 shadow-[0_0_30px_rgba(6,182,212,0.35)] w-full lg:w-72 space-y-3 backdrop-blur-2xl relative overflow-hidden group flex-shrink-0 transition-all hover:border-cyan-400 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]">
+              {/* Single Declarative Audio Element with Auto-Advance onEnded */}
+              <audio
+                ref={audioElementRef}
+                src={TRACKS[currentTrack].src}
+                onEnded={handleNextTrack}
+                preload="auto"
+                className="hidden"
+              />
+
               <div className="flex items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
                 <div className="flex items-center gap-1.5 text-[11px] font-mono text-cyan-400 font-bold truncate">
                   <Radio className={cn("w-3.5 h-3.5 flex-shrink-0", musicPlaying && !isMuted && "animate-pulse text-emerald-400")} />
@@ -1261,11 +1253,7 @@ except Exception as e:
                   variant="outline"
                   onClick={() => {
                     playSound("click");
-                    if (audioElementRef.current) {
-                      audioElementRef.current.pause();
-                      audioElementRef.current.currentTime = 0;
-                    }
-                    setCurrentTrack((prev) => (prev + 1) % TRACKS.length);
+                    handleNextTrack();
                   }}
                   className="h-8 text-[11px] font-mono bg-slate-900 border-slate-800 text-slate-200 hover:border-cyan-400 hover:text-white rounded-xl px-2.5"
                 >
