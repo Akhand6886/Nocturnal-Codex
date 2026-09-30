@@ -4,8 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
 import { getAllRoadmaps, getRoadmapBySlug } from '@/lib/roadmaps';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Layers, BookMarked, Compass } from 'lucide-react';
+import { ArrowLeft, BookOpen, Layers } from 'lucide-react';
 import Link from 'next/link';
 
 export const revalidate = 3600; // Revalidate every hour
@@ -31,16 +30,10 @@ export async function generateMetadata({ params }: RoadmapDetailsPageProps): Pro
     };
   }
   return {
-    title: `${roadmapMeta.title} | Developer Roadmaps`,
+    title: `${roadmapMeta.title} — Syllabus | Nocturnal Codex`,
     description: roadmapMeta.description,
   };
 }
-
-const DIFFICULTY_COLORS: Record<string, string> = {
-  Beginner: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/10',
-  Intermediate: 'text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/10',
-  Advanced: 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-500/10',
-};
 
 export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageProps) {
   const { roadmapId } = await params;
@@ -61,54 +54,61 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
     console.error(`Error reading roadmap file for ${roadmapId}:`, e);
   }
 
-  const difficultyClass = DIFFICULTY_COLORS[roadmapMeta.difficulty] || '';
   const nodeCount = roadmapData?.nodes?.filter((n: any) => n.type === 'topic')?.length || 0;
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] dark:bg-black text-foreground">
-      {/* Sleek Header Section */}
-      <header className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="max-w-[1000px] mx-auto px-4 py-8">
-          {/* Back Button */}
-          <Link 
-            href="/roadmaps" 
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-primary transition-colors mb-4 group"
-          >
-            <ArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-1 transition-transform" />
-            Back to Roadmaps
-          </Link>
+    <div className="min-h-screen bg-[#fafaf9] dark:bg-black text-foreground transition-colors duration-300">
+      {/* Editorial Codex Manuscript Header */}
+      <header className="relative border-b border-border/50 bg-card/25 dark:bg-card/15 backdrop-blur-xl pt-8 pb-10">
+        {/* Subtle engineering blueprint / parchment pattern overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(#00000004_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff04_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
 
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <Badge variant="outline" className="text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full border-primary/30 text-primary">
-                  <Compass className="w-3 h-3 mr-1 inline" />
-                  INTERACTIVE ROADMAP
-                </Badge>
-                <Badge variant="outline" className={`text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full ${difficultyClass}`}>
-                  {roadmapMeta.difficulty}
-                </Badge>
-              </div>
+        <div className="max-w-[1100px] mx-auto px-4 relative z-10">
+          {/* Top Breadcrumb & Folio Tracker */}
+          <div className="flex items-center justify-between text-xs font-mono tracking-wider text-muted-foreground/75 mb-6 pb-3 border-b border-border/40">
+            <Link 
+              href="/roadmaps" 
+              className="inline-flex items-center gap-2 hover:text-primary transition-colors group font-sans font-medium"
+            >
+              <ArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-1 transition-transform" />
+              <span>Back to Curricula & Syllabi</span>
+            </Link>
 
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-foreground">
-                {roadmapMeta.title}
-              </h1>
-              
-              <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
-                {roadmapMeta.description}
+            <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground/60 hidden sm:inline">
+              Tractate &bull; {roadmapMeta.category}
+            </span>
+          </div>
+
+          {/* Main Title Section */}
+          <div className="max-w-4xl space-y-4">
+            <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-primary font-bold">
+              <span>CODEX CURRICULUM</span>
+              <span className="text-muted-foreground/40">&bull;</span>
+              <span className="text-foreground/80 font-normal">LEVEL: {roadmapMeta.difficulty}</span>
+              <span className="text-muted-foreground/40">&bull;</span>
+              <span className="text-foreground/80 font-normal">{nodeCount} CONCEPTS</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-foreground leading-[1.12]">
+              {roadmapMeta.title}
+            </h1>
+
+            {/* Editorial Thesis / Abstract Quote */}
+            <div className="relative pl-5 border-l-2 border-primary/50 my-5">
+              <p className="font-serif italic text-base sm:text-lg text-foreground/85 leading-relaxed">
+                &ldquo;{roadmapMeta.description}&rdquo;
               </p>
             </div>
 
-            {/* Quick Metrics */}
-            <div className="flex items-center gap-3 self-start md:self-center flex-shrink-0 bg-muted/40 p-3 rounded-2xl border border-border/50">
-              <div className="flex items-center gap-2 text-xs font-medium">
-                <Layers className="h-4 w-4 text-primary" />
-                <span>{roadmapMeta.category}</span>
+            {/* Academic Meta Tags */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono text-muted-foreground">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/60 border border-border/60">
+                <Layers className="h-3.5 w-3.5 text-primary" />
+                <span>Domain: {roadmapMeta.category}</span>
               </div>
-              <span className="text-border">|</span>
-              <div className="flex items-center gap-1.5 text-xs font-semibold font-mono text-muted-foreground">
-                <BookMarked className="h-4 w-4 text-amber-500" />
-                <span>{nodeCount} Topics</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/60 border border-border/60">
+                <BookOpen className="h-3.5 w-3.5 text-accent" />
+                <span>Format: Interactive Conceptual Flow</span>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
       )}
 
       {/* Main Interactive Flow Graph */}
-      <main>
+      <main className="py-4">
         <EditorRoadmapRenderer roadmapId={roadmapId} initialRoadmapData={roadmapData} />
       </main>
     </div>
