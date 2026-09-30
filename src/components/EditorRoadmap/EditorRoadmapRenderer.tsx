@@ -23,7 +23,6 @@ import RoadmapEdge from '../Roadmaps/edges/RoadmapEdge';
 import DottedEdge from '../Roadmaps/edges/DottedEdge';
 import { RoadmapDrawer, SelectedNodeData } from '../Roadmaps/RoadmapDrawer';
 import { RoadmapControls } from '../Roadmaps/RoadmapControls';
-import { useRoadmapProgress, NodeStatus } from '@/lib/roadmapProgress';
 
 interface EditorRoadmapRendererProps {
   roadmapId: string;
@@ -51,13 +50,119 @@ const edgeTypes = {
   default: RoadmapEdge,
 };
 
-const FitViewUpdater: FC = () => {
-  const { fitView } = useReactFlow();
+// Internal component inside ReactFlowProvider with access to useReactFlow
+const FlowInnerCanvas: FC<{
+  processedNodes: Node[];
+  edges: Edge[];
+  onNodeClick: (event: React.MouseEvent, node: Node) => void;
+  isInteractive: boolean;
+  canvasHeight: number;
+  isFullscreen: boolean;
+  onExitFullscreen: () => void;
+  totalTopics: number;
+  matchCount: number;
+  searchQuery: string;
+  onSearchChange: (q: string) => void;
+  onToggleInteractive: () => void;
+}> = ({
+  processedNodes,
+  edges,
+  onNodeClick,
+  isInteractive,
+  canvasHeight,
+  isFullscreen,
+  onExitFullscreen,
+  totalTopics,
+  matchCount,
+  searchQuery,
+  onSearchChange,
+  onToggleInteractive,
+}) => {
+  const { fitView, zoomIn, zoomOut } = useReactFlow();
+
   useEffect(() => {
-    const timer = setTimeout(() => fitView({ duration: 600, padding: 0.12 }), 60);
+    const timer = setTimeout(() => {
+      fitView({ duration: 500, padding: 0.14 });
+    }, 80);
     return () => clearTimeout(timer);
+  }, [fitView, isFullscreen]);
+
+  const handleFitView = useCallback(() => {
+    fitView({ duration: 400, padding: 0.14 });
   }, [fitView]);
-  return null;
+
+  const handleZoomIn = useCallback(() => {
+    zoomIn({ duration: 250 });
+  }, [zoomIn]);
+
+  const handleZoomOut = useCallback(() => {
+    zoomOut({ duration: 250 });
+  }, [zoomOut]);
+
+  return (
+    <div className={isFullscreen ? 'fixed inset-0 z-50 bg-background flex flex-col p-4 md:p-6' : 'w-full'}>
+      {/* Editorial Codex Graph Toolbar */}
+      <RoadmapControls
+        searchQuery={searchQuery}
+        onSearchChange={onSearchChange}
+        totalTopics={totalTopics}
+        matchCount={matchCount}
+        isInteractive={isInteractive}
+        onToggleInteractive={onToggleInteractive}
+        onFitView={handleFitView}
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+        isFullscreen={isFullscreen}
+        onToggleFullscreen={onExitFullscreen}
+      />
+
+      {/* Canvas Frame with Architectural Manuscript Detailing */}
+      <div className={isFullscreen ? 'flex-1 w-full mt-2' : 'w-full max-w-[1100px] mx-auto px-4 pb-16'}>
+        <div
+          style={{ height: isFullscreen ? 'calc(100vh - 120px)' : canvasHeight }}
+          className="w-full relative rounded-2xl border border-border/70 shadow-sm bg-card/30 dark:bg-card/20 backdrop-blur-md overflow-hidden group transition-all"
+        >
+          {/* Architectural Corner Markers for Scholarly Codex feel */}
+          <span className="absolute top-2 left-2 text-[10px] font-mono text-muted-foreground/40 pointer-events-none select-none z-10">┌</span>
+          <span className="absolute top-2 right-2 text-[10px] font-mono text-muted-foreground/40 pointer-events-none select-none z-10">┐</span>
+          <span className="absolute bottom-2 left-2 text-[10px] font-mono text-muted-foreground/40 pointer-events-none select-none z-10">└</span>
+          <span className="absolute bottom-2 right-2 text-[10px] font-mono text-muted-foreground/40 pointer-events-none select-none z-10">┘</span>
+
+          {/* Mode Indicator Overlay */}
+          <div className="absolute bottom-3 left-4 z-10 pointer-events-none">
+            <span className="text-[10px] font-mono tracking-wider uppercase text-muted-foreground/60 bg-background/80 px-2 py-0.5 rounded border border-border/40 backdrop-blur-sm">
+              {isInteractive ? 'Pan & Zoom Active' : 'Scroll Safe Mode (Click "Free Explore" to Pan)'}
+            </span>
+          </div>
+
+          <ReactFlow
+            nodes={processedNodes}
+            edges={edges}
+            nodeTypes={nodeTypes}
+            edgeTypes={edgeTypes}
+            onNodeClick={onNodeClick}
+            fitView
+            zoomOnScroll={isInteractive}
+            zoomOnPinch={isInteractive}
+            zoomOnDoubleClick={isInteractive}
+            panOnDrag={isInteractive}
+            panOnScroll={false}
+            preventScrolling={!isInteractive}
+            nodesDraggable={false}
+            nodesConnectable={false}
+            elementsSelectable={true}
+            style={{ background: 'transparent' }}
+          >
+            <Background
+              gap={28}
+              size={1.2}
+              variant={BackgroundVariant.Dots}
+            />
+          </ReactFlow>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapId, initialRoadmapData }) => {
@@ -73,12 +178,10 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedNode, setSelectedNode] = useState<SelectedNodeData | null>(null);
 
-  // Search & Filter controls
+  // Search & Interactive states
   const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<'all' | NodeStatus>('all');
-
-  // Local progress persistence hook
-  const { progress, setNodeStatus, getNodeStatus, resetProgress } = useRoadmapProgress(roadmapId);
+  const [isInteractive, setIsInteractive] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     if (initialRoadmapData) return;
@@ -101,6 +204,17 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
     fetchRoadmapData();
   }, [roadmapId, initialRoadmapData]);
 
+  // Escape key to exit fullscreen
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isFullscreen) {
+        setIsFullscreen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isFullscreen]);
+
   const interactiveNodes = useMemo(() => {
     if (!roadmapData) return [];
     return roadmapData.nodes.filter(
@@ -108,67 +222,58 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
     );
   }, [roadmapData]);
 
-  // Synchronize user completion status & search highlighting into ReactFlow node definitions
-  const processedNodes = useMemo(() => {
-    if (!roadmapData) return [];
+  // Synchronize search highlighting into ReactFlow node definitions
+  const { processedNodes, matchCount } = useMemo(() => {
+    if (!roadmapData) return { processedNodes: [], matchCount: 0 };
     const query = searchQuery.trim().toLowerCase();
+    let matches = 0;
 
-    return roadmapData.nodes.map((node) => {
+    const nodes = roadmapData.nodes.map((node) => {
       if (node.type === 'section' || node.type === 'info' || node.type === 'label') {
         return node;
       }
 
-      const userStatus = getNodeStatus(node.id);
       const label = (node.data?.label as string) || '';
       const matchesSearch = query.length > 0 && label.toLowerCase().includes(query);
-      const matchesFilter = statusFilter === 'all' || userStatus === statusFilter;
+      if (matchesSearch) matches++;
 
       return {
         ...node,
-        hidden: !matchesFilter,
         data: {
           ...node.data,
-          userStatus,
           isHighlighted: matchesSearch,
         },
       };
     });
-  }, [roadmapData, getNodeStatus, searchQuery, statusFilter]);
 
-  const handleStatusChange = (nodeId: string, status: NodeStatus) => {
-    setNodeStatus(nodeId, status);
-    if (selectedNode && selectedNode.id === nodeId) {
-      setSelectedNode((prev) => (prev ? { ...prev, status } : null));
-    }
-  };
+    return { processedNodes: nodes, matchCount: matches };
+  }, [roadmapData, searchQuery]);
 
   const onNodeClick = useCallback((event: React.MouseEvent, node: Node) => {
     if (node.type === 'section' || node.type === 'info' || node.type === 'label') return;
     const nodeData = node.data as Record<string, unknown>;
-    const currentStatus = getNodeStatus(node.id);
 
     setSelectedNode({
       id: node.id,
       label: nodeData.label as string,
       description: nodeData.description as string | undefined,
-      status: currentStatus,
       resources: nodeData.resources as any,
       codeSnippet: nodeData.codeSnippet as string | undefined,
       prerequisites: nodeData.prerequisites as string[] | undefined,
     });
     setDrawerOpen(true);
-  }, [getNodeStatus]);
+  }, []);
 
   if (loading) {
     return (
-      <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center">
+      <div style={{ height: 'calc(100vh - 280px)' }} className="w-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
             <Spinner className="text-primary w-6 h-6" />
           </div>
-          <div className="text-center">
-            <p className="text-sm font-medium text-foreground">Loading roadmap</p>
-            <p className="text-xs text-muted-foreground mt-0.5 animate-pulse">Preparing your learning path…</p>
+          <div className="text-center font-serif">
+            <p className="text-base font-medium text-foreground">Consulting the Codex</p>
+            <p className="text-xs text-muted-foreground mt-0.5 italic">Composing curriculum graph…</p>
           </div>
         </div>
       </div>
@@ -177,76 +282,44 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
 
   if (error || !roadmapData) {
     return (
-      <div style={{ height: 'calc(100vh - 250px)' }} className="w-full flex items-center justify-center">
-        <div className="text-center max-w-md px-6">
+      <div style={{ height: 'calc(100vh - 280px)' }} className="w-full flex items-center justify-center">
+        <div className="text-center max-w-md px-6 font-serif">
           <div className="w-16 h-16 rounded-2xl bg-destructive/10 flex items-center justify-center mx-auto mb-4">
-            <span className="text-2xl">⚠️</span>
+            <span className="text-2xl">📜</span>
           </div>
-          <p className="font-semibold text-foreground mb-2">Failed to load roadmap</p>
-          <p className="text-sm text-muted-foreground">{error || 'Data could not be loaded. Please try refreshing the page.'}</p>
+          <p className="font-semibold text-foreground text-lg mb-2">Curriculum Tractate Unavailable</p>
+          <p className="text-xs text-muted-foreground font-sans">{error || 'The requested syllabus data could not be retrieved.'}</p>
         </div>
       </div>
     );
   }
 
   const maxNodeY = processedNodes.reduce((max, node) => Math.max(max, node.position.y), 0) || 600;
-  const canvasHeight = maxNodeY + 140;
+  const canvasHeight = Math.max(maxNodeY + 160, 680);
 
   return (
-    <div className="w-full bg-[#fafaf9] dark:bg-black transition-colors duration-300">
-      {/* Top Filter Bar & Progress Meter - Aligned perfectly with canvas */}
-      <RoadmapControls
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        statusFilter={statusFilter}
-        onStatusFilterChange={setStatusFilter}
-        totalTopics={interactiveNodes.length}
-        completedCount={progress.completedNodeIds.length}
-        learningCount={progress.learningNodeIds.length}
-        onResetProgress={resetProgress}
-      />
-
-      {/* Interactive Graph Canvas */}
-      <div className="w-full max-w-[1000px] mx-auto px-4 pb-12">
-        <div
-          style={{ height: canvasHeight }}
-          className="w-full relative rounded-2xl border border-border/60 shadow-sm bg-card/40 backdrop-blur-sm overflow-hidden"
-        >
-          <ReactFlowProvider>
-            <ReactFlow
-              nodes={processedNodes}
-              edges={roadmapData.edges}
-              nodeTypes={nodeTypes}
-              edgeTypes={edgeTypes}
-              onNodeClick={onNodeClick}
-              fitView
-              zoomOnScroll={false}
-              zoomOnPinch={false}
-              zoomOnDoubleClick={false}
-              panOnDrag={false}
-              panOnScroll={false}
-              preventScrolling={false}
-              nodesDraggable={false}
-              nodesConnectable={false}
-              elementsSelectable={true}
-              style={{ background: 'transparent' }}
-            >
-              <Background
-                gap={24}
-                size={1.5}
-                variant={BackgroundVariant.Dots}
-              />
-              <FitViewUpdater />
-            </ReactFlow>
-          </ReactFlowProvider>
-        </div>
-      </div>
+    <div className="w-full transition-colors duration-300">
+      <ReactFlowProvider>
+        <FlowInnerCanvas
+          processedNodes={processedNodes}
+          edges={roadmapData.edges}
+          onNodeClick={onNodeClick}
+          isInteractive={isInteractive}
+          canvasHeight={canvasHeight}
+          isFullscreen={isFullscreen}
+          onExitFullscreen={() => setIsFullscreen(prev => !prev)}
+          totalTopics={interactiveNodes.length}
+          matchCount={matchCount}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          onToggleInteractive={() => setIsInteractive(prev => !prev)}
+        />
+      </ReactFlowProvider>
 
       <RoadmapDrawer
         open={drawerOpen}
         onOpenChange={setDrawerOpen}
         data={selectedNode}
-        onStatusChange={handleStatusChange}
       />
     </div>
   );
