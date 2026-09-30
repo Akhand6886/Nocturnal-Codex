@@ -27,7 +27,7 @@
         "prerequisites": ["Programming Fundamentals"],
         "resources": [
           {
-            "title": "Nocturnal Codex — Python Guide & Ascension Playground",
+            "title": "Nocturnal Codex — Python Language Guide",
             "url": "/languages/python",
             "type": "course"
           },
