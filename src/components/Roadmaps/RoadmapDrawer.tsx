@@ -37,11 +37,10 @@ export interface SiteLanguageLink {
   url: string;
   description: string;
   icon: string;
-  hasPlayground?: boolean;
 }
 
 export const SITE_LANGUAGES_MAP: Record<string, SiteLanguageLink> = {
-  python: { name: "Python", slug: "python", url: "/languages/python", description: "Master Python syntax, data structures, OOP, async, & practice live in the Ascension Playground.", icon: "🐍", hasPlayground: true },
+  python: { name: "Python", slug: "python", url: "/languages/python", description: "Master Python syntax, data structures, OOP, async, & modern standard libraries.", icon: "🐍" },
   javascript: { name: "JavaScript", slug: "javascript", url: "/languages/javascript", description: "Master ES6+, async/await, DOM, closures, engines, and modern JS development.", icon: "🟨" },
   typescript: { name: "TypeScript", slug: "typescript", url: "/languages/typescript", description: "Master static typing, generics, interfaces, and scalable application architecture.", icon: "🟦" },
   html: { name: "HTML5", slug: "html", url: "/languages/html", description: "Learn modern semantic HTML5 markup, accessibility standards, and SEO metadata.", icon: "🌐" },
@@ -222,15 +221,6 @@ export function RoadmapDrawer({ open, onOpenChange, data, onStatusChange }: Road
                     Open {relatedLang.name} Codex Guide
                   </Link>
                 </Button>
-
-                {relatedLang.hasPlayground && (
-                  <Button asChild size="sm" variant="outline" className="h-8 text-xs font-bold rounded-lg gap-1.5 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10">
-                    <Link href="/playground">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                      Launch Playground
-                    </Link>
-                  </Button>
-                )}
               </div>
             </div>
           )}
