@@ -1,8 +1,9 @@
 # System: Python Ascension Protocol — Technical & Architecture Guide
 
-Welcome to the official documentation for **The System: Python Ascension Protocol** (`/python`). 
+> **Archived Feature Reference & Future Idea Incubator**  
+> This specification documents the prototype implementation of the **In-Browser CPython 3.12 WebAssembly Runtime**. While removed from the active site bundle to preserve ultra-lightweight static performance, the architectural blueprint is preserved here and in [`docs/FUTURE_IDEAS.md`](./FUTURE_IDEAS.md) for future polyglot sandbox extensions.
 
-This document explains **what technologies power this application**, **why each technology was chosen**, and **how they all work together seamlessly** in simple, easy-to-understand language.
+Welcome to the architectural documentation for **The System: Python Ascension Protocol** (CPython 3.12 WASM Engine). 
 
 ---
 
