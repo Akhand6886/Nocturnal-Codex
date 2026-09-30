@@ -42,9 +42,10 @@ Before Deep Learning, you must master the fundamental algorithms:
 
 ### Phase 4: Deep Learning & Neural Networks
 
-This is the tech behind ChatGPT and Midjourney:
+This is the tech behind modern AI systems, from computer vision to large language models. Explore our in-depth curriculum on [Neural Networks & Deep Learning Foundations](/mathematics/neural-networks).
 
 -   **PyTorch / TensorFlow**: The two dominant deep learning frameworks.
+-   **Neural Network Foundations**: [Course 1: Neural Networks & Deep Learning](/mathematics/neural-networks) (Forward/Backward propagation, Vectorization, L-Layer architectures).
 -   **Computer Vision**: Convolutional Neural Networks (CNNs).
 -   **NLP (Natural Language Processing)**: Transformers, Attention, and Large Language Models (LLMs).
 -   **MLOps**: Learning how to deploy and monitor models in production.
