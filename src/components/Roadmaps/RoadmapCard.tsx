@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, BookMarked, Tag, Layers, Star } from 'lucide-react';
+import { ArrowRight, BookMarked, Layers, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface Roadmap {
@@ -22,9 +22,9 @@ interface RoadmapCardProps {
 }
 
 const DIFFICULTY_COLORS: Record<string, string> = {
-  Beginner: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/5',
-  Intermediate: 'text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/5',
-  Advanced: 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-500/5',
+  Beginner: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10',
+  Intermediate: 'text-amber-400 border-amber-500/30 bg-amber-500/10',
+  Advanced: 'text-rose-400 border-rose-500/30 bg-rose-500/10',
 };
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -49,16 +49,16 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
         className={`
         h-full flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out
         transform hover:-translate-y-1 rounded-2xl
-        bg-card border border-border/50 hover:border-primary/40
-        shadow-sm hover:shadow-xl hover:shadow-primary/5
-        ${featured ? 'ring-1 ring-accent/20' : ''}
+        glass border border-border/20 hover:border-primary/30
+        hover:neon-glow-sm
+        ${featured ? 'ring-1 ring-primary/20' : ''}
       `}
       >
         {/* Top Accent Bar */}
         <div className={`h-1 w-full bg-gradient-to-r ${
           featured 
             ? 'from-accent via-primary to-accent' 
-            : 'from-primary/60 via-primary to-primary/60'
+            : 'from-primary/60 via-accent/40 to-primary/60'
         }`} />
 
         <CardHeader className="pb-3 pt-5 px-5" suppressHydrationWarning>
@@ -86,7 +86,7 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
 
         <CardContent className="flex-grow flex flex-col justify-end pt-1 pb-5 px-5" suppressHydrationWarning>
           <div className="flex flex-wrap items-center gap-2 mb-4" suppressHydrationWarning>
-            <Badge variant="secondary" className="text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-medium" suppressHydrationWarning>
+            <Badge variant="secondary" className="text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-medium bg-primary/10 text-primary border-primary/20" suppressHydrationWarning>
               <Layers className="h-3 w-3" />
               {roadmap.category}
             </Badge>
