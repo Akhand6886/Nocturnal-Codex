@@ -14,11 +14,7 @@ const STATIC_THEORY_FACTS = [
   "Lambda calculus, developed by Alonzo Church, is a foundational system for functional programming and theoretical computer science."
 ];
 
-interface RandomTheoryDropProps {
-  variant?: "card" | "inline";
-}
-
-export function RandomTheoryDrop({ variant = "card" }: RandomTheoryDropProps) {
+export function RandomTheoryDrop() {
   const [fact, setFact] = useState("Loading theory...");
 
   // useEffect ensures this only runs on the client, after hydration
@@ -27,24 +23,17 @@ export function RandomTheoryDrop({ variant = "card" }: RandomTheoryDropProps) {
     setFact(STATIC_THEORY_FACTS[randomIndex]);
   }, []); // Empty dependency array means it runs once on mount
 
-  if (variant === "inline") {
-    return (
-      <p className="text-base md:text-lg text-foreground/80 italic leading-relaxed font-serif">
-        &ldquo;{fact}&rdquo;
-      </p>
-    );
-  }
 
   return (
-    <Card className="glass border-border/20 hover:neon-border-purple transition-all duration-500 rounded-xl">
+    <Card className="bg-card shadow-lg border-border/60">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-lg font-semibold gradient-text-primary">
+        <CardTitle className="text-lg font-semibold text-primary">
           Random Theory Drop
         </CardTitle>
         <Lightbulb className="h-5 w-5 text-accent" />
       </CardHeader>
       <CardContent>
-        <p className="text-base text-foreground/80 italic font-serif leading-relaxed">&ldquo;{fact}&rdquo;</p>
+        <p className="text-base text-foreground/90 italic">"{fact}"</p>
       </CardContent>
     </Card>
   );

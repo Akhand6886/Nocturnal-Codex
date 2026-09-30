@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { ArrowRight, CalendarDays, UserCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { format } from 'date-fns';
@@ -19,9 +20,9 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
 
   if (!postSlug) {
     return (
-      <Card className="flex flex-col overflow-hidden glass border border-destructive/30 rounded-xl">
+      <Card className="flex flex-col overflow-hidden shadow-lg bg-card group rounded-xl border border-destructive">
         <CardHeader>
-          <CardTitle className="text-destructive">Error: Post slug missing</CardTitle>
+          <CardTitle className="text-destructive-foreground">Error: Post slug missing</CardTitle>
         </CardHeader>
         <CardContent>
           <CardDescription>This blog post cannot be displayed due to missing information.</CardDescription>
@@ -32,47 +33,47 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
   
   return (
     <Link href={post.url} className="group block">
-        <Card className="flex h-full flex-col overflow-hidden glass border border-border/20 hover:border-primary/30 transition-all duration-500 ease-out rounded-xl hover:neon-glow-sm">
+        <Card className="flex h-full flex-col overflow-hidden shadow-lg hover:shadow-primary/15 border border-border/50 hover:border-primary/40 transition-all duration-500 ease-out bg-card group rounded-xl">
             <div className="relative h-52 w-full overflow-hidden rounded-t-xl">
                 <Image
-                  src={imageUrl}
-                  alt={imageAlt}
-                  width={400}
-                  height={300}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out"
-                  data-ai-hint={dataAiHint}
+                src={imageUrl}
+                alt={imageAlt}
+                width={400}
+                height={300}
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                data-ai-hint={dataAiHint}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/30 transition-colors duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent group-hover:from-black/10 transition-colors duration-300"></div>
             </div>
             <CardHeader className="pt-5">
-                <CardTitle className="text-xl font-semibold leading-tight group-hover:text-primary transition-colors duration-200">{post.title}</CardTitle>
+                <CardTitle className="text-xl font-semibold leading-tight group-hover:text-primary transition-colors duration-200 ease-in-out">{post.title}</CardTitle>
                 <div className="text-xs text-muted-foreground flex items-center space-x-4 pt-2">
                 {post.author && (
                     <div className="flex items-center space-x-1.5">
-                      <UserCircle className="h-4 w-4" />
-                      <span>{post.author}</span>
+                    <UserCircle className="h-4 w-4" />
+                    <span>{post.author}</span>
                     </div>
                 )}
                 {post.date && (
                     <div className="flex items-center space-x-1.5">
-                      <CalendarDays className="h-4 w-4" />
-                      <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+                    <CalendarDays className="h-4 w-4" />
+                    <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
                     </div>
                 )}
                 </div>
             </CardHeader>
             <CardContent className="flex-grow py-3">
-                {post.shortDescription && <CardDescription className="text-foreground/70 leading-relaxed">{post.shortDescription}</CardDescription>}
+                {post.shortDescription && <CardDescription className="text-foreground/80">{post.shortDescription}</CardDescription>}
                 {post.tags && post.tags.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                      {post.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs font-medium bg-primary/10 text-primary border-primary/20 rounded-md">{tag}</Badge>
-                      ))}
-                  </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary" className="text-xs font-medium">{tag}</Badge>
+                    ))}
+                </div>
                 )}
             </CardContent>
             <CardFooter className="pb-5">
-                <div className="text-primary font-medium text-sm flex items-center group-hover:text-accent transition-all duration-200">
+                <div className="text-primary font-medium text-sm flex items-center group-hover:text-accent transition-all duration-200 ease-in-out">
                     Read More <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </div>
             </CardFooter>
