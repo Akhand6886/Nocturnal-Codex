@@ -98,3 +98,13 @@ This is the side-panel that slides in when a `TopicNode` is clicked.
     1. It renders the node's `label` and `description` in the header.
     2. It maps over the `data.resources` array. For each resource, it generates an `<a>` tag wrapped in a stylized card, complete with an `ExternalLink` icon and hover animations (`group-hover:scale-110`).
     3. If `resources` is empty, it displays a fallback empty state.
+
+---
+
+## 4. Future Architecture & WebAssembly Sandbox Extensions
+
+To maintain Nocturnal Codex's primary identity as a high-performance, distraction-free theoretical sanctuary, client-heavy experimental runtimes are designed to be decoupled from the primary SSG bundle:
+
+- **In-Browser CPython 3.12 WebAssembly Runtime**: Prototyped using Pyodide to execute full CPython, NumPy, Pandas, and Matplotlib within the browser. Detailed architecture, trade-offs, and reintroduction blueprints are documented in [`docs/FUTURE_IDEAS.md`](./FUTURE_IDEAS.md).
+- **Gamified Learning Systems**: Prototype specifications for dungeon-based progression and assignment report exporters are preserved in [`docs/SYSTEM_PYTHON_ASCENSION.md`](./SYSTEM_PYTHON_ASCENSION.md).
+
