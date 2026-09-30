@@ -57,69 +57,98 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Random Theory Drop */}
+      {/* ===== 1. FEATURED ROADMAPS (Core Learning Paths First) ===== */}
+      {featuredRoadmaps.length > 0 && (
+        <section>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-primary/30 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold flex items-center text-foreground/90">
+                <BookMarked className="mr-3 h-7 w-7 text-primary" />
+                Featured Roadmaps
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Curated, step-by-step pathways through computer science, engineering, and architecture.
+              </p>
+            </div>
+            {allRoadmaps && allRoadmaps.length > featuredRoadmaps.length && (
+              <Button asChild variant="ghost" size="sm" className="hover:text-primary hover:bg-primary/10 self-start sm:self-auto">
+                <Link href="/roadmaps" className="flex items-center gap-1.5 font-medium">
+                  View All Roadmaps <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {featuredRoadmaps.map((roadmap) => (
+              <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ===== 2. RANDOM THEORY DROP & SPOTLIGHT ===== */}
       <section>
         <RandomTheoryDrop />
       </section>
 
-      {/* Featured Roadmaps Section */}
-      {featuredRoadmaps.length > 0 && (
-      <section>
-        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/30 flex items-center text-foreground/90">
-            <BookMarked className="mr-3 h-7 w-7 text-primary" />
-            Featured Roadmaps
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {featuredRoadmaps.map((roadmap) => (
-                <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
-            ))}
-        </div>
-        {allRoadmaps && allRoadmaps.length > featuredRoadmaps.length && (
-             <div className="mt-10 text-center">
-                <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
-                    <Link href="/roadmaps">View All Roadmaps <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-            </div>
-        )}
-      </section>
-      )}
-      
-      {/* Featured Languages Section */}
+      {/* ===== 3. FEATURED LANGUAGES ===== */}
       {featuredLanguages.length > 0 && (
-      <section>
-        <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/30 flex items-center text-foreground/90">
-            <Code2 className="mr-3 h-7 w-7 text-primary" />
-            Featured Languages
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {featuredLanguages.map((lang: Language) => (
-                <Link href={lang.url} key={lang.id} className="group block">
-                    <Card className="h-full overflow-hidden shadow-md hover:shadow-primary/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-lg">
-                      <CardContent className="p-6 flex flex-col items-center text-center">
-                          <SimpleIcon iconName={lang.iconName || 'code'} className="w-12 h-12 mb-4 text-primary" />
-                          <h3 className="text-base font-semibold group-hover:text-primary">{lang.name}</h3>
-                      </CardContent>
-                    </Card>
-                </Link>
-            ))}
-        </div>
-        {allLanguages && allLanguages.length > 6 && (
-             <div className="mt-10 text-center">
-                <Button asChild variant="outline" size="lg" className="hover:border-primary hover:bg-primary/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-primary">
-                    <Link href="/languages">View All Languages <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
+        <section>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-primary/30 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold flex items-center text-foreground/90">
+                <Code2 className="mr-3 h-7 w-7 text-primary" />
+                Featured Languages
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Deep dives into systems, paradigms, and runtime environments.
+              </p>
             </div>
-        )}
-      </section>
+            {allLanguages && allLanguages.length > 6 && (
+              <Button asChild variant="ghost" size="sm" className="hover:text-primary hover:bg-primary/10 self-start sm:self-auto">
+                <Link href="/languages" className="flex items-center gap-1.5 font-medium">
+                  View All Languages <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {featuredLanguages.map((lang: Language) => (
+              <Link href={lang.url} key={lang.id} className="group block">
+                <Card className="h-full overflow-hidden shadow-md hover:shadow-primary/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-lg">
+                  <CardContent className="p-6 flex flex-col items-center text-center">
+                    <SimpleIcon iconName={lang.iconName || 'code'} className="w-12 h-12 mb-4 text-primary" />
+                    <h3 className="text-base font-semibold group-hover:text-primary">{lang.name}</h3>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
       )}
 
-      {/* Featured Posts Section */}
+      {/* ===== 4. FEATURED INSIGHTS ===== */}
       {featuredBlogPosts.length > 0 && (
         <section>
-          <h2 className="text-3xl font-bold mb-8 pb-3 border-b-2 border-primary/30 flex items-center text-foreground/90">
-            <Star className="mr-3 h-7 w-7 text-primary" />
-            Featured Insights
-          </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-primary/30 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold flex items-center text-foreground/90">
+                <Star className="mr-3 h-7 w-7 text-primary" />
+                Featured Insights
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Hand-picked essays on artificial intelligence, systems, and foundational theory.
+              </p>
+            </div>
+            <Button asChild variant="ghost" size="sm" className="hover:text-primary hover:bg-primary/10 self-start sm:self-auto">
+              <Link href="/blog" className="flex items-center gap-1.5 font-medium">
+                All Articles <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredBlogPosts.map((post) => (
               <BlogPostCard key={post.id} post={post} />
@@ -128,7 +157,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* Main Content Sections Grid */}
+      {/* ===== 5. CODEX ARCHIVES: LATEST BLOG & THINK TANK ===== */}
       <div className="grid md:grid-cols-2 gap-12 pt-8 border-t border-border">
         {/* Recent Blog Posts Section */}
         <section>
@@ -169,14 +198,14 @@ export default async function HomePage() {
                 </Button>
               </>
             ) : (
-                <Card className="bg-card shadow-xl border border-border/30 hover:border-accent/50 hover:shadow-accent/20 transition-all duration-300 ease-in-out rounded-xl">
-                    <CardContent className="p-4">
-                        <p className="text-muted-foreground text-center py-6">No think tank articles featured yet.</p>
-                        <Button asChild variant="outline" className="w-full mt-4 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent-foreground">
-                        <Link href="/think-tank">Explore Think Tank <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                        </Button>
-                    </CardContent>
-                </Card>
+              <Card className="bg-card shadow-xl border border-border/30 hover:border-accent/50 hover:shadow-accent/20 transition-all duration-300 ease-in-out rounded-xl">
+                <CardContent className="p-4">
+                  <p className="text-muted-foreground text-center py-6">No think tank articles featured yet.</p>
+                  <Button asChild variant="outline" className="w-full mt-4 hover:border-accent hover:bg-accent/10 transition-all duration-300 ease-in-out rounded-lg text-foreground/80 hover:text-accent-foreground">
+                    <Link href="/think-tank">Explore Think Tank <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  </Button>
+                </CardContent>
+              </Card>
             )}
           </div>
         </section>
