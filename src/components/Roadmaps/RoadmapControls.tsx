@@ -1,138 +1,135 @@
 'use client';
 
 import React from 'react';
-import { Search, RotateCcw, CheckCircle2, Clock, X } from 'lucide-react';
+import { Search, X, Maximize2, Minimize2, ZoomIn, ZoomOut, Move, Navigation } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import type { NodeStatus } from '@/lib/roadmapProgress';
 
 interface RoadmapControlsProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
-  statusFilter: 'all' | NodeStatus;
-  onStatusFilterChange: (filter: 'all' | NodeStatus) => void;
   totalTopics: number;
-  completedCount: number;
-  learningCount: number;
-  onResetProgress: () => void;
+  matchCount?: number;
+  isInteractive: boolean;
+  onToggleInteractive: () => void;
+  onFitView: () => void;
+  onZoomIn: () => void;
+  onZoomOut: () => void;
+  isFullscreen: boolean;
+  onToggleFullscreen: () => void;
 }
 
 export function RoadmapControls({
   searchQuery,
   onSearchChange,
-  statusFilter,
-  onStatusFilterChange,
   totalTopics,
-  completedCount,
-  learningCount,
-  onResetProgress,
+  matchCount,
+  isInteractive,
+  onToggleInteractive,
+  onFitView,
+  onZoomIn,
+  onZoomOut,
+  isFullscreen,
+  onToggleFullscreen,
 }: RoadmapControlsProps) {
-  const percent = totalTopics > 0 ? Math.round((completedCount / totalTopics) * 100) : 0;
-
   return (
-    <div className="w-full max-w-[1000px] mx-auto px-4 pt-4 pb-2">
-      <div className="p-3.5 sm:p-4 rounded-2xl bg-card/90 border border-border/80 shadow-sm backdrop-blur-xl space-y-3">
-        {/* Top Row: Search & Legend Indicators */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-          {/* Search Input */}
-          <div className="relative flex-1 max-w-sm">
-            <Search className="w-4 h-4 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Filter or search topics..."
-              className="w-full pl-9 pr-8 py-2 text-xs font-medium rounded-xl bg-background border border-border/70 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all shadow-inner"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => onSearchChange('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
+    <div className="w-full max-w-[1100px] mx-auto px-4 pt-3 pb-3">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3 rounded-xl bg-card/70 dark:bg-card/40 border border-border/60 shadow-sm backdrop-blur-md">
+        
+        {/* Left: Scholarly Search Input */}
+        <div className="relative flex-1 max-w-md">
+          <Search className="w-4 h-4 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+            placeholder="Search syllabus concepts, theorems, tools..."
+            className="w-full pl-9 pr-9 py-2 text-xs font-mono rounded-lg bg-background/90 border border-border/60 text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-1 focus:ring-primary/60 transition-all"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => onSearchChange('')}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-0.5"
+              aria-label="Clear search"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
+
+        {/* Right: Flow Graph Controls */}
+        <div className="flex items-center justify-between sm:justify-end gap-2 flex-wrap">
+          {/* Concept Count Badge */}
+          <div className="text-[11px] font-mono text-muted-foreground px-2.5 py-1 rounded-md bg-muted/30 border border-border/40 hidden md:block">
+            {searchQuery ? (
+              <span>
+                <strong className="text-primary font-bold">{matchCount}</strong> of {totalTopics} matched
+              </span>
+            ) : (
+              <span>{totalTopics} Concepts</span>
             )}
           </div>
 
-          {/* Clean Legend Badges */}
-          <div className="flex items-center gap-3 text-[11px] font-medium text-muted-foreground self-center sm:self-auto">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block shadow-sm" /> Mastered
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block shadow-sm" /> Learning
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block shadow-sm" /> Recommended
-            </span>
-          </div>
-        </div>
+          <div className="h-4 w-px bg-border/40 hidden md:block" />
 
-        {/* Bottom Row: Status Filter Pills & Progress Meter */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2 border-t border-border/50">
-          {/* Filter Pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-            <Button
-              size="sm"
-              variant={statusFilter === 'all' ? 'default' : 'outline'}
-              onClick={() => onStatusFilterChange('all')}
-              className={`h-7 text-xs px-3 rounded-lg font-bold transition-all ${
-                statusFilter === 'all' ? 'bg-primary text-primary-foreground shadow-sm' : 'border-border/60'
-              }`}
-            >
-              All ({totalTopics})
-            </Button>
-            <Button
-              size="sm"
-              variant={statusFilter === 'done' ? 'default' : 'outline'}
-              onClick={() => onStatusFilterChange('done')}
-              className={`h-7 text-xs px-3 rounded-lg font-bold transition-all ${
-                statusFilter === 'done'
-                  ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm'
-                  : 'border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10'
-              }`}
-            >
-              <CheckCircle2 className="w-3.5 h-3.5 mr-1" />
-              Mastered ({completedCount})
-            </Button>
-            <Button
-              size="sm"
-              variant={statusFilter === 'learning' ? 'default' : 'outline'}
-              onClick={() => onStatusFilterChange('learning')}
-              className={`h-7 text-xs px-3 rounded-lg font-bold transition-all ${
-                statusFilter === 'learning'
-                  ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm'
-                  : 'border-amber-500/30 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10'
-              }`}
-            >
-              <Clock className="w-3.5 h-3.5 mr-1" />
-              In Progress ({learningCount})
-            </Button>
-          </div>
+          {/* Interactive Mode Toggle */}
+          <Button
+            size="sm"
+            variant={isInteractive ? 'default' : 'outline'}
+            onClick={onToggleInteractive}
+            className={`h-8 text-xs font-medium rounded-lg px-2.5 transition-all ${
+              isInteractive
+                ? 'bg-primary text-primary-foreground shadow-sm'
+                : 'border-border/60 text-muted-foreground hover:text-foreground'
+            }`}
+            title={isInteractive ? 'Pan & zoom enabled (click to lock page scrolling)' : 'Enable pan & zoom'}
+          >
+            <Move className="w-3.5 h-3.5 mr-1.5" />
+            {isInteractive ? 'Pan & Zoom: ON' : 'Free Explore'}
+          </Button>
 
-          {/* Progress Bar & Reset Button */}
-          <div className="flex items-center justify-between sm:justify-end gap-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-24 sm:w-32 h-2 bg-muted rounded-full overflow-hidden border border-border/40 p-0.5 shadow-inner">
-                <div
-                  className="h-full bg-gradient-to-r from-cyan-500 via-primary to-emerald-500 rounded-full transition-all duration-500"
-                  style={{ width: `${percent}%` }}
-                />
-              </div>
-              <span className="text-xs font-bold font-mono text-foreground">
-                {percent}%
-              </span>
-            </div>
-
+          {/* Zoom & Fit Controls */}
+          <div className="flex items-center rounded-lg border border-border/60 bg-background/70 overflow-hidden">
             <Button
-              size="sm"
+              size="icon"
               variant="ghost"
-              onClick={onResetProgress}
-              className="h-7 text-xs text-muted-foreground hover:text-destructive px-2 rounded-lg"
-              title="Reset progress"
+              onClick={onZoomIn}
+              className="h-8 w-8 rounded-none hover:bg-muted/50 text-foreground/80 hover:text-foreground"
+              title="Zoom In"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <ZoomIn className="w-3.5 h-3.5" />
+            </Button>
+            <div className="h-4 w-px bg-border/40" />
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={onZoomOut}
+              className="h-8 w-8 rounded-none hover:bg-muted/50 text-foreground/80 hover:text-foreground"
+              title="Zoom Out"
+            >
+              <ZoomOut className="w-3.5 h-3.5" />
+            </Button>
+            <div className="h-4 w-px bg-border/40" />
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={onFitView}
+              className="h-8 w-8 rounded-none hover:bg-muted/50 text-foreground/80 hover:text-foreground"
+              title="Center / Fit View"
+            >
+              <Navigation className="w-3.5 h-3.5" />
             </Button>
           </div>
+
+          {/* Fullscreen Expand */}
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={onToggleFullscreen}
+            className="h-8 w-8 rounded-lg border-border/60 hover:bg-muted/50 text-foreground/80 hover:text-foreground"
+            title={isFullscreen ? 'Exit Fullscreen' : 'View Fullscreen'}
+          >
+            {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+          </Button>
         </div>
       </div>
     </div>
