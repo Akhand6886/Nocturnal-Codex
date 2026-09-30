@@ -138,58 +138,23 @@ export function RoadmapDrawer({ open, onOpenChange, data, onStatusChange }: Road
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent className="w-[400px] sm:w-[540px] flex flex-col h-full border-l border-border bg-background/95 backdrop-blur-xl shadow-2xl p-0">
         {/* Header */}
-        <SheetHeader className="p-6 pb-5 border-b border-border bg-gradient-to-br from-primary/5 via-muted/20 to-transparent">
+        <SheetHeader className="p-6 pb-5 border-b border-border bg-card/40 backdrop-blur-xl">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <Badge variant="outline" className={`text-xs px-2.5 py-1 rounded-md font-semibold inline-flex items-center gap-1.5 ${statusConfig.className}`}>
-                  {statusConfig.icon}
-                  {statusConfig.label}
-                </Badge>
+              <div className="flex items-center gap-2 mb-2 text-[11px] font-mono tracking-widest uppercase text-primary font-bold">
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>TOPIC DOSSIER // FOLIO REF</span>
               </div>
-              <SheetTitle className="text-xl font-bold tracking-tight text-foreground roadmap-font leading-snug">
+              <SheetTitle className="text-2xl font-serif font-normal tracking-tight text-foreground leading-snug">
                 {data.label}
               </SheetTitle>
               {data.description && (
-                <SheetDescription className="mt-2.5 text-sm text-muted-foreground leading-relaxed">
-                  {data.description}
+                <SheetDescription className="mt-3 font-serif italic text-sm text-foreground/80 leading-relaxed border-l-2 border-primary/40 pl-3.5">
+                  &ldquo;{data.description}&rdquo;
                 </SheetDescription>
               )}
             </div>
           </div>
-
-          {/* Quick Action Status Toggles */}
-          {onStatusChange && (
-            <div className="flex items-center gap-2 pt-4 mt-2 border-t border-border/40">
-              <Button
-                size="sm"
-                variant={currentStatus === 'done' ? 'default' : 'outline'}
-                onClick={() => onStatusChange(data.id, currentStatus === 'done' ? 'pending' : 'done')}
-                className={`h-8 text-xs font-semibold rounded-lg gap-1.5 transition-all ${
-                  currentStatus === 'done'
-                    ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/20'
-                    : 'hover:border-emerald-500/50 hover:text-emerald-600'
-                }`}
-              >
-                <CheckCircle className="w-3.5 h-3.5" />
-                {currentStatus === 'done' ? 'Mastered' : 'Mark as Mastered'}
-              </Button>
-
-              <Button
-                size="sm"
-                variant={currentStatus === 'learning' ? 'default' : 'outline'}
-                onClick={() => onStatusChange(data.id, currentStatus === 'learning' ? 'pending' : 'learning')}
-                className={`h-8 text-xs font-semibold rounded-lg gap-1.5 transition-all ${
-                  currentStatus === 'learning'
-                    ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md shadow-amber-500/20'
-                    : 'hover:border-amber-500/50 hover:text-amber-600'
-                }`}
-              >
-                <Clock className="w-3.5 h-3.5" />
-                {currentStatus === 'learning' ? 'In Progress' : 'Mark In Progress'}
-              </Button>
-            </div>
-          )}
         </SheetHeader>
         
         {/* Content */}
