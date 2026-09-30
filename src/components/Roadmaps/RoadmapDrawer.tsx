@@ -127,11 +127,9 @@ const RESOURCE_TYPE_ICONS: Record<string, string> = {
   github: '💻',
 };
 
-export function RoadmapDrawer({ open, onOpenChange, data, onStatusChange }: RoadmapDrawerProps) {
+export function RoadmapDrawer({ open, onOpenChange, data }: RoadmapDrawerProps) {
   if (!data) return null;
 
-  const currentStatus: NodeStatus = data.status || 'pending';
-  const statusConfig = STATUS_CONFIG[currentStatus];
   const relatedLang = detectRelatedSiteLanguage(data);
 
   return (
