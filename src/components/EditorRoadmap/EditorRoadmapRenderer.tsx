@@ -55,7 +55,6 @@ const FlowInnerCanvas: FC<{
   processedNodes: Node[];
   edges: Edge[];
   onNodeClick: (event: React.MouseEvent, node: Node) => void;
-  isInteractive: boolean;
   canvasHeight: number;
   isFullscreen: boolean;
   onExitFullscreen: () => void;
@@ -63,12 +62,10 @@ const FlowInnerCanvas: FC<{
   matchCount: number;
   searchQuery: string;
   onSearchChange: (q: string) => void;
-  onToggleInteractive: () => void;
 }> = ({
   processedNodes,
   edges,
   onNodeClick,
-  isInteractive,
   canvasHeight,
   isFullscreen,
   onExitFullscreen,
@@ -76,28 +73,17 @@ const FlowInnerCanvas: FC<{
   matchCount,
   searchQuery,
   onSearchChange,
-  onToggleInteractive,
 }) => {
-  const { fitView, zoomIn, zoomOut } = useReactFlow();
+  const { fitView } = useReactFlow();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      fitView({ duration: 500, padding: 0.14 });
-    }, 80);
-    return () => clearTimeout(timer);
+    // Instant fit without any sliding or gliding movement animation
+    fitView({ duration: 0, padding: 0.12 });
   }, [fitView, isFullscreen]);
 
   const handleFitView = useCallback(() => {
-    fitView({ duration: 400, padding: 0.14 });
+    fitView({ duration: 0, padding: 0.12 });
   }, [fitView]);
-
-  const handleZoomIn = useCallback(() => {
-    zoomIn({ duration: 250 });
-  }, [zoomIn]);
-
-  const handleZoomOut = useCallback(() => {
-    zoomOut({ duration: 250 });
-  }, [zoomOut]);
 
   return (
     <div className={isFullscreen ? 'fixed inset-0 z-50 bg-background flex flex-col p-4 md:p-6' : 'w-full'}>
@@ -107,16 +93,12 @@ const FlowInnerCanvas: FC<{
         onSearchChange={onSearchChange}
         totalTopics={totalTopics}
         matchCount={matchCount}
-        isInteractive={isInteractive}
-        onToggleInteractive={onToggleInteractive}
         onFitView={handleFitView}
-        onZoomIn={handleZoomIn}
-        onZoomOut={handleZoomOut}
         isFullscreen={isFullscreen}
         onToggleFullscreen={onExitFullscreen}
       />
 
-      {/* Canvas Frame with Architectural Manuscript Detailing */}
+      {/* Static Canvas Frame with Architectural Manuscript Detailing - No Drag / No Pan */}
       <div className={isFullscreen ? 'flex-1 w-full mt-2' : 'w-full max-w-[1100px] mx-auto px-4 pb-16'}>
         <div
           style={{ height: isFullscreen ? 'calc(100vh - 120px)' : canvasHeight }}
@@ -128,13 +110,6 @@ const FlowInnerCanvas: FC<{
           <span className="absolute bottom-2 left-2 text-[10px] font-mono text-muted-foreground/40 pointer-events-none select-none z-10">└</span>
           <span className="absolute bottom-2 right-2 text-[10px] font-mono text-muted-foreground/40 pointer-events-none select-none z-10">┘</span>
 
-          {/* Mode Indicator Overlay */}
-          <div className="absolute bottom-3 left-4 z-10 pointer-events-none">
-            <span className="text-[10px] font-mono tracking-wider uppercase text-muted-foreground/60 bg-background/80 px-2 py-0.5 rounded border border-border/40 backdrop-blur-sm">
-              {isInteractive ? 'Pan & Zoom Active' : 'Scroll Safe Mode (Click "Free Explore" to Pan)'}
-            </span>
-          </div>
-
           <ReactFlow
             nodes={processedNodes}
             edges={edges}
@@ -142,15 +117,18 @@ const FlowInnerCanvas: FC<{
             edgeTypes={edgeTypes}
             onNodeClick={onNodeClick}
             fitView
-            zoomOnScroll={isInteractive}
-            zoomOnPinch={isInteractive}
-            zoomOnDoubleClick={isInteractive}
-            panOnDrag={isInteractive}
+            fitViewOptions={{ padding: 0.12, duration: 0 }}
+            zoomOnScroll={false}
+            zoomOnPinch={false}
+            zoomOnDoubleClick={false}
+            panOnDrag={false}
             panOnScroll={false}
-            preventScrolling={!isInteractive}
+            preventScrolling={false}
             nodesDraggable={false}
             nodesConnectable={false}
             elementsSelectable={true}
+            autoPanOnNodeDrag={false}
+            autoPanOnConnect={false}
             style={{ background: 'transparent' }}
           >
             <Background
@@ -178,9 +156,8 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedNode, setSelectedNode] = useState<SelectedNodeData | null>(null);
 
-  // Search & Interactive states
+  // Search & Fullscreen states
   const [searchQuery, setSearchQuery] = useState('');
-  const [isInteractive, setIsInteractive] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
@@ -304,7 +281,6 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
           processedNodes={processedNodes}
           edges={roadmapData.edges}
           onNodeClick={onNodeClick}
-          isInteractive={isInteractive}
           canvasHeight={canvasHeight}
           isFullscreen={isFullscreen}
           onExitFullscreen={() => setIsFullscreen(prev => !prev)}
@@ -312,7 +288,6 @@ export const EditorRoadmapRenderer: FC<EditorRoadmapRendererProps> = ({ roadmapI
           matchCount={matchCount}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
-          onToggleInteractive={() => setIsInteractive(prev => !prev)}
         />
       </ReactFlowProvider>
 
