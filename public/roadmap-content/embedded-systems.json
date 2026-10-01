@@ -8,73 +8,82 @@
         "y": 20
       },
       "data": {
-        "label": "Embedded Systems Path"
+        "label": "Embedded Systems & Firmware Path"
       }
     },
     {
-      "id": "c-programming",
+      "id": "embedded-c",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Embedded C & Registers",
+        "label": "Embedded C & Pointer Arithmetic",
         "status": "recommended",
-        "description": "Master bitwise manipulation, volatile pointers, memory-mapped I/O registers, interrupt service routines (ISR), and linker scripts.",
-        "codeSnippet": "// Memory-Mapped Register Bit Manipulation in C\n#define PORTB_DIR (*((volatile uint8_t *)0x24))\n#define PORTB_DATA (*((volatile uint8_t *)0x25))\n\nvoid init_gpio(void) {\n    PORTB_DIR |= (1 << 5);  // Set Pin 5 as output\n    PORTB_DATA |= (1 << 5); // Set Pin 5 HIGH\n}",
-        "prerequisites": ["C Fundamentals"],
+        "description": "Master raw memory manipulation in C: bitwise operations, volatile qualifier, register access, struct padding, and fixed-width integer types (uint32_t).",
+        "codeSnippet": "// Memory-Mapped Peripheral Register Access\n#define GPIOA_BASE 0x40020000UL\n#define GPIOA_ODR  (*(volatile uint32_t *)(GPIOA_BASE + 0x14))\n\nvoid toggle_led(void) {\n    GPIOA_ODR ^= (1U << 5); // Toggle Pin 5\n}",
+        "prerequisites": [
+          "Computer Architecture Basics"
+        ],
         "resources": [
           {
-            "title": "Embedded C Programming & Memory Mapped I/O",
-            "url": "https://www.embedded.com/",
-            "type": "articles"
+            "title": "Nocturnal Codex — C Programming Guide",
+            "url": "/languages/c",
+            "type": "course"
           }
-        ]
+        ],
+        "relatedLanguage": "c"
       }
     },
     {
-      "id": "microcontrollers",
+      "id": "mcu-arch",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 200
       },
       "data": {
-        "label": "Microcontrollers (STM32/ESP)",
+        "label": "ARM Cortex-M Architecture",
         "status": "recommended",
-        "description": "Understand NVIC nested interrupt controllers, DMA memory access, timers/counters, PWM, and low-power sleep modes.",
-        "codeSnippet": "// STM32 HAL Timer Interrupt Callback\nvoid HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {\n    if (htim->Instance == TIM2) {\n        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); // Toggle LED\n    }\n}",
-        "prerequisites": ["Embedded C"],
+        "description": "Understand ARM Thumb assembly, NVIC nested vector interrupt controller, system clock trees (PLL), flash memory controllers, and stack management.",
+        "codeSnippet": "// Interrupt Service Routine (ISR) in ARM Cortex-M\nvoid EXTI0_IRQHandler(void) {\n    if (EXTI->PR & (1 << 0)) {\n        EXTI->PR = (1 << 0); // Clear interrupt flag\n        handle_button_press();\n    }\n}",
+        "prerequisites": [
+          "Embedded C"
+        ],
         "resources": [
           {
-            "title": "STMicroelectronics STM32 Cube HAL Documentation",
-            "url": "https://www.st.com/",
+            "title": "ARM Cortex-M Programming Reference",
+            "url": "https://developer.arm.com/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "c"
       }
     },
     {
-      "id": "protocols",
+      "id": "peripherals-comm",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Hardware Bus (I2C/SPI)",
+        "label": "Hardware Protocols (UART / SPI / I2C)",
         "status": "recommended",
-        "description": "Interface sensors, displays, and automotive networks using synchronous (SPI/I2C) and asynchronous (UART/CAN) serial buses.",
-        "codeSnippet": "// I2C Sensor Reading in C\nvoid read_sensor_data(uint8_t dev_addr, uint8_t reg_addr, uint8_t *buffer, uint16_t len) {\n    i2c_start();\n    i2c_write(dev_addr << 1);\n    i2c_write(reg_addr);\n    i2c_start();\n    i2c_write((dev_addr << 1) | 1);\n    for (int i = 0; i < len; i++) buffer[i] = i2c_read();\n    i2c_stop();\n}",
-        "prerequisites": ["Microcontroller Architecture"],
+        "description": "Communicate with sensors and peripherals using bus protocols: synchronous SPI (MISO/MOSI), 2-wire I2C with addressing, and asynchronous UART.",
+        "codeSnippet": "// I2C Sensor Read Transaction\nuint8_t read_sensor(uint8_t dev_addr, uint8_t reg) {\n    i2c_start();\n    i2c_write(dev_addr << 1);\n    i2c_write(reg);\n    i2c_start(); // Repeated start\n    i2c_write((dev_addr << 1) | 1);\n    uint8_t val = i2c_read_nack();\n    i2c_stop();\n    return val;\n}",
+        "prerequisites": [
+          "ARM Cortex-M Architecture"
+        ],
         "resources": [
           {
-            "title": "I2C & SPI Hardware Protocol Specification",
+            "title": "I2C and SPI Bus Protocol Specifications",
             "url": "https://www.i2c-bus.org/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "c"
       }
     },
     {
@@ -85,15 +94,42 @@
         "y": 400
       },
       "data": {
-        "label": "Real-Time OS (FreeRTOS)",
+        "label": "Real-Time Operating Systems (FreeRTOS)",
         "status": "recommended",
-        "description": "Preemptive task scheduling, semaphores, mutexes, message queues, and deterministic execution guarantees.",
-        "codeSnippet": "// FreeRTOS Task Creation\nvoid vTaskCode(void *pvParameters) {\n    for (;;) {\n        vTaskDelay(pdMS_TO_TICKS(1000));\n    }\n}\nxTaskCreate(vTaskCode, \"SensorTask\", 1024, NULL, 1, NULL);",
-        "prerequisites": ["Hardware Protocols"],
+        "description": "Implement deterministic real-time multitasking: preemptive task scheduling, priority inversion solutions with Mutexes, Semaphores, and message queues.",
+        "codeSnippet": "// FreeRTOS Task Spawning\nvoid SensorTask(void *pvParameters) {\n    for (;;) {\n        read_adc_values();\n        vTaskDelay(pdMS_TO_TICKS(100));\n    }\n}\n// xTaskCreate(SensorTask, \"Sensor\", 128, NULL, 2, NULL);",
+        "prerequisites": [
+          "Hardware Protocols"
+        ],
         "resources": [
           {
-            "title": "FreeRTOS Official Kernel Documentation",
+            "title": "FreeRTOS Official Reference Manual",
             "url": "https://www.freertos.org/",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "c"
+      }
+    },
+    {
+      "id": "hardware-debug",
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 400
+      },
+      "data": {
+        "label": "Debugging (SWD, JTAG & Logic Analyzers)",
+        "status": "recommended",
+        "description": "Diagnose timing issues and bugs at the wire level using JTAG/SWD hardware debuggers, OpenOCD, GDB server, and logic analyzers (Saleae).",
+        "codeSnippet": "# OpenOCD GDB Target Session\nopenocd -f interface/stlink.cfg -f target/stm32f4x.cfg\n# arm-none-eabi-gdb app.elf -ex \"target extended-remote :3333\"",
+        "prerequisites": [
+          "FreeRTOS"
+        ],
+        "resources": [
+          {
+            "title": "OpenOCD Debugger Documentation",
+            "url": "https://openocd.org/",
             "type": "docs"
           }
         ]
@@ -101,8 +137,29 @@
     }
   ],
   "edges": [
-    { "id": "e-c-mcu", "source": "c-programming", "target": "microcontrollers" },
-    { "id": "e-mcu-proto", "source": "microcontrollers", "target": "protocols" },
-    { "id": "e-proto-rtos", "source": "protocols", "target": "rtos" }
+    {
+      "id": "e-c-mcu",
+      "source": "embedded-c",
+      "target": "mcu-arch",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-mcu-periph",
+      "source": "mcu-arch",
+      "target": "peripherals-comm",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-periph-rtos",
+      "source": "peripherals-comm",
+      "target": "rtos",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-rtos-debug",
+      "source": "rtos",
+      "target": "hardware-debug",
+      "type": "dotted"
+    }
   ]
 }

@@ -8,7 +8,32 @@
         "y": 20
       },
       "data": {
-        "label": "Full-Stack Developer Path"
+        "label": "Full-Stack Engineering Path"
+      }
+    },
+    {
+      "id": "web-foundation",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 100
+      },
+      "data": {
+        "label": "HTML5, Modern CSS & TypeScript",
+        "status": "recommended",
+        "description": "Master the foundational triage of the modern web: semantic markup, responsive layout systems, and end-to-end type safety.",
+        "codeSnippet": "interface AppProps {\n  title: string;\n  version: number;\n}\nexport const App = ({ title, version }: AppProps) => (\n  <main className=\"min-h-screen p-8 text-foreground\">\n    <h1>{title} v{version}</h1>\n  </main>\n);",
+        "prerequisites": [
+          "Computer Science Basics"
+        ],
+        "resources": [
+          {
+            "title": "Nocturnal Codex — TypeScript Guide",
+            "url": "/languages/typescript",
+            "type": "course"
+          }
+        ],
+        "relatedLanguage": "typescript"
       }
     },
     {
@@ -16,21 +41,29 @@
       "type": "topic",
       "position": {
         "x": 390,
-        "y": 100
+        "y": 200
       },
       "data": {
-        "label": "Frontend (React / TS)",
+        "label": "Frontend Frameworks (React & Next.js)",
         "status": "recommended",
-        "description": "Component architecture, dynamic state, API integration, Tailwind CSS styling, and responsive UI design.",
-        "codeSnippet": "export function UserProfile({ userId }: { userId: string }) {\n  const { data: user } = useQuery(['user', userId], () => fetchUser(userId));\n  return <div>{user ? <h1>{user.name}</h1> : <Spinner />}</div>;\n}",
-        "prerequisites": ["HTML/CSS/JS"],
+        "description": "Component architecture, reactive state, Server Components (RSC), SSR hydration, and Tailwind CSS design systems.",
+        "codeSnippet": "export function UserProfile({ userId }: { userId: string }) {\n  const [user, setUser] = useState<User | null>(null);\n  useEffect(() => { fetchUser(userId).then(setUser); }, [userId]);\n  return <div>{user ? <h1>{user.name}</h1> : <p>Loading...</p>}</div>;\n}",
+        "prerequisites": [
+          "HTML5, Modern CSS & TypeScript"
+        ],
         "resources": [
           {
-            "title": "React Official Documentation",
+            "title": "Next.js App Router Guide",
+            "url": "https://nextjs.org/docs",
+            "type": "docs"
+          },
+          {
+            "title": "React Documentation",
             "url": "https://react.dev/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "javascript"
       }
     },
     {
@@ -38,71 +71,136 @@
       "type": "topic",
       "position": {
         "x": 390,
-        "y": 200
-      },
-      "data": {
-        "label": "Backend APIs & Services",
-        "status": "recommended",
-        "description": "Build high-throughput REST APIs, authentication services, rate limiting, and database ORM layer (Prisma, Drizzle, SQLAlchemy).",
-        "codeSnippet": "// Prisma ORM Query\nconst userWithPosts = await prisma.user.findUnique({\n  where: { email: 'hunter@example.com' },\n  include: { posts: true },\n});",
-        "prerequisites": ["Frontend Mastery"],
-        "resources": [
-          {
-            "title": "Prisma ORM Official Documentation",
-            "url": "https://www.prisma.io/docs",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "database-architecture",
-      "type": "topic",
-      "position": {
-        "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Database Persistence",
+        "label": "Server Logic & APIs (Node / Python)",
         "status": "recommended",
-        "description": "Manage PostgreSQL relational models alongside Redis caching layers for high scalability.",
-        "codeSnippet": "-- Relational Schema with Foreign Key\nCREATE TABLE posts (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id UUID REFERENCES users(id) ON DELETE CASCADE,\n  title VARCHAR(255) NOT NULL\n);",
-        "prerequisites": ["Backend APIs"],
+        "description": "Design RESTful routes, Server Actions, middleware pipeline, JWT session cookies, and business service layers.",
+        "codeSnippet": "// Next.js Server Action with Mutation\n'use server';\nimport { db } from '@/lib/db';\n\nexport async function updateUsername(userId: string, newName: string) {\n  await db.user.update({ where: { id: userId }, data: { name: newName } });\n}",
+        "prerequisites": [
+          "Frontend Frameworks"
+        ],
         "resources": [
           {
-            "title": "PostgreSQL Documentation",
-            "url": "https://www.postgresql.org/docs/",
-            "type": "docs"
+            "title": "Nocturnal Codex — Python Guide",
+            "url": "/languages/python",
+            "type": "course"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     },
     {
-      "id": "deployment-devops",
+      "id": "database-persistence",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Full-Stack Cloud & DevOps",
+        "label": "Database Layer (PostgreSQL & Prisma/Drizzle)",
         "status": "recommended",
-        "description": "Containerize apps with Docker, configure CI/CD pipelines, and deploy serverless functions to AWS or Vercel.",
-        "codeSnippet": "/* Vercel / Cloud Deployment Config */\n{\n  \"version\": 2,\n  \"builds\": [{ \"src\": \"next.config.js\", \"use\": \"@vercel/next\" }]\n}",
-        "prerequisites": ["Database Persistence"],
+        "description": "PostgreSQL schema definition, migrations, indexing, relationships, and type-safe query builders (Prisma, Drizzle).",
+        "codeSnippet": "// Drizzle ORM Schema & Query\nimport { pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';\nexport const users = pgTable('users', {\n  id: serial('id').primaryKey(),\n  fullName: text('full_name'),\n  phone: varchar('phone', { length: 256 }),\n});",
+        "prerequisites": [
+          "Server Logic & APIs"
+        ],
         "resources": [
           {
-            "title": "Vercel & Next.js Deployment Guide",
-            "url": "https://vercel.com/docs",
+            "title": "Nocturnal Codex — SQL & Databases",
+            "url": "/languages/sql",
+            "type": "course"
+          },
+          {
+            "title": "Drizzle ORM Documentation",
+            "url": "https://orm.drizzle.team/",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "sql"
+      }
+    },
+    {
+      "id": "caching-layer",
+      "type": "topic",
+      "position": {
+        "x": 130,
+        "y": 400
+      },
+      "data": {
+        "label": "Caching & Session Store (Redis)",
+        "status": "recommended",
+        "description": "In-memory key-value caching to reduce database read pressure, manage distributed locks, and store fast session data.",
+        "codeSnippet": "import Redis from 'ioredis';\nconst redis = new Redis(process.env.REDIS_URL!);\nawait redis.set('active:users', '1420', 'EX', 300);",
+        "prerequisites": [
+          "Database Layer"
+        ],
+        "resources": [
+          {
+            "title": "Redis In-Memory Guide",
+            "url": "https://redis.io/",
             "type": "docs"
           }
         ]
       }
+    },
+    {
+      "id": "cloud-devops",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 500
+      },
+      "data": {
+        "label": "Containerization & Cloud (Docker, Vercel, AWS)",
+        "status": "recommended",
+        "description": "Package applications into Docker containers, configure CI/CD deployment pipelines, and deploy with edge routing and CDN caching.",
+        "codeSnippet": "// Multi-region deployment configuration\nexport const runtime = 'edge';\nexport async function GET() {\n  return new Response(JSON.stringify({ region: process.env.VERCEL_REGION }));\n}",
+        "prerequisites": [
+          "Database Layer"
+        ],
+        "resources": [
+          {
+            "title": "Vercel Infrastructure Guide",
+            "url": "https://vercel.com/docs",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "shell"
+      }
     }
   ],
   "edges": [
-    { "id": "e-fe-be", "source": "frontend-core", "target": "backend-core" },
-    { "id": "e-be-db", "source": "backend-core", "target": "database-architecture" },
-    { "id": "e-db-dep", "source": "database-architecture", "target": "deployment-devops" }
+    {
+      "id": "e-web-front",
+      "source": "web-foundation",
+      "target": "frontend-core",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-front-back",
+      "source": "frontend-core",
+      "target": "backend-core",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-back-db",
+      "source": "backend-core",
+      "target": "database-persistence",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-db-cache",
+      "source": "database-persistence",
+      "target": "caching-layer",
+      "type": "dotted"
+    },
+    {
+      "id": "e-db-devops",
+      "source": "database-persistence",
+      "target": "cloud-devops",
+      "type": "roadmap"
+    }
   ]
 }

@@ -8,7 +8,7 @@
         "y": 20
       },
       "data": {
-        "label": "Mobile App Developer Path"
+        "label": "Mobile App Engineering Path"
       }
     },
     {
@@ -19,14 +19,16 @@
         "y": 100
       },
       "data": {
-        "label": "Cross-Platform Frameworks",
+        "label": "Cross-Platform Frameworks (React Native / Flutter)",
         "status": "recommended",
-        "description": "Build iOS and Android apps from a single codebase using React Native (JavaScript/TypeScript) or Flutter (Dart).",
-        "codeSnippet": "// React Native View & Text Component\nimport { View, Text, StyleSheet } from 'react-native';\n\nexport function MobileCard() {\n  return (\n    <View style={styles.card}>\n      <Text style={styles.title}>Cross Platform Mobile</Text>\n    </View>\n  );\n}",
-        "prerequisites": ["JavaScript / Dart Fundamentals"],
+        "description": "Build native iOS and Android apps from a unified codebase using React Native (JavaScript/TypeScript) or Flutter (Dart).",
+        "codeSnippet": "import { View, Text, StyleSheet } from 'react-native';\n\nexport function MobileScreen() {\n  return (\n    <View style={styles.container}>\n      <Text style={styles.heading}>Unified Mobile Architecture</Text>\n    </View>\n  );\n}",
+        "prerequisites": [
+          "JavaScript or Dart Fundamentals"
+        ],
         "resources": [
           {
-            "title": "React Native Official Documentation",
+            "title": "React Native Official Guide",
             "url": "https://reactnative.dev/",
             "type": "docs"
           },
@@ -35,7 +37,8 @@
             "url": "https://docs.flutter.dev/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "typescript"
       }
     },
     {
@@ -46,18 +49,21 @@
         "y": 200
       },
       "data": {
-        "label": "Native iOS (SwiftUI)",
+        "label": "Native iOS (Swift & SwiftUI)",
         "status": "alternative",
-        "description": "Master Swift 5, SwiftUI declarative layouts, Combine reactive framework, and CoreData persistence.",
-        "codeSnippet": "// SwiftUI Declarative View\nimport SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        VStack {\n            Image(systemName: \"globe\")\n            Text(\"Hello, iOS!\")\n        }\n    }\n}",
-        "prerequisites": ["Swift Basics"],
+        "description": "Master Swift 5, SwiftUI declarative views, Combine reactive pipelines, CoreData persistence, and Apple Human Interface Guidelines.",
+        "codeSnippet": "import SwiftUI\n\nstruct ProfileView: View {\n    @State private var username = \"TheNocturnist\"\n    var body: some View {\n        NavigationStack {\n            Text(\"Operator: \\(username)\")\n                .navigationTitle(\"Profile\")\n        }\n    }\n}",
+        "prerequisites": [
+          "Programming Fundamentals"
+        ],
         "resources": [
           {
-            "title": "Apple Developer — Swift & SwiftUI Tutorials",
+            "title": "Apple Developer — SwiftUI Tutorials",
             "url": "https://developer.apple.com/xcode/swiftui/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "swift"
       }
     },
     {
@@ -68,15 +74,67 @@
         "y": 200
       },
       "data": {
-        "label": "Native Android (Compose)",
+        "label": "Native Android (Kotlin & Jetpack Compose)",
         "status": "alternative",
-        "description": "Master Kotlin, Jetpack Compose declarative UI, Coroutines for async tasks, and Room database.",
-        "codeSnippet": "// Jetpack Compose Composable Function\n@Composable\nfunction Greeting(name: String) {\n    Text(text = \"Hello $name!\", modifier = Modifier.padding(16.dp))\n}",
-        "prerequisites": ["Kotlin Basics"],
+        "description": "Master modern Android development: Kotlin Coroutines for async execution, Jetpack Compose declarative UI, ViewModel, and Room database.",
+        "codeSnippet": "import androidx.compose.material3.*\nimport androidx.compose.runtime.*\n\n@Composable\nfun AppGreeting(name: String) {\n    Surface(color = MaterialTheme.colorScheme.background) {\n        Text(text = \"Welcome to $name\", style = MaterialTheme.typography.headlineMedium)\n    }\n}",
+        "prerequisites": [
+          "Programming Fundamentals"
+        ],
         "resources": [
           {
             "title": "Android Developers — Jetpack Compose Guide",
             "url": "https://developer.android.com/jetpack/compose",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "kotlin"
+      }
+    },
+    {
+      "id": "mobile-data",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 300
+      },
+      "data": {
+        "label": "Offline Data, Caching & SQLite",
+        "status": "recommended",
+        "description": "Design resilient mobile experiences with offline caching, local SQLite storage, optimistic UI updates, and background sync workers.",
+        "codeSnippet": "// SQLite Local Persistence Query\nimport * as SQLite from 'expo-sqlite';\nconst db = SQLite.openDatabaseSync('codex_cache.db');\n\ndb.execSync('CREATE TABLE IF NOT EXISTS notes (id TEXT PRIMARY KEY, text TEXT);');\ndb.runSync('INSERT INTO notes (id, text) VALUES (?, ?);', ['1', 'Offline Theorem']);",
+        "prerequisites": [
+          "Cross-Platform or Native UI"
+        ],
+        "resources": [
+          {
+            "title": "Nocturnal Codex — SQL Guide",
+            "url": "/languages/sql",
+            "type": "course"
+          }
+        ],
+        "relatedLanguage": "sql"
+      }
+    },
+    {
+      "id": "device-hardware",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 400
+      },
+      "data": {
+        "label": "Hardware APIs & Store Deployment",
+        "status": "recommended",
+        "description": "Interface with mobile hardware: Push Notifications (FCM/APNs), Biometric FaceID/Fingerprint auth, Camera/Photo library, and App Store release pipelines with Fastlane.",
+        "codeSnippet": "# Fastlane iOS & Android Deployment Command\nfastlane release\n# Automates code signing, screenshots, TestFlight upload, and production store release",
+        "prerequisites": [
+          "Offline Data & UI"
+        ],
+        "resources": [
+          {
+            "title": "Fastlane Automation Documentation",
+            "url": "https://fastlane.tools/",
             "type": "docs"
           }
         ]
@@ -84,7 +142,29 @@
     }
   ],
   "edges": [
-    { "id": "e-cross-ios", "source": "cross-platform", "target": "native-ios" },
-    { "id": "e-cross-android", "source": "cross-platform", "target": "native-android" }
+    {
+      "id": "e-cross-ios",
+      "source": "cross-platform",
+      "target": "native-ios",
+      "type": "dotted"
+    },
+    {
+      "id": "e-cross-android",
+      "source": "cross-platform",
+      "target": "native-android",
+      "type": "dotted"
+    },
+    {
+      "id": "e-cross-data",
+      "source": "cross-platform",
+      "target": "mobile-data",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-data-hardware",
+      "source": "mobile-data",
+      "target": "device-hardware",
+      "type": "roadmap"
+    }
   ]
 }

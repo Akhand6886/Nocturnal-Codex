@@ -8,7 +8,7 @@
         "y": 20
       },
       "data": {
-        "label": "Backend Developer Path"
+        "label": "Backend Architecture & Systems Path"
       }
     },
     {
@@ -19,12 +19,13 @@
         "y": 100
       },
       "data": {
-        "label": "Backend Programming",
+        "label": "Backend Language (Node / Python / Go)",
         "status": "recommended",
-        "relatedLanguage": "python",
-        "description": "Choose a core backend language: Python (FastAPI/Django), Node.js (TypeScript), Go, or Java (Spring Boot). Learn asynchronous concurrency, garbage collection, and memory management.",
-        "codeSnippet": "# Python FastAPI High-Performance Async Endpoint\nfrom fastapi import FastAPI\napp = FastAPI()\n\n@app.get(\"/health\")\nasync def health_check():\n    return {\"status\": \"UP\", \"engine\": \"Python Pyodide / CPython\"}",
-        "prerequisites": ["Programming Fundamentals"],
+        "description": "Master server-side programming in Python (FastAPI/Django), Go, or Node.js (TypeScript). Understand concurrency, event loops, and thread management.",
+        "codeSnippet": "# Python FastAPI High-Performance Async Endpoint\nfrom fastapi import FastAPI\napp = FastAPI()\n\n@app.get(\"/health\")\nasync def health_check():\n    return {\"status\": \"UP\", \"engine\": \"CPython 3.12\"}",
+        "prerequisites": [
+          "Programming Fundamentals"
+        ],
         "resources": [
           {
             "title": "Nocturnal Codex — Python Language Guide",
@@ -37,16 +38,12 @@
             "type": "course"
           },
           {
-            "title": "Node.js Official Documentation",
-            "url": "https://nodejs.org/docs/",
-            "type": "docs"
-          },
-          {
-            "title": "FastAPI Web Framework Guide",
+            "title": "FastAPI Web Framework Documentation",
             "url": "https://fastapi.tiangolo.com/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     },
     {
@@ -57,15 +54,16 @@
         "y": 200
       },
       "data": {
-        "label": "Relational Databases",
+        "label": "Relational Databases (PostgreSQL)",
         "status": "recommended",
-        "relatedLanguage": "sql",
-        "description": "Master SQL querying, ACID transactions, relational schema normalization, B-Tree indexes, joins, foreign keys, and connection pooling.",
-        "codeSnippet": "-- PostgreSQL Transaction with Row Locking\nBEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 'acc_1' AND balance >= 100;\nUPDATE accounts SET balance = balance + 100 WHERE id = 'acc_2';\nCOMMIT;",
-        "prerequisites": ["Backend Languages"],
+        "description": "Master ACID transactions, indexing (B-Tree, GIN), schema normalization, joins, and connection pooling in PostgreSQL.",
+        "codeSnippet": "-- Optimized Index & Foreign Key Constraint\nCREATE TABLE accounts (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  email VARCHAR(255) UNIQUE NOT NULL,\n  balance NUMERIC(12,2) CHECK (balance >= 0)\n);\nCREATE INDEX idx_accounts_email ON accounts(email);",
+        "prerequisites": [
+          "Backend Programming"
+        ],
         "resources": [
           {
-            "title": "Nocturnal Codex — Relational SQL Database Guide",
+            "title": "Nocturnal Codex — SQL & Database Architecture",
             "url": "/languages/sql",
             "type": "course"
           },
@@ -73,102 +71,29 @@
             "title": "PostgreSQL Official Documentation",
             "url": "https://www.postgresql.org/docs/",
             "type": "docs"
-          },
-          {
-            "title": "SQL Bolt — Interactive SQL Lessons",
-            "url": "https://sqlbolt.com/",
-            "type": "course"
           }
-        ]
+        ],
+        "relatedLanguage": "sql"
       }
     },
     {
-      "id": "nosql-db",
+      "id": "nosql-cache",
       "type": "topic",
       "position": {
         "x": 130,
         "y": 200
       },
       "data": {
-        "label": "NoSQL Databases",
-        "status": "alternative",
-        "description": "Document and key-value stores for unstructured or high-scale data. Understand eventual consistency, sharding, and aggregation pipelines.",
-        "codeSnippet": "// MongoDB Aggregation Pipeline\ndb.orders.aggregate([\n  { $match: { status: 'completed' } },\n  { $group: { _id: '$customerId', totalSpent: { $sum: '$amount' } } }\n]);",
-        "prerequisites": ["Relational Databases"],
-        "resources": [
-          {
-            "title": "MongoDB Manual & Aggregation Framework",
-            "url": "https://www.mongodb.com/docs/manual/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "api-design",
-      "type": "topic",
-      "position": {
-        "x": 390,
-        "y": 300
-      },
-      "data": {
-        "label": "REST APIs & GraphQL",
+        "label": "In-Memory Caching (Redis)",
         "status": "recommended",
-        "description": "Design clean, scalable APIs. Understand HTTP status codes, CORS, idempotency, OpenAPI specifications, rate limiting, and GraphQL schemas.",
-        "codeSnippet": "/* OpenAPI / Swagger REST Schema Definition */\n/api/v1/users/{id}:\n  get:\n    summary: Fetch User Details\n    parameters:\n      - name: id\n        in: path\n        required: true\n        schema: { type: string }",
-        "prerequisites": ["Backend Programming Languages"],
+        "description": "High-throughput sub-millisecond in-memory data store for caching query results, session management, Pub/Sub channels, and rate limiting.",
+        "codeSnippet": "# Redis Cache-Aside Pattern in Python\nimport redis\nr = redis.Redis(host='localhost', port=6379, db=0)\n\ndef get_user_cached(user_id):\n    cached = r.get(f\"user:{user_id}\")\n    if cached:\n        return cached\n    user = db_query(user_id)\n    r.setex(f\"user:{user_id}\", 3600, user)\n    return user",
+        "prerequisites": [
+          "Databases"
+        ],
         "resources": [
           {
-            "title": "RESTful API Design Guidelines",
-            "url": "https://restfulapi.net/",
-            "type": "article"
-          },
-          {
-            "title": "GraphQL Official Specification",
-            "url": "https://graphql.org/learn/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "auth",
-      "type": "topic",
-      "position": {
-        "x": 390,
-        "y": 400
-      },
-      "data": {
-        "label": "Auth & JWT Tokens",
-        "status": "recommended",
-        "description": "Secure API routes with JWT tokens, HTTP-only cookies, OAuth 2.0 / OpenID Connect, password hashing (Argon2 / bcrypt), and RBAC.",
-        "codeSnippet": "// Password Hashing with Argon2 in Node.js\nimport argon2 from 'argon2';\n\nconst hash = await argon2.hash('hunterPassword123');\nconst isMatch = await argon2.verify(hash, 'hunterPassword123');",
-        "prerequisites": ["RESTful APIs"],
-        "resources": [
-          {
-            "title": "OWASP Authentication Cheat Sheet",
-            "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "caching",
-      "type": "topic",
-      "position": {
-        "x": 390,
-        "y": 500
-      },
-      "data": {
-        "label": "Redis Caching",
-        "status": "recommended",
-        "description": "In-memory caching strategies (Write-Through, Cache-Aside), TTL expiration, rate-limiting counters, and session storage with Redis.",
-        "codeSnippet": "// Redis Cache-Aside Pattern in Node.js\nasync function getCachedUser(id) {\n  const cached = await redis.get(`user:${id}`);\n  if (cached) return JSON.parse(cached);\n  const user = await db.users.findUnique({ where: { id } });\n  await redis.setex(`user:${id}`, 300, JSON.stringify(user));\n  return user;\n}",
-        "prerequisites": ["Relational Databases"],
-        "resources": [
-          {
-            "title": "Redis Official Documentation & Data Types",
+            "title": "Redis Official Documentation",
             "url": "https://redis.io/docs/",
             "type": "docs"
           }
@@ -176,34 +101,157 @@
       }
     },
     {
-      "id": "microservices",
+      "id": "api-architecture",
       "type": "topic",
       "position": {
         "x": 390,
-        "y": 600
+        "y": 300
       },
       "data": {
-        "label": "System Design & Queues",
+        "label": "REST, GraphQL & gRPC APIs",
         "status": "recommended",
-        "description": "Event-driven architecture, message queues (RabbitMQ, Apache Kafka), distributed tracing, gRPC inter-service RPCs, and saga transactions.",
-        "codeSnippet": "// Kafka Event Producer\nawait producer.send({\n  topic: 'order-events',\n  messages: [{ key: 'order_101', value: JSON.stringify({ event: 'ORDER_CREATED', total: 99.50 }) }],\n});",
-        "prerequisites": ["Caching & Memory Stores"],
+        "description": "Design robust API interfaces using RESTful semantics, GraphQL query graphs for client efficiency, or gRPC Protobuf for microservice RPCs.",
+        "codeSnippet": "// Protocol Buffer (Protobuf) Service Definition\nsyntax = \"proto3\";\nservice UserService {\n  rpc GetUser (UserRequest) returns (UserResponse);\n}\nmessage UserRequest { string id = 1; }\nmessage UserResponse { string id = 1; string name = 2; }",
+        "prerequisites": [
+          "Relational Databases"
+        ],
         "resources": [
           {
-            "title": "System Design Primer — High Scale Architecture",
-            "url": "https://github.com/donnemartin/system-design-primer",
-            "type": "github"
+            "title": "gRPC Architecture & Documentation",
+            "url": "https://grpc.io/docs/",
+            "type": "docs"
+          },
+          {
+            "title": "GraphQL Official Guide",
+            "url": "https://graphql.org/learn/",
+            "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "typescript"
+      }
+    },
+    {
+      "id": "authentication",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 400
+      },
+      "data": {
+        "label": "Auth, JWT & RBAC Security",
+        "status": "recommended",
+        "description": "Implement stateless JWT authentication, OAuth 2.0 authorization flows, password hashing with Argon2/Bcrypt, and Role-Based Access Control (RBAC).",
+        "codeSnippet": "import jwt, datetime\nSECRET = \"super-secure-key\"\n\ndef generate_token(user_id: str, role: str) -> str:\n    payload = {\n        \"sub\": user_id,\n        \"role\": role,\n        \"exp\": datetime.datetime.utcnow() + datetime.timedelta(hours=24)\n    }\n    return jwt.encode(payload, SECRET, algorithm=\"HS256\")",
+        "prerequisites": [
+          "API Architecture"
+        ],
+        "resources": [
+          {
+            "title": "RFC 7519 — JSON Web Token (JWT) Standard",
+            "url": "https://datatracker.ietf.org/doc/html/rfc7519",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "python"
+      }
+    },
+    {
+      "id": "message-queues",
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 400
+      },
+      "data": {
+        "label": "Async Queues (Kafka / RabbitMQ)",
+        "status": "recommended",
+        "description": "Decouple services with asynchronous message queues, event streaming, consumer groups, dead letter exchanges, and pub/sub pipelines.",
+        "codeSnippet": "// Go RabbitMQ Publisher\nerr = ch.Publish(\n  \"\",          // exchange\n  \"tasks_q\",   // routing key\n  false, false,\n  amqp.Publishing{\n    ContentType: \"application/json\",\n    Body:        []byte(`{\"task\": \"process_video\"}`),\n  }\n)",
+        "prerequisites": [
+          "API Architecture"
+        ],
+        "resources": [
+          {
+            "title": "Apache Kafka Documentation",
+            "url": "https://kafka.apache.org/documentation/",
+            "type": "docs"
+          },
+          {
+            "title": "RabbitMQ Tutorials & Guides",
+            "url": "https://www.rabbitmq.com/tutorials",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "go"
+      }
+    },
+    {
+      "id": "docker-containers",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 500
+      },
+      "data": {
+        "label": "Docker & Microservices",
+        "status": "recommended",
+        "description": "Package backend runtimes into lightweight immutable OCI container images. Configure multi-stage builds and compose networks.",
+        "codeSnippet": "# Multi-stage Dockerfile\nFROM golang:1.22-alpine AS builder\nWORKDIR /app\nCOPY . .\nRUN go build -o server .\n\nFROM alpine:latest\nCOPY --from=builder /app/server .\nEXPOSE 8080\nCMD [\"./server\"]",
+        "prerequisites": [
+          "Backend Programming"
+        ],
+        "resources": [
+          {
+            "title": "Nocturnal Codex — Shell & Terminal CLI Guide",
+            "url": "/languages/shell",
+            "type": "course"
+          },
+          {
+            "title": "Docker Official Documentation",
+            "url": "https://docs.docker.com/",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "shell"
       }
     }
   ],
   "edges": [
-    { "id": "e-lang-rdb", "source": "language", "target": "relational-db" },
-    { "id": "e-rdb-nosql", "source": "relational-db", "target": "nosql-db" },
-    { "id": "e-lang-api", "source": "language", "target": "api-design" },
-    { "id": "e-api-auth", "source": "api-design", "target": "auth" },
-    { "id": "e-auth-cache", "source": "auth", "target": "caching" },
-    { "id": "e-cache-micro", "source": "caching", "target": "microservices" }
+    {
+      "id": "e-lang-db",
+      "source": "language",
+      "target": "relational-db",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-db-redis",
+      "source": "relational-db",
+      "target": "nosql-cache",
+      "type": "dotted"
+    },
+    {
+      "id": "e-db-api",
+      "source": "relational-db",
+      "target": "api-architecture",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-api-auth",
+      "source": "api-architecture",
+      "target": "authentication",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-api-queues",
+      "source": "api-architecture",
+      "target": "message-queues",
+      "type": "dotted"
+    },
+    {
+      "id": "e-auth-docker",
+      "source": "authentication",
+      "target": "docker-containers",
+      "type": "roadmap"
+    }
   ]
 }

@@ -8,29 +8,62 @@
         "y": 20
       },
       "data": {
-        "label": "Cybersecurity & Hacking Path"
+        "label": "Cybersecurity & Offensive / Defensive Path"
       }
     },
     {
-      "id": "networking",
+      "id": "networking-protocols",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Networking & Protocols",
+        "label": "Networking & Protocol Analysis",
         "status": "recommended",
-        "description": "Understand the 7 layers of the OSI model, TCP 3-way handshake, Wireshark packet analysis, subnetting, and HTTP/HTTPS encryption.",
+        "description": "Understand the 7 layers of the OSI model, TCP 3-way handshake, Wireshark packet dissection, subnetting (CIDR), and DNS/TLS handshakes.",
         "codeSnippet": "# Scapy Packet Inspection in Python\nfrom scapy.all import sniff\n\ndef packet_callback(packet):\n    if packet.haslayer('IP'):\n        print(f\"[+] IP Packet: {packet['IP'].src} -> {packet['IP'].dst}\")\n\nsniff(filter=\"ip\", prn=packet_callback, count=10)",
-        "prerequisites": ["Computer Science Fundamentals"],
+        "prerequisites": [
+          "Computer Science Fundamentals"
+        ],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Python Guide",
+            "url": "/languages/python",
+            "type": "course"
+          },
           {
             "title": "Wireshark Packet Analysis User Guide",
             "url": "https://www.wireshark.org/docs/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
+      }
+    },
+    {
+      "id": "os-security",
+      "type": "topic",
+      "position": {
+        "x": 130,
+        "y": 100
+      },
+      "data": {
+        "label": "Linux & Windows Security",
+        "status": "recommended",
+        "description": "Audit file permissions, SUID binaries, Active Directory Kerberos auth, system audit logs, and privilege escalation vectors.",
+        "codeSnippet": "# Linux SUID Privilege Escalation Enumeration\nfind / -perm -u=s -type f 2>/dev/null",
+        "prerequisites": [
+          "Operating Systems Basics"
+        ],
+        "resources": [
+          {
+            "title": "Nocturnal Codex — Shell Guide",
+            "url": "/languages/shell",
+            "type": "course"
+          }
+        ],
+        "relatedLanguage": "shell"
       }
     },
     {
@@ -41,12 +74,19 @@
         "y": 200
       },
       "data": {
-        "label": "Web Security OWASP",
+        "label": "Web Security (OWASP Top 10)",
         "status": "recommended",
         "description": "Identify and defend against SQL Injection (SQLi), Cross-Site Scripting (XSS), CSRF, SSRF, IDOR, and Broken Access Control.",
         "codeSnippet": "-- Vulnerable SQL Code (SQL Injection Hazard)\nSELECT * FROM users WHERE username = 'admin' OR '1'='1' --';\n\n-- Secure Parameterized Query\nSELECT * FROM users WHERE username = $1 AND password_hash = $2;",
-        "prerequisites": ["Networking & Protocols"],
+        "prerequisites": [
+          "Networking & Protocols"
+        ],
         "resources": [
+          {
+            "title": "Nocturnal Codex — SQL & Databases",
+            "url": "/languages/sql",
+            "type": "course"
+          },
           {
             "title": "OWASP Top 10 Vulnerabilities Guide",
             "url": "https://owasp.org/www-project-top-ten/",
@@ -57,29 +97,33 @@
             "url": "https://portswigger.net/web-security",
             "type": "course"
           }
-        ]
+        ],
+        "relatedLanguage": "sql"
       }
     },
     {
-      "id": "crypto",
+      "id": "cryptography",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Cryptography & PKI",
+        "label": "Applied Cryptography & PKI",
         "status": "recommended",
-        "description": "Master symmetric encryption (AES-256-GCM), asymmetric encryption (RSA, Elliptic Curve), HMAC signatures, and digital certificate chains.",
-        "codeSnippet": "# AES-GCM Encryption in Python Cryptography\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\nimport os\n\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = os.urandom(12)\nciphertext = aesgcm.encrypt(nonce, b\"Secret Payload\", None)",
-        "prerequisites": ["Web Security"],
+        "description": "Symmetric ciphers (AES-GCM), Asymmetric keys (RSA, ECC), digital signatures, TLS certificates, and cryptographic hash functions (SHA-256).",
+        "codeSnippet": "from cryptography.hazmat.primitives.ciphers.aead import AESGCM\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = b\"123456789012\"\nciphertext = aesgcm.encrypt(nonce, b\"Confidential Payload\", None)",
+        "prerequisites": [
+          "Web Security"
+        ],
         "resources": [
           {
-            "title": "Practical Cryptography for Developers",
-            "url": "https://cryptobook.nakov.com/",
+            "title": "Nocturnal Codex — RSA Encryption In-Depth Analysis",
+            "url": "/think-tank/how-rsa-encryption-actually-works-break-down-prime-factorization-modulo-ari",
             "type": "article"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     },
     {
@@ -90,24 +134,82 @@
         "y": 400
       },
       "data": {
-        "label": "Penetration Testing",
+        "label": "Penetration Testing & Red Teaming",
         "status": "recommended",
-        "description": "Ethical hacking methodology: reconnaissance, scanning ports with Nmap, vulnerability assessment, exploitation, and post-exploitation reporting.",
-        "codeSnippet": "# Nmap Stealth SYN Port Scan\nnmap -sS -sV -O -p 1-65535 -T4 target_ip",
-        "prerequisites": ["Cryptography & PKI"],
+        "description": "Reconnaissance (Nmap, Shodan), vulnerability scanning, exploit frameworks (Metasploit), and post-exploitation reporting.",
+        "codeSnippet": "# Nmap Service & Vulnerability Detection Scan\nnmap -sV -sC -p- -T4 target_ip -oA scan_results",
+        "prerequisites": [
+          "Applied Cryptography"
+        ],
         "resources": [
           {
-            "title": "TryHackMe — Hands-On Cyber Security Training",
-            "url": "https://tryhackme.com/",
+            "title": "Nmap Network Scanning Guide",
+            "url": "https://nmap.org/book/",
+            "type": "docs"
+          },
+          {
+            "title": "Hack The Box Cybersecurity Labs",
+            "url": "https://www.hackthebox.com/",
             "type": "course"
+          }
+        ]
+      }
+    },
+    {
+      "id": "soc-defense",
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 400
+      },
+      "data": {
+        "label": "Blue Team Defense & SIEM",
+        "status": "alternative",
+        "description": "Incident response, SIEM log analysis (Splunk, Elastic SIEM), threat hunting, EDR detection rules (Sigma/YARA), and firewall rule configuration.",
+        "codeSnippet": "// YARA Rule for Detecting Malicious Hex Signatures\nrule DetectRansomwareNote {\n    strings:\n        $s1 = \"Your files have been encrypted!\" ascii\n    condition:\n        $s1\n}",
+        "prerequisites": [
+          "Applied Cryptography"
+        ],
+        "resources": [
+          {
+            "title": "Sigma Generic Detection Rules",
+            "url": "https://github.com/SigmaHQ/sigma",
+            "type": "docs"
           }
         ]
       }
     }
   ],
   "edges": [
-    { "id": "e-net-sec", "source": "networking", "target": "web-security" },
-    { "id": "e-sec-cry", "source": "web-security", "target": "crypto" },
-    { "id": "e-cry-pen", "source": "crypto", "target": "pentesting" }
+    {
+      "id": "e-os-net",
+      "source": "os-security",
+      "target": "networking-protocols",
+      "type": "dotted"
+    },
+    {
+      "id": "e-net-web",
+      "source": "networking-protocols",
+      "target": "web-security",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-web-crypto",
+      "source": "web-security",
+      "target": "cryptography",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-crypto-pentest",
+      "source": "cryptography",
+      "target": "pentesting",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-crypto-soc",
+      "source": "cryptography",
+      "target": "soc-defense",
+      "type": "dotted"
+    }
   ]
 }

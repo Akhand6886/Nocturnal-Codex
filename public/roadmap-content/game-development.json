@@ -8,7 +8,7 @@
         "y": 20
       },
       "data": {
-        "label": "Game Development Path"
+        "label": "Game Engineering & Graphics Path"
       }
     },
     {
@@ -19,18 +19,26 @@
         "y": 100
       },
       "data": {
-        "label": "3D Vectors & Physics",
+        "label": "3D Math, Vectors & Quaternions",
         "status": "recommended",
-        "description": "Understand 3D vector arithmetic, dot/cross products, quaternions for rotation, raycasting, AABB bounding boxes, and rigid body dynamics.",
-        "codeSnippet": "// 3D Vector Normalization & Dot Product in C#\nVector3 direction = (targetPosition - transform.position).normalized;\nfloat dotProduct = Vector3.Dot(transform.forward, direction);\nif (dotProduct > 0.5f) {\n    Debug.Log(\"Target is in field of view!\");\n}",
-        "prerequisites": ["High School Math"],
+        "description": "Understand 3D vector arithmetic, dot and cross products, quaternions to prevent gimbal lock, ray-plane intersection, and collision geometry.",
+        "codeSnippet": "// 3D Vector Reflection Math\nVector3 reflect(const Vector3& velocity, const Vector3& normal) {\n    return velocity - normal * (2.0f * dot(velocity, normal));\n}",
+        "prerequisites": [
+          "Linear Algebra Basics"
+        ],
         "resources": [
+          {
+            "title": "Nocturnal Codex — C++ Guide",
+            "url": "/languages/cplusplus",
+            "type": "course"
+          },
           {
             "title": "Mathematics for 3D Game Programming & Computer Graphics",
             "url": "https://www.game-math.com/",
-            "type": "docs"
+            "type": "book"
           }
-        ]
+        ],
+        "relatedLanguage": "cplusplus"
       }
     },
     {
@@ -41,23 +49,26 @@
         "y": 200
       },
       "data": {
-        "label": "Game Engine (Unity/Unreal)",
+        "label": "Game Engines (Unreal C++ / Unity C#)",
         "status": "recommended",
-        "description": "Master component architecture, scene graphs, particle systems, animation state machines, and audio managers in Unity (C#) or Unreal (C++).",
-        "codeSnippet": "// Unity C# Player Controller Script\nusing UnityEngine;\n\npublic class PlayerMovement : MonoBehaviour {\n    public float speed = 5.0f;\n    void Update() {\n        float h = Input.GetAxis(\"Horizontal\");\n        float v = Input.GetAxis(\"Vertical\");\n        transform.Translate(new Vector3(h, 0, v) * speed * Time.deltaTime);\n    }\n}",
-        "prerequisites": ["Game Math & Physics"],
+        "description": "Master actor-component architectures, scene graphs, particle systems, physics simulation loops, and input mapping in Unreal Engine 5 or Unity.",
+        "codeSnippet": "// Unreal Engine 5 C++ Actor Component\n#include \"CoreMinimal.h\"\n#include \"GameFramework/Actor.h\"\n\nvoid APlayerCharacter::Tick(float DeltaTime) {\n    Super::Tick(DeltaTime);\n    AddMovementInput(GetActorForwardVector(), MoveForwardAxis);\n}",
+        "prerequisites": [
+          "3D Math & Vectors"
+        ],
         "resources": [
           {
-            "title": "Unity Official Documentation & Learn Platform",
-            "url": "https://learn.unity.com/",
-            "type": "course"
-          },
-          {
-            "title": "Unreal Engine 5 Documentation",
+            "title": "Unreal Engine 5 Official C++ Documentation",
             "url": "https://docs.unrealengine.com/5.0/",
             "type": "docs"
+          },
+          {
+            "title": "Unity Learn Platform",
+            "url": "https://learn.unity.com/",
+            "type": "course"
           }
-        ]
+        ],
+        "relatedLanguage": "cplusplus"
       }
     },
     {
@@ -68,23 +79,98 @@
         "y": 300
       },
       "data": {
-        "label": "Graphics & HLSL Shaders",
+        "label": "Graphics Shaders (HLSL / GLSL)",
         "status": "recommended",
-        "description": "Write vertex and fragment shaders for real-time rendering, PBR lighting, post-processing effects, and shadow mapping.",
-        "codeSnippet": "// Simple HLSL Fragment Shader\nfloat4 frag(v2f i) : SV_Target {\n    float4 col = tex2D(_MainTex, i.uv);\n    float lighting = saturate(dot(i.normal, _WorldSpaceLightPos0.xyz));\n    return col * lighting;\n}",
-        "prerequisites": ["Game Engines"],
+        "description": "Write vertex and fragment shaders for real-time rasterization, PBR (Physically Based Rendering) lighting models, normal mapping, and post-processing.",
+        "codeSnippet": "// HLSL Simple PBR Normal & Lambertian Light Fragment Shader\nfloat4 PSMain(VS_OUTPUT input) : SV_TARGET {\n    float3 lightDir = normalize(LightPosition - input.WorldPos);\n    float diff = max(dot(input.Normal, lightDir), 0.0);\n    return float4(BaseColor.rgb * diff, 1.0);\n}",
+        "prerequisites": [
+          "Game Engines"
+        ],
         "resources": [
           {
-            "title": "The Book of Shaders — Interactive Shader Guide",
+            "title": "The Book of Shaders Guide",
             "url": "https://thebookofshaders.com/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "cplusplus"
+      }
+    },
+    {
+      "id": "game-ai-systems",
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 300
+      },
+      "data": {
+        "label": "Game AI & Navigation (Behavior Trees)",
+        "status": "recommended",
+        "description": "Implement NPC decision making with Behavior Trees, finite state machines (FSM), NavMesh pathfinding (A* algorithm), and sensory perception.",
+        "codeSnippet": "// Simple State Machine Transition\nenum class EnemyState { Patrol, Chase, Attack };\nvoid UpdateEnemy(EnemyState& state, float distanceToPlayer) {\n    if (distanceToPlayer < 2.0f) state = EnemyState::Attack;\n    else if (distanceToPlayer < 10.0f) state = EnemyState::Chase;\n    else state = EnemyState::Patrol;\n}",
+        "prerequisites": [
+          "Game Engines"
+        ],
+        "resources": [
+          {
+            "title": "Game Programming Patterns (Robert Nystrom)",
+            "url": "https://gameprogrammingpatterns.com/",
+            "type": "book"
+          }
+        ],
+        "relatedLanguage": "cplusplus"
+      }
+    },
+    {
+      "id": "game-optimization",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 400
+      },
+      "data": {
+        "label": "Performance Profiling & Memory (LODs)",
+        "status": "recommended",
+        "description": "Optimize CPU frame budget and GPU fill rates: draw call batching, Level of Detail (LOD) hierarchies, occlusion culling, and memory profiling.",
+        "codeSnippet": "// Memory Pool Allocator for Game Entities to avoid runtime heap fragmentation\ntemplate<typename T, size_t Count>\nclass EntityPool {\n    alignas(T) uint8_t memory[Count * sizeof(T)];\n    // Fast O(1) allocation\n};",
+        "prerequisites": [
+          "Graphics Shaders"
+        ],
+        "resources": [
+          {
+            "title": "Unreal Engine Insights Profiler Documentation",
+            "url": "https://docs.unrealengine.com/5.0/en-US/unreal-insights-in-unreal-engine/",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "cplusplus"
       }
     }
   ],
   "edges": [
-    { "id": "e-math-eng", "source": "game-math", "target": "game-engine" },
-    { "id": "e-eng-shader", "source": "game-engine", "target": "graphics-shaders" }
+    {
+      "id": "e-math-engine",
+      "source": "game-math",
+      "target": "game-engine",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-engine-shaders",
+      "source": "game-engine",
+      "target": "graphics-shaders",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-engine-ai",
+      "source": "game-engine",
+      "target": "game-ai-systems",
+      "type": "dotted"
+    },
+    {
+      "id": "e-shaders-opt",
+      "source": "graphics-shaders",
+      "target": "game-optimization",
+      "type": "roadmap"
+    }
   ]
 }

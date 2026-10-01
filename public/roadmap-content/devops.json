@@ -12,23 +12,55 @@
       }
     },
     {
-      "id": "linux",
+      "id": "linux-shell",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 100
       },
       "data": {
-        "label": "Linux & Bash Admin",
+        "label": "Linux Internals & Bash Automation",
         "status": "recommended",
-        "description": "Master systemd services, SSH key management, process monitoring, file permissions (chmod/chown), cron jobs, and shell automation scripts.",
-        "codeSnippet": "#!/bin/bash\n# System Backup Automation Script\nBACKUP_DIR=\"/var/backups/$(date +%Y%m%d)\"\nmkdir -p \"$BACKUP_DIR\"\ntar -czf \"$BACKUP_DIR/app.tar.gz\" /var/www/app\necho \"Backup completed successfully to $BACKUP_DIR\"",
-        "prerequisites": ["Operating System Basics"],
+        "description": "Master the Linux filesystem hierarchy, process management (systemd, ps, top), file permissions, SSH keys, pipes, and Bash scripting.",
+        "codeSnippet": "#!/usr/bin/env bash\n# Server Health Check Script\nset -euo pipefail\nDISK_USAGE=$(df -h / | awk 'NR==2 {print $5}')\nMEM_FREE=$(free -m | awk 'NR==2 {print $4}')\necho \"Disk: $DISK_USAGE | Free RAM: ${MEM_FREE}MB\"",
+        "prerequisites": [
+          "Command Line Basics"
+        ],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Shell & Terminal CLI Guide",
+            "url": "/languages/shell",
+            "type": "course"
+          },
           {
             "title": "Linux Journey — Interactive Linux Tutorials",
             "url": "https://linuxjourney.com/",
-            "type": "course"
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "shell"
+      }
+    },
+    {
+      "id": "git-ci",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 200
+      },
+      "data": {
+        "label": "CI/CD Pipelines (GitHub Actions)",
+        "status": "recommended",
+        "description": "Automate build, test, and release workflows using GitHub Actions or GitLab CI. Manage secrets, artifacts, and test runners.",
+        "codeSnippet": "name: CI Pipeline\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: { node-version: 20 }\n      - run: npm ci && npm test",
+        "prerequisites": [
+          "Linux & Bash"
+        ],
+        "resources": [
+          {
+            "title": "GitHub Actions Documentation",
+            "url": "https://docs.github.com/en/actions",
+            "type": "docs"
           }
         ]
       }
@@ -38,18 +70,44 @@
       "type": "topic",
       "position": {
         "x": 390,
-        "y": 200
+        "y": 300
       },
       "data": {
-        "label": "Containers & Docker",
+        "label": "Containerization (Docker)",
         "status": "recommended",
-        "description": "Package applications into lightweight, reproducible OCI container images. Master Dockerfiles, multi-stage builds, and Docker Compose.",
-        "codeSnippet": "# Multi-stage Dockerfile for Node.js App\nFROM node:20-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\nFROM node:20-alpine\nWORKDIR /app\nCOPY --from=builder /app/dist ./dist\nCMD [\"node\", \"dist/main.js\"]",
-        "prerequisites": ["Linux Administration"],
+        "description": "Build OCI compliant container images, minimize layer sizes with multi-stage builds, configure volume mounts, and orchestrate with Docker Compose.",
+        "codeSnippet": "version: '3.8'\nservices:\n  web:\n    build: .\n    ports: [\"3000:3000\"]\n    environment: [DATABASE_URL=postgres://db:5432/app]\n  db:\n    image: postgres:16-alpine\n    volumes: [pgdata:/var/lib/postgresql/data]\nvolumes: { pgdata: }",
+        "prerequisites": [
+          "Linux Internals"
+        ],
         "resources": [
           {
-            "title": "Docker Official Orientation & Language Guides",
-            "url": "https://docs.docker.com/get-started/",
+            "title": "Docker Official Documentation",
+            "url": "https://docs.docker.com/",
+            "type": "docs"
+          }
+        ]
+      }
+    },
+    {
+      "id": "terraform",
+      "type": "topic",
+      "position": {
+        "x": 130,
+        "y": 300
+      },
+      "data": {
+        "label": "Infrastructure as Code (Terraform)",
+        "status": "recommended",
+        "description": "Provision reproducible cloud infrastructure across AWS, GCP, or Azure using HashiCorp Configuration Language (HCL).",
+        "codeSnippet": "resource \"aws_s3_bucket\" \"codex_storage\" {\n  bucket = \"nocturnal-codex-assets\"\n  tags = {\n    Environment = \"Production\"\n  }\n}",
+        "prerequisites": [
+          "Cloud Fundamentals"
+        ],
+        "resources": [
+          {
+            "title": "Terraform Official Registry & Tutorials",
+            "url": "https://www.terraform.io/",
             "type": "docs"
           }
         ]
@@ -60,62 +118,49 @@
       "type": "topic",
       "position": {
         "x": 390,
-        "y": 300
-      },
-      "data": {
-        "label": "Kubernetes Orchestration",
-        "status": "recommended",
-        "description": "Orchestrate container clusters at scale. Understand Deployments, Pods, Services, Ingress controllers, Helm charts, and HPA autoscaling.",
-        "codeSnippet": "# Kubernetes Deployment Manifest\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: web-api\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: web-api\n  template:\n    metadata:\n      labels:\n        app: web-api\n    spec:\n      containers:\n      - name: web-api\n        image: registry.example.com/api:v1.2.0\n        ports:\n        - containerPort: 8080",
-        "prerequisites": ["Containers & Docker"],
-        "resources": [
-          {
-            "title": "Kubernetes Official Basics & Concepts",
-            "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
-            "type": "docs"
-          }
-        ]
-      }
-    },
-    {
-      "id": "iac",
-      "type": "topic",
-      "position": {
-        "x": 390,
         "y": 400
       },
       "data": {
-        "label": "Infrastructure (Terraform)",
+        "label": "Container Orchestration (Kubernetes)",
         "status": "recommended",
-        "description": "Provision cloud infrastructure declaratively using HashiCorp HCL. Manage state files, modules, and multi-cloud environments (AWS, GCP, Azure).",
-        "codeSnippet": "# Terraform AWS EC2 Instance Definition\nresource \"aws_instance\" \"web_server\" {\n  ami           = \"ami-0c55b159cbfafe1f0\"\n  instance_type = \"t3.micro\"\n  tags = {\n    Name = \"Production-Web-Server\"\n  }\n}",
-        "prerequisites": ["Kubernetes"],
+        "description": "Deploy resilient microservices with Pods, Deployments, Services, Ingress controllers, ConfigMaps, and horizontal pod autoscalers (HPA).",
+        "codeSnippet": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api-service\nspec:\n  replicas: 3\n  selector:\n    matchLabels: { app: api }\n  template:\n    metadata: { labels: { app: api } }\n    spec:\n      containers:\n        - name: api\n          image: nocturnal/api:v1\n          ports: [{ containerPort: 8080 }]",
+        "prerequisites": [
+          "Docker Containerization"
+        ],
         "resources": [
           {
-            "title": "Terraform Official Tutorials & AWS Provider Docs",
-            "url": "https://developer.hashicorp.com/terraform/tutorials",
+            "title": "Kubernetes Official Documentation",
+            "url": "https://kubernetes.io/docs/",
             "type": "docs"
           }
         ]
       }
     },
     {
-      "id": "cicd",
+      "id": "observability",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 500
       },
       "data": {
-        "label": "CI/CD GitHub Actions",
+        "label": "Observability (Prometheus & Grafana)",
         "status": "recommended",
-        "description": "Automate linting, testing, Docker image building, security scanning, and zero-downtime deployment pipelines.",
-        "codeSnippet": "# GitHub Actions CI Workflow\nname: Build & Test\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v3\n    - run: npm ci\n    - run: npm test\n    - run: npx tsc --noEmit",
-        "prerequisites": ["Git & GitHub"],
+        "description": "Monitor latency (p95, p99), error rates, throughput, and system resource saturation using Prometheus time-series metrics and Grafana dashboards.",
+        "codeSnippet": "# PromQL Query: 99th Percentile Request Latency\nhistogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))",
+        "prerequisites": [
+          "Kubernetes Orchestration"
+        ],
         "resources": [
           {
-            "title": "GitHub Actions Official Documentation",
-            "url": "https://docs.github.com/en/actions",
+            "title": "Prometheus Monitoring Guide",
+            "url": "https://prometheus.io/docs/",
+            "type": "docs"
+          },
+          {
+            "title": "Grafana Labs Dashboards",
+            "url": "https://grafana.com/docs/",
             "type": "docs"
           }
         ]
@@ -123,9 +168,35 @@
     }
   ],
   "edges": [
-    { "id": "e-lin-doc", "source": "linux", "target": "docker" },
-    { "id": "e-doc-k8s", "source": "docker", "target": "kubernetes" },
-    { "id": "e-k8s-iac", "source": "kubernetes", "target": "iac" },
-    { "id": "e-iac-cicd", "source": "iac", "target": "cicd" }
+    {
+      "id": "e-linux-ci",
+      "source": "linux-shell",
+      "target": "git-ci",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-ci-docker",
+      "source": "git-ci",
+      "target": "docker",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-docker-tf",
+      "source": "docker",
+      "target": "terraform",
+      "type": "dotted"
+    },
+    {
+      "id": "e-docker-k8s",
+      "source": "docker",
+      "target": "kubernetes",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-k8s-obs",
+      "source": "kubernetes",
+      "target": "observability",
+      "type": "roadmap"
+    }
   ]
 }

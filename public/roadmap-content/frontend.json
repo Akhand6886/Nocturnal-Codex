@@ -21,10 +21,12 @@
       "data": {
         "label": "HTML5 & Semantic Web",
         "status": "recommended",
-        "relatedLanguage": "html",
         "description": "Learn the skeleton of the modern web: semantic markup (<main>, <article>, <nav>), accessibility (ARIA), SEO meta tags, and structured forms.",
         "codeSnippet": "<!-- Semantic HTML5 & Accessibility -->\n<article aria-labelledby=\"title-1\">\n  <h2 id=\"title-1\">Semantic Web Architecture</h2>\n  <p>Use semantic tags for screen readers and SEO crawlers.</p>\n  <button aria-label=\"Submit Feedback\">Submit</button>\n</article>",
-        "prerequisites": ["Internet Basics", "Web Browsers"],
+        "prerequisites": [
+          "Internet Basics",
+          "Web Browsers"
+        ],
         "resources": [
           {
             "title": "Nocturnal Codex — HTML5 Comprehensive Guide",
@@ -41,7 +43,8 @@
             "url": "https://www.w3.org/WAI/standards-guidelines/aria/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "html"
       }
     },
     {
@@ -54,10 +57,11 @@
       "data": {
         "label": "CSS3, Flexbox & Grid",
         "status": "recommended",
-        "relatedLanguage": "css",
         "description": "Master modern responsive design, Flexbox alignment, 2D Grid layouts, custom CSS variables, and fluid typography.",
         "codeSnippet": "/* Modern 2D CSS Grid Layout */\n.dashboard-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 1.5rem;\n  padding: 2rem;\n}",
-        "prerequisites": ["HTML5 Basics"],
+        "prerequisites": [
+          "HTML5 Basics"
+        ],
         "resources": [
           {
             "title": "Nocturnal Codex — CSS3 Modern Design Guide",
@@ -74,7 +78,8 @@
             "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
             "type": "article"
           }
-        ]
+        ],
+        "relatedLanguage": "css"
       }
     },
     {
@@ -87,10 +92,12 @@
       "data": {
         "label": "Modern JavaScript (ES6+)",
         "status": "recommended",
-        "relatedLanguage": "javascript",
         "description": "Understand closures, prototypal inheritance, promises, async/await, DOM manipulation, ES modules, and event loop concurrency.",
-        "codeSnippet": "// Async Fetching with ES6 async/await\nasync function fetchUserData(userId) {\n  try {\n    const res = await fetch(`/api/users/${userId}`);\n    if (!res.ok) throw new Error('Network error');\n    const data = await res.json();\n    return data;\n  } catch (err) {\n    console.error('Fetch failed:', err);\n  }\n}",
-        "prerequisites": ["HTML5", "CSS3"],
+        "codeSnippet": "// Async Fetching with ES6 async/await\nasync function fetchUserData(userId: string) {\n  try {\n    const res = await fetch(`/api/users/${userId}`);\n    if (!res.ok) throw new Error('Network error');\n    const data = await res.json();\n    return data;\n  } catch (err) {\n    console.error('Fetch failed:', err);\n  }\n}",
+        "prerequisites": [
+          "HTML5",
+          "CSS3"
+        ],
         "resources": [
           {
             "title": "Nocturnal Codex — Modern JavaScript Deep Dive",
@@ -107,7 +114,8 @@
             "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "javascript"
       }
     },
     {
@@ -120,10 +128,11 @@
       "data": {
         "label": "Git & GitHub Control",
         "status": "recommended",
-        "relatedLanguage": "shell",
         "description": "Master branch management, pull requests, rebasing, merge conflict resolution, and collaborative workflow best practices.",
         "codeSnippet": "# Feature Branch Workflow\ngit checkout -b feature/user-auth\ngit add .\ngit commit -m \"feat: implement JWT token storage\"\ngit push origin feature/user-auth",
-        "prerequisites": ["Command Line Basics"],
+        "prerequisites": [
+          "Command Line Basics"
+        ],
         "resources": [
           {
             "title": "Nocturnal Codex — Shell & Terminal CLI Guide",
@@ -135,7 +144,8 @@
             "url": "https://git-scm.com/doc",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "shell"
       }
     },
     {
@@ -148,10 +158,11 @@
       "data": {
         "label": "TypeScript Type Safety",
         "status": "recommended",
-        "relatedLanguage": "typescript",
         "description": "Write bug-free frontend code using static type checking, generics, interface declaration, utility types, and discriminated unions.",
         "codeSnippet": "// Discriminated Union & Generic Response\ntype ApiResponse<T> =\n  | { status: 'success'; data: T }\n  | { status: 'error'; message: string };\n\ninterface User { id: string; name: string; }",
-        "prerequisites": ["Modern JavaScript"],
+        "prerequisites": [
+          "Modern JavaScript"
+        ],
         "resources": [
           {
             "title": "Nocturnal Codex — TypeScript Architecture Guide",
@@ -163,29 +174,8 @@
             "url": "https://www.typescriptlang.org/docs/",
             "type": "docs"
           }
-        ]
-      }
-    },
-    {
-      "id": "react",
-      "type": "topic",
-      "position": {
-        "x": 390,
-        "y": 500
-      },
-      "data": {
-        "label": "React.js Framework",
-        "status": "recommended",
-        "description": "Build component-driven single page applications. Master hooks (useState, useEffect, useMemo, useCallback), Virtual DOM, and context.",
-        "codeSnippet": "import { useState, useMemo } from 'react';\n\nexport function Counter({ initial = 0 }) {\n  const [count, setCount] = useState(initial);\n  const double = useMemo(() => count * 2, [count]);\n  return <button onClick={() => setCount(c => c + 1)}>Count: {count} ({double})</button>;\n}",
-        "prerequisites": ["Modern JavaScript", "TypeScript"],
-        "resources": [
-          {
-            "title": "React.dev — Official Documentation & Interactive Tutorials",
-            "url": "https://react.dev/",
-            "type": "docs"
-          }
-        ]
+        ],
+        "relatedLanguage": "typescript"
       }
     },
     {
@@ -200,14 +190,43 @@
         "status": "alternative",
         "description": "Utility-first CSS framework for rapid UI development with responsive variants, dark mode support, and design system tokens.",
         "codeSnippet": "<button className=\"px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition-all\">\n  Button\n</button>",
-        "prerequisites": ["CSS3"],
+        "prerequisites": [
+          "CSS3"
+        ],
         "resources": [
           {
             "title": "Tailwind CSS Official Documentation",
             "url": "https://tailwindcss.com/docs",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "css"
+      }
+    },
+    {
+      "id": "react",
+      "type": "topic",
+      "position": {
+        "x": 390,
+        "y": 500
+      },
+      "data": {
+        "label": "React.js Framework",
+        "status": "recommended",
+        "description": "Build component-driven single page applications. Master hooks (useState, useEffect, useMemo, useCallback), Virtual DOM, and context.",
+        "codeSnippet": "import { useState, useMemo } from 'react';\n\nexport function Counter({ initial = 0 }: { initial?: number }) {\n  const [count, setCount] = useState(initial);\n  const double = useMemo(() => count * 2, [count]);\n  return <button onClick={() => setCount(c => c + 1)}>Count: {count} ({double})</button>;\n}",
+        "prerequisites": [
+          "Modern JavaScript",
+          "TypeScript"
+        ],
+        "resources": [
+          {
+            "title": "React.dev — Official Documentation & Interactive Tutorials",
+            "url": "https://react.dev/",
+            "type": "docs"
+          }
+        ],
+        "relatedLanguage": "javascript"
       }
     },
     {
@@ -221,15 +240,18 @@
         "label": "State (Zustand/Redux)",
         "status": "recommended",
         "description": "Manage complex global state across client components using immutable stores, middleware, and devtools.",
-        "codeSnippet": "import { create } from 'zustand';\n\nexport const useStore = create((set) => ({\n  bears: 0,\n  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),\n}));",
-        "prerequisites": ["React.js Framework"],
+        "codeSnippet": "import { create } from 'zustand';\n\ninterface State { bears: number; inc: () => void; }\nexport const useStore = create<State>((set) => ({\n  bears: 0,\n  inc: () => set((state) => ({ bears: state.bears + 1 })),\n}));",
+        "prerequisites": [
+          "React.js Framework"
+        ],
         "resources": [
           {
             "title": "Zustand State Management Library Docs",
             "url": "https://zustand-demo.pmnd.rs/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "typescript"
       }
     },
     {
@@ -243,15 +265,19 @@
         "label": "Next.js App Router",
         "status": "recommended",
         "description": "Server Components (RSC), Server Actions, SSG/SSR hydration, file-based routing, dynamic metadata, and API handlers.",
-        "codeSnippet": "// Next.js Server Component with SSG Data Fetching\nexport default async function Page() {\n  const res = await fetch('https://api.example.com/posts', { next: { revalidate: 60 } });\n  const posts = await res.json();\n  return <div>{posts.map(p => <h2 key={p.id}>{p.title}</h2>)}</div>;\n}",
-        "prerequisites": ["React.js Framework", "TypeScript"],
+        "codeSnippet": "// Next.js Server Component with SSG Data Fetching\nexport default async function Page() {\n  const res = await fetch('https://api.example.com/posts', { next: { revalidate: 60 } });\n  const posts = await res.json();\n  return <div>{posts.map((p: any) => <h2 key={p.id}>{p.title}</h2>)}</div>;\n}",
+        "prerequisites": [
+          "React.js Framework",
+          "TypeScript"
+        ],
         "resources": [
           {
             "title": "Next.js Documentation — App Router Guide",
             "url": "https://nextjs.org/docs",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "typescript"
       }
     },
     {
@@ -266,7 +292,10 @@
         "status": "recommended",
         "description": "Write robust unit tests, component integration tests, and end-to-end browser automation scripts.",
         "codeSnippet": "import { render, screen } from '@testing-library/react';\nimport { Counter } from './Counter';\n\ntest('renders counter correctly', () => {\n  render(<Counter initial={5} />);\n  expect(screen.getByText(/Count: 5/i)).toBeInTheDocument();\n});",
-        "prerequisites": ["React.js", "TypeScript"],
+        "prerequisites": [
+          "React.js",
+          "TypeScript"
+        ],
         "resources": [
           {
             "title": "Testing Library Official Guide",
@@ -278,19 +307,65 @@
             "url": "https://playwright.dev/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "typescript"
       }
     }
   ],
   "edges": [
-    { "id": "e-html-css", "source": "html", "target": "css" },
-    { "id": "e-css-js", "source": "css", "target": "javascript" },
-    { "id": "e-git-js", "source": "git", "target": "javascript" },
-    { "id": "e-js-ts", "source": "javascript", "target": "typescript" },
-    { "id": "e-ts-react", "source": "typescript", "target": "react" },
-    { "id": "e-tailwind-react", "source": "tailwind", "target": "react" },
-    { "id": "e-react-state", "source": "react", "target": "state-management" },
-    { "id": "e-react-next", "source": "react", "target": "nextjs" },
-    { "id": "e-next-testing", "source": "nextjs", "target": "testing" }
+    {
+      "id": "e-html-css",
+      "source": "html",
+      "target": "css",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-css-js",
+      "source": "css",
+      "target": "javascript",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-git-js",
+      "source": "git",
+      "target": "javascript",
+      "type": "dotted"
+    },
+    {
+      "id": "e-js-ts",
+      "source": "javascript",
+      "target": "typescript",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-ts-react",
+      "source": "typescript",
+      "target": "react",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-tailwind-react",
+      "source": "tailwind",
+      "target": "react",
+      "type": "dotted"
+    },
+    {
+      "id": "e-react-state",
+      "source": "react",
+      "target": "state-management",
+      "type": "dotted"
+    },
+    {
+      "id": "e-react-next",
+      "source": "react",
+      "target": "nextjs",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-next-testing",
+      "source": "nextjs",
+      "target": "testing",
+      "type": "roadmap"
+    }
   ]
 }

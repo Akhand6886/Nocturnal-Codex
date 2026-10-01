@@ -8,11 +8,11 @@
         "y": 20
       },
       "data": {
-        "label": "Machine Learning & AI Path"
+        "label": "Machine Learning & AI Engineering Path"
       }
     },
     {
-      "id": "math",
+      "id": "math-foundations",
       "type": "topic",
       "position": {
         "x": 390,
@@ -21,21 +21,24 @@
       "data": {
         "label": "Linear Algebra & Calculus",
         "status": "recommended",
-        "description": "Master vectors, matrices, dot products, eigenvalues, partial derivatives, gradient descent optimization, and probability distributions.",
-        "codeSnippet": "# Matrix Multiplication & Vector Dot Product in Python\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\nC = np.dot(A, B)\nprint('Matrix Product:\\n', C)",
-        "prerequisites": ["Basic Algebra"],
+        "description": "Understand vector spaces, matrix multiplication, eigenvalues/eigenvectors, partial derivatives, gradients, and multivariate chain rule for backpropagation.",
+        "codeSnippet": "# Matrix Multiplication & Gradient in Python NumPy\nimport numpy as np\nA = np.array([[2.0, 3.0], [1.0, 4.0]])\nx = np.array([1.0, 2.0])\ny = np.dot(A, x) # Linear transformation",
+        "prerequisites": [
+          "High School Mathematics"
+        ],
         "resources": [
           {
-            "title": "Khan Academy — Linear Algebra & Multivariable Calculus",
-            "url": "https://www.khanacademy.org/math/linear-algebra",
+            "title": "Nocturnal Codex — Linear Algebra Guide",
+            "url": "/mathematics/linear-algebra",
             "type": "course"
           },
           {
             "title": "3Blue1Brown — Essence of Linear Algebra",
             "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
-            "type": "video"
+            "type": "course"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     },
     {
@@ -46,46 +49,51 @@
         "y": 200
       },
       "data": {
-        "label": "Python Data Stack",
+        "label": "Python Data Science (NumPy & Pandas)",
         "status": "recommended",
-        "relatedLanguage": "python",
-        "description": "Data wrangling, cleaning missing values, DataFrame manipulation, statistical distributions, and exploratory data analysis (EDA).",
-        "codeSnippet": "import pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv('dataset.csv')\ndf_clean = df.dropna().query('score > 80')\nprint(df_clean.describe())",
-        "prerequisites": ["Math Foundations"],
+        "description": "Data manipulation, feature engineering, missing value imputation, vectorized operations in NumPy, and visualizations with Matplotlib.",
+        "codeSnippet": "import pandas as pd\ndf = pd.read_csv(\"training_data.csv\")\n# Feature scaling & normalization\ndf[\"feature_scaled\"] = (df[\"feature\"] - df[\"feature\"].mean()) / df[\"feature\"].std()",
+        "prerequisites": [
+          "Linear Algebra & Calculus"
+        ],
         "resources": [
           {
-            "title": "Nocturnal Codex — Python Language Guide",
+            "title": "Nocturnal Codex — Python Guide",
             "url": "/languages/python",
             "type": "course"
           },
           {
-            "title": "Pandas Official User Guide & API Reference",
-            "url": "https://pandas.pydata.org/docs/user_guide/index.html",
+            "title": "Pandas User Guide & Reference",
+            "url": "https://pandas.pydata.org/docs/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     },
     {
-      "id": "scikit-learn",
+      "id": "classical-ml",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 300
       },
       "data": {
-        "label": "Classical Machine Learning",
+        "label": "Classical ML (Scikit-Learn)",
         "status": "recommended",
-        "description": "Supervised & Unsupervised algorithms: Linear/Logistic Regression, Decision Trees, Random Forests, SVMs, K-Means clustering, and cross-validation.",
-        "codeSnippet": "from sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\nmodel = RandomForestClassifier(n_estimators=100)\nmodel.fit(X_train, y_train)\nprint('Accuracy:', model.score(X_test, y_test))",
-        "prerequisites": ["Python Data Analysis"],
+        "description": "Linear/Logistic Regression, Decision Trees, Random Forests, Support Vector Machines (SVM), K-Means clustering, and cross-validation metrics (ROC-AUC).",
+        "codeSnippet": "from sklearn.ensemble import RandomForestClassifier\nclf = RandomForestClassifier(n_estimators=100, max_depth=5)\nclf.fit(X_train, y_train)\naccuracy = clf.score(X_test, y_test)",
+        "prerequisites": [
+          "Python Data Science"
+        ],
         "resources": [
           {
-            "title": "Scikit-Learn Official User Guide",
-            "url": "https://scikit-learn.org/stable/user_guide.html",
+            "title": "Scikit-Learn Machine Learning Tutorials",
+            "url": "https://scikit-learn.org/stable/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     },
     {
@@ -96,52 +104,104 @@
         "y": 400
       },
       "data": {
-        "label": "Deep Learning (PyTorch)",
+        "label": "Deep Learning & PyTorch",
         "status": "recommended",
-        "description": "Build Multilayer Perceptrons (MLP), Convolutional Neural Networks (CNN) for vision, and Recurrent Neural Networks (RNN) using PyTorch tensors.",
-        "codeSnippet": "import torch\nimport torch.nn as nn\n\nclass SimpleMLP(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc = nn.Sequential(\n            nn.Linear(784, 128),\n            nn.ReLU(),\n            nn.Linear(128, 10)\n        )\n    def forward(self, x):\n        return self.fc(x)",
-        "prerequisites": ["Classical Machine Learning"],
+        "description": "Artificial Neural Networks, backpropagation computation graphs, loss functions (CrossEntropy), optimizers (AdamW), GPU acceleration with CUDA.",
+        "codeSnippet": "import torch\nimport torch.nn as nn\n\nclass MLP(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc = nn.Sequential(nn.Linear(784, 128), nn.ReLU(), nn.Linear(128, 10))\n    def forward(self, x): return self.fc(x)",
+        "prerequisites": [
+          "Classical ML"
+        ],
         "resources": [
           {
-            "title": "PyTorch Official Tutorials & Documentation",
+            "title": "PyTorch Deep Learning Tutorials",
             "url": "https://pytorch.org/tutorials/",
             "type": "docs"
-          },
-          {
-            "title": "Fast.ai — Practical Deep Learning for Coders",
-            "url": "https://www.fast.ai/",
-            "type": "course"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     },
     {
-      "id": "transformers",
+      "id": "transformers-llms",
       "type": "topic",
       "position": {
         "x": 390,
         "y": 500
       },
       "data": {
-        "label": "LLMs & GenAI Transformers",
+        "label": "Transformers & Large Language Models",
         "status": "recommended",
-        "description": "Understand Self-Attention mechanisms, Transformers (BERT, GPT), fine-tuning with LoRA/PEFT, Retrieval-Augmented Generation (RAG), and vector databases.",
-        "codeSnippet": "from transformers import pipeline\n\npipe = pipeline(\"text-generation\", model=\"gpt2\")\nresult = pipe(\"The future of artificial intelligence is\", max_length=50)\nprint(result[0]['generated_text'])",
-        "prerequisites": ["Deep Learning & Neural Networks"],
+        "description": "Multi-Head Self-Attention mechanisms, encoder-decoder architectures (GPT/BERT), tokenization (BPE), Hugging Face libraries, and LoRA fine-tuning.",
+        "codeSnippet": "from transformers import AutoModelForCausalLM, AutoTokenizer\ntokenizer = AutoTokenizer.from_pretrained(\"meta-llama/Llama-3-8B\")\nmodel = AutoModelForCausalLM.from_pretrained(\"meta-llama/Llama-3-8B\", device_map=\"auto\")\ninputs = tokenizer(\"Theory of Computation:\", return_tensors=\"pt\").to(\"cuda\")\noutputs = model.generate(**inputs, max_new_tokens=50)",
+        "prerequisites": [
+          "Deep Learning & PyTorch"
+        ],
         "resources": [
           {
-            "title": "Hugging Face Course & NLP Documentation",
-            "url": "https://huggingface.co/course/",
+            "title": "Hugging Face NLP Course",
+            "url": "https://huggingface.co/learn/nlp-course",
+            "type": "course"
+          }
+        ],
+        "relatedLanguage": "python"
+      }
+    },
+    {
+      "id": "mlops",
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 500
+      },
+      "data": {
+        "label": "MLOps & Model Deployment (ONNX / vLLM)",
+        "status": "recommended",
+        "description": "Serve low-latency model inference endpoints with vLLM, TensorRT-LLM, ONNX runtime export, Docker containers, and quantization (AWQ, GGUF).",
+        "codeSnippet": "# Export PyTorch Model to Portable ONNX\ntorch.onnx.export(model, dummy_input, \"model.onnx\", input_names=[\"input\"], output_names=[\"output\"])",
+        "prerequisites": [
+          "Deep Learning & PyTorch"
+        ],
+        "resources": [
+          {
+            "title": "ONNX Runtime Documentation",
+            "url": "https://onnxruntime.ai/",
             "type": "docs"
           }
-        ]
+        ],
+        "relatedLanguage": "python"
       }
     }
   ],
   "edges": [
-    { "id": "e-math-py", "source": "math", "target": "python-data" },
-    { "id": "e-py-skl", "source": "python-data", "target": "scikit-learn" },
-    { "id": "e-skl-dl", "source": "scikit-learn", "target": "deep-learning" },
-    { "id": "e-dl-tf", "source": "deep-learning", "target": "transformers" }
+    {
+      "id": "e-math-py",
+      "source": "math-foundations",
+      "target": "python-data",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-py-ml",
+      "source": "python-data",
+      "target": "classical-ml",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-ml-dl",
+      "source": "classical-ml",
+      "target": "deep-learning",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-dl-llm",
+      "source": "deep-learning",
+      "target": "transformers-llms",
+      "type": "roadmap"
+    },
+    {
+      "id": "e-dl-mlops",
+      "source": "deep-learning",
+      "target": "mlops",
+      "type": "dotted"
+    }
   ]
 }
