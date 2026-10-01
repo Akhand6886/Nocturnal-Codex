@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Search, X, Maximize2, Minimize2, ZoomIn, ZoomOut, Move, Navigation } from 'lucide-react';
+import { Search, X, Maximize2, Minimize2, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface RoadmapControlsProps {
@@ -9,11 +9,7 @@ interface RoadmapControlsProps {
   onSearchChange: (query: string) => void;
   totalTopics: number;
   matchCount?: number;
-  isInteractive: boolean;
-  onToggleInteractive: () => void;
   onFitView: () => void;
-  onZoomIn: () => void;
-  onZoomOut: () => void;
   isFullscreen: boolean;
   onToggleFullscreen: () => void;
 }
@@ -23,11 +19,7 @@ export function RoadmapControls({
   onSearchChange,
   totalTopics,
   matchCount,
-  isInteractive,
-  onToggleInteractive,
   onFitView,
-  onZoomIn,
-  onZoomOut,
   isFullscreen,
   onToggleFullscreen,
 }: RoadmapControlsProps) {
@@ -59,7 +51,7 @@ export function RoadmapControls({
         {/* Right: Flow Graph Controls */}
         <div className="flex items-center justify-between sm:justify-end gap-2 flex-wrap">
           {/* Concept Count Badge */}
-          <div className="text-[11px] font-mono text-muted-foreground px-2.5 py-1 rounded-md bg-muted/30 border border-border/40 hidden md:block">
+          <div className="text-[11px] font-mono text-muted-foreground px-2.5 py-1 rounded-md bg-muted/30 border border-border/40">
             {searchQuery ? (
               <span>
                 <strong className="text-primary font-bold">{matchCount}</strong> of {totalTopics} matched
@@ -69,56 +61,19 @@ export function RoadmapControls({
             )}
           </div>
 
-          <div className="h-4 w-px bg-border/40 hidden md:block" />
+          <div className="h-4 w-px bg-border/40 hidden sm:block" />
 
-          {/* Interactive Mode Toggle */}
+          {/* Reset / Center Alignment */}
           <Button
             size="sm"
-            variant={isInteractive ? 'default' : 'outline'}
-            onClick={onToggleInteractive}
-            className={`h-8 text-xs font-medium rounded-lg px-2.5 transition-all ${
-              isInteractive
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'border-border/60 text-muted-foreground hover:text-foreground'
-            }`}
-            title={isInteractive ? 'Pan & zoom enabled (click to lock page scrolling)' : 'Enable pan & zoom'}
+            variant="outline"
+            onClick={onFitView}
+            className="h-8 text-xs font-mono rounded-lg px-2.5 border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+            title="Reset Graph Alignment"
           >
-            <Move className="w-3.5 h-3.5 mr-1.5" />
-            {isInteractive ? 'Pan & Zoom: ON' : 'Free Explore'}
+            <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
+            Center
           </Button>
-
-          {/* Zoom & Fit Controls */}
-          <div className="flex items-center rounded-lg border border-border/60 bg-background/70 overflow-hidden">
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onZoomIn}
-              className="h-8 w-8 rounded-none hover:bg-muted/50 text-foreground/80 hover:text-foreground"
-              title="Zoom In"
-            >
-              <ZoomIn className="w-3.5 h-3.5" />
-            </Button>
-            <div className="h-4 w-px bg-border/40" />
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onZoomOut}
-              className="h-8 w-8 rounded-none hover:bg-muted/50 text-foreground/80 hover:text-foreground"
-              title="Zoom Out"
-            >
-              <ZoomOut className="w-3.5 h-3.5" />
-            </Button>
-            <div className="h-4 w-px bg-border/40" />
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={onFitView}
-              className="h-8 w-8 rounded-none hover:bg-muted/50 text-foreground/80 hover:text-foreground"
-              title="Center / Fit View"
-            >
-              <Navigation className="w-3.5 h-3.5" />
-            </Button>
-          </div>
 
           {/* Fullscreen Expand */}
           <Button
