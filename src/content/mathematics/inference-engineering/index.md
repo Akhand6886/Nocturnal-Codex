@@ -4,8 +4,8 @@ slug: "inference-engineering"
 description: "Master the systems mechanics, memory hierarchies, and algorithmic optimizations powering production-grade large language model inference runtimes."
 iconName: "cpu"
 topics:
-  - section: "Part I: Hardware & Memory Ceilings"
-    description: "Understanding physical GPU bounds, memory bandwidth, and the mathematical limits of model execution."
+  - section: "Part I: Hardware, Quantization & Memory Ceilings"
+    description: "Physical GPU bounds, memory bandwidth, arithmetic intensity, and precision reduction."
     items:
       - title: "The Roofline Model for AI Inference"
         description: "Operational intensity, peak FLOP/s, sustainable bandwidth, the ridge point, and why prefill and decode occupy opposite regimes."
@@ -13,8 +13,11 @@ topics:
       - title: "KV-Cache Mechanics & Memory Formulas"
         description: "Deriving exact KV-cache tensor bytes, MHA vs GQA vs MQA architectures, FP8 quantization, and GPU capacity planning."
         slug: "kv-cache-mechanics-and-formulas"
-  - section: "Part II: Kernel & Memory Architecture"
-    description: "How modern inference engines overcome hardware memory bottlenecks through algorithmic memory management."
+      - title: "Quantization: FP8, INT4 & NVFP4"
+        description: "Weight-only vs weight-activation quantization, calibration scales, and hardware kernel execution across FP8, INT8, AWQ, and NVFP4."
+        slug: "quantization-fp8-int4-and-kernels"
+  - section: "Part II: Kernel & Serving Architecture"
+    description: "How modern inference engines overcome hardware bottlenecks through algorithmic memory management."
     items:
       - title: "FlashAttention vs PagedAttention"
         description: "SRAM IO-aware attention tiling vs virtual memory paging for KV caches, eliminating fragmentation and enabling zero-copy sharing."
@@ -22,8 +25,11 @@ topics:
       - title: "Continuous Batching & Iteration Scheduling"
         description: "Moving from static request batches to iteration-level scheduling (Orca), prompt prefill chunking, and preemption budgets."
         slug: "continuous-batching-and-scheduling"
-  - section: "Part III: Advanced Serving & Parallelism"
-    description: "Multi-device distribution, speculative generation, and sparse mixture-of-experts architectures."
+      - title: "Disaggregated Prefill & Decode Architecture"
+        description: "Decoupling compute-bound prompt evaluation from bandwidth-bound token generation into dedicated accelerator pools (DistServe & Splitwise)."
+        slug: "disaggregated-prefill-and-decode"
+  - section: "Part III: Distributed Serving & Parallelism"
+    description: "Multi-device scaling, speculative generation, and sparse mixture-of-experts architectures."
     items:
       - title: "Speculative Decoding & Parallel Verification"
         description: "Draft model generation, target verification, rejection sampling distribution preservation, and wall-clock speedup bounds."
@@ -31,6 +37,15 @@ topics:
       - title: "Mixture of Experts & Parallelism"
         description: "Top-k token routing, router z-loss, expert capacity limits, load balancing auxiliary loss, and Expert Parallelism (EPLB) vs Tensor Parallelism."
         slug: "mixture-of-experts-and-parallelism"
+      - title: "Tensor, Pipeline & Ring Attention Parallelism"
+        description: "Choosing between Tensor Parallelism, Pipeline Parallelism, and Sequence Parallelism based on interconnect bandwidth and context length."
+        slug: "tensor-vs-pipeline-parallelism"
+  - section: "Part IV: Production Benchmarking & SLOs"
+    description: "Monitoring, measuring, and scaling high-availability inference clusters."
+    items:
+      - title: "Serving Metrics: Goodput, SLOs & Tail Latency"
+        description: "Deconstructing TTFT, ITL, Goodput vs Throughput, SLO attainment fractions, and tail latency variance in production LLM systems."
+        slug: "serving-metrics-goodput-and-slos"
 ---
 
 # LLM Inference Engineering
