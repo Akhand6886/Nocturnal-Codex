@@ -19,23 +19,28 @@
         "y": 100
       },
       "data": {
-        "label": "Linear Algebra & Calculus",
+        "label": "Linear Algebra & AI Math Foundations",
         "status": "recommended",
-        "description": "Understand vector spaces, matrix multiplication, eigenvalues/eigenvectors, partial derivatives, gradients, and multivariate chain rule for backpropagation.",
+        "description": "Understand vector spaces, matrix multiplication, eigenvalues/eigenvectors, partial derivatives, gradients, and tensor typing signatures.",
         "codeSnippet": "# Matrix Multiplication & Gradient in Python NumPy\nimport numpy as np\nA = np.array([[2.0, 3.0], [1.0, 4.0]])\nx = np.array([1.0, 2.0])\ny = np.dot(A, x) # Linear transformation",
         "prerequisites": [
           "High School Mathematics"
         ],
         "resources": [
           {
+            "title": "Nocturnal Codex — AI Math Decoder",
+            "url": "/mathematics/math-decoder",
+            "type": "guide"
+          },
+          {
             "title": "Nocturnal Codex — Linear Algebra Guide",
             "url": "/mathematics/linear-algebra",
-            "type": "course"
+            "type": "guide"
           },
           {
             "title": "3Blue1Brown — Essence of Linear Algebra",
             "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
-            "type": "course"
+            "type": "tutorial"
           }
         ],
         "relatedLanguage": "python"
@@ -54,13 +59,13 @@
         "description": "Data manipulation, feature engineering, missing value imputation, vectorized operations in NumPy, and visualizations with Matplotlib.",
         "codeSnippet": "import pandas as pd\ndf = pd.read_csv(\"training_data.csv\")\n# Feature scaling & normalization\ndf[\"feature_scaled\"] = (df[\"feature\"] - df[\"feature\"].mean()) / df[\"feature\"].std()",
         "prerequisites": [
-          "Linear Algebra & Calculus"
+          "Linear Algebra & AI Math Foundations"
         ],
         "resources": [
           {
             "title": "Nocturnal Codex — Python Guide",
             "url": "/languages/python",
-            "type": "course"
+            "type": "guide"
           },
           {
             "title": "Pandas User Guide & Reference",
@@ -104,7 +109,7 @@
         "y": 400
       },
       "data": {
-        "label": "Deep Learning & PyTorch",
+        "label": "Deep Learning & Neural Networks",
         "status": "recommended",
         "description": "Artificial Neural Networks, backpropagation computation graphs, loss functions (CrossEntropy), optimizers (AdamW), GPU acceleration with CUDA.",
         "codeSnippet": "import torch\nimport torch.nn as nn\n\nclass MLP(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc = nn.Sequential(nn.Linear(784, 128), nn.ReLU(), nn.Linear(128, 10))\n    def forward(self, x): return self.fc(x)",
@@ -112,6 +117,11 @@
           "Classical ML"
         ],
         "resources": [
+          {
+            "title": "Nocturnal Codex — Neural Networks & Deep Learning",
+            "url": "/mathematics/neural-networks",
+            "type": "guide"
+          },
           {
             "title": "PyTorch Deep Learning Tutorials",
             "url": "https://pytorch.org/tutorials/",
@@ -134,37 +144,47 @@
         "description": "Multi-Head Self-Attention mechanisms, encoder-decoder architectures (GPT/BERT), tokenization (BPE), Hugging Face libraries, and LoRA fine-tuning.",
         "codeSnippet": "from transformers import AutoModelForCausalLM, AutoTokenizer\ntokenizer = AutoTokenizer.from_pretrained(\"meta-llama/Llama-3-8B\")\nmodel = AutoModelForCausalLM.from_pretrained(\"meta-llama/Llama-3-8B\", device_map=\"auto\")\ninputs = tokenizer(\"Theory of Computation:\", return_tensors=\"pt\").to(\"cuda\")\noutputs = model.generate(**inputs, max_new_tokens=50)",
         "prerequisites": [
-          "Deep Learning & PyTorch"
+          "Deep Learning & Neural Networks"
         ],
         "resources": [
           {
+            "title": "Nocturnal Codex — Deconstructing Attention Equations",
+            "url": "/mathematics/math-decoder/attention-mechanics-and-shapes",
+            "type": "guide"
+          },
+          {
             "title": "Hugging Face NLP Course",
             "url": "https://huggingface.co/learn/nlp-course",
-            "type": "course"
+            "type": "tutorial"
           }
         ],
         "relatedLanguage": "python"
       }
     },
     {
-      "id": "mlops",
+      "id": "inference-engineering",
       "type": "topic",
       "position": {
         "x": 650,
         "y": 500
       },
       "data": {
-        "label": "MLOps & Model Deployment (ONNX / vLLM)",
+        "label": "LLM Inference Engineering & Runtimes",
         "status": "recommended",
-        "description": "Serve low-latency model inference endpoints with vLLM, TensorRT-LLM, ONNX runtime export, Docker containers, and quantization (AWQ, GGUF).",
-        "codeSnippet": "# Export PyTorch Model to Portable ONNX\ntorch.onnx.export(model, dummy_input, \"model.onnx\", input_names=[\"input\"], output_names=[\"output\"])",
+        "description": "Master the Roofline model, PagedAttention, KV-cache quantization, continuous batching (Orca), speculative decoding, and vLLM serving.",
+        "codeSnippet": "# vLLM High-Throughput Offline / Online Engine\nfrom vllm import LLM, SamplingParams\nllm = LLM(model=\"meta-llama/Llama-3-8B-Instruct\", enable_chunked_prefill=True)\nsampling_params = SamplingParams(temperature=0.7, top_p=0.9, max_tokens=100)\noutputs = llm.generate([\"Explain the Roofline Model:\", \"What is PagedAttention?\"], sampling_params)",
         "prerequisites": [
-          "Deep Learning & PyTorch"
+          "Transformers & Large Language Models"
         ],
         "resources": [
           {
-            "title": "ONNX Runtime Documentation",
-            "url": "https://onnxruntime.ai/",
+            "title": "Nocturnal Codex — LLM Inference Engineering",
+            "url": "/mathematics/inference-engineering",
+            "type": "guide"
+          },
+          {
+            "title": "vLLM Production Documentation",
+            "url": "https://docs.vllm.ai/",
             "type": "docs"
           }
         ],
@@ -198,10 +218,10 @@
       "type": "roadmap"
     },
     {
-      "id": "e-dl-mlops",
-      "source": "deep-learning",
-      "target": "mlops",
-      "type": "dotted"
+      "id": "e-llm-inf",
+      "source": "transformers-llms",
+      "target": "inference-engineering",
+      "type": "roadmap"
     }
   ]
 }

@@ -18,11 +18,12 @@ Machine Learning is the art of teaching computers to learn from data. This roadm
 
 ### Phase 1: The Math & Statistics Foundation
 
-ML is just "Applied Math." You need a solid base before you code:
+ML is "Applied Mathematics." Build an intuitive and rigorous base before you code:
 
--   **Linear Algebra**: Matrices, vectors, and tensors.
--   **Calculus**: Gradients and backpropagation (how models learn).
--   **Probability & Statistics**: Normal distributions, p-values, and bayesian logic.
+-   **Linear Algebra**: Matrices, vectors, and tensors. Explore our [Linear Algebra Guide](/mathematics/linear-algebra).
+-   **AI Math Decoder**: Learn to read research paper notation, Einstein summation, and objective functions with the [AI Math Decoder](/mathematics/math-decoder).
+-   **Calculus & Optimization**: Gradients, Jacobians, and backpropagation mechanics.
+-   **Probability & Information Theory**: Distributions, cross-entropy, and KL divergence.
 
 ### Phase 2: Python & Data Wrangling
 
@@ -42,13 +43,18 @@ Before Deep Learning, you must master the fundamental algorithms:
 
 ### Phase 4: Deep Learning & Neural Networks
 
-This is the tech behind modern AI systems, from computer vision to large language models. Explore our in-depth curriculum on [Neural Networks & Deep Learning Foundations](/mathematics/neural-networks).
+The architecture behind modern generative AI, computer vision, and foundation models:
 
--   **PyTorch / TensorFlow**: The two dominant deep learning frameworks.
+-   **PyTorch**: The dominant deep learning and research framework.
 -   **Neural Network Foundations**: [Course 1: Neural Networks & Deep Learning](/mathematics/neural-networks) (Forward/Backward propagation, Vectorization, L-Layer architectures).
--   **Computer Vision**: Convolutional Neural Networks (CNNs).
--   **NLP (Natural Language Processing)**: Transformers, Attention, and Large Language Models (LLMs).
--   **MLOps**: Learning how to deploy and monitor models in production.
+-   **Attention & Transformers**: [Deconstructing Attention Equations](/mathematics/math-decoder/attention-mechanics-and-shapes) (Multi-Head, Causal Masking, RoPE).
+
+### Phase 5: LLM Inference Engineering & Systems
+
+Take models from checkpoint files to low-latency, high-throughput production runtimes:
+
+-   **LLM Inference Engineering**: Master the [LLM Inference Engineering Curriculum](/mathematics/inference-engineering) covering the Roofline Model, KV-Cache memory math, FlashAttention vs. PagedAttention, continuous batching (Orca), and speculative decoding.
+-   **Serving Engines**: Production deployment with vLLM, TensorRT-LLM, and Triton Inference Server.
 
 ---
 
