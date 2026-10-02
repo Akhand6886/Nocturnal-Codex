@@ -4,7 +4,7 @@ slug: "math-decoder"
 description: "A Rosetta stone for artificial intelligence research papers: deciphering mathematical notation, tensor shapes, objective functions, and algorithmic updates."
 iconName: "book-open"
 topics:
-  - section: "Part I: Linguistic & Type Foundations"
+  - section: "Part I: Linguistic, Type & Geometric Foundations"
     description: "Reading mathematical equations as strongly-typed computer sentences."
     items:
       - title: "Equations as Typed Sentences"
@@ -13,14 +13,23 @@ topics:
       - title: "Scalars, Vectors, Matrices & Tensors"
         description: "Axis semantics, dimension contracts, NumPy/PyTorch broadcasting rules, and Einstein summation (einsum) mechanics."
         slug: "scalars-vectors-matrices-tensors"
+      - title: "Vector Geometry, Cosine Distance & HNSW"
+        description: "High-dimensional hypersphere geometry, dot products vs cosine similarity, the curse of dimensionality, and Hierarchical Navigable Small World (HNSW) search."
+        slug: "vector-geometry-and-similarity"
   - section: "Part II: Core Neural & Attention Operators"
     description: "The mathematical anatomy of modern transformers and foundation models."
     items:
       - title: "Deconstructing Attention Equations"
         description: "Scaled dot-product attention step-by-step: query-key similarity matrices, softmax normalization, value mixing, and Rotary Position Embeddings (RoPE)."
         slug: "attention-mechanics-and-shapes"
-  - section: "Part III: Information Theory & Optimizers"
-    description: "Quantifying uncertainty, measuring distribution divergences, and tracing parameter updates."
+  - section: "Part III: Generative Modeling & Diffusion"
+    description: "Continuous flows, score matching, and stochastic processes."
+    items:
+      - title: "Diffusion Mathematics: Schedulers, Noise & ELBO"
+        description: "Deconstructing the forward Gaussian process, reverse denoising Markov chain, score matching, and the Evidence Lower Bound (ELBO)."
+        slug: "diffusion-mathematics-and-elbo"
+  - section: "Part IV: Information Theory, Alignment & Optimization"
+    description: "Quantifying uncertainty, measuring divergences, aligning intent, and tracing parameter updates."
     items:
       - title: "Information Theory & Divergences"
         description: "Shannon entropy, categorical cross-entropy from unnormalized logits, Kullback-Leibler (KL) divergence, and minimum entropy floors."
@@ -28,6 +37,9 @@ topics:
       - title: "Optimizer Equations & Update Rules"
         description: "SGD with momentum, Adam bias-corrected moments, cosine annealing schedules, and PPO clipped surrogate objectives."
         slug: "optimization-and-updates"
+      - title: "RLHF & DPO: Preference Models & Implicit Rewards"
+        description: "Deriving the Bradley-Terry preference model, PPO reward optimization with KL regularization, and the Direct Preference Optimization (DPO) closed-form solution."
+        slug: "rlhf-and-dpo-mathematics"
 ---
 
 # AI Math Decoder: Reading Research Paper Equations
