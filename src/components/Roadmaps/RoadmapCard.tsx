@@ -1,8 +1,6 @@
 
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, BookMarked, Tag, Layers, Star } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { ArrowRight } from 'lucide-react';
 
 interface Roadmap {
     title: string;
@@ -14,6 +12,8 @@ interface Roadmap {
     order: number;
     url: string;
     slug: string;
+    topicCount?: number;
+    chapterCount?: number;
 }
 
 interface RoadmapCardProps {
@@ -21,15 +21,10 @@ interface RoadmapCardProps {
   featured?: boolean;
 }
 
-const DIFFICULTY_COLORS: Record<string, string> = {
-  Beginner: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/5',
-  Intermediate: 'text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/5',
-  Advanced: 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-500/5',
-};
-
 const CATEGORY_ICONS: Record<string, string> = {
   Core: '🏗️',
   Specialization: '🎯',
+  Specialized: '🧬',
   Infrastructure: '⚙️',
   Security: '🔒',
   'AI/ML': '🧠',
@@ -38,69 +33,88 @@ const CATEGORY_ICONS: Record<string, string> = {
   Embedded: '🔌',
 };
 
+const DOMAIN_GRADIENTS: Record<string, string> = {
+  frontend: 'from-orange-500/10 via-amber-500/5 to-transparent',
+  backend: 'from-emerald-500/10 via-teal-500/5 to-transparent',
+  'full-stack': 'from-blue-500/10 via-indigo-500/5 to-transparent',
+  'machine-learning': 'from-violet-500/10 via-purple-500/5 to-transparent',
+  devops: 'from-cyan-500/10 via-sky-500/5 to-transparent',
+  cybersecurity: 'from-red-500/10 via-rose-500/5 to-transparent',
+  'game-development': 'from-pink-500/10 via-fuchsia-500/5 to-transparent',
+  'mobile-development': 'from-lime-500/10 via-green-500/5 to-transparent',
+  'embedded-systems': 'from-yellow-500/10 via-orange-500/5 to-transparent',
+};
+
+const DOMAIN_PATTERNS: Record<string, string> = {
+  frontend: '◇ ◈ ◇ ◈ ◇',
+  backend: '⬡ ⬢ ⬡ ⬢ ⬡',
+  'full-stack': '◉ ○ ◉ ○ ◉',
+  'machine-learning': '∑ ∫ ∂ ∇ Δ',
+  devops: '⊕ ⊗ ⊕ ⊗ ⊕',
+  cybersecurity: '⌿ ⊘ ⌿ ⊘ ⌿',
+  'game-development': '▲ ● ■ ▲ ●',
+  'mobile-development': '⬦ ◇ ⬦ ◇ ⬦',
+  'embedded-systems': '⏣ ⎔ ⏣ ⎔ ⏣',
+};
+
 export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
-  const difficultyClass = DIFFICULTY_COLORS[roadmap.difficulty] || '';
+  const gradient = DOMAIN_GRADIENTS[roadmap.slug] || 'from-primary/10 via-primary/5 to-transparent';
+  const pattern = DOMAIN_PATTERNS[roadmap.slug] || '◆ ◇ ◆ ◇ ◆';
   const categoryIcon = CATEGORY_ICONS[roadmap.category] || '📘';
+  const topicCount = roadmap.topicCount || 0;
+  const chapterCount = roadmap.chapterCount || 0;
 
   return (
-    <Link href={roadmap.url} className="group block h-full" suppressHydrationWarning>
-      <Card
-        suppressHydrationWarning
-        className={`
-        h-full flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out
-        transform hover:-translate-y-1 rounded-2xl
-        bg-card border border-border/50 hover:border-primary/40
-        shadow-sm hover:shadow-xl hover:shadow-primary/5
-        ${featured ? 'ring-1 ring-accent/20' : ''}
-      `}
-      >
-        {/* Top Accent Bar */}
-        <div className={`h-1 w-full bg-gradient-to-r ${
-          featured 
-            ? 'from-accent via-primary to-accent' 
-            : 'from-primary/60 via-primary to-primary/60'
-        }`} />
+    <Link href={roadmap.url} className="group block h-full">
+      <div className={`
+        h-full flex flex-col overflow-hidden transition-all duration-500 ease-out
+        rounded-2xl border border-border/50 hover:border-border
+        bg-card hover:shadow-lg hover:shadow-black/5
+        dark:hover:shadow-black/20
+      `}>
+        {/* Header: Icon + Stats */}
+        <div className="flex items-center justify-between px-6 pt-5 pb-0">
+          <span className="text-2xl">{categoryIcon}</span>
+          <span className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase">
+            {chapterCount > 0 && <>{chapterCount} {chapterCount === 1 ? 'chapter' : 'chapters'} · </>}
+            {topicCount} {topicCount === 1 ? 'topic' : 'topics'}
+          </span>
+        </div>
 
-        <CardHeader className="pb-3 pt-5 px-5" suppressHydrationWarning>
-          <div className="flex items-start justify-between gap-3 mb-3">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl" role="img" aria-label={roadmap.category}>
-                {categoryIcon}
-              </span>
-              <div>
-                <CardTitle className="text-base font-bold group-hover:text-primary transition-colors leading-snug">
-                  {roadmap.title}
-                </CardTitle>
-              </div>
-            </div>
-            {featured && (
-              <Star className="w-4 h-4 text-accent fill-accent flex-shrink-0 mt-0.5" />
-            )}
-          </div>
+        {/* Visual Pattern Area */}
+        <div className={`
+          mx-6 mt-4 h-36 rounded-xl bg-gradient-to-br ${gradient}
+          border border-border/30 flex items-center justify-center relative overflow-hidden
+          transition-all duration-500 group-hover:scale-[1.02]
+        `}>
+          {/* Decorative pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(#00000006_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff06_1px,transparent_1px)] [background-size:16px_16px]" />
+          <span className="text-2xl font-mono text-muted-foreground/20 tracking-[0.5em] select-none relative z-10">
+            {pattern}
+          </span>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 flex flex-col px-6 pt-5 pb-6">
+          <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300 leading-snug">
+            {roadmap.title}
+          </h3>
+
           {roadmap.description && (
-            <CardDescription className="text-sm text-muted-foreground leading-relaxed line-clamp-2 pl-0">
+            <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2">
               {roadmap.description}
-            </CardDescription>
+            </p>
           )}
-        </CardHeader>
 
-        <CardContent className="flex-grow flex flex-col justify-end pt-1 pb-5 px-5" suppressHydrationWarning>
-          <div className="flex flex-wrap items-center gap-2 mb-4" suppressHydrationWarning>
-            <Badge variant="secondary" className="text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-medium" suppressHydrationWarning>
-              <Layers className="h-3 w-3" />
-              {roadmap.category}
-            </Badge>
-            <Badge variant="outline" className={`text-xs px-2.5 py-1 flex items-center gap-1.5 rounded-md font-semibold ${difficultyClass}`} suppressHydrationWarning>
-              {roadmap.difficulty}
-            </Badge>
+          {/* CTA */}
+          <div className="mt-auto pt-5 flex items-center justify-between">
+            <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+              Explore the roadmap
+            </span>
+            <ArrowRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-foreground group-hover:translate-x-1 transition-all duration-300" />
           </div>
-
-          <div className="flex items-center text-primary font-semibold text-sm opacity-0 group-hover:opacity-100 transition-all duration-200 ease-in-out translate-y-1 group-hover:translate-y-0">
-            Explore Path
-            <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </Link>
   );
 }

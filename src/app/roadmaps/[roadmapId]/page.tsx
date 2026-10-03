@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { EditorRoadmapRenderer } from '@/components/EditorRoadmap/EditorRoadmapRenderer';
-import { getAllRoadmaps, getRoadmapBySlug } from '@/lib/roadmaps';
-import { ArrowLeft, BookOpen, Layers } from 'lucide-react';
+import { getAllRoadmaps, getRoadmapBySlug, parseRoadmapChapters } from '@/lib/roadmaps';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { RoadmapTimelineView } from '@/components/Roadmaps/RoadmapTimelineView';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: RoadmapDetailsPageProps): Pro
     };
   }
   return {
-    title: `${roadmapMeta.title} — Syllabus | Nocturnal Codex`,
+    title: `${roadmapMeta.title} — Nocturnal Codex`,
     description: roadmapMeta.description,
   };
 }
@@ -43,6 +43,7 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
     notFound();
   }
 
+  // Read roadmap JSON data
   let roadmapData = null;
   try {
     const filePath = path.join(process.cwd(), 'public', 'roadmap-content', `${roadmapId}.json`);
@@ -54,68 +55,62 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
     console.error(`Error reading roadmap file for ${roadmapId}:`, e);
   }
 
-  const nodeCount = roadmapData?.nodes?.filter((n: any) => n.type === 'topic')?.length || 0;
+  // Parse into chapters
+  const chapters = roadmapData ? parseRoadmapChapters(roadmapData) : [];
+  const totalTopics = chapters.reduce((sum, c) => sum + c.topics.length, 0);
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] dark:bg-black text-foreground transition-colors duration-300">
-      {/* Editorial Codex Manuscript Header */}
-      <header className="relative border-b border-border/50 bg-card/25 dark:bg-card/15 backdrop-blur-xl pt-8 pb-10">
-        {/* Subtle engineering blueprint / parchment pattern overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(#00000004_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff04_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Hero Header */}
+      <header className="max-w-5xl mx-auto px-4 pt-10 pb-4">
+        {/* Back Link */}
+        <Link
+          href="/roadmaps"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 group"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          All roadmaps
+        </Link>
 
-        <div className="max-w-[1100px] mx-auto px-4 relative z-10">
-          {/* Top Breadcrumb & Folio Tracker */}
-          <div className="flex items-center justify-between text-xs font-mono tracking-wider text-muted-foreground/75 mb-6 pb-3 border-b border-border/40">
-            <Link 
-              href="/roadmaps" 
-              className="inline-flex items-center gap-2 hover:text-primary transition-colors group font-sans font-medium"
-            >
-              <ArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-1 transition-transform" />
-              <span>Back to Curricula & Syllabi</span>
-            </Link>
-
-            <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground/60 hidden sm:inline">
-              Tractate &bull; {roadmapMeta.category}
+        <div className="flex items-start justify-between gap-6">
+          <div className="space-y-3 max-w-2xl">
+            {/* Eyebrow */}
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
+              YOUR LEARNING PATH
             </span>
-          </div>
 
-          {/* Main Title Section */}
-          <div className="max-w-4xl space-y-4">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-primary font-bold">
-              <span>CODEX CURRICULUM</span>
-              <span className="text-muted-foreground/40">&bull;</span>
-              <span className="text-foreground/80 font-normal">LEVEL: {roadmapMeta.difficulty}</span>
-              <span className="text-muted-foreground/40">&bull;</span>
-              <span className="text-foreground/80 font-normal">{nodeCount} CONCEPTS</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-foreground leading-[1.12]">
-              {roadmapMeta.title}
+            {/* Title */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
+              {roadmapMeta.title.replace(' Roadmap', '')}
             </h1>
 
-            {/* Editorial Thesis / Abstract Quote */}
-            <div className="relative pl-5 border-l-2 border-primary/50 my-5">
-              <p className="font-serif italic text-base sm:text-lg text-foreground/85 leading-relaxed">
-                &ldquo;{roadmapMeta.description}&rdquo;
-              </p>
-            </div>
+            {/* Description */}
+            <p className="text-base text-muted-foreground leading-relaxed">
+              {roadmapMeta.description}
+            </p>
 
-            {/* Academic Meta Tags */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono text-muted-foreground">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/60 border border-border/60">
-                <Layers className="h-3.5 w-3.5 text-primary" />
-                <span>Domain: {roadmapMeta.category}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/60 border border-border/60">
-                <BookOpen className="h-3.5 w-3.5 text-accent" />
-                <span>Format: Interactive Conceptual Flow</span>
-              </div>
+            {/* Meta Stats */}
+            <div className="text-[11px] font-mono text-muted-foreground/60 tracking-wider">
+              {chapters.length} {chapters.length === 1 ? 'chapter' : 'chapters'} · {totalTopics} topics
             </div>
           </div>
+
+          {/* Open Course CTA (optional, for featured roadmaps) */}
+          {roadmapMeta.featured && (
+            <Link
+              href={`/roadmaps/${roadmapId}`}
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-background hover:bg-muted/50 text-sm font-medium text-foreground transition-colors whitespace-nowrap"
+            >
+              Open course
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </Link>
+          )}
         </div>
       </header>
 
-      {/* SEO Semantic Content Block */}
+      {/* SEO Semantic Content Block (hidden, for crawlers) */}
       {roadmapData && roadmapData.nodes && (
         <div className="sr-only">
           <h2>Curriculum Topics for {roadmapMeta.title}</h2>
@@ -144,10 +139,19 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
         </div>
       )}
 
-      {/* Main Interactive Flow Graph */}
-      <main className="py-4">
-        <EditorRoadmapRenderer roadmapId={roadmapId} initialRoadmapData={roadmapData} />
-      </main>
+      {/* Timeline View (Client Component) */}
+      {chapters.length > 0 ? (
+        <RoadmapTimelineView
+          chapters={chapters}
+          roadmapTitle={roadmapMeta.title}
+        />
+      ) : (
+        <div className="max-w-5xl mx-auto px-4 py-20 text-center">
+          <p className="text-muted-foreground text-lg">
+            No curriculum data available for this roadmap yet.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
