@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -41,6 +40,55 @@ export interface RoadmapChapter {
 const roadmapsDirectory = path.join(process.cwd(), 'src/content/roadmaps');
 const roadmapContentDirectory = path.join(process.cwd(), 'public/roadmap-content');
 
+export const DOMAIN_CHAPTER_DEFINITIONS: Record<string, { label: string; topicIds: string[] }[]> = {
+  'frontend': [
+    { label: 'Foundations & Semantic Web', topicIds: ['html', 'css', 'javascript'] },
+    { label: 'Modern Tooling & Type Systems', topicIds: ['git', 'typescript', 'tailwind'] },
+    { label: 'Component Architecture & State', topicIds: ['react', 'state-management'] },
+    { label: 'Production Systems & Quality', topicIds: ['nextjs', 'testing'] },
+  ],
+  'backend': [
+    { label: 'Runtimes & Persistence', topicIds: ['language', 'relational-db'] },
+    { label: 'Network APIs & Caching', topicIds: ['nosql-cache', 'api-architecture'] },
+    { label: 'Distributed Systems & Scale', topicIds: ['authentication', 'message-queues', 'docker-containers'] },
+  ],
+  'machine-learning': [
+    { label: 'Mathematical & Data Foundations', topicIds: ['math-foundations', 'python-data'] },
+    { label: 'Predictive Modeling & Neural Nets', topicIds: ['classical-ml', 'deep-learning'] },
+    { label: 'Modern LLM & Generative Systems', topicIds: ['transformers-llms', 'inference-engineering'] },
+  ],
+  'full-stack': [
+    { label: 'Client-Side Engineering', topicIds: ['web-foundation', 'frontend-core'] },
+    { label: 'Server & Database Architecture', topicIds: ['backend-core', 'database-persistence'] },
+    { label: 'Caching & Cloud Operations', topicIds: ['caching-layer', 'cloud-devops'] },
+  ],
+  'devops': [
+    { label: 'Automation & CI/CD Pipelines', topicIds: ['linux-shell', 'git-ci'] },
+    { label: 'Containers & Infrastructure as Code', topicIds: ['docker', 'terraform'] },
+    { label: 'Orchestration & Site Observability', topicIds: ['kubernetes', 'observability'] },
+  ],
+  'cybersecurity': [
+    { label: 'Systems & Network Foundations', topicIds: ['networking-protocols', 'os-security'] },
+    { label: 'Application Defense & Cryptography', topicIds: ['web-security', 'cryptography'] },
+    { label: 'Offensive & Defensive Operations', topicIds: ['pentesting', 'soc-defense'] },
+  ],
+  'mobile-development': [
+    { label: 'Cross-Platform & iOS Paradigms', topicIds: ['cross-platform', 'native-ios'] },
+    { label: 'Android Systems & Local Storage', topicIds: ['native-android', 'mobile-data'] },
+    { label: 'Hardware Integration & App Release', topicIds: ['device-hardware'] },
+  ],
+  'game-development': [
+    { label: '3D Mathematics & Engine Core', topicIds: ['game-math', 'game-engine'] },
+    { label: 'Graphics Pipeline & Shaders', topicIds: ['graphics-shaders'] },
+    { label: 'Game AI & Engine Optimization', topicIds: ['game-ai-systems', 'game-optimization'] },
+  ],
+  'embedded-systems': [
+    { label: 'Low-Level Silicon & Embedded C', topicIds: ['embedded-c', 'mcu-arch'] },
+    { label: 'Hardware Bus Protocols', topicIds: ['peripherals-comm'] },
+    { label: 'Real-Time Kernels & HW Debugging', topicIds: ['rtos', 'hardware-debug'] },
+  ],
+};
+
 let allRoadmapsCache: Roadmap[];
 
 function getTopicCountFromJson(slug: string): { topicCount: number; chapterCount: number } {
@@ -52,7 +100,10 @@ function getTopicCountFromJson(slug: string): { topicCount: number; chapterCount
             const topicCount = nodes.filter((n: any) =>
                 n.type !== 'section' && n.type !== 'info' && n.type !== 'label'
             ).length;
-            const chapterCount = nodes.filter((n: any) => n.type === 'section').length;
+
+            const domainChapters = DOMAIN_CHAPTER_DEFINITIONS[slug];
+            const chapterCount = domainChapters ? domainChapters.length : Math.max(1, Math.ceil(topicCount / 3));
+
             return { topicCount, chapterCount };
         }
     } catch {
@@ -96,7 +147,6 @@ function fetchAllRoadmaps(): Roadmap[] {
     }
 }
 
-
 export function getAllRoadmaps(): Roadmap[] {
   return fetchAllRoadmaps();
 }
@@ -107,79 +157,123 @@ export function getRoadmapBySlug(slug: string): Roadmap | undefined {
 
 /**
  * Parse a roadmap JSON into structured chapters with ordered topics.
- * Groups topics under section nodes. Topics without a section go into
- * a synthetic "Topics" chapter.
+ * Uses curated domain chapter definitions when available, or groups topics logically.
  */
-export function parseRoadmapChapters(roadmapData: { nodes: any[]; edges: any[] }): RoadmapChapter[] {
-  const { nodes, edges } = roadmapData;
+export function parseRoadmapChapters(
+  roadmapData: { nodes: any[]; edges: any[] },
+  slug?: string
+): RoadmapChapter[] {
+  const { nodes } = roadmapData;
 
-  // Build edge adjacency: source -> target
-  const adjacency = new Map<string, string[]>();
-  for (const edge of edges) {
-    if (!adjacency.has(edge.source)) {
-      adjacency.set(edge.source, []);
-    }
-    adjacency.get(edge.source)!.push(edge.target);
-  }
-
-  // Separate sections and topics
-  const sections = nodes.filter(n => n.type === 'section');
   const topicNodes = nodes.filter(n =>
     n.type !== 'section' && n.type !== 'info' && n.type !== 'label'
   );
 
-  // Sort topics by vertical position to get the path order
+  const topicMap = new Map<string, RoadmapTopic>();
+  for (const n of topicNodes) {
+    topicMap.set(n.id, {
+      id: n.id,
+      label: n.data?.label || n.id,
+      description: n.data?.description,
+      status: n.data?.status,
+      codeSnippet: n.data?.codeSnippet,
+      prerequisites: n.data?.prerequisites,
+      resources: n.data?.resources,
+      relatedLanguage: n.data?.relatedLanguage,
+    });
+  }
+
+  // Check for curated domain chapters
+  const domainDefs = slug ? DOMAIN_CHAPTER_DEFINITIONS[slug] : undefined;
+  if (domainDefs && domainDefs.length > 0) {
+    const chapters: RoadmapChapter[] = [];
+    const usedIds = new Set<string>();
+
+    domainDefs.forEach((def, index) => {
+      const chapterTopics: RoadmapTopic[] = [];
+      for (const tid of def.topicIds) {
+        const found = topicMap.get(tid);
+        if (found) {
+          chapterTopics.push(found);
+          usedIds.add(tid);
+        }
+      }
+      if (chapterTopics.length > 0) {
+        chapters.push({
+          id: `chapter-${index + 1}`,
+          label: def.label,
+          topics: chapterTopics,
+        });
+      }
+    });
+
+    // Any leftover topics not in definition:
+    const leftover = topicNodes.filter(n => !usedIds.has(n.id));
+    if (leftover.length > 0) {
+      chapters.push({
+        id: `chapter-${chapters.length + 1}`,
+        label: 'Advanced & Specialized Topics',
+        topics: leftover.map(n => topicMap.get(n.id)!),
+      });
+    }
+
+    if (chapters.length > 0) {
+      return chapters;
+    }
+  }
+
+  // If there are multiple explicit section nodes in the data
+  const sections = nodes.filter(n => n.type === 'section');
+  if (sections.length > 1) {
+    const sortedTopics = [...topicNodes].sort((a, b) => a.position.y - b.position.y);
+    const sortedSections = [...sections].sort((a, b) => a.position.y - b.position.y);
+    const chapters: RoadmapChapter[] = [];
+
+    for (let i = 0; i < sortedSections.length; i++) {
+      const section = sortedSections[i];
+      const nextSection = sortedSections[i + 1];
+
+      const chapterTopics = sortedTopics.filter(t => {
+        const afterCurrent = t.position.y >= section.position.y;
+        const beforeNext = nextSection ? t.position.y < nextSection.position.y : true;
+        return afterCurrent && beforeNext;
+      });
+
+      if (chapterTopics.length > 0) {
+        chapters.push({
+          id: section.id,
+          label: section.data?.label || `Chapter ${i + 1}`,
+          topics: chapterTopics.map(n => topicMap.get(n.id)!),
+        });
+      }
+    }
+
+    if (chapters.length > 0) {
+      return chapters;
+    }
+  }
+
+  // Fallback: auto-chunk topics into groups of 3
   const sortedTopics = [...topicNodes].sort((a, b) => a.position.y - b.position.y);
-
-  // If there's only one section (header), treat it as a single-chapter roadmap
-  // Group all topics under that section
-  if (sections.length <= 1) {
-    const chapter: RoadmapChapter = {
-      id: sections[0]?.id || 'main',
-      label: sections[0]?.data?.label || 'Learning Path',
-      topics: sortedTopics.map(n => ({
-        id: n.id,
-        label: n.data?.label || n.id,
-        description: n.data?.description,
-        status: n.data?.status,
-        codeSnippet: n.data?.codeSnippet,
-        prerequisites: n.data?.prerequisites,
-        resources: n.data?.resources,
-        relatedLanguage: n.data?.relatedLanguage,
-      })),
-    };
-    return [chapter];
-  }
-
-  // Multiple sections: group topics by proximity to section Y positions
-  const sortedSections = [...sections].sort((a, b) => a.position.y - b.position.y);
+  const CHUNK_SIZE = 3;
   const chapters: RoadmapChapter[] = [];
+  const titles = [
+    'Foundations & Core Principles',
+    'Applied Architecture & Patterns',
+    'Production Systems & Scale',
+    'Advanced Techniques & Optimization',
+    'Ecosystem & Next Steps'
+  ];
 
-  for (let i = 0; i < sortedSections.length; i++) {
-    const section = sortedSections[i];
-    const nextSection = sortedSections[i + 1];
-
-    const chapterTopics = sortedTopics.filter(t => {
-      const afterCurrent = t.position.y >= section.position.y;
-      const beforeNext = nextSection ? t.position.y < nextSection.position.y : true;
-      return afterCurrent && beforeNext;
-    });
-
+  for (let i = 0; i < sortedTopics.length; i += CHUNK_SIZE) {
+    const chunkIndex = Math.floor(i / CHUNK_SIZE);
+    const chunkTopics = sortedTopics.slice(i, i + CHUNK_SIZE);
     chapters.push({
-      id: section.id,
-      label: section.data?.label || `Chapter ${i + 1}`,
-      topics: chapterTopics.map(n => ({
-        id: n.id,
-        label: n.data?.label || n.id,
-        description: n.data?.description,
-        status: n.data?.status,
-        codeSnippet: n.data?.codeSnippet,
-        prerequisites: n.data?.prerequisites,
-        resources: n.data?.resources,
-        relatedLanguage: n.data?.relatedLanguage,
-      })),
+      id: `chapter-${chunkIndex + 1}`,
+      label: titles[chunkIndex] || `Chapter ${chunkIndex + 1}: Further Exploration`,
+      topics: chunkTopics.map(n => topicMap.get(n.id)!),
     });
   }
 
-  return chapters.filter(c => c.topics.length > 0);
+  return chapters;
 }

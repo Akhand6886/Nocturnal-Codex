@@ -1,9 +1,6 @@
-
-import { RoadmapCard } from '@/components/Roadmaps/RoadmapCard';
-import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getAllRoadmaps } from '@/lib/roadmaps';
-import Link from 'next/link';
+import { RoadmapsDirectoryView } from '@/components/Roadmaps/RoadmapsDirectoryView';
 
 export const metadata: Metadata = {
   title: 'Developer Roadmaps — Nocturnal Codex',
@@ -12,9 +9,8 @@ export const metadata: Metadata = {
 
 export default function RoadmapsPage() {
   const roadmaps = getAllRoadmaps();
-  const featuredRoadmaps = roadmaps.filter(r => r.featured);
-  const otherRoadmaps = roadmaps.filter(r => !r.featured);
   const totalTopics = roadmaps.reduce((sum, r) => sum + (r.topicCount || 0), 0);
+  const totalChapters = roadmaps.reduce((sum, r) => sum + (r.chapterCount || 0), 0);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -29,17 +25,17 @@ export default function RoadmapsPage() {
               Developer Roadmaps
             </h1>
             <p className="text-base text-muted-foreground leading-relaxed">
-              One complete roadmap for each domain. Follow the main path, open a chapter, and pick up exactly where you are.
+              Curated, battle-tested learning paths for modern software engineering and systems architecture. Select a domain, progress through sequential chapters, and mark off topics as you master them.
             </p>
-            <div className="text-[11px] font-mono text-muted-foreground/60 tracking-wider">
-              {roadmaps.length} paths · {totalTopics} topics
+            <div className="text-[11px] font-mono text-muted-foreground/70 tracking-wider">
+              {roadmaps.length} paths · {totalChapters} chapters · {totalTopics} topics
             </div>
           </div>
         </div>
       </header>
 
       {/* Section Divider */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="max-w-5xl mx-auto px-4 py-6">
         <div className="flex items-center gap-4">
           <div className="flex-1 border-t border-dashed border-border/50" />
           <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-muted-foreground/40 whitespace-nowrap">
@@ -49,41 +45,15 @@ export default function RoadmapsPage() {
         </div>
       </div>
 
-      {/* Featured Paths — 2-Column Grid */}
-      {featuredRoadmaps.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 pb-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {featuredRoadmaps.map((roadmap) => (
-              <RoadmapCard key={roadmap.slug} roadmap={roadmap} featured />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Other Paths */}
-      {otherRoadmaps.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 pb-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {otherRoadmaps.map((roadmap) => (
-              <RoadmapCard key={roadmap.slug} roadmap={roadmap} />
-            ))}
-          </div>
-        </section>
-      )}
+      {/* Interactive Directory View */}
+      <RoadmapsDirectoryView roadmaps={roadmaps} />
 
       {/* Footer Note */}
       <div className="max-w-5xl mx-auto px-4 pt-4 pb-20">
-        <p className="text-sm text-muted-foreground/50 text-center">
-          All published topics and resources are included. Each roadmap is a curated sequence — start from the top and work your way down.
+        <p className="text-xs font-mono text-muted-foreground/50 text-center tracking-wide">
+          All curriculum topics include code snippets, prerequisites, and Nocturnal Codex in-house language folios.
         </p>
       </div>
-
-      {/* Empty State */}
-      {roadmaps.length === 0 && (
-        <div className="text-center py-20">
-          <p className="text-muted-foreground text-lg">No roadmaps available yet. Check back soon!</p>
-        </div>
-      )}
     </div>
   );
 }

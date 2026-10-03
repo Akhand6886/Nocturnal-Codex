@@ -55,8 +55,8 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
     console.error(`Error reading roadmap file for ${roadmapId}:`, e);
   }
 
-  // Parse into chapters
-  const chapters = roadmapData ? parseRoadmapChapters(roadmapData) : [];
+  // Parse into chapters with domain-specific curriculum
+  const chapters = roadmapData ? parseRoadmapChapters(roadmapData, roadmapId) : [];
   const totalTopics = chapters.reduce((sum, c) => sum + c.topics.length, 0);
 
   return (
@@ -74,10 +74,18 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
 
         <div className="flex items-start justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            {/* Eyebrow */}
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
-              YOUR LEARNING PATH
-            </span>
+            {/* Eyebrow & Badges */}
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
+                YOUR LEARNING PATH
+              </span>
+              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-border bg-card/60 text-muted-foreground">
+                {roadmapMeta.difficulty}
+              </span>
+              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-border bg-card/60 text-muted-foreground">
+                {roadmapMeta.category}
+              </span>
+            </div>
 
             {/* Title */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
@@ -94,19 +102,6 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
               {chapters.length} {chapters.length === 1 ? 'chapter' : 'chapters'} · {totalTopics} topics
             </div>
           </div>
-
-          {/* Open Course CTA (optional, for featured roadmaps) */}
-          {roadmapMeta.featured && (
-            <Link
-              href={`/roadmaps/${roadmapId}`}
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-background hover:bg-muted/50 text-sm font-medium text-foreground transition-colors whitespace-nowrap"
-            >
-              Open course
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </Link>
-          )}
         </div>
       </header>
 
@@ -144,6 +139,7 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
         <RoadmapTimelineView
           chapters={chapters}
           roadmapTitle={roadmapMeta.title}
+          roadmapSlug={roadmapId}
         />
       ) : (
         <div className="max-w-5xl mx-auto px-4 py-20 text-center">

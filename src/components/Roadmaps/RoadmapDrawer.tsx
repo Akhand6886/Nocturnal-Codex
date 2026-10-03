@@ -9,7 +9,7 @@ import {
   SheetClose
 } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { ExternalLink, BookOpen, CheckCircle, Clock, Circle, Sparkles, Code2, Play, GraduationCap } from 'lucide-react';
+import { ExternalLink, BookOpen, CheckCircle, Clock, Circle, Sparkles, Code2, Play, GraduationCap, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { NodeStatus } from '@/lib/roadmapProgress';
@@ -93,11 +93,16 @@ export function detectRelatedSiteLanguage(data: SelectedNodeData): SiteLanguageL
   return null;
 }
 
-interface RoadmapDrawerProps {
+export interface RoadmapDrawerProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   data: SelectedNodeData | null;
   onStatusChange?: (nodeId: string, status: NodeStatus) => void;
+  isCompleted?: boolean;
+  onToggleComplete?: () => void;
+  chapterLabel?: string;
+  onNextTopic?: () => void;
+  hasNextTopic?: boolean;
 }
 
 const STATUS_CONFIG: Record<NodeStatus, { icon: React.ReactNode; label: string; className: string }> = {
@@ -127,7 +132,16 @@ const RESOURCE_TYPE_ICONS: Record<string, string> = {
   github: '💻',
 };
 
-export function RoadmapDrawer({ open, onOpenChange, data }: RoadmapDrawerProps) {
+export function RoadmapDrawer({
+  open,
+  onOpenChange,
+  data,
+  isCompleted = false,
+  onToggleComplete,
+  chapterLabel,
+  onNextTopic,
+  hasNextTopic = false,
+}: RoadmapDrawerProps) {
   if (!data) return null;
 
   const relatedLang = detectRelatedSiteLanguage(data);
@@ -141,7 +155,7 @@ export function RoadmapDrawer({ open, onOpenChange, data }: RoadmapDrawerProps) 
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 text-[11px] font-mono tracking-widest uppercase text-primary font-bold">
                 <BookOpen className="w-3.5 h-3.5" />
-                <span>TOPIC DOSSIER // FOLIO REF</span>
+                <span>{chapterLabel ? `${chapterLabel} // TOPIC` : 'TOPIC DOSSIER // FOLIO REF'}</span>
               </div>
               <SheetTitle className="text-2xl font-serif font-normal tracking-tight text-foreground leading-snug">
                 {data.label}
@@ -152,6 +166,20 @@ export function RoadmapDrawer({ open, onOpenChange, data }: RoadmapDrawerProps) 
                 </SheetDescription>
               )}
             </div>
+            {onToggleComplete && (
+              <button
+                onClick={onToggleComplete}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                  isCompleted
+                    ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
+                    : 'bg-muted/40 border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground'
+                }`}
+                title={isCompleted ? 'Mark as incomplete' : 'Mark as completed'}
+              >
+                <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-500 fill-emerald-500/20' : 'text-muted-foreground/40'}`} />
+                {isCompleted ? 'Completed' : 'Mark Complete'}
+              </button>
+            )}
           </div>
         </SheetHeader>
         
@@ -265,12 +293,38 @@ export function RoadmapDrawer({ open, onOpenChange, data }: RoadmapDrawerProps) 
         </ScrollArea>
 
         {/* Footer */}
-        <div className="p-4 border-t border-border bg-muted/10 flex justify-end">
-          <SheetClose asChild>
-            <Button variant="outline" size="sm" className="rounded-lg w-full sm:w-auto">
-              Close
-            </Button>
-          </SheetClose>
+        <div className="p-4 border-t border-border bg-card/60 flex items-center justify-between gap-3">
+          {onToggleComplete ? (
+            <button
+              onClick={onToggleComplete}
+              className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold border transition-all ${
+                isCompleted
+                  ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/25'
+                  : 'bg-background border-border/80 text-foreground hover:bg-muted/60'
+              }`}
+            >
+              <CheckCircle className={`w-4 h-4 ${isCompleted ? 'text-emerald-500 fill-emerald-500/20' : 'text-muted-foreground/50'}`} />
+              {isCompleted ? 'Topic Mastered ✓' : 'Mark as Done'}
+            </button>
+          ) : <div />}
+
+          <div className="flex items-center gap-2">
+            {hasNextTopic && onNextTopic && (
+              <Button
+                onClick={onNextTopic}
+                size="sm"
+                className="rounded-lg text-xs font-semibold gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Next Topic
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Button>
+            )}
+            <SheetClose asChild>
+              <Button variant="outline" size="sm" className="rounded-lg text-xs">
+                Close
+              </Button>
+            </SheetClose>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
