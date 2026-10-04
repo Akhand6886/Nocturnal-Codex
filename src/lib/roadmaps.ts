@@ -49,6 +49,29 @@ export interface InHouseMathLink {
   description: string;
 }
 
+export interface ProductionChecklistItem {
+  id: string;
+  category: string;
+  task: string;
+  priority: 'P0' | 'P1' | 'P2';
+  explanation: string;
+}
+
+export interface ComplexityBlueprint {
+  timeComplexity: string;
+  spaceComplexity: string;
+  memoryModel: string;
+  keyTradeOff: string;
+}
+
+export interface AwesomeToolItem {
+  name: string;
+  category: string;
+  description: string;
+  url: string;
+  badge?: string;
+}
+
 export interface CodexArchitectureTenet {
   ruleNumber: number;
   title: string;
@@ -428,6 +451,9 @@ export interface RoadmapTopicDetailsResult {
   architectureTenets: CodexArchitectureTenet[];
   masteryQuiz: CodexQuizQuestion[];
   editorialSummary: EditorialSummary;
+  productionChecklist: ProductionChecklistItem[];
+  complexityBlueprint: ComplexityBlueprint;
+  awesomeTools: AwesomeToolItem[];
 }
 
 export function resolveInHouseLessons(
