@@ -1,0 +1,17 @@
+https://github.com/sindresorhus/awesome
+
+https://fanout.sh/
+
+https://github.com/thedaviddias/Front-End-Checklist
+
+https://github.com/freeCodeCamp/freeCodeCamp
+
+https://github.com/ossu/computer-science#prerequisites
+
+https://github.com/getify/You-Dont-Know-JS
+
+https://github.com/lijqhs/deeplearning-notes
+
+https://github.com/lijqhs/algorithms-notes
+
+https://github.com/lijqhs/data-science-notes
