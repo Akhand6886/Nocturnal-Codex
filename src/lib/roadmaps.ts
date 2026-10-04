@@ -734,6 +734,128 @@ export function resolveInHouseLessons(
     ];
   }
 
+  // Curated deep modules for SQL & Relational Databases
+  if (tid === 'relational-db' || tid === 'database-persistence' || label.includes('database') || label.includes('sql')) {
+    return [
+      {
+        title: 'Indexing Optimization & B-Tree Execution',
+        description: 'B-tree index architectures, multi-column composite indexes, covering indexes, and EXPLAIN ANALYZE interpretation.',
+        slug: 'indexing-optimization',
+        url: '/languages/sql/indexing-optimization',
+        badge: 'Performance & Scale',
+        readTime: '7 min read',
+      },
+      {
+        title: 'ACID Transactions & Concurrency Isolation',
+        description: 'Read Committed vs Repeatable Read vs Serializable, phantom reads, write skew, and deadlock resolution.',
+        slug: 'transactions',
+        url: '/languages/sql/transactions',
+        badge: 'Core Reliability',
+        readTime: '8 min read',
+      },
+      {
+        title: 'Advanced Joins & Query Plans',
+        description: 'Nested loops, hash joins, merge joins, Cartesian products, and cost-based optimizer heuristics.',
+        slug: 'joins',
+        url: '/languages/sql/joins',
+        badge: 'Query Engine',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Window Functions & Analytical SQL',
+        description: 'OVER clauses, PARTITION BY, sliding frame windows, RANK(), DENSE_RANK(), and cumulative aggregations.',
+        slug: 'window-functions',
+        url: '/languages/sql/window-functions',
+        badge: 'Advanced SQL',
+        readTime: '6 min read',
+      },
+      {
+        title: 'CTEs & Recursive Hierarchy Traversals',
+        description: 'Common table expressions, WITH RECURSIVE, organizational trees, graph traversals, and query readability.',
+        slug: 'ctes-recursive-queries',
+        url: '/languages/sql/ctes-recursive-queries',
+        badge: 'Data Structures',
+        readTime: '5 min read',
+      },
+    ];
+  }
+
+  // Curated deep modules for Linux & Shell
+  if (tid === 'linux-shell' || tid === 'bash' || label.includes('linux') || label.includes('shell')) {
+    return [
+      {
+        title: 'Linux Process Management & Systemd',
+        description: 'Process trees, signals (SIGTERM, SIGKILL), nice values, systemd unit services, and memory limits.',
+        slug: 'process-management',
+        url: '/languages/shell/process-management',
+        badge: 'Kernel Internals',
+        readTime: '7 min read',
+      },
+      {
+        title: 'Unix I/O Redirection & Pipe Streams',
+        description: 'Standard streams (stdin, stdout, stderr), file descriptors (0, 1, 2), named pipes, and subshell pipelines.',
+        slug: 'i-o-redirection',
+        url: '/languages/shell/i-o-redirection',
+        badge: 'Core Unix',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Sed & Awk Text Processing',
+        description: 'Stream editing, pattern scanning, field delimiters, AWK associative arrays, and high-speed data parsing.',
+        slug: 'sed-awk',
+        url: '/languages/shell/sed-awk',
+        badge: 'Data Wrangling',
+        readTime: '7 min read',
+      },
+      {
+        title: 'Regular Expressions & Grep Mastery',
+        description: 'PCRE syntax, capture groups, lookaheads, ripgrep performance, and log searching at scale.',
+        slug: 'grep-regular-expressions',
+        url: '/languages/shell/grep-regular-expressions',
+        badge: 'CLI Mastery',
+        readTime: '6 min read',
+      },
+    ];
+  }
+
+  // Curated deep modules for Go & Concurrency
+  if (tid === 'language' || tid === 'go' || label.includes('go ') || label.includes('golang')) {
+    return [
+      {
+        title: 'Goroutines & M:N Work-Stealing Runtime',
+        description: 'Lightweight user-space threads (2KB initial stack), Go runtime scheduler (G, M, P), and cooperative preemption.',
+        slug: 'goroutines',
+        url: '/languages/go/goroutines',
+        badge: 'Concurrency Engine',
+        readTime: '7 min read',
+      },
+      {
+        title: 'Channels & CSP Communication',
+        description: 'Buffered vs unbuffered channels, select statements, channel closing semantics, and deadlock prevention.',
+        slug: 'channels',
+        url: '/languages/go/channels',
+        badge: 'Architecture',
+        readTime: '8 min read',
+      },
+      {
+        title: 'Context Propagation & Cancellation',
+        description: 'context.WithTimeout, context.WithCancel, request-scoped metadata, and clean microservice shutdown.',
+        slug: 'context',
+        url: '/languages/go/context',
+        badge: 'Production Go',
+        readTime: '6 min read',
+      },
+      {
+        title: 'Low-Level Synchronization (sync Package)',
+        description: 'sync.Mutex, sync.RWMutex, atomic operations, sync.Pool memory recycling, and race detector tooling.',
+        slug: 'sync-package',
+        url: '/languages/go/sync-package',
+        badge: 'Low-Level Concurrency',
+        readTime: '7 min read',
+      },
+    ];
+  }
+
   // Dynamic fallback: read from related language's topics in Nocturnal Codex
   if (relatedLang) {
     try {
