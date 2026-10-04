@@ -4,6 +4,21 @@ import matter from 'gray-matter';
 import { getLanguageBySlug } from './languages';
 import { getProjectsByLanguage } from './projects';
 import { getAllMathDomains } from './mathematics';
+import {
+  ProductionRecipe,
+  IncidentPostMortem,
+  DiagnosticCommand,
+  TopicDeepDiveGuide,
+  resolveTopicDeepDiveGuide,
+} from './roadmap-deep-dives';
+
+export type {
+  ProductionRecipe,
+  IncidentPostMortem,
+  DiagnosticCommand,
+  TopicDeepDiveGuide,
+};
+export { resolveTopicDeepDiveGuide };
 
 export interface Roadmap {
   slug: string;
@@ -182,9 +197,9 @@ export const DOMAIN_CHAPTER_DEFINITIONS: Record<string, { label: string; topicId
     { label: 'Production Systems & Quality', topicIds: ['nextjs', 'testing'] },
   ],
   'backend': [
-    { label: 'Runtimes & Persistence', topicIds: ['language', 'relational-db'] },
-    { label: 'Network APIs & Caching', topicIds: ['nosql-cache', 'api-architecture'] },
-    { label: 'Distributed Systems & Scale', topicIds: ['authentication', 'message-queues', 'docker-containers'] },
+    { label: 'Runtimes & Data Persistence', topicIds: ['language', 'relational-db', 'nosql-cache'] },
+    { label: 'Network APIs & Real-Time Push', topicIds: ['api-architecture', 'realtime-fanout', 'authentication'] },
+    { label: 'Distributed Systems & Microservices', topicIds: ['message-queues', 'distributed-systems', 'docker-containers'] },
   ],
   'machine-learning': [
     { label: 'Mathematical & Data Foundations', topicIds: ['math-foundations', 'python-data'] },
@@ -197,9 +212,9 @@ export const DOMAIN_CHAPTER_DEFINITIONS: Record<string, { label: string; topicId
     { label: 'Caching & Cloud Operations', topicIds: ['caching-layer', 'cloud-devops'] },
   ],
   'devops': [
-    { label: 'Automation & CI/CD Pipelines', topicIds: ['linux-shell', 'git-ci'] },
-    { label: 'Containers & Infrastructure as Code', topicIds: ['docker', 'terraform'] },
-    { label: 'Orchestration & Site Observability', topicIds: ['kubernetes', 'observability'] },
+    { label: 'Automation, Linux & CI/CD', topicIds: ['linux-shell', 'networking-dns', 'git-ci'] },
+    { label: 'Containers & Infrastructure as Code', topicIds: ['docker', 'terraform', 'cloud-infrastructure'] },
+    { label: 'Orchestration, DevSecOps & SRE', topicIds: ['kubernetes', 'devsecops', 'observability'] },
   ],
   'cybersecurity': [
     { label: 'Systems & Network Foundations', topicIds: ['networking-protocols', 'os-security'] },
@@ -454,6 +469,7 @@ export interface RoadmapTopicDetailsResult {
   productionChecklist: ProductionChecklistItem[];
   complexityBlueprint: ComplexityBlueprint;
   awesomeTools: AwesomeToolItem[];
+  deepDiveGuide: TopicDeepDiveGuide;
 }
 
 export function resolveInHouseLessons(
@@ -2124,6 +2140,7 @@ export function getRoadmapTopicDetails(roadmapSlug: string, topicId: string): Ro
     const productionChecklist = resolveProductionChecklist(resolvedTopic.id, resolvedTopic.label, roadmapSlug);
     const complexityBlueprint = resolveComplexityBlueprint(resolvedTopic.id, resolvedTopic.label, roadmapSlug);
     const awesomeTools = resolveAwesomeTools(resolvedTopic.id, resolvedTopic.label, roadmapSlug);
+    const deepDiveGuide = resolveTopicDeepDiveGuide(roadmapSlug, resolvedTopic.id, resolvedTopic.label);
 
     return {
       roadmap,
@@ -2145,6 +2162,7 @@ export function getRoadmapTopicDetails(roadmapSlug: string, topicId: string): Ro
       productionChecklist,
       complexityBlueprint,
       awesomeTools,
+      deepDiveGuide,
     };
   } catch (e) {
     console.error(`Error loading topic ${topicId} for roadmap ${roadmapSlug}:`, e);

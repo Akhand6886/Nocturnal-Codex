@@ -131,6 +131,35 @@
       }
     },
     {
+      "id": "realtime-fanout",
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 300
+      },
+      "data": {
+        "label": "Real-Time Push & Fanout (WebSockets/SSE)",
+        "status": "recommended",
+        "description": "Scale stateful persistent connections (WebSockets, Server-Sent Events) to 1M+ concurrent users using Pushpin reverse-proxying, edge fan-out, and pub/sub broker backplanes.",
+        "codeSnippet": "// Fanout Pushpin Grip WebSocket Proxy Protocol Header\n// Backend returns HTTP 200 with Grip headers to hold socket\nres.setHeader('Grip-Hold', 'websocket');\nres.setHeader('Grip-Channel', 'chat-room-101');\nres.status(200).send('WebSocket connection accepted and delegated to proxy');",
+        "prerequisites": [
+          "REST, GraphQL & gRPC APIs"
+        ],
+        "resources": [
+          {
+            "title": "Fanout.sh — Real-time Push & Edge Architecture",
+            "url": "https://fanout.sh/",
+            "type": "docs"
+          },
+          {
+            "title": "Pushpin — Reverse Proxy for WebSockets & SSE",
+            "url": "https://pushpin.org/",
+            "type": "docs"
+          }
+        ]
+      }
+    },
+    {
       "id": "authentication",
       "type": "topic",
       "position": {
@@ -186,6 +215,30 @@
       }
     },
     {
+      "id": "distributed-systems",
+      "type": "topic",
+      "position": {
+        "x": 650,
+        "y": 500
+      },
+      "data": {
+        "label": "Distributed Systems, Consensus & Saga Patterns",
+        "status": "recommended",
+        "description": "Master CAP theorem trade-offs, Raft/Paxos consensus, distributed transactions via Saga choreography/orchestration, transactional outbox pattern, and idempotency keys.",
+        "codeSnippet": "// Transactional Outbox Pattern in PostgreSQL\nBEGIN;\nINSERT INTO orders (id, user_id, amount, status) VALUES ($1, $2, $3, 'PENDING');\nINSERT INTO outbox_events (aggregate_type, aggregate_id, event_type, payload)\n  VALUES ('Order', $1, 'OrderCreated', json_build_object('id', $1, 'amount', $3));\nCOMMIT;",
+        "prerequisites": [
+          "Async Queues (Kafka / RabbitMQ)"
+        ],
+        "resources": [
+          {
+            "title": "Martin Kleppmann — Designing Data-Intensive Applications",
+            "url": "https://dataintensive.net/",
+            "type": "docs"
+          }
+        ]
+      }
+    },
+    {
       "id": "docker-containers",
       "type": "topic",
       "position": {
@@ -236,6 +289,12 @@
       "type": "roadmap"
     },
     {
+      "id": "e-api-fanout",
+      "source": "api-architecture",
+      "target": "realtime-fanout",
+      "type": "dotted"
+    },
+    {
       "id": "e-api-auth",
       "source": "api-architecture",
       "target": "authentication",
@@ -246,6 +305,12 @@
       "source": "api-architecture",
       "target": "message-queues",
       "type": "dotted"
+    },
+    {
+      "id": "e-queues-dist",
+      "source": "message-queues",
+      "target": "distributed-systems",
+      "type": "roadmap"
     },
     {
       "id": "e-auth-docker",
