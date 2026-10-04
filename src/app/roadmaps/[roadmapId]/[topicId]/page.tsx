@@ -41,20 +41,5 @@ export default async function TopicPage({ params }: TopicPageProps) {
     notFound();
   }
 
-  const relatedLanguage = detectRelatedSiteLanguage(details.topic);
-
-  return (
-    <RoadmapTopicPageView
-      roadmap={details.roadmap}
-      chapter={details.chapter}
-      topic={details.topic}
-      chapterIndex={details.chapterIndex}
-      topicIndexInChapter={details.topicIndexInChapter}
-      totalTopics={details.totalTopics}
-      currentPosition={details.currentPosition}
-      relatedLanguage={relatedLanguage}
-      prevTopic={details.prevTopic}
-      nextTopic={details.nextTopic}
-    />
-  );
+  return <RoadmapTopicPageView details={details} />;
 }
