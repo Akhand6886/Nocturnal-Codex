@@ -1185,8 +1185,10 @@ export function getRoadmapTopicDetails(roadmapSlug: string, topicId: string): Ro
 
     const flattened: { topic: RoadmapTopic; chapter: RoadmapChapter; chIndex: number; indexInCh: number }[] = [];
     
-    chapters.forEach((ch, chIdx) => {
-      ch.topics.forEach((top, topIdx) => {
+    for (let chIdx = 0; chIdx < chapters.length; chIdx++) {
+      const ch = chapters[chIdx];
+      for (let topIdx = 0; topIdx < ch.topics.length; topIdx++) {
+        const top = ch.topics[topIdx];
         flattened.push({ topic: top, chapter: ch, chIndex: chIdx + 1, indexInCh: topIdx + 1 });
         if (top.id === topicId) {
           foundChapter = ch;
@@ -1195,29 +1197,32 @@ export function getRoadmapTopicDetails(roadmapSlug: string, topicId: string): Ro
           topicIndexInChapter = topIdx + 1;
           globalIndex = flattened.length - 1;
         }
-      });
-    });
+      }
+    }
 
     if (!foundTopic || !foundChapter) return null;
+
+    const resolvedTopic: RoadmapTopic = foundTopic;
+    const resolvedChapter: RoadmapChapter = foundChapter;
 
     const prevTopic = globalIndex > 0 ? flattened[globalIndex - 1] : null;
     const nextTopic = globalIndex < flattened.length - 1 ? flattened[globalIndex + 1] : null;
 
     // Detect related language
-    const relatedLanguage = detectRelatedSiteLanguage(foundTopic);
+    const relatedLanguage = detectRelatedSiteLanguage(resolvedTopic);
 
     // Resolve comprehensive in-house resources
-    const inHouseLessons = resolveInHouseLessons(foundTopic.id, relatedLanguage, foundTopic.label);
-    const inHouseProjects = resolveInHouseProjects(relatedLanguage, foundTopic.label);
-    const inHouseMath = resolveInHouseMath(roadmapSlug, foundTopic.id);
-    const architectureTenets = resolveArchitectureTenets(foundTopic.id, foundTopic.label, roadmapSlug);
-    const masteryQuiz = resolveMasteryQuiz(foundTopic.id, foundTopic.label);
-    const editorialSummary = resolveEditorialSummary(foundTopic.id, foundTopic.label, foundTopic.description);
+    const inHouseLessons = resolveInHouseLessons(resolvedTopic.id, relatedLanguage, resolvedTopic.label);
+    const inHouseProjects = resolveInHouseProjects(relatedLanguage, resolvedTopic.label);
+    const inHouseMath = resolveInHouseMath(roadmapSlug, resolvedTopic.id);
+    const architectureTenets = resolveArchitectureTenets(resolvedTopic.id, resolvedTopic.label, roadmapSlug);
+    const masteryQuiz = resolveMasteryQuiz(resolvedTopic.id, resolvedTopic.label);
+    const editorialSummary = resolveEditorialSummary(resolvedTopic.id, resolvedTopic.label, resolvedTopic.description);
 
     return {
       roadmap,
-      chapter: foundChapter,
-      topic: foundTopic,
+      chapter: resolvedChapter,
+      topic: resolvedTopic,
       chapterIndex,
       topicIndexInChapter,
       totalTopics: flattened.length,
