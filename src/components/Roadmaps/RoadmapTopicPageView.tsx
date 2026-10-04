@@ -15,39 +15,52 @@ import {
   Play,
   RotateCcw,
   Sparkles,
+  Layers,
+  Compass,
+  AlertTriangle,
+  Lightbulb,
+  HelpCircle,
+  CheckCircle2,
+  XCircle,
+  FolderGit2,
+  Binary,
+  FileText,
+  Terminal,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import type { RoadmapTopic, RoadmapChapter, Roadmap, SiteLanguageLink } from '@/lib/roadmaps';
+import type { RoadmapTopicDetailsResult } from '@/lib/roadmaps';
 
 interface RoadmapTopicPageViewProps {
-  roadmap: Roadmap;
-  chapter: RoadmapChapter;
-  topic: RoadmapTopic;
-  chapterIndex: number;
-  topicIndexInChapter: number;
-  totalTopics: number;
-  currentPosition: number;
-  relatedLanguage: SiteLanguageLink | null;
-  prevTopic: { topic: RoadmapTopic; chapter: RoadmapChapter; chIndex: number; indexInCh: number } | null;
-  nextTopic: { topic: RoadmapTopic; chapter: RoadmapChapter; chIndex: number; indexInCh: number } | null;
+  details: RoadmapTopicDetailsResult;
 }
 
-export function RoadmapTopicPageView({
-  roadmap,
-  chapter,
-  topic,
-  chapterIndex,
-  topicIndexInChapter,
-  totalTopics,
-  currentPosition,
-  relatedLanguage,
-  prevTopic,
-  nextTopic,
-}: RoadmapTopicPageViewProps) {
+export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
+  const {
+    roadmap,
+    chapter,
+    topic,
+    chapterIndex,
+    topicIndexInChapter,
+    totalTopics,
+    currentPosition,
+    prevTopic,
+    nextTopic,
+    relatedLanguage,
+    inHouseLessons,
+    inHouseProjects,
+    inHouseMath,
+    architectureTenets,
+    masteryQuiz,
+    editorialSummary,
+  } = details;
+
   const storageKey = `nocturnal_roadmap_completed_${roadmap.slug}`;
   const [isCompleted, setIsCompleted] = useState(false);
   const [copiedCode, setCopiedCode] = useState(false);
+
+  // Interactive Quiz state: questionIndex -> selectedOptionIndex
+  const [quizAnswers, setQuizAnswers] = useState<Record<number, number>>({});
 
   // Sync completion state from localStorage
   useEffect(() => {
@@ -92,35 +105,48 @@ export function RoadmapTopicPageView({
     }
   }, [topic.codeSnippet]);
 
+  const selectQuizOption = (qIdx: number, optionIdx: number) => {
+    setQuizAnswers(prev => ({
+      ...prev,
+      [qIdx]: optionIdx,
+    }));
+  };
+
+  const resetQuiz = () => {
+    setQuizAnswers({});
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground pb-24">
-      {/* Top Breadcrumbs & Progress Bar */}
-      <div className="border-b border-border/50 bg-card/40 backdrop-blur-md sticky top-0 z-30">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      {/* Top Breadcrumbs & Navigation Sticky Bar */}
+      <div className="border-b border-border/50 bg-card/60 backdrop-blur-md sticky top-0 z-30 shadow-xs">
+        <div className="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
           {/* Back to Roadmap */}
           <Link
             href={`/roadmaps/${roadmap.slug}`}
             className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-            <span>{roadmap.title}</span>
+            <span className="font-semibold">{roadmap.title}</span>
           </Link>
 
-          {/* Chapter / Topic Index Pill */}
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
-              Chapter 0{chapterIndex} · Topic {topicIndexInChapter}
+          {/* Center Topic Tracking */}
+          <div className="hidden md:flex items-center gap-2 text-[11px] font-mono text-muted-foreground">
+            <span className="px-2 py-0.5 rounded-md bg-muted/60 border border-border/50">
+              Chapter 0{chapterIndex}
             </span>
-            <span className="text-[11px] font-mono text-muted-foreground/60">
-              ({currentPosition}/{totalTopics})
-            </span>
+            <span className="text-muted-foreground/50">·</span>
+            <span>Topic {topicIndexInChapter} of {chapter.topics.length}</span>
+            <span className="text-muted-foreground/40 font-mono">({currentPosition}/{totalTopics})</span>
+          </div>
 
-            {/* Toggle Status Pill */}
+          {/* Toggle Status Pill */}
+          <div className="flex items-center gap-2">
             <button
               onClick={toggleComplete}
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono transition-all border ${
                 isCompleted
-                  ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400'
+                  ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 font-semibold'
                   : 'bg-background border-border/70 text-muted-foreground hover:text-foreground hover:border-border'
               }`}
             >
@@ -129,13 +155,52 @@ export function RoadmapTopicPageView({
             </button>
           </div>
         </div>
+
+        {/* Quick Anchor Sub-navigation */}
+        <div className="max-w-5xl mx-auto px-4 py-1.5 flex items-center gap-4 text-[11px] font-mono text-muted-foreground overflow-x-auto border-t border-border/30 scrollbar-none">
+          <span className="text-muted-foreground/40 uppercase tracking-widest text-[9px]">Jump:</span>
+          {inHouseLessons.length > 0 && (
+            <a href="#in-house-modules" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <BookOpen className="w-3 h-3 text-primary" />
+              <span>In-House Lessons ({inHouseLessons.length})</span>
+            </a>
+          )}
+          <a href="#architecture-tenets" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+            <Layers className="w-3 h-3 text-primary" />
+            <span>Architecture & Code</span>
+          </a>
+          {inHouseProjects.length > 0 && (
+            <a href="#project-labs" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <FolderGit2 className="w-3 h-3 text-primary" />
+              <span>Project Labs ({inHouseProjects.length})</span>
+            </a>
+          )}
+          {inHouseMath.length > 0 && (
+            <a href="#math-theory" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <Binary className="w-3 h-3 text-primary" />
+              <span>Mathematics</span>
+            </a>
+          )}
+          {masteryQuiz.length > 0 && (
+            <a href="#mastery-quiz" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <HelpCircle className="w-3 h-3 text-primary" />
+              <span>Mastery Quiz</span>
+            </a>
+          )}
+          {topic.resources && topic.resources.length > 0 && (
+            <a href="#curated-resources" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <Compass className="w-3 h-3 text-primary" />
+              <span>Official Specs</span>
+            </a>
+          )}
+        </div>
       </div>
 
-      {/* Main Content Container */}
-      <main className="max-w-4xl mx-auto px-4 pt-10">
+      {/* Main Reading Container */}
+      <main className="max-w-5xl mx-auto px-4 pt-10">
         {/* Eyebrow & Chapter Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-3">
+        <div className="mb-10">
+          <div className="flex items-center gap-2 mb-3 flex-wrap">
             <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
               {roadmap.title.toUpperCase().replace(' ROADMAP', '')} // CHAPTER 0{chapterIndex}
             </span>
@@ -143,100 +208,491 @@ export function RoadmapTopicPageView({
             <span className="text-xs font-mono text-muted-foreground">
               {chapter.label}
             </span>
+            <span className="text-muted-foreground/40 font-mono text-xs">/</span>
+            <span className="text-xs font-mono text-muted-foreground/70">
+              Lesson {currentPosition} of {totalTopics}
+            </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.15]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-[1.12]">
             {topic.label}
           </h1>
 
-          {/* Topic Quote / Summary */}
+          {/* Topic Quote / Executive Description */}
           {topic.description && (
-            <div className="mt-5 p-5 rounded-2xl bg-card/60 border border-border/60 relative overflow-hidden">
+            <div className="mt-5 p-5 sm:p-6 rounded-2xl bg-card/60 border border-border/70 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
               <p className="text-base sm:text-lg text-foreground/90 font-serif italic leading-relaxed">
                 &ldquo;{topic.description}&rdquo;
               </p>
             </div>
           )}
-        </div>
 
-        {/* In-House Language Codex Link Card */}
-        {relatedLanguage && (
-          <div className="mb-10 p-6 rounded-2xl bg-gradient-to-r from-primary/10 via-accent/10 to-transparent border border-primary/30 shadow-sm relative overflow-hidden">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl flex-shrink-0" role="img" aria-label={relatedLanguage.name}>
-                  {relatedLanguage.icon}
-                </span>
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <h3 className="font-bold text-base text-foreground">
-                      Learn {relatedLanguage.name} on Nocturnal Codex
-                    </h3>
-                    <Badge variant="secondary" className="text-[10px] font-mono bg-primary/20 text-primary border-primary/30">
-                      IN-HOUSE GUIDE
-                    </Badge>
-                  </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {relatedLanguage.description}
-                  </p>
-                </div>
+          {/* Executive Architecture Synthesis (Key Takeaway & When to Use) */}
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-card/80 to-card/40 border border-border/60">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-primary font-bold mb-2">
+                <Lightbulb className="w-3.5 h-3.5 text-primary" />
+                <span>Core Mental Model</span>
               </div>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                {editorialSummary.keyTakeaway}
+              </p>
+            </div>
 
-              <Button asChild size="default" className="rounded-xl font-semibold gap-2 flex-shrink-0 shadow-sm">
-                <Link href={relatedLanguage.url}>
-                  <GraduationCap className="w-4 h-4" />
-                  Open {relatedLanguage.name} Guide
-                </Link>
-              </Button>
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-card/80 to-card/40 border border-border/60">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-foreground/90 font-bold mb-2">
+                <Compass className="w-3.5 h-3.5 text-muted-foreground" />
+                <span>When To Apply</span>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                {editorialSummary.whenToUse}
+              </p>
             </div>
           </div>
-        )}
+        </div>
 
-        {/* Key Concept / Code Example Section */}
-        {topic.codeSnippet && (
-          <section className="mb-10">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground/80 font-bold flex items-center gap-2">
-                <Code2 className="w-4 h-4 text-primary" />
-                Key Concept & Implementation
-              </h2>
-              <button
-                onClick={copyCode}
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground px-2.5 py-1 rounded-lg border border-border/50 hover:bg-muted/40 transition-colors"
-                title="Copy code snippet"
-              >
-                {copiedCode ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-500" />
-                    <span className="text-emerald-500">Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy</span>
-                  </>
-                )}
-              </button>
+        {/* SECTION 1: In-House Nocturnal Codex Curriculum (Featured First) */}
+        {inHouseLessons.length > 0 && (
+          <section id="in-house-modules" className="mb-14 scroll-mt-24">
+            <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Badge variant="secondary" className="text-[10px] font-mono bg-primary/20 text-primary border-primary/30 uppercase tracking-widest">
+                    Nocturnal Codex Curriculum
+                  </Badge>
+                  <span className="text-[11px] font-mono text-muted-foreground">
+                    {inHouseLessons.length} In-House Tutorials
+                  </span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-primary" />
+                  In-House Codex Modules & Tutorials
+                </h2>
+              </div>
+
+              {relatedLanguage && (
+                <Button asChild variant="outline" size="sm" className="rounded-xl text-xs font-mono gap-1.5 h-8">
+                  <Link href={relatedLanguage.url}>
+                    <GraduationCap className="w-3.5 h-3.5 text-primary" />
+                    Open Full {relatedLanguage.name} Codex →
+                  </Link>
+                </Button>
+              )}
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden border border-border/80 shadow-md">
-              <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 text-[11px] font-mono text-slate-400">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-rose-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
-                  <span className="ml-2 font-semibold text-slate-300">{topic.relatedLanguage || 'snippet'}</span>
-                </div>
-                <span>Architecture Pattern</span>
-              </div>
-              <pre className="p-5 bg-slate-950 text-cyan-300 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed">
-                <code>{topic.codeSnippet}</code>
-              </pre>
+            <p className="text-xs sm:text-sm text-muted-foreground mb-5 leading-relaxed">
+              Every lesson below is an original, production-tested interactive guide written specifically for Nocturnal Codex. Click any module to dive into practical code examples, mental models, and deep-dive explanations.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {inHouseLessons.map((lesson, idx) => (
+                <Link
+                  key={idx}
+                  href={lesson.url}
+                  className="group p-5 rounded-2xl border border-border/70 bg-card/60 hover:bg-card hover:border-primary/50 transition-all duration-200 shadow-xs relative flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-md bg-primary/10 text-primary border border-primary/20 font-semibold">
+                        {lesson.badge || 'Codex Lesson'}
+                      </span>
+                      {lesson.readTime && (
+                        <span className="text-[10px] font-mono text-muted-foreground/60">
+                          {lesson.readTime}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors flex items-center justify-between gap-2">
+                      <span>{lesson.title}</span>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
+                      {lesson.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-border/40 flex items-center justify-between text-[11px] font-mono text-muted-foreground/70 group-hover:text-primary transition-colors">
+                    <span className="flex items-center gap-1.5">
+                      <FileText className="w-3 h-3" />
+                      Read in-house guide
+                    </span>
+                    <span className="font-semibold">Explore →</span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </section>
         )}
 
-        {/* Prerequisites */}
+        {/* SECTION 2: Architecture Tenets & Production Code */}
+        <section id="architecture-tenets" className="mb-14 scroll-mt-24">
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-1">
+              <Badge variant="outline" className="text-[10px] font-mono uppercase tracking-widest text-primary border-primary/30">
+                Production Standards
+              </Badge>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+              <Layers className="w-5 h-5 text-primary" />
+              Codex Engineering Tenets
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Architectural rules of thumb and design patterns enforced across senior engineering teams.
+            </p>
+          </div>
+
+          {/* Tenet Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            {architectureTenets.map((tenet) => (
+              <div
+                key={tenet.ruleNumber}
+                className="p-5 rounded-2xl border border-border/70 bg-card/50 relative overflow-hidden"
+              >
+                <div className="flex items-start gap-3.5">
+                  <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center font-mono text-xs font-bold text-primary flex-shrink-0">
+                    0{tenet.ruleNumber}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-sm sm:text-base text-foreground leading-snug">
+                      {tenet.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-foreground/80 mt-1.5 leading-relaxed font-medium">
+                      {tenet.principle}
+                    </p>
+                    <p className="text-[11px] sm:text-xs text-muted-foreground mt-2 leading-relaxed bg-muted/40 p-2.5 rounded-xl border border-border/40">
+                      <span className="font-semibold text-foreground/80">Rationale: </span>
+                      {tenet.rationale}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Key Concept / Code Example */}
+          {topic.codeSnippet && (
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                  <Terminal className="w-3.5 h-3.5 text-primary" />
+                  <span>Canonical Implementation Pattern</span>
+                </div>
+                <button
+                  onClick={copyCode}
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground px-2.5 py-1 rounded-lg border border-border/50 hover:bg-muted/40 transition-colors"
+                  title="Copy code snippet"
+                >
+                  {copiedCode ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-500" />
+                      <span className="text-emerald-500">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Pattern</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <div className="relative rounded-2xl overflow-hidden border border-border/80 shadow-md">
+                <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800 text-[11px] font-mono text-slate-400">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-rose-500/60" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+                    <span className="ml-2 font-semibold text-slate-300">
+                      {topic.relatedLanguage || 'snippet'}
+                    </span>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-wider text-slate-500">Production Pattern</span>
+                </div>
+                <pre className="p-5 bg-slate-950 text-cyan-300 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed">
+                  <code>{topic.codeSnippet}</code>
+                </pre>
+              </div>
+            </div>
+          )}
+
+          {/* Production Pitfalls & Anti-Patterns */}
+          {editorialSummary.commonPitfalls && editorialSummary.commonPitfalls.length > 0 && (
+            <div className="p-5 rounded-2xl border border-amber-500/30 bg-amber-500/5">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold mb-3">
+                <AlertTriangle className="w-4 h-4 text-amber-500" />
+                <span>Common Production Anti-Patterns to Avoid</span>
+              </div>
+              <ul className="space-y-2">
+                {editorialSummary.commonPitfalls.map((pitfall, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/80 leading-relaxed">
+                    <span className="text-amber-500 font-bold mt-0.5">•</span>
+                    <span>{pitfall}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+
+        {/* SECTION 3: Hands-On In-House Projects & Open Source Repos */}
+        {inHouseProjects.length > 0 && (
+          <section id="project-labs" className="mb-14 scroll-mt-24">
+            <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Badge variant="outline" className="text-[10px] font-mono uppercase tracking-widest text-primary border-primary/30">
+                    Open Source Practice
+                  </Badge>
+                  <span className="text-[11px] font-mono text-muted-foreground">
+                    Real-world Repositories
+                  </span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                  <FolderGit2 className="w-5 h-5 text-primary" />
+                  Hands-On Project Labs
+                </h2>
+              </div>
+
+              <Button asChild variant="outline" size="sm" className="rounded-xl text-xs font-mono gap-1.5 h-8">
+                <Link href="/projects">
+                  Browse All Projects →
+                </Link>
+              </Button>
+            </div>
+
+            <p className="text-xs sm:text-sm text-muted-foreground mb-5 leading-relaxed">
+              Transition theory into real code. Practice by contributing to or studying these curated repositories from Nocturnal Codex’s open-source library.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {inHouseProjects.map((project) => (
+                <div
+                  key={project.id}
+                  className="p-5 rounded-2xl border border-border/70 bg-card/60 flex flex-col justify-between hover:border-primary/40 transition-all shadow-xs"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <h3 className="font-bold text-base text-foreground line-clamp-1">
+                        {project.title}
+                      </h3>
+                      <Badge
+                        variant="secondary"
+                        className={`text-[9px] font-mono uppercase tracking-wider ${
+                          project.difficulty === 'Beginner'
+                            ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30'
+                            : project.difficulty === 'Intermediate'
+                            ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30'
+                            : 'bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30'
+                        }`}
+                      >
+                        {project.difficulty}
+                      </Badge>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground line-clamp-3 leading-relaxed mb-3">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-muted/60 text-muted-foreground border border-border/40">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-3 border-t border-border/40 text-xs font-mono">
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold transition-colors"
+                    >
+                      <span>Repository</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                    {project.goodFirstIssuesUrl && (
+                      <a
+                        href={project.goodFirstIssuesUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-1.5 rounded-xl border border-border/60 hover:bg-muted/60 text-muted-foreground hover:text-foreground font-semibold transition-colors"
+                      >
+                        <span>Issues</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* SECTION 4: In-House Mathematics & Theory (when applicable) */}
+        {inHouseMath.length > 0 && (
+          <section id="math-theory" className="mb-14 scroll-mt-24">
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Badge variant="outline" className="text-[10px] font-mono uppercase tracking-widest text-primary border-primary/30">
+                  Theoretical Foundations
+                </Badge>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                <Binary className="w-5 h-5 text-primary" />
+                In-House Mathematics & Theory
+              </h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Rigorous mathematical principles underlying algorithms and computational pipelines in Nocturnal Codex.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {inHouseMath.map((m, idx) => (
+                <Link
+                  key={idx}
+                  href={m.url}
+                  className="group p-5 rounded-2xl border border-border/70 bg-card/60 hover:bg-card hover:border-primary/50 transition-all shadow-xs"
+                >
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors">
+                      {m.title}
+                    </h3>
+                    <ArrowRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                  </div>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {m.description}
+                  </p>
+                  <div className="mt-3 text-[11px] font-mono text-primary font-semibold">
+                    Read Math Module →
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* SECTION 5: Interactive Codex Mastery Check (Comprehension Quiz) */}
+        {masteryQuiz.length > 0 && (
+          <section id="mastery-quiz" className="mb-14 scroll-mt-24">
+            <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Badge variant="secondary" className="text-[10px] font-mono bg-primary/20 text-primary border-primary/30 uppercase tracking-widest">
+                    Comprehension Check
+                  </Badge>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                  <HelpCircle className="w-5 h-5 text-primary" />
+                  Codex Mastery Quiz
+                </h2>
+              </div>
+
+              {Object.keys(quizAnswers).length > 0 && (
+                <button
+                  onClick={resetQuiz}
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground px-3 py-1.5 rounded-xl border border-border/60 hover:bg-muted/40 transition-colors"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset Quiz</span>
+                </button>
+              )}
+            </div>
+
+            <p className="text-xs sm:text-sm text-muted-foreground mb-6 leading-relaxed">
+              Verify your comprehension of the core architectural principles before continuing to the next curriculum lesson.
+            </p>
+
+            <div className="space-y-6">
+              {masteryQuiz.map((q, qIdx) => {
+                const selectedOption = quizAnswers[qIdx];
+                const hasAnswered = selectedOption !== undefined;
+                const isCorrect = hasAnswered && selectedOption === q.correctIndex;
+
+                return (
+                  <div
+                    key={qIdx}
+                    className={`p-5 sm:p-6 rounded-2xl border transition-all ${
+                      hasAnswered
+                        ? isCorrect
+                          ? 'border-emerald-500/40 bg-emerald-500/5'
+                          : 'border-rose-500/40 bg-rose-500/5'
+                        : 'border-border/70 bg-card/60'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3 mb-4">
+                      <span className="w-6 h-6 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-xs font-mono font-bold text-primary flex-shrink-0 mt-0.5">
+                        Q{qIdx + 1}
+                      </span>
+                      <h3 className="font-bold text-sm sm:text-base text-foreground leading-snug">
+                        {q.question}
+                      </h3>
+                    </div>
+
+                    <div className="space-y-2.5 mb-4 pl-9">
+                      {q.options.map((option, optIdx) => {
+                        const isThisSelected = selectedOption === optIdx;
+                        const isThisCorrect = optIdx === q.correctIndex;
+
+                        let optionStyle = 'border-border/60 bg-background hover:bg-muted/40 text-foreground';
+                        if (hasAnswered) {
+                          if (isThisCorrect) {
+                            optionStyle = 'border-emerald-500/60 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-semibold';
+                          } else if (isThisSelected) {
+                            optionStyle = 'border-rose-500/60 bg-rose-500/10 text-rose-700 dark:text-rose-300';
+                          } else {
+                            optionStyle = 'border-border/40 bg-background/50 text-muted-foreground opacity-60';
+                          }
+                        }
+
+                        return (
+                          <button
+                            key={optIdx}
+                            onClick={() => selectQuizOption(qIdx, optIdx)}
+                            className={`w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm transition-all flex items-center justify-between gap-3 ${optionStyle}`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="w-5 h-5 rounded-md border border-current/30 flex items-center justify-center font-mono text-[10px] flex-shrink-0">
+                                {String.fromCharCode(65 + optIdx)}
+                              </span>
+                              <span>{option}</span>
+                            </div>
+
+                            {hasAnswered && isThisCorrect && (
+                              <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                            )}
+                            {hasAnswered && isThisSelected && !isThisCorrect && (
+                              <XCircle className="w-4 h-4 text-rose-500 flex-shrink-0" />
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {hasAnswered && (
+                      <div className="pl-9 pt-3 border-t border-border/40">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className={`text-xs font-mono font-bold ${isCorrect ? 'text-emerald-500' : 'text-rose-500'}`}>
+                            {isCorrect ? 'Correct ✓' : 'Incorrect ✗'}
+                          </span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
+                          {q.explanation}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* SECTION 6: Prerequisites */}
         {topic.prerequisites && topic.prerequisites.length > 0 && (
           <section className="mb-10">
             <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground/80 font-bold mb-3 flex items-center gap-2">
@@ -256,12 +712,12 @@ export function RoadmapTopicPageView({
           </section>
         )}
 
-        {/* Recommended Official Documentation & Resources */}
+        {/* SECTION 7: Recommended Official Documentation & Resources */}
         {topic.resources && topic.resources.length > 0 && (
-          <section className="mb-12">
+          <section id="curated-resources" className="mb-12 scroll-mt-24">
             <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground/80 font-bold mb-4 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-primary" />
-              Curated Documentation & Deep Dives ({topic.resources.length})
+              <Compass className="w-4 h-4 text-primary" />
+              Official Specifications & External RFCs ({topic.resources.length})
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               {topic.resources.map((res, index) => (
