@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import Link from 'next/link';
 import { RoadmapTimeline } from './RoadmapTimeline';
-import { TimelineSidebar } from './TimelineSidebar';
-import { RoadmapDrawer, type SelectedNodeData } from './RoadmapDrawer';
+import { CheckCircle, Trophy, ArrowRight, RotateCcw } from 'lucide-react';
 import type { RoadmapChapter, RoadmapTopic } from '@/lib/roadmaps';
 
 interface RoadmapTimelineViewProps {
@@ -13,9 +13,6 @@ interface RoadmapTimelineViewProps {
 }
 
 export function RoadmapTimelineView({ chapters, roadmapTitle, roadmapSlug }: RoadmapTimelineViewProps) {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedNode, setSelectedNode] = useState<SelectedNodeData | null>(null);
-  const [selectedChapterLabel, setSelectedChapterLabel] = useState<string | undefined>(undefined);
   const [completedTopicIds, setCompletedTopicIds] = useState<Set<string>>(new Set());
 
   const storageKey = `nocturnal_roadmap_completed_${roadmapSlug}`;
@@ -54,7 +51,7 @@ export function RoadmapTimelineView({ chapters, roadmapTitle, roadmapSlug }: Roa
   }, [storageKey]);
 
   const resetProgress = useCallback(() => {
-    if (window.confirm('Are you sure you want to reset your progress for this roadmap?')) {
+    if (window.confirm('Reset all completed lessons for this roadmap?')) {
       setCompletedTopicIds(new Set());
       try {
         localStorage.removeItem(storageKey);
@@ -76,105 +73,85 @@ export function RoadmapTimelineView({ chapters, roadmapTitle, roadmapSlug }: Roa
   }, [chapters]);
 
   const totalTopics = allTopics.length;
+  const completedCount = completedTopicIds.size;
+  const percent = totalTopics > 0 ? Math.round((completedCount / totalTopics) * 100) : 0;
+  const isComplete = totalTopics > 0 && completedCount >= totalTopics;
 
-  const onTopicClick = useCallback((topic: RoadmapTopic, chapter: RoadmapChapter) => {
-    setSelectedNode({
-      id: topic.id,
-      label: topic.label,
-      description: topic.description,
-      resources: topic.resources,
-      codeSnippet: topic.codeSnippet,
-      prerequisites: topic.prerequisites,
-      relatedLanguage: topic.relatedLanguage,
-    });
-    setSelectedChapterLabel(chapter.label);
-    setDrawerOpen(true);
-  }, []);
-
-  // Smart Find Next Topic
-  const onFindNextTopic = useCallback(() => {
-    // Find first incomplete topic
-    const nextItem = allTopics.find(item => !completedTopicIds.has(item.topic.id)) || allTopics[0];
-    if (!nextItem) return;
-
-    // Scroll to the element
-    const elem = document.querySelector(`[data-topic-id="${nextItem.topic.id}"]`);
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      elem.classList.add('ring-2', 'ring-primary', 'ring-offset-2');
-      setTimeout(() => {
-        elem.classList.remove('ring-2', 'ring-primary', 'ring-offset-2');
-      }, 1800);
-    }
-
-    onTopicClick(nextItem.topic, nextItem.chapter);
-  }, [allTopics, completedTopicIds, onTopicClick]);
-
-  // Drawer Next Topic Handler
-  const currentTopicIndex = selectedNode
-    ? allTopics.findIndex(item => item.topic.id === selectedNode.id)
-    : -1;
-
-  const hasNextTopic = currentTopicIndex >= 0 && currentTopicIndex < allTopics.length - 1;
-
-  const onNextTopic = useCallback(() => {
-    if (hasNextTopic && currentTopicIndex >= 0) {
-      const nextItem = allTopics[currentTopicIndex + 1];
-      onTopicClick(nextItem.topic, nextItem.chapter);
-    }
-  }, [hasNextTopic, currentTopicIndex, allTopics, onTopicClick]);
+  // Next incomplete topic
+  const nextIncompleteItem = allTopics.find(item => !completedTopicIds.has(item.topic.id)) || allTopics[0];
 
   return (
-    <>
-      {/* Section Divider */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        <div className="flex items-center gap-4">
-          <div className="flex-1 border-t border-dashed border-border/50" />
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-muted-foreground/40 whitespace-nowrap">
-            follow the path
-          </span>
-          <div className="flex-1 border-t border-dashed border-border/50" />
+    <div className="max-w-4xl mx-auto px-4">
+      {/* Progress & Quick Navigation Banner */}
+      <div className="my-8 p-5 sm:p-6 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-sm shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+          <div className="flex items-center gap-2.5">
+            {isComplete ? (
+              <div className="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-500 flex-shrink-0">
+                <Trophy className="w-4 h-4" />
+              </div>
+            ) : (
+              <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary flex-shrink-0">
+                <CheckCircle className="w-4 h-4" />
+              </div>
+            )}
+            <div>
+              <h2 className="text-sm font-bold text-foreground">
+                {isComplete ? 'Roadmap Fully Mastered!' : 'Your Learning Path'}
+              </h2>
+              <p className="text-xs text-muted-foreground">
+                {completedCount} of {totalTopics} lessons completed ({percent}%)
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 self-end sm:self-center">
+            {completedCount > 0 && (
+              <button
+                onClick={resetProgress}
+                className="text-[11px] font-mono text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors px-2 py-1"
+                title="Reset completed lessons"
+              >
+                <RotateCcw className="w-3 h-3" />
+                Reset
+              </button>
+            )}
+
+            {nextIncompleteItem && (
+              <Link
+                href={`/roadmaps/${roadmapSlug}/${nextIncompleteItem.topic.id}`}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-border/70 bg-background hover:bg-primary hover:text-primary-foreground hover:border-primary text-xs font-semibold transition-all duration-200 shadow-xs group"
+              >
+                <span>{isComplete ? 'Review Start' : 'Next Lesson'}</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            )}
+          </div>
+        </div>
+
+        {/* Horizontal Progress Bar */}
+        <div className="w-full h-2 rounded-full bg-muted/70 overflow-hidden">
+          <div
+            className={`h-full transition-all duration-500 rounded-full ${
+              isComplete
+                ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
+                : 'bg-primary'
+            }`}
+            style={{ width: `${percent}%` }}
+          />
         </div>
       </div>
 
-      {/* Two-Column Layout */}
-      <div className="max-w-5xl mx-auto px-4 pb-20" data-roadmap-timeline>
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
-          {/* Left Sidebar */}
-          <aside className="w-full lg:w-[340px] flex-shrink-0 order-2 lg:order-1">
-            <TimelineSidebar
-              totalTopics={totalTopics}
-              totalChapters={chapters.length}
-              completedCount={completedTopicIds.size}
-              onFindNextTopic={onFindNextTopic}
-              onResetProgress={resetProgress}
-            />
-          </aside>
-
-          {/* Right Timeline */}
-          <main className="flex-1 min-w-0 order-1 lg:order-2 w-full">
-            <RoadmapTimeline
-              chapters={chapters}
-              onTopicClick={onTopicClick}
-              roadmapTitle={roadmapTitle}
-              completedTopicIds={completedTopicIds}
-              onToggleTopicComplete={toggleTopicComplete}
-            />
-          </main>
-        </div>
-      </div>
-
-      {/* Drawer */}
-      <RoadmapDrawer
-        open={drawerOpen}
-        onOpenChange={setDrawerOpen}
-        data={selectedNode}
-        chapterLabel={selectedChapterLabel}
-        isCompleted={selectedNode ? completedTopicIds.has(selectedNode.id) : false}
-        onToggleComplete={selectedNode ? () => toggleTopicComplete(selectedNode.id) : undefined}
-        onNextTopic={onNextTopic}
-        hasNextTopic={hasNextTopic}
-      />
-    </>
+      {/* Main Wide Timeline */}
+      <main className="w-full">
+        <RoadmapTimeline
+          chapters={chapters}
+          roadmapSlug={roadmapSlug}
+          roadmapTitle={roadmapTitle}
+          completedTopicIds={completedTopicIds}
+          onToggleTopicComplete={toggleTopicComplete}
+        />
+      </main>
+    </div>
   );
 }
