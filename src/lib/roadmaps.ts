@@ -362,7 +362,19 @@ export function getAllRoadmapTopics(): { roadmapSlug: string; topicId: string }[
   return all;
 }
 
-export function getRoadmapTopicDetails(roadmapSlug: string, topicId: string) {
+export interface RoadmapTopicDetailsResult {
+  roadmap: Roadmap;
+  chapter: RoadmapChapter;
+  topic: RoadmapTopic;
+  chapterIndex: number;
+  topicIndexInChapter: number;
+  totalTopics: number;
+  currentPosition: number;
+  prevTopic: { topic: RoadmapTopic; chapter: RoadmapChapter; chIndex: number; indexInCh: number } | null;
+  nextTopic: { topic: RoadmapTopic; chapter: RoadmapChapter; chIndex: number; indexInCh: number } | null;
+}
+
+export function getRoadmapTopicDetails(roadmapSlug: string, topicId: string): RoadmapTopicDetailsResult | null {
   const roadmap = getRoadmapBySlug(roadmapSlug);
   if (!roadmap) return null;
 
