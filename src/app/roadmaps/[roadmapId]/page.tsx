@@ -62,7 +62,7 @@ export default async function RoadmapDetailsPage({ params }: RoadmapDetailsPageP
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Header */}
-      <header className="max-w-5xl mx-auto px-4 pt-10 pb-4">
+      <header className="max-w-4xl mx-auto px-4 pt-10 pb-2">
         {/* Back Link */}
         <Link
           href="/roadmaps"
