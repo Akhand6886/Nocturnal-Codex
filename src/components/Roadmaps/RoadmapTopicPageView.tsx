@@ -26,6 +26,15 @@ import {
   Binary,
   FileText,
   Terminal,
+  CheckSquare,
+  Square,
+  Cpu,
+  Clock,
+  HardDrive,
+  Scale,
+  Wrench,
+  ShieldCheck,
+  Zap,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -53,14 +62,22 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
     architectureTenets,
     masteryQuiz,
     editorialSummary,
+    productionChecklist,
+    complexityBlueprint,
+    awesomeTools,
   } = details;
 
   const storageKey = `nocturnal_roadmap_completed_${roadmap.slug}`;
+  const checklistStorageKey = `nocturnal_chk_${roadmap.slug}_${topic.id}`;
+
   const [isCompleted, setIsCompleted] = useState(false);
   const [copiedCode, setCopiedCode] = useState(false);
 
   // Interactive Quiz state: questionIndex -> selectedOptionIndex
   const [quizAnswers, setQuizAnswers] = useState<Record<number, number>>({});
+
+  // Interactive Checklist state: checklistItemId -> boolean
+  const [checkedChecklist, setCheckedChecklist] = useState<Record<string, boolean>>({});
 
   // Sync completion state from localStorage
   useEffect(() => {
@@ -76,6 +93,18 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
       // ignore
     }
   }, [storageKey, topic.id]);
+
+  // Sync checklist state from localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(checklistStorageKey);
+      if (saved) {
+        setCheckedChecklist(JSON.parse(saved));
+      }
+    } catch {
+      // ignore
+    }
+  }, [checklistStorageKey]);
 
   const toggleComplete = useCallback(() => {
     setIsCompleted(prev => {
@@ -97,6 +126,27 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
     });
   }, [storageKey, topic.id]);
 
+  const toggleChecklistItem = (id: string) => {
+    setCheckedChecklist(prev => {
+      const next = { ...prev, [id]: !prev[id] };
+      try {
+        localStorage.setItem(checklistStorageKey, JSON.stringify(next));
+      } catch (e) {
+        console.warn('Could not persist checklist state', e);
+      }
+      return next;
+    });
+  };
+
+  const resetChecklist = () => {
+    setCheckedChecklist({});
+    try {
+      localStorage.removeItem(checklistStorageKey);
+    } catch {
+      // ignore
+    }
+  };
+
   const copyCode = useCallback(() => {
     if (topic.codeSnippet) {
       navigator.clipboard.writeText(topic.codeSnippet);
@@ -115,6 +165,10 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
   const resetQuiz = () => {
     setQuizAnswers({});
   };
+
+  const totalChecklistItems = productionChecklist?.length || 0;
+  const completedChecklistCount = Object.values(checkedChecklist).filter(Boolean).length;
+  const checklistPercentage = totalChecklistItems > 0 ? Math.round((completedChecklistCount / totalChecklistItems) * 100) : 0;
 
   return (
     <div className="min-h-screen bg-background text-foreground pb-24">
@@ -169,10 +223,28 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
             <Layers className="w-3 h-3 text-primary" />
             <span>Architecture & Code</span>
           </a>
+          {productionChecklist && productionChecklist.length > 0 && (
+            <a href="#production-checklist" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <ShieldCheck className="w-3 h-3 text-emerald-500" />
+              <span>Checklist ({completedChecklistCount}/{totalChecklistItems})</span>
+            </a>
+          )}
+          {complexityBlueprint && (
+            <a href="#complexity-blueprint" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <Cpu className="w-3 h-3 text-cyan-500" />
+              <span>Complexity</span>
+            </a>
+          )}
           {inHouseProjects.length > 0 && (
             <a href="#project-labs" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
               <FolderGit2 className="w-3 h-3 text-primary" />
               <span>Project Labs ({inHouseProjects.length})</span>
+            </a>
+          )}
+          {awesomeTools && awesomeTools.length > 0 && (
+            <a href="#awesome-tools" className="hover:text-primary transition-colors flex items-center gap-1 flex-shrink-0">
+              <Wrench className="w-3 h-3 text-amber-500" />
+              <span>Awesome Tools</span>
             </a>
           )}
           {inHouseMath.length > 0 && (
@@ -437,7 +509,173 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
           )}
         </section>
 
-        {/* SECTION 3: Hands-On In-House Projects & Open Source Repos */}
+        {/* SECTION 3: Production Readiness Checklist (Interactive Audit) */}
+        {productionChecklist && productionChecklist.length > 0 && (
+          <section id="production-checklist" className="mb-14 scroll-mt-24">
+            <div className="flex items-center justify-between gap-4 mb-3 flex-wrap">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Badge variant="outline" className="text-[10px] font-mono uppercase tracking-widest text-emerald-500 border-emerald-500/30">
+                    Production Readiness Checklist
+                  </Badge>
+                  <span className="text-[11px] font-mono text-muted-foreground">
+                    Front-End & SRE Audit
+                  </span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                  Production Deployment Checklist
+                </h2>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400">
+                  {completedChecklistCount} of {totalChecklistItems} verified ({checklistPercentage}%)
+                </span>
+                {completedChecklistCount > 0 && (
+                  <button
+                    onClick={resetChecklist}
+                    className="text-[11px] font-mono text-muted-foreground hover:text-foreground underline"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Checklist Progress Bar */}
+            <div className="w-full h-1.5 rounded-full bg-muted/60 mb-5 overflow-hidden">
+              <div
+                className="h-full bg-emerald-500 transition-all duration-300 rounded-full"
+                style={{ width: `${checklistPercentage}%` }}
+              />
+            </div>
+
+            <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
+              Verify these critical production criteria before deploying into live production environments. Items persist automatically to your local workspace.
+            </p>
+
+            <div className="space-y-3">
+              {productionChecklist.map((item) => {
+                const isChecked = !!checkedChecklist[item.id];
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => toggleChecklistItem(item.id)}
+                    className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3.5 select-none ${
+                      isChecked
+                        ? 'border-emerald-500/40 bg-emerald-500/5'
+                        : 'border-border/70 bg-card/60 hover:bg-card hover:border-border'
+                    }`}
+                  >
+                    <div className="mt-0.5 flex-shrink-0 text-emerald-500">
+                      {isChecked ? (
+                        <CheckSquare className="w-4 h-4 fill-emerald-500/20" />
+                      ) : (
+                        <Square className="w-4 h-4 text-muted-foreground/40" />
+                      )}
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-md bg-muted/60 text-muted-foreground border border-border/40 font-semibold">
+                          {item.category}
+                        </span>
+                        <Badge
+                          variant="secondary"
+                          className={`text-[9px] font-mono uppercase tracking-wider ${
+                            item.priority === 'P0'
+                              ? 'bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30'
+                              : item.priority === 'P1'
+                              ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30'
+                              : 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30'
+                          }`}
+                        >
+                          {item.priority}
+                        </Badge>
+                      </div>
+
+                      <h4 className={`text-sm font-semibold leading-snug transition-colors ${isChecked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+                        {item.task}
+                      </h4>
+
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                        {item.explanation}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* SECTION 4: System & Algorithmic Complexity Blueprint */}
+        {complexityBlueprint && (
+          <section id="complexity-blueprint" className="mb-14 scroll-mt-24">
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Badge variant="outline" className="text-[10px] font-mono uppercase tracking-widest text-cyan-500 border-cyan-500/30">
+                  Computer Systems & Complexity
+                </Badge>
+                <span className="text-[11px] font-mono text-muted-foreground">
+                  OSSU & Algorithms Reference
+                </span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                <Cpu className="w-5 h-5 text-cyan-500" />
+                Algorithmic & Memory Blueprint
+              </h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Rigorous time/space complexity analysis and memory layout implications for high-throughput systems.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-5 rounded-2xl border border-border/70 bg-card/60">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-500 font-bold mb-2">
+                  <Clock className="w-4 h-4 text-cyan-500" />
+                  <span>Time Complexity & Runtime Flow</span>
+                </div>
+                <p className="text-xs sm:text-sm text-foreground/90 font-mono leading-relaxed">
+                  {complexityBlueprint.timeComplexity}
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl border border-border/70 bg-card/60">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-primary font-bold mb-2">
+                  <HardDrive className="w-4 h-4 text-primary" />
+                  <span>Space Complexity & Footprint</span>
+                </div>
+                <p className="text-xs sm:text-sm text-foreground/90 font-mono leading-relaxed">
+                  {complexityBlueprint.spaceComplexity}
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl border border-border/70 bg-card/60">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-500 font-bold mb-2">
+                  <Zap className="w-4 h-4 text-emerald-500" />
+                  <span>Memory Model & Cache Hierarchy</span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {complexityBlueprint.memoryModel}
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl border border-border/70 bg-card/60">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-500 font-bold mb-2">
+                  <Scale className="w-4 h-4 text-amber-500" />
+                  <span>Primary Architectural Trade-Off</span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {complexityBlueprint.keyTradeOff}
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* SECTION 5: Hands-On In-House Projects & Open Source Repos */}
         {inHouseProjects.length > 0 && (
           <section id="project-labs" className="mb-14 scroll-mt-24">
             <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
@@ -533,7 +771,69 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
           </section>
         )}
 
-        {/* SECTION 4: In-House Mathematics & Theory (when applicable) */}
+        {/* SECTION 6: Awesome Ecosystem & Tooling Grid */}
+        {awesomeTools && awesomeTools.length > 0 && (
+          <section id="awesome-tools" className="mb-14 scroll-mt-24">
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Badge variant="outline" className="text-[10px] font-mono uppercase tracking-widest text-amber-500 border-amber-500/30">
+                  Awesome Ecosystem
+                </Badge>
+                <span className="text-[11px] font-mono text-muted-foreground">
+                  sindresorhus/awesome Reference
+                </span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                <Wrench className="w-5 h-5 text-amber-500" />
+                Curated Awesome Tooling & CLIs
+              </h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Battle-tested utilities, linters, and developer toolchains used across senior engineering teams.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {awesomeTools.map((tool, idx) => (
+                <a
+                  key={idx}
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-5 rounded-2xl border border-border/70 bg-card/60 hover:bg-card hover:border-amber-500/50 transition-all flex flex-col justify-between shadow-xs"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-md bg-muted/60 text-muted-foreground border border-border/40 font-semibold">
+                        {tool.category}
+                      </span>
+                      {tool.badge && (
+                        <span className="text-[9px] font-mono px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-semibold">
+                          {tool.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="font-bold text-base text-foreground group-hover:text-amber-500 transition-colors flex items-center justify-between gap-2">
+                      <span>{tool.name}</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground/40 group-hover:text-amber-500 transition-colors flex-shrink-0" />
+                    </h3>
+
+                    <p className="text-xs text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
+                      {tool.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-2.5 border-t border-border/40 text-[11px] font-mono text-muted-foreground/70 group-hover:text-amber-500 transition-colors flex items-center justify-between">
+                    <span>Explore Tool</span>
+                    <span>→</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* SECTION 7: In-House Mathematics & Theory (when applicable) */}
         {inHouseMath.length > 0 && (
           <section id="math-theory" className="mb-14 scroll-mt-24">
             <div className="mb-4">
@@ -576,7 +876,7 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
           </section>
         )}
 
-        {/* SECTION 5: Interactive Codex Mastery Check (Comprehension Quiz) */}
+        {/* SECTION 8: Interactive Codex Mastery Check (Comprehension Quiz) */}
         {masteryQuiz.length > 0 && (
           <section id="mastery-quiz" className="mb-14 scroll-mt-24">
             <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
@@ -692,7 +992,7 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
           </section>
         )}
 
-        {/* SECTION 6: Prerequisites */}
+        {/* SECTION 9: Prerequisites */}
         {topic.prerequisites && topic.prerequisites.length > 0 && (
           <section className="mb-10">
             <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground/80 font-bold mb-3 flex items-center gap-2">
@@ -712,7 +1012,7 @@ export function RoadmapTopicPageView({ details }: RoadmapTopicPageViewProps) {
           </section>
         )}
 
-        {/* SECTION 7: Recommended Official Documentation & Resources */}
+        {/* SECTION 10: Recommended Official Documentation & Resources */}
         {topic.resources && topic.resources.length > 0 && (
           <section id="curated-resources" className="mb-12 scroll-mt-24">
             <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground/80 font-bold mb-4 flex items-center gap-2">
