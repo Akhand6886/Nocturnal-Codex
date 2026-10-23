@@ -1,107 +1,119 @@
 ---
 title: "Discrete Mathematics"
 slug: "discrete-math"
-description: "The study of mathematical structures that are fundamentally distinct and separable. The bedrock of algorithms, logic, and computation theory."
+description: "The mathematical foundations of computer science: logic, proofs, set theory, relations, combinatorics, recurrence relations, modular arithmetic, graph theory, and computation models."
 iconName: "math"
 topics:
-  - section: Foundations of Logic
-    description: The rules of formal reasoning and mathematical statements.
+  - section: "Part I: Foundations of Logic"
+    description: "The rules of formal reasoning, propositional calculus, predicate logic, Boolean algebra, and SAT solvers."
     items:
-      - title: Propositional Logic
-        description: Logical connectives, truth tables, and tautologies.
-        slug: propositional-logic
-      - title: Predicate Logic
-        description: Quantifiers, variables, and nested predicates.
-        slug: predicate-logic
-      - title: Logical Equivalences
-        description: De Morgan's laws, distributive laws, and conditional identities.
-        slug: logical-equivalences
-  - section: Proof Techniques
-    description: Strategies for proving mathematical theorems and claims.
+      - title: "Propositional Logic & SAT Solvers"
+        description: "Logical connectives, truth tables, tautologies, CNF/DNF normal forms, and the DPLL SAT algorithm."
+        slug: "propositional-logic"
+      - title: "Predicate Logic & Quantification"
+        description: "First-order logic, universal/existential quantifiers, nested predicates, Skolemization, and resolution refutation."
+        slug: "predicate-logic"
+      - title: "Logical Equivalences & Boolean Algebra"
+        description: "De Morgan's laws, Boolean algebra identities, Karnaugh maps (K-maps), and logic gate synthesis."
+        slug: "logical-equivalences"
+  - section: "Part II: Proof Techniques & Mathematical Reasoning"
+    description: "Rigorous strategies for proving algorithmic correctness, invariants, and structural theorems."
     items:
-      - title: Proof Techniques
-        description: Direct proof, contraposition, and proof by contradiction.
-        slug: proof-techniques
-      - title: Mathematical Induction
-        description: Proving statements for all natural numbers.
-        slug: mathematical-induction
-  - section: Discrete Structures
-    description: The fundamental building blocks of discrete mathematics.
+      - title: "Proof Techniques & Direct Reasoning"
+        description: "Direct proof, contraposition, contradiction, counterexamples, and Cantor's diagonal argument."
+        slug: "proof-techniques"
+      - title: "Mathematical & Structural Induction"
+        description: "Weak induction, strong induction, structural induction on recursive data structures, and loop invariants."
+        slug: "mathematical-induction"
+  - section: "Part III: Discrete Structures, Sets & Relations"
+    description: "Fundamental building blocks of data structures, relational databases, and type systems."
     items:
-      - title: Set Theory
-        description: Operations, subsets, and infinite sets.
-        slug: set-theory
-      - title: Functions & Mappings
-        description: Injective, surjective, and bijective functions.
-        slug: functions-mappings
-      - title: Relations
-        description: Properties, equivalence relations, and partial orders.
-        slug: relations
-  - section: Combinatorics
-    description: The mathematics of counting and arrangement.
+      - title: "Set Theory & Cardinality of Infinities"
+        description: "Set operations, power sets, Cartesian products, Russell's paradox, and countable vs uncountable infinities."
+        slug: "set-theory"
+      - title: "Functions, Mappings & Inverses"
+        description: "Injective, surjective, bijective functions, function composition, hash collisions, and inverse bijections."
+        slug: "functions-mappings"
+      - title: "Relations, Equivalence & Partial Orders"
+        description: "Binary relations, equivalence classes, partial orders (posets), Hasse diagrams, topological sorting, and Warshall's algorithm."
+        slug: "relations"
+  - section: "Part IV: Combinatorics & Recurrences"
+    description: "Counting principles, arrangement theory, recurrence relations, and algorithm complexity analysis."
     items:
-      - title: Counting Principles
-        description: The Rule of Sum, Rule of Product, and Inclusion-Exclusion.
-        slug: counting-principles
-      - title: Permutations & Combinations
-        description: Arrangements and selections, with and without replacement.
-        slug: permutations-combinations
-      - title: The Pigeonhole Principle
-        description: A simple but powerful tool for proving existence.
-        slug: pigeonhole-principle
-  - section: Graph Theory & Trees
-    description: The science of connectivity, networks, and hierarchical structures.
+      - title: "Counting Principles & Inclusion-Exclusion"
+        description: "Rule of sum, rule of product, Principle of Inclusion-Exclusion (PIE), derangements, and generating functions."
+        slug: "counting-principles"
+      - title: "Permutations, Combinations & Stars and Bars"
+        description: "Selections with/without replacement, binomial theorem, Pascal's identity, and stars-and-bars multiset counting."
+        slug: "permutations-combinations"
+      - title: "The Pigeonhole Principle & Ramsey Theory"
+        description: "Dirichlet's principle, generalized pigeonhole principle, memory bounds, and algorithmic lower bounds."
+        slug: "pigeonhole-principle"
+      - title: "Recurrence Relations & Master Theorem"
+        description: "Linear homogeneous recurrences, characteristic equations, Master Theorem for divide-and-conquer, and Akra-Bazzi."
+        slug: "recurrence-relations"
+  - section: "Part V: Number Theory & Modular Systems in Computing"
+    description: "Modular arithmetic, greatest common divisors, and the mathematical foundations of modern cryptography."
     items:
-      - title: Introduction to Graph Theory
-        description: Vertices, edges, degrees, and graph representations.
-        slug: graph-theory-intro
-      - title: Trees & Hierarchies
-        description: Rooted trees, spanning trees, and ASTs.
-        slug: trees-hierarchies
-      - title: Graph Algorithms
-        description: BFS, DFS, Dijkstra's, and Minimum Spanning Trees.
-        slug: graph-algorithms
-  - section: Formal Languages & Automata
-    description: Mathematical models of computation and grammar.
+      - title: "Modular Arithmetic & Cryptographic Foundations"
+        description: "Divisibility, Euclidean and Extended Euclidean algorithms, Bézout's identity, modular inverses, CRT, and RSA encryption."
+        slug: "modular-arithmetic-discrete"
+  - section: "Part VI: Graph Theory, Trees & Automata"
+    description: "The mathematics of networks, hierarchies, state machines, and the theoretical limits of computation."
     items:
-      - title: Finite Automata
-        description: DFAs, NFAs, regular expressions, and state machines.
-        slug: finite-automata
-      - title: Turing Machines
-        description: The universal model of computation and computability limits.
-        slug: turing-machines
+      - title: "Introduction to Graph Theory & Topologies"
+        description: "Vertex degrees, Handshaking lemma, paths, cycles, bipartite graphs, planar graphs, and Euler's formula."
+        slug: "graph-theory-intro"
+      - title: "Trees, Spanning Trees & Hierarchies"
+        description: "Tree characterization theorems, rooted trees, Cayley's formula, spanning trees, and AST compiler representations."
+        slug: "trees-hierarchies"
+      - title: "Graph Algorithms & Proofs of Correctness"
+        description: "BFS/DFS, Dijkstra's shortest path proof, Bellman-Ford, Kruskal/Prim MST cut property, and Max-Flow Min-Cut."
+        slug: "graph-algorithms"
+      - title: "Finite Automata & Regular Languages"
+        description: "DFAs, NFAs, powerset construction, regular expressions to NFA (Thompson's algorithm), and Myhill-Nerode minimization."
+        slug: "finite-automata"
+      - title: "Turing Machines & Computability Limits"
+        description: "7-tuple Turing machines, configuration transitions, undecidability of the Halting Problem, and the Church-Turing thesis."
+        slug: "turing-machines"
 ---
 
-## Introduction to Discrete Mathematics
+## The Bedrock of Computation
 
-Discrete mathematics is the mathematical foundation of computer science. While the physical world is often continuous, the digital world is fundamentally discrete—built on bits, sets, and logical states.
+While the physical universe is often modeled using the smooth, continuous mathematics of calculus and differential equations, **the digital universe is fundamentally discrete**. Modern computer systems operate on discrete bits, discrete memory addresses, discrete execution cycles, discrete state transitions, and discrete relational structures.
 
-### 1. Logic, Boolean Algebra, and Proofs
-- **Propositional & Predicate Logic**: The rules of formal reasoning.
-- **Proof Techniques**: Direct proof, Contradiction, and the most important for CS: **Mathematical Induction**.
-- **Structural Induction**: Proving properties of recursive data structures (like trees and lists), which is foundational for functional programming and compiler verification.
-
-### 2. Set Theory and Relations
-- **Sets and Functions**: The basic building blocks of any mathematical structure.
-- **Relations**: Essential for **Relational Databases (SQL)**. Understanding properties like reflexivity and transitivity is key to understanding joins, indexing, and equivalence.
-- **Infinite Sets**: The distinction between "Countable" and "Uncountable" infinity (Cantor's Diagonal Argument), which sets the limits of what can be computed.
-
-### 3. Graph Theory: The Science of Connectivity
-- **Nodes and Edges**: Modeling social networks, internet routing, and dependency graphs.
-- **Trees**: Hierarchical structures used in file systems, DOM trees, and ASTs (Abstract Syntax Trees) in compilers.
-- **Algorithms**: Shortest path (Dijkstra's), Minimum Spanning Trees, and Network Flow.
-
-### 4. Combinatorics and Counting
-- **Permutations and Combinations**: Calculating the state space of a system.
-- **Generating Functions**: A powerful technique for solving counting problems by treating sequences as the coefficients of a polynomial.
-- **The Pigeonhole Principle**: A simple but deep tool for proving lower bounds in algorithms.
-
-### 5. Formal Languages and Automata
-- **Finite Automata**: Mathematical models of "machines" with a finite number of states.
-- **Regex**: The mathematical foundation of string matching and lexing.
-- **Turing Machines**: The universal model of computation that defines what any computer can and cannot do.
+```
++-----------------------------------------------------------------------------------+
+|                        THE PILLARS OF DISCRETE MATHEMATICS                        |
++-----------------------------------------------------------------------------------+
+|  [Formal Logic & Proofs]       --> Correctness, SAT solvers, formal verification   |
+|           |                                                                       |
+|           v                                                                       |
+|  [Discrete Structures]         --> Sets, functions, relations, type systems        |
+|           |                                                                       |
+|           v                                                                       |
+|  [Combinatorics & Recurrences] --> Algorithm complexity, state space enumeration   |
+|           |                                                                       |
+|           v                                                                       |
+|  [Modular Arithmetic]         --> Cryptography, hash tables, distributed consensus|
+|           |                                                                       |
+|           v                                                                       |
+|  [Graphs, Trees & Automata]    --> Compilers, networks, computability boundaries  |
++-----------------------------------------------------------------------------------+
+```
 
 ---
 
-### The Telescope of the Programmer
-"Computer Science is no more about computers than astronomy is about telescopes." Discrete math is the telescope. It allows us to see the deep logical structures that make software possible.
+## Core Pillars in Computer Science & Engineering
+
+### 1. Formal Verification & Automated Theorem Proving
+Software bugs in distributed consensus algorithms (Raft, Paxos), cryptographic protocols, and aerospace flight control cannot be eliminated by casual unit testing. Discrete mathematics enables engineers to express system specifications in **First-Order Predicate Logic** and prove safety invariants mechanically using SAT/SMT solvers (Z3, CVC5) and model checkers (TLA+).
+
+### 2. Algorithmic Complexity & Recurrence Relations
+When designing divide-and-conquer algorithms (MergeSort, Fast Fourier Transform, Strassen's matrix multiplication), time complexity is governed by recurrence equations $T(n) = aT(n/b) + f(n)$. Applying the **Master Theorem** and generating functions provides precise asymptotic runtime and memory bounds.
+
+### 3. Cryptography & Public-Key Encryption
+The security of modern Internet communication (TLS, HTTPS, digital signatures) relies on discrete number theory: modular exponentiation, the Extended Euclidean algorithm, Bézout's identity, Fermat's Little Theorem, and the computational hardness of the Discrete Logarithm and Prime Factorization problems.
+
+### 4. Graph Theory & Network Routing
+The Internet itself is a massive graph. From BGP routing protocols and compiler Abstract Syntax Trees (ASTs) to social networks and database query execution planners, graph theory provides the topological grammar of connected computational systems.
