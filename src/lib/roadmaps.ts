@@ -962,10 +962,16 @@ export function resolveInHouseMath(roadmapSlug: string, topicId: string): InHous
         description: 'Multivariate chain rule, computational graphs, backpropagation calculus, and loss gradient dynamics.',
       },
       {
-        title: 'Probability & Statistical Inference',
-        slug: 'probability-statistics',
-        url: '/mathematics/probability-statistics',
-        description: 'Bayesian conditioning, probability distributions, expectations, variance, and maximum likelihood estimation.',
+        title: 'Probability Theory',
+        slug: 'probability',
+        url: '/mathematics/probability',
+        description: 'Kolmogorov axioms, conditional probability, random variables, concentration bounds, and Markov chains.',
+      },
+      {
+        title: 'Mathematical Statistics & Data Inference',
+        slug: 'statistics',
+        url: '/mathematics/statistics',
+        description: 'Point estimation, maximum likelihood, bootstrap resampling, hypothesis testing, and A/B experimentation.',
       },
       {
         title: 'Optimization Theory & Gradient Descent',
