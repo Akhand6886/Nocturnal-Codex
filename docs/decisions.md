@@ -52,3 +52,22 @@ This document logs significant architectural, structural, and design decisions m
   2. **Contentful Headless CMS:** Reserved exclusively for editorial and research articles.
 - **Consequences:** Curricula benefit from Git review workflows and zero API quotas, while dynamic articles remain editable without code deploys.
 
+---
+
+## ADR 006: Dynamic Sitemap & Search Engine Crawler Indexing
+- **Date:** 2026-11-09
+- **Status:** Accepted
+- **Context:** An outdated legacy configuration hardcoded `['/', '/admin']` in `sitemap.ts`, indexing a non-existent Netlify CMS path while omitting all 600+ static educational pathways, roadmaps, and language curricula.
+- **Decision:** Architect a dynamic, build-time sitemap generator in `src/app/sitemap.ts` that queries all data registries (`getAllRoadmaps()`, `getAllLanguages()`, `getAllMathDomains()`) alongside core static pages, outputting prioritized XML urlsets. Configure `src/app/robots.ts` with clean crawl directives.
+- **Consequences:** Guarantees 100% crawl coverage for search engines, eliminates 404 indexing errors, and dynamically updates as new markdown curricula are introduced.
+
+---
+
+## ADR 007: Landing Page Curriculum & Open-Source Synthesis
+- **Date:** 2026-11-09
+- **Status:** Accepted
+- **Context:** Visitors arriving at the home landing page lacked immediate discovery pathways to the Mathematics foundations and curated Open Source projects directories.
+- **Decision:** Elevate Mathematics Domains and Open Source Projects into prominent feature sections on `src/app/page.tsx`, directly linking theoretical study with practical GitHub repositories and "Good First Issues".
+- **Consequences:** Enhances user engagement, clarifies the platform's end-to-end educational journey (Learn -> Understand Theory -> Contribute to Open Source), and maintains consistent visual hierarchy.
+
+
