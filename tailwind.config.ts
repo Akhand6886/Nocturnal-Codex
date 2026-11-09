@@ -11,26 +11,17 @@ export default {
   theme: {
   	extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'], 
-        mono: ['var(--font-geist-mono)', 'monospace'], 
-        serif: ['var(--font-geist-sans)', 'Georgia', 'serif'],
+        sans: ['var(--font-quicksand)', 'system-ui', '-apple-system', 'sans-serif'], 
+        mono: ['var(--font-inconsolata)', 'monospace'], 
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
       },
       transitionTimingFunction: {
         'archive': 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
   		colors: {
-        'archive': {
-          '0': '#000000',
-          '1': '#181818',
-          '2': '#1F1F1F',
-          '3': '#272727',
-          '4': '#313131',
-          'warm': '#131209',
-          'amber': '#E5A93C',
-        },
-        'gradient-start': '#FFFFFF',
-        'gradient-middle': '#EDEDED',
-        'gradient-end': '#888888',
+        'gradient-start': 'hsl(var(--primary))',
+        'gradient-middle': 'hsl(var(--accent))',
+        'gradient-end': 'hsl(var(--primary))',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

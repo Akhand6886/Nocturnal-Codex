@@ -8,7 +8,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     <NextThemesProvider
       attribute="class"
       defaultTheme="dark"
-      enableSystem={false}
+      enableSystem={true}
       storageKey="nocturnal-codex-theme"
     >
       {children}
