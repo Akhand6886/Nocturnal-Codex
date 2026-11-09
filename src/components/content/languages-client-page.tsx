@@ -25,7 +25,7 @@ export function LanguagesClientPage({ allLanguages }: LanguagesClientPageProps) 
   return (
     <>
       {/* Category Filter Tabs */}
-      <div className="flex flex-wrap gap-2 mt-8 mb-10">
+      <div className="flex flex-wrap gap-2 mb-8">
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat;
           const count = cat === "All" 
@@ -38,14 +38,14 @@ export function LanguagesClientPage({ allLanguages }: LanguagesClientPageProps) 
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-3.5 py-1.5 rounded-md text-xs font-mono transition-all duration-200 ${
                 isActive
-                  ? 'bg-primary text-primary-foreground shadow-md'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                  ? 'bg-[#272727] text-[#E5A93C] border border-[#383838] font-semibold'
+                  : 'bg-[#181818] border border-[#272727] text-muted-foreground hover:text-foreground hover:bg-[#1F1F1F]'
               }`}
             >
               {cat}
-              <span className={`ml-2 text-xs ${isActive ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>
+              <span className={`ml-2 text-[10px] ${isActive ? 'text-[#E5A93C]/80' : 'text-muted-foreground/60'}`}>
                 {count}
               </span>
             </button>
@@ -55,22 +55,22 @@ export function LanguagesClientPage({ allLanguages }: LanguagesClientPageProps) 
 
       {/* Language Cards Grid */}
       {filteredLanguages.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {filteredLanguages.map((lang: Language) => (
-            <Link href={`/languages/${lang.slug}`} key={lang.id} className="group block">
-              <Card className="h-full overflow-hidden shadow-md hover:shadow-primary/15 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/40 rounded-lg">
-                <CardContent className="p-5 flex flex-col items-center text-center">
-                  <div className="p-2.5 bg-primary/10 rounded-lg mb-3">
-                    <SimpleIcon iconName={lang.iconName || 'code'} className="w-10 h-10 text-primary" />
+            <Link href={`/languages/${lang.slug}`} key={lang.id} className="group block h-full">
+              <Card className="h-full overflow-hidden bg-[#181818] border border-[#272727] hover:border-[#383838] hover:bg-[#1B1B1B] transition-all duration-300 ease-archive rounded-lg">
+                <CardContent className="p-4 flex flex-col items-center text-center h-full">
+                  <div className="p-2.5 bg-[#121212] border border-[#272727] rounded-lg mb-3 group-hover:border-[#383838] transition-colors">
+                    <SimpleIcon iconName={lang.iconName || 'code'} className="w-8 h-8 text-foreground group-hover:text-[#E5A93C] transition-colors" />
                   </div>
-                  <h3 className="text-sm font-semibold group-hover:text-primary transition-colors mb-1.5">{lang.name}</h3>
-                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{lang.description}</p>
-                  <div className="flex flex-wrap gap-1 justify-center">
+                  <h3 className="text-sm font-semibold text-foreground group-hover:text-[#E5A93C] transition-colors mb-1">{lang.name}</h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3 leading-relaxed">{lang.description}</p>
+                  <div className="flex flex-wrap gap-1 justify-center mt-auto">
                     {lang.difficulty && (
-                      <Badge variant="outline" className="text-[10px] px-1.5 py-0.5">{lang.difficulty}</Badge>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#121212] border border-[#272727] text-muted-foreground">{lang.difficulty}</span>
                     )}
                     {lang.category && (
-                      <Badge variant="secondary" className="text-[10px] px-1.5 py-0.5">{lang.category}</Badge>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#121212] border border-[#272727] text-muted-foreground">{lang.category}</span>
                     )}
                   </div>
                 </CardContent>
@@ -79,9 +79,11 @@ export function LanguagesClientPage({ allLanguages }: LanguagesClientPageProps) 
           ))}
         </div>
       ) : (
-        <p className="text-muted-foreground text-center py-10">
-          No languages found in this category.
-        </p>
+        <div className="text-center py-16 border border-dashed border-[#272727] rounded-lg bg-[#181818]">
+          <p className="text-xs font-mono text-muted-foreground">
+            No languages cataloged in this classification.
+          </p>
+        </div>
       )}
     </>
   );
