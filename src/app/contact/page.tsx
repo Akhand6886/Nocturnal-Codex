@@ -36,26 +36,31 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10 md:py-12">
+    <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
       />
-      <div className="space-y-10">
-        <header className="pb-6 border-b border-border text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground mb-4 flex items-center justify-center">
-            <Mail className="mr-3 h-10 w-10 text-primary" />
-            Contact Us
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+        <div className="space-y-3 max-w-2xl">
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+            TRANSMISSION INTERFACE // DIRECT DISPATCH
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
+            Contact the Codex
           </h1>
-          <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have questions, feedback, or a brilliant idea to share? We'd love to hear from you. Fill out the form below or reach out via email.
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            Have questions, feedback, or a theoretical correction to submit? Transmit your signal below or reach out via direct electronic mail.
           </p>
-        </header>
+        </div>
+      </header>
 
-        <section className="max-w-2xl mx-auto">
-          <p className="text-center text-muted-foreground mb-8">
-              Alternatively, you can email us directly at <a href="mailto:contact@nocturnalcodex.dev" className="text-primary hover:underline">contact@nocturnalcodex.dev</a>.
-          </p>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        <section className="max-w-2xl mx-auto space-y-6">
+          <div className="p-4 rounded-lg bg-[#181818] border border-[#272727] text-xs font-mono text-muted-foreground text-center">
+            Direct telemetry endpoint: <a href="mailto:contact@nocturnalcodex.dev" className="text-[#E5A93C] hover:underline">contact@nocturnalcodex.dev</a>
+          </div>
           <ContactForm />
         </section>
       </div>
