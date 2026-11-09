@@ -42,76 +42,96 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10 md:py-12">
+    <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
       />
-      <div className="space-y-12">
-        <header className="pb-6 border-b border-border text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground mb-4">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+        <div className="space-y-3 max-w-2xl">
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+            MANIFESTO & PROVENANCE // FOLIO 05
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
             About Nocturnal Codex
           </h1>
-          <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Unveiling the philosophy and the minds behind this digital haven for intellects.
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            A quiet sanctuary for computer science theory, systems architecture, and mathematical rigor—engineered without vanity or digital distraction.
           </p>
-        </header>
+        </div>
+      </header>
 
-        <section className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
+        <section className="grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
-            <div className="flex items-start space-x-4">
-              <User className="h-10 w-10 text-primary flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-2xl font-semibold text-foreground">The Custodian(s)</h2>
-                <p className="text-muted-foreground mt-1">
-                  Known only as "The Nocturnist" (or perhaps a collective thereof), the architect of this space prefers the quiet hum of servers to the spotlight. Driven by a passion for the elegant and the profound in computation and theory.
-                </p>
+            <div className="p-5 rounded-lg bg-[#181818] border border-[#272727] space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#E5A93C] uppercase tracking-wider">
+                <User className="h-4 w-4" />
+                <span>The Custodian(s)</span>
               </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Known as &ldquo;The Nocturnist&rdquo;, the custodian works quietly at the intersection of systems architecture, formal methods, and software engineering. Driven by the elegance of sound computational primitives.
+              </p>
             </div>
 
-            <div className="flex items-start space-x-4">
-              <Target className="h-10 w-10 text-primary flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-2xl font-semibold text-foreground">Purpose of the Site</h2>
-                <p className="text-muted-foreground mt-1">
-                  Nocturnal Codex aims to be a curated, high-signal repository of knowledge. A place free from digital noise, dedicated to the focused exploration of computer science, mathematics, and related theoretical domains. We champion clarity, depth, and the hacker spirit of relentless inquiry.
-                </p>
+            <div className="p-5 rounded-lg bg-[#181818] border border-[#272727] space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#E5A93C] uppercase tracking-wider">
+                <Target className="h-4 w-4" />
+                <span>Purpose of the Codex</span>
               </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                To serve as a curated, high-signal knowledge archive free from promotional noise. Focused on the rigorous exploration of foundational computer science, systems engineering, and mathematics.
+              </p>
             </div>
-            <div className="flex items-start space-x-4">
-              <Terminal className="h-10 w-10 text-primary flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-2xl font-semibold text-foreground">Our Ethos</h2>
-                <p className="text-muted-foreground mt-1">
-                  <strong className="text-foreground/90">Seek Truth:</strong> Uncover the fundamental principles.<br />
-                  <strong className="text-foreground/90">Share Knowledge:</strong> Curate and disseminate wisdom.<br />
-                  <strong className="text-foreground/90">Stay Curious:</strong> The unknown is an invitation.
-                </p>
+
+            <div className="p-5 rounded-lg bg-[#181818] border border-[#272727] space-y-3">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#E5A93C] uppercase tracking-wider">
+                <Terminal className="h-4 w-4" />
+                <span>Core Axioms</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                <div className="p-2.5 rounded bg-[#121212] border border-[#272727]">
+                  <span className="text-[10px] font-mono text-[#E5A93C] block">[01] TRUTH</span>
+                  <p className="text-[11px] text-muted-foreground mt-1">First-principles deduction.</p>
+                </div>
+                <div className="p-2.5 rounded bg-[#121212] border border-[#272727]">
+                  <span className="text-[10px] font-mono text-[#E5A93C] block">[02] SIGNAL</span>
+                  <p className="text-[11px] text-muted-foreground mt-1">Depth over algorithmic hype.</p>
+                </div>
+                <div className="p-2.5 rounded bg-[#121212] border border-[#272727]">
+                  <span className="text-[10px] font-mono text-[#E5A93C] block">[03] INQUIRY</span>
+                  <p className="text-[11px] text-muted-foreground mt-1">Perpetual learning loop.</p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="relative h-80 md:h-[450px] w-full rounded-lg overflow-hidden shadow-2xl">
-              <Image 
-                src="/images/about-hero.png" 
-                alt="Abstract representation of knowledge and code" 
-                width={600}
-                height={450}
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+
+          <div className="relative h-80 md:h-[420px] w-full rounded-lg overflow-hidden border border-[#272727] bg-[#141414]">
+            <Image 
+              src="/images/about-hero.png" 
+              alt="Abstract representation of knowledge and code" 
+              width={600}
+              height={450}
+              className="object-cover w-full h-full opacity-85"
+            />
           </div>
         </section>
 
-        <section className="pt-8 border-t border-border">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8 flex items-center justify-center text-foreground">
-              <Mail className="mr-3 h-8 w-8 text-primary" />
-              Get In Touch
-            </h2>
-            <p className="text-center text-muted-foreground mb-8">
-              Have a question, a correction, or a profound theory to share? Use the form below. Responses are not guaranteed but all coherent signals are processed.
-              Alternatively, reach out via <a href="mailto:contact@nocturnalcodex.dev" className="text-primary hover:underline">contact@nocturnalcodex.dev</a>.
-            </p>
+        <section className="pt-10 border-t border-[#272727]">
+          <div className="max-w-2xl mx-auto space-y-6">
+            <div className="text-center space-y-2">
+              <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+                <Mail className="h-3.5 w-3.5" />
+                SECURE TRANSMISSION
+              </div>
+              <h2 className="text-2xl font-semibold text-foreground tracking-tight">
+                Establish Direct Contact
+              </h2>
+              <p className="text-xs text-muted-foreground">
+                Corrections, theoretical inquiries, and high-signal contributions are welcomed.
+              </p>
+            </div>
             <ContactForm />
           </div>
         </section>
