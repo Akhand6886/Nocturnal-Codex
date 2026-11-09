@@ -41,8 +41,8 @@ export function Navbar() {
                   ? "w-full justify-start px-3 py-2 text-sm" 
                   : "px-2.5 py-1.5 h-8", 
                 isActive
-                  ? (isMobile ? "text-primary font-semibold bg-[#181818]" : "text-foreground font-semibold bg-[#181818] border border-[#272727]")
-                  : (isMobile ? "text-muted-foreground" : "text-muted-foreground hover:text-foreground hover:bg-[#181818]/80") 
+                  ? (isMobile ? "text-primary font-semibold bg-primary/10" : "text-primary font-semibold bg-primary/10 border border-primary/20")
+                  : (isMobile ? "text-muted-foreground hover:text-foreground hover:bg-muted" : "text-muted-foreground hover:text-foreground hover:bg-muted") 
               )}
             >
               {item.label}
@@ -54,7 +54,7 @@ export function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align={isMobile ? "start" : "center"}
-            className="bg-[#181818] border-[#272727] shadow-2xl w-56 rounded-md p-1"
+            className="bg-popover border-border text-popover-foreground shadow-2xl w-56 rounded-md p-1"
             sideOffset={isMobile ? 8 : 10} 
           >
             {item.children.map((child) => (
@@ -62,8 +62,8 @@ export function Navbar() {
                 <Link
                   href={child.href}
                   className={cn(
-                    "block hover:bg-[#272727] hover:text-foreground transition-colors",
-                     pathname === child.href ? "bg-[#272727] text-foreground font-medium" : "text-muted-foreground"
+                    "block hover:bg-muted hover:text-foreground transition-colors",
+                     pathname === child.href ? "bg-muted text-foreground font-medium" : "text-muted-foreground"
                   )}
                   onClick={() => isMobile && setIsSheetOpen(false)}
                 >
@@ -86,8 +86,8 @@ export function Navbar() {
             ? "block px-3 py-2 text-sm" 
             : "px-2.5 py-1.5 h-8 inline-flex items-center", 
           isActive
-            ? (isMobile ? "text-primary font-semibold bg-[#181818]" : "text-foreground font-semibold bg-[#181818] border border-[#272727]")
-            : (isMobile ? "text-muted-foreground" : "text-muted-foreground hover:text-foreground hover:bg-[#181818]/80") 
+            ? (isMobile ? "text-primary font-semibold bg-primary/10" : "text-primary font-semibold bg-primary/10 border border-primary/20")
+            : (isMobile ? "text-muted-foreground hover:text-foreground hover:bg-muted" : "text-muted-foreground hover:text-foreground hover:bg-muted") 
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -101,7 +101,7 @@ export function Navbar() {
       <div className="container flex h-14 max-w-screen-2xl items-center px-4 sm:px-6">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <span className="w-6 h-6 rounded bg-[#181818] border border-[#272727] flex items-center justify-center text-[11px] font-mono font-bold text-primary group-hover:border-primary/50 transition-colors">
+          <span className="w-6 h-6 rounded bg-primary/10 border border-primary/25 flex items-center justify-center text-[11px] font-mono font-bold text-primary group-hover:border-primary/50 transition-colors">
             NC
           </span>
           <span className="font-semibold text-sm tracking-tight text-foreground group-hover:text-primary transition-colors">
@@ -128,7 +128,7 @@ export function Navbar() {
           <div className="md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Toggle Menu" className="h-8 w-8 hover:bg-[#181818]">
+                <Button variant="ghost" size="icon" aria-label="Toggle Menu" className="h-8 w-8 hover:bg-muted">
                   <Menu className="h-4 w-4 text-foreground" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
@@ -139,7 +139,7 @@ export function Navbar() {
                   className="mb-6 flex items-center space-x-2.5 px-5 group"
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <span className="w-6 h-6 rounded bg-[#181818] border border-[#272727] flex items-center justify-center text-[11px] font-mono font-bold text-primary">
+                  <span className="w-6 h-6 rounded bg-muted border border-border flex items-center justify-center text-[11px] font-mono font-bold text-primary">
                     NC
                   </span>
                   <span className="font-semibold text-sm text-foreground">Nocturnal Codex</span>

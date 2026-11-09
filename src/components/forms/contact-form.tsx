@@ -70,7 +70,7 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6 border border-[#272727] rounded-lg bg-[#181818]">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6 border border-border rounded-xl bg-card shadow-sm">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
@@ -130,7 +130,7 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full md:w-auto bg-[#E5A93C] hover:bg-[#D4982B] text-black font-mono font-medium rounded-lg" disabled={form.formState.isSubmitting}>
+        <Button type="submit" size="lg" className="w-full md:w-auto font-medium rounded-lg" disabled={form.formState.isSubmitting}>
           {form.formState.isSubmitting ? "Transmitting..." : "Transmit Signal"}
           {!form.formState.isSubmitting && <Send className="ml-2 h-3.5 w-3.5" />}
         </Button>

@@ -3,13 +3,13 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-[#000000] mt-24 py-12">
+    <footer className="border-t border-border bg-card/40 mt-24 py-12">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
           {/* Column 1: Colophon Info (5 cols) */}
           <div className="md:col-span-5 space-y-3">
             <div className="flex items-center space-x-2.5">
-              <span className="w-6 h-6 rounded bg-[#181818] border border-[#272727] flex items-center justify-center text-[11px] font-mono font-bold text-primary">
+              <span className="w-6 h-6 rounded bg-primary/10 border border-primary/25 flex items-center justify-center text-[11px] font-mono font-bold text-primary">
                 NC
               </span>
               <span className="font-semibold text-sm tracking-tight text-foreground">
