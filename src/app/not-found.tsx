@@ -11,19 +11,22 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="container mx-auto flex min-h-[calc(100vh-12rem)] flex-col items-center justify-center px-4 text-center">
-      <AlertTriangle className="mb-4 h-16 w-16 text-destructive" />
-      <h1 className="mb-2 text-6xl font-extrabold text-foreground">404</h1>
-      <h2 className="mb-6 text-2xl font-semibold text-muted-foreground">
-        Page Not Found
-      </h2>
-      <p className="max-w-md text-foreground/80 mb-8">
-        Oops! The page you are looking for does not exist. It might have been
-        moved or deleted.
-      </p>
-      <Button asChild>
-        <Link href="/">Return to Homepage</Link>
-      </Button>
+    <div className="min-h-[calc(100vh-14rem)] flex items-center justify-center px-4 py-16">
+      <div className="max-w-md w-full p-8 rounded-lg bg-[#181818] border border-[#272727] text-center space-y-4">
+        <div className="inline-flex items-center gap-2 text-xs font-mono text-[#E5A93C] uppercase tracking-wider">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+          TELEMETRY // ERR_FOLIO_NOT_FOUND
+        </div>
+        <h1 className="text-5xl font-mono font-bold text-foreground">404</h1>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          The requested archival coordinates do not resolve to an active node or folio in the repository.
+        </p>
+        <div className="pt-2">
+          <Button asChild size="sm" className="bg-[#E5A93C] hover:bg-[#D4982B] text-black font-mono font-medium rounded-lg text-xs">
+            <Link href="/">Return to Archive Index</Link>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
