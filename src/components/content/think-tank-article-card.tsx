@@ -19,50 +19,51 @@ export function ThinkTankArticleCard({ article }: ThinkTankArticleCardProps) {
   const dataAiHint = article.featuredImage?.dataAiHint || "research image";
   
   return (
-    <Link href={article.url} className="group block">
-        <Card className="flex h-full flex-col overflow-hidden shadow-lg hover:shadow-accent/15 border border-border/50 hover:border-accent/40 transition-all duration-300 ease-in-out bg-card group rounded-xl">
+    <Link href={article.url} className="group block h-full">
+        <Card className="flex h-full flex-col overflow-hidden border border-[#272727] hover:border-[#383838] transition-all duration-300 ease-out bg-[#181818] hover:bg-[#1B1B1B] rounded-lg">
         {imageUrl && (
-            <div className="relative h-60 w-full overflow-hidden rounded-t-xl">
+            <div className="relative h-44 w-full overflow-hidden bg-[#121212]">
             <Image
                 src={imageUrl}
                 alt={imageAlt}
                 width={800}
                 height={450}
-                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                className="object-cover w-full h-full opacity-85 group-hover:opacity-100 group-hover:scale-102 transition-all duration-300 ease-out"
                 data-ai-hint={dataAiHint}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent group-hover:from-black/10 transition-colors duration-300"></div>
             </div>
         )}
-        <CardHeader className="pt-5">
-            <CardTitle className="text-xl font-semibold leading-tight group-hover:text-primary transition-colors duration-200 ease-in-out">{article.title}</CardTitle>
-            <div className="text-xs text-muted-foreground pt-2 space-y-1.5">
-            <div className="flex items-center space-x-1.5">
-                <Users className="h-4 w-4" />
+        <CardHeader className="p-5 pb-2">
+            <CardTitle className="text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors duration-200">{article.title}</CardTitle>
+            <div className="text-[11px] font-mono text-muted-foreground pt-2 flex flex-wrap items-center gap-3">
+            <div className="flex items-center space-x-1">
+                <Users className="h-3.5 w-3.5" />
                 <span>{article.authors.join(", ")}</span>
             </div>
-            <div className="flex items-center space-x-1.5">
-                <CalendarDays className="h-4 w-4" />
-                <span>{format(new Date(article.date), "MMMM d, yyyy")}</span>
+            <div className="flex items-center space-x-1">
+                <CalendarDays className="h-3.5 w-3.5" />
+                <span>{format(new Date(article.date), "MMM d, yyyy")}</span>
             </div>
             </div>
         </CardHeader>
-        <CardContent className="flex-grow py-3">
-            <CardDescription className="italic text-foreground/80">{richTextToPlainText(article.abstract)}</CardDescription>
+        <CardContent className="px-5 py-2 flex-grow">
+            <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">{richTextToPlainText(article.abstract)}</p>
             {article.tags && article.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-                <Tag className="h-4 w-4 text-muted-foreground inline-block mr-0.5" />
-                {article.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="text-xs font-medium">{tag}</Badge>
+            <div className="mt-3 flex flex-wrap gap-1">
+                {article.tags.slice(0, 3).map((tag) => (
+                <span key={tag} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#121212] border border-[#272727] text-muted-foreground">{tag}</span>
                 ))}
             </div>
             )}
         </CardContent>
-        <CardFooter className="pb-5">
-            <div className="text-primary font-medium text-sm flex items-center group-hover:text-accent transition-all duration-200 ease-in-out">
-                Read Full Article <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+        <CardFooter className="px-5 pt-3 pb-4 border-t border-[#272727] mt-auto">
+            <div className="text-muted-foreground font-mono text-xs flex items-center group-hover:text-primary transition-colors duration-200">
+                View paper <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
             </div>
         </CardFooter>
+        </Card>
+    </Link>
+  );
         </Card>
     </Link>
   );
