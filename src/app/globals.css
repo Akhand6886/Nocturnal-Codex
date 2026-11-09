@@ -4,132 +4,128 @@
 
 @layer base {
   :root {
-    /* 60% — Premium Warm-Beige Canvas */
-    --background: 36 28% 95%;
-    --foreground: 0 0% 0%;
-    --surface: 36 24% 93%;
+    /* Nocturnal Codex — Atmospheric Dark Archive Palette */
+    --background: 0 0% 0%;       /* #000000 Base Canvas */
+    --foreground: 0 0% 93%;      /* #EDEDED Primary High-Contrast Text */
+    --surface: 0 0% 9.4%;        /* #181818 Elevated Container Surface */
 
-    /* 30% — Elevated Soft-Cream Surfaces */
-    --card: 30 25% 99%;
-    --card-foreground: 0 0% 0%;
-    --popover: 30 25% 99%;
-    --popover-foreground: 0 0% 0%;
-    --secondary: 36 20% 92%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 36 20% 92%;
-    --muted-foreground: 0 0% 20%;
-    --border: 36 15% 88%;
-    --input: 36 15% 88%;
+    --card: 0 0% 9.4%;           /* #181818 Cards & Surfaces */
+    --card-foreground: 0 0% 93%; /* #EDEDED */
+    --popover: 0 0% 9.4%;        /* #181818 */
+    --popover-foreground: 0 0% 93%;
 
-    /* 10% — Premium Teal & Gold Accents */
-    --primary: 174 84% 32%;
-    --primary-foreground: 0 0% 100%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 38 25% 10%;
+    --secondary: 0 0% 12.2%;     /* #1F1F1F Secondary Surfaces */
+    --secondary-foreground: 0 0% 93%;
+    --muted: 0 0% 12.2%;         /* #1F1F1F Muted Fill */
+    --muted-foreground: 0 0% 62%;/* #9E9E9E Secondary Text */
+    
+    --border: 0 0% 15.3%;        /* #272727 Subtle Structural Border */
+    --input: 0 0% 15.3%;         /* #272727 Input Surface & Border */
+
+    /* Restrained Brand Accent: Warm Scholarly Amber/Gold */
+    --primary: 38 78% 57%;       /* #E5A93C */
+    --primary-foreground: 0 0% 0%;
+    --accent: 0 0% 12.2%;        /* #1F1F1F */
+    --accent-foreground: 38 78% 57%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 174 84% 32%;
-    --radius: 0.75rem;
+    --ring: 38 78% 57%;
+    --radius: 0.5rem;
 
-    --chart-1: 174 84% 32%;
-    --chart-2: 38 92% 50%;
-    --chart-3: 217 91% 60%;
-    --chart-4: 0 70% 60%;
-    --chart-5: 270 60% 60%;
+    --chart-1: 38 78% 57%;
+    --chart-2: 0 0% 70%;
+    --chart-3: 0 0% 50%;
+    --chart-4: 0 0% 35%;
+    --chart-5: 0 0% 20%;
 
     /* Roadmap UI specific colors */
-    --rm-topic-bg: 54 99% 54%;
-    --rm-topic-border: 0 0% 0%;
-    --rm-topic-text: 0 0% 0%;
+    --rm-topic-bg: 0 0% 9.4%;
+    --rm-topic-border: 0 0% 15.3%;
+    --rm-topic-text: 0 0% 93%;
     
-    --rm-subtopic-bg: 58 100% 88%;
-    --rm-subtopic-border: 0 0% 0%;
-    --rm-subtopic-text: 0 0% 0%;
+    --rm-subtopic-bg: 0 0% 12.2%;
+    --rm-subtopic-border: 0 0% 15.3%;
+    --rm-subtopic-text: 0 0% 93%;
     
-    --rm-section-text: 0 0% 0%;
+    --rm-section-text: 0 0% 93%;
     
-    --rm-blue-bg: 217 91% 60%;
-    --rm-blue-text: 0 0% 100%;
+    --rm-blue-bg: 0 0% 15.3%;
+    --rm-blue-text: 0 0% 93%;
     
-    --rm-info-bg: 210 20% 97%;
-    --rm-info-text: 215 25% 27%;
+    --rm-info-bg: 0 0% 12.2%;
+    --rm-info-text: 0 0% 62%;
     
-    --rm-edge: 217 91% 60%;
+    --rm-edge: 0 0% 22%;
     
-    --rm-done-icon: 260 100% 65%;
-    --rm-learning-icon: 152 76% 42%;
+    --rm-done-icon: 142 71% 45%;
+    --rm-learning-icon: 38 78% 57%;
   }
 
   .dark {
-    /* Premium OLED-style Dark Mode */
-    --background: 0 0% 0%; /* Pure pitch black */
-    --foreground: 0 0% 98%; /* High contrast off-white */
-    --surface: 0 0% 3%; /* Very subtle elevation */
+    /* Unified Dark Archive Token Overrides */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 93%;
+    --surface: 0 0% 9.4%;
 
-    /* Cards & Popovers */
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 98%;
+    --card: 0 0% 9.4%;
+    --card-foreground: 0 0% 93%;
+    --popover: 0 0% 9.4%;
+    --popover-foreground: 0 0% 93%;
     
-    /* Secondary & Muted */
-    --secondary: 0 0% 9%; 
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 9%;
-    --muted-foreground: 0 0% 60%;
+    --secondary: 0 0% 12.2%; 
+    --secondary-foreground: 0 0% 93%;
+    --muted: 0 0% 12.2%;
+    --muted-foreground: 0 0% 62%;
     
-    /* Borders & Inputs */
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
+    --border: 0 0% 15.3%;
+    --input: 0 0% 15.3%;
 
-    /* Brand Accents (Glowing Electric Teal & Gold) */
-    --primary: 180 100% 45%; 
+    --primary: 38 78% 57%; 
     --primary-foreground: 0 0% 0%;
-    --accent: 45 100% 55%; 
-    --accent-foreground: 0 0% 0%;
+    --accent: 0 0% 12.2%; 
+    --accent-foreground: 38 78% 57%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --ring: 180 100% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 38 78% 57%;
 
-    --chart-1: 180 100% 45%;
-    --chart-2: 45 100% 55%;
-    --chart-3: 210 90% 60%;
-    --chart-4: 0 70% 65%;
-    --chart-5: 280 60% 70%;
+    --chart-1: 38 78% 57%;
+    --chart-2: 0 0% 70%;
+    --chart-3: 0 0% 50%;
+    --chart-4: 0 0% 35%;
+    --chart-5: 0 0% 20%;
 
-    /* Dark mode Roadmap UI specific colors */
-    --rm-topic-bg: 54 99% 54%;
-    --rm-topic-border: 0 0% 0%;
-    --rm-topic-text: 0 0% 0%;
+    --rm-topic-bg: 0 0% 9.4%;
+    --rm-topic-border: 0 0% 15.3%;
+    --rm-topic-text: 0 0% 93%;
     
-    --rm-subtopic-bg: 58 100% 88%;
-    --rm-subtopic-border: 0 0% 0%;
-    --rm-subtopic-text: 0 0% 0%;
+    --rm-subtopic-bg: 0 0% 12.2%;
+    --rm-subtopic-border: 0 0% 15.3%;
+    --rm-subtopic-text: 0 0% 93%;
     
-    --rm-section-text: 0 0% 100%;
+    --rm-section-text: 0 0% 93%;
     
-    --rm-blue-bg: 217 91% 60%; 
-    --rm-blue-text: 0 0% 100%;
+    --rm-blue-bg: 0 0% 15.3%; 
+    --rm-blue-text: 0 0% 93%;
     
-    --rm-info-bg: 0 0% 9%;
-    --rm-info-text: 0 0% 98%;
+    --rm-info-bg: 0 0% 12.2%;
+    --rm-info-text: 0 0% 62%;
     
-    --rm-edge: 217 91% 60%;
+    --rm-edge: 0 0% 22%;
     
-    --rm-done-icon: 260 100% 65%;
-    --rm-learning-icon: 142 71% 45%;
+    --rm-done-icon: 142 71% 45%;
+    --rm-learning-icon: 38 78% 57%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border transition-colors duration-200 ease-in-out; 
+    @apply border-border transition-colors duration-200 ease-out; 
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-quicksand), sans-serif; 
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
