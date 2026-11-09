@@ -36,34 +36,34 @@ export function Navbar() {
             <Button
               variant="ghost"
               className={cn(
-                "text-sm font-semibold", // Changed from font-medium
+                "text-xs font-medium tracking-wide transition-all duration-150 rounded-md",
                 isMobile
-                  ? "w-full justify-start px-4 py-2.5 text-base" 
-                  : "px-3 py-2 rounded-md", 
+                  ? "w-full justify-start px-3 py-2 text-sm" 
+                  : "px-2.5 py-1.5 h-8", 
                 isActive
-                  ? (isMobile ? "text-primary font-bold" : "text-primary font-bold bg-primary/10 hover:bg-primary/15") // Used font-bold for active to be even clearer
-                  : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") 
+                  ? (isMobile ? "text-primary font-semibold bg-[#181818]" : "text-foreground font-semibold bg-[#181818] border border-[#272727]")
+                  : (isMobile ? "text-muted-foreground" : "text-muted-foreground hover:text-foreground hover:bg-[#181818]/80") 
               )}
             >
               {item.label}
               <ChevronDown className={cn(
-                  "ml-1.5 h-4 w-4 transition-transform duration-200",
-                  isActive && !isMobile ? "text-primary" : ""
+                  "ml-1 h-3.5 w-3.5 opacity-60 transition-transform duration-200",
+                  isActive && !isMobile ? "text-primary opacity-100" : ""
                 )} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align={isMobile ? "start" : "center"}
-            className="bg-popover border-border/70 shadow-xl w-60 md:w-auto rounded-lg"
-            sideOffset={isMobile ? 10 : 12} 
+            className="bg-[#181818] border-[#272727] shadow-2xl w-56 rounded-md p-1"
+            sideOffset={isMobile ? 8 : 10} 
           >
             {item.children.map((child) => (
-              <DropdownMenuItem key={child.label} asChild className="py-2 px-3 rounded-md">
+              <DropdownMenuItem key={child.label} asChild className="py-1.5 px-2.5 rounded text-xs">
                 <Link
                   href={child.href}
                   className={cn(
-                    "block text-sm hover:bg-accent/80 hover:text-accent-foreground",
-                     pathname === child.href ? "bg-accent text-accent-foreground font-medium" : "text-popover-foreground"
+                    "block hover:bg-[#272727] hover:text-foreground transition-colors",
+                     pathname === child.href ? "bg-[#272727] text-foreground font-medium" : "text-muted-foreground"
                   )}
                   onClick={() => isMobile && setIsSheetOpen(false)}
                 >
@@ -81,13 +81,13 @@ export function Navbar() {
         key={item.label}
         href={item.href}
         className={cn(
-          "text-sm font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-primary/50 rounded-md", // Changed from font-medium
+          "text-xs font-medium tracking-wide transition-all duration-150 rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60",
           isMobile
-            ? "block px-4 py-2.5 text-base" 
-            : "px-3 py-2", 
+            ? "block px-3 py-2 text-sm" 
+            : "px-2.5 py-1.5 h-8 inline-flex items-center", 
           isActive
-            ? (isMobile ? "text-primary font-bold" : "text-primary font-bold bg-primary/10 hover:bg-primary/15") // Used font-bold for active to be even clearer
-            : (isMobile ? "text-foreground/80" : "text-foreground/80 hover:text-primary hover:bg-accent/10") 
+            ? (isMobile ? "text-primary font-semibold bg-[#181818]" : "text-foreground font-semibold bg-[#181818] border border-[#272727]")
+            : (isMobile ? "text-muted-foreground" : "text-muted-foreground hover:text-foreground hover:bg-[#181818]/80") 
         )}
         onClick={() => isMobile && setIsSheetOpen(false)}
       >
@@ -97,18 +97,23 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-lg supports-[backdrop-filter]:bg-background/75">
-      <div className="container flex h-16 max-w-screen-2xl items-center px-4">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
+      <div className="container flex h-14 max-w-screen-2xl items-center px-4 sm:px-6">
         {/* Logo and Site Name */}
         <Link href="/" className="mr-6 flex items-center space-x-2.5 group">
-          <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow transition-transform duration-300" />
-          <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-200">
+          <span className="w-6 h-6 rounded bg-[#181818] border border-[#272727] flex items-center justify-center text-[11px] font-mono font-bold text-primary group-hover:border-primary/50 transition-colors">
+            NC
+          </span>
+          <span className="font-semibold text-sm tracking-tight text-foreground group-hover:text-primary transition-colors">
             Nocturnal Codex
+          </span>
+          <span className="hidden lg:inline-block text-[9px] font-mono text-muted-foreground border border-border px-1.5 py-0.5 rounded tracking-wider">
+            ARCHIVE
           </span>
         </Link>
         
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-1.5 md:ml-6"> {/* Added md:ml-6 */}
+        <nav className="hidden md:flex items-center space-x-1">
           {NAV_ITEMS.map((item) => renderNavItem(item))}
         </nav>
 
@@ -123,21 +128,23 @@ export function Navbar() {
           <div className="md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Toggle Menu" className="hover:bg-accent/20">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" size="icon" aria-label="Toggle Menu" className="h-8 w-8 hover:bg-[#181818]">
+                  <Menu className="h-4 w-4 text-foreground" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] bg-background p-0 pt-8 shadow-2xl border-r-border/70">
+              <SheetContent side="left" className="w-[280px] bg-background border-r border-border p-0 pt-6 shadow-2xl">
                 <Link
                   href="/"
-                  className="mb-8 flex items-center space-x-2.5 px-6 group"
+                  className="mb-6 flex items-center space-x-2.5 px-5 group"
                   onClick={() => setIsSheetOpen(false)}
                 >
-                  <Eye className="h-7 w-7 text-primary group-hover:animate-spin-slow" />
-                  <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Nocturnal Codex</span>
+                  <span className="w-6 h-6 rounded bg-[#181818] border border-[#272727] flex items-center justify-center text-[11px] font-mono font-bold text-primary">
+                    NC
+                  </span>
+                  <span className="font-semibold text-sm text-foreground">Nocturnal Codex</span>
                 </Link>
-                <nav className="flex flex-col space-y-1.5 px-4">
+                <nav className="flex flex-col space-y-1 px-3">
                   {NAV_ITEMS.map((item) => renderNavItem(item, true))}
                 </nav>
               </SheetContent>
