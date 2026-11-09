@@ -61,30 +61,39 @@ export default async function BlogPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10 md:py-12">
+    <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPageJsonLd) }}
       />
-      <div className="space-y-10">
-        <header className="pb-6 border-b border-border">
-          <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
-            <FileText className="mr-4 h-10 w-10 text-primary" />
-            Blog
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+        <div className="space-y-3 max-w-2xl">
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+            ARCHIVAL DISPATCHES // ESSAYS & ANALYSES
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
+            Technical Dispatches
           </h1>
-          <p className="mt-3 text-lg text-muted-foreground">
-            Insights, articles, and musings from the custodians of the Nocturnal Codex.
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            In-depth perspectives on systems architecture, compiler engineering, algorithm design, and computational philosophy.
           </p>
-        </header>
-        
+        </div>
+      </header>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
         {posts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
               <BlogPostCard key={post.id} post={post} /> 
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground text-center py-10">No blog posts yet. Check back soon!</p>
+          <div className="text-center py-16 border border-dashed border-[#272727] rounded-lg bg-[#181818]">
+            <p className="text-xs font-mono text-muted-foreground">
+              No dispatches currently published in the Contentful archive. Telemetry sync active.
+            </p>
+          </div>
         )}
       </div>
     </div>
