@@ -19,6 +19,8 @@ import SubtopicNode from '../Roadmaps/nodes/SubtopicNode';
 import BlueNode from '../Roadmaps/nodes/BlueNode';
 import InfoNode from '../Roadmaps/nodes/InfoNode';
 import LabelNode from '../Roadmaps/nodes/LabelNode';
+import ParagraphNode from '../Roadmaps/nodes/ParagraphNode';
+import LegendNode from '../Roadmaps/nodes/LegendNode';
 import RoadmapEdge from '../Roadmaps/edges/RoadmapEdge';
 import DottedEdge from '../Roadmaps/edges/DottedEdge';
 import { RoadmapDrawer, SelectedNodeData } from '../Roadmaps/RoadmapDrawer';
@@ -41,6 +43,8 @@ const nodeTypes = {
   blue: BlueNode,
   info: InfoNode,
   label: LabelNode,
+  paragraph: ParagraphNode,
+  legend: LegendNode,
   default: TopicNode,
 };
 

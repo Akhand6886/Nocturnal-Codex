@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2, Star, BookMarked } from "lucide-react";
+import { ArrowRight, FileText, Brain, BookOpenText, Lightbulb, Code2, Star, BookMarked, Sigma, Rocket, Github, ExternalLink } from "lucide-react";
 import { RandomTheoryDrop } from "@/components/content/random-theory-drop";
 import { BlogPostCard } from "@/components/content/blog-post-card";
 import { HeroTextGradientStyle } from "@/components/layout/hero-text-gradient-style";
@@ -11,6 +11,9 @@ import { SimpleIcon } from "@/components/common/simple-icon";
 import { getAllLanguages, type Language } from "@/lib/languages";
 import { RoadmapCard } from "@/components/Roadmaps/RoadmapCard";
 import { getAllRoadmaps } from "@/lib/roadmaps";
+import { getAllMathDomains, type MathDomain } from "@/lib/mathematics";
+import { getAllProjects, type Project } from "@/lib/projects";
+import { Badge } from "@/components/ui/badge";
 import { ThinkTankArticleCard } from "@/components/content/think-tank-article-card";
 
 export const revalidate = 60; 
@@ -28,6 +31,10 @@ export default async function HomePage() {
   const allRoadmaps = getAllRoadmaps();
   const featuredRoadmaps = allRoadmaps.filter(r => r.featured);
   const recentThinkTankArticles = await fetchThinkTankArticles({ limit: 2 }) || [];
+  const allMathDomains = getAllMathDomains();
+  const featuredMathDomains = allMathDomains.slice(0, 4);
+  const allProjects = getAllProjects();
+  const featuredProjects = allProjects.slice(0, 3);
   
 
   return (
@@ -129,7 +136,109 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* ===== 4. FEATURED INSIGHTS ===== */}
+      {/* ===== 4. MATHEMATICAL FOUNDATIONS ===== */}
+      {featuredMathDomains.length > 0 && (
+        <section>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-primary/30 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold flex items-center text-foreground/90">
+                <Sigma className="mr-3 h-7 w-7 text-primary" />
+                Mathematical Foundations
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Rigorous theory powering modern algorithms, cryptography, and artificial intelligence.
+              </p>
+            </div>
+            {allMathDomains.length > 4 && (
+              <Button asChild variant="ghost" size="sm" className="hover:text-primary hover:bg-primary/10 self-start sm:self-auto">
+                <Link href="/mathematics" className="flex items-center gap-1.5 font-medium">
+                  All Math Domains <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredMathDomains.map((math: MathDomain) => (
+              <Link href={math.url} key={math.slug} className="group block">
+                <Card className="h-full overflow-hidden shadow-sm hover:shadow-primary/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-card border border-border/50 hover:border-primary/60 rounded-xl flex flex-col justify-between">
+                  <CardContent className="p-6">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Sigma className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-lg font-bold group-hover:text-primary transition-colors mb-2">{math.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{math.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ===== 5. OPEN SOURCE CONTRIBUTION SANCTUARY ===== */}
+      {featuredProjects.length > 0 && (
+        <section>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-primary/30 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold flex items-center text-foreground/90">
+                <Rocket className="mr-3 h-7 w-7 text-primary" />
+                Open Source Projects
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Curated beginner and intermediate repositories to bridge theory with production code.
+              </p>
+            </div>
+            <Button asChild variant="ghost" size="sm" className="hover:text-primary hover:bg-primary/10 self-start sm:self-auto">
+              <Link href="/projects" className="flex items-center gap-1.5 font-medium">
+                View All Repositories <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredProjects.map((project: Project) => (
+              <Card key={project.id} className="flex flex-col border border-border/50 hover:border-primary/50 transition-all duration-300 bg-card shadow-sm hover:shadow-md rounded-xl justify-between">
+                <CardContent className="p-6 space-y-3">
+                  <div className="flex justify-between items-start gap-2">
+                    <h3 className="text-lg font-bold text-foreground leading-snug">{project.title}</h3>
+                    <Badge variant={
+                      project.difficulty === 'Beginner' ? 'secondary' : 
+                      project.difficulty === 'Intermediate' ? 'default' : 'destructive'
+                    } className="text-xs">
+                      {project.difficulty}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {project.tags.slice(0, 3).map((tag: string) => (
+                      <Badge key={tag} variant="outline" className="text-[10px] uppercase tracking-wider">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+                <div className="p-6 pt-0 grid grid-cols-2 gap-3 border-t border-border/30 mt-auto">
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-1.5 h-3.5 w-3.5" />
+                      Repo
+                    </a>
+                  </Button>
+                  <Button asChild size="sm" className="w-full">
+                    <a href={project.goodFirstIssuesUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
+                      Issues
+                    </a>
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ===== 6. FEATURED INSIGHTS ===== */}
       {featuredBlogPosts.length > 0 && (
         <section>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-primary/30 gap-4">

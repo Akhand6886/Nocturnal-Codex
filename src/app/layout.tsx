@@ -1,32 +1,20 @@
 
 import type { Metadata } from 'next';
-import { Quicksand, Inconsolata, Balsamiq_Sans, Playfair_Display } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 
-const quicksand = Quicksand({
-  variable: '--font-quicksand',
+const geistSans = Geist({
+  variable: '--font-geist-sans',
   subsets: ['latin'],
 });
 
-const inconsolata = Inconsolata({
-  variable: '--font-inconsolata',
-  subsets: ['latin'],
-});
-
-const balsamiqSans = Balsamiq_Sans({
-  weight: ['400', '700'],
-  variable: '--font-balsamiq',
-  subsets: ['latin'],
-});
-
-const playfairDisplay = Playfair_Display({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-playfair',
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
   subsets: ['latin'],
 });
 
@@ -125,7 +113,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className={`${quicksand.variable} ${inconsolata.variable} ${balsamiqSans.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground selection:bg-[#272727] selection:text-white`}>
         <ThemeProvider>
           <div className="flex-grow">
             <Navbar />
