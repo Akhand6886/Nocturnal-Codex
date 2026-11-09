@@ -64,7 +64,4 @@ export function ThinkTankArticleCard({ article }: ThinkTankArticleCardProps) {
         </Card>
     </Link>
   );
-        </Card>
-    </Link>
-  );
 }

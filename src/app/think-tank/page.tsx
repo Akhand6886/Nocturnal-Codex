@@ -16,26 +16,37 @@ export default async function ThinkTankPage() {
   const articles = await fetchThinkTankArticles({ preview: isEnabled });
 
   return (
-    <div className="container mx-auto px-4 py-10 md:py-12 space-y-10">
-      <header className="pb-6 border-b border-border">
-        <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
-          <BrainCircuit className="mr-4 h-10 w-10 text-primary" />
-          Think Tank
-        </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
-          In-depth research articles, original theories, and explorations on the frontiers of knowledge.
-        </p>
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+        <div className="space-y-3 max-w-2xl">
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+            RESEARCH INITIATIVE // THEORETICAL PAPERS
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
+            Think Tank
+          </h1>
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            Rigorous research papers, foundational proofs, and investigative inquiries on computational boundaries and emergent systems.
+          </p>
+        </div>
       </header>
       
-      {articles && articles.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-          {articles.map((article) => (
-            <ThinkTankArticleCard key={article.id} article={article} />
-          ))}
-        </div>
-      ) : (
-         <p className="text-muted-foreground text-center py-10">No Think Tank articles yet. Dive deep soon!</p>
-      )}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+        {articles && articles.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {articles.map((article) => (
+              <ThinkTankArticleCard key={article.id} article={article} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16 border border-dashed border-[#272727] rounded-lg bg-[#181818]">
+            <p className="text-xs font-mono text-muted-foreground">
+              No research monographs currently staged. All prospective folios under formal peer review.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
