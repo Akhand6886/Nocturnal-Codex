@@ -70,4 +70,18 @@ This document logs significant architectural, structural, and design decisions m
 - **Decision:** Elevate Mathematics Domains and Open Source Projects into prominent feature sections on `src/app/page.tsx`, directly linking theoretical study with practical GitHub repositories and "Good First Issues".
 - **Consequences:** Enhances user engagement, clarifies the platform's end-to-end educational journey (Learn -> Understand Theory -> Contribute to Open Source), and maintains consistent visual hierarchy.
 
+---
+
+## ADR 008: Premium Dark Digital Archive UI/UX Redesign
+- **Date:** 2026-11-09
+- **Status:** Accepted
+- **Context:** The previous visual interface featured generic neo-brutalist styling, mismatched fonts, high-contrast gaming animations, and inconsistent cards. A cohesive, high-end identity suited for a serious computer science knowledge archive was required.
+- **Decision:** Complete aesthetic transformation into a dark, atmospheric digital archive:
+  1. **Palette Tokens:** `#000000` (deep void background), `#181818` (surface elevation), `#1F1F1F` (secondary interactive), `#272727` (subtle border boundary), and restrained Amber Gold `#E5A93C` as single accent.
+  2. **Controlled Typography:** `Geist` as primary sans-serif body and display font; `Geist Mono` for technical folios, timestamps, code, and navigational metadata. Standardized on semibold weights and balanced heading wraps.
+  3. **Atmospheric Motion:** Micro-interactions standardized with `cubic-bezier(0.22, 1, 0.36, 1)` easing. Eliminated distracting screen-shake and neon animations while honoring `prefers-reduced-motion`.
+  4. **Universal Surface Cohesion:** Applied consistent borders, 8px corner radii, monochromatic vector containers, and monospace dossier eyebrows across all directory views (`/roadmaps`, `/languages`, `/mathematics`, `/projects`, `/about`, `/contact`, `/blog`, `/think-tank`).
+- **Consequences:** Replaced generic AI-generated card layouts with an intentional, editorial digital archive design that feels authoritative and distraction-free while maintaining all 635 static routes and backend logic.
+
+
 

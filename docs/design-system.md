@@ -2,87 +2,60 @@
 
 **Project:** Nocturnal Codex (`nocturnal-codex`)  
 **Document:** `docs/design-system.md`  
-**Status:** Approved / Baseline Design System  
-**Philosophy:** Editorial Neo-Brutalism meets High-Precision Technical Typography.
+**Status:** Approved / Premium Dark Digital Knowledge Archive  
+**Philosophy:** Atmospheric Minimalist Archive meets Precision Monospace Engineering.
 
 ---
 
 ## 1. Visual Philosophy & Core Identity
 
-Nocturnal Codex merges the intellectual warmth of classical academic compendiums with the razor-sharp clarity of modern developer tools. It balances two intentional themes:
-- **Diurnal (Light Mode):** A 60-30-10 warm-beige parchment canvas (`hsl(36 28% 95%)`) with deep charcoal typography (`hsl(0 0% 0%)`) and vibrant emerald teal/gold accents.
-- **Nocturnal (Dark Mode):** An OLED-optimized pitch black canvas (`hsl(0 0% 0%)`) with luminous electric cyan/teal (`hsl(180 100% 45%)`) and amber gold highlights.
-- **Interactive Roadmap Layer:** Neo-brutalist infographic styling with hard high-contrast borders (`2px solid #000`), vivid yellow/purple topic pills, and strict 90-degree connecting lines.
+Nocturnal Codex is designed as a sophisticated digital knowledge archive engineered for computer scientists, software architects, researchers, and serious autodidacts.
+
+Key design principles:
+- **Atmospheric, Not Loud:** Deep blacks (`#000000`), slate surface elevations (`#181818`, `#1F1F1F`), and clean micro-borders (`#272727`).
+- **Restrained Single Accent:** Warm Amber Gold (`#E5A93C`) used selectively for active state indicators, telemetry pings, and focal highlights.
+- **Editorial Typography:** Geist Sans for clean application readability paired with Geist Mono for technical folios, code snippets, metadata, and timestamps.
+- **Purposeful Motion:** Transitions governed by custom archive easing `cubic-bezier(0.22, 1, 0.36, 1)` with full `prefers-reduced-motion` compliance.
+- **Zero Decorative Noise:** No rainbow gradients, no neon glow halos, and no repetitive generic card grids.
 
 ---
 
 ## 2. Color Palette & Semantic Tokens
 
-### 2.1 Diurnal (Light Mode) Tokens
+### 2.1 Core Dark Archive Tokens
 | Token | HSL / CSS Value | Hex Approx | Semantic Role |
 | :--- | :--- | :--- | :--- |
-| `--background` | `36 28% 95%` | `#F6F4EE` | Primary parchment base (60%) |
-| `--surface` | `36 24% 93%` | `#EFECE3` | Container surface elevation |
-| `--card` | `30 25% 99%` | `#FCFBF9` | Elevated cards, dialogs, and popovers (30%) |
-| `--card-foreground` | `0 0% 0%` | `#000000` | Card title and primary text |
-| `--foreground` | `0 0% 0%` | `#000000` | Highest-contrast primary text |
-| `--muted` | `36 20% 92%` | `#EDE9DF` | Secondary card fills & divider stripes |
-| `--muted-foreground`| `0 0% 20%` | `#333333` | Secondary body text and metadata |
-| `--primary` | `174 84% 32%` | `#0D968B` | Deep Emerald Teal interactive brand fill (10%) |
-| `--primary-foreground`| `0 0% 100%` | `#FFFFFF` | Pure white text on primary fills |
-| `--accent` | `38 92% 50%` | `#F59E0B` | Warm Amber Gold highlight and secondary badges |
-| `--border` / `--input`| `36 15% 88%` | `#E3DFD5` | Parchment borders and input outlines |
-| `--ring` | `174 84% 32%` | `#0D968B` | Accessible high-contrast focus rings |
-| `--destructive` | `0 84% 60%` | `#EF4444` | Validation errors and danger actions |
-
-### 2.2 Nocturnal (Dark Mode) Tokens
-| Token | HSL / CSS Value | Hex Approx | Semantic Role |
-| :--- | :--- | :--- | :--- |
-| `--background` | `0 0% 0%` | `#000000` | OLED pure pitch black (60%) |
-| `--surface` | `0 0% 3%` | `#080808` | Subtle elevated panel surface |
-| `--card` | `0 0% 3%` | `#080808` | Elevated cards and menus (30%) |
-| `--card-foreground` | `0 0% 98%` | `#FAFAFA` | Card primary text |
-| `--foreground` | `0 0% 98%` | `#FAFAFA` | Crisp off-white text |
-| `--muted` | `0 0% 9%` | `#171717` | Muted background stripes and pills |
-| `--muted-foreground`| `0 0% 60%` | `#999999` | Subtitles, captions, and hints |
-| `--primary` | `180 100% 45%` | `#00E5E5` | Electric Cyan/Teal brand glow (10%) |
-| `--primary-foreground`| `0 0% 0%` | `#000000` | Black text on bright primary fills |
-| `--accent` | `45 100% 55%` | `#FFC21A` | Luminous amber gold highlights |
-| `--border` / `--input`| `0 0% 12%` | `#1F1F1F` | Deep slate structural borders |
-| `--ring` | `180 100% 45%` | `#00E5E5` | Cyan keyboard focus indicator |
-| `--destructive` | `0 84% 60%` | `#EF4444` | High-visibility warning red |
-
-### 2.3 Neo-Brutalist Roadmap Tokens
-| Token | Hex / HSL | Usage |
-| :--- | :--- | :--- |
-| `--rm-topic-bg` | `#FEF015` (`54 99% 54%`) | Core learning topic card background |
-| `--rm-topic-border` | `#000000` | Heavy 2px solid card border |
-| `--rm-subtopic-bg` | `hsl(58, 100%, 88%)` | Ancillary subtopic card background |
-| `--rm-edge` | `hsl(217, 91%, 60%)` | Smooth-step roadmap interconnecting line |
-| Topic Hard Shadow | `4px 4px 0px #000` | Physical neo-brutalist elevation |
+| `--background` | `0 0% 0%` | `#000000` | Deep archival void (Base canvas) |
+| `--card` / `--surface` | `0 0% 9.4%` | `#181818` | Primary surface containers, cards, and drawers |
+| `--card-hover` | `0 0% 10.6%` | `#1B1B1B` | Hover elevation for interactive cards |
+| `--secondary` | `0 0% 12.2%` | `#1F1F1F` | Secondary interactive pills and sub-containers |
+| `--border` / `--input` | `0 0% 15.3%` | `#272727` | Subtle border delimiters and frame bounds |
+| `--border-hover` | `0 0% 22%` | `#383838` | Hover state border delimiter |
+| `--foreground` | `0 0% 93%` | `#EDEDED` | Crisp primary body and heading copy |
+| `--muted-foreground` | `0 0% 64%` | `#A1A1A1` | Secondary descriptions, timestamps, and captions |
+| `--primary` | `38 78% 57%` | `#E5A93C` | Amber Gold archive accent token |
+| `--primary-foreground`| `0 0% 0%` | `#000000` | High-contrast black on amber fills |
+| `--ring` | `38 78% 57%` | `#E5A93C` | Keyboard accessibility focus indicator |
+| `--destructive` | `0 72% 51%` | `#DC2626` | Error states and critical telemetry warnings |
 
 ---
 
 ## 3. Typography Hierarchy
 
 ```
-Editorial Headings & Philosophy : Playfair Display (Serif)
-UI, Navigation, & Body Copy    : Quicksand / System Sans-Serif
-Code, Terminals, & Tokens      : Inconsolata / Fira Code (Monospace)
+Primary Body & Interface : Geist Sans
+Technical Folios & Code  : Geist Mono
 ```
 
 | Scale Token | Font Size | Line Height | Weight | Font Family | Styling Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Display H1** | `48px` (`3rem`) | `1.15` | `800` | Sans + Serif | Mobile: `36px`; gradient text flow with italicized serif highlights |
-| **Page H1** | `36px` (`2.25rem`)| `1.2` | `800` | Sans | Tracking tight; accompanied by themed category icon |
-| **Section H2**| `30px` (`1.875rem`)|`1.25`| `700` | Sans | Accompanied by themed Lucide icon and border accent |
-| **Card H3** | `20px` (`1.25rem`)| `1.35`| `600` | Sans | High legibility on dark and light surfaces |
-| **Subheading**| `16px` (`1rem`) | `1.4` | `600` | Sans | Uppercase letter-spacing (`tracking-wider`) |
-| **Body Large**| `18px` (`1.125rem`)|`1.6` | `400` | Sans | Hero leads and intro paragraphs |
-| **Body Base** | `15px` (`0.9375rem`)|`1.6` | `400` | Sans | Standard markdown and tutorial text |
-| **Body Small**| `13.5px` (`0.84rem`)|`1.5` | `400` | Sans | Captions, metadata, and breadcrumb labels |
-| **Code Inline**| `13.5px` | `1.4` | `500` | Mono | Rounded pill badge with background contrast |
-| **Code Block**| `13.5px` | `1.55`| `400` | Mono | Syntax-highlighted container with copy action |
+| **Hero Title** | `48px–64px` (`3rem–4rem`) | `1.1` | `600–700` | Geist Sans | Subtle white-to-neutral gradient; tracking tight |
+| **Section Header** | `30px–36px` (`1.875rem–2.25rem`)| `1.2` | `600` | Geist Sans | Accompanied by monospace `// INDEX XX` eyebrow |
+| **Card Header** | `16px–18px` (`1rem–1.125rem`)| `1.3` | `600` | Geist Sans | Hover transition to `#E5A93C` |
+| **Body Large** | `16px` (`1rem`) | `1.6` | `400` | Geist Sans | Section lead paragraphs; line-height relaxed |
+| **Body Base** | `14px` (`0.875rem`) | `1.55`| `400` | Geist Sans | Standard article, guide, and topic text |
+| **Monospace Eyebrow**| `11px` (`0.6875rem`) | `1.4` | `500` | Geist Mono | Uppercase `tracking-widest` metadata marker |
+| **Code Snippet** | `12px` (`0.75rem`) | `1.5` | `400` | Geist Mono | Syntax container in `#101010` with `#272727` border |
 
 ---
 
