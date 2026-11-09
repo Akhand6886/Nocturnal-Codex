@@ -25,33 +25,41 @@ export default async function CategoriesPage() {
   const allCategories = await getAllCategories();
 
   return (
-    <div className="container mx-auto px-4 py-10 md:py-12 space-y-10">
-      <header className="pb-6 border-b border-border">
-        <h1 className="text-4xl font-extrabold tracking-tight flex items-center text-foreground">
-          <FolderArchive className="mr-4 h-10 w-10 text-primary" />
-          All Categories
-        </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
-          Explore blog posts by specific categories.
-        </p>
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+        <div className="space-y-3 max-w-2xl">
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+            TAXONOMY INDEX // CATEGORIES
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
+            Topic Classifications
+          </h1>
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            Curated categories organizing articles, mathematical models, and technical dispatches across the repository.
+          </p>
+        </div>
       </header>
 
-      {allCategories.length > 0 ? (
-        <div className="flex flex-wrap gap-4">
-          {allCategories.map((category) => (
-            <Link key={category} href={`/categories/${slugifyCategory(category)}`}>
-              <Badge 
-                variant="secondary" 
-                className="text-sm px-4 py-2 hover:bg-primary/20 hover:text-primary transition-colors duration-200 cursor-pointer"
-              >
-                {category}
-              </Badge>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <p className="text-muted-foreground text-center py-10">No categories found.</p>
-      )}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+        {allCategories.length > 0 ? (
+          <div className="flex flex-wrap gap-2.5">
+            {allCategories.map((category) => (
+              <Link key={category} href={`/categories/${slugifyCategory(category)}`}>
+                <span className="inline-block px-3.5 py-1.5 rounded-md text-xs font-mono bg-[#181818] border border-[#272727] text-foreground hover:border-[#383838] hover:text-[#E5A93C] transition-colors duration-200">
+                  {category}
+                </span>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16 border border-dashed border-[#272727] rounded-lg bg-[#181818]">
+            <p className="text-xs font-mono text-muted-foreground">
+              No categories cataloged in the active dataset.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
