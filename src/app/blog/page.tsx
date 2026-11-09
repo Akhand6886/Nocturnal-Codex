@@ -66,10 +66,10 @@ export default async function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPageJsonLd) }}
       />
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-border">
         <div className="space-y-3 max-w-2xl">
-          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-primary uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
             ARCHIVAL DISPATCHES // ESSAYS & ANALYSES
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
@@ -89,7 +89,7 @@ export default async function BlogPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 border border-dashed border-[#272727] rounded-lg bg-[#181818]">
+          <div className="text-center py-16 border border-dashed border-border rounded-xl bg-card">
             <p className="text-xs font-mono text-muted-foreground">
               No dispatches currently published in the Contentful archive. Telemetry sync active.
             </p>

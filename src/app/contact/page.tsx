@@ -41,10 +41,10 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
       />
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-border">
         <div className="space-y-3 max-w-2xl">
-          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-primary uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
             TRANSMISSION INTERFACE // DIRECT DISPATCH
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
@@ -58,8 +58,8 @@ export default function ContactPage() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <section className="max-w-2xl mx-auto space-y-6">
-          <div className="p-4 rounded-lg bg-[#181818] border border-[#272727] text-xs font-mono text-muted-foreground text-center">
-            Direct telemetry endpoint: <a href="mailto:contact@nocturnalcodex.dev" className="text-[#E5A93C] hover:underline">contact@nocturnalcodex.dev</a>
+          <div className="p-4 rounded-xl bg-card border border-border text-xs font-mono text-muted-foreground text-center shadow-xs">
+            Direct telemetry endpoint: <a href="mailto:contact@nocturnalcodex.dev" className="text-primary hover:underline font-semibold">contact@nocturnalcodex.dev</a>
           </div>
           <ContactForm />
         </section>

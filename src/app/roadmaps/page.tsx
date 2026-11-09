@@ -15,11 +15,11 @@ export default function RoadmapsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-border">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+            <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-primary uppercase">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
               CURRICULUM ARCHIVE // INDEX 01
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
@@ -29,11 +29,11 @@ export default function RoadmapsPage() {
               Curated sequential mastery curricula across software engineering, systems design, and applied intelligence. Follow the structured progression or jump into specific topics.
             </p>
           </div>
-          <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground border border-[#272727] bg-[#181818] px-4 py-2 rounded-lg">
+          <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground border border-border bg-card px-4 py-2 rounded-lg shadow-xs">
             <span><strong className="text-foreground">{roadmaps.length}</strong> paths</span>
-            <span className="text-[#383838]">|</span>
+            <span className="text-muted-foreground/40">|</span>
             <span><strong className="text-foreground">{totalChapters}</strong> chapters</span>
-            <span className="text-[#383838]">|</span>
+            <span className="text-muted-foreground/40">|</span>
             <span><strong className="text-foreground">{totalTopics}</strong> topics</span>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function RoadmapsPage() {
       </div>
 
       {/* Archival Footnote */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-20 border-t border-[#272727] mt-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-20 border-t border-border mt-12">
         <p className="text-xs font-mono text-muted-foreground/60 text-center tracking-wide">
           All curriculum nodes integrate interactive topic drawers, official documentation references, and in-house language guides.
         </p>

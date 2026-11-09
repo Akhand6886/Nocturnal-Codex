@@ -47,10 +47,10 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
       />
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-border">
         <div className="space-y-3 max-w-2xl">
-          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-primary uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
             MANIFESTO & PROVENANCE // FOLIO 05
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
@@ -65,8 +65,8 @@ export default function AboutPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
-            <div className="p-5 rounded-lg bg-[#181818] border border-[#272727] space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#E5A93C] uppercase tracking-wider">
+            <div className="p-5 rounded-xl bg-card border border-border shadow-xs space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-wider font-semibold">
                 <User className="h-4 w-4" />
                 <span>The Custodian(s)</span>
               </div>
@@ -75,8 +75,8 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-lg bg-[#181818] border border-[#272727] space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#E5A93C] uppercase tracking-wider">
+            <div className="p-5 rounded-xl bg-card border border-border shadow-xs space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-wider font-semibold">
                 <Target className="h-4 w-4" />
                 <span>Purpose of the Codex</span>
               </div>
@@ -85,43 +85,43 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-lg bg-[#181818] border border-[#272727] space-y-3">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#E5A93C] uppercase tracking-wider">
+            <div className="p-5 rounded-xl bg-card border border-border shadow-xs space-y-3">
+              <div className="flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-wider font-semibold">
                 <Terminal className="h-4 w-4" />
                 <span>Core Axioms</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
-                <div className="p-2.5 rounded bg-[#121212] border border-[#272727]">
-                  <span className="text-[10px] font-mono text-[#E5A93C] block">[01] TRUTH</span>
+                <div className="p-2.5 rounded-lg bg-muted border border-border">
+                  <span className="text-[10px] font-mono text-primary font-bold block">[01] TRUTH</span>
                   <p className="text-[11px] text-muted-foreground mt-1">First-principles deduction.</p>
                 </div>
-                <div className="p-2.5 rounded bg-[#121212] border border-[#272727]">
-                  <span className="text-[10px] font-mono text-[#E5A93C] block">[02] SIGNAL</span>
+                <div className="p-2.5 rounded-lg bg-muted border border-border">
+                  <span className="text-[10px] font-mono text-primary font-bold block">[02] SIGNAL</span>
                   <p className="text-[11px] text-muted-foreground mt-1">Depth over algorithmic hype.</p>
                 </div>
-                <div className="p-2.5 rounded bg-[#121212] border border-[#272727]">
-                  <span className="text-[10px] font-mono text-[#E5A93C] block">[03] INQUIRY</span>
+                <div className="p-2.5 rounded-lg bg-muted border border-border">
+                  <span className="text-[10px] font-mono text-primary font-bold block">[03] INQUIRY</span>
                   <p className="text-[11px] text-muted-foreground mt-1">Perpetual learning loop.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="relative h-80 md:h-[420px] w-full rounded-lg overflow-hidden border border-[#272727] bg-[#141414]">
+          <div className="relative h-80 md:h-[420px] w-full rounded-xl overflow-hidden border border-border bg-card shadow-sm">
             <Image 
               src="/images/about-hero.png" 
               alt="Abstract representation of knowledge and code" 
               width={600}
               height={450}
-              className="object-cover w-full h-full opacity-85"
+              className="object-cover w-full h-full"
             />
           </div>
         </section>
 
-        <section className="pt-10 border-t border-[#272727]">
+        <section className="pt-10 border-t border-border">
           <div className="max-w-2xl mx-auto space-y-6">
             <div className="text-center space-y-2">
-              <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+              <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-widest text-primary uppercase">
                 <Mail className="h-3.5 w-3.5" />
                 SECURE TRANSMISSION
               </div>

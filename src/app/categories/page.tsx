@@ -26,10 +26,10 @@ export default async function CategoriesPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-border">
         <div className="space-y-3 max-w-2xl">
-          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+          <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-primary uppercase">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
             TAXONOMY INDEX // CATEGORIES
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
@@ -46,14 +46,14 @@ export default async function CategoriesPage() {
           <div className="flex flex-wrap gap-2.5">
             {allCategories.map((category) => (
               <Link key={category} href={`/categories/${slugifyCategory(category)}`}>
-                <span className="inline-block px-3.5 py-1.5 rounded-md text-xs font-mono bg-[#181818] border border-[#272727] text-foreground hover:border-[#383838] hover:text-[#E5A93C] transition-colors duration-200">
+                <span className="inline-block px-3.5 py-1.5 rounded-lg text-xs font-mono bg-card border border-border text-foreground hover:border-primary hover:text-primary transition-colors duration-200 shadow-xs">
                   {category}
                 </span>
               </Link>
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 border border-dashed border-[#272727] rounded-lg bg-[#181818]">
+          <div className="text-center py-16 border border-dashed border-border rounded-xl bg-card">
             <p className="text-xs font-mono text-muted-foreground">
               No categories cataloged in the active dataset.
             </p>
