@@ -35,52 +35,16 @@ const CATEGORY_ICONS: Record<string, string> = {
   Embedded: '🔌',
 };
 
-const DOMAIN_THEMES: Record<string, { bg: string; stroke: string; accent: string }> = {
-  frontend: {
-    bg: 'from-amber-500/10 via-orange-500/5 to-transparent',
-    stroke: 'text-amber-500/60 dark:text-amber-400/60',
-    accent: '#f59e0b',
-  },
-  backend: {
-    bg: 'from-emerald-500/10 via-teal-500/5 to-transparent',
-    stroke: 'text-emerald-500/60 dark:text-emerald-400/60',
-    accent: '#10b981',
-  },
-  'full-stack': {
-    bg: 'from-blue-500/10 via-indigo-500/5 to-transparent',
-    stroke: 'text-blue-500/60 dark:text-blue-400/60',
-    accent: '#3b82f6',
-  },
-  'machine-learning': {
-    bg: 'from-purple-500/10 via-violet-500/5 to-transparent',
-    stroke: 'text-purple-500/60 dark:text-purple-400/60',
-    accent: '#8b5cf6',
-  },
-  devops: {
-    bg: 'from-cyan-500/10 via-sky-500/5 to-transparent',
-    stroke: 'text-cyan-500/60 dark:text-cyan-400/60',
-    accent: '#06b6d4',
-  },
-  cybersecurity: {
-    bg: 'from-rose-500/10 via-red-500/5 to-transparent',
-    stroke: 'text-rose-500/60 dark:text-rose-400/60',
-    accent: '#f43f5e',
-  },
-  'game-development': {
-    bg: 'from-fuchsia-500/10 via-pink-500/5 to-transparent',
-    stroke: 'text-fuchsia-500/60 dark:text-fuchsia-400/60',
-    accent: '#d946ef',
-  },
-  'mobile-development': {
-    bg: 'from-lime-500/10 via-emerald-500/5 to-transparent',
-    stroke: 'text-lime-500/60 dark:text-lime-400/60',
-    accent: '#84cc16',
-  },
-  'embedded-systems': {
-    bg: 'from-orange-500/10 via-yellow-500/5 to-transparent',
-    stroke: 'text-orange-500/60 dark:text-orange-400/60',
-    accent: '#ea580c',
-  },
+const DOMAIN_THEMES: Record<string, { stroke: string; accent: string }> = {
+  frontend: { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  backend: { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  'full-stack': { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  'machine-learning': { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  devops: { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  cybersecurity: { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  'game-development': { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  'mobile-development': { stroke: 'text-zinc-400', accent: '#E5A93C' },
+  'embedded-systems': { stroke: 'text-zinc-400', accent: '#E5A93C' },
 };
 
 function DomainVectorGraphic({ slug }: { slug: string }) {
@@ -289,19 +253,18 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
   return (
     <Link href={roadmap.url} className="group block h-full">
       <div className={`
-        h-full flex flex-col overflow-hidden transition-all duration-400 ease-out
-        rounded-2xl border border-border/60 hover:border-border
-        bg-card/70 hover:bg-card hover:shadow-xl hover:shadow-black/5
-        dark:hover:shadow-black/30 group-hover:-translate-y-0.5
+        h-full flex flex-col overflow-hidden transition-all duration-300 ease-out
+        rounded-lg border border-[#272727] hover:border-[#383838]
+        bg-[#181818] hover:bg-[#1B1B1B] group-hover:-translate-y-0.5
       `}>
         {/* Header: Icon + Domain Stats */}
-        <div className="flex items-center justify-between px-6 pt-5 pb-1">
+        <div className="flex items-center justify-between px-5 pt-4 pb-1">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">{categoryIcon}</span>
+            <span className="text-xl">{categoryIcon}</span>
             {completedCount > 0 && (
-              <span className={`inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold border ${
+              <span className={`inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded font-medium border ${
                 isComplete
-                  ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30'
+                  ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
                   : 'bg-primary/10 text-primary border-primary/20'
               }`}>
                 <CheckCircle2 className="w-3 h-3" />
@@ -309,20 +272,16 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
               </span>
             )}
           </div>
-          <span className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase">
-            {chapterCount > 0 && <>{chapterCount} {chapterCount === 1 ? 'chapter' : 'chapters'} · </>}
+          <span className="text-[10px] font-mono tracking-wider text-muted-foreground uppercase">
+            {chapterCount > 0 && <>{chapterCount} {chapterCount === 1 ? 'ch' : 'chs'} · </>}
             {topicCount} {topicCount === 1 ? 'topic' : 'topics'}
           </span>
         </div>
 
         {/* Visual Domain Vector Graphic Area */}
-        <div className={`
-          mx-6 mt-3 h-36 rounded-xl bg-gradient-to-br ${theme.bg}
-          border border-border/40 flex items-center justify-center relative overflow-hidden
-          transition-all duration-400 group-hover:border-border/80 group-hover:scale-[1.01]
-        `}>
+        <div className="mx-5 mt-2.5 h-28 rounded-md bg-[#121212] border border-[#272727] flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:border-[#333333]">
           {/* Subtle Grid Dots */}
-          <div className="absolute inset-0 bg-[radial-gradient(#00000006_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff07_1px,transparent_1px)] [background-size:16px_16px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:16px_16px]" />
           
           {/* Bespoke Domain Line-Art */}
           <div className="w-full h-full relative z-10 p-2 flex items-center justify-center">
@@ -331,31 +290,31 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
         </div>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col px-6 pt-5 pb-6">
+        <div className="flex-1 flex flex-col px-5 pt-4 pb-5">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/60">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
               {roadmap.category} · {roadmap.difficulty}
             </span>
           </div>
 
-          <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200 leading-snug">
+          <h3 className="text-base font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200 leading-snug">
             {roadmap.title}
           </h3>
 
           {roadmap.description && (
-            <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2">
+            <p className="text-xs text-muted-foreground leading-relaxed mt-1.5 line-clamp-2">
               {roadmap.description}
             </p>
           )}
 
           {/* CTA Row */}
-          <div className="mt-auto pt-5 flex items-center justify-between border-t border-border/30">
-            <span className="text-xs font-mono tracking-wide text-muted-foreground/80 group-hover:text-foreground transition-colors duration-200">
+          <div className="mt-auto pt-4 flex items-center justify-between border-t border-[#272727]">
+            <span className="text-xs font-mono tracking-wide text-muted-foreground group-hover:text-foreground transition-colors duration-200">
               {isComplete ? 'Review path' : 'Explore roadmap'}
             </span>
-            <div className="flex items-center gap-1 text-muted-foreground/50 group-hover:text-foreground group-hover:translate-x-1 transition-all duration-200">
-              <span className="text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity">Start</span>
-              <ArrowRight className="w-4 h-4" />
+            <div className="flex items-center gap-1 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-200">
+              <span className="text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity">Launch</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </div>
         </div>
