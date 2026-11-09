@@ -15,43 +15,39 @@ export default function RoadmapsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <header className="max-w-5xl mx-auto px-4 pt-16 pb-6">
-        <div className="flex items-start justify-between gap-6">
-          <div className="space-y-4 max-w-2xl">
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
-              YOUR LEARNING PATH
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
+      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8 border-b border-[#272727]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-3 max-w-2xl">
+            <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-[#E5A93C] uppercase">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E5A93C]" />
+              CURRICULUM ARCHIVE // INDEX 01
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.15]">
               Developer Roadmaps
             </h1>
-            <p className="text-base text-muted-foreground leading-relaxed">
-              Curated, battle-tested learning paths for modern software engineering and systems architecture. Select a domain, progress through sequential chapters, and mark off topics as you master them.
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              Curated sequential mastery curricula across software engineering, systems design, and applied intelligence. Follow the structured progression or jump into specific topics.
             </p>
-            <div className="text-[11px] font-mono text-muted-foreground/70 tracking-wider">
-              {roadmaps.length} paths · {totalChapters} chapters · {totalTopics} topics
-            </div>
+          </div>
+          <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground border border-[#272727] bg-[#181818] px-4 py-2 rounded-lg">
+            <span><strong className="text-foreground">{roadmaps.length}</strong> paths</span>
+            <span className="text-[#383838]">|</span>
+            <span><strong className="text-foreground">{totalChapters}</strong> chapters</span>
+            <span className="text-[#383838]">|</span>
+            <span><strong className="text-foreground">{totalTopics}</strong> topics</span>
           </div>
         </div>
       </header>
 
-      {/* Section Divider */}
-      <div className="max-w-5xl mx-auto px-4 py-6">
-        <div className="flex items-center gap-4">
-          <div className="flex-1 border-t border-dashed border-border/50" />
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-muted-foreground/40 whitespace-nowrap">
-            choose a path
-          </span>
-          <div className="flex-1 border-t border-dashed border-border/50" />
-        </div>
+      {/* Interactive Directory View */}
+      <div className="pt-8">
+        <RoadmapsDirectoryView roadmaps={roadmaps} />
       </div>
 
-      {/* Interactive Directory View */}
-      <RoadmapsDirectoryView roadmaps={roadmaps} />
-
-      {/* Footer Note */}
-      <div className="max-w-5xl mx-auto px-4 pt-4 pb-20">
-        <p className="text-xs font-mono text-muted-foreground/50 text-center tracking-wide">
-          All curriculum topics include code snippets, prerequisites, and Nocturnal Codex in-house language folios.
+      {/* Archival Footnote */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-20 border-t border-[#272727] mt-12">
+        <p className="text-xs font-mono text-muted-foreground/60 text-center tracking-wide">
+          All curriculum nodes integrate interactive topic drawers, official documentation references, and in-house language guides.
         </p>
       </div>
     </div>

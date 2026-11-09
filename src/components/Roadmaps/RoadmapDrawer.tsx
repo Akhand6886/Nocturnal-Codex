@@ -148,35 +148,35 @@ export function RoadmapDrawer({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-[400px] sm:w-[540px] flex flex-col h-full border-l border-border bg-background/95 backdrop-blur-xl shadow-2xl p-0">
+      <SheetContent className="w-[400px] sm:w-[540px] flex flex-col h-full border-l border-[#272727] bg-[#141414] shadow-2xl p-0">
         {/* Header */}
-        <SheetHeader className="p-6 pb-5 border-b border-border bg-card/40 backdrop-blur-xl">
+        <SheetHeader className="p-6 pb-5 border-b border-[#272727] bg-[#181818]">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2 text-[11px] font-mono tracking-widest uppercase text-primary font-bold">
+              <div className="flex items-center gap-2 mb-2 text-[10px] font-mono tracking-widest uppercase text-primary font-semibold">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{chapterLabel ? `${chapterLabel} // TOPIC` : 'TOPIC DOSSIER // FOLIO REF'}</span>
               </div>
-              <SheetTitle className="text-2xl font-serif font-normal tracking-tight text-foreground leading-snug">
+              <SheetTitle className="text-xl font-semibold tracking-tight text-foreground leading-snug">
                 {data.label}
               </SheetTitle>
               {data.description && (
-                <SheetDescription className="mt-3 font-serif italic text-sm text-foreground/80 leading-relaxed border-l-2 border-primary/40 pl-3.5">
-                  &ldquo;{data.description}&rdquo;
+                <SheetDescription className="mt-2.5 text-xs text-muted-foreground leading-relaxed border-l border-primary/50 pl-3">
+                  {data.description}
                 </SheetDescription>
               )}
             </div>
             {onToggleComplete && (
               <button
                 onClick={onToggleComplete}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono transition-colors ${
                   isCompleted
-                    ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
-                    : 'bg-muted/40 border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground'
+                    ? 'bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/20'
+                    : 'bg-[#1F1F1F] border border-[#272727] text-muted-foreground hover:text-foreground'
                 }`}
                 title={isCompleted ? 'Mark as incomplete' : 'Mark as completed'}
               >
-                <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-500 fill-emerald-500/20' : 'text-muted-foreground/40'}`} />
+                <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-400' : 'text-muted-foreground/40'}`} />
                 {isCompleted ? 'Completed' : 'Mark Complete'}
               </button>
             )}
@@ -187,17 +187,17 @@ export function RoadmapDrawer({
         <ScrollArea className="flex-1 p-6 space-y-6">
           {/* Featured In-House Language Codex Link Card */}
           {relatedLang && (
-            <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-primary/10 via-accent/10 to-transparent border-2 border-primary/30 shadow-lg relative overflow-hidden">
+            <div className="mb-6 p-4 rounded-lg bg-[#181818] border border-[#272727] relative overflow-hidden">
               <div className="flex items-start gap-3 mb-2">
-                <span className="text-2xl flex-shrink-0" role="img" aria-label={relatedLang.name}>{relatedLang.icon}</span>
+                <span className="text-xl flex-shrink-0" role="img" aria-label={relatedLang.name}>{relatedLang.icon}</span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h4 className="font-bold text-sm text-foreground">
+                    <h4 className="font-semibold text-xs text-foreground">
                       Learn {relatedLang.name} on Nocturnal Codex
                     </h4>
-                    <Badge variant="secondary" className="text-[10px] px-2 py-0.5 bg-primary/20 text-primary font-mono font-bold">
+                    <span className="text-[9px] px-1.5 py-0.5 bg-[#E5A93C]/15 text-[#E5A93C] font-mono font-medium rounded border border-[#E5A93C]/30">
                       IN-HOUSE GUIDE
-                    </Badge>
+                    </span>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
                     {relatedLang.description}
@@ -205,10 +205,10 @@ export function RoadmapDrawer({
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 mt-3.5 pt-3 border-t border-border/40">
-                <Button asChild size="sm" className="h-8 text-xs font-bold rounded-lg gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm">
+              <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-[#272727]">
+                <Button asChild size="sm" variant="outline" className="h-7 text-xs font-mono rounded-md gap-1.5 border-[#272727] bg-[#1F1F1F] hover:bg-[#272727] text-foreground">
                   <Link href={relatedLang.url}>
-                    <GraduationCap className="w-4 h-4" />
+                    <GraduationCap className="w-3.5 h-3.5 text-primary" />
                     Open {relatedLang.name} Codex Guide
                   </Link>
                 </Button>
@@ -218,11 +218,11 @@ export function RoadmapDrawer({
           {/* Code Snippet Example Section */}
           {data.codeSnippet && (
             <div className="mb-6">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-3 flex items-center gap-2">
-                <Code2 className="w-4 h-4 text-primary" />
+              <h3 className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-1.5">
+                <Code2 className="w-3.5 h-3.5 text-primary" />
                 Key Concept / Code Example
               </h3>
-              <pre className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-cyan-300 font-mono text-xs overflow-x-auto whitespace-pre-wrap shadow-inner leading-relaxed">
+              <pre className="p-3.5 rounded-lg bg-[#101010] border border-[#272727] text-[#EDEDED] font-mono text-xs overflow-x-auto whitespace-pre-wrap leading-relaxed">
                 {data.codeSnippet}
               </pre>
             </div>
@@ -231,15 +231,15 @@ export function RoadmapDrawer({
           {/* Prerequisites */}
           {data.prerequisites && data.prerequisites.length > 0 && (
             <div className="mb-6">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-3 flex items-center gap-2">
-                <Play className="w-3.5 h-3.5 text-accent" />
+              <h3 className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-1.5">
+                <Play className="w-3 h-3 text-primary" />
                 Prerequisites
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {data.prerequisites.map((prereq, idx) => (
-                  <Badge key={idx} variant="secondary" className="text-xs font-medium px-2.5 py-1 rounded-md">
+                  <span key={idx} className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#181818] border border-[#272727] text-muted-foreground">
                     {prereq}
-                  </Badge>
+                  </span>
                 ))}
               </div>
             </div>
@@ -248,11 +248,11 @@ export function RoadmapDrawer({
           {/* Resources List */}
           {data.resources && data.resources.length > 0 ? (
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-4 flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-primary" />
+              <h3 className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5 text-primary" />
                 Recommended Resources ({data.resources.length})
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2">
                 {data.resources.map((resource, index) => {
                   const typeIcon = resource.type ? RESOURCE_TYPE_ICONS[resource.type.toLowerCase()] || '📎' : '📎';
                   return (
@@ -261,22 +261,22 @@ export function RoadmapDrawer({
                         href={resource.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-3 p-3 rounded-xl border border-border/60 bg-card hover:bg-primary/5 hover:border-primary/40 transition-all duration-200 shadow-sm"
+                        className="group flex items-center gap-3 p-2.5 rounded-lg border border-[#272727] bg-[#181818] hover:border-[#383838] hover:bg-[#1B1B1B] transition-all duration-200"
                       >
-                        <span className="text-lg flex-shrink-0" role="img" aria-label={resource.type || 'resource'}>
+                        <span className="text-base flex-shrink-0" role="img" aria-label={resource.type || 'resource'}>
                           {typeIcon}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm text-foreground group-hover:text-primary transition-colors truncate">
+                          <p className="font-medium text-xs text-foreground group-hover:text-primary transition-colors truncate">
                             {resource.title}
                           </p>
                           {resource.type && (
-                            <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">
+                            <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-mono">
                               {resource.type}
                             </span>
                           )}
                         </div>
-                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground/50 group-hover:text-primary flex-shrink-0 transition-colors" />
+                        <ExternalLink className="w-3 h-3 text-muted-foreground/50 group-hover:text-primary flex-shrink-0 transition-colors" />
                       </a>
                     </li>
                   );
@@ -284,27 +284,27 @@ export function RoadmapDrawer({
               </ul>
             </div>
           ) : (
-            <div className="text-center py-10 rounded-xl bg-muted/10 border border-dashed border-border/50">
-              <Sparkles className="w-8 h-8 text-muted-foreground/30 mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground font-medium">Curated Resources Loaded</p>
-              <p className="text-xs text-muted-foreground/60 mt-1">Explore official documentation and guide topics above</p>
+            <div className="text-center py-8 rounded-lg bg-[#181818] border border-[#272727]">
+              <Sparkles className="w-6 h-6 text-muted-foreground/30 mx-auto mb-2" />
+              <p className="text-xs text-muted-foreground font-mono">Curated Resources Loaded</p>
+              <p className="text-[11px] text-muted-foreground/60 mt-1">Explore official documentation and guide topics above</p>
             </div>
           )}
         </ScrollArea>
 
         {/* Footer */}
-        <div className="p-4 border-t border-border bg-card/60 flex items-center justify-between gap-3">
+        <div className="p-4 border-t border-[#272727] bg-[#181818] flex items-center justify-between gap-3">
           {onToggleComplete ? (
             <button
               onClick={onToggleComplete}
-              className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold border transition-all ${
+              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-mono border transition-all ${
                 isCompleted
-                  ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/25'
-                  : 'bg-background border-border/80 text-foreground hover:bg-muted/60'
+                  ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/20'
+                  : 'bg-[#1F1F1F] border-[#272727] text-foreground hover:bg-[#272727]'
               }`}
             >
-              <CheckCircle className={`w-4 h-4 ${isCompleted ? 'text-emerald-500 fill-emerald-500/20' : 'text-muted-foreground/50'}`} />
-              {isCompleted ? 'Topic Mastered ✓' : 'Mark as Done'}
+              <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-400' : 'text-muted-foreground/50'}`} />
+              {isCompleted ? 'Mastered ✓' : 'Mark as Done'}
             </button>
           ) : <div />}
 
@@ -313,14 +313,14 @@ export function RoadmapDrawer({
               <Button
                 onClick={onNextTopic}
                 size="sm"
-                className="rounded-lg text-xs font-semibold gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90"
+                className="rounded-md text-xs font-mono gap-1.5 bg-primary text-black hover:bg-primary/90"
               >
                 Next Topic
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
             )}
             <SheetClose asChild>
-              <Button variant="outline" size="sm" className="rounded-lg text-xs">
+              <Button variant="outline" size="sm" className="rounded-md text-xs font-mono border-[#272727] bg-[#1F1F1F] hover:bg-[#272727]">
                 Close
               </Button>
             </SheetClose>

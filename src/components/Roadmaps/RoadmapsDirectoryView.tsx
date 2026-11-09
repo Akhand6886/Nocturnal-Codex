@@ -65,10 +65,10 @@ export function RoadmapsDirectoryView({ roadmaps }: RoadmapsDirectoryViewProps) 
   return (
     <div>
       {/* Category Pills & Search Bar */}
-      <div className="max-w-5xl mx-auto px-4 mb-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
           {/* Category Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-muted/40 border border-border/50 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[#181818] border border-[#272727] overflow-x-auto no-scrollbar">
             {CATEGORIES.map((cat) => {
               const isActive = selectedCategory === cat.id;
               return (
@@ -76,10 +76,10 @@ export function RoadmapsDirectoryView({ roadmaps }: RoadmapsDirectoryViewProps) 
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`
-                    px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap
+                    px-3.5 py-1.5 rounded-md text-xs font-mono transition-all duration-200 whitespace-nowrap
                     ${isActive
-                      ? 'bg-background text-foreground shadow-xs border border-border/60 font-semibold'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-background/40'
+                      ? 'bg-[#272727] text-foreground border border-[#383838] font-semibold text-[#E5A93C]'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-[#1F1F1F]'
                     }
                   `}
                 >
@@ -96,8 +96,8 @@ export function RoadmapsDirectoryView({ roadmaps }: RoadmapsDirectoryViewProps) 
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Filter roadmaps..."
-              className="w-full pl-8 pr-8 py-1.5 text-xs rounded-xl bg-background border border-border/60 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-primary/40"
+              placeholder="Search curricula..."
+              className="w-full pl-8 pr-8 py-1.5 text-xs rounded-lg bg-[#181818] border border-[#272727] text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[#E5A93C] focus:ring-1 focus:ring-[#E5A93C]/40 font-mono"
             />
             {searchQuery && (
               <button
@@ -112,7 +112,7 @@ export function RoadmapsDirectoryView({ roadmaps }: RoadmapsDirectoryViewProps) 
       </div>
 
       {/* 2-Column Grid */}
-      <div className="max-w-5xl mx-auto px-4 pb-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
         {filteredRoadmaps.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {filteredRoadmaps.map((roadmap) => (
