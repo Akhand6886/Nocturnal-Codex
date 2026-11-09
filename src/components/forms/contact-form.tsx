@@ -70,14 +70,14 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6 border border-border rounded-lg shadow-lg bg-card">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6 border border-[#272727] rounded-lg bg-[#181818]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Full Name</FormLabel>
                 <FormControl>
                   <Input placeholder="Ada Lovelace" {...field} disabled={form.formState.isSubmitting} />
                 </FormControl>
@@ -90,7 +90,7 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Email Address</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="ada@example.com" {...field} disabled={form.formState.isSubmitting} />
                 </FormControl>
@@ -104,9 +104,9 @@ export function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Subject</FormLabel>
               <FormControl>
-                <Input placeholder="Inquiry about..." {...field} disabled={form.formState.isSubmitting} />
+                <Input placeholder="Topic / Inquiry classification" {...field} disabled={form.formState.isSubmitting} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -117,10 +117,10 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Your detailed message..."
+                  placeholder="Detail your inquiry or theoretical correction..."
                   className="min-h-[120px]"
                   {...field}
                   disabled={form.formState.isSubmitting}
@@ -130,9 +130,9 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground" disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? "Sending..." : "Send Message"}
-          {!form.formState.isSubmitting && <Send className="ml-2 h-4 w-4" />}
+        <Button type="submit" className="w-full md:w-auto bg-[#E5A93C] hover:bg-[#D4982B] text-black font-mono font-medium rounded-lg" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? "Transmitting..." : "Transmit Signal"}
+          {!form.formState.isSubmitting && <Send className="ml-2 h-3.5 w-3.5" />}
         </Button>
       </form>
     </Form>
