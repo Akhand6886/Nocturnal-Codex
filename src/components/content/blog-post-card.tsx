@@ -32,49 +32,48 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
   }
   
   return (
-    <Link href={post.url} className="group block">
-        <Card className="flex h-full flex-col overflow-hidden shadow-lg hover:shadow-primary/15 border border-border/50 hover:border-primary/40 transition-all duration-500 ease-out bg-card group rounded-xl">
-            <div className="relative h-52 w-full overflow-hidden rounded-t-xl">
+    <Link href={post.url} className="group block h-full">
+        <Card className="flex h-full flex-col overflow-hidden border border-[#272727] hover:border-[#383838] transition-all duration-300 ease-out bg-[#181818] hover:bg-[#1C1C1C] rounded-lg">
+            <div className="relative h-44 w-full overflow-hidden bg-[#121212]">
                 <Image
                 src={imageUrl}
                 alt={imageAlt}
                 width={400}
-                height={300}
-                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                height={250}
+                className="object-cover w-full h-full opacity-85 group-hover:opacity-100 group-hover:scale-102 transition-all duration-300 ease-out"
                 data-ai-hint={dataAiHint}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent group-hover:from-black/10 transition-colors duration-300"></div>
             </div>
-            <CardHeader className="pt-5">
-                <CardTitle className="text-xl font-semibold leading-tight group-hover:text-primary transition-colors duration-200 ease-in-out">{post.title}</CardTitle>
-                <div className="text-xs text-muted-foreground flex items-center space-x-4 pt-2">
+            <CardHeader className="p-5 pb-2">
+                <CardTitle className="text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors duration-200">{post.title}</CardTitle>
+                <div className="text-[11px] font-mono text-muted-foreground flex items-center space-x-3 pt-2">
                 {post.author && (
-                    <div className="flex items-center space-x-1.5">
-                    <UserCircle className="h-4 w-4" />
+                    <div className="flex items-center space-x-1">
+                    <UserCircle className="h-3.5 w-3.5" />
                     <span>{post.author}</span>
                     </div>
                 )}
                 {post.date && (
-                    <div className="flex items-center space-x-1.5">
-                    <CalendarDays className="h-4 w-4" />
-                    <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+                    <div className="flex items-center space-x-1">
+                    <CalendarDays className="h-3.5 w-3.5" />
+                    <span>{format(new Date(post.date), "MMM d, yyyy")}</span>
                     </div>
                 )}
                 </div>
             </CardHeader>
-            <CardContent className="flex-grow py-3">
-                {post.shortDescription && <CardDescription className="text-foreground/80">{post.shortDescription}</CardDescription>}
+            <CardContent className="px-5 py-2 flex-grow">
+                {post.shortDescription && <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">{post.shortDescription}</p>}
                 {post.tags && post.tags.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs font-medium">{tag}</Badge>
+                <div className="mt-3 flex flex-wrap gap-1">
+                    {post.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#121212] border border-[#272727] text-muted-foreground">{tag}</span>
                     ))}
                 </div>
                 )}
             </CardContent>
-            <CardFooter className="pb-5">
-                <div className="text-primary font-medium text-sm flex items-center group-hover:text-accent transition-all duration-200 ease-in-out">
-                    Read More <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+            <CardFooter className="px-5 pt-3 pb-4 border-t border-[#272727] mt-auto">
+                <div className="text-muted-foreground font-mono text-xs flex items-center group-hover:text-primary transition-colors duration-200">
+                    Read article <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </div>
             </CardFooter>
         </Card>
