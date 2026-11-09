@@ -24,36 +24,36 @@ const TopicNode = ({ data, selected }: NodeProps<TopicNodeType>) => {
   return (
     <div
       className={`
-        relative w-[220px] h-[56px] px-3.5 py-2 rounded-lg text-center cursor-pointer transition-all duration-200 ease-archive select-none
-        border text-foreground flex items-center justify-center gap-2 box-border overflow-hidden
-        hover:border-[#383838]
+        relative w-[220px] h-[56px] px-3.5 py-2 rounded-xl text-center cursor-pointer transition-all duration-200 ease-out select-none
+        border text-foreground flex items-center justify-center gap-2 box-border overflow-hidden shadow-xs
+        hover:border-primary/60 hover:shadow-sm
         ${
           isDone
-            ? 'bg-[#181818] border-emerald-500/50 text-emerald-400 font-medium'
+            ? 'bg-emerald-500/15 border-emerald-500/70 text-emerald-900 dark:text-emerald-300 font-bold'
             : isLearning
-              ? 'bg-[#181818] border-[#E5A93C]/50 text-[#E5A93C] font-medium'
+              ? 'bg-amber-500/15 border-amber-500/70 text-amber-900 dark:text-amber-300 font-bold'
               : isRecommended
-                ? 'bg-[#181818] border-[#E5A93C]/40 text-foreground font-medium'
-                : 'bg-[#181818] border-[#272727] text-foreground'
+                ? 'bg-card border-primary/70 text-foreground font-semibold'
+                : 'bg-card border-border text-foreground'
         }
-        ${isHighlighted ? 'ring-1 ring-[#E5A93C] border-[#E5A93C]' : ''}
-        ${selected ? 'ring-1 ring-[#E5A93C] ring-offset-1 ring-offset-black' : ''}
+        ${isHighlighted ? 'ring-2 ring-primary border-primary' : ''}
+        ${selected ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}
       `}
     >
       {/* Recommended Pill Indicator */}
       {isRecommended && !isDone && !isLearning && (
-        <span className="absolute -top-1 left-3 px-1.5 py-0.2 bg-[#E5A93C] text-[9px] font-mono font-semibold text-black rounded uppercase tracking-wider z-10">
+        <span className="absolute -top-1 left-3 px-1.5 py-0.2 bg-primary text-[9px] font-mono font-bold text-primary-foreground rounded uppercase tracking-wider z-10 shadow-xs">
           Rec
         </span>
       )}
 
       {/* Completion Icon Badges */}
       {isDone && (
-        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
       )}
 
       {isLearning && (
-        <Clock className="w-3.5 h-3.5 text-[#E5A93C] flex-shrink-0 animate-pulse" />
+        <Clock className="w-3.5 h-3.5 text-amber-500 flex-shrink-0 animate-pulse" />
       )}
 
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />

@@ -42,29 +42,29 @@ export function RandomTheoryDrop() {
   const item = STATIC_THEORY_FACTS[index];
 
   return (
-    <div className="rounded-lg border border-border bg-[#181818] p-5 sm:p-6 transition-all duration-300">
-      <div className="flex items-center justify-between gap-4 pb-3 border-b border-[#272727]">
+    <div className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-sm transition-all duration-300">
+      <div className="flex items-center justify-between gap-4 pb-3 border-b border-border/60">
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-          <span className="text-[10px] font-mono uppercase tracking-widest text-primary font-semibold">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-mono uppercase tracking-widest text-primary font-bold">
             CODEX AXIOM // {item.topic}
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[10px] font-mono text-muted-foreground">
+          <span className="text-xs font-mono text-muted-foreground">
             {String(index + 1).padStart(2, '0')} / {String(STATIC_THEORY_FACTS.length).padStart(2, '0')}
           </span>
           <button
             onClick={nextAxiom}
-            className="text-muted-foreground hover:text-foreground transition-colors p-1 rounded hover:bg-[#272727]"
+            className="text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-md hover:bg-muted"
             aria-label="Next Axiom"
           >
-            <RefreshCw className="w-3 h-3" />
+            <RefreshCw className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
       <div className="pt-4">
-        <p className="text-sm md:text-base text-foreground/90 leading-relaxed font-sans font-normal">
+        <p className="text-base md:text-lg text-foreground/90 leading-relaxed font-serif italic">
           &ldquo;{item.axiom}&rdquo;
         </p>
       </div>

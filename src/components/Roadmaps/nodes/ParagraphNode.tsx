@@ -13,7 +13,7 @@ const ParagraphNode = ({ data }: NodeProps<ParagraphNodeType>) => {
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} isConnectable={false} />
       <Handle type="target" position={Position.Left} id="left" style={{ opacity: 0 }} isConnectable={false} />
 
-      <p className="bg-[#181818] p-2.5 rounded-lg border border-[#272727] text-muted-foreground text-xs font-mono">
+      <p className="bg-card p-2.5 rounded-lg border border-border text-foreground/80 text-xs font-mono shadow-xs">
         {data.label}
       </p>
 

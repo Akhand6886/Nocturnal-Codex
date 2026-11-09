@@ -20,15 +20,15 @@ export function ThinkTankArticleCard({ article }: ThinkTankArticleCardProps) {
   
   return (
     <Link href={article.url} className="group block h-full">
-        <Card className="flex h-full flex-col overflow-hidden border border-[#272727] hover:border-[#383838] transition-all duration-300 ease-out bg-[#181818] hover:bg-[#1B1B1B] rounded-lg">
+        <Card className="flex h-full flex-col overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 ease-out bg-card hover:shadow-md rounded-xl">
         {imageUrl && (
-            <div className="relative h-44 w-full overflow-hidden bg-[#121212]">
+            <div className="relative h-44 w-full overflow-hidden bg-muted">
             <Image
                 src={imageUrl}
                 alt={imageAlt}
                 width={800}
                 height={450}
-                className="object-cover w-full h-full opacity-85 group-hover:opacity-100 group-hover:scale-102 transition-all duration-300 ease-out"
+                className="object-cover w-full h-full group-hover:scale-102 transition-all duration-300 ease-out"
                 data-ai-hint={dataAiHint}
             />
             </div>
@@ -51,12 +51,12 @@ export function ThinkTankArticleCard({ article }: ThinkTankArticleCardProps) {
             {article.tags && article.tags.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-1">
                 {article.tags.slice(0, 3).map((tag) => (
-                <span key={tag} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#121212] border border-[#272727] text-muted-foreground">{tag}</span>
+                <span key={tag} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-muted border border-border text-muted-foreground">{tag}</span>
                 ))}
             </div>
             )}
         </CardContent>
-        <CardFooter className="px-5 pt-3 pb-4 border-t border-[#272727] mt-auto">
+        <CardFooter className="px-5 pt-3 pb-4 border-t border-border/60 mt-auto">
             <div className="text-muted-foreground font-mono text-xs flex items-center group-hover:text-primary transition-colors duration-200">
                 View paper <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
             </div>

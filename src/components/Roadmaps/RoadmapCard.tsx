@@ -254,8 +254,8 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
     <Link href={roadmap.url} className="group block h-full">
       <div className={`
         h-full flex flex-col overflow-hidden transition-all duration-300 ease-out
-        rounded-lg border border-[#272727] hover:border-[#383838]
-        bg-[#181818] hover:bg-[#1B1B1B] group-hover:-translate-y-0.5
+        rounded-xl border border-border hover:border-primary/50
+        bg-card shadow-sm hover:shadow-md group-hover:-translate-y-0.5
       `}>
         {/* Header: Icon + Domain Stats */}
         <div className="flex items-center justify-between px-5 pt-4 pb-1">
@@ -264,7 +264,7 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
             {completedCount > 0 && (
               <span className={`inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded font-medium border ${
                 isComplete
-                  ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                  ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30'
                   : 'bg-primary/10 text-primary border-primary/20'
               }`}>
                 <CheckCircle2 className="w-3 h-3" />
@@ -279,9 +279,9 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
         </div>
 
         {/* Visual Domain Vector Graphic Area */}
-        <div className="mx-5 mt-2.5 h-28 rounded-md bg-[#121212] border border-[#272727] flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:border-[#333333]">
+        <div className="mx-5 mt-2.5 h-28 rounded-lg bg-muted/30 border border-border/60 flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:border-primary/40">
           {/* Subtle Grid Dots */}
-          <div className="absolute inset-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:16px_16px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#00000008_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:16px_16px]" />
           
           {/* Bespoke Domain Line-Art */}
           <div className="w-full h-full relative z-10 p-2 flex items-center justify-center">
@@ -308,7 +308,7 @@ export function RoadmapCard({ roadmap, featured }: RoadmapCardProps) {
           )}
 
           {/* CTA Row */}
-          <div className="mt-auto pt-4 flex items-center justify-between border-t border-[#272727]">
+          <div className="mt-auto pt-4 flex items-center justify-between border-t border-border/60">
             <span className="text-xs font-mono tracking-wide text-muted-foreground group-hover:text-foreground transition-colors duration-200">
               {isComplete ? 'Review path' : 'Explore roadmap'}
             </span>

@@ -148,9 +148,9 @@ export function RoadmapDrawer({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-[400px] sm:w-[540px] flex flex-col h-full border-l border-[#272727] bg-[#141414] shadow-2xl p-0">
+      <SheetContent className="w-[400px] sm:w-[540px] flex flex-col h-full border-l border-border bg-background shadow-2xl p-0">
         {/* Header */}
-        <SheetHeader className="p-6 pb-5 border-b border-[#272727] bg-[#181818]">
+        <SheetHeader className="p-6 pb-5 border-b border-border bg-card">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 text-[10px] font-mono tracking-widest uppercase text-primary font-semibold">
@@ -161,7 +161,7 @@ export function RoadmapDrawer({
                 {data.label}
               </SheetTitle>
               {data.description && (
-                <SheetDescription className="mt-2.5 text-xs text-muted-foreground leading-relaxed border-l border-primary/50 pl-3">
+                <SheetDescription className="mt-2.5 text-xs text-muted-foreground leading-relaxed border-l-2 border-primary/50 pl-3">
                   {data.description}
                 </SheetDescription>
               )}
@@ -171,12 +171,12 @@ export function RoadmapDrawer({
                 onClick={onToggleComplete}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono transition-colors ${
                   isCompleted
-                    ? 'bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/20'
-                    : 'bg-[#1F1F1F] border border-[#272727] text-muted-foreground hover:text-foreground'
+                    ? 'bg-emerald-500/10 border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
+                    : 'bg-muted border border-border text-muted-foreground hover:text-foreground'
                 }`}
                 title={isCompleted ? 'Mark as incomplete' : 'Mark as completed'}
               >
-                <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-400' : 'text-muted-foreground/40'}`} />
+                <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-500' : 'text-muted-foreground/40'}`} />
                 {isCompleted ? 'Completed' : 'Mark Complete'}
               </button>
             )}
@@ -187,7 +187,7 @@ export function RoadmapDrawer({
         <ScrollArea className="flex-1 p-6 space-y-6">
           {/* Featured In-House Language Codex Link Card */}
           {relatedLang && (
-            <div className="mb-6 p-4 rounded-lg bg-[#181818] border border-[#272727] relative overflow-hidden">
+            <div className="mb-6 p-4 rounded-xl bg-card border border-border shadow-xs relative overflow-hidden">
               <div className="flex items-start gap-3 mb-2">
                 <span className="text-xl flex-shrink-0" role="img" aria-label={relatedLang.name}>{relatedLang.icon}</span>
                 <div className="flex-1 min-w-0">
@@ -195,7 +195,7 @@ export function RoadmapDrawer({
                     <h4 className="font-semibold text-xs text-foreground">
                       Learn {relatedLang.name} on Nocturnal Codex
                     </h4>
-                    <span className="text-[9px] px-1.5 py-0.5 bg-[#E5A93C]/15 text-[#E5A93C] font-mono font-medium rounded border border-[#E5A93C]/30">
+                    <span className="text-[9px] px-1.5 py-0.5 bg-primary/10 text-primary font-mono font-medium rounded border border-primary/20">
                       IN-HOUSE GUIDE
                     </span>
                   </div>
@@ -205,8 +205,8 @@ export function RoadmapDrawer({
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-[#272727]">
-                <Button asChild size="sm" variant="outline" className="h-7 text-xs font-mono rounded-md gap-1.5 border-[#272727] bg-[#1F1F1F] hover:bg-[#272727] text-foreground">
+              <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-border">
+                <Button asChild size="sm" variant="outline" className="h-7 text-xs font-mono rounded-md gap-1.5">
                   <Link href={relatedLang.url}>
                     <GraduationCap className="w-3.5 h-3.5 text-primary" />
                     Open {relatedLang.name} Codex Guide
@@ -222,7 +222,7 @@ export function RoadmapDrawer({
                 <Code2 className="w-3.5 h-3.5 text-primary" />
                 Key Concept / Code Example
               </h3>
-              <pre className="p-3.5 rounded-lg bg-[#101010] border border-[#272727] text-[#EDEDED] font-mono text-xs overflow-x-auto whitespace-pre-wrap leading-relaxed">
+              <pre className="p-3.5 rounded-lg bg-muted border border-border text-foreground font-mono text-xs overflow-x-auto whitespace-pre-wrap leading-relaxed">
                 {data.codeSnippet}
               </pre>
             </div>
@@ -237,7 +237,7 @@ export function RoadmapDrawer({
               </h3>
               <div className="flex flex-wrap gap-1.5">
                 {data.prerequisites.map((prereq, idx) => (
-                  <span key={idx} className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#181818] border border-[#272727] text-muted-foreground">
+                  <span key={idx} className="text-[11px] font-mono px-2 py-0.5 rounded bg-muted border border-border text-muted-foreground">
                     {prereq}
                   </span>
                 ))}
@@ -261,7 +261,7 @@ export function RoadmapDrawer({
                         href={resource.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-3 p-2.5 rounded-lg border border-[#272727] bg-[#181818] hover:border-[#383838] hover:bg-[#1B1B1B] transition-all duration-200"
+                        className="group flex items-center gap-3 p-2.5 rounded-lg border border-border bg-card hover:border-primary/40 hover:bg-muted/60 transition-all duration-200"
                       >
                         <span className="text-base flex-shrink-0" role="img" aria-label={resource.type || 'resource'}>
                           {typeIcon}
@@ -284,7 +284,7 @@ export function RoadmapDrawer({
               </ul>
             </div>
           ) : (
-            <div className="text-center py-8 rounded-lg bg-[#181818] border border-[#272727]">
+            <div className="text-center py-8 rounded-lg bg-card border border-border">
               <Sparkles className="w-6 h-6 text-muted-foreground/30 mx-auto mb-2" />
               <p className="text-xs text-muted-foreground font-mono">Curated Resources Loaded</p>
               <p className="text-[11px] text-muted-foreground/60 mt-1">Explore official documentation and guide topics above</p>
@@ -293,17 +293,17 @@ export function RoadmapDrawer({
         </ScrollArea>
 
         {/* Footer */}
-        <div className="p-4 border-t border-[#272727] bg-[#181818] flex items-center justify-between gap-3">
+        <div className="p-4 border-t border-border bg-card flex items-center justify-between gap-3">
           {onToggleComplete ? (
             <button
               onClick={onToggleComplete}
               className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-mono border transition-all ${
                 isCompleted
-                  ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/20'
-                  : 'bg-[#1F1F1F] border-[#272727] text-foreground hover:bg-[#272727]'
+                  ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
+                  : 'bg-background border-border text-foreground hover:bg-muted'
               }`}
             >
-              <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-400' : 'text-muted-foreground/50'}`} />
+              <CheckCircle className={`w-3.5 h-3.5 ${isCompleted ? 'text-emerald-500' : 'text-muted-foreground/50'}`} />
               {isCompleted ? 'Mastered ✓' : 'Mark as Done'}
             </button>
           ) : <div />}
@@ -313,14 +313,14 @@ export function RoadmapDrawer({
               <Button
                 onClick={onNextTopic}
                 size="sm"
-                className="rounded-md text-xs font-mono gap-1.5 bg-primary text-black hover:bg-primary/90"
+                className="rounded-md text-xs font-mono gap-1.5"
               >
                 Next Topic
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
             )}
             <SheetClose asChild>
-              <Button variant="outline" size="sm" className="rounded-md text-xs font-mono border-[#272727] bg-[#1F1F1F] hover:bg-[#272727]">
+              <Button variant="outline" size="sm" className="rounded-md text-xs font-mono">
                 Close
               </Button>
             </SheetClose>
