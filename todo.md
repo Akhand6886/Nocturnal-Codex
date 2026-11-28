@@ -43,12 +43,12 @@
 ## UI/UX & Roadmap Ecosystem
 - [x] Transition to `roadmap-revamp` branch for React Flow integration.
 - [x] Implement hybrid SEO rendering pattern (Server-side pre-reading + instant canvas hydration).
-- [ ] **Create Missing Roadmap JSON Canvases** (Resolves 404 client fetch errors):
-    - [ ] `public/roadmap-content/embedded-systems.json`
-    - [ ] `public/roadmap-content/game-development.json`
-    - [ ] `public/roadmap-content/mobile-development.json`
-- [ ] **Metadata & Resource Enrichment**:
-    - [ ] Populate `data.description` and `data.resources` across `backend.json`, `devops.json`, `cybersecurity.json`, `full-stack.json`, and `machine-learning.json`.
-- [ ] **Canvas Renderer Optimization**:
-    - [ ] Add explicit handlers or pass-through components for legacy export node types (`paragraph`, `legend`) in `EditorRoadmapRenderer.tsx` to prevent empty fallback boxes.
+- [x] **Create Missing Roadmap JSON Canvases** (Resolves 404 client fetch errors):
+    - [x] `public/roadmap-content/embedded-systems.json`
+    - [x] `public/roadmap-content/game-development.json`
+    - [x] `public/roadmap-content/mobile-development.json`
+- [x] **Metadata & Resource Enrichment**:
+    - [x] Populate `data.description` and `data.resources` across `backend.json`, `devops.json`, `cybersecurity.json`, `full-stack.json`, and `machine-learning.json`.
+- [x] **Canvas Renderer Optimization**:
+    - [x] Add explicit handlers or pass-through components for legacy export node types (`paragraph`, `legend`) in `EditorRoadmapRenderer.tsx` to prevent empty fallback boxes.
 - [ ] Polish "Premium" styling across all existing markdown content.
